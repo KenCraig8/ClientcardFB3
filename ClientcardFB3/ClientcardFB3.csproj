@@ -189,6 +189,7 @@
     <Compile Include="ClientSearch.Designer.cs">
       <DependentUpon>ClientSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmailInfo.cs" />
     <Compile Include="HHPoints.cs" />
     <Compile Include="PRNTFamilyCard.cs" />
     <Compile Include="Rpt2ndHarvPantryMthly.cs">
