@@ -32,6 +32,7 @@ namespace ClientcardFB3
             tbTo.Text = emailInfo.to;
             tbFrom.Text = emailInfo.from;
             tbSubject.Text = emailInfo.subject;
+            tbAttach.Text = emailInfo.attachmentPath;
         }
 
         private void EmailBodyInputForm_FormClosing(object sender, FormClosingEventArgs e){ }
@@ -39,7 +40,12 @@ namespace ClientcardFB3
         private void btnOK_Click(object sender, EventArgs e)
         {
             canceled = false;
+
+            //update the contents of the email
             emailInfo.body = tbEmailBody.Text;
+            emailInfo.to = tbTo.Text;
+            emailInfo.subject = tbSubject.Text;
+
             this.Close();
         }
 

@@ -38,22 +38,24 @@
             this.tbTo = new System.Windows.Forms.TextBox();
             this.tbFrom = new System.Windows.Forms.TextBox();
             this.tbSubject = new System.Windows.Forms.TextBox();
+            this.tbAttach = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbEmailBody
             // 
-            this.tbEmailBody.Location = new System.Drawing.Point(15, 179);
+            this.tbEmailBody.Location = new System.Drawing.Point(15, 208);
             this.tbEmailBody.Margin = new System.Windows.Forms.Padding(4);
             this.tbEmailBody.Multiline = true;
             this.tbEmailBody.Name = "tbEmailBody";
-            this.tbEmailBody.Size = new System.Drawing.Size(706, 360);
+            this.tbEmailBody.Size = new System.Drawing.Size(706, 331);
             this.tbEmailBody.TabIndex = 0;
             // 
             // lblBody
             // 
             this.lblBody.AutoSize = true;
             this.lblBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBody.Location = new System.Drawing.Point(13, 150);
+            this.lblBody.Location = new System.Drawing.Point(13, 179);
             this.lblBody.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBody.Name = "lblBody";
             this.lblBody.Size = new System.Drawing.Size(421, 25);
@@ -85,7 +87,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 45);
+            this.label2.Location = new System.Drawing.Point(12, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 17);
             this.label2.TabIndex = 4;
@@ -95,7 +97,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 73);
+            this.label3.Location = new System.Drawing.Point(12, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 17);
             this.label3.TabIndex = 5;
@@ -105,7 +107,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 106);
+            this.label4.Location = new System.Drawing.Point(15, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 17);
             this.label4.TabIndex = 6;
@@ -122,6 +124,7 @@
             // 
             this.tbFrom.Location = new System.Drawing.Point(118, 73);
             this.tbFrom.Name = "tbFrom";
+            this.tbFrom.ReadOnly = true;
             this.tbFrom.Size = new System.Drawing.Size(603, 22);
             this.tbFrom.TabIndex = 8;
             // 
@@ -132,12 +135,32 @@
             this.tbSubject.Size = new System.Drawing.Size(603, 22);
             this.tbSubject.TabIndex = 9;
             // 
+            // tbAttach
+            // 
+            this.tbAttach.Location = new System.Drawing.Point(118, 129);
+            this.tbAttach.Name = "tbAttach";
+            this.tbAttach.ReadOnly = true;
+            this.tbAttach.Size = new System.Drawing.Size(603, 22);
+            this.tbAttach.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 132);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 17);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Attachment:";
+            // 
             // EmailBodyInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(736, 552);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbAttach);
             this.Controls.Add(this.tbSubject);
             this.Controls.Add(this.tbFrom);
             this.Controls.Add(this.tbTo);
@@ -169,5 +192,7 @@
         private System.Windows.Forms.TextBox tbTo;
         private System.Windows.Forms.TextBox tbFrom;
         private System.Windows.Forms.TextBox tbSubject;
+        private System.Windows.Forms.TextBox tbAttach;
+        private System.Windows.Forms.Label label1;
     }
 }

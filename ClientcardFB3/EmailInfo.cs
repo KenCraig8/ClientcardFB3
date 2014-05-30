@@ -15,6 +15,7 @@ namespace ClientcardFB3
         public string to;
         public string subject;
         public string body;
+        public string attachmentPath;
         public bool canceled;
     }
 }

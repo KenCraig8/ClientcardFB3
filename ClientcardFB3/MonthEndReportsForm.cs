@@ -1044,12 +1044,17 @@ namespace ClientcardFB3
                 {
                     clsMonthlyReports.find(Convert.ToInt32(lvReports.Items[i].Tag));
 
+                    //Microsoft.Office.Interop.Outlook.Account oAccount = new Microsoft.Office.Interop.Outlook.Account();
+                    fileName = makeReportPrefix() + clsMonthlyReports.ReportName + clsMonthlyReports.DocType;
+                    filePath = makeReportPath() + fileName;
+
                     //make the email info with all of the information exept for the body.
                     EmailInfo emailInfo = new EmailInfo
                     {
                         subject = fileName + " From " + tbFBName.Text,
                         to = clsMonthlyReports.EmailAddresses.Replace('|', ';'),
-                        from = ""
+                        from = oAccount.SmtpAddress,
+                        attachmentPath = filePath
                     };
                     
                     EmailBodyInputForm frmEmailBody = new EmailBodyInputForm(emailInfo, clsMonthlyReports.ReportName);
@@ -1057,9 +1062,6 @@ namespace ClientcardFB3
 
                     //Only send if it wasn't cancled in the form
                     if(!frmEmailBody.Canceled){
-                        fileName = makeReportPrefix() + clsMonthlyReports.ReportName + clsMonthlyReports.DocType;
-                        filePath = makeReportPath() + fileName;
-
                         checkFileExistsAndSendEmail(filePath, fileName, emailInfo);
                     }
                 }
