@@ -11,30 +11,48 @@ namespace ClientcardFB3
 {
     public partial class EmailBodyInputForm : Form
     {
-        string emailBody = "";
+        EmailInfo emailInfo;
+        bool canceled = false;
 
-        public string EmailBody
+        public bool Canceled
         {
             get
             {
-                return emailBody;
+                return canceled;
             }
         }
 
-        public EmailBodyInputForm(string reportName)
+        public EmailBodyInputForm(EmailInfo inEmailInfo, string reportName)
         {
             InitializeComponent();
-            label1.Text = "Please Enter The Body Of The Email For " + reportName + ":";
+
+            lblBody.Text = "Please Enter The Body Of The Email For " + reportName + ":";
+            //use emailInfo to fill in the preset feilds
+            emailInfo = inEmailInfo;
+            tbTo.Text = emailInfo.to;
+            tbFrom.Text = emailInfo.from;
+            tbSubject.Text = emailInfo.subject;
+            tbAttach.Text = emailInfo.attachmentPath;
         }
+
+        private void EmailBodyInputForm_FormClosing(object sender, FormClosingEventArgs e){ }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            canceled = false;
+
+            //update the contents of the email
+            emailInfo.body = tbEmailBody.Text;
+            emailInfo.to = tbTo.Text;
+            emailInfo.subject = tbSubject.Text;
+
             this.Close();
         }
 
-        private void EmailBodyInputForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            emailBody = tbEmailBody.Text;
+            canceled = true;
+            this.Close();
         }
     }
 }
