@@ -7,7 +7,7 @@ An application to allow food banks to store and view their data
 Getting started with the project
 
 Download these files:
-ClientCard install: FB3Installion-2014-04-27.zip
+ClientCard install: http://1drv.ms/1p9tSYe FB3Installion-2014-04-27.zip
 
 Install Client Card:
 	Run .msi installer
