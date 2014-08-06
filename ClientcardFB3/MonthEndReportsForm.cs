@@ -1044,7 +1044,7 @@ namespace ClientcardFB3
                 {
                     clsMonthlyReports.find(Convert.ToInt32(lvReports.Items[i].Tag));
 
-                    //Microsoft.Office.Interop.Outlook.Account oAccount = new Microsoft.Office.Interop.Outlook.Account();
+                    Microsoft.Office.Interop.Outlook.Account oAccount = new Microsoft.Office.Interop.Outlook.Account();
                     fileName = makeReportPrefix() + clsMonthlyReports.ReportName + clsMonthlyReports.DocType;
                     filePath = makeReportPath() + fileName;
 
