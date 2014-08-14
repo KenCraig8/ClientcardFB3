@@ -782,6 +782,8 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SigPadCtrl.dll" />
+    <Content Include="SigPlusNET.dll" />
     <None Include="Resources\media_pause.png" />
     <None Include="Resources\bullet_square_red.png" />
     <None Include="Resources\arrow_down_green.png" />
