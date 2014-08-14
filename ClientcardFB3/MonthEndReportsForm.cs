@@ -1043,28 +1043,41 @@ namespace ClientcardFB3
                 if (lvReports.Items[i].Checked == true)
                 {
                     clsMonthlyReports.find(Convert.ToInt32(lvReports.Items[i].Tag));
-                    
-                    EmailBodyInputForm frmEmailBody = new EmailBodyInputForm(clsMonthlyReports.ReportName);
-                    frmEmailBody.ShowDialog();
 
+                    Microsoft.Office.Interop.Outlook.Account oAccount = new Microsoft.Office.Interop.Outlook.Account();
                     fileName = makeReportPrefix() + clsMonthlyReports.ReportName + clsMonthlyReports.DocType;
                     filePath = makeReportPath() + fileName;
 
-                    checkFileExistsAndSendEmail(filePath, fileName, clsMonthlyReports.EmailAddresses.Replace('|', ';'), frmEmailBody.EmailBody);
+                    //make the email info with all of the information exept for the body.
+                    EmailInfo emailInfo = new EmailInfo
+                    {
+                        subject = fileName + " From " + tbFBName.Text,
+                        to = clsMonthlyReports.EmailAddresses.Replace('|', ';'),
+                        from = oAccount.SmtpAddress,
+                        attachmentPath = filePath
+                    };
+                    
+                    EmailBodyInputForm frmEmailBody = new EmailBodyInputForm(emailInfo, clsMonthlyReports.ReportName);
+                    frmEmailBody.ShowDialog();
+
+                    //Only send if it wasn't cancled in the form
+                    if(!frmEmailBody.Canceled){
+                        checkFileExistsAndSendEmail(filePath, fileName, emailInfo);
+                    }
                 }
             }
         }
 
-        private void checkFileExistsAndSendEmail(string filePath, string fileName, string emailAddresses, string EmailBody)
+        private void checkFileExistsAndSendEmail(string filePath, string fileName, EmailInfo emailInfo)
         {
             if (File.Exists(filePath) == true)
-                sendEmail(filePath, fileName, emailAddresses, EmailBody);
+                sendEmail(filePath, fileName, emailInfo);
             else
                 MessageBox.Show("Report " + fileName + " Does Not Exist.  Please Create Report And Try Again", "Report Does Not Exist",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void sendEmail(string filePath, string fileName, string emailList, string emailBody)
+        private void sendEmail(string filePath, string fileName, EmailInfo emailInfo)
         {
             try
             {
@@ -1082,13 +1095,13 @@ namespace ClientcardFB3
                         (Microsoft.Office.Interop.Outlook._MailItem)oApp.CreateItem(
                             Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
 
-                oMailItem.To = emailList;
-                oMailItem.Subject = fileName + " From " + tbFBName.Text;
-                if (emailBody == "")
+                oMailItem.To = emailInfo.to;
+                oMailItem.Subject = emailInfo.subject;
+                if (emailInfo.body == "")
                 {
-                    emailBody = " ";
+                    emailInfo.body = " ";
                 }
-                oMailItem.Body = emailBody;
+                oMailItem.Body = emailInfo.body;
                 oMailItem.SaveSentMessageFolder =  oSaveFolder;
                 String sSource = filePath;
                 String sDisplayName = fileName;
