@@ -48,7 +48,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\ClientcardFB3.XML</DocumentationFile>
+    <DocumentationFile>documentation\ClientCardFB3.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>ClientcardFB3.Program</StartupObject>
