@@ -3565,6 +3565,9 @@ namespace ClientcardFB3
         {
             HDPlannerForm frmHDPlanner = new HDPlannerForm(this);
             frmHDPlanner.Show();
+            // TODO: wait till this form is closed to do this
+            // Also do with route maintenece
+            CCFBGlobal.dtPopulateCombo(cboHDRoute, "SELECT * FROM HDRoutes ORDER BY ID", "RouteTitle", "ID", "No Routes Available", conn);
         }
 
         private void mnuHD_FundingPrograms_Click(object sender, EventArgs e)

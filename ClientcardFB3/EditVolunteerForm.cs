@@ -342,7 +342,7 @@ namespace ClientcardFB3
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (gridEditVol.CurrentRow.Index < gridEditVol.RowCount)
+            if ((gridEditVol.CurrentRow != null) && (gridEditVol.CurrentRow.Index < gridEditVol.RowCount-1))
             {
                 gridEditVol.CurrentCell = gridEditVol[0, gridEditVol.CurrentRow.Index + 1];
             }
@@ -350,7 +350,7 @@ namespace ClientcardFB3
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            if (gridEditVol.CurrentRow.Index > 0)
+            if ((gridEditVol.CurrentRow != null) && (gridEditVol.CurrentRow.Index > 0))
             {
                 gridEditVol.CurrentCell = gridEditVol[0, gridEditVol.CurrentRow.Index - 1];
             }
