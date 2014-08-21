@@ -52,6 +52,7 @@ namespace ClientcardFB3
         DateTime currentServiceDate;
         string savePath = CCFBPrefs.ReportsSavePath;
         string sOriRouteText = "";
+        string sOriPhoneText = "";
         //Counters to control tool strip buttons
         const int maxRouteStatusRows = 4;
         int[] cntrsRoutesStatus;
@@ -869,6 +870,23 @@ namespace ClientcardFB3
                 clsHDRoutes.SetDataValue(tb.Tag.ToString(), tb.Text);
                 rtplnSetDataChanged();
             }
+        }
+
+        private void rtplnmtbPhone_Enter(object sender, EventArgs e)
+        {
+            sOriPhoneText = ((MaskedTextBox)sender).ToString();
+
+        }
+
+        private void rtplnmtbPhone_Leave(object sender, EventArgs e)
+        {
+            MaskedTextBox tb = (MaskedTextBox)sender;
+            if (tb.Text != sOriPhoneText)
+            {
+                clsHDRoutes.SetDataValue(tb.Tag.ToString(), tb.Text);
+                rtplnSetDataChanged();
+            }
+
         }
     }
 }
