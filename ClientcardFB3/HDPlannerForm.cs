@@ -872,13 +872,12 @@ namespace ClientcardFB3
             }
         }
 
-        private void rtplnmtbPhone_Enter(object sender, EventArgs e)
+        private void rtplnmtbContactPhone_Enter(object sender, EventArgs e)
         {
             sOriPhoneText = ((MaskedTextBox)sender).ToString();
-
         }
 
-        private void rtplnmtbPhone_Leave(object sender, EventArgs e)
+        private void rtplnmtbContactPhone_Leave(object sender, EventArgs e)
         {
             MaskedTextBox tb = (MaskedTextBox)sender;
             if (tb.Text != sOriPhoneText)
@@ -886,7 +885,23 @@ namespace ClientcardFB3
                 clsHDRoutes.SetDataValue(tb.Tag.ToString(), tb.Text);
                 rtplnSetDataChanged();
             }
+        }
 
+        private void btnSelectDriver_Click(object sender, EventArgs e)
+        {
+            EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
+            frmVolunteers.ShowDialog();
+            int newVolId = frmVolunteers.SelectedId;
+            if (newVolId > 0)
+            {
+                loading = true;
+                clsHDRoutes.DefaultDriver = newVolId;
+                clsHDRoutes.loadDriverInfo(newVolId);
+                rtplntbDriver.Text = clsHDRoutes.DriverName;
+                rtplnmtbPhone.Text = clsHDRoutes.DriverPhone;
+                loading = false;
+                rtplnbtnSaveRoute.Enabled = true;
+            }
         }
     }
 }
