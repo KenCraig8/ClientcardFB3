@@ -517,7 +517,7 @@ namespace ClientcardFB3
         private void rtplnbtnSaveRoute_Click(object sender, EventArgs e)
         {
             clsHDRoutes.update();
-            rtplnbtnSaveRoute.Visible = false;
+            rtplnbtnSaveRoute.Enabled = false;
         }
 
         private void rtplncboFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -555,8 +555,8 @@ namespace ClientcardFB3
             rtplntbEstMiles.Text = "";
             rtplntbRouteNotes.Text = "";
             rtplntbDriverNotes.Text = "";
-            rtplntbFBContact.Text = "";
-            rtplnmtbContactPhone.Text = "";
+            rtFBContact.Text = "";
+            rtFBContactPhone.Text = "";
             rtplndgvHD.Rows.Clear();
         }
 
@@ -598,7 +598,7 @@ namespace ClientcardFB3
             rtplnClearRouteInfo();
             rtplnSetCmdText(" And h.HDRoute = " + idx.ToString() + " ");
             clsHDRoutes.find(idx, true);
-            rtplnbtnSaveRoute.Visible = false;
+            rtplnbtnSaveRoute.Enabled = false;
             if (clsHDRoutes.ID == idx)
             {
                 rtplntbRouteID.Text = clsHDRoutes.ID.ToString();
@@ -609,8 +609,8 @@ namespace ClientcardFB3
                 rtplntbEstMiles.Text = clsHDRoutes.EstMiles.ToString("0.0");
                 rtplntbRouteNotes.Text = clsHDRoutes.Notes;
                 rtplntbDriverNotes.Text = clsHDRoutes.DriverNotes;
-                rtplntbFBContact.Text = clsHDRoutes.FBContact;
-                rtplnmtbContactPhone.Text = clsHDRoutes.FBContactPhone;
+                rtFBContact.Text = clsHDRoutes.FBContactName;
+                rtFBContactPhone.Text = clsHDRoutes.FBContactPhone;
             }
         }
 
@@ -775,7 +775,7 @@ namespace ClientcardFB3
 
         private void rtplnSetDataChanged()
         {
-            rtplnbtnSaveRoute.Visible = true;
+            rtplnbtnSaveRoute.Enabled = true;
         }
 
         private void rtplnSetdgvHDOrder()
@@ -899,6 +899,23 @@ namespace ClientcardFB3
                 clsHDRoutes.loadDriverInfo(newVolId);
                 rtplntbDriver.Text = clsHDRoutes.DriverName;
                 rtplnmtbPhone.Text = clsHDRoutes.DriverPhone;
+                loading = false;
+                rtplnbtnSaveRoute.Enabled = true;
+            }
+        }
+
+        private void btnSelectContact_Click(object sender, EventArgs e)
+        {
+            EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
+            frmVolunteers.ShowDialog();
+            int newVolId = frmVolunteers.SelectedId;
+            if (newVolId > 0)
+            {
+                loading = true;
+                clsHDRoutes.FBContact = newVolId;
+                clsHDRoutes.loadFBContactInfo(newVolId);
+                rtFBContact.Text = clsHDRoutes.FBContactName;
+                rtFBContactPhone.Text = clsHDRoutes.FBContactPhone;
                 loading = false;
                 rtplnbtnSaveRoute.Enabled = true;
             }

@@ -16,6 +16,8 @@ namespace ClientcardFB3
         int iRowCount = 0;
         string driverName = "";
         string driverPhone = "";
+        string fbContactName = "";
+        string fbContactPhone = "";
 
         public HDRoutes(string connStringIn)
         {
@@ -44,6 +46,16 @@ namespace ClientcardFB3
         public string DriverPhone
         {
             get { return driverPhone.Replace("-",""); }
+        }
+
+        public string FBContactName
+        {
+            get { return fbContactName; }
+        }
+
+        public string FBContactPhone
+        {
+            get { return fbContactPhone.Replace("-", ""); }
         }
 
         public int ID
@@ -76,6 +88,11 @@ namespace ClientcardFB3
             get { return Convert.ToInt32(drow["DefaultDriver"]); }
             set { drow["DefaultDriver"] = value; }
         }
+        public int FBContact
+        {
+            get { return Convert.ToInt32(drow["FBContact"]); }
+            set { drow["FBContact"] = value; }
+        }
         public string Notes
         {
             get { return drow["Notes"].ToString(); }
@@ -95,16 +112,6 @@ namespace ClientcardFB3
         {
             get { return drow["DriverNotes"].ToString(); }
             set { drow["DriverNotes"] = value; }
-        }
-        public string FBContact
-        {
-            get { return drow["FBContact"].ToString(); }
-            set { drow["FBContact"] = value; }
-        }
-        public string FBContactPhone
-        {
-            get { return drow["FBContactPhone"].ToString(); }
-            set { drow["FBContactPhone"] = value; }
         }
         public DateTime Modified
         {
@@ -182,8 +189,7 @@ namespace ClientcardFB3
             DeliveryCycle = 0;
             EstHours = 1;
             EstMiles = 1;
-            FBContact = "";
-            FBContactPhone = "";
+            FBContact = 0;
             Modified = DateTime.Now;
             ModifiedBy = CCFBGlobal.dbUserName;
             dtbl.Rows.Add(drow);
@@ -215,6 +221,7 @@ namespace ClientcardFB3
                     if (getName == true)
                     {
                         loadDriverInfo(DefaultDriver);
+                        loadFBContactInfo(FBContact);
                     }
                     break;
                 }
@@ -232,6 +239,21 @@ namespace ClientcardFB3
                 {
                     driverName = clsVol.Name;
                     driverPhone = clsVol.Phone;
+                }
+            }
+        }
+
+        public void loadFBContactInfo(int volId)
+        {
+            fbContactName = "";
+            fbContactPhone = "";
+            if (volId > 0)
+            {
+                Volunteers clsVol = new Volunteers(connString);
+                if (clsVol.open(volId) == true)
+                {
+                    fbContactName = clsVol.Name;
+                    fbContactPhone = clsVol.Phone;
                 }
             }
         }
