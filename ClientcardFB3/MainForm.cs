@@ -3564,8 +3564,15 @@ namespace ClientcardFB3
         private void mnuHD_Planner_Click(object sender, EventArgs e)
         {
             HDPlannerForm frmHDPlanner = new HDPlannerForm(this);
-            frmHDPlanner.ShowDialog();
+            frmHDPlanner.Show();
+            
+        }
+
+        public void refreshHDRoute()
+        {
+            int preSelected = cboHDRoute.SelectedIndex;
             CCFBGlobal.dtPopulateCombo(cboHDRoute, "SELECT * FROM HDRoutes ORDER BY ID", "RouteTitle", "ID", "No Routes Available", conn);
+            cboHDRoute.SelectedIndex = preSelected;
         }
 
         private void mnuHD_FundingPrograms_Click(object sender, EventArgs e)

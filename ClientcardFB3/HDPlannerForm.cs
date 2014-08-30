@@ -512,6 +512,30 @@ namespace ClientcardFB3
             int newRouteID = clsHDRoutes.Add();
             loading = false;
             rtplnRefreshlbxRoutes(newRouteID);
+            frmMain.refreshHDRoute();
+        }
+
+        private void tsbDelete_Click(object sender, EventArgs e)
+        {
+            if (clsHDRoutes.RowCount > 0)
+            {
+                DialogResult dr = MessageBox.Show("Press OK to Delete this Route\r\nID = " + clsHDRoutes.ID.ToString() + "\r\nTitle = " + clsHDRoutes.RouteTitle, "Delete Home Delivery Route"
+                                   , MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr == DialogResult.OK)
+                {
+                    int idx = rtplnlbxRoutes.SelectedIndex;
+                    loading = true;
+                    clsHDRoutes.delete(clsHDRoutes.ID);
+                    clsHDRoutes.refreshDataTable();
+                    loading = false;
+                    if (idx < rtplnlbxRoutes.Items.Count)
+                    { rtplnlbxRoutes.SelectedIndex = idx; }
+                    else if (rtplnlbxRoutes.Items.Count > 0)
+                    { rtplnlbxRoutes.SelectedIndex = 0; }
+                    rtplnDisplaySelectedRoute();
+                    frmMain.refreshHDRoute();
+                }
+            }
         }
 
         private void rtplnbtnSaveRoute_Click(object sender, EventArgs e)
