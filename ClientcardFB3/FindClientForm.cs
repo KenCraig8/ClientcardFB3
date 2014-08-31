@@ -646,7 +646,7 @@ namespace ClientcardFB3
             AddNewHousehold2 frmAddNew = new AddNewHousehold2(clsClient);
             frmAddNew.ShowDialog();
 
-            if (frmAddNew.HHID > 0)
+            if (frmAddNew.HHID > 0 && frmMainIn != null)
             {
                 frmMainIn.setHousehold(frmAddNew.HHID, 0);
                 if (CCFBPrefs.FindClientAutoRefresh == true)
@@ -722,7 +722,7 @@ namespace ClientcardFB3
                 {
                     testID = CCFBGlobal.getClientFromBarCode(testBarCode);
                 }
-                if (testID > 0)
+                if (testID > 0 && frmMainIn !=null)
                 {
                     currentHHId = testID;
                     int newrow = getRowNbr(testID);
