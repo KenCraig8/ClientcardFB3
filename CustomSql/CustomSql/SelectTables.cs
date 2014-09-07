@@ -15,11 +15,18 @@ namespace MapData2
     {
         const string databaseName = "ClientcardFB3";
         string connectionString = @"Server=MYCOMPUTER\SQLEXPRESS;initial catalog=" + databaseName + "; UID=CCFB_User; PWD='19800612'; Trusted_Connection = False; Connect Timeout=10;";
+        DataHelper dataHelper;
 
         string selectedTableName;
         public SelectTables()
         {
+            dataHelper = new DataHelper();
             InitializeComponent();
+        }
+
+        public SelectTables(DataHelper dataHelper)
+        {
+            this.dataHelper = dataHelper;
         }
 
         //Display the user choices for the table in a list box

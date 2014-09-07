@@ -10,7 +10,7 @@ namespace MapData2
 {
     public class DataHelper
     {
-        public static DataTable sqlQuery(string connectionString, string sqlQuery)
+        public DataTable sqlQuery(string connectionString, string sqlQuery)
         {
             SqlConnection databaseConnection = new SqlConnection(connectionString);
             databaseConnection.Open();
@@ -28,12 +28,12 @@ namespace MapData2
         }
 
         //Returns all of the entrys in a one column DataTable as an array
-        public static string[] dataTableToArray(DataTable table)
+        public string[] dataTableToArray(DataTable table)
         {
             return table.AsEnumerable().Select(row => Convert.ToString(row.Field<object>(0))).ToArray();
         }
 
-        public static string enumToSqlIn(System.Collections.IEnumerable inEnum)
+        public string enumToSqlIn(System.Collections.IEnumerable inEnum)
         {
             const string kSeperator = ", ";
 

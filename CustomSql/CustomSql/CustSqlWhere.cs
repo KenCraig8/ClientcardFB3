@@ -22,6 +22,8 @@ namespace MapData2
         string databaseName;
         string selectedTableName;
 
+        DataHelper dataHelper;
+
         string sqlFromString;
 
         string[] kNumTypes;
@@ -33,12 +35,13 @@ namespace MapData2
         //BoundString saveFilePath;
         //DataTable loadedData;
 
-        public CustSqlWhere(string connectionString, string[] selectedColumns, string databaseName, string selectedTableName)
+        public CustSqlWhere(DataHelper dataHelper, string connectionString, string[] selectedColumns, string databaseName, string selectedTableName)
         {
             this.connectionString = connectionString;
             this.selectedColumns = selectedColumns;
             this.databaseName = databaseName;
             this.selectedTableName = selectedTableName;
+            this.dataHelper = dataHelper;
 
             kNumTypes = new string[]{"int", "smallint", "float"};
             kDateTypes = new string[] { "datetime" };
@@ -53,10 +56,10 @@ namespace MapData2
             ArrayList sqlRangeTypes = new ArrayList(kNumTypes);
             sqlRangeTypes.AddRange(kDateTypes);
 
-            string rangeTypesSqlPart = DataHelper.enumToSqlIn(sqlRangeTypes);
+            string rangeTypesSqlPart = dataHelper.enumToSqlIn(sqlRangeTypes);
 
             string rangeTypeSpecs = "(DATA_TYPE IN " + rangeTypesSqlPart + ")";
-            string numTypeSpecs = "(DATA_TYPE IN " + DataHelper.enumToSqlIn(kNumTypes) + ")";
+            string numTypeSpecs = "(DATA_TYPE IN " + dataHelper.enumToSqlIn(kNumTypes) + ")";
 
             setupRangeSelect(getColsOfType(rangeTypeSpecs), getColsOfType(numTypeSpecs));
 
@@ -77,9 +80,9 @@ namespace MapData2
 
             string typeQuery = String.Format(partTypeQuery, typeSpecs);
 
-            DataTable columnNamesTable = DataHelper.sqlQuery(connectionString, typeQuery);
+            DataTable columnNamesTable = dataHelper.sqlQuery(connectionString, typeQuery);
 
-            return DataHelper.dataTableToArray(columnNamesTable);
+            return dataHelper.dataTableToArray(columnNamesTable);
         }
 
         //Querys the database to get all of the distinct entries in a column
@@ -87,8 +90,8 @@ namespace MapData2
         {
             string sqlQuery = "SELECT DISTINCT " + colName + sqlFromString;
 
-            DataTable distinctElementsTable = DataHelper.sqlQuery(connectionString, sqlQuery);
-            return DataHelper.dataTableToArray(distinctElementsTable);
+            DataTable distinctElementsTable = dataHelper.sqlQuery(connectionString, sqlQuery);
+            return dataHelper.dataTableToArray(distinctElementsTable);
         }
 
         //adds the controls to select the displayed values for the string columns
@@ -229,7 +232,7 @@ namespace MapData2
         {
             string sqlQuery = makeSqlQuery();
 
-            DataTable loadedData = DataHelper.sqlQuery(connectionString, sqlQuery);
+            DataTable loadedData = dataHelper.sqlQuery(connectionString, sqlQuery);
 
             gvPreview.DataSource = new DataTable();
             gvPreview.DataSource = loadedData;
@@ -483,7 +486,7 @@ namespace MapData2
         //Converts the values from the list into part of the SQL query
         override public string toString()
         {
-            return "(" + columnName + " IN " + DataHelper.enumToSqlIn(Items) + ")";
+            return "(" + columnName + " IN " + dataHelper.enumToSqlIn(Items) + ")";
         }
     }
 
