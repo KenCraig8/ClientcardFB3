@@ -73,12 +73,6 @@ namespace ClientcardFB3
         const string fldRelationship = "Relationship";
         const string fldPhone = "Phone";
         const string fldEmailAddress = "EmailAddress";
-        const string fldGrade = "Grade";
-        const string fldSchSupply = "SchSupply";
-        const string fldSchSupplyDelivered = "SchSupplyDelivered";
-        const string fldSchSupplySchool = "SchSupplySchool";
-
-        //Demographics
         const string fldMilitaryService = "MilitaryService";
         const string fldDischargeStatus = "DischargeStatus";
         const string fldHispanicLatino = "HispanicLatino";
@@ -425,14 +419,7 @@ namespace ClientcardFB3
         }
         public DateTime BPExpiration
         {
-            get
-            {
-                if (drowHhm[fldBPExpiration].ToString() == "")
-                    return CCFBGlobal.FBNullDateValue;
-                else
-                    return (DateTime)drowHhm[fldBPExpiration];
-            }
-
+            get { return Convert.ToDateTime(drowHhm[fldBPExpiration]); }
             set { drowHhm[fldBPExpiration] = value; }
         }
         public int BPSize
@@ -472,32 +459,6 @@ namespace ClientcardFB3
             get { return drowHhm[fldEmailAddress].ToString(); }
             set { drowHhm[fldEmailAddress] = value; }
         }
-        public int Grade
-        {
-            get { return Convert.ToInt32(drowHhm[fldGrade]); }
-            set { drowHhm[fldGrade] = value; }
-        }
-        public bool SchSupply
-        {
-            get { return (bool)drowHhm[fldSchSupply]; }
-            set { drowHhm[fldSchSupply] = value; }
-        }
-        public DateTime SchSupplyDelivered
-        {
-            get
-            {
-                if (drowHhm[fldSchSupplyDelivered].ToString() == "")
-                    return CCFBGlobal.FBNullDateValue;
-                else
-                    return (DateTime)drowHhm[fldSchSupplyDelivered];
-            }
-            set { drowHhm[fldSchSupplyDelivered] = value; }
-        }
-        public int SchSupplySchool
-        {
-            get { return Convert.ToInt32(drowHhm[fldSchSupplySchool]); }
-            set { drowHhm[fldSchSupplySchool] = value; }
-        }
 
         public bool HasCSFP
         {
@@ -522,8 +483,8 @@ namespace ClientcardFB3
             get { return (LastName.Trim() + ", " + FirstName.Trim()).Trim(); }
         }
         #endregion
-//Demographics
         #region Get/Set Accessors [Demographics]
+
         public int DemographicsId
         {
             get { return (int)drowDemoGraphics[fldID]; }
@@ -921,8 +882,8 @@ namespace ClientcardFB3
         public bool nameExists(string nameLast, string nameFirst, string dateBirth, bool onlyActive)
         {
             string sqlText = "SELECT COUNT(*) FROM HouseholdMembers"
-                           + " WHERE LastName = '" + CCFBGlobal.SQLApostrophe(nameLast) + "'"
-                           + "   AND FirstName = '" + CCFBGlobal.SQLApostrophe(nameFirst) + "'";
+                           + " WHERE LastName = '" + nameLast + "'"
+                           + "   AND FirstName = '" + nameFirst + "'";
             if (onlyActive == true)
             {
                 sqlText += "   AND Inactive = 0";
@@ -1213,12 +1174,6 @@ namespace ClientcardFB3
                 cmdInsert.Parameters.AddWithValue("@" + fldRelationship, newHHMItem.Relationship);
                 cmdInsert.Parameters.AddWithValue("@" + fldPhone, newHHMItem.Phone);
                 cmdInsert.Parameters.AddWithValue("@" + fldEmailAddress, newHHMItem.EmailAddress);
-                cmdInsert.Parameters.AddWithValue("@" + fldGrade, newHHMItem.Grade);
-                cmdInsert.Parameters.AddWithValue("@" + fldSchSupply, newHHMItem.SchSupply);
-                cmdInsert.Parameters.AddWithValue("@" + fldSchSupplyDelivered, newHHMItem.SchSupplyDelivered);
-                cmdInsert.Parameters.AddWithValue("@" + fldSchSupplySchool, newHHMItem.SchSupplySchool);
-
-
                 cmdInsert.Parameters.AddWithValue("@" + fldHispanicLatino, newHHMItem.HispanicLatino);
                 cmdInsert.Parameters.AddWithValue("@" + fldRefugeeImmigrant, newHHMItem.RefugeeImmigrant);
                 cmdInsert.Parameters.AddWithValue("@" + fldLimitedEnglish, newHHMItem.LimitedEnglish);
@@ -1329,10 +1284,6 @@ namespace ClientcardFB3
             newRow[fldRelationship] = 0;
             newRow[fldPhone] = "";
             newRow[fldEmailAddress] = "";
-            newRow[fldGrade] = -1;
-            newRow[fldSchSupply] = false;
-            newRow[fldSchSupplyDelivered] = CCFBGlobal.FBNullDateValue;
-            newRow[fldSchSupplySchool] = 0;
             return newRow;
         }
 
@@ -1636,13 +1587,7 @@ namespace ClientcardFB3
         }
         public DateTime BPExpiration
         {
-            get
-            {
-                if (drowHhMItem["BPExpiration"].ToString() == "")
-                    return CCFBGlobal.FBNullDateValue;
-                else
-                    return (DateTime)drowHhMItem["BPExpiration"];
-            }
+            get { return Convert.ToDateTime(drowHhMItem["BPExpiration"]); }
             set { drowHhMItem["BPExpiration"] = value; }
         }
         public int BPSize
@@ -1679,32 +1624,6 @@ namespace ClientcardFB3
         {
             get { return drowHhMItem["EmailAddress"].ToString(); }
             set { drowHhMItem["EmailAddress"] = value; }
-        }
-        public int Grade
-        {
-            get { return Convert.ToInt32(drowHhMItem["Grade"]); }
-            set { drowHhMItem["Grade"] = value; }
-        }
-        public bool SchSupply
-        {
-            get { return (bool)drowHhMItem["SchSupply"]; }
-            set { drowHhMItem["SchSupply"] = value; }
-        }
-        public DateTime SchSupplyDelivered
-        {
-            get
-            {
-                if (drowHhMItem["SchSupplyDelivered"].ToString() == "")
-                    return CCFBGlobal.FBNullDateValue;
-                else
-                    return (DateTime)drowHhMItem["SchSupplyDelivered"];
-            }
-            set { drowHhMItem["SchSupplyDelivered"] = value; }
-        }
-        public int SchSupplySchool
-        {
-            get { return Convert.ToInt32(drowHhMItem["SchSupplySchool"]); }
-            set { drowHhMItem["SchSupplySchool"] = value; }
         }
         #endregion Get/Set Accessors
 

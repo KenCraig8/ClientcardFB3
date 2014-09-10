@@ -23,16 +23,19 @@ namespace ClientcardFB3
         MainForm frmMainIn;
 
         //Used to tell if the list includes inactives or not
-        string includeInactive = " (m.Inactive=0 or m.Inactive IS NULL) AND h.Inactive = 0 AND "
-                + " (m.NotIncludedInClientList=0 or m.NotIncludedInClientList IS NULL) ";
+        string donotincludeInactivePhrase = " m.Inactive = 0 AND h.Inactive = 0 AND m.NotIncludedInClientList=0 ";
+        string includeInactiveClause = "";
         int indexFindClient = 0;
         string lastSearchText = "";
         bool loadingName = false;
         List<string> rdoButtons = new List<string>();
         int rowIndex = 0;
         string sOrderBy;
-        string sortBy = "";
-        string sWhereClause;
+        string filterByFldName = "";
+        string filterByClause = "";
+        string sWhereClause = "";
+        string filterDateRange = "";
+        string filterDateFldName = "";
         int hhMemID = 0;
         int rowCount = 0;
 
@@ -62,7 +65,7 @@ namespace ClientcardFB3
             frmMainIn = FrmMainIn;
             clsParm_ClientType = new parm_ClientType(clsClient.connectionString);
             clsParm_ClientType.openAll();
-            sWhereClause = includeInactive;
+            includeInactiveClause = donotincludeInactivePhrase;
             cboOrderBy.SelectedIndex = 0;
         }
 
@@ -71,7 +74,7 @@ namespace ClientcardFB3
             InitializeComponent();
             clsParm_ClientType = new parm_ClientType(clsClient.connectionString);
             clsParm_ClientType.openAll();
-            sWhereClause = includeInactive;
+            includeInactiveClause = donotincludeInactivePhrase;
             cboOrderBy.SelectedIndex = 0;
         }
 
@@ -86,8 +89,8 @@ namespace ClientcardFB3
             refreshing = true;
             btnRefresh.Enabled = false;
 
-            if (sortBy == "City" || sortBy == "Zipcode")
-                getDistints(sortBy);
+            if (filterByFldName == "City" || filterByFldName == "Zipcode")
+                getDistints(filterByFldName);
 
             loadList();
             btnRefresh.Enabled = true;
@@ -107,19 +110,18 @@ namespace ClientcardFB3
                 if (cboFilter.SelectedIndex != 0)
                 {
                     indexFindClient = 0;
-                    if (sortBy != "ClientType")
+                    if (filterByFldName != "ClientType")
                     {
-                        sWhereClause = sortBy + "='" + cboFilter.SelectedItem.ToString() + "' And ";
+                        filterByClause = filterByFldName + "='" + cboFilter.SelectedItem.ToString() + "'";
                     }
                     else
                     {
-                        sWhereClause = sortBy + "='" + clsParm_ClientType.getParmInt(cboFilter.SelectedItem.ToString())
-                            + "' And ";
+                        filterByClause = filterByFldName + "='" + clsParm_ClientType.getParmInt(cboFilter.SelectedItem.ToString()) + "'";
                     }
                 }
                 else
                 {
-                    sWhereClause = "";
+                    filterByClause = "";
                 }
                 if (refreshing == false)
                     loadList();
@@ -169,23 +171,20 @@ namespace ClientcardFB3
             loadingName = true;
             if (chkIncludeInactive.Checked == true)
             {
-                includeInactive = " (m.NotIncludedInClientList=0 or m.NotIncludedInClientList IS NULL) ";
+                includeInactiveClause = " m.NotIncludedInClientList=0 ";
                 lblInactiveHH.Visible = true;
                 lblInactiveHHMem.Visible = true;
             }
             else
             {
-                includeInactive = " (m.Inactive=0 or m.Inactive IS NULL) AND h.Inactive = 0 AND "
-                + " (m.NotIncludedInClientList=0 or m.NotIncludedInClientList IS NULL) ";
+                includeInactiveClause =  donotincludeInactivePhrase;
                 lblInactiveHH.Visible = false;
                 lblInactiveHHMem.Visible = false;
             }
 
-            if (sortBy == "City" || sortBy == "Zipcode" || sortBy == "ClientType" || sortBy == "Apartment Number")
-                getDistints(sortBy);
+            if (filterByFldName == "City" || filterByFldName == "Zipcode" || filterByFldName == "ClientType" || filterByFldName == "Apartment Number")
+                getDistints(filterByFldName);
 
-
-            sWhereClause = "";
             loadingName = false;
             loadList();
         }
@@ -282,7 +281,7 @@ namespace ClientcardFB3
             {
                 if (loadingName == false)
                 {
-                    if (tbFindName.Text.CompareTo(lastSearchText)>=0 && lastSearchText != "")
+                    if (tbFindName.Text.CompareTo(lastSearchText) >= 0 && lastSearchText != "")
                         rowStart = rowIndex;
                     else
                         rowStart = 0;
@@ -326,7 +325,7 @@ namespace ClientcardFB3
                 tbFindName.Text = "";
                 lastSearchText = "";
                 dgvClientList.FirstDisplayedScrollingRowIndex = indexFindClient;
-                SetCurrentRow(indexFindClient,false);
+                SetCurrentRow(indexFindClient, false);
                 displayClientInfo(indexFindClient);
                 bNormalMode = true;
                 tbFindName.Focus();
@@ -367,7 +366,7 @@ namespace ClientcardFB3
                     cboFilter.Items.Add(clsParm_ClientType.DSet.Tables[0].Rows[i]["Type"].ToString());
                 }
             }
-            sortBy = colName;
+            filterByFldName = colName;
         }
 
         public void getNextClient(int hhID)
@@ -398,7 +397,7 @@ namespace ClientcardFB3
                 }
 
                 //Open the client and fill the form
-                SetCurrentRow(indexFindClient,true);
+                SetCurrentRow(indexFindClient, true);
             }
         }
 
@@ -427,7 +426,22 @@ namespace ClientcardFB3
             }
 
             //Opens client and fills form
-            SetCurrentRow(indexFindClient,true);
+            SetCurrentRow(indexFindClient, true);
+        }
+
+        private void AppendToWhereClause(string testclause)
+        {
+            if (testclause != "")
+            {
+                if (sWhereClause == "")
+                {
+                    sWhereClause = testclause;
+                }
+                else
+                {
+                    sWhereClause += " AND " + testclause;
+                }
+            }
         }
 
         /// <summary>
@@ -445,8 +459,17 @@ namespace ClientcardFB3
             progressBar1.Show();
             tbFindName.Visible = false;
             Application.DoEvents();
+            sWhereClause = "";
+            setFilterDateRange();
+            AppendToWhereClause(filterByClause);
+            AppendToWhereClause(includeInactiveClause);
+            AppendToWhereClause(filterDateRange);
+            if (chkHeahHouseOnly.Checked == true)
+            {
+                AppendToWhereClause("m.HeadHH = 1");
+            }
 
-            clsClient.openWhere(sWhereClause + includeInactive + sOrderBy);
+            clsClient.openWhere(sWhereClause + sOrderBy);
             progressBar1.Maximum = clsClient.RowCount;
 
             for (int i = 0; i < clsClient.RowCount; i++)
@@ -547,7 +570,7 @@ namespace ClientcardFB3
                     {
                         if (MessageBox.Show("Are You Sure You Want To Transfer The Household Member To Household "
                             + newHHId.ToString() + " With Member Name " + dgvClientList.CurrentRow.Cells["colName"].Value.ToString()
-                            + "?", "Transfer Member?",MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                            + "?", "Transfer Member?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                              == System.Windows.Forms.DialogResult.Yes)
                         {
                             frmMainIn.transferMember();
@@ -646,13 +669,13 @@ namespace ClientcardFB3
             AddNewHousehold2 frmAddNew = new AddNewHousehold2(clsClient);
             frmAddNew.ShowDialog();
 
-            if (frmAddNew.HHID > 0 && frmMainIn != null)
+            if (frmAddNew.HHID > 0)
             {
                 frmMainIn.setHousehold(frmAddNew.HHID, 0);
                 if (CCFBPrefs.FindClientAutoRefresh == true)
                     loadList();
             }
-            
+
             this.Close();
         }
 
@@ -660,8 +683,8 @@ namespace ClientcardFB3
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (tbID.Text !="")
-                    SetIdAndClose(); 
+                if (tbID.Text != "")
+                    SetIdAndClose();
             }
         }
 
@@ -686,7 +709,7 @@ namespace ClientcardFB3
                     }
                     catch (Exception)
                     {
-                        
+
 
                     }
                 }
@@ -722,7 +745,7 @@ namespace ClientcardFB3
                 {
                     testID = CCFBGlobal.getClientFromBarCode(testBarCode);
                 }
-                if (testID > 0 && frmMainIn !=null)
+                if (testID > 0)
                 {
                     currentHHId = testID;
                     int newrow = getRowNbr(testID);
@@ -826,6 +849,62 @@ namespace ClientcardFB3
                 }
             }
             return newrow;
+        }
+
+        private void cboDateRangeField_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            bool makeVisible = (cboDateRangeField.SelectedIndex > 0);
+            lblFirst.Visible = makeVisible;
+            lblLast.Visible = makeVisible;
+            dtpFirst.Visible = makeVisible;
+            dtpLast.Visible = makeVisible;
+            
+        }
+
+        private void setFilterDateFld()
+        {
+            filterDateFldName = "";
+            if (cboDateRangeField.SelectedIndex > 0)
+            {
+                switch (cboDateRangeField.SelectedIndex)
+                {
+                    case 1: filterDateFldName = "LatestService "; break;
+                    case 2: filterDateFldName = "FirstSvcThisYear"; break;
+                    case 3: filterDateFldName = "FirstCalService"; break;
+                    case 4: filterDateFldName = "LastCommodityService"; break;
+                    case 5: filterDateFldName = "LastSupplService"; break;
+                    case 6: filterDateFldName = "SchSupplyRegDate"; break;
+                    case 7: filterDateFldName = "DateIdVerified"; break;
+                    case 8: filterDateFldName = "IncomeVerifiedDate"; break;
+                    case 9: filterDateFldName = "TEFAPSignDate"; break;
+                    case 10: filterDateFldName = "Created"; break;
+                    case 11: filterDateFldName = "Modified"; break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void setFilterDateRange()
+        {
+            setFilterDateFld();
+            if (filterDateFldName == "")
+            {
+                filterDateRange = "";
+            }
+            else
+            {
+                if (dtpFirst.Value == dtpLast.Value)
+                {
+                    filterDateRange = filterDateFldName + "= '" + dtpFirst.Value.ToShortDateString() + "'";
+                }
+                else
+                {
+                    filterDateRange = filterDateFldName
+                        + " BETWEEN '" + dtpFirst.Value.ToShortDateString() + "'"
+                        + " AND '" + dtpLast.Value.ToShortDateString() + "' ";
+                }
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ClientcardFB3
 {
-    partial class FoodReceiptsForm
+    partial class FoodReceiptsGroceryRescueForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,24 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -47,23 +64,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -80,7 +80,24 @@
             this.rdoWeek1 = new System.Windows.Forms.RadioButton();
             this.btnClose = new System.Windows.Forms.Button();
             this.dgvMonthReceipts = new System.Windows.Forms.DataGridView();
+            this.colFoodClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSunday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColMonday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTuesday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWednesday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colThursday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFriday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSaturday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvMonthTotals = new System.Windows.Forms.DataGridView();
+            this.clmWeekFoodClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWeek1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWeek2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWeek3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWeek4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWeek5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWeek6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmWeekTotals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlMonthly = new System.Windows.Forms.Panel();
             this.pnlEditDaily = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -106,23 +123,6 @@
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFoodClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSunday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColMonday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTuesday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colWednesday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colThursday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFriday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSaturday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeekFoodClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeek1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeek2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeek3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeek4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeek5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeek6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmWeekTotals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpWeek.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonthReceipts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonthTotals)).BeginInit();
@@ -344,9 +344,112 @@
             this.dgvMonthReceipts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvMonthReceipts.Size = new System.Drawing.Size(980, 295);
             this.dgvMonthReceipts.TabIndex = 1;
+            this.dgvMonthReceipts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonthReceipts_CellContentClick);
             this.dgvMonthReceipts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonthReceipts_CellEndEdit);
             this.dgvMonthReceipts.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonthReceipts_CellEnter);
             this.dgvMonthReceipts.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvMonthReceipts_CellValidating);
+            // 
+            // colFoodClass
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.colFoodClass.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colFoodClass.HeaderText = "Food Class";
+            this.colFoodClass.Name = "colFoodClass";
+            this.colFoodClass.ReadOnly = true;
+            this.colFoodClass.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colFoodClass.Width = 180;
+            // 
+            // clmSunday
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.clmSunday.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmSunday.HeaderText = "Sunday";
+            this.clmSunday.Name = "clmSunday";
+            this.clmSunday.ReadOnly = true;
+            this.clmSunday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmSunday.Width = 95;
+            // 
+            // ColMonday
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.ColMonday.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColMonday.HeaderText = "Monday";
+            this.ColMonday.Name = "ColMonday";
+            this.ColMonday.ReadOnly = true;
+            this.ColMonday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColMonday.Width = 95;
+            // 
+            // colTuesday
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.colTuesday.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colTuesday.HeaderText = "Tuesday";
+            this.colTuesday.Name = "colTuesday";
+            this.colTuesday.ReadOnly = true;
+            this.colTuesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colTuesday.Width = 95;
+            // 
+            // colWednesday
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.colWednesday.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colWednesday.HeaderText = "Wednesday";
+            this.colWednesday.Name = "colWednesday";
+            this.colWednesday.ReadOnly = true;
+            this.colWednesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colWednesday.Width = 95;
+            // 
+            // colThursday
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.colThursday.DefaultCellStyle = dataGridViewCellStyle7;
+            this.colThursday.HeaderText = "Thursday";
+            this.colThursday.Name = "colThursday";
+            this.colThursday.ReadOnly = true;
+            this.colThursday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colThursday.Width = 95;
+            // 
+            // colFriday
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.colFriday.DefaultCellStyle = dataGridViewCellStyle8;
+            this.colFriday.HeaderText = "Friday";
+            this.colFriday.Name = "colFriday";
+            this.colFriday.ReadOnly = true;
+            this.colFriday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colFriday.Width = 95;
+            // 
+            // colSaturday
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.colSaturday.DefaultCellStyle = dataGridViewCellStyle9;
+            this.colSaturday.HeaderText = "Saturday";
+            this.colSaturday.Name = "colSaturday";
+            this.colSaturday.ReadOnly = true;
+            this.colSaturday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colSaturday.Width = 95;
+            // 
+            // colTotal
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = null;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle10;
+            this.colTotal.HeaderText = "Totals";
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            this.colTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colTotal.Width = 95;
             // 
             // dgvMonthTotals
             // 
@@ -380,6 +483,94 @@
             this.dgvMonthTotals.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvMonthTotals.Size = new System.Drawing.Size(962, 277);
             this.dgvMonthTotals.TabIndex = 2;
+            // 
+            // clmWeekFoodClass
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            this.clmWeekFoodClass.DefaultCellStyle = dataGridViewCellStyle12;
+            this.clmWeekFoodClass.HeaderText = "Food Class";
+            this.clmWeekFoodClass.Name = "clmWeekFoodClass";
+            this.clmWeekFoodClass.ReadOnly = true;
+            this.clmWeekFoodClass.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmWeekFoodClass.Width = 180;
+            // 
+            // clmWeek1
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.clmWeek1.DefaultCellStyle = dataGridViewCellStyle13;
+            this.clmWeek1.HeaderText = "Week 1";
+            this.clmWeek1.Name = "clmWeek1";
+            this.clmWeek1.ReadOnly = true;
+            this.clmWeek1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmWeek2
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.clmWeek2.DefaultCellStyle = dataGridViewCellStyle14;
+            this.clmWeek2.HeaderText = "Week 2";
+            this.clmWeek2.Name = "clmWeek2";
+            this.clmWeek2.ReadOnly = true;
+            this.clmWeek2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmWeek3
+            // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.clmWeek3.DefaultCellStyle = dataGridViewCellStyle15;
+            this.clmWeek3.HeaderText = "Week 3";
+            this.clmWeek3.Name = "clmWeek3";
+            this.clmWeek3.ReadOnly = true;
+            this.clmWeek3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmWeek4
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.clmWeek4.DefaultCellStyle = dataGridViewCellStyle16;
+            this.clmWeek4.HeaderText = "Week 4";
+            this.clmWeek4.Name = "clmWeek4";
+            this.clmWeek4.ReadOnly = true;
+            this.clmWeek4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmWeek5
+            // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.clmWeek5.DefaultCellStyle = dataGridViewCellStyle17;
+            this.clmWeek5.HeaderText = "Week 5";
+            this.clmWeek5.Name = "clmWeek5";
+            this.clmWeek5.ReadOnly = true;
+            this.clmWeek5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmWeek6
+            // 
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.clmWeek6.DefaultCellStyle = dataGridViewCellStyle18;
+            this.clmWeek6.HeaderText = "Week 6";
+            this.clmWeek6.Name = "clmWeek6";
+            this.clmWeek6.ReadOnly = true;
+            this.clmWeek6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmWeekTotals
+            // 
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.LightGoldenrodYellow;
+            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.clmWeekTotals.DefaultCellStyle = dataGridViewCellStyle19;
+            this.clmWeekTotals.HeaderText = "Period Totals";
+            this.clmWeekTotals.Name = "clmWeekTotals";
+            this.clmWeekTotals.ReadOnly = true;
+            this.clmWeekTotals.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // pnlMonthly
             // 
@@ -646,197 +837,7 @@
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
             this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // colFoodClass
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.colFoodClass.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colFoodClass.HeaderText = "Food Class";
-            this.colFoodClass.Name = "colFoodClass";
-            this.colFoodClass.ReadOnly = true;
-            this.colFoodClass.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colFoodClass.Width = 180;
-            // 
-            // clmSunday
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.clmSunday.DefaultCellStyle = dataGridViewCellStyle3;
-            this.clmSunday.HeaderText = "Sunday";
-            this.clmSunday.Name = "clmSunday";
-            this.clmSunday.ReadOnly = true;
-            this.clmSunday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmSunday.Width = 95;
-            // 
-            // ColMonday
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.ColMonday.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColMonday.HeaderText = "Monday";
-            this.ColMonday.Name = "ColMonday";
-            this.ColMonday.ReadOnly = true;
-            this.ColMonday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColMonday.Width = 95;
-            // 
-            // colTuesday
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.colTuesday.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colTuesday.HeaderText = "Tuesday";
-            this.colTuesday.Name = "colTuesday";
-            this.colTuesday.ReadOnly = true;
-            this.colTuesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colTuesday.Width = 95;
-            // 
-            // colWednesday
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.colWednesday.DefaultCellStyle = dataGridViewCellStyle6;
-            this.colWednesday.HeaderText = "Wednesday";
-            this.colWednesday.Name = "colWednesday";
-            this.colWednesday.ReadOnly = true;
-            this.colWednesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colWednesday.Width = 95;
-            // 
-            // colThursday
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.colThursday.DefaultCellStyle = dataGridViewCellStyle7;
-            this.colThursday.HeaderText = "Thursday";
-            this.colThursday.Name = "colThursday";
-            this.colThursday.ReadOnly = true;
-            this.colThursday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colThursday.Width = 95;
-            // 
-            // colFriday
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.colFriday.DefaultCellStyle = dataGridViewCellStyle8;
-            this.colFriday.HeaderText = "Friday";
-            this.colFriday.Name = "colFriday";
-            this.colFriday.ReadOnly = true;
-            this.colFriday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colFriday.Width = 95;
-            // 
-            // colSaturday
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.colSaturday.DefaultCellStyle = dataGridViewCellStyle9;
-            this.colSaturday.HeaderText = "Saturday";
-            this.colSaturday.Name = "colSaturday";
-            this.colSaturday.ReadOnly = true;
-            this.colSaturday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colSaturday.Width = 95;
-            // 
-            // colTotal
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.colTotal.DefaultCellStyle = dataGridViewCellStyle10;
-            this.colTotal.HeaderText = "Totals";
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            this.colTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colTotal.Width = 95;
-            // 
-            // clmWeekFoodClass
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            this.clmWeekFoodClass.DefaultCellStyle = dataGridViewCellStyle12;
-            this.clmWeekFoodClass.HeaderText = "Food Class";
-            this.clmWeekFoodClass.Name = "clmWeekFoodClass";
-            this.clmWeekFoodClass.ReadOnly = true;
-            this.clmWeekFoodClass.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmWeekFoodClass.Width = 180;
-            // 
-            // clmWeek1
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.clmWeek1.DefaultCellStyle = dataGridViewCellStyle13;
-            this.clmWeek1.HeaderText = "Week 1";
-            this.clmWeek1.Name = "clmWeek1";
-            this.clmWeek1.ReadOnly = true;
-            this.clmWeek1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmWeek2
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.clmWeek2.DefaultCellStyle = dataGridViewCellStyle14;
-            this.clmWeek2.HeaderText = "Week 2";
-            this.clmWeek2.Name = "clmWeek2";
-            this.clmWeek2.ReadOnly = true;
-            this.clmWeek2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmWeek3
-            // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.clmWeek3.DefaultCellStyle = dataGridViewCellStyle15;
-            this.clmWeek3.HeaderText = "Week 3";
-            this.clmWeek3.Name = "clmWeek3";
-            this.clmWeek3.ReadOnly = true;
-            this.clmWeek3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmWeek4
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.clmWeek4.DefaultCellStyle = dataGridViewCellStyle16;
-            this.clmWeek4.HeaderText = "Week 4";
-            this.clmWeek4.Name = "clmWeek4";
-            this.clmWeek4.ReadOnly = true;
-            this.clmWeek4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmWeek5
-            // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.clmWeek5.DefaultCellStyle = dataGridViewCellStyle17;
-            this.clmWeek5.HeaderText = "Week 5";
-            this.clmWeek5.Name = "clmWeek5";
-            this.clmWeek5.ReadOnly = true;
-            this.clmWeek5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmWeek6
-            // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.clmWeek6.DefaultCellStyle = dataGridViewCellStyle18;
-            this.clmWeek6.HeaderText = "Week 6";
-            this.clmWeek6.Name = "clmWeek6";
-            this.clmWeek6.ReadOnly = true;
-            this.clmWeek6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmWeekTotals
-            // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.LightGoldenrodYellow;
-            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.clmWeekTotals.DefaultCellStyle = dataGridViewCellStyle19;
-            this.clmWeekTotals.HeaderText = "Period Totals";
-            this.clmWeekTotals.Name = "clmWeekTotals";
-            this.clmWeekTotals.ReadOnly = true;
-            this.clmWeekTotals.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // FoodReceiptsForm
+            // FoodReceiptsGroceryRescueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -858,7 +859,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboYear);
             this.Controls.Add(this.pnlEditDaily);
-            this.Name = "FoodReceiptsForm";
+            this.Name = "FoodReceiptsGroceryRescueForm";
             this.Text = "Grocery Rescue";
             this.grpWeek.ResumeLayout(false);
             this.grpWeek.PerformLayout();

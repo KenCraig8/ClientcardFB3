@@ -22,6 +22,11 @@ namespace ClientcardFB3
             }
         }
 
+        public EmailInfo emailinfoOut
+        {
+            get { return emailInfo; }
+        }
+
         public EmailBodyInputForm(EmailInfo inEmailInfo, string reportName)
         {
             InitializeComponent();

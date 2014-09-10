@@ -84,6 +84,7 @@ namespace ClientcardFB3
         public static string AlertMinMonthsText = "LAST SERVICE LESS THAN MINIMUM MONTHS";
         public static int AlertMinimumMonths = 0;
         public static bool IncludeLbsOnSvcList = true;
+        public static bool AllowLbsManualEntry = false;
         #endregion
 
         #region Add Client Options
@@ -181,6 +182,7 @@ namespace ClientcardFB3
                     case "alertweeksvctext":        AlertWeekSvcText = drow.Field<string>(constFldValue); break;
                     case "allowduplicatehhnames":   AllowDuplicateHHNames = drow.Field<bool>(constBoolVal); break;
                     case "allowduplicatemembernames": AllowDuplicateMemberNames = drow.Field<bool>(constBoolVal); break;
+                    case "allowlbsmanualentry":     AllowLbsManualEntry = drow.Field<bool>(constBoolVal); break;
                     case "apptlogrefreshrate":      ApptLogRefreshRate = Convert.ToInt32(drow[constFldValue]); break;
                     case "automaticallygiveservice": AutomaticallyGiveService = drow.Field<bool>(constBoolVal); break;
                     case "capturesignature":        CaptureSignature = drow.Field<bool>(constBoolVal); break;

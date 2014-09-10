@@ -13,7 +13,7 @@ using System.IO;
 
 namespace ClientcardFB3
 {
-    public partial class FoodReceiptsForm : Form
+    public partial class FreshAllianceForm : Form
     {
         private System.Collections.ArrayList listDonors = new System.Collections.ArrayList();
         FoodDonations clsFoodDonations = new FoodDonations(CCFBGlobal.connectionString);
@@ -37,12 +37,10 @@ namespace ClientcardFB3
         bool loadingData = false;
         bool isGroceryRescue = false;
 
-        public FoodReceiptsForm(int DonorID, int defaultDonorType, bool IsGroceryRescue)
+        public FreshAllianceForm(int DonorID, int defaultDonorType, bool IsGroceryRescue)
         {
             InitializeComponent();
             pnlEditDaily.Visible = false;
-            pnlMonthly.Visible = false;
-            pnlMonthly.SetBounds(pnlEditDaily.Location.X, pnlEditDaily.Location.Y, pnlMonthly.Width, pnlMonthly.Height);
             pnlViewable = pnlEditDaily;
             dset = new DataSet();
             conn = new SqlConnection(CCFBGlobal.connectionString);
@@ -64,8 +62,6 @@ namespace ClientcardFB3
             isGroceryRescue = IsGroceryRescue;
             bool hasRows = cboStore.Items.Count > 0;
             btnLoadPeriodData.Enabled = hasRows;
-            btnEdit.Enabled = hasRows;
-            btnSummary.Enabled = hasRows;
         }
 
         /// <summary>
@@ -74,15 +70,11 @@ namespace ClientcardFB3
         private void fillFoodClasses()
         {
             dgvMonthReceipts.Rows.Clear();
-            dgvMonthTotals.Rows.Clear();
             foreach (parmType pt in foodClassList)
             {
-                dgvMonthTotals.Rows.Add();
                 dgvMonthReceipts.Rows.Add();
                 dgvMonthReceipts[0, dgvMonthReceipts.Rows.Count - 1].Tag = pt;
                 dgvMonthReceipts[0, dgvMonthReceipts.Rows.Count - 1].Value = pt.LongName;
-                dgvMonthTotals[0, dgvMonthTotals.Rows.Count - 1].Tag = pt;
-                dgvMonthTotals[0, dgvMonthTotals.Rows.Count - 1].Value = pt.LongName;
             }
 
             createTotalsRows();
@@ -90,13 +82,9 @@ namespace ClientcardFB3
 
         private void createTotalsRows()
         {
-            dgvMonthTotals.Rows.Add();
             dgvMonthReceipts.Rows.Add();
             dgvMonthReceipts[0, dgvMonthReceipts.RowCount - 1].Value = "Day Totals";
             dgvMonthReceipts.Rows[dgvMonthReceipts.RowCount - 1].ReadOnly = true;
-            dgvMonthTotals[0, dgvMonthTotals.RowCount - 1].Value = "Week Totals";
-            dgvMonthTotals.Rows[dgvMonthTotals.RowCount - 1].ReadOnly = true;
-
             for (int i = 0; i < dgvMonthReceipts.Columns.Count; i++)
             {
                 dgvMonthReceipts[i, dgvMonthReceipts.RowCount - 1].Style.BackColor = Color.LightGoldenrodYellow;
@@ -193,17 +181,6 @@ namespace ClientcardFB3
             }
         }
 
-        /// <summary>
-        /// Zeros out the Monthly Totals
-        /// </summary>
-        private void zeroOutTotalsByMonth()
-        {
-            for (int i = 0; i < dgvMonthTotals.Rows.Count; i++)
-            {
-                dgvMonthTotals[7, i].Value = 0;
-
-            }
-        }
 
         /// <summary>
         /// Loads the View By Day Donations Grid
@@ -325,49 +302,6 @@ namespace ClientcardFB3
             btnPrint.Enabled = true;
             pnlViewable.Visible = true;
             ShowButtons(true);
-            switch (GetNumWeeksInPeriod())
-            {
-                case 4:
-                    {
-                        rdoWeek5.Visible = false;
-                        rdoWeek6.Visible = false;
-
-                        if (rdoWeek5.Checked == true || rdoWeek6.Checked == true)
-                            rdoWeek4.Checked = true;
-
-                        dgvMonthTotals.Columns["clmWeek5"].Visible = false;
-                        dgvMonthTotals.Columns["clmWeek6"].Visible = false;
-                        break;
-                    }
-                case 5:
-                    {
-                        rdoWeek5.Visible = true;
-                        rdoWeek6.Visible = false;
-
-                        if (rdoWeek6.Checked == true)
-                            rdoWeek5.Checked = true;
-
-                        dgvMonthTotals.Columns["clmWeek5"].Visible = true;
-                        dgvMonthTotals.Columns["clmWeek6"].Visible = false;
-                        break;
-                    }
-                case 6:
-                    {
-                        rdoWeek5.Visible = true;
-                        rdoWeek6.Visible = true;
-                        dgvMonthTotals.Columns["clmWeek5"].Visible = true;
-                        dgvMonthTotals.Columns["clmWeek6"].Visible = true;
-                        break;
-                    }
-                default:
-                    {
-                        rdoWeek5.Visible = false;
-                        rdoWeek6.Visible = false;
-                        dgvMonthTotals.Columns["clmWeek5"].Visible = false;
-                        dgvMonthTotals.Columns["clmWeek6"].Visible = false;
-                        break;
-                    }
-            }
             loadingData = false;
             initWeekTotals();
             initList();

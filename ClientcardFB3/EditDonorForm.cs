@@ -1106,7 +1106,7 @@ namespace ClientcardFB3
         {
             if (gridEditDonor.SelectedRows.Count > 0)
             {
-                FoodReceiptsForm frmFoodRecipts = new FoodReceiptsForm(
+                FoodReceiptsGroceryRescueForm frmFoodRecipts = new FoodReceiptsGroceryRescueForm(
                     Convert.ToInt32(gridEditDonor.SelectedRows[0].Cells["gridEditDonor_ID"].Value),
                    Convert.ToInt32(cboDonationType.SelectedValue), false);
                 frmFoodRecipts.ShowDialog();

@@ -83,6 +83,7 @@ namespace ClientcardFB3
                 {
                     CCFBGlobal.saveRegServerBackupPath(fileSource);
                 }
+                
                 conn = new SqlConnection(CCFBGlobal.connectionString); 
                 if (conn.State != ConnectionState.Open)
                 { 
@@ -94,6 +95,8 @@ namespace ClientcardFB3
                 
                 //create backup
                 progressBar1.Increment(20);
+                Application.DoEvents();
+                command.CommandTimeout = 1800;
                 command.ExecuteNonQuery();
                 conn.Close();
 
@@ -124,11 +127,12 @@ namespace ClientcardFB3
             }
             catch (SqlException ex)
             {
-                CCFBGlobal.appendErrorToErrorReport("Command=" + command.CommandText, ex.GetBaseException().ToString());
+                CCFBGlobal.appendErrorToErrorReport("Command=" + command.CommandText + "TimeOut = " + command.Connection.ConnectionTimeout.ToString(), ex.GetBaseException().ToString());
                 MessageBox.Show("Could Not Create Backup", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnStart.Enabled = true;
                 label4.Text = "Backup FAILED";
             }
+            CCFBGlobal.setConnectionString(CCFBGlobal.sq1ServerName);
             this.Cursor = Cursors.Default;
            // progressBar1.Visible = false;
         }

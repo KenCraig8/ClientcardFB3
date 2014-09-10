@@ -139,6 +139,10 @@ namespace ClientcardFB3
             itemHHM.Relationship = 1;
             itemHHM.EmailAddress = "";
             itemHHM.Phone = "";
+            itemHHM.Grade = -1;
+            itemHHM.SchSupply = false;
+            itemHHM.SchSupplyDelivered = CCFBGlobal.FBNullDateValue;
+            itemHHM.SchSupplySchool = 0;
          }
 
         public void setHHMember(HHMemberItem clshhmItm)
@@ -163,7 +167,7 @@ namespace ClientcardFB3
             chkSpecialDiet.Checked = clsHHMItem.SpecialDiet;
             chkDissabled.Checked = clsHHMItem.IsDisabled;
             tbPhone.Text = clsHHMItem.Phone;
-            cboPhoneType.SelectedValue = 1;
+            cboPhoneType.SelectedValue = "0";
             tbeZipCode.Text = clsHH.Zipcode;
             tbeCity.Text = clsHH.City.Trim();
             tbeState.Text = clsHH.State;
@@ -231,7 +235,14 @@ namespace ClientcardFB3
                         else
                             newRow["IdType"] = 0;
                         newRow["ClientType"] = cboClientType.SelectedValue;
+                        if (cboPhoneType.SelectedValue == null)
+                        {
+                            newRow["PhoneType"] = 0;
+                        }
+                        else
+                        {
                         newRow["PhoneType"] = cboPhoneType.SelectedValue;
+                        }
                         newRow["Phone"] = tbPhone.Text;
                         newRow["EthnicSpeaking"] = cboSpecialLang.SelectedValue;
                         switch (CCFBPrefs.UseFamilyList)
@@ -305,7 +316,7 @@ namespace ClientcardFB3
                         newRow["NeedCommoditySignature"] = false;
                         newRow["IncludeOnLog"] = false;
                         newRow["AutoAlert"] = false;
-                        newRow["FirstSvcThisYear"] = CCFBGlobal.OURNULLDATE;
+                        newRow["FirstSvcThisYear"] = CCFBGlobal.FBNullDateValue;
                         newRow["SecondServiceThisMonth"] = false;
                         newRow["InCityLimits"] = chkInCityLimits.Checked;
                         newRow["Homeless"] = chkHomeless.Checked;
@@ -326,7 +337,7 @@ namespace ClientcardFB3
                         newRow["TEFAPSignDate"] = DateTime.Now.ToShortDateString();
                         newRow["SingleHeadHH"] = chkSingleHeadHH.Checked;
                         newRow["NeedIncomeVerification"] = true;
-                        newRow["IncomeVerifiedDate"] = CCFBGlobal.OURNULLDATE;
+                        newRow["IncomeVerifiedDate"] = CCFBGlobal.FBNullDateValue;
                         newRow["ServiceMethod"] = 0;
                         newRow["HDRoute"] = 0;
                         newRow["HDBuilding"] = 0;
@@ -336,6 +347,10 @@ namespace ClientcardFB3
                         newRow["DriverNotes"] = "";
                         newRow["AlertText"] = "";
                         newRow["Transportation"] = 0;
+                        newRow["SchSupplyPickupPerson"] = "";
+                        newRow["SchSupplyRegDate"] = CCFBGlobal.FBNullDateValue;
+                        newRow["SchSupplyFlag"] = 0;
+                        newRow["SchSupplyRegistration"] = 0;
 
                         clsHH.DSet.Tables[0].Rows.Add(newRow);
                         clsHH.insert();

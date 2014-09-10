@@ -758,7 +758,6 @@
             // 
             // tbNonFoodLbs
             // 
-            this.tbNonFoodLbs.Enabled = false;
             this.tbNonFoodLbs.Location = new System.Drawing.Point(219, 117);
             this.tbNonFoodLbs.Margin = new System.Windows.Forms.Padding(4);
             this.tbNonFoodLbs.Name = "tbNonFoodLbs";
@@ -782,7 +781,6 @@
             // 
             // tbNonFoodSvcList
             // 
-            this.tbNonFoodSvcList.Enabled = false;
             this.tbNonFoodSvcList.Location = new System.Drawing.Point(219, 28);
             this.tbNonFoodSvcList.Margin = new System.Windows.Forms.Padding(4);
             this.tbNonFoodSvcList.Multiline = true;
@@ -1056,7 +1054,6 @@
             // 
             // tbBabyServices
             // 
-            this.tbBabyServices.Enabled = false;
             this.tbBabyServices.Location = new System.Drawing.Point(220, 134);
             this.tbBabyServices.Margin = new System.Windows.Forms.Padding(4);
             this.tbBabyServices.Name = "tbBabyServices";
@@ -1080,7 +1077,6 @@
             // 
             // tbBabySvcList
             // 
-            this.tbBabySvcList.Enabled = false;
             this.tbBabySvcList.Location = new System.Drawing.Point(220, 28);
             this.tbBabySvcList.Margin = new System.Windows.Forms.Padding(4);
             this.tbBabySvcList.Multiline = true;

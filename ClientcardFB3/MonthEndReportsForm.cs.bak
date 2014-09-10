@@ -1044,7 +1044,7 @@ namespace ClientcardFB3
                 {
                     clsMonthlyReports.find(Convert.ToInt32(lvReports.Items[i].Tag));
 
-                    //Microsoft.Office.Interop.Outlook.Account oAccount = new Microsoft.Office.Interop.Outlook.Account();
+                    Microsoft.Office.Interop.Outlook.Account oAccount = new Microsoft.Office.Interop.Outlook.Account();
                     fileName = makeReportPrefix() + clsMonthlyReports.ReportName + clsMonthlyReports.DocType;
                     filePath = makeReportPath() + fileName;
 
@@ -1053,18 +1053,15 @@ namespace ClientcardFB3
                     {
                         subject = fileName + " From " + tbFBName.Text,
                         to = clsMonthlyReports.EmailAddresses.Replace('|', ';'),
-                        from = tbFBName.Text,
-                        attachmentPath = filePath,
-                        body = " "
+                        from = oAccount.SmtpAddress,
+                        attachmentPath = filePath
                     };
                     
                     EmailBodyInputForm frmEmailBody = new EmailBodyInputForm(emailInfo, clsMonthlyReports.ReportName);
                     frmEmailBody.ShowDialog();
 
                     //Only send if it wasn't cancled in the form
-                    if(!frmEmailBody.Canceled)
-                    {
-                        emailInfo = frmEmailBody.emailinfoOut;
+                    if(!frmEmailBody.Canceled){
                         checkFileExistsAndSendEmail(filePath, fileName, emailInfo);
                     }
                 }
@@ -1100,7 +1097,7 @@ namespace ClientcardFB3
 
                 oMailItem.To = emailInfo.to;
                 oMailItem.Subject = emailInfo.subject;
-                if (emailInfo.body == "" || emailInfo.body == null)
+                if (emailInfo.body == "")
                 {
                     emailInfo.body = " ";
                 }

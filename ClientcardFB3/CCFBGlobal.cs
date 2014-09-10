@@ -74,7 +74,8 @@ namespace ClientcardFB3
         public static string sq1ServerName ="";
         public static string serverName = "";
         public static string connectionString = "";
-        public static int connectionTimeout = 10;
+        public static int connectionTimeout = 30;
+        public static int commandTimeout = 120;
         public static string pcName = "";
 
         public const int permissions_Admin = 2;
@@ -137,6 +138,8 @@ namespace ClientcardFB3
         public static string parmTbl_Phone = "parm_PhoneType";
         public static string parmTbl_Race = "parm_Race";
         public static string parmTbl_Relationship = "parm_Relationship";
+        public static string parmTbl_SchSupplyRegistration = "parm_SchSupplyRegistration";
+        public static string parmTbl_SchSupplySchool = "parm_SchSupplySchool";
         public static string parmTbl_ServiceGroup = "parm_ServiceGroup";
         public static string parmTbl_ServiceMethod = "parm_ServiceMethod";
         public static string parmTbl_SvcCategory = "parm_SvcCategory";
@@ -875,6 +878,8 @@ namespace ClientcardFB3
             typeCodeLists.Add(new parmTypeCodes(parmTbl_FBProgram,connectionString,""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_VoucherType,connectionString,""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_FBJobs,connectionString,""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_SchSupplyRegistration, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_SchSupplySchool, connectionString, ""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_ServiceGroup,connectionString,""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_ServiceMethod, connectionString, ""));
             //typeCodeLists.Add(new parmTypeCodes(parmTbl_HomeDeliveryRoutes,connectionString,""));
@@ -1491,6 +1496,22 @@ namespace ClientcardFB3
                                 (dt2.AddDays(1).Month - dt1.AddDays(1).Month) -
                                 (dt2.AddDays(1).Day < dt1.AddDays(1).Day ? 1 : 0);
             return MonthsElapsed;
+        }
+
+        public static string ExcelColumnLetter(int iCol)
+        {
+            int x = (iCol / 26);
+            int y = (iCol % 26 );
+            string xlsCode = "";
+            if (x > 0)
+            {
+                xlsCode = ((char)(x + 64)).ToString() + ((char)(y + 64)).ToString();
+            }
+            else
+            {
+                xlsCode = ((char)(y + 64)).ToString();
+            }
+            return xlsCode;
         }
     }
 }

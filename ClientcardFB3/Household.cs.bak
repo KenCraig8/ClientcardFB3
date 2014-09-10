@@ -426,32 +426,6 @@ namespace ClientcardFB3
             get { return Convert.ToInt32(drow["Transportation"]); }
             set { drow["Transportation"] = value; }
         }
-        public string SchSupplyPickupPerson
-        {
-            get { return drow["SchSupplyPickupPerson"].ToString(); }
-            set { drow["SchSupplyPickupPerson"] = value; }
-        }
-        public DateTime SchSupplyRegDate
-        {
-            get
-            {
-                if (drow["SchSupplyRegDate"].ToString() == "")
-                    return CCFBGlobal.FBNullDateValue;
-                else
-                    return (DateTime)drow["SchSupplyRegDate"];
-            }
-            set { drow["SchSupplyRegDate"] = value; }
-        }
-        public bool SchSupplyFlag
-        {
-            get { return (bool)drow["SchSupplyFlag"]; }
-            set { drow["SchSupplyFlag"] = value; }
-        }
-        public int SchSupplyRegistration
-        {
-            get { return Convert.ToInt32(drow["SchSupplyRegistration"]); }
-            set { drow["SchSupplyRegistration"] = value; }
-        }
 
 
         #region Ethnicity Accessors

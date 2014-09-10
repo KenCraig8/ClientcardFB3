@@ -51,7 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tpFeatures = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpgGeneral = new System.Windows.Forms.TabPage();
             this.chkCaptureSignature = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.cboSvcMnuTyp = new System.Windows.Forms.ComboBox();
@@ -82,7 +82,8 @@
             this.chkAutoGiveService = new System.Windows.Forms.CheckBox();
             this.chkSearchFamilyMember = new System.Windows.Forms.CheckBox();
             this.chkEnableBarcodePrompts = new System.Windows.Forms.CheckBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tpgFoodSvcs = new System.Windows.Forms.TabPage();
+            this.chkIncludeLbsOnFoodSvcList = new System.Windows.Forms.CheckBox();
             this.tbAlertMinMonthsText = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.nudAlertMinimumMonths = new System.Windows.Forms.NumericUpDown();
@@ -92,8 +93,6 @@
             this.nudAlertMinimumDays = new System.Windows.Forms.NumericUpDown();
             this.chkCaptureTEFAPSign = new System.Windows.Forms.CheckBox();
             this.chkCSFPShowRoutes = new System.Windows.Forms.CheckBox();
-            this.tbPointsPerWeekOutOfArea = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.tbLbsPerCSFPService = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.grpbxOverRideLevel = new System.Windows.Forms.GroupBox();
@@ -118,11 +117,6 @@
             this.chkEnableBackPack = new System.Windows.Forms.CheckBox();
             this.chkEnableCSFP = new System.Windows.Forms.CheckBox();
             this.chkEnableFastTrack = new System.Windows.Forms.CheckBox();
-            this.tbPointsPerFamMbr = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tbPointsPerWeek = new System.Windows.Forms.TextBox();
-            this.lblPointsAllowed = new System.Windows.Forms.Label();
-            this.chkEnablePointsTracking = new System.Windows.Forms.CheckBox();
             this.tpClientOptions = new System.Windows.Forms.TabPage();
             this.cboFMIDType = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
@@ -247,17 +241,26 @@
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblToolTip = new System.Windows.Forms.Label();
-            this.chkIncludeLbsOnFoodSvcList = new System.Windows.Forms.CheckBox();
+            this.tpgPoints = new System.Windows.Forms.TabPage();
+            this.tbPointsPerWeekOutOfArea = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbPointsPerFamMbr = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbPointsPerWeek = new System.Windows.Forms.TextBox();
+            this.lblPointsAllowed = new System.Windows.Forms.Label();
+            this.chkEnablePointsTracking = new System.Windows.Forms.CheckBox();
+            this.tbMaxPointsPerWeek = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.chkBackPack.SuspendLayout();
             this.tpFeatures.SuspendLayout();
             this.tabControl2.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpgGeneral.SuspendLayout();
             this.grpViewGRBy.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tpgFoodSvcs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAlertMinimumMonths)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAlertMinimumDays)).BeginInit();
             this.grpbxOverRideLevel.SuspendLayout();
@@ -270,6 +273,7 @@
             this.groupBox5.SuspendLayout();
             this.tpDonorPercent.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tpgPoints.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -571,8 +575,9 @@
             // 
             // tabControl2
             // 
-            this.tabControl2.Controls.Add(this.tabPage2);
-            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tpgGeneral);
+            this.tabControl2.Controls.Add(this.tpgFoodSvcs);
+            this.tabControl2.Controls.Add(this.tpgPoints);
             this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl2.Location = new System.Drawing.Point(2, 2);
             this.tabControl2.Name = "tabControl2";
@@ -580,33 +585,33 @@
             this.tabControl2.Size = new System.Drawing.Size(899, 516);
             this.tabControl2.TabIndex = 0;
             // 
-            // tabPage2
+            // tpgGeneral
             // 
-            this.tabPage2.Controls.Add(this.chkCaptureSignature);
-            this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.cboSvcMnuTyp);
-            this.tabPage2.Controls.Add(this.grpViewGRBy);
-            this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Controls.Add(this.chkEnablePrintClientCard);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.chkEnableClientReceipt);
-            this.tabPage2.Controls.Add(this.chkEnableFoodDonations);
-            this.tabPage2.Controls.Add(this.chkEnableAppointments);
-            this.tabPage2.Controls.Add(this.chkUseTimeInOutForVols);
-            this.tabPage2.Controls.Add(this.chkEnableVolunteerHours);
-            this.tabPage2.Controls.Add(this.chkEnableCashDonations);
-            this.tabPage2.Controls.Add(this.chkEnableVouchers);
-            this.tabPage2.Controls.Add(this.chkEnableHomeDeliv);
-            this.tabPage2.Controls.Add(this.chkAutoGiveService);
-            this.tabPage2.Controls.Add(this.chkSearchFamilyMember);
-            this.tabPage2.Controls.Add(this.chkEnableBarcodePrompts);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(891, 490);
-            this.tabPage2.TabIndex = 0;
-            this.tabPage2.Text = "General";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpgGeneral.Controls.Add(this.chkCaptureSignature);
+            this.tpgGeneral.Controls.Add(this.label23);
+            this.tpgGeneral.Controls.Add(this.cboSvcMnuTyp);
+            this.tpgGeneral.Controls.Add(this.grpViewGRBy);
+            this.tpgGeneral.Controls.Add(this.groupBox6);
+            this.tpgGeneral.Controls.Add(this.chkEnablePrintClientCard);
+            this.tpgGeneral.Controls.Add(this.groupBox3);
+            this.tpgGeneral.Controls.Add(this.chkEnableClientReceipt);
+            this.tpgGeneral.Controls.Add(this.chkEnableFoodDonations);
+            this.tpgGeneral.Controls.Add(this.chkEnableAppointments);
+            this.tpgGeneral.Controls.Add(this.chkUseTimeInOutForVols);
+            this.tpgGeneral.Controls.Add(this.chkEnableVolunteerHours);
+            this.tpgGeneral.Controls.Add(this.chkEnableCashDonations);
+            this.tpgGeneral.Controls.Add(this.chkEnableVouchers);
+            this.tpgGeneral.Controls.Add(this.chkEnableHomeDeliv);
+            this.tpgGeneral.Controls.Add(this.chkAutoGiveService);
+            this.tpgGeneral.Controls.Add(this.chkSearchFamilyMember);
+            this.tpgGeneral.Controls.Add(this.chkEnableBarcodePrompts);
+            this.tpgGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tpgGeneral.Name = "tpgGeneral";
+            this.tpgGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tpgGeneral.Size = new System.Drawing.Size(891, 490);
+            this.tpgGeneral.TabIndex = 0;
+            this.tpgGeneral.Text = "General";
+            this.tpgGeneral.UseVisualStyleBackColor = true;
             // 
             // chkCaptureSignature
             // 
@@ -1081,53 +1086,64 @@
             this.chkEnableBarcodePrompts.Enter += new System.EventHandler(this.checkBoxes_Enter);
             this.chkEnableBarcodePrompts.Leave += new System.EventHandler(this.chkBox_Leave);
             // 
-            // tabPage3
+            // tpgFoodSvcs
             // 
-            this.tabPage3.Controls.Add(this.chkIncludeLbsOnFoodSvcList);
-            this.tabPage3.Controls.Add(this.tbAlertMinMonthsText);
-            this.tabPage3.Controls.Add(this.label35);
-            this.tabPage3.Controls.Add(this.nudAlertMinimumMonths);
-            this.tabPage3.Controls.Add(this.chkEnableServiceGroups);
-            this.tabPage3.Controls.Add(this.tbAlertMinDaysText);
-            this.tabPage3.Controls.Add(this.label26);
-            this.tabPage3.Controls.Add(this.nudAlertMinimumDays);
-            this.tabPage3.Controls.Add(this.chkCaptureTEFAPSign);
-            this.tabPage3.Controls.Add(this.chkCSFPShowRoutes);
-            this.tabPage3.Controls.Add(this.tbPointsPerWeekOutOfArea);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.tbLbsPerCSFPService);
-            this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Controls.Add(this.grpbxOverRideLevel);
-            this.tabPage3.Controls.Add(this.chkWarnSvcEachPerson);
-            this.tabPage3.Controls.Add(this.tbAlertWeekSvcText);
-            this.tabPage3.Controls.Add(this.tbAlertMonthSvcText);
-            this.tabPage3.Controls.Add(this.label11);
-            this.tabPage3.Controls.Add(this.nudAlertWeekSvc);
-            this.tabPage3.Controls.Add(this.lblAlertMonthSvc);
-            this.tabPage3.Controls.Add(this.nudAlertMonthSvc);
-            this.tabPage3.Controls.Add(this.tbCommSigValidFor);
-            this.tabPage3.Controls.Add(this.label9);
-            this.tabPage3.Controls.Add(this.chkEnableBabyServices);
-            this.tabPage3.Controls.Add(this.chkEnableFoodService);
-            this.tabPage3.Controls.Add(this.chkEnableSupplemental);
-            this.tabPage3.Controls.Add(this.chkEnableTEFAP);
-            this.tabPage3.Controls.Add(this.chkMustBeACommodityDay);
-            this.tabPage3.Controls.Add(this.chkEnableCSFPOnNewSvc);
-            this.tabPage3.Controls.Add(this.chkEnableBackPack);
-            this.tabPage3.Controls.Add(this.chkEnableCSFP);
-            this.tabPage3.Controls.Add(this.chkEnableFastTrack);
-            this.tabPage3.Controls.Add(this.tbPointsPerFamMbr);
-            this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Controls.Add(this.tbPointsPerWeek);
-            this.tabPage3.Controls.Add(this.lblPointsAllowed);
-            this.tabPage3.Controls.Add(this.chkEnablePointsTracking);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(891, 490);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "Food Services";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tpgFoodSvcs.Controls.Add(this.chkIncludeLbsOnFoodSvcList);
+            this.tpgFoodSvcs.Controls.Add(this.tbAlertMinMonthsText);
+            this.tpgFoodSvcs.Controls.Add(this.label35);
+            this.tpgFoodSvcs.Controls.Add(this.nudAlertMinimumMonths);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableServiceGroups);
+            this.tpgFoodSvcs.Controls.Add(this.tbAlertMinDaysText);
+            this.tpgFoodSvcs.Controls.Add(this.label26);
+            this.tpgFoodSvcs.Controls.Add(this.nudAlertMinimumDays);
+            this.tpgFoodSvcs.Controls.Add(this.chkCaptureTEFAPSign);
+            this.tpgFoodSvcs.Controls.Add(this.chkCSFPShowRoutes);
+            this.tpgFoodSvcs.Controls.Add(this.tbLbsPerCSFPService);
+            this.tpgFoodSvcs.Controls.Add(this.label10);
+            this.tpgFoodSvcs.Controls.Add(this.grpbxOverRideLevel);
+            this.tpgFoodSvcs.Controls.Add(this.chkWarnSvcEachPerson);
+            this.tpgFoodSvcs.Controls.Add(this.tbAlertWeekSvcText);
+            this.tpgFoodSvcs.Controls.Add(this.tbAlertMonthSvcText);
+            this.tpgFoodSvcs.Controls.Add(this.label11);
+            this.tpgFoodSvcs.Controls.Add(this.nudAlertWeekSvc);
+            this.tpgFoodSvcs.Controls.Add(this.lblAlertMonthSvc);
+            this.tpgFoodSvcs.Controls.Add(this.nudAlertMonthSvc);
+            this.tpgFoodSvcs.Controls.Add(this.tbCommSigValidFor);
+            this.tpgFoodSvcs.Controls.Add(this.label9);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableBabyServices);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableFoodService);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableSupplemental);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableTEFAP);
+            this.tpgFoodSvcs.Controls.Add(this.chkMustBeACommodityDay);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableCSFPOnNewSvc);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableBackPack);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableCSFP);
+            this.tpgFoodSvcs.Controls.Add(this.chkEnableFastTrack);
+            this.tpgFoodSvcs.Location = new System.Drawing.Point(4, 22);
+            this.tpgFoodSvcs.Name = "tpgFoodSvcs";
+            this.tpgFoodSvcs.Padding = new System.Windows.Forms.Padding(3);
+            this.tpgFoodSvcs.Size = new System.Drawing.Size(891, 490);
+            this.tpgFoodSvcs.TabIndex = 1;
+            this.tpgFoodSvcs.Text = "Food Services";
+            this.tpgFoodSvcs.UseVisualStyleBackColor = true;
+            // 
+            // chkIncludeLbsOnFoodSvcList
+            // 
+            this.chkIncludeLbsOnFoodSvcList.AutoSize = true;
+            this.chkIncludeLbsOnFoodSvcList.Checked = true;
+            this.chkIncludeLbsOnFoodSvcList.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkIncludeLbsOnFoodSvcList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkIncludeLbsOnFoodSvcList.Location = new System.Drawing.Point(452, 428);
+            this.chkIncludeLbsOnFoodSvcList.Margin = new System.Windows.Forms.Padding(2);
+            this.chkIncludeLbsOnFoodSvcList.Name = "chkIncludeLbsOnFoodSvcList";
+            this.chkIncludeLbsOnFoodSvcList.Size = new System.Drawing.Size(257, 21);
+            this.chkIncludeLbsOnFoodSvcList.TabIndex = 88;
+            this.chkIncludeLbsOnFoodSvcList.Tag = "IncludeLbsOnSvcList";
+            this.chkIncludeLbsOnFoodSvcList.Text = "Include Pounds on Food Service List";
+            this.chkIncludeLbsOnFoodSvcList.UseVisualStyleBackColor = true;
+            this.chkIncludeLbsOnFoodSvcList.CheckedChanged += new System.EventHandler(this.checkBoxes_CheckedChanged);
+            this.chkIncludeLbsOnFoodSvcList.Enter += new System.EventHandler(this.checkBoxes_Enter);
+            this.chkIncludeLbsOnFoodSvcList.Leave += new System.EventHandler(this.chkBox_Leave);
             // 
             // tbAlertMinMonthsText
             // 
@@ -1238,28 +1254,6 @@
             this.chkCSFPShowRoutes.CheckedChanged += new System.EventHandler(this.checkBoxes_CheckedChanged);
             this.chkCSFPShowRoutes.Enter += new System.EventHandler(this.checkBoxes_Enter);
             this.chkCSFPShowRoutes.Leave += new System.EventHandler(this.chkBox_Leave);
-            // 
-            // tbPointsPerWeekOutOfArea
-            // 
-            this.tbPointsPerWeekOutOfArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPointsPerWeekOutOfArea.Location = new System.Drawing.Point(60, 463);
-            this.tbPointsPerWeekOutOfArea.Name = "tbPointsPerWeekOutOfArea";
-            this.tbPointsPerWeekOutOfArea.Size = new System.Drawing.Size(61, 23);
-            this.tbPointsPerWeekOutOfArea.TabIndex = 77;
-            this.tbPointsPerWeekOutOfArea.Tag = "PointsPerWeekOutOfArea";
-            this.tbPointsPerWeekOutOfArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbPointsPerWeekOutOfArea.Enter += new System.EventHandler(this.textboxes_Enter);
-            this.tbPointsPerWeekOutOfArea.Leave += new System.EventHandler(this.textboxes_Leave);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(123, 466);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(366, 16);
-            this.label14.TabIndex = 78;
-            this.label14.Text = "Base Points Allocated Per Week for Out of Area Households";
             // 
             // tbLbsPerCSFPService
             // 
@@ -1588,66 +1582,6 @@
             this.chkEnableFastTrack.CheckedChanged += new System.EventHandler(this.checkBoxes_CheckedChanged);
             this.chkEnableFastTrack.Enter += new System.EventHandler(this.checkBoxes_Enter);
             this.chkEnableFastTrack.Leave += new System.EventHandler(this.chkBox_Leave);
-            // 
-            // tbPointsPerFamMbr
-            // 
-            this.tbPointsPerFamMbr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPointsPerFamMbr.Location = new System.Drawing.Point(59, 435);
-            this.tbPointsPerFamMbr.Name = "tbPointsPerFamMbr";
-            this.tbPointsPerFamMbr.Size = new System.Drawing.Size(61, 23);
-            this.tbPointsPerFamMbr.TabIndex = 67;
-            this.tbPointsPerFamMbr.Tag = "PointsPerFamMbr";
-            this.tbPointsPerFamMbr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbPointsPerFamMbr.Enter += new System.EventHandler(this.textboxes_Enter);
-            this.tbPointsPerFamMbr.Leave += new System.EventHandler(this.textboxes_Leave);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(123, 438);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(228, 16);
-            this.label13.TabIndex = 68;
-            this.label13.Text = "Points Per Additional Family Member";
-            // 
-            // tbPointsPerWeek
-            // 
-            this.tbPointsPerWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPointsPerWeek.Location = new System.Drawing.Point(59, 408);
-            this.tbPointsPerWeek.Name = "tbPointsPerWeek";
-            this.tbPointsPerWeek.Size = new System.Drawing.Size(61, 23);
-            this.tbPointsPerWeek.TabIndex = 65;
-            this.tbPointsPerWeek.Tag = "PointsPerWeek";
-            this.tbPointsPerWeek.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbPointsPerWeek.Enter += new System.EventHandler(this.textboxes_Enter);
-            this.tbPointsPerWeek.Leave += new System.EventHandler(this.textboxes_Leave);
-            // 
-            // lblPointsAllowed
-            // 
-            this.lblPointsAllowed.AutoSize = true;
-            this.lblPointsAllowed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPointsAllowed.Location = new System.Drawing.Point(122, 411);
-            this.lblPointsAllowed.Name = "lblPointsAllowed";
-            this.lblPointsAllowed.Size = new System.Drawing.Size(203, 16);
-            this.lblPointsAllowed.TabIndex = 66;
-            this.lblPointsAllowed.Text = "Base Points Allocated Per Week";
-            // 
-            // chkEnablePointsTracking
-            // 
-            this.chkEnablePointsTracking.AutoSize = true;
-            this.chkEnablePointsTracking.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkEnablePointsTracking.Location = new System.Drawing.Point(36, 379);
-            this.chkEnablePointsTracking.Margin = new System.Windows.Forms.Padding(2);
-            this.chkEnablePointsTracking.Name = "chkEnablePointsTracking";
-            this.chkEnablePointsTracking.Size = new System.Drawing.Size(173, 21);
-            this.chkEnablePointsTracking.TabIndex = 64;
-            this.chkEnablePointsTracking.Tag = "enablepointstracking";
-            this.chkEnablePointsTracking.Text = "Enable Points Tracking";
-            this.chkEnablePointsTracking.UseVisualStyleBackColor = true;
-            this.chkEnablePointsTracking.CheckedChanged += new System.EventHandler(this.checkBoxes_CheckedChanged);
-            this.chkEnablePointsTracking.Enter += new System.EventHandler(this.checkBoxes_Enter);
-            this.chkEnablePointsTracking.Leave += new System.EventHandler(this.chkBox_Leave);
             // 
             // tpClientOptions
             // 
@@ -3418,23 +3352,127 @@
             this.lblToolTip.TabIndex = 0;
             this.lblToolTip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // chkIncludeLbsOnFoodSvcList
+            // tpgPoints
             // 
-            this.chkIncludeLbsOnFoodSvcList.AutoSize = true;
-            this.chkIncludeLbsOnFoodSvcList.Checked = true;
-            this.chkIncludeLbsOnFoodSvcList.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkIncludeLbsOnFoodSvcList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIncludeLbsOnFoodSvcList.Location = new System.Drawing.Point(452, 428);
-            this.chkIncludeLbsOnFoodSvcList.Margin = new System.Windows.Forms.Padding(2);
-            this.chkIncludeLbsOnFoodSvcList.Name = "chkIncludeLbsOnFoodSvcList";
-            this.chkIncludeLbsOnFoodSvcList.Size = new System.Drawing.Size(257, 21);
-            this.chkIncludeLbsOnFoodSvcList.TabIndex = 88;
-            this.chkIncludeLbsOnFoodSvcList.Tag = "IncludeLbsOnSvcList";
-            this.chkIncludeLbsOnFoodSvcList.Text = "Include Pounds on Food Service List";
-            this.chkIncludeLbsOnFoodSvcList.UseVisualStyleBackColor = true;
-            this.chkIncludeLbsOnFoodSvcList.CheckedChanged += new System.EventHandler(this.checkBoxes_CheckedChanged);
-            this.chkIncludeLbsOnFoodSvcList.Enter += new System.EventHandler(this.checkBoxes_Enter);
-            this.chkIncludeLbsOnFoodSvcList.Leave += new System.EventHandler(this.chkBox_Leave);
+            this.tpgPoints.Controls.Add(this.tbMaxPointsPerWeek);
+            this.tpgPoints.Controls.Add(this.label36);
+            this.tpgPoints.Controls.Add(this.tbPointsPerWeekOutOfArea);
+            this.tpgPoints.Controls.Add(this.label14);
+            this.tpgPoints.Controls.Add(this.tbPointsPerFamMbr);
+            this.tpgPoints.Controls.Add(this.label13);
+            this.tpgPoints.Controls.Add(this.tbPointsPerWeek);
+            this.tpgPoints.Controls.Add(this.lblPointsAllowed);
+            this.tpgPoints.Controls.Add(this.chkEnablePointsTracking);
+            this.tpgPoints.Location = new System.Drawing.Point(4, 22);
+            this.tpgPoints.Name = "tpgPoints";
+            this.tpgPoints.Padding = new System.Windows.Forms.Padding(3);
+            this.tpgPoints.Size = new System.Drawing.Size(891, 490);
+            this.tpgPoints.TabIndex = 2;
+            this.tpgPoints.Text = "Points";
+            this.tpgPoints.UseVisualStyleBackColor = true;
+            // 
+            // tbPointsPerWeekOutOfArea
+            // 
+            this.tbPointsPerWeekOutOfArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPointsPerWeekOutOfArea.Location = new System.Drawing.Point(52, 100);
+            this.tbPointsPerWeekOutOfArea.Name = "tbPointsPerWeekOutOfArea";
+            this.tbPointsPerWeekOutOfArea.Size = new System.Drawing.Size(61, 23);
+            this.tbPointsPerWeekOutOfArea.TabIndex = 84;
+            this.tbPointsPerWeekOutOfArea.Tag = "PointsPerWeekOutOfArea";
+            this.tbPointsPerWeekOutOfArea.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPointsPerWeekOutOfArea.Enter += new System.EventHandler(this.textboxes_Enter);
+            this.tbPointsPerWeekOutOfArea.Leave += new System.EventHandler(this.textboxes_Leave);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(115, 103);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(366, 16);
+            this.label14.TabIndex = 85;
+            this.label14.Text = "Base Points Allocated Per Week for Out of Area Households";
+            // 
+            // tbPointsPerFamMbr
+            // 
+            this.tbPointsPerFamMbr.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPointsPerFamMbr.Location = new System.Drawing.Point(51, 72);
+            this.tbPointsPerFamMbr.Name = "tbPointsPerFamMbr";
+            this.tbPointsPerFamMbr.Size = new System.Drawing.Size(61, 23);
+            this.tbPointsPerFamMbr.TabIndex = 82;
+            this.tbPointsPerFamMbr.Tag = "PointsPerFamMbr";
+            this.tbPointsPerFamMbr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPointsPerFamMbr.Enter += new System.EventHandler(this.textboxes_Enter);
+            this.tbPointsPerFamMbr.Leave += new System.EventHandler(this.textboxes_Leave);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(115, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(228, 16);
+            this.label13.TabIndex = 83;
+            this.label13.Text = "Points Per Additional Family Member";
+            // 
+            // tbPointsPerWeek
+            // 
+            this.tbPointsPerWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPointsPerWeek.Location = new System.Drawing.Point(51, 45);
+            this.tbPointsPerWeek.Name = "tbPointsPerWeek";
+            this.tbPointsPerWeek.Size = new System.Drawing.Size(61, 23);
+            this.tbPointsPerWeek.TabIndex = 80;
+            this.tbPointsPerWeek.Tag = "PointsPerWeek";
+            this.tbPointsPerWeek.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPointsPerWeek.Enter += new System.EventHandler(this.textboxes_Enter);
+            this.tbPointsPerWeek.Leave += new System.EventHandler(this.textboxes_Leave);
+            // 
+            // lblPointsAllowed
+            // 
+            this.lblPointsAllowed.AutoSize = true;
+            this.lblPointsAllowed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPointsAllowed.Location = new System.Drawing.Point(114, 48);
+            this.lblPointsAllowed.Name = "lblPointsAllowed";
+            this.lblPointsAllowed.Size = new System.Drawing.Size(203, 16);
+            this.lblPointsAllowed.TabIndex = 81;
+            this.lblPointsAllowed.Text = "Base Points Allocated Per Week";
+            // 
+            // chkEnablePointsTracking
+            // 
+            this.chkEnablePointsTracking.AutoSize = true;
+            this.chkEnablePointsTracking.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEnablePointsTracking.Location = new System.Drawing.Point(28, 16);
+            this.chkEnablePointsTracking.Margin = new System.Windows.Forms.Padding(2);
+            this.chkEnablePointsTracking.Name = "chkEnablePointsTracking";
+            this.chkEnablePointsTracking.Size = new System.Drawing.Size(173, 21);
+            this.chkEnablePointsTracking.TabIndex = 79;
+            this.chkEnablePointsTracking.Tag = "enablepointstracking";
+            this.chkEnablePointsTracking.Text = "Enable Points Tracking";
+            this.chkEnablePointsTracking.UseVisualStyleBackColor = true;
+            this.chkEnablePointsTracking.CheckedChanged += new System.EventHandler(this.checkBoxes_CheckedChanged);
+            this.chkEnablePointsTracking.Enter += new System.EventHandler(this.checkBoxes_Enter);
+            // 
+            // tbMaxPointsPerWeek
+            // 
+            this.tbMaxPointsPerWeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMaxPointsPerWeek.Location = new System.Drawing.Point(52, 132);
+            this.tbMaxPointsPerWeek.Name = "tbMaxPointsPerWeek";
+            this.tbMaxPointsPerWeek.Size = new System.Drawing.Size(61, 23);
+            this.tbMaxPointsPerWeek.TabIndex = 86;
+            this.tbMaxPointsPerWeek.Tag = "MaxPointsPerWeek";
+            this.tbMaxPointsPerWeek.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbMaxPointsPerWeek.Enter += new System.EventHandler(this.textboxes_Enter);
+            this.tbMaxPointsPerWeek.Leave += new System.EventHandler(this.textboxes_Leave);
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(115, 135);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(228, 16);
+            this.label36.TabIndex = 87;
+            this.label36.Text = "Maximum Points Allocated Per Week";
             // 
             // EditPreferencesForm
             // 
@@ -3453,8 +3491,8 @@
             this.chkBackPack.PerformLayout();
             this.tpFeatures.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tpgGeneral.ResumeLayout(false);
+            this.tpgGeneral.PerformLayout();
             this.grpViewGRBy.ResumeLayout(false);
             this.grpViewGRBy.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -3463,8 +3501,8 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tpgFoodSvcs.ResumeLayout(false);
+            this.tpgFoodSvcs.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAlertMinimumMonths)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAlertMinimumDays)).EndInit();
             this.grpbxOverRideLevel.ResumeLayout(false);
@@ -3484,6 +3522,8 @@
             this.tpDonorPercent.ResumeLayout(false);
             this.tpDonorPercent.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.tpgPoints.ResumeLayout(false);
+            this.tpgPoints.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3624,7 +3664,7 @@
         private System.Windows.Forms.Label lblAgencyNbr;
         private System.Windows.Forms.CheckBox chkEnableCDBGReporting;
         private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpgGeneral;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox chkEnableIDFlds;
         private System.Windows.Forms.CheckBox chkEnableWorksInArea;
@@ -3649,7 +3689,7 @@
         private System.Windows.Forms.CheckBox chkAutoGiveService;
         private System.Windows.Forms.CheckBox chkSearchFamilyMember;
         private System.Windows.Forms.CheckBox chkEnableBarcodePrompts;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tpgFoodSvcs;
         private System.Windows.Forms.GroupBox grpbxOverRideLevel;
         private System.Windows.Forms.RadioButton rdoOverRideAdmin;
         private System.Windows.Forms.RadioButton rdoOverRideInatkeAdmin;
@@ -3672,11 +3712,6 @@
         private System.Windows.Forms.CheckBox chkEnableBackPack;
         private System.Windows.Forms.CheckBox chkEnableCSFP;
         private System.Windows.Forms.CheckBox chkEnableFastTrack;
-        private System.Windows.Forms.TextBox tbPointsPerFamMbr;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox tbPointsPerWeek;
-        private System.Windows.Forms.Label lblPointsAllowed;
-        private System.Windows.Forms.CheckBox chkEnablePointsTracking;
         private System.Windows.Forms.GroupBox grpViewGRBy;
         private System.Windows.Forms.RadioButton rdoViewByFullWeek;
         private System.Windows.Forms.RadioButton rdoViewByCalendarWeek;
@@ -3685,8 +3720,6 @@
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblToolTip;
-        private System.Windows.Forms.TextBox tbPointsPerWeekOutOfArea;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox cboSvcMnuTyp;
         private System.Windows.Forms.ComboBox cboFMIDType;
@@ -3710,5 +3743,15 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.NumericUpDown nudAlertMinimumMonths;
         private System.Windows.Forms.CheckBox chkIncludeLbsOnFoodSvcList;
+        private System.Windows.Forms.TabPage tpgPoints;
+        private System.Windows.Forms.TextBox tbMaxPointsPerWeek;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox tbPointsPerWeekOutOfArea;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tbPointsPerFamMbr;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tbPointsPerWeek;
+        private System.Windows.Forms.Label lblPointsAllowed;
+        private System.Windows.Forms.CheckBox chkEnablePointsTracking;
     }
 }

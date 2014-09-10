@@ -560,7 +560,7 @@ namespace ClientcardFB3
                 {
                     if (sOriClause != "")
                         sRetVal = " AND ";
-                    sRetVal += nameTbl + "Inactive = 1";
+                    sRetVal += nameTbl + ".Inactive = 1";
                 }
             }
             return sRetVal;

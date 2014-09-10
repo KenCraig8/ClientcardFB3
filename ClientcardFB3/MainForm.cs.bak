@@ -1014,7 +1014,7 @@ namespace ClientcardFB3
 
         private void mnuTools_GroceryRescueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FoodReceiptsGroceryRescueForm frmTemp = new FoodReceiptsGroceryRescueForm(-1, 6, true);
+            FoodReceiptsForm frmTemp = new FoodReceiptsForm(-1, 6, true);
             frmTemp.Show();
         }
 
@@ -1162,11 +1162,6 @@ namespace ClientcardFB3
                 {
                     tbAlert.SelectionColor = Color.Green;
                     tbAlert.SelectedText = sBackPackList;
-                }
-                if (clsClient.clsHH.SchSupplyFlag == true)
-                {
-                    tbAlert.SelectionColor = Color.Black;
-                    tbAlert.SelectedText = "Registered For School Supplies" + Environment.NewLine;
                 }
                 rtAlert = tbAlert.Rtf;
                 mergeRTF(tbAlert,rtAlert, clsClient.clsHH.AlertText);
@@ -2185,6 +2180,11 @@ namespace ClientcardFB3
             frmYearlyCalendar.ShowDialog();
         }
 
+        private void mnuClient_AddHH_Click(object sender, EventArgs e)
+        {
+            addHousehold(0);
+        }
+
         private void mnuClient_BeginEditClient_Click(object sender, EventArgs e)
         {
             changeEditMode(true);
@@ -2223,6 +2223,23 @@ namespace ClientcardFB3
                 frmDeleteHH.Close();
         }
 
+        private void mnuClient_Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void mnuClient_FindClient_Click(object sender, EventArgs e)
+        {
+            frmFindClient.Visible = true;
+        }
+
+        private void mnuClient_LogOut_Click(object sender, EventArgs e)
+        {
+            logout = true;
+            frmLogIn.resetForm();
+            this.Close();
+        }
+
         private void mnuClient_PrintForm_Click(object sender, EventArgs e)
         {
             CaptureAndPrintForm();
@@ -2231,44 +2248,6 @@ namespace ClientcardFB3
         private void mnuClient_SaveHHChanges_Click(object sender, EventArgs e)
         {
             saveClientRecord();
-        }
-
-        private void mnuClient_SchSupply_Click(object sender, EventArgs e)
-        {
-            EditSchoolSupplyPickupTicket frmSchSupply = new EditSchoolSupplyPickupTicket(clsClient);
-            frmSchSupply.ShowDialog();
-        }
-
-        private void mnuFile_FindClient_Click(object sender, EventArgs e)
-        {
-            frmFindClient.Visible = true;
-        }
-
-        private void mnuFile_AddHH_Click(object sender, EventArgs e)
-        {
-            addHousehold(0);
-        }
-
-        private void mnuFile_PrintAllClientCards_Click(object sender, EventArgs e)
-        {
-            int curHHID = clsClient.clsHH.ID;
-            printAllClientCards();
-            if (curHHID != clsClient.clsHH.ID)
-            {
-                setHousehold(curHHID, 0);
-            }
-        }
-
-        private void mnuFile_LogOut_Click(object sender, EventArgs e)
-        {
-            logout = true;
-            frmLogIn.resetForm();
-            this.Close();
-        }
-
-        private void mnuFile_Exit_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void mnuHelp_About_Click(object sender, EventArgs e)
@@ -2603,8 +2582,8 @@ namespace ClientcardFB3
             tsbVouchers.Visible = mnuTools_MaintainVoucherItems.Visible = CCFBPrefs.EnableVouchers;
             //EnablePrint Clientcard
             tsbPrintClientcard.Visible = mnuClient_PrintClientCard.Visible = CCFBPrefs.EnablePrintClientCard;
-            mnuFile_PrintAllClientCards.Visible = CCFBPrefs.EnablePrintClientCard
-                        && CCFBGlobal.currentUser_PermissionLevel >= (Int32.Parse(mnuFile_PrintAllClientCards.Tag.ToString()));
+            mnuClient_PrintAllClientcards.Visible = CCFBPrefs.EnablePrintClientCard
+                        && CCFBGlobal.currentUser_PermissionLevel >= (Int32.Parse(mnuClient_PrintAllClientcards.Tag.ToString()));
             //Enable Cash Donations
             mnuTools_CashDonations.Visible = CCFBPrefs.EnableCashDonations;
             //Enable Food Donations
@@ -3454,6 +3433,18 @@ namespace ClientcardFB3
             allowNewServiceOverRide = false;
         }
 
+        private void mnuClient_PrintClientCard_Click(object sender, EventArgs e)
+        {
+            if (CCFBPrefs.CaptureSignature == true)
+            {
+                printFamilyCard2();
+            }
+            else
+            {
+                printFamilyCard();
+            }
+        }
+
         private void tsmiResetPOAFlag_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("WARNING: You Are About To Reset All Need Proof Of Address Flags To True.  Do You Want To Continue?",
@@ -3482,20 +3473,15 @@ namespace ClientcardFB3
 
         private void tsmiResetInactiveFlag_Click(object sender, EventArgs e)
         {
-            MarkHouseholdInactive frmMarkInactive = new MarkHouseholdInactive();
-            frmMarkInactive.ShowDialog(this);
-            if (frmMarkInactive.NeedToRefresh == true)
+            if (MessageBox.Show("WARNING: You Are About To Set All Households Who Have Not Had A Transaction For The Last Year As Inactive. Do You Want To Continue?",
+                "WARNING: Inactive Flags About To Change", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
+                System.Windows.Forms.DialogResult.Yes)
             {
+                CCFBGlobal.executeQuery("Update Household Set Inactive = 1 Where LatestService < '" 
+                    + DateTime.Today.AddYears(-1).ToShortDateString() + "'");
+            }
             frmFindClient.loadList();
             frmFindClient.SetIdAndClose();
-        }
-            ////////if (MessageBox.Show("WARNING: You Are About To Set All Households Who Have Not Had A Transaction For The Last Year As Inactive. Do You Want To Continue?",
-            ////////    "WARNING: Inactive Flags About To Change", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
-            ////////    System.Windows.Forms.DialogResult.Yes)
-            ////////{
-            ////////    CCFBGlobal.executeQuery("Update Household Set Inactive = 1 Where LatestService < '" 
-            ////////        + DateTime.Today.AddYears(-1).ToShortDateString() + "'");
-            ////////}
         }
 
         private void cboHD_SelectionChangeCommitted(object sender, EventArgs e)
@@ -3578,8 +3564,7 @@ namespace ClientcardFB3
         private void mnuHD_Planner_Click(object sender, EventArgs e)
         {
             HDPlannerForm frmHDPlanner = new HDPlannerForm(this);
-            frmHDPlanner.ShowDialog();
-            CCFBGlobal.dtPopulateCombo(cboHDRoute, "SELECT * FROM HDRoutes ORDER BY ID", "RouteTitle", "ID", "No Routes Available", conn);
+            frmHDPlanner.Show();
             
         }
 
@@ -3599,6 +3584,12 @@ namespace ClientcardFB3
         private void mnuHD_Buildings_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void mnuHD_Routes_Click(object sender, EventArgs e)
+        {
+            HDRoutesForm frmHDRoutes = new HDRoutesForm();
+            frmHDRoutes.Show();
         }
 
         private void pbxEditAlert_Click(object sender, EventArgs e)
@@ -3684,6 +3675,16 @@ namespace ClientcardFB3
         private void mnuClient_NewService_Click(object sender, EventArgs e)
         {
             CreateNewFoodService();
+        }
+
+        private void mnuClient_PrintAllClientCards_Click(object sender, EventArgs e)
+        {
+            int curHHID = clsClient.clsHH.ID;
+            printAllClientCards();
+            if (curHHID != clsClient.clsHH.ID)
+            {
+                setHousehold(curHHID, 0);
+            }
         }
 
         private void printAllClientCards()
@@ -3880,30 +3881,6 @@ namespace ClientcardFB3
             else
                 MessageBox.Show("ERROR: " + templatePath + " Not Found", "Template Not Found",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void freshAllianceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FreshAllianceForm fa = new FreshAllianceForm(-1, 6, true);
-            fa.Show();
-        }
-
-        private void mnuClient_PrintClientCard_Click(object sender, EventArgs e)
-        {
-            if (CCFBPrefs.CaptureSignature == true)
-            {
-                printFamilyCard2();
-            }
-            else
-            {
-                printFamilyCard();
-            }
-        }
-
-        private void mnuReports_CustomQuery_Click(object sender, EventArgs e)
-        {
-            TestExportToCSV frmTest = new TestExportToCSV();
-            frmTest.ShowDialog();
         }
     }
 }

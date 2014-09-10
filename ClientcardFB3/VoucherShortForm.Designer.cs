@@ -65,6 +65,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlEditVLog = new System.Windows.Forms.Panel();
+            this.tbTrxDate = new System.Windows.Forms.TextBox();
             this.tbVoucherType = new System.Windows.Forms.TextBox();
             this.lblSource = new System.Windows.Forms.Label();
             this.cboSource = new System.Windows.Forms.ComboBox();
@@ -93,7 +94,6 @@
             this.tbfAdults = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.lblVoucherType = new System.Windows.Forms.Label();
-            this.dtpTrxDate = new System.Windows.Forms.DateTimePicker();
             this.lblTrxDate = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tbVoucherId = new System.Windows.Forms.TextBox();
@@ -103,13 +103,13 @@
             this.tbQty = new System.Windows.Forms.TextBox();
             this.btnPost = new System.Windows.Forms.Button();
             this.pnlBtns = new System.Windows.Forms.Panel();
+            this.dtpTrxDate = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuHHName = new System.Windows.Forms.ToolStripTextBox();
             this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowLeft = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowRight = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowBoth = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbTrxDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.spltrCtrls)).BeginInit();
             this.spltrCtrls.Panel1.SuspendLayout();
             this.spltrCtrls.Panel2.SuspendLayout();
@@ -132,6 +132,7 @@
             // btnTemp
             // 
             this.btnTemp.BackColor = System.Drawing.Color.LightCyan;
+            this.btnTemp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTemp.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTemp.Location = new System.Drawing.Point(256, 4);
             this.btnTemp.Name = "btnTemp";
@@ -535,6 +536,20 @@
             this.pnlEditVLog.Size = new System.Drawing.Size(569, 343);
             this.pnlEditVLog.TabIndex = 18;
             // 
+            // tbTrxDate
+            // 
+            this.tbTrxDate.BackColor = System.Drawing.Color.LightYellow;
+            this.tbTrxDate.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTrxDate.ForeColor = System.Drawing.Color.Blue;
+            this.tbTrxDate.Location = new System.Drawing.Point(92, 30);
+            this.tbTrxDate.Name = "tbTrxDate";
+            this.tbTrxDate.Size = new System.Drawing.Size(319, 25);
+            this.tbTrxDate.TabIndex = 191;
+            this.tbTrxDate.TabStop = false;
+            this.tbTrxDate.Tag = "TrxDate";
+            this.tbTrxDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbTrxDate.WordWrap = false;
+            // 
             // tbVoucherType
             // 
             this.tbVoucherType.BackColor = System.Drawing.Color.LightYellow;
@@ -886,16 +901,6 @@
             this.lblVoucherType.Text = "&Voucher Type:";
             this.lblVoucherType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dtpTrxDate
-            // 
-            this.dtpTrxDate.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTrxDate.Location = new System.Drawing.Point(514, 3);
-            this.dtpTrxDate.Name = "dtpTrxDate";
-            this.dtpTrxDate.Size = new System.Drawing.Size(315, 24);
-            this.dtpTrxDate.TabIndex = 17;
-            this.dtpTrxDate.Value = new System.DateTime(2013, 12, 4, 0, 0, 0, 0);
-            this.dtpTrxDate.ValueChanged += new System.EventHandler(this.dtpTrxDate_ValueChanged);
-            // 
             // lblTrxDate
             // 
             this.lblTrxDate.Location = new System.Drawing.Point(2, 35);
@@ -991,6 +996,16 @@
             this.pnlBtns.Size = new System.Drawing.Size(376, 80);
             this.pnlBtns.TabIndex = 0;
             // 
+            // dtpTrxDate
+            // 
+            this.dtpTrxDate.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTrxDate.Location = new System.Drawing.Point(514, 3);
+            this.dtpTrxDate.Name = "dtpTrxDate";
+            this.dtpTrxDate.Size = new System.Drawing.Size(315, 24);
+            this.dtpTrxDate.TabIndex = 17;
+            this.dtpTrxDate.Value = new System.DateTime(2013, 12, 4, 0, 0, 0, 0);
+            this.dtpTrxDate.ValueChanged += new System.EventHandler(this.dtpTrxDate_ValueChanged);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1044,20 +1059,6 @@
             this.mnuShowBoth.Tag = "0";
             this.mnuShowBoth.Text = "Both";
             this.mnuShowBoth.Click += new System.EventHandler(this.mnuShow_Click);
-            // 
-            // tbTrxDate
-            // 
-            this.tbTrxDate.BackColor = System.Drawing.Color.LightYellow;
-            this.tbTrxDate.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTrxDate.ForeColor = System.Drawing.Color.Blue;
-            this.tbTrxDate.Location = new System.Drawing.Point(92, 30);
-            this.tbTrxDate.Name = "tbTrxDate";
-            this.tbTrxDate.Size = new System.Drawing.Size(319, 25);
-            this.tbTrxDate.TabIndex = 191;
-            this.tbTrxDate.TabStop = false;
-            this.tbTrxDate.Tag = "TrxDate";
-            this.tbTrxDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbTrxDate.WordWrap = false;
             // 
             // VoucherShortForm
             // 

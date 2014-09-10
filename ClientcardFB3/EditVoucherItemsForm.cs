@@ -36,8 +36,8 @@ namespace ClientcardFB3
             try
             {
                 openConnection();
-                command = new SqlCommand("Insert Into VoucherItems (Description, VoucherType, Inactive, DefaultAmount, MaxAmount) "
-                    + "Values('NEW ITEM' , " + cboVoucherType.SelectedValue + ", 0, 0, 0)", conn);
+                command = new SqlCommand("Insert Into VoucherItems (Description, VoucherType, Inactive, DefaultAmount, MaxAmount, DisplayCol, DisplayRow, DisplayBackColor) "
+                    + "Values('NEW ITEM' , " + cboVoucherType.SelectedValue + ", 0, 0, 0, 0, 0, 0)", conn);
                 command.ExecuteNonQuery();
                 closeConnection();
                 loadList(lvVouchers.Items.Count);
@@ -104,6 +104,9 @@ namespace ClientcardFB3
                 ID = Convert.ToInt32(lvVouchers.SelectedItems[0].SubItems[2].Text);
                 tbDefaultAmount.Text = lvVouchers.SelectedItems[0].SubItems[4].Text;
                 tbMaxAmount.Text = lvVouchers.SelectedItems[0].SubItems[5].Text;
+                cboCol.SelectedIndex = Convert.ToInt32(lvVouchers.SelectedItems[0].SubItems[6].Text);
+                cboRow.SelectedIndex = Convert.ToInt32(lvVouchers.SelectedItems[0].SubItems[7].Text);
+                cboBackColor.SelectedIndex = Convert.ToInt32(lvVouchers.SelectedItems[0].SubItems[8].Text);
                 loadingData = false;
             }
             setControlsState(lvVouchers.Items.Count > 0);
@@ -111,24 +114,21 @@ namespace ClientcardFB3
 
         private void setControlsState(bool hasRows)
         {
-            if (hasRows == true)
+            bool isEnabled = (hasRows == true);
+            
+            btnDelete.Enabled = isEnabled;
+            tbMaxAmount.Enabled = isEnabled;
+            cboVoucherType.Enabled = isEnabled;
+            tbDefaultAmount.Enabled = isEnabled;
+            tbDesc.Enabled = isEnabled;
+            cboCol.Enabled = isEnabled;
+            cboRow.Enabled = isEnabled;
+
+            if (isEnabled == false)
             {
-                btnDelete.Enabled = true;
-                tbMaxAmount.Enabled = true;
-                cboVoucherType.Enabled = true;
-                tbDefaultAmount.Enabled = true;
-                tbDesc.Enabled = true;
-            }
-            else
-            {
-                btnDelete.Enabled = false;
-                tbDefaultAmount.Text = "";
-                tbDefaultAmount.Enabled = false;
                 tbDesc.Text = "";
-                tbDesc.Enabled = false;
                 tbMaxAmount.Text = "";
-                tbMaxAmount.Enabled = false;
-                cboVoucherType.Enabled = false;
+                tbDefaultAmount.Text = "";
             }
         }
 
@@ -149,7 +149,7 @@ namespace ClientcardFB3
                     while (reader.Read())
                     {
                         lvi = new ListViewItem(reader.GetValue(1).ToString());
-                        lvi.SubItems.Add(reader.GetValue(6).ToString());
+                        lvi.SubItems.Add(reader.GetValue(9).ToString());
                         lvi.SubItems.Add(reader.GetValue(0).ToString());
                         lvi.SubItems.Add(reader.GetValue(2).ToString());
 
@@ -165,6 +165,9 @@ namespace ClientcardFB3
                         }
                         lvi.SubItems.Add(dfltAmnt);
                         lvi.SubItems.Add(maxAmnt);
+                        lvi.SubItems.Add(reader.GetValue(6).ToString());
+                        lvi.SubItems.Add(reader.GetValue(7).ToString());
+                        lvi.SubItems.Add(reader.GetValue(8).ToString());
                         lvVouchers.Items.Add(lvi);
                     }
                 }
@@ -206,7 +209,7 @@ namespace ClientcardFB3
             fillForm();
         }
 
-        private void cboVoucherType_SelectedValueChanged(object sender, EventArgs e)
+        private void cbo_SelectedValueChanged(object sender, EventArgs e)
         {
             update();
         }
@@ -219,8 +222,10 @@ namespace ClientcardFB3
                 {
                     openConnection();
 
-                    command = new SqlCommand("Update VoucherItems set Description ='" + tbDesc.Text + "', VoucherType=" + cboVoucherType.SelectedValue
-                    + ", DefaultAmount= " + tbDefaultAmount.Text + ", MaxAmount=" + tbMaxAmount.Text + " where UID = " + ID.ToString(), conn);
+                    command = new SqlCommand("Update VoucherItems set Description ='" + tbDesc.Text.TrimEnd() + "', VoucherType=" + cboVoucherType.SelectedValue
+                    + ", DefaultAmount= " + tbDefaultAmount.Text + ", MaxAmount=" + tbMaxAmount.Text
+                    + ", DisplayCol=" + cboCol.SelectedIndex.ToString() + ", DisplayRow=" + cboRow.SelectedIndex.ToString() + ", DisplayBackColor=" + cboBackColor.SelectedIndex.ToString()
+                    + " WHERE UID = " + ID.ToString(), conn);
                     command.ExecuteNonQuery();
 
                     closeConnection();
@@ -245,6 +250,11 @@ namespace ClientcardFB3
             TextBox tb = (TextBox)sender;
             if (tbOriginalValue != tb.Text)
                 update();
+        }
+
+        private void cbo_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            update();
         }
     }
 }

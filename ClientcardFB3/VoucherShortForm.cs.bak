@@ -160,7 +160,7 @@ namespace ClientcardFB3
                         lvwVItms.Items.Add(lvItem);
                         if (pnlBtns.Controls.Count < i)
                         {
-                            addVoucherButton(iType, lvItem, reader.GetInt32(8), reader.GetInt32(7), reader.GetInt32(9));
+                            addVoucherButton(iType, lvItem, reader.GetInt32(8), reader.GetInt32(7));
                         }
                     }
                 }
@@ -186,13 +186,13 @@ namespace ClientcardFB3
             return Convert.ToInt32(vAmt).ToString();
         }
 
-        private void addVoucherButton(int iType, ListViewItem lvi, int iRow, int iCol, int backcolor)
+        private void addVoucherButton(int iType, ListViewItem lvi, int iRow, int iCol)
         {
             Button btn = new Button();
             btn.Height = btnTemp.Height;
             btn.Width = btnTemp.Width;
             btn.Font = btnTemp.Font;
-            switch (backcolor)
+            switch (iType)
             {
                 case 0:
                     btn.BackColor = Color.LightGreen;

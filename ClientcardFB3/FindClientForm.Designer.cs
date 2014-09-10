@@ -31,18 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,6 +43,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbID = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbAddress = new System.Windows.Forms.TextBox();
@@ -69,6 +69,20 @@
             this.label20 = new System.Windows.Forms.Label();
             this.tbLastService = new System.Windows.Forms.TextBox();
             this.dgvClientList = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAptNbr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmZip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmHHID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmHeadHH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmClientType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLatestService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHHName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNameFL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNameLF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsFindClient = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiExportToExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -95,22 +109,20 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAptNbr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmZip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHHID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHeadHH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmClientType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmLatestService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHHName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameFL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNameLF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblLast = new System.Windows.Forms.Label();
+            this.dtpLast = new System.Windows.Forms.DateTimePicker();
+            this.lblFirst = new System.Windows.Forms.Label();
+            this.dtpFirst = new System.Windows.Forms.DateTimePicker();
+            this.cboDateRangeField = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.chkHeahHouseOnly = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientList)).BeginInit();
             this.cmsFindClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbID
@@ -118,7 +130,7 @@
             this.tbID.BackColor = System.Drawing.Color.Beige;
             this.tbID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tbID.ForeColor = System.Drawing.Color.DarkBlue;
-            this.tbID.Location = new System.Drawing.Point(42, 6);
+            this.tbID.Location = new System.Drawing.Point(45, 12);
             this.tbID.Margin = new System.Windows.Forms.Padding(4);
             this.tbID.MaxLength = 10;
             this.tbID.Name = "tbID";
@@ -136,7 +148,7 @@
             this.tbName.BackColor = System.Drawing.Color.Beige;
             this.tbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tbName.ForeColor = System.Drawing.Color.DarkBlue;
-            this.tbName.Location = new System.Drawing.Point(121, 6);
+            this.tbName.Location = new System.Drawing.Point(124, 12);
             this.tbName.Margin = new System.Windows.Forms.Padding(4);
             this.tbName.Name = "tbName";
             this.tbName.ReadOnly = true;
@@ -150,7 +162,7 @@
             this.tbAddress.BackColor = System.Drawing.Color.Beige;
             this.tbAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tbAddress.ForeColor = System.Drawing.Color.DarkBlue;
-            this.tbAddress.Location = new System.Drawing.Point(121, 35);
+            this.tbAddress.Location = new System.Drawing.Point(124, 41);
             this.tbAddress.Margin = new System.Windows.Forms.Padding(4);
             this.tbAddress.Multiline = true;
             this.tbAddress.Name = "tbAddress";
@@ -165,7 +177,7 @@
             // 
             this.tbFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.tbFindName.HideSelection = false;
-            this.tbFindName.Location = new System.Drawing.Point(16, 113);
+            this.tbFindName.Location = new System.Drawing.Point(19, 197);
             this.tbFindName.Margin = new System.Windows.Forms.Padding(4);
             this.tbFindName.Name = "tbFindName";
             this.tbFindName.Size = new System.Drawing.Size(259, 24);
@@ -177,7 +189,7 @@
             // btnSelect
             // 
             this.btnSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnSelect.Location = new System.Drawing.Point(630, 6);
+            this.btnSelect.Location = new System.Drawing.Point(633, 12);
             this.btnSelect.Margin = new System.Windows.Forms.Padding(4);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(115, 32);
@@ -190,7 +202,7 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCancel.Location = new System.Drawing.Point(859, 6);
+            this.btnCancel.Location = new System.Drawing.Point(862, 12);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(134, 32);
@@ -202,7 +214,7 @@
             // btnAddNewClient
             // 
             this.btnAddNewClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnAddNewClient.Location = new System.Drawing.Point(859, 40);
+            this.btnAddNewClient.Location = new System.Drawing.Point(862, 46);
             this.btnAddNewClient.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddNewClient.Name = "btnAddNewClient";
             this.btnAddNewClient.Size = new System.Drawing.Size(134, 32);
@@ -215,7 +227,7 @@
             // 
             this.lblFilterBy.AutoSize = true;
             this.lblFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilterBy.Location = new System.Drawing.Point(534, 89);
+            this.lblFilterBy.Location = new System.Drawing.Point(311, 198);
             this.lblFilterBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFilterBy.Name = "lblFilterBy";
             this.lblFilterBy.Size = new System.Drawing.Size(79, 17);
@@ -226,7 +238,7 @@
             // chkIncludeInactive
             // 
             this.chkIncludeInactive.AutoSize = true;
-            this.chkIncludeInactive.Location = new System.Drawing.Point(866, 80);
+            this.chkIncludeInactive.Location = new System.Drawing.Point(609, 147);
             this.chkIncludeInactive.Margin = new System.Windows.Forms.Padding(4);
             this.chkIncludeInactive.Name = "chkIncludeInactive";
             this.chkIncludeInactive.Size = new System.Drawing.Size(102, 17);
@@ -240,7 +252,7 @@
             this.cboFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboFilter.FormattingEnabled = true;
-            this.cboFilter.Location = new System.Drawing.Point(537, 111);
+            this.cboFilter.Location = new System.Drawing.Point(396, 195);
             this.cboFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cboFilter.Name = "cboFilter";
             this.cboFilter.Size = new System.Drawing.Size(191, 23);
@@ -250,7 +262,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(765, 6);
+            this.btnRefresh.Location = new System.Drawing.Point(861, 96);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(86, 32);
@@ -262,7 +274,7 @@
             // label20
             // 
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(510, 39);
+            this.label20.Location = new System.Drawing.Point(513, 45);
             this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(114, 18);
@@ -275,7 +287,7 @@
             this.tbLastService.BackColor = System.Drawing.Color.Beige;
             this.tbLastService.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLastService.ForeColor = System.Drawing.Color.DarkBlue;
-            this.tbLastService.Location = new System.Drawing.Point(510, 56);
+            this.tbLastService.Location = new System.Drawing.Point(513, 62);
             this.tbLastService.Margin = new System.Windows.Forms.Padding(5);
             this.tbLastService.Name = "tbLastService";
             this.tbLastService.Size = new System.Drawing.Size(114, 23);
@@ -324,7 +336,8 @@
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvClientList.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dgvClientList.Location = new System.Drawing.Point(2, 150);
+            this.dgvClientList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientList.Location = new System.Drawing.Point(0, 0);
             this.dgvClientList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvClientList.MultiSelect = false;
             this.dgvClientList.Name = "dgvClientList";
@@ -332,12 +345,147 @@
             this.dgvClientList.RowHeadersWidth = 20;
             this.dgvClientList.RowTemplate.Height = 24;
             this.dgvClientList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientList.Size = new System.Drawing.Size(998, 573);
+            this.dgvClientList.Size = new System.Drawing.Size(1006, 492);
             this.dgvClientList.TabIndex = 61;
             this.dgvClientList.Tag = "";
             this.dgvClientList.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClients_RowEnter);
             this.dgvClientList.DoubleClick += new System.EventHandler(this.dataGridViewClients_DoubleClick);
             this.dgvClientList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvClientList_KeyDown);
+            // 
+            // colName
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.colName.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colName.HeaderText = "Client Name";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colName.Width = 200;
+            // 
+            // clmAddress
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmAddress.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmAddress.HeaderText = "Address";
+            this.clmAddress.Name = "clmAddress";
+            this.clmAddress.ReadOnly = true;
+            this.clmAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmAddress.Width = 140;
+            // 
+            // clmAptNbr
+            // 
+            this.clmAptNbr.HeaderText = "Apt Nbr.";
+            this.clmAptNbr.Name = "clmAptNbr";
+            this.clmAptNbr.ReadOnly = true;
+            this.clmAptNbr.Width = 60;
+            // 
+            // clmCity
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmCity.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clmCity.HeaderText = "City";
+            this.clmCity.Name = "clmCity";
+            this.clmCity.ReadOnly = true;
+            this.clmCity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmZip
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmZip.DefaultCellStyle = dataGridViewCellStyle5;
+            this.clmZip.HeaderText = "Zipcode";
+            this.clmZip.Name = "clmZip";
+            this.clmZip.ReadOnly = true;
+            this.clmZip.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmZip.Width = 70;
+            // 
+            // clmHHID
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.clmHHID.DefaultCellStyle = dataGridViewCellStyle6;
+            this.clmHHID.HeaderText = "HHID";
+            this.clmHHID.Name = "clmHHID";
+            this.clmHHID.ReadOnly = true;
+            this.clmHHID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmHHID.Width = 70;
+            // 
+            // clmPhone
+            // 
+            this.clmPhone.HeaderText = "Phone";
+            this.clmPhone.Name = "clmPhone";
+            this.clmPhone.ReadOnly = true;
+            this.clmPhone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmHeadHH
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmHeadHH.DefaultCellStyle = dataGridViewCellStyle7;
+            this.clmHeadHH.HeaderText = "HeadHH";
+            this.clmHeadHH.Name = "clmHeadHH";
+            this.clmHeadHH.ReadOnly = true;
+            this.clmHeadHH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmHeadHH.Width = 70;
+            // 
+            // clmClientType
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmClientType.DefaultCellStyle = dataGridViewCellStyle8;
+            this.clmClientType.HeaderText = "Client Category";
+            this.clmClientType.Name = "clmClientType";
+            this.clmClientType.ReadOnly = true;
+            // 
+            // clmLatestService
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Format = "d";
+            dataGridViewCellStyle9.NullValue = null;
+            this.clmLatestService.DefaultCellStyle = dataGridViewCellStyle9;
+            this.clmLatestService.HeaderText = "Last Service";
+            this.clmLatestService.Name = "clmLatestService";
+            this.clmLatestService.ReadOnly = true;
+            this.clmLatestService.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmID
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.clmID.DefaultCellStyle = dataGridViewCellStyle10;
+            this.clmID.HeaderText = "MemberID";
+            this.clmID.Name = "clmID";
+            this.clmID.ReadOnly = true;
+            this.clmID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmID.Width = 80;
+            // 
+            // colHHName
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.colHHName.DefaultCellStyle = dataGridViewCellStyle11;
+            this.colHHName.HeaderText = "HH Name";
+            this.colHHName.Name = "colHHName";
+            this.colHHName.ReadOnly = true;
+            this.colHHName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colNameFL
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.colNameFL.DefaultCellStyle = dataGridViewCellStyle12;
+            this.colNameFL.HeaderText = "NameFL";
+            this.colNameFL.Name = "colNameFL";
+            this.colNameFL.ReadOnly = true;
+            this.colNameFL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colNameFL.Visible = false;
+            // 
+            // colNameLF
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.colNameLF.DefaultCellStyle = dataGridViewCellStyle13;
+            this.colNameLF.HeaderText = "NameLF";
+            this.colNameLF.Name = "colNameLF";
+            this.colNameLF.ReadOnly = true;
+            this.colNameLF.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colNameLF.Visible = false;
             // 
             // cmsFindClient
             // 
@@ -356,7 +504,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(16, 111);
+            this.progressBar1.Location = new System.Drawing.Point(19, 193);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(271, 28);
@@ -369,7 +517,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(306, 90);
+            this.label1.Location = new System.Drawing.Point(48, 144);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
@@ -397,7 +545,7 @@
             "Household ID",
             "Client Category",
             "Last Service Date"});
-            this.cboOrderBy.Location = new System.Drawing.Point(309, 111);
+            this.cboOrderBy.Location = new System.Drawing.Point(124, 143);
             this.cboOrderBy.Margin = new System.Windows.Forms.Padding(4);
             this.cboOrderBy.Name = "cboOrderBy";
             this.cboOrderBy.Size = new System.Drawing.Size(220, 23);
@@ -408,7 +556,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 89);
+            this.label2.Location = new System.Drawing.Point(21, 173);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 17);
@@ -420,7 +568,7 @@
             // 
             this.lblPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPos.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblPos.Location = new System.Drawing.Point(0, 62);
+            this.lblPos.Location = new System.Drawing.Point(3, 68);
             this.lblPos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPos.Name = "lblPos";
             this.lblPos.Size = new System.Drawing.Size(120, 20);
@@ -433,7 +581,7 @@
             // 
             this.lblInactiveHH.AutoSize = true;
             this.lblInactiveHH.ForeColor = System.Drawing.Color.DarkViolet;
-            this.lblInactiveHH.Location = new System.Drawing.Point(863, 101);
+            this.lblInactiveHH.Location = new System.Drawing.Point(608, 168);
             this.lblInactiveHH.Name = "lblInactiveHH";
             this.lblInactiveHH.Size = new System.Drawing.Size(110, 13);
             this.lblInactiveHH.TabIndex = 68;
@@ -443,7 +591,7 @@
             // 
             this.lblInactiveHHMem.AutoSize = true;
             this.lblInactiveHHMem.ForeColor = System.Drawing.Color.Maroon;
-            this.lblInactiveHHMem.Location = new System.Drawing.Point(863, 116);
+            this.lblInactiveHHMem.Location = new System.Drawing.Point(608, 183);
             this.lblInactiveHHMem.Name = "lblInactiveHHMem";
             this.lblInactiveHHMem.Size = new System.Drawing.Size(99, 13);
             this.lblInactiveHHMem.TabIndex = 69;
@@ -453,7 +601,7 @@
             // 
             this.rdoAscending.AutoSize = true;
             this.rdoAscending.Checked = true;
-            this.rdoAscending.Location = new System.Drawing.Point(748, 73);
+            this.rdoAscending.Location = new System.Drawing.Point(396, 147);
             this.rdoAscending.Name = "rdoAscending";
             this.rdoAscending.Size = new System.Drawing.Size(75, 17);
             this.rdoAscending.TabIndex = 70;
@@ -465,7 +613,7 @@
             // rdoDescending
             // 
             this.rdoDescending.AutoSize = true;
-            this.rdoDescending.Location = new System.Drawing.Point(748, 96);
+            this.rdoDescending.Location = new System.Drawing.Point(480, 147);
             this.rdoDescending.Name = "rdoDescending";
             this.rdoDescending.Size = new System.Drawing.Size(77, 17);
             this.rdoDescending.TabIndex = 71;
@@ -476,7 +624,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 11);
+            this.label3.Location = new System.Drawing.Point(7, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 72;
@@ -617,140 +765,141 @@
             this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn14.Visible = false;
             // 
-            // colName
+            // splitContainer1
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.colName.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colName.HeaderText = "Client Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            this.colName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colName.Width = 200;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // clmAddress
+            // splitContainer1.Panel1
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmAddress.DefaultCellStyle = dataGridViewCellStyle3;
-            this.clmAddress.HeaderText = "Address";
-            this.clmAddress.Name = "clmAddress";
-            this.clmAddress.ReadOnly = true;
-            this.clmAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmAddress.Width = 140;
+            this.splitContainer1.Panel1.Controls.Add(this.chkHeahHouseOnly);
+            this.splitContainer1.Panel1.Controls.Add(this.lblLast);
+            this.splitContainer1.Panel1.Controls.Add(this.dtpLast);
+            this.splitContainer1.Panel1.Controls.Add(this.lblFirst);
+            this.splitContainer1.Panel1.Controls.Add(this.dtpFirst);
+            this.splitContainer1.Panel1.Controls.Add(this.cboDateRangeField);
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
+            this.splitContainer1.Panel1.Controls.Add(this.tbName);
+            this.splitContainer1.Panel1.Controls.Add(this.progressBar1);
+            this.splitContainer1.Panel1.Controls.Add(this.tbID);
+            this.splitContainer1.Panel1.Controls.Add(this.tbFindName);
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.label20);
+            this.splitContainer1.Panel1.Controls.Add(this.rdoDescending);
+            this.splitContainer1.Panel1.Controls.Add(this.cboFilter);
+            this.splitContainer1.Panel1.Controls.Add(this.rdoAscending);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSelect);
+            this.splitContainer1.Panel1.Controls.Add(this.lblInactiveHHMem);
+            this.splitContainer1.Panel1.Controls.Add(this.tbAddress);
+            this.splitContainer1.Panel1.Controls.Add(this.lblInactiveHH);
+            this.splitContainer1.Panel1.Controls.Add(this.lblFilterBy);
+            this.splitContainer1.Panel1.Controls.Add(this.lblPos);
+            this.splitContainer1.Panel1.Controls.Add(this.btnCancel);
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
+            this.splitContainer1.Panel1.Controls.Add(this.btnAddNewClient);
+            this.splitContainer1.Panel1.Controls.Add(this.cboOrderBy);
+            this.splitContainer1.Panel1.Controls.Add(this.btnRefresh);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.chkIncludeInactive);
+            this.splitContainer1.Panel1.Controls.Add(this.tbLastService);
             // 
-            // clmAptNbr
+            // splitContainer1.Panel2
             // 
-            this.clmAptNbr.HeaderText = "Apt Nbr.";
-            this.clmAptNbr.Name = "clmAptNbr";
-            this.clmAptNbr.ReadOnly = true;
-            this.clmAptNbr.Width = 60;
+            this.splitContainer1.Panel2.Controls.Add(this.dgvClientList);
+            this.splitContainer1.Size = new System.Drawing.Size(1006, 725);
+            this.splitContainer1.SplitterDistance = 229;
+            this.splitContainer1.TabIndex = 73;
             // 
-            // clmCity
+            // lblLast
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmCity.DefaultCellStyle = dataGridViewCellStyle4;
-            this.clmCity.HeaderText = "City";
-            this.clmCity.Name = "clmCity";
-            this.clmCity.ReadOnly = true;
-            this.clmCity.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.lblLast.AutoSize = true;
+            this.lblLast.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLast.Location = new System.Drawing.Point(387, 119);
+            this.lblLast.Name = "lblLast";
+            this.lblLast.Size = new System.Drawing.Size(31, 15);
+            this.lblLast.TabIndex = 77;
+            this.lblLast.Text = "Last";
+            this.lblLast.Visible = false;
             // 
-            // clmZip
+            // dtpLast
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmZip.DefaultCellStyle = dataGridViewCellStyle5;
-            this.clmZip.HeaderText = "Zipcode";
-            this.clmZip.Name = "clmZip";
-            this.clmZip.ReadOnly = true;
-            this.clmZip.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmZip.Width = 70;
+            this.dtpLast.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpLast.Location = new System.Drawing.Point(426, 117);
+            this.dtpLast.Name = "dtpLast";
+            this.dtpLast.Size = new System.Drawing.Size(212, 20);
+            this.dtpLast.TabIndex = 78;
+            this.dtpLast.Visible = false;
             // 
-            // clmHHID
+            // lblFirst
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.clmHHID.DefaultCellStyle = dataGridViewCellStyle6;
-            this.clmHHID.HeaderText = "HHID";
-            this.clmHHID.Name = "clmHHID";
-            this.clmHHID.ReadOnly = true;
-            this.clmHHID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmHHID.Width = 70;
+            this.lblFirst.AutoSize = true;
+            this.lblFirst.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirst.Location = new System.Drawing.Point(387, 94);
+            this.lblFirst.Name = "lblFirst";
+            this.lblFirst.Size = new System.Drawing.Size(31, 15);
+            this.lblFirst.TabIndex = 75;
+            this.lblFirst.Text = "First";
+            this.lblFirst.Visible = false;
             // 
-            // clmPhone
+            // dtpFirst
             // 
-            this.clmPhone.HeaderText = "Phone";
-            this.clmPhone.Name = "clmPhone";
-            this.clmPhone.ReadOnly = true;
-            this.clmPhone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dtpFirst.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFirst.Location = new System.Drawing.Point(426, 92);
+            this.dtpFirst.Name = "dtpFirst";
+            this.dtpFirst.Size = new System.Drawing.Size(212, 20);
+            this.dtpFirst.TabIndex = 76;
+            this.dtpFirst.Visible = false;
             // 
-            // clmHeadHH
+            // cboDateRangeField
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmHeadHH.DefaultCellStyle = dataGridViewCellStyle7;
-            this.clmHeadHH.HeaderText = "HeadHH";
-            this.clmHeadHH.Name = "clmHeadHH";
-            this.clmHeadHH.ReadOnly = true;
-            this.clmHeadHH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmHeadHH.Width = 70;
+            this.cboDateRangeField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDateRangeField.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboDateRangeField.FormattingEnabled = true;
+            this.cboDateRangeField.Items.AddRange(new object[] {
+            "No Date Range Limits Set",
+            "Last Service",
+            "First Service This Fiscal Year",
+            "First Service This Calendar Year",
+            "Last Commodity Service",
+            "Last Supplemental Service",
+            "School Supply Registration Date",
+            "Id Verified",
+            "Income Verfied",
+            "TEFAP Signature",
+            "Record Created",
+            "Record Modified"});
+            this.cboDateRangeField.Location = new System.Drawing.Point(125, 102);
+            this.cboDateRangeField.Margin = new System.Windows.Forms.Padding(4);
+            this.cboDateRangeField.Name = "cboDateRangeField";
+            this.cboDateRangeField.Size = new System.Drawing.Size(220, 23);
+            this.cboDateRangeField.TabIndex = 74;
+            this.cboDateRangeField.SelectionChangeCommitted += new System.EventHandler(this.cboDateRangeField_SelectionChangeCommitted);
             // 
-            // clmClientType
+            // label4
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmClientType.DefaultCellStyle = dataGridViewCellStyle8;
-            this.clmClientType.HeaderText = "Client Category";
-            this.clmClientType.Name = "clmClientType";
-            this.clmClientType.ReadOnly = true;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 105);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 17);
+            this.label4.TabIndex = 73;
+            this.label4.Tag = "DateRange";
+            this.label4.Text = "Date Range Field: ";
             // 
-            // clmLatestService
+            // chkHeahHouseOnly
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "d";
-            dataGridViewCellStyle9.NullValue = null;
-            this.clmLatestService.DefaultCellStyle = dataGridViewCellStyle9;
-            this.clmLatestService.HeaderText = "Last Service";
-            this.clmLatestService.Name = "clmLatestService";
-            this.clmLatestService.ReadOnly = true;
-            this.clmLatestService.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clmID
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.clmID.DefaultCellStyle = dataGridViewCellStyle10;
-            this.clmID.HeaderText = "MemberID";
-            this.clmID.Name = "clmID";
-            this.clmID.ReadOnly = true;
-            this.clmID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmID.Width = 80;
-            // 
-            // colHHName
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.colHHName.DefaultCellStyle = dataGridViewCellStyle11;
-            this.colHHName.HeaderText = "HH Name";
-            this.colHHName.Name = "colHHName";
-            this.colHHName.ReadOnly = true;
-            this.colHHName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colNameFL
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.colNameFL.DefaultCellStyle = dataGridViewCellStyle12;
-            this.colNameFL.HeaderText = "NameFL";
-            this.colNameFL.Name = "colNameFL";
-            this.colNameFL.ReadOnly = true;
-            this.colNameFL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colNameFL.Visible = false;
-            // 
-            // colNameLF
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.colNameLF.DefaultCellStyle = dataGridViewCellStyle13;
-            this.colNameLF.HeaderText = "NameLF";
-            this.colNameLF.Name = "colNameLF";
-            this.colNameLF.ReadOnly = true;
-            this.colNameLF.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colNameLF.Visible = false;
+            this.chkHeahHouseOnly.AutoSize = true;
+            this.chkHeahHouseOnly.Location = new System.Drawing.Point(652, 104);
+            this.chkHeahHouseOnly.Margin = new System.Windows.Forms.Padding(4);
+            this.chkHeahHouseOnly.Name = "chkHeahHouseOnly";
+            this.chkHeahHouseOnly.Size = new System.Drawing.Size(179, 17);
+            this.chkHeahHouseOnly.TabIndex = 79;
+            this.chkHeahHouseOnly.Text = "Display Only Head of Household";
+            this.chkHeahHouseOnly.UseVisualStyleBackColor = true;
             // 
             // FindClientForm
             // 
@@ -759,30 +908,7 @@
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1006, 725);
-            this.Controls.Add(this.tbID);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.rdoDescending);
-            this.Controls.Add(this.rdoAscending);
-            this.Controls.Add(this.lblInactiveHHMem);
-            this.Controls.Add(this.lblInactiveHH);
-            this.Controls.Add(this.lblPos);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cboOrderBy);
-            this.Controls.Add(this.dgvClientList);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbLastService);
-            this.Controls.Add(this.chkIncludeInactive);
-            this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.btnAddNewClient);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lblFilterBy);
-            this.Controls.Add(this.tbAddress);
-            this.Controls.Add(this.btnSelect);
-            this.Controls.Add(this.cboFilter);
-            this.Controls.Add(this.tbName);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.tbFindName);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -796,8 +922,12 @@
             this.Resize += new System.EventHandler(this.FindClientForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientList)).EndInit();
             this.cmsFindClient.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -857,5 +987,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ComboBox cboDateRangeField;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblLast;
+        private System.Windows.Forms.DateTimePicker dtpLast;
+        private System.Windows.Forms.Label lblFirst;
+        private System.Windows.Forms.DateTimePicker dtpFirst;
+        private System.Windows.Forms.CheckBox chkHeahHouseOnly;
     }
 }

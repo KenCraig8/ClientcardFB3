@@ -654,16 +654,7 @@ namespace ClientcardFB3
         public int getFamSizeLbs(int fSize)
         {
             if (fSize != 0)
-            {
-                if ((fSize + fsmBase) < 21)
-                {
                 return Convert.ToInt32(drow[fSize + fsmBase]) * LbsPerItem;
-                }
-                else
-                {
-                    return Convert.ToInt32(drow[20]) * LbsPerItem;
-                }
-            }
             else
                 return 0;
         }

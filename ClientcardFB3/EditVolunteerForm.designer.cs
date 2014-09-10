@@ -83,6 +83,8 @@
             this.chkIncludeInactive = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.editVol_TxtEmailAddress = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lblFBIDNbr = new System.Windows.Forms.Label();
             this.tbFBIDNbr = new System.Windows.Forms.TextBox();
@@ -100,14 +102,12 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.sctnrFormBase = new System.Windows.Forms.SplitContainer();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrev = new System.Windows.Forms.Button();
             this.tbVolunteerId = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.sctnrBottomBase = new System.Windows.Forms.SplitContainer();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.btnDeleteVolHrs = new System.Windows.Forms.Button();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.cboHoursPeriod = new System.Windows.Forms.ComboBox();
@@ -127,8 +127,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.cboOrderBy = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.editVol_TxtEmailAddress = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrev = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridEditVol)).BeginInit();
             this.cmsVolGrid.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -145,10 +146,10 @@
             this.sctnrBottomBase.Panel1.SuspendLayout();
             this.sctnrBottomBase.Panel2.SuspendLayout();
             this.sctnrBottomBase.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).BeginInit();
+            this.splitContainer6.Panel1.SuspendLayout();
+            this.splitContainer6.Panel2.SuspendLayout();
+            this.splitContainer6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVolHours)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sctnrBottomRight)).BeginInit();
             this.sctnrBottomRight.Panel1.SuspendLayout();
@@ -159,30 +160,30 @@
             // editVol_txtName
             // 
             this.editVol_txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_txtName.Location = new System.Drawing.Point(246, 11);
+            this.editVol_txtName.Location = new System.Drawing.Point(224, 11);
             this.editVol_txtName.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_txtName.Name = "editVol_txtName";
-            this.editVol_txtName.Size = new System.Drawing.Size(379, 22);
+            this.editVol_txtName.Size = new System.Drawing.Size(342, 22);
             this.editVol_txtName.TabIndex = 0;
             this.editVol_txtName.Tag = "Name";
             // 
             // editVol_txtCellPhone
             // 
             this.editVol_txtCellPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_txtCellPhone.Location = new System.Drawing.Point(246, 187);
+            this.editVol_txtCellPhone.Location = new System.Drawing.Point(224, 187);
             this.editVol_txtCellPhone.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_txtCellPhone.Name = "editVol_txtCellPhone";
-            this.editVol_txtCellPhone.Size = new System.Drawing.Size(185, 22);
+            this.editVol_txtCellPhone.Size = new System.Drawing.Size(148, 22);
             this.editVol_txtCellPhone.TabIndex = 6;
             this.editVol_txtCellPhone.Tag = "CellPhone";
             // 
             // editVol_txtPhone
             // 
             this.editVol_txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_txtPhone.Location = new System.Drawing.Point(246, 157);
+            this.editVol_txtPhone.Location = new System.Drawing.Point(224, 157);
             this.editVol_txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_txtPhone.Name = "editVol_txtPhone";
-            this.editVol_txtPhone.Size = new System.Drawing.Size(185, 22);
+            this.editVol_txtPhone.Size = new System.Drawing.Size(148, 22);
             this.editVol_txtPhone.TabIndex = 5;
             this.editVol_txtPhone.Tag = "Phone";
             this.editVol_txtPhone.Text = "(425) 485-2079 x1234";
@@ -190,10 +191,10 @@
             // editVol_txtZipCode
             // 
             this.editVol_txtZipCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_txtZipCode.Location = new System.Drawing.Point(544, 63);
+            this.editVol_txtZipCode.Location = new System.Drawing.Point(509, 63);
             this.editVol_txtZipCode.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_txtZipCode.Name = "editVol_txtZipCode";
-            this.editVol_txtZipCode.Size = new System.Drawing.Size(81, 22);
+            this.editVol_txtZipCode.Size = new System.Drawing.Size(59, 22);
             this.editVol_txtZipCode.TabIndex = 4;
             this.editVol_txtZipCode.Tag = "ZipCode";
             this.editVol_txtZipCode.Text = "98072";
@@ -203,7 +204,7 @@
             // editVol_txtState
             // 
             this.editVol_txtState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_txtState.Location = new System.Drawing.Point(460, 63);
+            this.editVol_txtState.Location = new System.Drawing.Point(425, 63);
             this.editVol_txtState.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_txtState.Name = "editVol_txtState";
             this.editVol_txtState.Size = new System.Drawing.Size(44, 22);
@@ -215,10 +216,10 @@
             // editVol_txtCity
             // 
             this.editVol_txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_txtCity.Location = new System.Drawing.Point(246, 64);
+            this.editVol_txtCity.Location = new System.Drawing.Point(224, 64);
             this.editVol_txtCity.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_txtCity.Name = "editVol_txtCity";
-            this.editVol_txtCity.Size = new System.Drawing.Size(185, 22);
+            this.editVol_txtCity.Size = new System.Drawing.Size(168, 22);
             this.editVol_txtCity.TabIndex = 2;
             this.editVol_txtCity.Tag = "City";
             this.editVol_txtCity.Text = "Montlake Terrace";
@@ -227,10 +228,10 @@
             // editVol_txtAddress
             // 
             this.editVol_txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_txtAddress.Location = new System.Drawing.Point(246, 41);
+            this.editVol_txtAddress.Location = new System.Drawing.Point(224, 41);
             this.editVol_txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_txtAddress.Name = "editVol_txtAddress";
-            this.editVol_txtAddress.Size = new System.Drawing.Size(379, 21);
+            this.editVol_txtAddress.Size = new System.Drawing.Size(342, 21);
             this.editVol_txtAddress.TabIndex = 1;
             this.editVol_txtAddress.Tag = "Address";
             // 
@@ -323,7 +324,7 @@
             this.cmsVolGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiExport});
             this.cmsVolGrid.Name = "cmsVolGrid";
-            this.cmsVolGrid.Size = new System.Drawing.Size(154, 48);
+            this.cmsVolGrid.Size = new System.Drawing.Size(154, 26);
             this.cmsVolGrid.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsVolGrid_ItemClicked);
             // 
             // tsmiExport
@@ -335,7 +336,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(153, 12);
+            this.label2.Location = new System.Drawing.Point(131, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 20);
@@ -370,7 +371,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(153, 187);
+            this.label5.Location = new System.Drawing.Point(131, 187);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 20);
@@ -381,7 +382,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(153, 157);
+            this.label6.Location = new System.Drawing.Point(131, 157);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 20);
@@ -393,7 +394,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(512, 67);
+            this.label7.Location = new System.Drawing.Point(477, 67);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 15);
@@ -405,7 +406,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(434, 67);
+            this.label8.Location = new System.Drawing.Point(399, 67);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(21, 15);
@@ -415,7 +416,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(153, 66);
+            this.label9.Location = new System.Drawing.Point(131, 66);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 20);
@@ -426,7 +427,7 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(153, 41);
+            this.label10.Location = new System.Drawing.Point(131, 41);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 20);
@@ -452,17 +453,17 @@
             this.editVol_txtNotes.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_txtNotes.Multiline = true;
             this.editVol_txtNotes.Name = "editVol_txtNotes";
-            this.editVol_txtNotes.Size = new System.Drawing.Size(293, 201);
+            this.editVol_txtNotes.Size = new System.Drawing.Size(382, 201);
             this.editVol_txtNotes.TabIndex = 17;
             this.editVol_txtNotes.Tag = "Notes";
             // 
             // tbVehicle
             // 
             this.tbVehicle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbVehicle.Location = new System.Drawing.Point(246, 129);
+            this.tbVehicle.Location = new System.Drawing.Point(224, 129);
             this.tbVehicle.Margin = new System.Windows.Forms.Padding(4);
             this.tbVehicle.Name = "tbVehicle";
-            this.tbVehicle.Size = new System.Drawing.Size(250, 22);
+            this.tbVehicle.Size = new System.Drawing.Size(234, 22);
             this.tbVehicle.TabIndex = 13;
             this.tbVehicle.Tag = "Vehicle";
             // 
@@ -583,7 +584,7 @@
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(153, 129);
+            this.label14.Location = new System.Drawing.Point(131, 129);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(90, 20);
@@ -594,7 +595,7 @@
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(153, 98);
+            this.label16.Location = new System.Drawing.Point(131, 98);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(90, 18);
@@ -618,7 +619,7 @@
             this.editVol_chkInactive.AutoSize = true;
             this.editVol_chkInactive.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.editVol_chkInactive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_chkInactive.Location = new System.Drawing.Point(542, 127);
+            this.editVol_chkInactive.Location = new System.Drawing.Point(482, 127);
             this.editVol_chkInactive.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_chkInactive.Name = "editVol_chkInactive";
             this.editVol_chkInactive.Size = new System.Drawing.Size(83, 24);
@@ -632,7 +633,7 @@
             // 
             this.editVol_chkNotOnHoursList.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.editVol_chkNotOnHoursList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_chkNotOnHoursList.Location = new System.Drawing.Point(437, 187);
+            this.editVol_chkNotOnHoursList.Location = new System.Drawing.Point(381, 187);
             this.editVol_chkNotOnHoursList.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_chkNotOnHoursList.Name = "editVol_chkNotOnHoursList";
             this.editVol_chkNotOnHoursList.Size = new System.Drawing.Size(200, 25);
@@ -645,10 +646,10 @@
             // 
             this.editVol_cboRcdType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editVol_cboRcdType.FormattingEnabled = true;
-            this.editVol_cboRcdType.Location = new System.Drawing.Point(246, 97);
+            this.editVol_cboRcdType.Location = new System.Drawing.Point(224, 97);
             this.editVol_cboRcdType.Margin = new System.Windows.Forms.Padding(4);
             this.editVol_cboRcdType.Name = "editVol_cboRcdType";
-            this.editVol_cboRcdType.Size = new System.Drawing.Size(250, 24);
+            this.editVol_cboRcdType.Size = new System.Drawing.Size(234, 24);
             this.editVol_cboRcdType.TabIndex = 11;
             this.editVol_cboRcdType.Tag = "rcdtype";
             this.editVol_cboRcdType.SelectedValueChanged += new System.EventHandler(this.editVol_cboRcdType_SelectedValueChanged);
@@ -659,7 +660,7 @@
             this.tbBackgroundCheck.Location = new System.Drawing.Point(246, 216);
             this.tbBackgroundCheck.Margin = new System.Windows.Forms.Padding(4);
             this.tbBackgroundCheck.Name = "tbBackgroundCheck";
-            this.tbBackgroundCheck.Size = new System.Drawing.Size(250, 22);
+            this.tbBackgroundCheck.Size = new System.Drawing.Size(178, 22);
             this.tbBackgroundCheck.TabIndex = 14;
             this.tbBackgroundCheck.Tag = "BackgroundCheck";
             // 
@@ -685,7 +686,7 @@
             this.lvwVol_Group.Location = new System.Drawing.Point(0, 0);
             this.lvwVol_Group.Margin = new System.Windows.Forms.Padding(4);
             this.lvwVol_Group.Name = "lvwVol_Group";
-            this.lvwVol_Group.Size = new System.Drawing.Size(293, 201);
+            this.lvwVol_Group.Size = new System.Drawing.Size(382, 201);
             this.lvwVol_Group.TabIndex = 45;
             this.lvwVol_Group.UseCompatibleStateImageBehavior = false;
             this.lvwVol_Group.View = System.Windows.Forms.View.Details;
@@ -720,7 +721,7 @@
             // tbSex
             // 
             this.tbSex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSex.Location = new System.Drawing.Point(582, 97);
+            this.tbSex.Location = new System.Drawing.Point(522, 97);
             this.tbSex.Name = "tbSex";
             this.tbSex.Size = new System.Drawing.Size(43, 21);
             this.tbSex.TabIndex = 48;
@@ -731,7 +732,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(541, 101);
+            this.label1.Location = new System.Drawing.Point(481, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 15);
             this.label1.TabIndex = 49;
@@ -754,14 +755,15 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(644, 12);
+            this.tabControl1.Location = new System.Drawing.Point(590, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(301, 227);
+            this.tabControl1.Size = new System.Drawing.Size(390, 227);
             this.tabControl1.TabIndex = 57;
             // 
             // tabPage1
@@ -780,9 +782,31 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(293, 201);
+            this.tabPage1.Size = new System.Drawing.Size(382, 201);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contact Info";
+            // 
+            // editVol_TxtEmailAddress
+            // 
+            this.editVol_TxtEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editVol_TxtEmailAddress.Location = new System.Drawing.Point(8, 173);
+            this.editVol_TxtEmailAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.editVol_TxtEmailAddress.Name = "editVol_TxtEmailAddress";
+            this.editVol_TxtEmailAddress.Size = new System.Drawing.Size(250, 22);
+            this.editVol_TxtEmailAddress.TabIndex = 34;
+            this.editVol_TxtEmailAddress.Tag = "EmailAddress";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(7, 155);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 15);
+            this.label13.TabIndex = 35;
+            this.label13.Text = "Email Address";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage2
             // 
@@ -799,7 +823,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(293, 201);
+            this.tabPage2.Size = new System.Drawing.Size(382, 201);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "User Fields";
             // 
@@ -878,7 +902,7 @@
             // 
             this.lblDate2.AutoSize = true;
             this.lblDate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate2.Location = new System.Drawing.Point(133, 137);
+            this.lblDate2.Location = new System.Drawing.Point(133, 151);
             this.lblDate2.Name = "lblDate2";
             this.lblDate2.Size = new System.Drawing.Size(53, 15);
             this.lblDate2.TabIndex = 61;
@@ -890,7 +914,7 @@
             // 
             this.lblDate1.AutoSize = true;
             this.lblDate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate1.Location = new System.Drawing.Point(133, 110);
+            this.lblDate1.Location = new System.Drawing.Point(133, 124);
             this.lblDate1.Name = "lblDate1";
             this.lblDate1.Size = new System.Drawing.Size(53, 15);
             this.lblDate1.TabIndex = 59;
@@ -912,7 +936,7 @@
             this.tabPage3.Controls.Add(this.lvwVol_Group);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(293, 201);
+            this.tabPage3.Size = new System.Drawing.Size(382, 201);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Groups";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -922,7 +946,7 @@
             this.tabPage5.Controls.Add(this.lvwVol_Jobs);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(293, 201);
+            this.tabPage5.Size = new System.Drawing.Size(382, 201);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Jobs";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -938,7 +962,7 @@
             this.lvwVol_Jobs.Location = new System.Drawing.Point(0, 0);
             this.lvwVol_Jobs.Margin = new System.Windows.Forms.Padding(4);
             this.lvwVol_Jobs.Name = "lvwVol_Jobs";
-            this.lvwVol_Jobs.Size = new System.Drawing.Size(293, 201);
+            this.lvwVol_Jobs.Size = new System.Drawing.Size(382, 201);
             this.lvwVol_Jobs.TabIndex = 46;
             this.lvwVol_Jobs.UseCompatibleStateImageBehavior = false;
             this.lvwVol_Jobs.View = System.Windows.Forms.View.Details;
@@ -962,7 +986,7 @@
             this.tabPage4.Controls.Add(this.editVol_txtNotes);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(293, 201);
+            this.tabPage4.Size = new System.Drawing.Size(382, 201);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Notes";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1025,26 +1049,6 @@
             this.sctnrFormBase.SplitterWidth = 1;
             this.sctnrFormBase.TabIndex = 58;
             // 
-            // btnNext
-            // 
-            this.btnNext.Image = global::ClientcardFB3.Properties.Resources.Right16;
-            this.btnNext.Location = new System.Drawing.Point(102, 9);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(22, 20);
-            this.btnNext.TabIndex = 81;
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.Image = global::ClientcardFB3.Properties.Resources.back16;
-            this.btnPrev.Location = new System.Drawing.Point(80, 9);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(22, 20);
-            this.btnPrev.TabIndex = 80;
-            this.btnPrev.UseVisualStyleBackColor = true;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
             // tbVolunteerId
             // 
             this.tbVolunteerId.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1104,7 +1108,7 @@
             // 
             // sctnrBottomBase.Panel1
             // 
-            this.sctnrBottomBase.Panel1.Controls.Add(this.splitContainer1);
+            this.sctnrBottomBase.Panel1.Controls.Add(this.splitContainer6);
             // 
             // sctnrBottomBase.Panel2
             // 
@@ -1114,32 +1118,32 @@
             this.sctnrBottomBase.SplitterWidth = 8;
             this.sctnrBottomBase.TabIndex = 0;
             // 
-            // splitContainer1
+            // splitContainer6
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainer6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer6.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer6.Name = "splitContainer6";
+            this.splitContainer6.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // splitContainer6.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Tan;
-            this.splitContainer1.Panel1.Controls.Add(this.btnDeleteVolHrs);
-            this.splitContainer1.Panel1.Controls.Add(this.dtpFrom);
-            this.splitContainer1.Panel1.Controls.Add(this.cboHoursPeriod);
-            this.splitContainer1.Panel1.Controls.Add(this.btnLoadCustom);
-            this.splitContainer1.Panel1.Controls.Add(this.lblTo);
-            this.splitContainer1.Panel1.Controls.Add(this.lblFrom);
-            this.splitContainer1.Panel1.Controls.Add(this.dtpTo);
-            this.splitContainer1.Panel1.Controls.Add(this.btnAddNewVolHrs);
-            this.splitContainer1.Panel1.Controls.Add(this.btnCancelNewHrs);
+            this.splitContainer6.Panel1.BackColor = System.Drawing.Color.Tan;
+            this.splitContainer6.Panel1.Controls.Add(this.btnDeleteVolHrs);
+            this.splitContainer6.Panel1.Controls.Add(this.dtpFrom);
+            this.splitContainer6.Panel1.Controls.Add(this.cboHoursPeriod);
+            this.splitContainer6.Panel1.Controls.Add(this.btnLoadCustom);
+            this.splitContainer6.Panel1.Controls.Add(this.lblTo);
+            this.splitContainer6.Panel1.Controls.Add(this.lblFrom);
+            this.splitContainer6.Panel1.Controls.Add(this.dtpTo);
+            this.splitContainer6.Panel1.Controls.Add(this.btnAddNewVolHrs);
+            this.splitContainer6.Panel1.Controls.Add(this.btnCancelNewHrs);
             // 
-            // splitContainer1.Panel2
+            // splitContainer6.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dgvVolHours);
-            this.splitContainer1.Size = new System.Drawing.Size(216, 448);
-            this.splitContainer1.SplitterDistance = 116;
-            this.splitContainer1.TabIndex = 0;
+            this.splitContainer6.Panel2.Controls.Add(this.dgvVolHours);
+            this.splitContainer6.Size = new System.Drawing.Size(216, 448);
+            this.splitContainer6.SplitterDistance = 116;
+            this.splitContainer6.TabIndex = 0;
             // 
             // btnDeleteVolHrs
             // 
@@ -1398,27 +1402,35 @@
             this.label18.Tag = "";
             this.label18.Text = "Sort:";
             // 
-            // editVol_TxtEmailAddress
+            // tabPage6
             // 
-            this.editVol_TxtEmailAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editVol_TxtEmailAddress.Location = new System.Drawing.Point(8, 173);
-            this.editVol_TxtEmailAddress.Margin = new System.Windows.Forms.Padding(4);
-            this.editVol_TxtEmailAddress.Name = "editVol_TxtEmailAddress";
-            this.editVol_TxtEmailAddress.Size = new System.Drawing.Size(250, 22);
-            this.editVol_TxtEmailAddress.TabIndex = 34;
-            this.editVol_TxtEmailAddress.Tag = "EmailAddress";
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(382, 201);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Certifications";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label13
+            // btnNext
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(7, 155);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(86, 15);
-            this.label13.TabIndex = 35;
-            this.label13.Text = "Email Address";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNext.Image = global::ClientcardFB3.Properties.Resources.Right16;
+            this.btnNext.Location = new System.Drawing.Point(102, 9);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(22, 20);
+            this.btnNext.TabIndex = 81;
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.Image = global::ClientcardFB3.Properties.Resources.back16;
+            this.btnPrev.Location = new System.Drawing.Point(80, 9);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(22, 20);
+            this.btnPrev.TabIndex = 80;
+            this.btnPrev.UseVisualStyleBackColor = true;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // EditVolunteerForm
             // 
@@ -1458,10 +1470,10 @@
             this.sctnrBottomBase.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sctnrBottomBase)).EndInit();
             this.sctnrBottomBase.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer6.Panel1.ResumeLayout(false);
+            this.splitContainer6.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
+            this.splitContainer6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVolHours)).EndInit();
             this.sctnrBottomRight.Panel1.ResumeLayout(false);
             this.sctnrBottomRight.Panel1.PerformLayout();
@@ -1538,7 +1550,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gridEditVol_Zip;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridEditVol_Phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn gridEditVol_RcdType;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.ComboBox cboHoursPeriod;
         private System.Windows.Forms.Button btnLoadCustom;
@@ -1576,5 +1588,6 @@
         private System.Windows.Forms.TextBox tbFBIDNbr;
         private System.Windows.Forms.TextBox editVol_TxtEmailAddress;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TabPage tabPage6;
 	}
 }

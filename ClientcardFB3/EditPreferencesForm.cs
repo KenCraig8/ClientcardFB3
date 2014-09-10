@@ -42,6 +42,7 @@ namespace ClientcardFB3
             tbPointsPerWeek.Text = CCFBPrefs.PointsPerWeek.ToString();
             tbPointsPerFamMbr.Text = CCFBPrefs.PointsPerFamMbr.ToString();
             tbPointsPerWeekOutOfArea.Text = CCFBPrefs.PointsPerWeekOutOfArea.ToString();
+            tbMaxPointsPerWeek.Text = CCFBPrefs.MaxPointsPerWeek.ToString();
             //Features
             chkEnableFoodService.Checked = CCFBPrefs.EnableFoodServices;
             chkEnableAppointments.Checked = CCFBPrefs.EnableAppointments;

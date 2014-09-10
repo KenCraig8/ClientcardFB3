@@ -132,6 +132,9 @@ namespace ClientcardFB3
             }
             chkFoodLbsManualEntry.Checked = false;
             chkNonFoodManualEntry.Checked = false;
+            setBabySvcDisplay();
+            setNonFoodDisplay();
+
             if (TrxIndexIn <= 0)
             {
                 lblCreated.Visible = false;
@@ -521,7 +524,7 @@ namespace ClientcardFB3
 
         private void tbLbs_Leave(object sender, EventArgs e)
         {
-            if (chkFoodLbsManualEntry.Checked)
+            if (chkFoodLbsManualEntry.Checked == true || CCFBPrefs.AllowLbsManualEntry == true)
             {
                 TextBox tb = (TextBox)sender;
                 clsTrxItem.SetDataValue(tb.Tag.ToString(), tb.Text);
@@ -544,9 +547,20 @@ namespace ClientcardFB3
                         && tbLbsList[i].Text.Trim() != ""
                         && Convert.ToInt32(tbLbsList[i].Text.Trim()) > 0)
                     {
-                        tbeFoodSvcLst.Text += tbLbsList[i].Text + " " + tbLbsList[i].Tag.ToString() + ", ";
+                        if (CCFBPrefs.IncludeLbsOnSvcList == true)
+                        {
+                            tbeFoodSvcLst.Text += tbLbsList[i].Text + " " + tbLbsList[i].Tag.ToString() + ", ";
+                        }
+                        else
+                        {
+                            tbeFoodSvcLst.Text += tbLbsList[i].Tag.ToString() + ", ";
+                        }
                     }
                 }
+            }
+            if (tbeFoodSvcLst.Text.Length > 2)
+            {
+                tbeFoodSvcLst.Text.Remove(tbeFoodSvcLst.TextLength - 1);
             }
         }
 
@@ -691,10 +705,20 @@ namespace ClientcardFB3
             }
             else
             {
-                EnableFoodLbsEntry = false;
-                chkFoodSvcListOnLbs.Visible = false;
-                //lvwFoodSvcItems.Enabled = true;
-                btnRecalcLbs.Enabled = true;
+                if (CCFBPrefs.AllowLbsManualEntry == true)
+                {
+                    EnableFoodLbsEntry = true;
+                    chkFoodSvcListOnLbs.Visible = false;
+                    //lvwFoodSvcItems.Enabled = true;
+                    btnRecalcLbs.Enabled = true;
+                }
+                else
+                {
+                    EnableFoodLbsEntry = false;
+                    chkFoodSvcListOnLbs.Visible = false;
+                    //lvwFoodSvcItems.Enabled = true;
+                    btnRecalcLbs.Enabled = true;
+                }
             }
             foreach (TextBox tb in tbLbsList)
             {
@@ -846,11 +870,23 @@ namespace ClientcardFB3
                             case CCFBGlobal.svcCat_NonFood:
                                 { clsTrxItem.LbsNonFood += lbsCalc; break; }
                         }
-                        tmpFoodSvcList  += lbsCalc.ToString() + " " + si.Description + ",";
+                        if (CCFBPrefs.IncludeLbsOnSvcList == true)
+                        {
+                            tmpFoodSvcList += lbsCalc.ToString() + " " + si.Description + ",";
+                        }
+                        else
+                        {
+                            tmpFoodSvcList += si.Description + ",";
+                        }
                     }
                 }
             }
-            if (chkFoodLbsManualEntry.Checked == false)
+            if (tmpFoodSvcList.Length > 2)
+            {
+                int q = tmpFoodSvcList.LastIndexOf(",");
+                tmpFoodSvcList = tmpFoodSvcList.Remove(q);
+            }
+            if (chkFoodLbsManualEntry.Checked == false || CCFBPrefs.AllowLbsManualEntry)
             {
                 clsTrxItem.FoodSvcList = tmpFoodSvcList;
                 tbeFoodSvcLst.Text = tmpFoodSvcList;
@@ -961,58 +997,12 @@ namespace ClientcardFB3
 
         private void chkBabySvcManualEntry_CheckedChanged(object sender, EventArgs e)
         {
-            if (isNewTrx == true || allowEntryOverride == true)
-            {
-                if (chkBabySvcManualEntry.Checked == true)
-                {
-                    lvwBabyServices.Enabled = false;
-                    tbBabySvcList.Enabled = true;
-                    tbBabyServices.Enabled = true;
-                }
-                else
-                {
-                    lvwBabyServices.Enabled = true;
-                    tbBabySvcList.Enabled = false;
-                    tbBabyServices.Enabled = false;
-                }
-            }
-            else
-            {
-                if (chkBabySvcManualEntry.Checked == false)
-                    chkBabySvcManualEntry.Checked = true;
-
-                tbBabySvcList.Enabled = true;
-                tbBabyServices.Enabled = true;
-                lvwBabyServices.Enabled = false;
-            }
+            setBabySvcDisplay();
         }
 
         private void chkNonFoodManualEntry_CheckedChanged(object sender, EventArgs e)
         {
-            if (isNewTrx == true || allowEntryOverride == true)
-            {
-                if (chkNonFoodManualEntry.Checked == true)
-                {
-                    lvwNonFoodSvcItems.Enabled = false;
-                    tbNonFoodSvcList.Enabled = true;
-                    tbNonFoodLbs.Enabled = true;
-                }
-                else
-                {
-                    lvwNonFoodSvcItems.Enabled = true;
-                    tbNonFoodSvcList.Enabled = false;
-                    tbNonFoodLbs.Enabled = false;
-                }
-            }
-            else
-            {
-                if (chkNonFoodManualEntry.Checked == false)
-                    chkNonFoodManualEntry.Checked = true;
-
-                tbNonFoodSvcList.Enabled = true;
-                tbNonFoodLbs.Enabled = true;
-                lvwNonFoodSvcItems.Enabled = false;
-            }
+            setNonFoodDisplay();
         }
 
 
@@ -1225,5 +1215,80 @@ namespace ClientcardFB3
                 }
             }
         }
+
+        private void setBabySvcDisplay()
+        {
+            if (isNewTrx == true || allowEntryOverride == true)
+            {
+                if (allowEntryOverride == true)
+                {
+                    tbBabySvcList.Enabled = true;
+                    tbBabyServices.Enabled = true;
+                    lvwBabyServices.Enabled = true;
+                }
+                else
+                {
+                    if (chkBabySvcManualEntry.Checked == true)
+                    {
+                        lvwBabyServices.Enabled = false;
+                        tbBabySvcList.Enabled = true;
+                        tbBabyServices.Enabled = true;
+                    }
+                    else
+                    {
+                        lvwBabyServices.Enabled = true;
+                        tbBabySvcList.Enabled = false;
+                        tbBabyServices.Enabled = false;
+                    }
+                }
+            }
+            else
+            {
+                if (chkBabySvcManualEntry.Checked == false)
+                    chkBabySvcManualEntry.Checked = true;
+
+                tbBabySvcList.Enabled = true;
+                tbBabyServices.Enabled = true;
+                lvwBabyServices.Enabled = false;
+            }
+        }
+
+        private void setNonFoodDisplay()
+        {
+            if (isNewTrx == true || allowEntryOverride == true)
+            {
+                if (allowEntryOverride == true)
+                {
+                    lvwNonFoodSvcItems.Enabled = true;
+                    tbNonFoodSvcList.Enabled = true;
+                    tbNonFoodLbs.Enabled = true;
+                }
+                else
+                {
+                    if (chkNonFoodManualEntry.Checked == true)
+                    {
+                        lvwNonFoodSvcItems.Enabled = false;
+                        tbNonFoodSvcList.Enabled = true;
+                        tbNonFoodLbs.Enabled = true;
+                    }
+                    else
+                    {
+                        lvwNonFoodSvcItems.Enabled = true;
+                        tbNonFoodSvcList.Enabled = false;
+                        tbNonFoodLbs.Enabled = false;
+                    }
+                }
+            }
+            else
+            {
+                if (chkNonFoodManualEntry.Checked == false)
+                    chkNonFoodManualEntry.Checked = true;
+
+                tbNonFoodSvcList.Enabled = true;
+                tbNonFoodLbs.Enabled = true;
+                lvwNonFoodSvcItems.Enabled = false;
+            }
+        }
+
     }
 }

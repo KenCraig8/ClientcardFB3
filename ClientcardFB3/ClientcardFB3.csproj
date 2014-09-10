@@ -102,18 +102,18 @@
     <Reference Include="Ionic.Zip">
       <HintPath>E:\Users\Public\ClientcardFB3\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Access, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="MonthCalendar, Version=1.8.2.0, Culture=neutral, PublicKeyToken=9d22151b1b463438" />
+    <Reference Include="MonthCalendar, Version=1.8.2.0, Culture=neutral, PublicKeyToken=9d22151b1b463438">
+      <HintPath>bin\Release\MonthCalendar.dll</HintPath>
+    </Reference>
     <Reference Include="SigPadCtrl, Version=2013.4.8.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SigPadCtrl.dll</HintPath>
+      <HintPath>bin\Release\SigPadCtrl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -137,7 +137,7 @@
     <Compile Include="AccessReportsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AccessReportsForm.designer.cs">
+    <Compile Include="AccessReportsForm.Designer.cs">
       <DependentUpon>AccessReportsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AddNewHousehold2.cs">
@@ -196,7 +196,20 @@
       <DependentUpon>ClientSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="EmailInfo.cs" />
+    <Compile Include="FreshAllianceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FreshAllianceForm.designer.cs">
+      <DependentUpon>FreshAllianceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HHPoints.cs" />
+    <Compile Include="MarkHouseholdInactive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarkHouseholdInactive.Designer.cs">
+      <DependentUpon>MarkHouseholdInactive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SchSupplyPickupTicket.cs" />
     <Compile Include="PRNTFamilyCard.cs" />
     <Compile Include="Rpt2ndHarvPantryMthly.cs">
       <SubType>Code</SubType>
@@ -205,7 +218,14 @@
     <Compile Include="RptFoodMenu01.cs" />
     <Compile Include="RptFoodOrder01.cs" />
     <Compile Include="RptFoodOrder02.cs" />
+    <Compile Include="RptFreshAlliance.cs" />
     <Compile Include="RptVoucherOrder01.cs" />
+    <Compile Include="EditSchoolSupplyPickupTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSchoolSupplyPickupTicket.Designer.cs">
+      <DependentUpon>EditSchoolSupplyPickupTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectDateRange.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,11 +345,11 @@
     <Compile Include="FoodDonationsForm.Designer.cs">
       <DependentUpon>FoodDonationsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FoodReceiptsForm.cs">
+    <Compile Include="FoodReceiptsGroceryRescueForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FoodReceiptsForm.Designer.cs">
-      <DependentUpon>FoodReceiptsForm.cs</DependentUpon>
+    <Compile Include="FoodReceiptsGroceryRescueForm.Designer.cs">
+      <DependentUpon>FoodReceiptsGroceryRescueForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BackupDBForm.cs">
       <SubType>Form</SubType>
@@ -354,12 +374,6 @@
     </Compile>
     <Compile Include="HHMemGridForm2.Designer.cs">
       <DependentUpon>HHMemGridForm2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HDRoutesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HDRoutesForm.designer.cs">
-      <DependentUpon>HDRoutesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IncomeGroups.cs" />
     <Compile Include="IncomeMatrix.cs" />
@@ -429,6 +443,12 @@
     </Compile>
     <Compile Include="DistinctLogDays.cs" />
     <Compile Include="EmailRecipients.cs" />
+    <Compile Include="TestExportToCSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestExportToCSV.Designer.cs">
+      <DependentUpon>TestExportToCSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrxLog.cs" />
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="FindClientForm.cs">
@@ -497,6 +517,12 @@
     </Compile>
     <Compile Include="VolGroup.cs" />
     <Compile Include="VolGroups.cs" />
+    <Compile Include="VolunteerEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VolunteerEditForm.Designer.cs">
+      <DependentUpon>VolunteerEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="VolunteerHours.cs" />
     <Compile Include="VolunteerHoursForm.cs">
       <SubType>Form</SubType>
@@ -526,7 +552,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AccessReportsForm.resx">
       <DependentUpon>AccessReportsForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AddNewHousehold2.resx">
       <DependentUpon>AddNewHousehold2.cs</DependentUpon>
@@ -603,8 +628,17 @@
     <EmbeddedResource Include="FoodDonationsForm.resx">
       <DependentUpon>FoodDonationsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FoodReceiptsForm.resx">
-      <DependentUpon>FoodReceiptsForm.cs</DependentUpon>
+    <EmbeddedResource Include="FoodReceiptsGroceryRescueForm.resx">
+      <DependentUpon>FoodReceiptsGroceryRescueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FreshAllianceForm.resx">
+      <DependentUpon>FreshAllianceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarkHouseholdInactive.resx">
+      <DependentUpon>MarkHouseholdInactive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSchoolSupplyPickupTicket.resx">
+      <DependentUpon>EditSchoolSupplyPickupTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectDateRange.resx">
       <DependentUpon>SelectDateRange.cs</DependentUpon>
@@ -614,9 +648,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HHMemGridForm2.resx">
       <DependentUpon>HHMemGridForm2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HDRoutesForm.resx">
-      <DependentUpon>HDRoutesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IncomeMatrixForm.resx">
       <DependentUpon>IncomeMatrixForm.cs</DependentUpon>
@@ -665,6 +696,9 @@
     <EmbeddedResource Include="ServiceItemsForm.resx">
       <DependentUpon>ServiceItemsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TestExportToCSV.resx">
+      <DependentUpon>TestExportToCSV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrxLogForm.resx">
       <DependentUpon>TrxLogForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -679,6 +713,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UWKCExportForm.resx">
       <DependentUpon>UWKCExportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VolunteerEditForm.resx">
+      <DependentUpon>VolunteerEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VolunteerHoursForm.resx">
       <DependentUpon>VolunteerHoursForm.cs</DependentUpon>
@@ -723,10 +760,37 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{00000205-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Access">
+      <Guid>{4AFFC9A0-5F99-101B-AF4E-00AA003F0F07}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Access.Dao">
+      <Guid>{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}</Guid>
+      <VersionMajor>12</VersionMajor>
+      <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
@@ -782,8 +846,6 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SigPadCtrl.dll" />
-    <Content Include="SigPlusNET.dll" />
     <None Include="Resources\media_pause.png" />
     <None Include="Resources\bullet_square_red.png" />
     <None Include="Resources\arrow_down_green.png" />
@@ -796,6 +858,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SigPadCtrl\SigPadCtrl\SigPadCtrl.csproj">
+      <Project>{757033A0-0889-4300-A616-BBC545A9B511}</Project>
+      <Name>SigPadCtrl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

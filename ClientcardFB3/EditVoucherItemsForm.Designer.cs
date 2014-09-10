@@ -36,6 +36,12 @@
             this.clmNumType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDfltAmnt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmMaxAmnout = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cboBackColor = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cboRow = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboCol = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tbMaxAmount = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbDefaultAmount = new System.Windows.Forms.TextBox();
@@ -68,6 +74,12 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.cboBackColor);
+            this.splitContainer1.Panel2.Controls.Add(this.label7);
+            this.splitContainer1.Panel2.Controls.Add(this.cboRow);
+            this.splitContainer1.Panel2.Controls.Add(this.label6);
+            this.splitContainer1.Panel2.Controls.Add(this.cboCol);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.tbMaxAmount);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.tbDefaultAmount);
@@ -79,7 +91,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnAddNew);
             this.splitContainer1.Panel2.Controls.Add(this.tbDesc);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Size = new System.Drawing.Size(925, 418);
+            this.splitContainer1.Size = new System.Drawing.Size(984, 418);
             this.splitContainer1.SplitterDistance = 495;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
@@ -137,10 +149,97 @@
             this.clmMaxAmnout.Text = "Max Amount";
             this.clmMaxAmnout.Width = 100;
             // 
+            // cboBackColor
+            // 
+            this.cboBackColor.FormattingEnabled = true;
+            this.cboBackColor.Items.AddRange(new object[] {
+            "Light Green",
+            "Light Yellow",
+            "Light Cyan",
+            "Gainsboro"});
+            this.cboBackColor.Location = new System.Drawing.Point(122, 303);
+            this.cboBackColor.Margin = new System.Windows.Forms.Padding(4);
+            this.cboBackColor.Name = "cboBackColor";
+            this.cboBackColor.Size = new System.Drawing.Size(126, 24);
+            this.cboBackColor.TabIndex = 50;
+            this.cboBackColor.Tag = "DisplayRow";
+            this.cboBackColor.SelectionChangeCommitted += new System.EventHandler(this.cbo_SelectionChangeCommitted);
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Verdana", 9F);
+            this.label7.Location = new System.Drawing.Point(8, 304);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(110, 23);
+            this.label7.TabIndex = 49;
+            this.label7.Text = "Back Color";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cboRow
+            // 
+            this.cboRow.FormattingEnabled = true;
+            this.cboRow.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.cboRow.Location = new System.Drawing.Point(122, 267);
+            this.cboRow.Margin = new System.Windows.Forms.Padding(4);
+            this.cboRow.Name = "cboRow";
+            this.cboRow.Size = new System.Drawing.Size(91, 24);
+            this.cboRow.TabIndex = 48;
+            this.cboRow.Tag = "DisplayRow";
+            this.cboRow.SelectionChangeCommitted += new System.EventHandler(this.cbo_SelectionChangeCommitted);
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Verdana", 9F);
+            this.label6.Location = new System.Drawing.Point(8, 268);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(110, 23);
+            this.label6.TabIndex = 47;
+            this.label6.Text = "Display Row";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cboCol
+            // 
+            this.cboCol.FormattingEnabled = true;
+            this.cboCol.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.cboCol.Location = new System.Drawing.Point(122, 231);
+            this.cboCol.Margin = new System.Windows.Forms.Padding(4);
+            this.cboCol.Name = "cboCol";
+            this.cboCol.Size = new System.Drawing.Size(91, 24);
+            this.cboCol.TabIndex = 46;
+            this.cboCol.Tag = "DisplayCol";
+            this.cboCol.SelectionChangeCommitted += new System.EventHandler(this.cbo_SelectionChangeCommitted);
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Verdana", 9F);
+            this.label4.Location = new System.Drawing.Point(8, 232);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 23);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Display Column";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // tbMaxAmount
             // 
             this.tbMaxAmount.Font = new System.Drawing.Font("Verdana", 10F);
-            this.tbMaxAmount.Location = new System.Drawing.Point(145, 182);
+            this.tbMaxAmount.Location = new System.Drawing.Point(122, 182);
             this.tbMaxAmount.Margin = new System.Windows.Forms.Padding(4);
             this.tbMaxAmount.MaxLength = 50;
             this.tbMaxAmount.Name = "tbMaxAmount";
@@ -156,7 +255,7 @@
             this.label3.Location = new System.Drawing.Point(8, 184);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 20);
+            this.label3.Size = new System.Drawing.Size(110, 20);
             this.label3.TabIndex = 43;
             this.label3.Tag = "";
             this.label3.Text = "Max Amount:";
@@ -165,7 +264,7 @@
             // tbDefaultAmount
             // 
             this.tbDefaultAmount.Font = new System.Drawing.Font("Verdana", 10F);
-            this.tbDefaultAmount.Location = new System.Drawing.Point(145, 150);
+            this.tbDefaultAmount.Location = new System.Drawing.Point(122, 150);
             this.tbDefaultAmount.Margin = new System.Windows.Forms.Padding(4);
             this.tbDefaultAmount.MaxLength = 50;
             this.tbDefaultAmount.Name = "tbDefaultAmount";
@@ -181,7 +280,7 @@
             this.label2.Location = new System.Drawing.Point(8, 152);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 20);
+            this.label2.Size = new System.Drawing.Size(110, 20);
             this.label2.TabIndex = 41;
             this.label2.Text = "Default Amount:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -200,13 +299,13 @@
             // cboVoucherType
             // 
             this.cboVoucherType.FormattingEnabled = true;
-            this.cboVoucherType.Location = new System.Drawing.Point(145, 117);
+            this.cboVoucherType.Location = new System.Drawing.Point(122, 117);
             this.cboVoucherType.Margin = new System.Windows.Forms.Padding(4);
             this.cboVoucherType.Name = "cboVoucherType";
             this.cboVoucherType.Size = new System.Drawing.Size(272, 24);
             this.cboVoucherType.TabIndex = 39;
             this.cboVoucherType.Tag = "parm_IncomeProcessID";
-            this.cboVoucherType.SelectedValueChanged += new System.EventHandler(this.cboVoucherType_SelectedValueChanged);
+            this.cboVoucherType.SelectedIndexChanged += new System.EventHandler(this.cbo_SelectedValueChanged);
             // 
             // label5
             // 
@@ -214,7 +313,7 @@
             this.label5.Location = new System.Drawing.Point(8, 118);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 23);
+            this.label5.Size = new System.Drawing.Size(110, 23);
             this.label5.TabIndex = 38;
             this.label5.Text = "Voucher Type:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -244,7 +343,7 @@
             // tbDesc
             // 
             this.tbDesc.Font = new System.Drawing.Font("Verdana", 10F);
-            this.tbDesc.Location = new System.Drawing.Point(145, 78);
+            this.tbDesc.Location = new System.Drawing.Point(122, 78);
             this.tbDesc.Margin = new System.Windows.Forms.Padding(4);
             this.tbDesc.MaxLength = 50;
             this.tbDesc.Name = "tbDesc";
@@ -260,7 +359,7 @@
             this.label1.Location = new System.Drawing.Point(8, 80);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 20);
+            this.label1.Size = new System.Drawing.Size(110, 20);
             this.label1.TabIndex = 34;
             this.label1.Text = "Descripton:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -270,7 +369,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(925, 418);
+            this.ClientSize = new System.Drawing.Size(984, 418);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -306,6 +405,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbDefaultAmount;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cboCol;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cboRow;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboBackColor;
+        private System.Windows.Forms.Label label7;
 
     }
 }

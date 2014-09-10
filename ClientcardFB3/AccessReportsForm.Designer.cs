@@ -84,7 +84,7 @@
             // lblType5Hi
             // 
             this.lblType5Hi.AutoSize = true;
-            this.lblType5Hi.Location = new System.Drawing.Point(18, 74);
+            this.lblType5Hi.Location = new System.Drawing.Point(45, 74);
             this.lblType5Hi.Name = "lblType5Hi";
             this.lblType5Hi.Size = new System.Drawing.Size(24, 15);
             this.lblType5Hi.TabIndex = 3;
@@ -93,7 +93,7 @@
             // lblType5Low
             // 
             this.lblType5Low.AutoSize = true;
-            this.lblType5Low.Location = new System.Drawing.Point(5, 33);
+            this.lblType5Low.Location = new System.Drawing.Point(45, 27);
             this.lblType5Low.Name = "lblType5Low";
             this.lblType5Low.Size = new System.Drawing.Size(39, 15);
             this.lblType5Low.TabIndex = 2;
@@ -101,7 +101,7 @@
             // 
             // dtTo
             // 
-            this.dtTo.Location = new System.Drawing.Point(45, 69);
+            this.dtTo.Location = new System.Drawing.Point(45, 90);
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(204, 21);
             this.dtTo.TabIndex = 1;
@@ -116,7 +116,7 @@
             this.dtFrom.CalendarTitleBackColor = System.Drawing.Color.MediumSeaGreen;
             this.dtFrom.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.dtFrom.CalendarTrailingForeColor = System.Drawing.Color.DarkGray;
-            this.dtFrom.Location = new System.Drawing.Point(45, 29);
+            this.dtFrom.Location = new System.Drawing.Point(45, 44);
             this.dtFrom.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(204, 21);
@@ -327,7 +327,7 @@
             this.rdoOnlyInactive.AutoSize = true;
             this.rdoOnlyInactive.Location = new System.Drawing.Point(43, 72);
             this.rdoOnlyInactive.Name = "rdoOnlyInactive";
-            this.rdoOnlyInactive.Size = new System.Drawing.Size(87, 17);
+            this.rdoOnlyInactive.Size = new System.Drawing.Size(93, 19);
             this.rdoOnlyInactive.TabIndex = 2;
             this.rdoOnlyInactive.Text = "Only Inactive";
             this.rdoOnlyInactive.UseVisualStyleBackColor = true;
@@ -338,7 +338,7 @@
             this.rdoOnlyActive.Checked = true;
             this.rdoOnlyActive.Location = new System.Drawing.Point(43, 46);
             this.rdoOnlyActive.Name = "rdoOnlyActive";
-            this.rdoOnlyActive.Size = new System.Drawing.Size(82, 17);
+            this.rdoOnlyActive.Size = new System.Drawing.Size(86, 19);
             this.rdoOnlyActive.TabIndex = 1;
             this.rdoOnlyActive.TabStop = true;
             this.rdoOnlyActive.Text = "Only Active ";
@@ -349,7 +349,7 @@
             this.rdoAll.AutoSize = true;
             this.rdoAll.Location = new System.Drawing.Point(8, 21);
             this.rdoAll.Name = "rdoAll";
-            this.rdoAll.Size = new System.Drawing.Size(79, 17);
+            this.rdoAll.Size = new System.Drawing.Size(87, 19);
             this.rdoAll.TabIndex = 0;
             this.rdoAll.Text = "All Records";
             this.rdoAll.UseVisualStyleBackColor = true;
@@ -385,7 +385,7 @@
             this.pnlDateRange.Controls.Add(this.dtTo);
             this.pnlDateRange.Location = new System.Drawing.Point(710, 242);
             this.pnlDateRange.Name = "pnlDateRange";
-            this.pnlDateRange.Size = new System.Drawing.Size(262, 100);
+            this.pnlDateRange.Size = new System.Drawing.Size(262, 126);
             this.pnlDateRange.TabIndex = 18;
             // 
             // label1

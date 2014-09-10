@@ -574,13 +574,13 @@ namespace ClientcardFB3
             rtplntbRouteID.Text = "";
             rtplntbRouteTitle.Text = "";
             rtplntbDriver.Text = "";
-            rtplnmtDriverPhone.Text = "";
+            rtplnmtbPhone.Text = "";
             rtplntbEstTime.Text = "";
             rtplntbEstMiles.Text = "";
             rtplntbRouteNotes.Text = "";
             rtplntbDriverNotes.Text = "";
-            rtplntbFBContact.Text = "";
-            rtplnmtFBContactPhone.Text = "";
+            rtFBContact.Text = "";
+            rtFBContactPhone.Text = "";
             rtplndgvHD.Rows.Clear();
         }
 
@@ -628,13 +628,13 @@ namespace ClientcardFB3
                 rtplntbRouteID.Text = clsHDRoutes.ID.ToString();
                 rtplntbRouteTitle.Text = clsHDRoutes.RouteTitle;
                 rtplntbDriver.Text = clsHDRoutes.DriverName;
-                rtplnmtDriverPhone.Text = clsHDRoutes.DriverPhone;
+                rtplnmtbPhone.Text = clsHDRoutes.DriverPhone;
                 rtplntbEstTime.Text = clsHDRoutes.EstHours.ToString("0.00");
                 rtplntbEstMiles.Text = clsHDRoutes.EstMiles.ToString("0.0");
                 rtplntbRouteNotes.Text = clsHDRoutes.Notes;
                 rtplntbDriverNotes.Text = clsHDRoutes.DriverNotes;
-                rtplntbFBContact.Text = clsHDRoutes.FBContactName;
-                rtplnmtFBContactPhone.Text = clsHDRoutes.FBContactPhone;
+                rtFBContact.Text = clsHDRoutes.FBContactName;
+                rtFBContactPhone.Text = clsHDRoutes.FBContactPhone;
             }
         }
 
@@ -896,22 +896,20 @@ namespace ClientcardFB3
             }
         }
 
-        private void rtplnmtPhone_Enter(object sender, EventArgs e)
+        private void rtplnmtbPhone_Enter(object sender, EventArgs e)
         {
             sOriPhoneText = ((MaskedTextBox)sender).ToString();
-
         }
 
-        private void rtplnmtPhone_Leave(object sender, EventArgs e)
+        private void rtplnmtbPhone_Leave(object sender, EventArgs e)
         {
             MaskedTextBox tb = (MaskedTextBox)sender;
             if (tb.Text != sOriPhoneText)
             {
                 clsHDRoutes.SetDataValue(tb.Tag.ToString(), tb.Text);
                 rtplnSetDataChanged();
-            }
         }
-
+        }
         private void btnSelectDriver_Click(object sender, EventArgs e)
         {
             EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
@@ -923,11 +921,12 @@ namespace ClientcardFB3
                 clsHDRoutes.DefaultDriver = newVolId;
                 clsHDRoutes.loadDriverInfo(newVolId);
                 rtplntbDriver.Text = clsHDRoutes.DriverName;
-                rtplnmtDriverPhone.Text = clsHDRoutes.DriverPhone;
+                rtplnmtbPhone.Text = clsHDRoutes.DriverPhone;
                 loading = false;
                 rtplnbtnSaveRoute.Enabled = true;
             }
         }
+
         private void btnSelectContact_Click(object sender, EventArgs e)
         {
             EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
@@ -938,16 +937,11 @@ namespace ClientcardFB3
                 loading = true;
                 clsHDRoutes.FBContact = newVolId;
                 clsHDRoutes.loadFBContactInfo(newVolId);
-                rtplntbFBContact.Text = clsHDRoutes.FBContactName;
-                rtplnmtFBContactPhone.Text = clsHDRoutes.FBContactPhone;
+                rtFBContact.Text = clsHDRoutes.FBContactName;
+                rtFBContactPhone.Text = clsHDRoutes.FBContactPhone;
                 loading = false;
                 rtplnbtnSaveRoute.Enabled = true;
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

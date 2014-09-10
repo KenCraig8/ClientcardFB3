@@ -13,7 +13,7 @@ using System.IO;
 
 namespace ClientcardFB3
 {
-    public partial class FreshAllianceForm : Form
+    public partial class FoodReceiptsGroceryRescueForm : Form
     {
         private System.Collections.ArrayList listDonors = new System.Collections.ArrayList();
         FoodDonations clsFoodDonations = new FoodDonations(CCFBGlobal.connectionString);
@@ -22,25 +22,28 @@ namespace ClientcardFB3
         DateTime dateEnd;
         DateTime dateWeekStart;
         DateTime dateWeekEnd;
-        //System.Collections.ArrayList foodClassList;
+        System.Collections.ArrayList foodClassList;
 
         DataSet dset;
         SqlConnection conn;
         SqlDataAdapter dadAdpt;
         SqlCommand commandByDay;
         SqlCommand commandByWeek;
- 
+        Panel pnlViewable = null;
+
         int donorID;
-        int idbRowCount = 0;
-        int dbRowIndex = -1;
+        int iRowCount = 0;
+        int rowIndex = -1;
         bool loadingData = false;
         bool isGroceryRescue = false;
 
-        public FreshAllianceForm(int DonorID, int defaultDonorType, bool IsGroceryRescue)
+        public FoodReceiptsGroceryRescueForm(int DonorID, int defaultDonorType, bool IsGroceryRescue)
         {
             InitializeComponent();
-            pnlEditDaily.Visible = true;
-
+            pnlEditDaily.Visible = false;
+            pnlMonthly.Visible = false;
+            pnlMonthly.SetBounds(pnlEditDaily.Location.X, pnlEditDaily.Location.Y, pnlMonthly.Width, pnlMonthly.Height);
+            pnlViewable = pnlEditDaily;
             dset = new DataSet();
             conn = new SqlConnection(CCFBGlobal.connectionString);
             dadAdpt = new SqlDataAdapter();
@@ -52,7 +55,7 @@ namespace ClientcardFB3
             donorID = DonorID;
             LoadcboDonor();
             LoadcboYear();
-            //foodClassList = CCFBGlobal.TypeCodesArray(CCFBGlobal.parmTbl_FoodClass);
+            foodClassList = CCFBGlobal.TypeCodesArray(CCFBGlobal.parmTbl_FoodClass);
             fillFoodClasses();
             cboReportMonth.SelectedIndex = DateTime.Today.Month - 1;
             CCFBGlobal.InitCombo(cboDonationType, "parm_DonationType");
@@ -61,6 +64,8 @@ namespace ClientcardFB3
             isGroceryRescue = IsGroceryRescue;
             bool hasRows = cboStore.Items.Count > 0;
             btnLoadPeriodData.Enabled = hasRows;
+            btnEdit.Enabled = hasRows;
+            btnSummary.Enabled = hasRows;
         }
 
         /// <summary>
@@ -68,30 +73,33 @@ namespace ClientcardFB3
         /// </summary>
         private void fillFoodClasses()
         {
-            //dgvMonthReceipts.Rows.Clear();
-            //foreach (parmType pt in foodClassList)
-            //{
-            //    dgvMonthReceipts.Rows.Add();
-            //    dgvMonthReceipts[0, dgvMonthReceipts.Rows.Count - 1].Tag = pt;
-            //    dgvMonthReceipts[0, dgvMonthReceipts.Rows.Count - 1].Value = pt.LongName;
-            //}
+            dgvMonthReceipts.Rows.Clear();
+            dgvMonthTotals.Rows.Clear();
+            foreach (parmType pt in foodClassList)
+            {
+                dgvMonthTotals.Rows.Add();
+                dgvMonthReceipts.Rows.Add();
+                dgvMonthReceipts[0, dgvMonthReceipts.Rows.Count - 1].Tag = pt;
+                dgvMonthReceipts[0, dgvMonthReceipts.Rows.Count - 1].Value = pt.LongName;
+                dgvMonthTotals[0, dgvMonthTotals.Rows.Count - 1].Tag = pt;
+                dgvMonthTotals[0, dgvMonthTotals.Rows.Count - 1].Value = pt.LongName;
+            }
 
-            //createTotalsRows();
+            createTotalsRows();
         }
 
         private void createTotalsRows()
         {
+            dgvMonthTotals.Rows.Add();
             dgvMonthReceipts.Rows.Add();
-            dgvMonthReceipts[0, dgvMonthReceipts.RowCount - 1].Value = "Total";
+            dgvMonthReceipts[0, dgvMonthReceipts.RowCount - 1].Value = "Day Totals";
             dgvMonthReceipts.Rows[dgvMonthReceipts.RowCount - 1].ReadOnly = true;
+            dgvMonthTotals[0, dgvMonthTotals.RowCount - 1].Value = "Week Totals";
+            dgvMonthTotals.Rows[dgvMonthTotals.RowCount - 1].ReadOnly = true;
+
             for (int i = 0; i < dgvMonthReceipts.Columns.Count; i++)
             {
                 dgvMonthReceipts[i, dgvMonthReceipts.RowCount - 1].Style.BackColor = Color.LightGoldenrodYellow;
-            }
-            dgvMonthReceipts.Columns[dgvMonthReceipts.Columns.Count - 1].ReadOnly = true;
-            for (int i = 0; i < dgvMonthReceipts.Rows.Count - 1; i++)
-            {
-                dgvMonthReceipts[dgvMonthReceipts.Columns.Count - 1,i].Style.BackColor = Color.LightGoldenrodYellow;
             }
         }
 
@@ -109,40 +117,40 @@ namespace ClientcardFB3
         /// <summary>
         /// Retrives the Donation Data by week totals and loads them into the MonthTotals grid
         /// </summary>
-        //private void getAndLoadByWeekData()
-        //{
-        //    dgvMonthReceipts.Columns[0].HeaderText = "Food Classes - " + cboReportMonth.SelectedItem.ToString()
-        //        + "/" + cboYear.SelectedItem.ToString();
-        //    commandByWeek.Parameters[0].Value = dateStart.ToString();
-        //    commandByWeek.Parameters[1].Value = dateEnd.ToString();
-        //    commandByWeek.Parameters[2].Value = Convert.ToInt32(cboStore.SelectedValue);
-        //    try
-        //    {
-        //        if (conn.State == ConnectionState.Closed)
-        //        { conn.Open(); }
+        private void getAndLoadByWeekData()
+        {
+            dgvMonthReceipts.Columns[0].HeaderText = "Food Classes - " + cboReportMonth.SelectedItem.ToString()
+                + "/" + cboYear.SelectedItem.ToString();
+            commandByWeek.Parameters[0].Value = dateStart.ToString();
+            commandByWeek.Parameters[1].Value = dateEnd.ToString();
+            commandByWeek.Parameters[2].Value = Convert.ToInt32(cboStore.SelectedValue);
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                { conn.Open(); }
 
-        //        SqlDataReader reader = commandByWeek.ExecuteReader();
+                SqlDataReader reader = commandByWeek.ExecuteReader();
 
-        //        while (reader.Read())
-        //        {
-        //            int icol = Convert.ToInt32(reader.GetValue(0));
-        //            int irow = findRowInGridFromFoodClass(Convert.ToInt32(reader.GetValue(1)));
-        //            //dgvMonthTotals[icol, irow].Value = CCFBGlobal.formatNumberWithCommas(reader.GetValue(2));
-        //        }
+                while (reader.Read())
+                {
+                    int icol = Convert.ToInt32(reader.GetValue(0));
+                    int irow = findRowInGridFromFoodClass(Convert.ToInt32(reader.GetValue(1)));
+                    dgvMonthTotals[icol, irow].Value = CCFBGlobal.formatNumberWithCommas(reader.GetValue(2));
+                }
 
-        //        if (conn.State == ConnectionState.Open)
-        //        { conn.Close(); }
-        //    }
-        //    catch(SqlException ex)
-        //    {
-        //        CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
-        //        if (conn.State == ConnectionState.Open)
-        //            conn.Close();
-        //    }
+                if (conn.State == ConnectionState.Open)
+                { conn.Close(); }
+            }
+            catch(SqlException ex)
+            {
+                CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
+                if (conn.State == ConnectionState.Open)
+                    conn.Close();
+            }
 
-        //    if(conn.State == ConnectionState.Open)
-        //        conn.Close();
-        //}
+            if(conn.State == ConnectionState.Open)
+                conn.Close();
+        }
 
         /// <summary>
         /// Initializes the Dates found in period to empty
@@ -151,7 +159,7 @@ namespace ClientcardFB3
         {
             for (int i = 0; i < dgvMonthReceipts.Rows.Count-1; i++)
             {
-                for (int j = 0; j < dgvMonthReceipts.Columns.Count - 1; j++)
+                for (int j = 1; j < dgvMonthReceipts.Columns.Count - 1; j++)
                 {
                     dgvMonthReceipts[j, i].Value = null;
                     dgvMonthReceipts[j, i].Tag = null;
@@ -180,10 +188,22 @@ namespace ClientcardFB3
         {
             for (int i = 0; i < dgvMonthReceipts.Rows.Count; i++)
             {
-                dgvMonthReceipts[dgvMonthReceipts.Columns.Count-1, i].Value = 0;
+                dgvMonthReceipts[8, i].Value = 0;
+                
             }
         }
 
+        /// <summary>
+        /// Zeros out the Monthly Totals
+        /// </summary>
+        private void zeroOutTotalsByMonth()
+        {
+            for (int i = 0; i < dgvMonthTotals.Rows.Count; i++)
+            {
+                dgvMonthTotals[7, i].Value = 0;
+
+            }
+        }
 
         /// <summary>
         /// Loads the View By Day Donations Grid
@@ -191,39 +211,28 @@ namespace ClientcardFB3
         private void loadByDayData()
         {
             DateTime trxDate;
-            int foodClass = 0;
-            int colFoodClass = 0;
-            int rowTrxDate = 0;
-            for(int i = 0; i < idbRowCount; i++)
+            for(int i = 0; i < iRowCount; i++)
             {
                 trxDate = dset.Tables[0].Rows[i].Field<DateTime>("TrxDate");
-                foodClass = dset.Tables[0].Rows[i].Field<short>("FoodClass");
-                foreach (parmType item in CCFBGlobal.TypeCodesArray(CCFBGlobal.parmTbl_FoodClass))
+                int dow = Convert.ToInt32(trxDate.DayOfWeek);
+
+                if(trxDate >= dateWeekStart && trxDate <= dateWeekEnd)
                 {
-                    if (item.ID == foodClass)
+                    for (int j = 0; j < dgvMonthReceipts.Rows.Count; j++)
                     {
-                        colFoodClass = item.SortOrder;
-                        break;
+                        if (dgvMonthReceipts["colFoodClass", j].Tag != null &&
+                            ((parmType)dgvMonthReceipts["colFoodClass", j].Tag).UID
+                            == dset.Tables[0].Rows[i]["FoodClass"].ToString())
+                        {
+                            dgvMonthReceipts[Convert.ToInt32(dow + 1), j].Value =
+                               CCFBGlobal.formatNumberWithCommas(dset.Tables[0].Rows[i]["Pounds"]);
+                            dgvMonthReceipts[Convert.ToInt32(dow + 1), j].Tag =
+                                dset.Tables[0].Rows[i]["TrxID"];
+                        }
                     }
                 }
-
-                rowTrxDate = trxDate.Day - 1;
-                if(rowTrxDate >= 0 && rowTrxDate < dgvMonthReceipts.Rows.Count)
-                {
-                    //for (int j = 0; j < dgvMonthReceipts.Rows.Count; j++)
-                    //{
-                        //if (dgvMonthReceipts[colFoodClass, rowTrxDate].Tag != null && ((parmType)dgvMonthReceipts[colFoodClass, rowTrxDate].Tag).UID == dset.Tables[0].Rows[i]["FoodClass"].ToString())
-                        //{
-                            dgvMonthReceipts[colFoodClass, rowTrxDate].Value =
-                               CCFBGlobal.formatNumberWithCommas(dset.Tables[0].Rows[i]["Pounds"]);
-                            dgvMonthReceipts[colFoodClass, rowTrxDate].Tag =
-                                dset.Tables[0].Rows[i]["TrxID"];
-                            dgvMonthReceipts[colFoodClass, rowTrxDate].Style.BackColor = Color.White;
-                        //}
-                    //}
-                }
             }
-            loadTotals();
+            loadTotalsForWeek();
         }
 
         /// <summary>
@@ -314,15 +323,66 @@ namespace ClientcardFB3
             loadingData = true;
             btnEmailRpt.Enabled = true;
             btnPrint.Enabled = true;
+            pnlViewable.Visible = true;
             ShowButtons(true);
+            switch (GetNumWeeksInPeriod())
+            {
+                case 4:
+                    {
+                        rdoWeek5.Visible = false;
+                        rdoWeek6.Visible = false;
+
+                        if (rdoWeek5.Checked == true || rdoWeek6.Checked == true)
+                            rdoWeek4.Checked = true;
+
+                        dgvMonthTotals.Columns["clmWeek5"].Visible = false;
+                        dgvMonthTotals.Columns["clmWeek6"].Visible = false;
+                        break;
+                    }
+                case 5:
+                    {
+                        rdoWeek5.Visible = true;
+                        rdoWeek6.Visible = false;
+
+                        if (rdoWeek6.Checked == true)
+                            rdoWeek5.Checked = true;
+
+                        dgvMonthTotals.Columns["clmWeek5"].Visible = true;
+                        dgvMonthTotals.Columns["clmWeek6"].Visible = false;
+                        break;
+                    }
+                case 6:
+                    {
+                        rdoWeek5.Visible = true;
+                        rdoWeek6.Visible = true;
+                        dgvMonthTotals.Columns["clmWeek5"].Visible = true;
+                        dgvMonthTotals.Columns["clmWeek6"].Visible = true;
+                        break;
+                    }
+                default:
+                    {
+                        rdoWeek5.Visible = false;
+                        rdoWeek6.Visible = false;
+                        dgvMonthTotals.Columns["clmWeek5"].Visible = false;
+                        dgvMonthTotals.Columns["clmWeek6"].Visible = false;
+                        break;
+                    }
+            }
             loadingData = false;
             initWeekTotals();
             initList();
-            LoadListWithRowHeaders();
+            LoadListWithCollumHeaders();
+
+            if (CCFBPrefs.UseCalendarWeeks == false)
+            {
+                dateStart = dateStart.AddDays(-Convert.ToInt32(dateStart.DayOfWeek));
+                dateEnd = dateEnd.AddDays(7 - Convert.ToInt32(dateEnd.DayOfWeek));
+            }
 
             getDonorData();
             loadByDayData();
-            //getAndLoadByWeekData(); 
+            getAndLoadByWeekData(); 
+            loadTotalsForMonth();
             dgvMonthReceipts.Enabled = true;
         }
 
@@ -331,6 +391,7 @@ namespace ClientcardFB3
             btnPrint.Enabled = false;
             btnEmailRpt.Enabled = false;
             dgvMonthReceipts.Enabled = false;
+            pnlViewable.Visible = false;
             ShowButtons(false);
             initList();
         }
@@ -344,15 +405,15 @@ namespace ClientcardFB3
             {
                 commandByDay = new SqlCommand("Set DateFirst 1; select * From FoodDonations WHERE DonorID = "
                     + cboStore.SelectedValue.ToString() + " AND TrxDate Between '"
-                    + dateStart.ToShortDateString() + "' and '" + dateEnd.ToShortDateString() + "' "
-                    + "order BY  TrxDate, FoodClass", conn);
+                    + dateStart.ToString() + "' and '" + dateEnd.ToString() + "' "
+                    + "order BY  FoodClass, TrxDate", conn);
                 dset.Clear();
                 dadAdpt.SelectCommand = commandByDay;
-                idbRowCount = dadAdpt.Fill(dset);
+                iRowCount = dadAdpt.Fill(dset);
             }
             catch (System.Exception ex)
             {
-                idbRowCount = 0;
+                iRowCount = 0;
                 CCFBGlobal.appendErrorToErrorReport("Donor=" + cboStore.SelectedValue.ToString()
                     + " dateStart=" + dateStart.ToShortDateString() + " dateEnd=" + dateEnd.ToShortDateString(),
                     ex.GetBaseException().ToString());
@@ -362,52 +423,53 @@ namespace ClientcardFB3
         /// <summary>
         /// Inserts the proper text into the Column Headers on the View By Day grid
         /// </summary>
-        private void LoadListWithRowHeaders()
+        private void LoadListWithCollumHeaders()
         {
+            bool weekStartSet = false;
             dateWeekStart = DateTime.MaxValue;
             dateWeekEnd = DateTime.MinValue;
             dateStart = Convert.ToDateTime((cboReportMonth.SelectedIndex + 1).ToString() + "/1/" + cboYear.Text);
+            int dowStart = Convert.ToInt32(dateStart.DayOfWeek);
+
             dateEnd = dateStart.AddMonths(1).AddDays(-1);
-//            int displayWeek = 0;
-            ////foreach (RadioButton rdo in grpWeek.Controls.OfType<RadioButton>())
-            ////{
-            ////    if (rdo.Checked == true)
-            ////    {
-            ////        displayWeek = Convert.ToInt32(rdo.Tag.ToString());
-            ////        break;
-            ////    }
-            ////}
+            int displayWeek = 0;
+            foreach (RadioButton rdo in grpWeek.Controls.OfType<RadioButton>())
+            {
+                if (rdo.Checked == true)
+                {
+                    displayWeek = Convert.ToInt32(rdo.Tag.ToString());
+                    break;
+                }
+            }
 
             //Get the first day of the given week
+            DateTime firstDateofDisplay = dateStart.AddDays(-dowStart);
 
             dgvMonthReceipts.ColumnHeadersDefaultCellStyle = null;
-            dgvMonthReceipts.Rows.Clear();
-            int numberDaysInMonth = dateEnd.Day;
+            int numberDaysInWeek = 7;
 
             //Goes through each day of the displayed week and displays the info for that day
-            for (int i = 0; i < numberDaysInMonth; i++)
+            for (int i = 0; i < numberDaysInWeek; i++)
             {
-                DateTime dateDisplay = dateStart.AddDays(i);
-                dgvMonthReceipts.Rows.Add();
-                dgvMonthReceipts.Rows[i].HeaderCell.Value = dateDisplay.ToShortDateString(); 
+                DateTime dateDisplay = firstDateofDisplay.AddDays(i + (displayWeek * 7));
+                int j = i + 1;
+                
                 //If the date is not within the Period or The User is not using Calendar Weeks
-                //if (CCFBPrefs.UseCalendarWeeks == true && (dateDisplay < dateStart || dateDisplay > dateEnd)) 
-                //{
-                //    dgvMonthReceipts.Columns[j].HeaderText = dateDisplay.DayOfWeek.ToString().Substring(0, 3);
-                //    dgvMonthReceipts.Columns[j].ReadOnly = true;
-                //    dgvMonthReceipts.Columns[j].Tag = dateDisplay;
-
-                for (int k = 0; k < dgvMonthReceipts.Columns.Count; k++)
+                if (CCFBPrefs.UseCalendarWeeks == true && (dateDisplay < dateStart || dateDisplay > dateEnd)) 
                 {
-                    dgvMonthReceipts[k, i].Style.BackColor = Color.LightGray;
+                    dgvMonthReceipts.Columns[j].HeaderText = dateDisplay.DayOfWeek.ToString().Substring(0, 3);
+                    dgvMonthReceipts.Columns[j].ReadOnly = true;
+                    dgvMonthReceipts.Columns[j].Tag = dateDisplay;
+
+                    for (int k = 0; k < dgvMonthReceipts.Rows.Count; k++)
+                        dgvMonthReceipts[j, k].Style.BackColor = Color.LightGray;
                 }
-                //}
-                //else
-                //{
-                //   weekStartSet = setValidDate(weekStartSet, dateDisplay, j);
-                //}
+                else
+                {
+                   weekStartSet = setValidDate(weekStartSet, dateDisplay, j);
+                }
             }
-            createTotalsRows();
+            dateStart = firstDateofDisplay;
         }
 
         private bool setValidDate(bool weekStartSet, DateTime dateDisplay, int col)
@@ -434,30 +496,30 @@ namespace ClientcardFB3
             return weekStartSet;
         }
 
-        //private void rdoWeek_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (loadingData == false)
-        //    {
-        //        RadioButton rdo = (RadioButton)sender;
-        //        if (rdo.Checked == true)
-        //        {
-        //            fillForm();
-        //            getAndLoadByWeekData();
-        //        }
-        //    }
-        //}
+        private void rdoWeek_CheckedChanged(object sender, EventArgs e)
+        {
+            if (loadingData == false)
+            {
+                RadioButton rdo = (RadioButton)sender;
+                if (rdo.Checked == true)
+                {
+                    fillForm();
+                    getAndLoadByWeekData();
+                }
+            }
+        }
 
         /// <summary>
         /// Adds up each of the daily totals for each item and inserts that into the total column
         /// </summary>
-        private void loadTotals()
+        private void loadTotalsForWeek()
         {
             zeroOutTotalsByDay();
             int rowTotal;
-            for (int i = 0; i < dgvMonthReceipts.Rows.Count-1; i++)
+            for (int i = 0; i < dgvMonthReceipts.Rows.Count; i++)
             {
                 rowTotal = 0;
-                for (int j = 0; j < dgvMonthReceipts.Columns.Count-2; j++)
+                for (int j = 1; j < dgvMonthReceipts.Columns.Count-1; j++)
                 {
                     if (dgvMonthReceipts[j, i].Value != null)
                     {
@@ -465,14 +527,11 @@ namespace ClientcardFB3
                             dgvMonthReceipts[j, i].Value.ToString().Replace(",", ""));
                     }
                 }
-                if (rowTotal != 0)
-                {
-                    dgvMonthReceipts[dgvMonthReceipts.Columns.Count - 1, i].Value = CCFBGlobal.formatNumberWithCommas(rowTotal);
-                }
+                dgvMonthReceipts[8, i].Value = CCFBGlobal.formatNumberWithCommas(rowTotal);
             }
 
             int colTotal = 0;
-            for (int i = 0; i < dgvMonthReceipts.Columns.Count; i++)
+            for (int i = 1; i < dgvMonthReceipts.Columns.Count; i++)
             {
                 colTotal = 0;
                 for (int j = 0; j < dgvMonthReceipts.RowCount-1; j++)
@@ -487,11 +546,47 @@ namespace ClientcardFB3
             }
         }
 
+        /// <summary>
+        /// Adds up each of the Weekly totals for each item and inserts that into the total column
+        /// </summary>
+        private void loadTotalsForMonth()
+        {
+            zeroOutTotalsByMonth();
+            int rowTotal;
+            for (int i = 0; i < dgvMonthTotals.Rows.Count; i++)
+            {
+                rowTotal = 0;
+                for (int j = 1; j < dgvMonthTotals.Columns.Count - 1; j++)
+                {
+                    if (dgvMonthTotals[j, i].Value != null)
+                    {
+                        rowTotal += Convert.ToInt32(
+                            dgvMonthTotals[j, i].Value.ToString().Replace(",", ""));
+                    }
+                }
+                dgvMonthTotals[7, i].Value = CCFBGlobal.formatNumberWithCommas(rowTotal);
+            }
+
+            int colTotal = 0;
+            for (int i = 1; i < dgvMonthTotals.Columns.Count; i++)
+            {
+                colTotal = 0;
+                for (int j = 0; j < dgvMonthTotals.RowCount-1; j++)
+                {
+                    if (dgvMonthTotals[i, j].Value != null)
+                    {
+                        colTotal += Convert.ToInt32(
+                             dgvMonthTotals[i,j].Value.ToString().Replace(",", ""));
+                    }
+                }
+                dgvMonthTotals[i, dgvMonthTotals.RowCount-1].Value = CCFBGlobal.formatNumberWithCommas(colTotal);
+            }
+        }
 
         private void fillForm()
         {
             initList();
-            LoadListWithRowHeaders();
+            LoadListWithCollumHeaders();
             loadByDayData();
         }
 
@@ -499,7 +594,7 @@ namespace ClientcardFB3
         {
             try
             {
-                dbRowIndex = -1;
+                rowIndex = -1;
                 int lbs;
                 if (dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Value != null)
                     lbs = Convert.ToInt32(dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Value.ToString().Replace(",", ""));
@@ -509,46 +604,49 @@ namespace ClientcardFB3
                 //Tag != null means Update
                 if (dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag != null)
                 {
-                    dbRowIndex = getRowIndexDependingOnTag(e.RowIndex, e.ColumnIndex);
+                    rowIndex = getRowIndexDependingOnTag(e.RowIndex, e.ColumnIndex);
 
                     if (lbs == 0)
                     {
                         dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag = null;
                         dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Value = null;
-                        dset.Tables[0].Rows[dbRowIndex].Delete();
+                        dset.Tables[0].Rows[rowIndex].Delete();
                     }
                     else
                     {
-                        dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag = dset.Tables[0].Rows[dbRowIndex]["TrxID"];
-                        dset.Tables[0].Rows[dbRowIndex]["Pounds"] = lbs;
-                        dset.Tables[0].Rows[dbRowIndex]["Modified"] = DateTime.Now;
-                        dset.Tables[0].Rows[dbRowIndex]["ModifiedBy"] = CCFBGlobal.dbUserName;
-                        dset.Tables[0].Rows[dbRowIndex]["DonationType"] = cboDonationType.SelectedValue;
+                        dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag = dset.Tables[0].Rows[rowIndex]["TrxID"];
+                        dset.Tables[0].Rows[rowIndex]["Pounds"] = lbs;
+                        dset.Tables[0].Rows[rowIndex]["Modified"] = DateTime.Now;
+                        dset.Tables[0].Rows[rowIndex]["ModifiedBy"] = CCFBGlobal.dbUserName;
+                        dset.Tables[0].Rows[rowIndex]["DonationType"] = cboDonationType.SelectedValue;
                     }
                     update();
                     getDonorData();
-                    loadByDayData();
+                    loadTotalsForWeek();
+                    getAndLoadByWeekData();
+                    loadTotalsForMonth();
                 }
                 else   //Tag == null means Insert
                 {
                     if (lbs != 0)
                     {
                         DataRow drow = dset.Tables[0].NewRow();
-                        drow["TrxDate"] = dgvMonthReceipts.Rows[e.RowIndex].HeaderCell.Value;  
+                        drow["TrxDate"] = dgvMonthReceipts.Columns[e.ColumnIndex].Tag;
                         drow["DonorID"] = cboStore.SelectedValue;
                         drow["Pounds"] = lbs;
                         drow["DonationType"] = cboDonationType.SelectedValue;
-                        drow["FoodClass"] = getFoodClass(e.ColumnIndex);
+                        drow["FoodClass"] = ((parmType)dgvMonthReceipts[0, e.RowIndex].Tag).ID;
                         drow["CreatedBy"] = CCFBGlobal.dbUserName;
                         drow["Created"] = DateTime.Now;
                         dset.Tables[0].Rows.Add(drow);
 
                         update();
                         getDonorData();
-                        loadByDayData();
                         dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag = "IN";
-                        //initWeekTotals();
-                        //getAndLoadByWeekData();
+                        loadTotalsForWeek();
+                        initWeekTotals();
+                        getAndLoadByWeekData();
+                        loadTotalsForMonth();
                     }
                     else
                         dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Value = null;
@@ -558,8 +656,8 @@ namespace ClientcardFB3
             {
                 if (dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag != null)
                 {
-                    dbRowIndex = getRowIndexDependingOnTag(e.RowIndex, e.ColumnIndex);
-                    dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Value = dset.Tables[0].Rows[dbRowIndex]["Pounds"];
+                    rowIndex = getRowIndexDependingOnTag(e.RowIndex, e.ColumnIndex);
+                    dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Value = dset.Tables[0].Rows[rowIndex]["Pounds"];
                 }
                 else
                     dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Value = null;
@@ -594,14 +692,14 @@ namespace ClientcardFB3
         /// </summary>
         private void initWeekTotals()
         {
-            //for (int i = 0; i < dgvMonthTotals.Rows.Count; i++)
-            //{
-            //    for (int j = 1; j < dgvMonthTotals.Columns.Count-1; j++)
-            //    {
-            //        dgvMonthTotals[j, i].Value = null;
-            //    }
-            //}
-            //zeroOutTotalsByMonth();
+            for (int i = 0; i < dgvMonthTotals.Rows.Count; i++)
+            {
+                for (int j = 1; j < dgvMonthTotals.Columns.Count-1; j++)
+                {
+                    dgvMonthTotals[j, i].Value = null;
+                }
+            }
+            zeroOutTotalsByMonth();
         }
         /// <summary>
         /// Finds the RowIndex in the dataset by ID
@@ -610,7 +708,7 @@ namespace ClientcardFB3
         /// <returns>(int)RowIndex, If -1 the Donation was not found</returns>
         private int findRowIndex(int id)
         {
-            for (int i = 0; i < idbRowCount; i++)
+            for (int i = 0; i < iRowCount; i++)
             {
                 if (dset.Tables[0].Rows[i].Field<int>("TrxID") == id)
                 {
@@ -628,7 +726,7 @@ namespace ClientcardFB3
         /// <returns>(int)RowIndex, If -1 the Donation was not found</returns>
         private int findRowIndex(int foodClass, DateTime date)
         {
-            for (int i = 0; i < idbRowCount; i++)
+            for (int i = 0; i < iRowCount; i++)
             {
                 if (dset.Tables[0].Rows[i].Field<DateTime>("TrxDate") == date
                     && Convert.ToInt32(dset.Tables[0].Rows[i]["FoodClass"]) == foodClass)
@@ -714,26 +812,27 @@ namespace ClientcardFB3
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //btnEdit.BackColor = Color.LightSkyBlue;
-            //btnSummary.BackColor = Color.Gainsboro;
-            //pnlMonthly.Visible = false;
+            btnEdit.BackColor = Color.LightSkyBlue;
+            btnSummary.BackColor = Color.Gainsboro;
+            pnlMonthly.Visible = false;
             pnlEditDaily.Visible = true;
+            pnlViewable = pnlEditDaily;
             cboDonationType.Enabled = true;
         }
 
         private void btnSummary_Click(object sender, EventArgs e)
         {
-            //btnEdit.BackColor = Color.Gainsboro;
-            //btnSummary.BackColor = Color.LightSkyBlue;
-            //pnlMonthly.Visible = true;
+            btnEdit.BackColor = Color.Gainsboro;
+            btnSummary.BackColor = Color.LightSkyBlue;
+            pnlMonthly.Visible = true;
             pnlEditDaily.Visible = false;
-            //pnlViewable = pnlMonthly;
+            pnlViewable = pnlMonthly;
             cboDonationType.Enabled = false;
         }
         private void ShowButtons(bool isVisible)
         {
-            //btnEdit.Visible = isVisible;
-            //btnSummary.Visible = isVisible;
+            btnEdit.Visible = isVisible;
+            btnSummary.Visible = isVisible;
         }
 
         private void cboDonationType_SelectionChangeCommitted(object sender, EventArgs e)
@@ -765,8 +864,8 @@ namespace ClientcardFB3
 
         private void dgvMonthReceipts_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (idbRowCount > 0 && dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag != null && dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag != "IN"
-                && e.ColumnIndex < dgvMonthReceipts.Columns.Count-2)
+            if (iRowCount > 0 && dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Tag != null
+                && e.ColumnIndex > 0 && e.ColumnIndex < 8)
             {
                 int dsetRowIndex = getRowIndexDependingOnTag(e.RowIndex, e.ColumnIndex);
                 cboDonationType.SelectedValue = dset.Tables[0].Rows[dsetRowIndex]["DonationType"].ToString();
@@ -775,38 +874,56 @@ namespace ClientcardFB3
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            RptFreshAlliance clsCreateGRReport;
-            string saveAs = "";
-            clsCreateGRReport = new RptFreshAlliance(dgvMonthReceipts);
-                saveAs = CCFBPrefs.ReportsSavePath + "FreshAlliance_" + cboReportMonth.SelectedItem
-               + "_" + cboYear.SelectedItem + "_" + ((parmType)cboStore.SelectedItem).LongName + "_MontlyTotals.xls";
 
-            clsCreateGRReport.createReport(saveAs, CCFBGlobal.fb3TemplatesPath + "FreshAlliance.xls",
-                ((parmType)cboStore.SelectedItem).LongName, cboReportMonth.SelectedItem.ToString() + " " + cboYear.SelectedItem.ToString());
+            RptGroceryRescue clsCreateGRReport;
+            string saveAs = "";
+            if (pnlEditDaily.Visible == true)
+            {
+                clsCreateGRReport = new RptGroceryRescue(dgvMonthReceipts);
+                saveAs = CCFBPrefs.ReportsSavePath + "GroceryRescue_" + cboReportMonth.SelectedItem
+               + "_" + cboYear.SelectedItem + "_" + ((parmType)cboStore.SelectedItem).LongName + "_";
+                
+                foreach (RadioButton rdo in grpWeek.Controls.OfType<RadioButton>())
+                {
+                    if (rdo.Checked == true)
+                        saveAs += rdo.Name.Replace("rdo", "");
+                }
+                
+                saveAs += ".xls";
+            }
+            else
+            {
+                clsCreateGRReport = new RptGroceryRescue(dgvMonthTotals);
+                saveAs = CCFBPrefs.ReportsSavePath + "GroceryRescue_" + cboReportMonth.SelectedItem
+               + "_" + cboYear.SelectedItem + "_" + ((parmType)cboStore.SelectedItem).LongName + "_MontlyTotals.xls";
+            }
+
+            clsCreateGRReport.createReport(saveAs, CCFBGlobal.fb3TemplatesPath + "GroceryRescue.xls",
+                ((parmType)cboStore.SelectedItem).LongName, isGroceryRescue);
         }
 
         private void btnEmailRpt_Click(object sender, EventArgs e)
         {
             string fileName = "";
 
-            //if (pnlEditDaily.Visible == true)
-            //{
-            //    fileName = "GroceryRescue_" + cboReportMonth.SelectedItem
-            //   + "_" + cboYear.SelectedItem + "_" + ((parmType)cboStore.SelectedItem).LongName + "_";
+            if (pnlEditDaily.Visible == true)
+            {
+                fileName = "GroceryRescue_" + cboReportMonth.SelectedItem
+               + "_" + cboYear.SelectedItem + "_" + ((parmType)cboStore.SelectedItem).LongName + "_";
 
-            //    foreach (RadioButton rdo in grpWeek.Controls.OfType<RadioButton>())
-            //    {
-            //        if (rdo.Checked == true)
-            //            fileName += rdo.Name.Replace("rdo", "");
-            //    }
+                foreach (RadioButton rdo in grpWeek.Controls.OfType<RadioButton>())
+                {
+                    if (rdo.Checked == true)
+                        fileName += rdo.Name.Replace("rdo", "");
+                }
 
-            //    fileName += ".xls";
-            //}
-            //else
-            //{
-                fileName = "FreshAlliance_" + cboReportMonth.SelectedItem
-               + "_" + cboYear.SelectedItem + "_" + ((parmType)cboStore.SelectedItem).LongName + "_FreshAlliance.xls";
-            //}
+                fileName += ".xls";
+            }
+            else
+            {
+                fileName = "GroceryRescue_" + cboReportMonth.SelectedItem
+               + "_" + cboYear.SelectedItem + "_" + ((parmType)cboStore.SelectedItem).LongName + "_MontlyTotals.xls";
+            }
 
 
             string filePath = CCFBPrefs.ReportsSavePath + fileName;
@@ -863,17 +980,10 @@ namespace ClientcardFB3
                 CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
             }
         }
-        private int getFoodClass(int colIndex)
-        {
-            foreach (parmType item in CCFBGlobal.TypeCodesArray(CCFBGlobal.parmTbl_FoodClass))
-            {
-                if (item.SortOrder == colIndex)
-                {
-                    return item.ID;
-                }
 
-            }
-            return 9;
+        private void dgvMonthReceipts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
