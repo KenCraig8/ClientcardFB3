@@ -69,42 +69,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\ClientcardFB3\CCFBGlobal.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\CCFBGlobal.cs">
       <Link>CCFBGlobal.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\CCFBPrefs.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\CCFBPrefs.cs">
       <Link>CCFBPrefs.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\Client.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\Client.cs">
       <Link>Client.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\DailyItemsClass.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\DailyItemsClass.cs">
       <Link>DailyItemsClass.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\HHMembers.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\HHMembers.cs">
       <Link>HHMembers.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\Household.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\Household.cs">
       <Link>Household.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\LoginForm.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\LoginForm.cs">
       <Link>LoginForm.cs</Link>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\LoginForm.designer.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\LoginForm.designer.cs">
       <Link>LoginForm.designer.cs</Link>
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\parmTypeCodes.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\parmTypeCodes.cs">
       <Link>parmTypeCodes.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\ServiceItems.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\ServiceItems.cs">
       <Link>ServiceItems.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\TrxLog.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\TrxLog.cs">
       <Link>TrxLog.cs</Link>
     </Compile>
-    <Compile Include="..\..\ClientcardFB3\Userlist.cs">
+    <Compile Include="..\..\ClientcardFB3\ClientcardFB3\Userlist.cs">
       <Link>Userlist.cs</Link>
     </Compile>
     <Compile Include="FastTrackForm.cs">
@@ -118,7 +118,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="USBScale.cs" />
-    <EmbeddedResource Include="..\..\ClientcardFB3\LoginForm.resx">
+    <EmbeddedResource Include="..\..\ClientcardFB3\ClientcardFB3\LoginForm.resx">
       <Link>LoginForm.resx</Link>
       <DependentUpon>LoginForm.cs</DependentUpon>
       <SubType>Designer</SubType>
