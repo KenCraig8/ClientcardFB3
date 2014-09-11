@@ -38,12 +38,19 @@ namespace ClientcardFB3
         string filterDateFldName = "";
         public const int NULL_MEM_ID = -1;
         int hhMemID = NULL_MEM_ID;
+        int newHhID = NULL_MEM_ID;
         int rowCount = 0;
 
         public int HHMemID
         {
             get { return hhMemID; }
         }
+
+        public int HHid
+        {
+            get { return newHhID; }
+        }
+
 
         public int RowCount
         {
@@ -552,32 +559,32 @@ namespace ClientcardFB3
             if (dgvClientList.CurrentRow != null)
             {
                 hhMemID = Convert.ToInt32(dgvClientList.CurrentRow.Cells["clmID"].Value.ToString());
-                int newHHId = Convert.ToInt32(dgvClientList.CurrentRow.Cells["clmHHID"].Value.ToString());
+                newHhID = Convert.ToInt32(dgvClientList.CurrentRow.Cells["clmHHID"].Value.ToString());
                 if (frmMainIn != null)
                 {
                     if (transferHHMemMode == false)
                     {
-                        frmMainIn.setHousehold(newHHId, hhMemID);
+                        frmMainIn.setHousehold(newHhID, hhMemID);
                         indexFindClient = dgvClientList.CurrentRow.Index;
-                        currentHHId = newHHId;
+                        currentHHId = newHhID;
                         this.Visible = false;
                     }
                     else
                     {
                         if (MessageBox.Show("Are You Sure You Want To Transfer The Household Member To Household "
-                            + newHHId.ToString() + " With Member Name " + dgvClientList.CurrentRow.Cells["colName"].Value.ToString()
+                            + newHhID.ToString() + " With Member Name " + dgvClientList.CurrentRow.Cells["colName"].Value.ToString()
                             + "?", "Transfer Member?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                              == System.Windows.Forms.DialogResult.Yes)
                         {
                             frmMainIn.transferMember();
                             indexFindClient = dgvClientList.CurrentRow.Index;
-                            currentHHId = newHHId;
+                            currentHHId = newHhID;
                             this.Visible = false;
                         }
                     }
                 }
                 indexFindClient = dgvClientList.CurrentRow.Index;
-                currentHHId = newHHId;
+                currentHHId = newHhID;
                 this.Visible = false;
             }
         }
