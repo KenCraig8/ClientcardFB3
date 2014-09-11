@@ -30,20 +30,19 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HDPlannerForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,18 +54,32 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.rtplndgvHD = new System.Windows.Forms.DataGridView();
+            this.clmCnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmRouteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmRouteTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmApt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmFamilySize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDriverNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSvcItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLastSvc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.rtplncboOrderBy = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -195,7 +208,18 @@
             this.label21 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -207,32 +231,9 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRouteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRouteTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmApt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmFamilySize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDriverNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSvcItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmLastSvc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rtplndgvHD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -329,11 +330,152 @@
             this.rtplndgvHD.RowHeadersVisible = false;
             this.rtplndgvHD.RowTemplate.Height = 24;
             this.rtplndgvHD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.rtplndgvHD.Size = new System.Drawing.Size(970, 426);
+            this.rtplndgvHD.Size = new System.Drawing.Size(970, 422);
             this.rtplndgvHD.TabIndex = 32;
             this.rtplndgvHD.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.rtplndgvHD_CellBeginEdit);
             this.rtplndgvHD.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rtplndgvHD_CellDoubleClick);
             this.rtplndgvHD.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.rtplndgvHD_CellEndEdit);
+            // 
+            // clmCnt
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.MediumBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            this.clmCnt.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmCnt.Frozen = true;
+            this.clmCnt.HeaderText = "";
+            this.clmCnt.MinimumWidth = 40;
+            this.clmCnt.Name = "clmCnt";
+            this.clmCnt.ReadOnly = true;
+            this.clmCnt.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmCnt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmCnt.Width = 40;
+            // 
+            // clmRouteID
+            // 
+            this.clmRouteID.HeaderText = "RouteID";
+            this.clmRouteID.Name = "clmRouteID";
+            this.clmRouteID.ReadOnly = true;
+            this.clmRouteID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmRouteID.Visible = false;
+            this.clmRouteID.Width = 60;
+            // 
+            // clmRouteTitle
+            // 
+            this.clmRouteTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmRouteTitle.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmRouteTitle.HeaderText = "Rt";
+            this.clmRouteTitle.Name = "clmRouteTitle";
+            this.clmRouteTitle.ReadOnly = true;
+            this.clmRouteTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmRouteTitle.Visible = false;
+            // 
+            // clmAddress
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmAddress.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clmAddress.HeaderText = "Address";
+            this.clmAddress.MaxInputLength = 50;
+            this.clmAddress.Name = "clmAddress";
+            this.clmAddress.ReadOnly = true;
+            this.clmAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmAddress.Width = 180;
+            // 
+            // clmApt
+            // 
+            this.clmApt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmApt.DefaultCellStyle = dataGridViewCellStyle5;
+            this.clmApt.HeaderText = "Apt";
+            this.clmApt.MaxInputLength = 40;
+            this.clmApt.Name = "clmApt";
+            this.clmApt.ReadOnly = true;
+            this.clmApt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmApt.Width = 59;
+            // 
+            // clmID
+            // 
+            this.clmID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmID.DefaultCellStyle = dataGridViewCellStyle6;
+            this.clmID.HeaderText = "Hh ID";
+            this.clmID.Name = "clmID";
+            this.clmID.ReadOnly = true;
+            this.clmID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmID.Width = 78;
+            // 
+            // clmName
+            // 
+            this.clmName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clmName.HeaderText = "Client Name";
+            this.clmName.MaxInputLength = 50;
+            this.clmName.Name = "clmName";
+            this.clmName.ReadOnly = true;
+            this.clmName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmName.Width = 126;
+            // 
+            // clmPhone
+            // 
+            this.clmPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.clmPhone.HeaderText = "Phone";
+            this.clmPhone.MaxInputLength = 50;
+            this.clmPhone.Name = "clmPhone";
+            this.clmPhone.ReadOnly = true;
+            this.clmPhone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmPhone.Width = 81;
+            // 
+            // clmFamilySize
+            // 
+            this.clmFamilySize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmFamilySize.DefaultCellStyle = dataGridViewCellStyle7;
+            this.clmFamilySize.HeaderText = "Size";
+            this.clmFamilySize.Name = "clmFamilySize";
+            this.clmFamilySize.ReadOnly = true;
+            this.clmFamilySize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmFamilySize.Width = 67;
+            // 
+            // clmComments
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmComments.DefaultCellStyle = dataGridViewCellStyle8;
+            this.clmComments.HeaderText = "Comments";
+            this.clmComments.MaxInputLength = 300;
+            this.clmComments.Name = "clmComments";
+            this.clmComments.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.clmComments.Width = 160;
+            // 
+            // clmDriverNotes
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmDriverNotes.DefaultCellStyle = dataGridViewCellStyle9;
+            this.clmDriverNotes.HeaderText = "Driver Notes";
+            this.clmDriverNotes.Name = "clmDriverNotes";
+            this.clmDriverNotes.Width = 160;
+            // 
+            // clmSvcItem
+            // 
+            this.clmSvcItem.HeaderText = "Svc Item";
+            this.clmSvcItem.Name = "clmSvcItem";
+            this.clmSvcItem.ReadOnly = true;
+            this.clmSvcItem.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmSvcItem.Width = 60;
+            // 
+            // clmLastSvc
+            // 
+            this.clmLastSvc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmLastSvc.DefaultCellStyle = dataGridViewCellStyle10;
+            this.clmLastSvc.HeaderText = "Last Svc";
+            this.clmLastSvc.MaxInputLength = 10;
+            this.clmLastSvc.Name = "clmLastSvc";
+            this.clmLastSvc.ReadOnly = true;
+            this.clmLastSvc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // label1
             // 
@@ -342,7 +484,7 @@
             this.label1.Location = new System.Drawing.Point(8, 2);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 15);
+            this.label1.Size = new System.Drawing.Size(40, 18);
             this.label1.TabIndex = 79;
             this.label1.Tag = "";
             this.label1.Text = "Find:";
@@ -367,7 +509,7 @@
             this.rtplncboOrderBy.Location = new System.Drawing.Point(243, 4);
             this.rtplncboOrderBy.Margin = new System.Windows.Forms.Padding(4);
             this.rtplncboOrderBy.Name = "rtplncboOrderBy";
-            this.rtplncboOrderBy.Size = new System.Drawing.Size(162, 23);
+            this.rtplncboOrderBy.Size = new System.Drawing.Size(162, 26);
             this.rtplncboOrderBy.TabIndex = 78;
             this.rtplncboOrderBy.SelectedIndexChanged += new System.EventHandler(this.rtplncboOrderBy_SelectedIndexChanged);
             // 
@@ -378,7 +520,7 @@
             this.label4.Location = new System.Drawing.Point(178, 7);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 77;
             this.label4.Tag = "SortOrder";
             this.label4.Text = "Order By:";
@@ -390,7 +532,7 @@
             this.lblFilterBy.Location = new System.Drawing.Point(182, 32);
             this.lblFilterBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFilterBy.Name = "lblFilterBy";
-            this.lblFilterBy.Size = new System.Drawing.Size(53, 15);
+            this.lblFilterBy.Size = new System.Drawing.Size(65, 18);
             this.lblFilterBy.TabIndex = 72;
             this.lblFilterBy.Tag = "SortOrder";
             this.lblFilterBy.Text = "Filter By:";
@@ -402,7 +544,7 @@
             this.rtplncboFilter.Location = new System.Drawing.Point(243, 29);
             this.rtplncboFilter.Margin = new System.Windows.Forms.Padding(4);
             this.rtplncboFilter.Name = "rtplncboFilter";
-            this.rtplncboFilter.Size = new System.Drawing.Size(267, 24);
+            this.rtplncboFilter.Size = new System.Drawing.Size(267, 28);
             this.rtplncboFilter.TabIndex = 73;
             this.rtplncboFilter.Visible = false;
             this.rtplncboFilter.SelectedIndexChanged += new System.EventHandler(this.rtplncboFilter_SelectedIndexChanged);
@@ -414,7 +556,7 @@
             this.rtplntbFindName.Location = new System.Drawing.Point(7, 18);
             this.rtplntbFindName.Margin = new System.Windows.Forms.Padding(4);
             this.rtplntbFindName.Name = "rtplntbFindName";
-            this.rtplntbFindName.Size = new System.Drawing.Size(162, 24);
+            this.rtplntbFindName.Size = new System.Drawing.Size(162, 28);
             this.rtplntbFindName.TabIndex = 70;
             this.rtplntbFindName.WordWrap = false;
             this.rtplntbFindName.TextChanged += new System.EventHandler(this.rtplntbFindName_TextChanged);
@@ -457,7 +599,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer1.Size = new System.Drawing.Size(970, 749);
+            this.splitContainer1.Size = new System.Drawing.Size(970, 745);
             this.splitContainer1.SplitterDistance = 253;
             this.splitContainer1.TabIndex = 85;
             // 
@@ -484,10 +626,10 @@
             // 
             this.rtplnlbxRoutes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtplnlbxRoutes.FormattingEnabled = true;
-            this.rtplnlbxRoutes.ItemHeight = 16;
-            this.rtplnlbxRoutes.Location = new System.Drawing.Point(0, 38);
+            this.rtplnlbxRoutes.ItemHeight = 20;
+            this.rtplnlbxRoutes.Location = new System.Drawing.Point(0, 43);
             this.rtplnlbxRoutes.Name = "rtplnlbxRoutes";
-            this.rtplnlbxRoutes.Size = new System.Drawing.Size(232, 215);
+            this.rtplnlbxRoutes.Size = new System.Drawing.Size(232, 210);
             this.rtplnlbxRoutes.TabIndex = 21;
             this.rtplnlbxRoutes.SelectedValueChanged += new System.EventHandler(this.rtplnlbxRoutes_SelectedValueChanged);
             // 
@@ -498,7 +640,7 @@
             this.tsbDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(232, 38);
+            this.toolStrip1.Size = new System.Drawing.Size(232, 43);
             this.toolStrip1.TabIndex = 22;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -507,7 +649,7 @@
             this.tsbAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbAdd.Image")));
             this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAdd.Name = "tsbAdd";
-            this.tsbAdd.Size = new System.Drawing.Size(69, 35);
+            this.tsbAdd.Size = new System.Drawing.Size(86, 40);
             this.tsbAdd.Text = "&New Route";
             this.tsbAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbAdd.Click += new System.EventHandler(this.tsbAdd_Click);
@@ -517,7 +659,7 @@
             this.tsbDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbDelete.Image")));
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(78, 35);
+            this.tsbDelete.Size = new System.Drawing.Size(100, 40);
             this.tsbDelete.Text = "&Delete Route";
             this.tsbDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDelete.ToolTipText = "Delete";
@@ -526,6 +668,7 @@
             // 
             this.pnlRouteInfo.BackColor = System.Drawing.Color.PaleGreen;
             this.pnlRouteInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRouteInfo.Controls.Add(this.btnAddClient);
             this.pnlRouteInfo.Controls.Add(this.btnSelectContact);
             this.pnlRouteInfo.Controls.Add(this.rtplnmtFBContactPhone);
             this.pnlRouteInfo.Controls.Add(this.label22);
@@ -575,7 +718,7 @@
             this.rtplnmtFBContactPhone.Location = new System.Drawing.Point(480, 64);
             this.rtplnmtFBContactPhone.Mask = "(999) 000-0000 aaaaaaaaa";
             this.rtplnmtFBContactPhone.Name = "rtplnmtFBContactPhone";
-            this.rtplnmtFBContactPhone.Size = new System.Drawing.Size(165, 23);
+            this.rtplnmtFBContactPhone.Size = new System.Drawing.Size(165, 27);
             this.rtplnmtFBContactPhone.TabIndex = 48;
             this.rtplnmtFBContactPhone.Tag = "FBContactPhone";
             // 
@@ -584,7 +727,7 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(369, 67);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(105, 17);
+            this.label22.Size = new System.Drawing.Size(124, 20);
             this.label22.TabIndex = 47;
             this.label22.Text = "Contact Phone:";
             // 
@@ -596,7 +739,7 @@
             this.rtplntbFBContact.Location = new System.Drawing.Point(99, 62);
             this.rtplntbFBContact.Name = "rtplntbFBContact";
             this.rtplntbFBContact.ReadOnly = true;
-            this.rtplntbFBContact.Size = new System.Drawing.Size(213, 24);
+            this.rtplntbFBContact.Size = new System.Drawing.Size(213, 28);
             this.rtplntbFBContact.TabIndex = 45;
             this.rtplntbFBContact.TabStop = false;
             this.rtplntbFBContact.Tag = "FBContact";
@@ -608,7 +751,7 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(2, 65);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(81, 17);
+            this.label23.Size = new System.Drawing.Size(99, 20);
             this.label23.TabIndex = 44;
             this.label23.Text = "FB Contact:";
             // 
@@ -620,7 +763,7 @@
             this.rtplntbRouteID.ForeColor = System.Drawing.Color.RoyalBlue;
             this.rtplntbRouteID.Location = new System.Drawing.Point(570, 216);
             this.rtplntbRouteID.Name = "rtplntbRouteID";
-            this.rtplntbRouteID.Size = new System.Drawing.Size(60, 16);
+            this.rtplntbRouteID.Size = new System.Drawing.Size(60, 19);
             this.rtplntbRouteID.TabIndex = 43;
             this.rtplntbRouteID.TabStop = false;
             this.rtplntbRouteID.Tag = "id";
@@ -632,7 +775,7 @@
             this.rtplntbRouteTitle.ForeColor = System.Drawing.Color.Black;
             this.rtplntbRouteTitle.Location = new System.Drawing.Point(99, 3);
             this.rtplntbRouteTitle.Name = "rtplntbRouteTitle";
-            this.rtplntbRouteTitle.Size = new System.Drawing.Size(249, 23);
+            this.rtplntbRouteTitle.Size = new System.Drawing.Size(249, 26);
             this.rtplntbRouteTitle.TabIndex = 41;
             this.rtplntbRouteTitle.Tag = "RouteTitle";
             this.rtplntbRouteTitle.Enter += new System.EventHandler(this.rtplntbRoute_Enter);
@@ -643,7 +786,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(2, 6);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 17);
+            this.label11.Size = new System.Drawing.Size(95, 20);
             this.label11.TabIndex = 42;
             this.label11.Text = "Route Title:";
             // 
@@ -651,7 +794,7 @@
             // 
             this.rtplntbEstMiles.Location = new System.Drawing.Point(647, 158);
             this.rtplntbEstMiles.Name = "rtplntbEstMiles";
-            this.rtplntbEstMiles.Size = new System.Drawing.Size(54, 23);
+            this.rtplntbEstMiles.Size = new System.Drawing.Size(54, 26);
             this.rtplntbEstMiles.TabIndex = 39;
             this.rtplntbEstMiles.Tag = "estmiles";
             this.rtplntbEstMiles.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -662,7 +805,7 @@
             // 
             this.rtplntbEstTime.Location = new System.Drawing.Point(647, 128);
             this.rtplntbEstTime.Name = "rtplntbEstTime";
-            this.rtplntbEstTime.Size = new System.Drawing.Size(54, 23);
+            this.rtplntbEstTime.Size = new System.Drawing.Size(54, 26);
             this.rtplntbEstTime.TabIndex = 38;
             this.rtplntbEstTime.Tag = "esthours";
             this.rtplntbEstTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -674,7 +817,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(257, 108);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 17);
+            this.label7.Size = new System.Drawing.Size(109, 20);
             this.label7.TabIndex = 37;
             this.label7.Text = "Driver Notes:";
             // 
@@ -683,7 +826,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(2, 108);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 17);
+            this.label6.Size = new System.Drawing.Size(107, 20);
             this.label6.TabIndex = 36;
             this.label6.Text = "Route Notes:";
             // 
@@ -717,7 +860,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(567, 161);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 17);
+            this.label5.Size = new System.Drawing.Size(84, 20);
             this.label5.TabIndex = 32;
             this.label5.Text = "Est Miles:";
             // 
@@ -726,7 +869,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(567, 131);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 17);
+            this.label3.Size = new System.Drawing.Size(81, 20);
             this.label3.TabIndex = 30;
             this.label3.Text = "Est Time:";
             // 
@@ -739,7 +882,7 @@
             this.rtplnmtDriverPhone.Location = new System.Drawing.Point(480, 34);
             this.rtplnmtDriverPhone.Mask = "(999) 000-0000 aaaaaaaaa";
             this.rtplnmtDriverPhone.Name = "rtplnmtDriverPhone";
-            this.rtplnmtDriverPhone.Size = new System.Drawing.Size(165, 23);
+            this.rtplnmtDriverPhone.Size = new System.Drawing.Size(165, 27);
             this.rtplnmtDriverPhone.TabIndex = 29;
             this.rtplnmtDriverPhone.Tag = "phone";
             this.rtplnmtDriverPhone.Enter += new System.EventHandler(this.rtplnmtPhone_Enter);
@@ -750,7 +893,7 @@
             this.lblPhone.AutoSize = true;
             this.lblPhone.Location = new System.Drawing.Point(379, 37);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(95, 17);
+            this.lblPhone.Size = new System.Drawing.Size(112, 20);
             this.lblPhone.TabIndex = 3;
             this.lblPhone.Text = "Driver Phone:";
             // 
@@ -774,7 +917,7 @@
             this.rtplntbDriver.Location = new System.Drawing.Point(99, 32);
             this.rtplntbDriver.Name = "rtplntbDriver";
             this.rtplntbDriver.ReadOnly = true;
-            this.rtplntbDriver.Size = new System.Drawing.Size(213, 24);
+            this.rtplntbDriver.Size = new System.Drawing.Size(213, 28);
             this.rtplntbDriver.TabIndex = 1;
             this.rtplntbDriver.TabStop = false;
             this.rtplntbDriver.Enter += new System.EventHandler(this.rtplntbRoute_Enter);
@@ -785,7 +928,7 @@
             this.lblVolunteer.AutoSize = true;
             this.lblVolunteer.Location = new System.Drawing.Point(2, 35);
             this.lblVolunteer.Name = "lblVolunteer";
-            this.lblVolunteer.Size = new System.Drawing.Size(92, 17);
+            this.lblVolunteer.Size = new System.Drawing.Size(109, 20);
             this.lblVolunteer.TabIndex = 0;
             this.lblVolunteer.Text = "Route Driver:";
             // 
@@ -807,7 +950,7 @@
             // splitContainer6.Panel2
             // 
             this.splitContainer6.Panel2.Controls.Add(this.rtplndgvHD);
-            this.splitContainer6.Size = new System.Drawing.Size(970, 492);
+            this.splitContainer6.Size = new System.Drawing.Size(970, 488);
             this.splitContainer6.SplitterDistance = 62;
             this.splitContainer6.TabIndex = 0;
             // 
@@ -840,9 +983,9 @@
             this.tsbDriverNotes,
             this.tsbSvcItem,
             this.tsbLastSvc});
-            this.toolStrip2.Location = new System.Drawing.Point(3, 19);
+            this.toolStrip2.Location = new System.Drawing.Point(3, 17);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(418, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(519, 27);
             this.toolStrip2.TabIndex = 138;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -858,7 +1001,7 @@
             this.tsbAddress.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddress.Image")));
             this.tsbAddress.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddress.Name = "tsbAddress";
-            this.tsbAddress.Size = new System.Drawing.Size(53, 22);
+            this.tsbAddress.Size = new System.Drawing.Size(67, 24);
             this.tsbAddress.Tag = "clmAddress";
             this.tsbAddress.Text = "Address";
             this.tsbAddress.ToolTipText = "Toggle Address and Apt columns";
@@ -875,7 +1018,7 @@
             this.tsbApt.Image = ((System.Drawing.Image)(resources.GetObject("tsbApt.Image")));
             this.tsbApt.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbApt.Name = "tsbApt";
-            this.tsbApt.Size = new System.Drawing.Size(30, 22);
+            this.tsbApt.Size = new System.Drawing.Size(37, 24);
             this.tsbApt.Tag = "clmApt";
             this.tsbApt.Text = "Apt";
             this.tsbApt.ToolTipText = "Toggle Apt Column";
@@ -894,7 +1037,7 @@
             this.tsbPhone.Image = ((System.Drawing.Image)(resources.GetObject("tsbPhone.Image")));
             this.tsbPhone.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPhone.Name = "tsbPhone";
-            this.tsbPhone.Size = new System.Drawing.Size(45, 22);
+            this.tsbPhone.Size = new System.Drawing.Size(57, 24);
             this.tsbPhone.Tag = "clmPhone";
             this.tsbPhone.Text = "Phone";
             this.tsbPhone.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -913,7 +1056,7 @@
             this.tsbSize.Image = ((System.Drawing.Image)(resources.GetObject("tsbSize.Image")));
             this.tsbSize.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSize.Name = "tsbSize";
-            this.tsbSize.Size = new System.Drawing.Size(33, 22);
+            this.tsbSize.Size = new System.Drawing.Size(40, 24);
             this.tsbSize.Tag = "clmFamilySize";
             this.tsbSize.Text = "Size";
             this.tsbSize.ToolTipText = "Toggle Size column";
@@ -931,7 +1074,7 @@
             this.tsbComments.Image = ((System.Drawing.Image)(resources.GetObject("tsbComments.Image")));
             this.tsbComments.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbComments.Name = "tsbComments";
-            this.tsbComments.Size = new System.Drawing.Size(69, 22);
+            this.tsbComments.Size = new System.Drawing.Size(85, 24);
             this.tsbComments.Tag = "clmComments";
             this.tsbComments.Text = "Comments";
             this.tsbComments.ToolTipText = "Toggle Comments column";
@@ -948,7 +1091,7 @@
             this.tsbDriverNotes.Image = ((System.Drawing.Image)(resources.GetObject("tsbDriverNotes.Image")));
             this.tsbDriverNotes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDriverNotes.Name = "tsbDriverNotes";
-            this.tsbDriverNotes.Size = new System.Drawing.Size(76, 22);
+            this.tsbDriverNotes.Size = new System.Drawing.Size(96, 24);
             this.tsbDriverNotes.Tag = "clmDriverNotes";
             this.tsbDriverNotes.Text = "Driver Notes";
             this.tsbDriverNotes.ToolTipText = "Toggle Driver Notes column";
@@ -965,7 +1108,7 @@
             this.tsbSvcItem.Image = ((System.Drawing.Image)(resources.GetObject("tsbSvcItem.Image")));
             this.tsbSvcItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSvcItem.Name = "tsbSvcItem";
-            this.tsbSvcItem.Size = new System.Drawing.Size(56, 22);
+            this.tsbSvcItem.Size = new System.Drawing.Size(69, 24);
             this.tsbSvcItem.Tag = "clmsvcitem";
             this.tsbSvcItem.Text = "Svc Item";
             this.tsbSvcItem.ToolTipText = "Toggle Svc Item column";
@@ -982,7 +1125,7 @@
             this.tsbLastSvc.Image = ((System.Drawing.Image)(resources.GetObject("tsbLastSvc.Image")));
             this.tsbLastSvc.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLastSvc.Name = "tsbLastSvc";
-            this.tsbLastSvc.Size = new System.Drawing.Size(53, 22);
+            this.tsbLastSvc.Size = new System.Drawing.Size(65, 24);
             this.tsbLastSvc.Tag = "clmLastSvc";
             this.tsbLastSvc.Text = "Last Svc";
             this.tsbLastSvc.ToolTipText = "Toggle Last Svc column";
@@ -996,7 +1139,7 @@
             this.lblRowCnt.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblRowCnt.Location = new System.Drawing.Point(0, 44);
             this.lblRowCnt.Name = "lblRowCnt";
-            this.lblRowCnt.Size = new System.Drawing.Size(46, 17);
+            this.lblRowCnt.Size = new System.Drawing.Size(53, 20);
             this.lblRowCnt.TabIndex = 86;
             this.lblRowCnt.Text = "[ 23 ]";
             // 
@@ -1017,10 +1160,10 @@
             // 
             this.tpgPlanner.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tpgPlanner.Controls.Add(this.splitContainer1);
-            this.tpgPlanner.Location = new System.Drawing.Point(4, 28);
+            this.tpgPlanner.Location = new System.Drawing.Point(4, 32);
             this.tpgPlanner.Name = "tpgPlanner";
             this.tpgPlanner.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgPlanner.Size = new System.Drawing.Size(976, 755);
+            this.tpgPlanner.Size = new System.Drawing.Size(976, 751);
             this.tpgPlanner.TabIndex = 0;
             this.tpgPlanner.Text = "Route Planner";
             // 
@@ -1028,10 +1171,10 @@
             // 
             this.tpgReview.BackColor = System.Drawing.Color.Tan;
             this.tpgReview.Controls.Add(this.splitContainer2);
-            this.tpgReview.Location = new System.Drawing.Point(4, 28);
+            this.tpgReview.Location = new System.Drawing.Point(4, 32);
             this.tpgReview.Name = "tpgReview";
             this.tpgReview.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgReview.Size = new System.Drawing.Size(976, 755);
+            this.tpgReview.Size = new System.Drawing.Size(976, 751);
             this.tpgReview.TabIndex = 1;
             this.tpgReview.Text = "Route Sheet Manager";
             // 
@@ -1050,7 +1193,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(970, 752);
+            this.splitContainer2.Size = new System.Drawing.Size(970, 745);
             this.splitContainer2.SplitterDistance = 521;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -1074,8 +1217,8 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.toolStrip3);
             this.splitContainer3.Panel2.Controls.Add(this.lvwRouteStatus);
-            this.splitContainer3.Size = new System.Drawing.Size(521, 752);
-            this.splitContainer3.SplitterDistance = 165;
+            this.splitContainer3.Size = new System.Drawing.Size(521, 745);
+            this.splitContainer3.SplitterDistance = 163;
             this.splitContainer3.TabIndex = 0;
             // 
             // chkSelectAll
@@ -1083,7 +1226,7 @@
             this.chkSelectAll.AutoSize = true;
             this.chkSelectAll.Location = new System.Drawing.Point(3, 116);
             this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(134, 21);
+            this.chkSelectAll.Size = new System.Drawing.Size(160, 24);
             this.chkSelectAll.TabIndex = 5;
             this.chkSelectAll.Text = "Select All Routes";
             this.chkSelectAll.UseVisualStyleBackColor = true;
@@ -1113,7 +1256,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(5, 3);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 17);
+            this.label9.Size = new System.Drawing.Size(57, 20);
             this.label9.TabIndex = 3;
             this.label9.Text = "Status";
             // 
@@ -1132,7 +1275,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(227, 92);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 17);
+            this.label8.Size = new System.Drawing.Size(111, 20);
             this.label8.TabIndex = 1;
             this.label8.Text = "Delivery Date";
             // 
@@ -1140,7 +1283,7 @@
             // 
             this.dtpServiceDate.Location = new System.Drawing.Point(230, 112);
             this.dtpServiceDate.Name = "dtpServiceDate";
-            this.dtpServiceDate.Size = new System.Drawing.Size(243, 23);
+            this.dtpServiceDate.Size = new System.Drawing.Size(243, 26);
             this.dtpServiceDate.TabIndex = 0;
             this.dtpServiceDate.ValueChanged += new System.EventHandler(this.dtpServiceDate_ValueChanged);
             // 
@@ -1153,9 +1296,9 @@
             this.tsbPost,
             this.toolStripSeparator1,
             this.tsbShowRpts});
-            this.toolStrip3.Location = new System.Drawing.Point(413, 0);
+            this.toolStrip3.Location = new System.Drawing.Point(387, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(108, 583);
+            this.toolStrip3.Size = new System.Drawing.Size(134, 578);
             this.toolStrip3.TabIndex = 0;
             this.toolStrip3.Text = "toolStrip1";
             // 
@@ -1166,7 +1309,7 @@
             this.tsbPrepare.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbPrepare.ImageTransparentColor = System.Drawing.Color.Red;
             this.tsbPrepare.Name = "tsbPrepare";
-            this.tsbPrepare.Size = new System.Drawing.Size(105, 51);
+            this.tsbPrepare.Size = new System.Drawing.Size(131, 56);
             this.tsbPrepare.Text = "&Create Route Lists";
             this.tsbPrepare.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbPrepare.Click += new System.EventHandler(this.tsbPrepare_Click);
@@ -1178,7 +1321,7 @@
             this.tsbPrint.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Red;
             this.tsbPrint.Name = "tsbPrint";
-            this.tsbPrint.Size = new System.Drawing.Size(105, 51);
+            this.tsbPrint.Size = new System.Drawing.Size(131, 56);
             this.tsbPrint.Text = "&Print Route Sheets";
             this.tsbPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
@@ -1190,7 +1333,7 @@
             this.tsbPost.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbPost.ImageTransparentColor = System.Drawing.Color.Red;
             this.tsbPost.Name = "tsbPost";
-            this.tsbPost.Size = new System.Drawing.Size(105, 51);
+            this.tsbPost.Size = new System.Drawing.Size(131, 56);
             this.tsbPost.Text = "&Record Services";
             this.tsbPost.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbPost.Click += new System.EventHandler(this.tsbPost_Click);
@@ -1198,7 +1341,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(105, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(131, 6);
             // 
             // tsbShowRpts
             // 
@@ -1207,7 +1350,7 @@
             this.tsbShowRpts.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbShowRpts.ImageTransparentColor = System.Drawing.Color.Red;
             this.tsbShowRpts.Name = "tsbShowRpts";
-            this.tsbShowRpts.Size = new System.Drawing.Size(105, 51);
+            this.tsbShowRpts.Size = new System.Drawing.Size(131, 56);
             this.tsbShowRpts.Text = "&Display Sheets";
             this.tsbShowRpts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbShowRpts.Click += new System.EventHandler(this.tsbShowRpts_Click);
@@ -1223,7 +1366,7 @@
             this.lvwRouteStatus.Dock = System.Windows.Forms.DockStyle.Left;
             this.lvwRouteStatus.Location = new System.Drawing.Point(0, 0);
             this.lvwRouteStatus.Name = "lvwRouteStatus";
-            this.lvwRouteStatus.Size = new System.Drawing.Size(408, 583);
+            this.lvwRouteStatus.Size = new System.Drawing.Size(408, 578);
             this.lvwRouteStatus.TabIndex = 0;
             this.lvwRouteStatus.UseCompatibleStateImageBehavior = false;
             this.lvwRouteStatus.View = System.Windows.Forms.View.Details;
@@ -1267,8 +1410,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.lvwRouteHist);
-            this.splitContainer4.Size = new System.Drawing.Size(445, 752);
-            this.splitContainer4.SplitterDistance = 163;
+            this.splitContainer4.Size = new System.Drawing.Size(445, 745);
+            this.splitContainer4.SplitterDistance = 161;
             this.splitContainer4.TabIndex = 0;
             // 
             // label10
@@ -1278,7 +1421,7 @@
             this.label10.Location = new System.Drawing.Point(11, 23);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 17);
+            this.label10.Size = new System.Drawing.Size(62, 20);
             this.label10.TabIndex = 87;
             this.label10.Tag = "";
             this.label10.Text = "Period:";
@@ -1298,7 +1441,7 @@
             this.cboHistPeriod.Location = new System.Drawing.Point(14, 42);
             this.cboHistPeriod.Margin = new System.Windows.Forms.Padding(4);
             this.cboHistPeriod.Name = "cboHistPeriod";
-            this.cboHistPeriod.Size = new System.Drawing.Size(186, 24);
+            this.cboHistPeriod.Size = new System.Drawing.Size(186, 28);
             this.cboHistPeriod.TabIndex = 86;
             // 
             // btnRefreshHist
@@ -1323,7 +1466,7 @@
             this.lvwRouteHist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwRouteHist.Location = new System.Drawing.Point(0, 0);
             this.lvwRouteHist.Name = "lvwRouteHist";
-            this.lvwRouteHist.Size = new System.Drawing.Size(445, 585);
+            this.lvwRouteHist.Size = new System.Drawing.Size(445, 580);
             this.lvwRouteHist.TabIndex = 0;
             this.lvwRouteHist.UseCompatibleStateImageBehavior = false;
             this.lvwRouteHist.View = System.Windows.Forms.View.Details;
@@ -1361,9 +1504,9 @@
             // tpgEdit
             // 
             this.tpgEdit.Controls.Add(this.splitContainer7);
-            this.tpgEdit.Location = new System.Drawing.Point(4, 28);
+            this.tpgEdit.Location = new System.Drawing.Point(4, 32);
             this.tpgEdit.Name = "tpgEdit";
-            this.tpgEdit.Size = new System.Drawing.Size(976, 755);
+            this.tpgEdit.Size = new System.Drawing.Size(976, 751);
             this.tpgEdit.TabIndex = 2;
             this.tpgEdit.Text = "Route Sheet Editor";
             this.tpgEdit.UseVisualStyleBackColor = true;
@@ -1384,7 +1527,7 @@
             // splitContainer7.Panel2
             // 
             this.splitContainer7.Panel2.Controls.Add(this.splitContainer9);
-            this.splitContainer7.Size = new System.Drawing.Size(976, 755);
+            this.splitContainer7.Size = new System.Drawing.Size(976, 751);
             this.splitContainer7.SplitterDistance = 253;
             this.splitContainer7.TabIndex = 86;
             // 
@@ -1411,10 +1554,10 @@
             // 
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(0, 38);
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(0, 43);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(318, 215);
+            this.listBox1.Size = new System.Drawing.Size(318, 210);
             this.listBox1.TabIndex = 21;
             // 
             // toolStrip4
@@ -1424,7 +1567,7 @@
             this.toolStripButton2});
             this.toolStrip4.Location = new System.Drawing.Point(0, 0);
             this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.Size = new System.Drawing.Size(318, 38);
+            this.toolStrip4.Size = new System.Drawing.Size(318, 43);
             this.toolStrip4.TabIndex = 22;
             this.toolStrip4.Text = "toolStrip4";
             // 
@@ -1433,7 +1576,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(69, 35);
+            this.toolStripButton1.Size = new System.Drawing.Size(86, 40);
             this.toolStripButton1.Text = "&New Route";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -1442,7 +1585,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(78, 35);
+            this.toolStripButton2.Size = new System.Drawing.Size(100, 40);
             this.toolStripButton2.Text = "&Delete Route";
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.ToolTipText = "Delete";
@@ -1493,7 +1636,7 @@
             this.textBox1.ForeColor = System.Drawing.Color.RoyalBlue;
             this.textBox1.Location = new System.Drawing.Point(567, 105);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(60, 16);
+            this.textBox1.Size = new System.Drawing.Size(60, 19);
             this.textBox1.TabIndex = 43;
             this.textBox1.TabStop = false;
             this.textBox1.Tag = "id";
@@ -1506,7 +1649,7 @@
             this.rtshttbTitle.Location = new System.Drawing.Point(99, 3);
             this.rtshttbTitle.Name = "rtshttbTitle";
             this.rtshttbTitle.ReadOnly = true;
-            this.rtshttbTitle.Size = new System.Drawing.Size(249, 23);
+            this.rtshttbTitle.Size = new System.Drawing.Size(249, 26);
             this.rtshttbTitle.TabIndex = 41;
             this.rtshttbTitle.Tag = "RouteTitle";
             // 
@@ -1515,7 +1658,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(2, 6);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 17);
+            this.label2.Size = new System.Drawing.Size(95, 20);
             this.label2.TabIndex = 42;
             this.label2.Text = "Route Title:";
             // 
@@ -1523,7 +1666,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(497, 62);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(54, 23);
+            this.textBox3.Size = new System.Drawing.Size(54, 26);
             this.textBox3.TabIndex = 39;
             this.textBox3.Tag = "estmiles";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1532,7 +1675,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(497, 32);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(54, 23);
+            this.textBox4.Size = new System.Drawing.Size(54, 26);
             this.textBox4.TabIndex = 38;
             this.textBox4.Tag = "esthours";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1542,7 +1685,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(257, 108);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 17);
+            this.label12.Size = new System.Drawing.Size(109, 20);
             this.label12.TabIndex = 37;
             this.label12.Text = "Driver Notes:";
             // 
@@ -1551,7 +1694,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(2, 108);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(91, 17);
+            this.label13.Size = new System.Drawing.Size(107, 20);
             this.label13.TabIndex = 36;
             this.label13.Text = "Route Notes:";
             // 
@@ -1591,7 +1734,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(406, 65);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 17);
+            this.label14.Size = new System.Drawing.Size(106, 20);
             this.label14.TabIndex = 32;
             this.label14.Text = "Actual Miles:";
             // 
@@ -1600,7 +1743,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(405, 35);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(86, 17);
+            this.label15.Size = new System.Drawing.Size(103, 20);
             this.label15.TabIndex = 30;
             this.label15.Text = "Actual Time:";
             // 
@@ -1613,7 +1756,7 @@
             this.rtshtmtDriverPhone.Location = new System.Drawing.Point(99, 62);
             this.rtshtmtDriverPhone.Mask = "(999) 000-0000 aaaaaaaaa";
             this.rtshtmtDriverPhone.Name = "rtshtmtDriverPhone";
-            this.rtshtmtDriverPhone.Size = new System.Drawing.Size(165, 23);
+            this.rtshtmtDriverPhone.Size = new System.Drawing.Size(165, 27);
             this.rtshtmtDriverPhone.TabIndex = 29;
             this.rtshtmtDriverPhone.Tag = "phone";
             // 
@@ -1622,7 +1765,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(-2, 65);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 17);
+            this.label16.Size = new System.Drawing.Size(112, 20);
             this.label16.TabIndex = 3;
             this.label16.Text = "Driver Phone:";
             // 
@@ -1646,7 +1789,7 @@
             this.rtshttbDriver.Location = new System.Drawing.Point(99, 32);
             this.rtshttbDriver.Name = "rtshttbDriver";
             this.rtshttbDriver.ReadOnly = true;
-            this.rtshttbDriver.Size = new System.Drawing.Size(213, 24);
+            this.rtshttbDriver.Size = new System.Drawing.Size(213, 28);
             this.rtshttbDriver.TabIndex = 1;
             this.rtshttbDriver.TabStop = false;
             // 
@@ -1655,7 +1798,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(2, 35);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(92, 17);
+            this.label17.Size = new System.Drawing.Size(109, 20);
             this.label17.TabIndex = 0;
             this.label17.Text = "Route Driver:";
             // 
@@ -1677,7 +1820,7 @@
             // splitContainer9.Panel2
             // 
             this.splitContainer9.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer9.Size = new System.Drawing.Size(976, 498);
+            this.splitContainer9.Size = new System.Drawing.Size(976, 494);
             this.splitContainer9.SplitterDistance = 62;
             this.splitContainer9.TabIndex = 0;
             // 
@@ -1702,7 +1845,7 @@
             this.textBox8.Location = new System.Drawing.Point(7, 18);
             this.textBox8.Margin = new System.Windows.Forms.Padding(4);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(162, 24);
+            this.textBox8.Size = new System.Drawing.Size(162, 28);
             this.textBox8.TabIndex = 70;
             this.textBox8.WordWrap = false;
             // 
@@ -1713,7 +1856,7 @@
             this.label18.Location = new System.Drawing.Point(178, 2);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 15);
+            this.label18.Size = new System.Drawing.Size(71, 18);
             this.label18.TabIndex = 77;
             this.label18.Tag = "SortOrder";
             this.label18.Text = "Order By:";
@@ -1725,7 +1868,7 @@
             this.label19.Location = new System.Drawing.Point(8, 2);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(34, 15);
+            this.label19.Size = new System.Drawing.Size(40, 18);
             this.label19.TabIndex = 79;
             this.label19.Tag = "";
             this.label19.Text = "Find:";
@@ -1737,7 +1880,7 @@
             this.label20.Location = new System.Drawing.Point(345, 2);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(53, 15);
+            this.label20.Size = new System.Drawing.Size(65, 18);
             this.label20.TabIndex = 72;
             this.label20.Tag = "SortOrder";
             this.label20.Text = "Filter By:";
@@ -1749,7 +1892,7 @@
             this.comboBox1.Location = new System.Drawing.Point(347, 19);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(162, 24);
+            this.comboBox1.Size = new System.Drawing.Size(162, 28);
             this.comboBox1.TabIndex = 73;
             this.comboBox1.Visible = false;
             // 
@@ -1772,7 +1915,7 @@
             this.comboBox2.Location = new System.Drawing.Point(177, 19);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(162, 23);
+            this.comboBox2.Size = new System.Drawing.Size(162, 26);
             this.comboBox2.TabIndex = 78;
             // 
             // progressBar2
@@ -1801,9 +1944,9 @@
             this.toolStripButton8,
             this.toolStripButton9,
             this.toolStripButton10});
-            this.toolStrip5.Location = new System.Drawing.Point(3, 19);
+            this.toolStrip5.Location = new System.Drawing.Point(3, 17);
             this.toolStrip5.Name = "toolStrip5";
-            this.toolStrip5.Size = new System.Drawing.Size(418, 25);
+            this.toolStrip5.Size = new System.Drawing.Size(519, 27);
             this.toolStrip5.TabIndex = 138;
             this.toolStrip5.Text = "toolStrip5";
             // 
@@ -1819,7 +1962,7 @@
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(53, 22);
+            this.toolStripButton3.Size = new System.Drawing.Size(67, 24);
             this.toolStripButton3.Tag = "clmAddress";
             this.toolStripButton3.Text = "Address";
             this.toolStripButton3.ToolTipText = "Toggle Address and Apt columns";
@@ -1835,7 +1978,7 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(30, 22);
+            this.toolStripButton4.Size = new System.Drawing.Size(37, 24);
             this.toolStripButton4.Tag = "clmApt";
             this.toolStripButton4.Text = "Apt";
             this.toolStripButton4.ToolTipText = "Toggle Apt Column";
@@ -1853,7 +1996,7 @@
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(45, 22);
+            this.toolStripButton5.Size = new System.Drawing.Size(57, 24);
             this.toolStripButton5.Tag = "clmPhone";
             this.toolStripButton5.Text = "Phone";
             this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -1871,7 +2014,7 @@
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(33, 22);
+            this.toolStripButton6.Size = new System.Drawing.Size(40, 24);
             this.toolStripButton6.Tag = "clmFamilySize";
             this.toolStripButton6.Text = "Size";
             this.toolStripButton6.ToolTipText = "Toggle Size column";
@@ -1888,7 +2031,7 @@
             this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(69, 22);
+            this.toolStripButton7.Size = new System.Drawing.Size(85, 24);
             this.toolStripButton7.Tag = "clmComments";
             this.toolStripButton7.Text = "Comments";
             this.toolStripButton7.ToolTipText = "Toggle Comments column";
@@ -1904,7 +2047,7 @@
             this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(76, 22);
+            this.toolStripButton8.Size = new System.Drawing.Size(96, 24);
             this.toolStripButton8.Tag = "clmDriverNotes";
             this.toolStripButton8.Text = "Driver Notes";
             this.toolStripButton8.ToolTipText = "Toggle Driver Notes column";
@@ -1920,7 +2063,7 @@
             this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(56, 22);
+            this.toolStripButton9.Size = new System.Drawing.Size(69, 24);
             this.toolStripButton9.Tag = "clmsvcitem";
             this.toolStripButton9.Text = "Svc Item";
             this.toolStripButton9.ToolTipText = "Toggle Svc Item column";
@@ -1936,7 +2079,7 @@
             this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(53, 22);
+            this.toolStripButton10.Size = new System.Drawing.Size(65, 24);
             this.toolStripButton10.Tag = "clmLastSvc";
             this.toolStripButton10.Text = "Last Svc";
             this.toolStripButton10.ToolTipText = "Toggle Last Svc column";
@@ -1949,7 +2092,7 @@
             this.label21.ForeColor = System.Drawing.Color.RoyalBlue;
             this.label21.Location = new System.Drawing.Point(0, 44);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(46, 17);
+            this.label21.Size = new System.Drawing.Size(53, 20);
             this.label21.TabIndex = 86;
             this.label21.Text = "[ 23 ]";
             // 
@@ -1996,7 +2139,7 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(976, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(976, 428);
             this.dataGridView1.TabIndex = 32;
             // 
             // dataGridViewCheckBoxColumn1
@@ -2011,6 +2154,131 @@
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.Width = 30;
             // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewTextBoxColumn12.HeaderText = "RouteID";
+            this.dataGridViewTextBoxColumn12.MaxInputLength = 10;
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn12.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewTextBoxColumn13.HeaderText = "Rt";
+            this.dataGridViewTextBoxColumn13.MaxInputLength = 10;
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn13.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewTextBoxColumn14.HeaderText = "Address";
+            this.dataGridViewTextBoxColumn14.MaxInputLength = 50;
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn14.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewTextBoxColumn15.HeaderText = "Apt";
+            this.dataGridViewTextBoxColumn15.MaxInputLength = 40;
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn15.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridViewTextBoxColumn16.HeaderText = "Hh ID";
+            this.dataGridViewTextBoxColumn16.MaxInputLength = 40;
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn16.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dataGridViewTextBoxColumn17.HeaderText = "Client Name";
+            this.dataGridViewTextBoxColumn17.MaxInputLength = 50;
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn17.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridViewTextBoxColumn18.HeaderText = "Phone";
+            this.dataGridViewTextBoxColumn18.MaxInputLength = 50;
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            this.dataGridViewTextBoxColumn18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn18.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle21;
+            this.dataGridViewTextBoxColumn19.HeaderText = "Size";
+            this.dataGridViewTextBoxColumn19.MaxInputLength = 50;
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn19.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn20.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dataGridViewTextBoxColumn20.HeaderText = "Comments";
+            this.dataGridViewTextBoxColumn20.MaxInputLength = 300;
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dataGridViewTextBoxColumn20.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn20.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn21.DefaultCellStyle = dataGridViewCellStyle23;
+            this.dataGridViewTextBoxColumn21.HeaderText = "Driver Notes";
+            this.dataGridViewTextBoxColumn21.MaxInputLength = 300;
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            this.dataGridViewTextBoxColumn21.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn21.Visible = false;
+            // 
             // dataGridViewComboBoxColumn1
             // 
             this.dataGridViewComboBoxColumn1.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
@@ -2021,6 +2289,18 @@
             this.dataGridViewComboBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewComboBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewComboBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn22.DefaultCellStyle = dataGridViewCellStyle24;
+            this.dataGridViewTextBoxColumn22.HeaderText = "Last Svc";
+            this.dataGridViewTextBoxColumn22.MaxInputLength = 10;
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            this.dataGridViewTextBoxColumn22.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn22.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -2047,7 +2327,6 @@
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dataGridViewTextBoxColumn2.Visible = false;
-            this.dataGridViewTextBoxColumn2.Width = 60;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -2071,7 +2350,6 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn4.Width = 180;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -2084,7 +2362,6 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn5.Width = 54;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -2097,7 +2374,6 @@
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dataGridViewTextBoxColumn6.Visible = false;
-            this.dataGridViewTextBoxColumn6.Width = 51;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -2118,7 +2394,6 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn8.Width = 74;
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -2130,7 +2405,6 @@
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn9.Width = 60;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -2143,7 +2417,6 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn10.Width = 160;
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -2156,155 +2429,6 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn11.Width = 160;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridViewTextBoxColumn12.HeaderText = "RouteID";
-            this.dataGridViewTextBoxColumn12.MaxInputLength = 10;
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn12.Visible = false;
-            this.dataGridViewTextBoxColumn12.Width = 84;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dataGridViewTextBoxColumn13.HeaderText = "Rt";
-            this.dataGridViewTextBoxColumn13.MaxInputLength = 10;
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn13.Visible = false;
-            this.dataGridViewTextBoxColumn13.Width = 47;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridViewTextBoxColumn14.HeaderText = "Address";
-            this.dataGridViewTextBoxColumn14.MaxInputLength = 50;
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn14.Visible = false;
-            this.dataGridViewTextBoxColumn14.Width = 85;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dataGridViewTextBoxColumn15.HeaderText = "Apt";
-            this.dataGridViewTextBoxColumn15.MaxInputLength = 40;
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn15.Visible = false;
-            this.dataGridViewTextBoxColumn15.Width = 54;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dataGridViewTextBoxColumn16.HeaderText = "Hh ID";
-            this.dataGridViewTextBoxColumn16.MaxInputLength = 40;
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn16.Visible = false;
-            this.dataGridViewTextBoxColumn16.Width = 68;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle19;
-            this.dataGridViewTextBoxColumn17.HeaderText = "Client Name";
-            this.dataGridViewTextBoxColumn17.MaxInputLength = 50;
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn17.Visible = false;
-            this.dataGridViewTextBoxColumn17.Width = 109;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dataGridViewTextBoxColumn18.HeaderText = "Phone";
-            this.dataGridViewTextBoxColumn18.MaxInputLength = 50;
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            this.dataGridViewTextBoxColumn18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn18.Visible = false;
-            this.dataGridViewTextBoxColumn18.Width = 74;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle21;
-            this.dataGridViewTextBoxColumn19.HeaderText = "Size";
-            this.dataGridViewTextBoxColumn19.MaxInputLength = 50;
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            this.dataGridViewTextBoxColumn19.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn19.Visible = false;
-            this.dataGridViewTextBoxColumn19.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn20.DefaultCellStyle = dataGridViewCellStyle22;
-            this.dataGridViewTextBoxColumn20.HeaderText = "Comments";
-            this.dataGridViewTextBoxColumn20.MaxInputLength = 300;
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            this.dataGridViewTextBoxColumn20.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn20.Visible = false;
-            this.dataGridViewTextBoxColumn20.Width = 99;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn21.DefaultCellStyle = dataGridViewCellStyle23;
-            this.dataGridViewTextBoxColumn21.HeaderText = "Driver Notes";
-            this.dataGridViewTextBoxColumn21.MaxInputLength = 300;
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            this.dataGridViewTextBoxColumn21.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn21.Visible = false;
-            this.dataGridViewTextBoxColumn21.Width = 112;
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn22.DefaultCellStyle = dataGridViewCellStyle24;
-            this.dataGridViewTextBoxColumn22.HeaderText = "Last Svc";
-            this.dataGridViewTextBoxColumn22.MaxInputLength = 10;
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            this.dataGridViewTextBoxColumn22.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn22.Visible = false;
-            this.dataGridViewTextBoxColumn22.Width = 60;
             // 
             // dataGridViewTextBoxColumn23
             // 
@@ -2316,7 +2440,6 @@
             this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
             this.dataGridViewTextBoxColumn23.ReadOnly = true;
             this.dataGridViewTextBoxColumn23.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn23.Width = 103;
             // 
             // dataGridViewTextBoxColumn24
             // 
@@ -2328,154 +2451,20 @@
             this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
             this.dataGridViewTextBoxColumn24.ReadOnly = true;
             this.dataGridViewTextBoxColumn24.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataGridViewTextBoxColumn24.Width = 60;
             // 
-            // clmCnt
+            // btnAddClient
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.MediumBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            this.clmCnt.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clmCnt.Frozen = true;
-            this.clmCnt.HeaderText = "";
-            this.clmCnt.MinimumWidth = 40;
-            this.clmCnt.Name = "clmCnt";
-            this.clmCnt.ReadOnly = true;
-            this.clmCnt.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmCnt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmCnt.Width = 40;
-            // 
-            // clmRouteID
-            // 
-            this.clmRouteID.HeaderText = "RouteID";
-            this.clmRouteID.Name = "clmRouteID";
-            this.clmRouteID.ReadOnly = true;
-            this.clmRouteID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmRouteID.Visible = false;
-            this.clmRouteID.Width = 60;
-            // 
-            // clmRouteTitle
-            // 
-            this.clmRouteTitle.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRouteTitle.DefaultCellStyle = dataGridViewCellStyle3;
-            this.clmRouteTitle.HeaderText = "Rt";
-            this.clmRouteTitle.Name = "clmRouteTitle";
-            this.clmRouteTitle.ReadOnly = true;
-            this.clmRouteTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmRouteTitle.Visible = false;
-            this.clmRouteTitle.Width = 28;
-            // 
-            // clmAddress
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmAddress.DefaultCellStyle = dataGridViewCellStyle4;
-            this.clmAddress.HeaderText = "Address";
-            this.clmAddress.MaxInputLength = 50;
-            this.clmAddress.Name = "clmAddress";
-            this.clmAddress.ReadOnly = true;
-            this.clmAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmAddress.Width = 180;
-            // 
-            // clmApt
-            // 
-            this.clmApt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmApt.DefaultCellStyle = dataGridViewCellStyle5;
-            this.clmApt.HeaderText = "Apt";
-            this.clmApt.MaxInputLength = 40;
-            this.clmApt.Name = "clmApt";
-            this.clmApt.ReadOnly = true;
-            this.clmApt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmApt.Width = 54;
-            // 
-            // clmID
-            // 
-            this.clmID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmID.DefaultCellStyle = dataGridViewCellStyle6;
-            this.clmID.HeaderText = "Hh ID";
-            this.clmID.Name = "clmID";
-            this.clmID.ReadOnly = true;
-            this.clmID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmID.Width = 68;
-            // 
-            // clmName
-            // 
-            this.clmName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clmName.HeaderText = "Client Name";
-            this.clmName.MaxInputLength = 50;
-            this.clmName.Name = "clmName";
-            this.clmName.ReadOnly = true;
-            this.clmName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmName.Width = 109;
-            // 
-            // clmPhone
-            // 
-            this.clmPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.clmPhone.HeaderText = "Phone";
-            this.clmPhone.MaxInputLength = 50;
-            this.clmPhone.Name = "clmPhone";
-            this.clmPhone.ReadOnly = true;
-            this.clmPhone.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmPhone.Width = 74;
-            // 
-            // clmFamilySize
-            // 
-            this.clmFamilySize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmFamilySize.DefaultCellStyle = dataGridViewCellStyle7;
-            this.clmFamilySize.HeaderText = "Size";
-            this.clmFamilySize.Name = "clmFamilySize";
-            this.clmFamilySize.ReadOnly = true;
-            this.clmFamilySize.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmFamilySize.Width = 60;
-            // 
-            // clmComments
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmComments.DefaultCellStyle = dataGridViewCellStyle8;
-            this.clmComments.HeaderText = "Comments";
-            this.clmComments.MaxInputLength = 300;
-            this.clmComments.Name = "clmComments";
-            this.clmComments.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmComments.Width = 160;
-            // 
-            // clmDriverNotes
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmDriverNotes.DefaultCellStyle = dataGridViewCellStyle9;
-            this.clmDriverNotes.HeaderText = "Driver Notes";
-            this.clmDriverNotes.Name = "clmDriverNotes";
-            this.clmDriverNotes.Width = 160;
-            // 
-            // clmSvcItem
-            // 
-            this.clmSvcItem.HeaderText = "Svc Item";
-            this.clmSvcItem.Name = "clmSvcItem";
-            this.clmSvcItem.ReadOnly = true;
-            this.clmSvcItem.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmSvcItem.Width = 60;
-            // 
-            // clmLastSvc
-            // 
-            this.clmLastSvc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmLastSvc.DefaultCellStyle = dataGridViewCellStyle10;
-            this.clmLastSvc.HeaderText = "Last Svc";
-            this.clmLastSvc.MaxInputLength = 10;
-            this.clmLastSvc.Name = "clmLastSvc";
-            this.clmLastSvc.ReadOnly = true;
-            this.clmLastSvc.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.clmLastSvc.Width = 87;
+            this.btnAddClient.Location = new System.Drawing.Point(625, 53);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
+            this.btnAddClient.TabIndex = 51;
+            this.btnAddClient.Text = "Add client to route";
+            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // HDPlannerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(984, 787);
@@ -2726,5 +2715,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLastSvc;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.Button btnSelectContact;
+        private System.Windows.Forms.Button btnAddClient;
     }
 }

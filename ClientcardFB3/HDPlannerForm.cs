@@ -57,6 +57,8 @@ namespace ClientcardFB3
         const int maxRouteStatusRows = 4;
         int[] cntrsRoutesStatus;
 
+        FindClientForm frmFindClient;
+
 
         public HDPlannerForm(MainForm frmMainIn)
         {
@@ -71,6 +73,7 @@ namespace ClientcardFB3
             loadRouteList(dfltServiceDate);
             rtplnRefreshlbxRoutes(-1);
             rtplnDisplaySelectedRoute();
+            frmFindClient = new FindClientForm();
         }
 
         private string convertToShortDate(string date)
@@ -948,6 +951,21 @@ namespace ClientcardFB3
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// Opens the FindClientForm so the user can select a household to add to the route.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            frmFindClient.ShowDialog();
+            int hhId = frmFindClient.HHMemID;
+
+            Household hh = new Household(CCFBGlobal.connectionString);
+            hh.open(hhId);
+            hh.SetDataValue("HDRoute", clsHDRoutes.ID.ToString());
         }
     }
 }

@@ -3578,9 +3578,9 @@ namespace ClientcardFB3
         private void mnuHD_Planner_Click(object sender, EventArgs e)
         {
             HDPlannerForm frmHDPlanner = new HDPlannerForm(this);
-            frmHDPlanner.ShowDialog();
-            CCFBGlobal.dtPopulateCombo(cboHDRoute, "SELECT * FROM HDRoutes ORDER BY ID", "RouteTitle", "ID", "No Routes Available", conn);
-            
+            // Use Show instead of ShowDialog here. This way we can edit the main form while the dialog is open
+            frmHDPlanner.Show();
+            // Don't populate the combo box here. It is already updated automaticly as the user makes changes in the planner
         }
 
         public void refreshHDRoute()

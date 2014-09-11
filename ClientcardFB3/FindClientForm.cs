@@ -59,14 +59,9 @@ namespace ClientcardFB3
             set { transferHHMemMode = value; }
         }
 
-        public FindClientForm(MainForm FrmMainIn)
+        public FindClientForm(MainForm FrmMainIn) :this()
         {
-            InitializeComponent();
-            frmMainIn = FrmMainIn;
-            clsParm_ClientType = new parm_ClientType(clsClient.connectionString);
-            clsParm_ClientType.openAll();
-            includeInactiveClause = donotincludeInactivePhrase;
-            cboOrderBy.SelectedIndex = 0;
+            frmMainIn = FrmMainIn;            
         }
 
         public FindClientForm()
