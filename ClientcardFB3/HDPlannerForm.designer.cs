@@ -95,6 +95,7 @@
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.pnlRouteInfo = new System.Windows.Forms.Panel();
+            this.btnAddClient = new System.Windows.Forms.Button();
             this.btnSelectContact = new System.Windows.Forms.Button();
             this.rtplnmtFBContactPhone = new System.Windows.Forms.MaskedTextBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -233,7 +234,6 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAddClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rtplndgvHD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -663,6 +663,7 @@
             this.tsbDelete.Text = "&Delete Route";
             this.tsbDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbDelete.ToolTipText = "Delete";
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // pnlRouteInfo
             // 
@@ -696,6 +697,16 @@
             this.pnlRouteInfo.Name = "pnlRouteInfo";
             this.pnlRouteInfo.Size = new System.Drawing.Size(734, 253);
             this.pnlRouteInfo.TabIndex = 89;
+            // 
+            // btnAddClient
+            // 
+            this.btnAddClient.Location = new System.Drawing.Point(625, 53);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
+            this.btnAddClient.TabIndex = 51;
+            this.btnAddClient.Text = "Add client to route";
+            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // btnSelectContact
             // 
@@ -2451,16 +2462,6 @@
             this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
             this.dataGridViewTextBoxColumn24.ReadOnly = true;
             this.dataGridViewTextBoxColumn24.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // btnAddClient
-            // 
-            this.btnAddClient.Location = new System.Drawing.Point(625, 53);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
-            this.btnAddClient.TabIndex = 51;
-            this.btnAddClient.Text = "Add client to route";
-            this.btnAddClient.UseVisualStyleBackColor = true;
-            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
             // HDPlannerForm
             // 
