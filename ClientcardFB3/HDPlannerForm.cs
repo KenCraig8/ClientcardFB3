@@ -963,9 +963,16 @@ namespace ClientcardFB3
             frmFindClient.ShowDialog();
             int hhId = frmFindClient.HHMemID;
 
-            Household hh = new Household(CCFBGlobal.connectionString);
-            hh.open(hhId);
-            hh.SetDataValue("HDRoute", clsHDRoutes.ID.ToString());
+            if (hhId != FindClientForm.NULL_MEM_ID)
+            {
+                Household hh = new Household(CCFBGlobal.connectionString);
+                hh.open(hhId);
+                hh.ServiceMethod = (int)CCFBGlobal.ServiceMethodCodes.HomeDeliveryActive;
+                hh.SetDataValue("HDRoute", clsHDRoutes.ID.ToString());
+                hh.update(true);
+
+                rtplnDisplaySelectedRoute();
+            }
         }
     }
 }

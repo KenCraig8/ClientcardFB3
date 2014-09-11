@@ -36,7 +36,8 @@ namespace ClientcardFB3
         string sWhereClause = "";
         string filterDateRange = "";
         string filterDateFldName = "";
-        int hhMemID = 0;
+        public const int NULL_MEM_ID = -1;
+        int hhMemID = NULL_MEM_ID;
         int rowCount = 0;
 
         public int HHMemID
