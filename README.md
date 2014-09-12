@@ -29,7 +29,3 @@ LogIn to SQL Management Studio using Windows Authentication or the SA user
 	Reset permissions:  Open file icon, open: C:\Users\Public\ClientcardFB3\Scripts\ResetCCFBUser.sql, click execute
 
 Run Client Card with login Admin, password: master
-
-For automating install:
-Run making config file: SQLEXPRWT_x64_ENU.exe /ACTION=Install /UIMODE=Normal
-SQL server install options: http://msdn.microsoft.com/en-us/library/ms144259.aspx

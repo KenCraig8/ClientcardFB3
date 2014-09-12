@@ -1,0 +1,5 @@
+http://teusje.wordpress.com/2011/02/19/download-file-with-powershell/
+$webclient = New-Object System.Net.WebClient
+$url =  "https://docs.google.com/document/d/16lLN_RGdUMpHBVuHT3eLXs1BoQ1oPXAOuUqrD6k6w18/edit?usp=sharing" 
+$file =  "C:\Users\Nevan\Downloads\testFile.doc"
+$webclient.DownloadFile($url,$file)

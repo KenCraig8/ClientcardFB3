@@ -1,0 +1,5 @@
+$storageDir = $pwd
+$webclient = New-Object System.Net.WebClient
+$url = "http://teusje.files.wordpress.com/2011/02/giraffe-header1.png"
+$file = "$storageDir\myNewFilename.jpg"
+$webclient.DownloadFile($url,$file)
