@@ -726,6 +726,7 @@ namespace ClientcardFB3
             rtplntbFindName.Visible = rtplncboFilter.Visible = lblFilterBy.Visible = false;
             Application.DoEvents();
             progressBar1.Maximum = dRows.Length;
+
             for (int i = 0; i < dRows.Length; i++)
             {
                 rtplndgvHD.Rows.Add();
@@ -746,6 +747,7 @@ namespace ClientcardFB3
                 rtplndgvHD[rtplnSortColName, i].Style.BackColor = Color.Azure;
                 progressBar1.PerformStep();
             }
+
             lblRowCnt.Text = "[ " + rtplndgvHD.Rows.Count.ToString() + " ]";
             rtplnrowIndex = 0;
             foreach (ToolStripButton tsb in toolStrip2.Items)
@@ -961,7 +963,7 @@ namespace ClientcardFB3
         private void btnAddClient_Click(object sender, EventArgs e)
         {
             frmFindClient.ShowDialog();
-            int hhId = frmFindClient.HHMemID;
+            int hhId = frmFindClient.HHid;
 
             if (hhId != FindClientForm.NULL_MEM_ID)
             {
