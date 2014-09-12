@@ -15,9 +15,10 @@ Install Client Card:
 Install these:
 Microsoft Access 2010 or better
 SQL server 2008 R2 Express with tools: http://www.microsoft.com/en-us/download/details.aspx?id=30438
+Configuration file: https://drive.google.com/file/d/0B1DTcD94cvvBamlaZXFzckQ3MWM/edit?usp=sharing
 The file SQLEXPRWT_x64_ENU.exe or SQLEXPRWT_x86_ENU.exe
 		Change these options to install. Everything else is the default:
-			Server configeration: Set Browser Service to Automatic.
+			Server configuration: Set Browser Service to Automatic.
 			Database Engine config: Mixed Mode Authentication with a SA password (I use ccfb3)
 
 Run SQL Management Studio
