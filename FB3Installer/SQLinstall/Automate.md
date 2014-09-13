@@ -18,6 +18,6 @@ Automated todo:
 1. Check operating system. 32/64 bit, windows version
 2. Download Sql server and config file
 3. Run sql server with config file
-4. Restore database
-5. Create New LogIn
-6. Run reset permission script
+4. Restore database *********************
+5. Create New LogIn *****************
+6. Run reset permission script 
