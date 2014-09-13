@@ -1,6 +1,5 @@
 Run making config file: SQLEXPRWT_x64_ENU.exe /ACTION=Install /UIMODE=Normal
 install with config: 
-mkdir "c:\sqlTmp\PCUSOURCE"
 SQLEXPRWT_x64_ENU.exe /ACTION=Install /CONFIGURATIONFILE="C:\Users\Nevan\Documents\foodBank\ClientcardFB3\AutomateInstall\ConfigurationFile.ini"
 SQL server install options: http://msdn.microsoft.com/en-us/library/ms144259.aspx
 SQL query from cmd http://msdn.microsoft.com/en-us/library/ms162773.aspx

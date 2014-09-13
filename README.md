@@ -25,7 +25,7 @@ Run SQL Management Studio
 LogIn to SQL Management Studio using Windows Authentication or the SA user
 	Right click on Database folder, Restore Database:
 		To database: ClientcardFB3
-		In General tab: select Source-> from device-> add->		C:\Users\Public\ClientcardFB3\Database\FB3x8Prod.BAK to database ClientCardFB3
+		In General tab: select Source-> from device-> add->		C:\Users\Public\ClientcardFB3\Database\FB3x8Prod.BAK to database ClientcardFB3
 	Create New LogIn: Right click on Security folder, under server (not the one under databases) Select SQL server authentication. Username: CCFB_User pw: 19800612
 	Reset permissions:  Open file icon, open: C:\Users\Public\ClientcardFB3\Scripts\ResetCCFBUser.sql, click execute
 
