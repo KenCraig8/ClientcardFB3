@@ -2,7 +2,7 @@ Run making config file: SQLEXPRWT_x64_ENU.exe /ACTION=Install /UIMODE=Normal
 install with config: 
 SQLEXPRWT_x64_ENU.exe /ACTION=Install /CONFIGURATIONFILE="C:\Users\Nevan\Documents\foodBank\ClientcardFB3\AutomateInstall\ConfigurationFile.ini"
 SQL server install options: http://msdn.microsoft.com/en-us/library/ms144259.aspx
-SQL query from cmd http://msdn.microsoft.com/en-us/library/ms162773.aspx
+SQL query from cmd: SQLCMD -S MYCOMPUTER\SQLEXPRESS http://msdn.microsoft.com/en-us/library/ms162773.aspx
 Other database stuff cmd: http://msdn.microsoft.com/en-us/library/ms162827.aspx
 Download files: Won't work: bitsadmin.exe /transfer "JobName" https://docs.google.com/document/d/16lLN_RGdUMpHBVuHT3eLXs1BoQ1oPXAOuUqrD6k6w18/edit?usp=sharing C:\Users\Nevan\Downloads
 
