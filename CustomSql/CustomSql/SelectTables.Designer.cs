@@ -1,4 +1,4 @@
-﻿namespace MapData2
+﻿namespace CustomSQL
 {
     partial class SelectTables
     {

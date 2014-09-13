@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MapData2
+namespace CustomSQL
 {
     static class Program
     {

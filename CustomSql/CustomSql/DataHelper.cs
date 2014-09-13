@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace MapData2
+namespace CustomSQL
 {
     public class DataHelper
     {

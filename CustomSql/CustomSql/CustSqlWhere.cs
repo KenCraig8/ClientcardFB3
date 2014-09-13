@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 
-namespace MapData2
+namespace CustomSQL
 {
     public partial class CustSqlWhere : Form
     {

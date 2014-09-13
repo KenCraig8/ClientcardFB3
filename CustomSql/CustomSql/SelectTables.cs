@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MapData2
+namespace CustomSQL
 {
     public partial class SelectTables : Form
     {
