@@ -107,9 +107,9 @@ namespace CustomSQL
         /// </summary>
         /// <param name="typeSpecs"></param>
         /// <returns></returns>
-        private string[] getColsOfType(string typeSpecs)
+        public string[] getColsOfType(string typeSpecs)
         {
-            //SELECT COLUMN_NAME FROM [ClientCardFB3F].information_schema.columns WHERE TABLE_NAME = 'HouseholdMembers'
+            // SELECT COLUMN_NAME FROM [ClientcardFB3].information_schema.columns WHERE TABLE_NAME = 'HouseholdMembers' AND (DATA_TYPE IN ('int', 'smallint', 'float', 'datetime')) AND (COLUMN_NAME = 'ID' OR COLUMN_NAME = 'Inactive')
             string sqlColumnConditions = String.Join("' OR COLUMN_NAME = '", selectedColumns);
             string partTypeQuery = "SELECT COLUMN_NAME FROM [" + databaseName + "].information_schema.columns WHERE TABLE_NAME = '" 
                 + selectedTableName + "' AND {0} AND (COLUMN_NAME = '" + sqlColumnConditions + "')";
