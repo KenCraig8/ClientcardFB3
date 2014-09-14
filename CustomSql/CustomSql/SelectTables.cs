@@ -16,6 +16,8 @@ namespace CustomSQL
         const string databaseName = "ClientcardFB3";
         string connectionString = @"Server=MYCOMPUTER\SQLEXPRESS;initial catalog=" + databaseName + "; UID=CCFB_User; PWD='19800612'; Trusted_Connection = False; Connect Timeout=10;";
         DataHelper dataHelper;
+        // Access this for testing
+        public CustSqlWhere sqlWhereForm;
 
         /// <summary>
         /// For testing. Dependency injection.
@@ -29,13 +31,6 @@ namespace CustomSQL
 
         string selectedTableName;
         public SelectTables() : this(new DataHelper()){}
-
-        /// <summary>
-        /// Return the connection string for testing
-        /// </summary>
-        public string getConnectionString(){
-            return connectionString;
-        }
 
         /// <summary>
         /// Display the user choices for the table in a list box
@@ -77,10 +72,8 @@ namespace CustomSQL
         {
             string[] selectedColumns = lstSelectColumns.SelectedItems.Cast<string>().ToArray();
 
-            CustSqlWhere sqlWhereForm = new CustSqlWhere(dataHelper, connectionString, selectedColumns, databaseName, selectedTableName);
+            sqlWhereForm = new CustSqlWhere(dataHelper, connectionString, selectedColumns, databaseName, selectedTableName);
             sqlWhereForm.Show();
-
-            
         }
     }
 }

@@ -31,6 +31,30 @@ namespace CustomSQL
         const int kMaxValsToSelect = 50;
 
         /// <summary>
+        /// Used for testing.
+        /// </summary>
+        public string SelectedTableName
+        {
+            get
+            {
+                return selectedTableName;
+            }
+        }
+
+        /// <summary>
+        /// Used for testing. Make a copy so the original value can't be changed
+        /// </summary>
+        public string[] SelectedColumns
+        {
+            get
+            {
+                string[] copy = new string[selectedColumns.Length];
+                selectedColumns.CopyTo(copy, 0);
+                return copy;
+            }
+        }
+
+        /// <summary>
         /// Sets the parameters passed in from the other form
         /// </summary>
         /// <param name="dataHelper"></param>

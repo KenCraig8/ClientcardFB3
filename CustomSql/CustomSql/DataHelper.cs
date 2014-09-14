@@ -37,7 +37,7 @@ namespace CustomSQL
         }
 
         /// <summary>
-        /// Returns all of the entrys in a one column DataTable as an array
+        /// Returns all of the entries in a one column DataTable as an array
         /// </summary>
         /// <param name="table"></param>
         /// <returns></returns>
