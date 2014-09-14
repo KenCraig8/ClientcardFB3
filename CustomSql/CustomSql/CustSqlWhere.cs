@@ -122,11 +122,11 @@ namespace CustomSQL
         }
 
         /// <summary>
-        /// Querys the database to get all of the distinct entries in a column
+        /// Queries the database to get all of the distinct entries in a column
         /// </summary>
         /// <param name="colName"></param>
         /// <returns></returns>
-        private string[] getDistinctValsInCol(string colName)
+        public string[] getDistinctValsInCol(string colName)
         {
             string sqlQuery = "SELECT DISTINCT " + colName + sqlFromString;
 

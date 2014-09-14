@@ -10,6 +10,9 @@ namespace Tests
     [TestFixture]
     public class CustSqlWhereTest
     {
+        /// <summary>
+        /// Tests that the query is correct and that the correct value is returned.
+        /// </summary>
         [Test]
         public void getColsOfTypeTest()
         {
@@ -28,6 +31,25 @@ namespace Tests
             string[] columnAct = sqlWhere.getColsOfType("(DATA_TYPE IN ('int'))");
 
             Assert.AreEqual(columnsList, columnAct);
+        }
+
+        /// <summary>
+        /// Tests that the query is correct and that the correct value is returned.
+        /// </summary>
+        [Test]
+        public void getDistinctValsInColTest()
+        {
+            var dataMock = new Mock<DataHelper>();
+            DataTable outTable = new DataTable();
+            outTable.Columns.Add("LastName");
+            outTable.Columns.Add("FirstName");
+            string queryToMock = "SELECT DISTINCT LastName FROM [ClientcardFB3].[dbo].[HouseholdMembers]";
+            dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), queryToMock)).Returns(outTable);
+
+            CustSqlWhere sqlWhere = new CustSqlWhere(dataMock.Object, "", new string[] { "1st", "2nd" }, "ClientCardFB3", "HouseholdMembers");
+            string[] columnAct = sqlWhere.getDistinctValsInCol("LastName");
+
+            Assert.AreEqual(new string[]{"LastName"}, columnAct);
         }
     }
 }
