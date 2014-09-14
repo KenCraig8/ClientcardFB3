@@ -8,9 +8,18 @@ using System.Data;
 
 namespace CustomSQL
 {
+    /// <summary>
+    /// Includes functions to interact with the database. Used by multiple other classes
+    /// </summary>
     public class DataHelper
     {
-        public DataTable sqlQuery(string connectionString, string sqlQuery)
+        /// <summary>
+        /// Runs the query.
+        /// </summary>
+        /// <param name="connectionString"></param>
+        /// <param name="sqlSelectQuery"></param>
+        /// <returns>DataTable containing the result</returns>
+        public DataTable sqlSelectQuery(string connectionString, string sqlQuery)
         {
             SqlConnection databaseConnection = new SqlConnection(connectionString);
             databaseConnection.Open();
@@ -27,13 +36,22 @@ namespace CustomSQL
             return dTable;
         }
 
-        //Returns all of the entrys in a one column DataTable as an array
-        public string[] dataTableToArray(DataTable table)
+        /// <summary>
+        /// Returns all of the entrys in a one column DataTable as an array
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        public static string[] dataTableToArray(DataTable table)
         {
             return table.AsEnumerable().Select(row => Convert.ToString(row.Field<object>(0))).ToArray();
         }
 
-        public string enumToSqlIn(System.Collections.IEnumerable inEnum)
+        /// <summary>
+        /// Concatenates the values into a list for SQL.
+        /// </summary>
+        /// <param name="inEnum"></param>
+        /// <returns></returns>
+        public static string enumToSqlIn(System.Collections.IEnumerable inEnum)
         {
             const string kSeperator = ", ";
 

@@ -30,11 +30,14 @@ namespace CustomSQL
         string[] kDateTypes;
         const int kMaxValsToSelect = 50;
 
-        //string createdSqlQuery = "";
-
-        //BoundString saveFilePath;
-        //DataTable loadedData;
-
+        /// <summary>
+        /// Sets the parameters passed in from the other form
+        /// </summary>
+        /// <param name="dataHelper"></param>
+        /// <param name="connectionString"></param>
+        /// <param name="selectedColumns"></param>
+        /// <param name="databaseName"></param>
+        /// <param name="selectedTableName"></param>
         public CustSqlWhere(DataHelper dataHelper, string connectionString, string[] selectedColumns, string databaseName, string selectedTableName)
         {
             this.connectionString = connectionString;
@@ -51,15 +54,20 @@ namespace CustomSQL
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes vars and  GUI controls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CustSqlWhere_Load(object sender, EventArgs e)
         {
             ArrayList sqlRangeTypes = new ArrayList(kNumTypes);
             sqlRangeTypes.AddRange(kDateTypes);
 
-            string rangeTypesSqlPart = dataHelper.enumToSqlIn(sqlRangeTypes);
+            string rangeTypesSqlPart = DataHelper.enumToSqlIn(sqlRangeTypes);
 
             string rangeTypeSpecs = "(DATA_TYPE IN " + rangeTypesSqlPart + ")";
-            string numTypeSpecs = "(DATA_TYPE IN " + dataHelper.enumToSqlIn(kNumTypes) + ")";
+            string numTypeSpecs = "(DATA_TYPE IN " + DataHelper.enumToSqlIn(kNumTypes) + ")";
 
             setupRangeSelect(getColsOfType(rangeTypeSpecs), getColsOfType(numTypeSpecs));
 
@@ -70,7 +78,11 @@ namespace CustomSQL
             lstOrder.DisplayMember = "columnName";
         }
 
-        //querys the database to get the entries colums matching a certain type
+        /// <summary>
+        /// query the database to get the entries columns matching a certain type
+        /// </summary>
+        /// <param name="typeSpecs"></param>
+        /// <returns></returns>
         private string[] getColsOfType(string typeSpecs)
         {
             //SELECT COLUMN_NAME FROM [ClientCardFB3F].information_schema.columns WHERE TABLE_NAME = 'HouseholdMembers'
@@ -80,21 +92,28 @@ namespace CustomSQL
 
             string typeQuery = String.Format(partTypeQuery, typeSpecs);
 
-            DataTable columnNamesTable = dataHelper.sqlQuery(connectionString, typeQuery);
+            DataTable columnNamesTable = dataHelper.sqlSelectQuery(connectionString, typeQuery);
 
-            return dataHelper.dataTableToArray(columnNamesTable);
+            return DataHelper.dataTableToArray(columnNamesTable);
         }
 
-        //Querys the database to get all of the distinct entries in a column
+        /// <summary>
+        /// Querys the database to get all of the distinct entries in a column
+        /// </summary>
+        /// <param name="colName"></param>
+        /// <returns></returns>
         private string[] getDistinctValsInCol(string colName)
         {
             string sqlQuery = "SELECT DISTINCT " + colName + sqlFromString;
 
-            DataTable distinctElementsTable = dataHelper.sqlQuery(connectionString, sqlQuery);
-            return dataHelper.dataTableToArray(distinctElementsTable);
+            DataTable distinctElementsTable = dataHelper.sqlSelectQuery(connectionString, sqlQuery);
+            return DataHelper.dataTableToArray(distinctElementsTable);
         }
 
-        //adds the controls to select the displayed values for the string columns
+        /// <summary>
+        /// adds the controls to select the displayed values for the string columns
+        /// </summary>
+        /// <param name="columnNames"></param>
         private void setupStringSelect(string[] columnNames)
         {
             for (int columnNum = 0; columnNum < columnNames.Length; columnNum++)
@@ -134,11 +153,15 @@ namespace CustomSQL
                 flpSelection.FlowDirection = FlowDirection.TopDown;
                 flpStringSelect.Controls.Add(flpSelection);
             }
-            //It's best not to turn on auto scroll untill all the eliments are added or it will try to calcualte the scroll for each one
+            //It's best not to turn on auto scroll until all the elements are added or it will try to calculate the scroll for each one
             flpStringSelect.AutoScroll = true;
         }
 
-        //adds the controls to select the range of the number columns to the form with the apropriate binding
+        /// <summary>
+        /// adds the controls to select the range of the number columns to the form with the appropriate binding
+        /// </summary>
+        /// <param name="columnNames"></param>
+        /// <param name="numColNames"></param>
         private void setupRangeSelect(string[] columnNames, string[] numColNames){
             sqlWhereProperties = new ArrayList();
             sqlSelectProperties = new ArrayList();
@@ -194,7 +217,10 @@ namespace CustomSQL
             tblWhereSelection.AutoScroll = true;
         }
 
-        //Creates the sql query with the information the user selected
+        /// <summary>
+        /// Creates the sql query with the information the user selected
+        /// </summary>
+        /// <returns></returns>
         private string makeSqlQuery()
         {
             //create query with appropriate columns selected
@@ -205,13 +231,18 @@ namespace CustomSQL
             return "SELECT " + selectedColumnsSql + sqlFromString + whereCaluse;
         }
 
-        //Works much like string.join but only includes elements where "IsEnabled" is true
+        /// <summary>
+        /// Works much like string.join but only includes elements where "IsEnabled" is true
+        /// </summary>
+        /// <param name="sqlProperties"></param>
+        /// <param name="joiner"></param>
+        /// <returns></returns>
         private static string sqlPropertiesToString(IEnumerable sqlProperties, string joiner)
         {
             string outString = "";
             //add where clauses
             bool isFirst = true;
-            //Can't use String.Join for this casue I don't want to include it if it's not enabled
+            //Can't use String.Join for this cause I don't want to include it if it's not enabled
             foreach (SqlProperty sqlProp in sqlProperties)
             {
                 if (sqlProp.IsEnabled)
@@ -227,12 +258,16 @@ namespace CustomSQL
             return outString;
         }
 
-        //Loads the data into the preview
+        /// <summary>
+        /// Loads the data into the preview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLoadData_Click(object sender, EventArgs e)
         {
             string sqlQuery = makeSqlQuery();
 
-            DataTable loadedData = dataHelper.sqlQuery(connectionString, sqlQuery);
+            DataTable loadedData = dataHelper.sqlSelectQuery(connectionString, sqlQuery);
 
             gvPreview.DataSource = new DataTable();
             gvPreview.DataSource = loadedData;
@@ -243,17 +278,17 @@ namespace CustomSQL
         {
           * sfdSaveExcel.Filter = "excel files|*.csv";
           * 
-            const string seperator = ",";
+            const string separator = ",";
 
             var lines = new List<string>();
 
             //for some reason excel doesn't like .csv files to have the capital ID in them
             string[] columnNames = loadedData.Columns.Cast<DataColumn>().Select(column => column.ColumnName.Replace("ID", "id")).ToArray();
 
-            var header = string.Join(seperator, columnNames);
-            lines.Add(header + seperator);
+            var header = string.Join(separator, columnNames);
+            lines.Add(header + separator);
 
-            var valueLines = loadedData.AsEnumerable().Select(row => string.Join(seperator, row.ItemArray));
+            var valueLines = loadedData.AsEnumerable().Select(row => string.Join(separator, row.ItemArray));
             lines.AddRange(valueLines);
 
             sfdSaveExcel.ShowDialog();
@@ -261,7 +296,12 @@ namespace CustomSQL
             File.WriteAllLines(sfdSaveExcel.FileName, lines);
         }*/
 
-        //Saves the sql query in a text file.
+        /// <summary>
+        /// Saves the sql query in a text file.
+
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             string sqlQuery = makeSqlQuery();
@@ -270,17 +310,32 @@ namespace CustomSQL
             File.WriteAllText(sfdSaveQuery.FileName, sqlQuery);
         }
 
+        /// <summary>
+        /// These are used to allow the user to reorder the fields to display with drag and drop.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstOrder_MouseDown(object sender, MouseEventArgs e)
         {
             if (this.lstOrder.SelectedItem == null) return;
             this.lstOrder.DoDragDrop(this.lstOrder.SelectedItem, DragDropEffects.Move);
         }
 
+        /// <summary>
+        /// These are used to allow the user to reorder the fields to display with drag and drop.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstOrder_DragOver(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
 
+        /// <summary>
+        /// These are used to allow the user to reorder the fields to display with drag and drop.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstOrder_DragDrop(object sender, DragEventArgs e)
         {
             Point point = lstOrder.PointToClient(new Point(e.X, e.Y));
@@ -293,17 +348,23 @@ namespace CustomSQL
     }
 
 
+    
+    //
 
-    //Inheritance is used so much here so that the same code can be used for different sql properties if they are similar enough
-    //The setupSqlRange function can use do the same thing for a number range or a date range this way
-    //And all of the properties can be converted into part of a SQL query the same way
-
-    //For the all of the where properties to be selected and used
+    /// <summary>
+    /// Inheritance is used so much here so that the same code can be used for different sql properties if they are similar enough
+    /// The setupSqlRange function can use do the same thing for a number range or a date range this way
+    /// And all of the properties can be converted into part of a SQL query the same way
+    /// For the all of the where properties to be selected and used
+    /// </summary>
     public abstract class SqlProperty{
         protected bool isEnabled;
 
         public string columnName;
 
+        /// <summary>
+        /// Whether to use this property in the query or not
+        /// </summary>
         public bool IsEnabled
         {
             get { return isEnabled; }
@@ -314,6 +375,10 @@ namespace CustomSQL
             }
         }
 
+        /// <summary>
+        /// Convert the property to part of a SQL string
+        /// </summary>
+        /// <returns></returns>
         abstract public string toString();
 
         public static implicit operator string(SqlProperty val)
@@ -336,6 +401,9 @@ namespace CustomSQL
 
     public class SqlSelectProperty : SqlProperty
     {
+        /// <summary>
+        /// The column this property refers to
+        /// </summary>
         public string ColumnName
         {
             get { return columnName; }
@@ -355,17 +423,22 @@ namespace CustomSQL
         public string UpperLimit;
     }
 
-    //Stores information about a range of dates and can be converted into an SQL query
-    //Designed to be used in a binding
+    /// <summary>
+    /// Stores information about a range of dates and can be converted into an SQL query
+    /// Designed to be used in a binding
+    /// </summary>
     public class SqlDateWhereProperty : SqlRangeWhereProperty, INotifyPropertyChanged
     {
-        // lowerLimit and LowerLimit have different types since lowerLimit is a "behind the scenes" variable to store the actuall value
+        // lowerLimit and LowerLimit have different types since lowerLimit is a "behind the scenes" variable to store the actual value
         //and LowerLimit is interacts with the user input
         private static DateTime kMinDate = new DateTime(1800, 1, 1);
         
         private DateTime lowerLimit = kMinDate;
         private DateTime upperLimit = DateTime.MaxValue;
 
+        /// <summary>
+        /// The start of the included date range
+        /// </summary>
         new public string LowerLimit
         {
             get{return dateToString(lowerLimit);}
@@ -383,6 +456,9 @@ namespace CustomSQL
             }
         }
 
+        /// <summary>
+        /// End of the date range
+        /// </summary>
         new public string UpperLimit
         {
             get { return dateToString(upperLimit); }
@@ -399,7 +475,11 @@ namespace CustomSQL
             }
         }
 
-        //I use funcitons for these so if I want to change how I convert strings and dates I can just do it in one place.
+        /// <summary>
+        /// I use functions for these so if I want to change how I convert strings and dates I can just do it in one place.
+        /// </summary>
+        /// <param name="inDate"></param>
+        /// <returns></returns>
         private static string dateToString(DateTime inDate){
             return Convert.ToString(inDate);
         }
@@ -418,8 +498,10 @@ namespace CustomSQL
         }
     }
 
-    //Class for storing the column name and the upper and lower bounds for a where clause
-    //Made for being used with a binding to controls
+    /// <summary>
+    /// Class for storing the column name and the upper and lower bounds for a where clause
+    /// Made for being used with a binding to controls
+    /// </summary>
     public class SqlNumWhereProperty : SqlRangeWhereProperty, INotifyPropertyChanged
     {
         private float lowerLimit;
@@ -459,9 +541,11 @@ namespace CustomSQL
         }
     }
 
-    //For using a list box to select sql IN clause
-    //I wanted to do this with a binding, but I couldn't figure out how
-    //The Items property should reflect the selected items in the list box
+    /// <summary>
+    /// For using a list box to select sql IN clause
+    /// I wanted to do this with a binding, but I couldn't figure out how
+    /// The Items property should reflect the selected items in the list box
+    /// </summary>
     public class SqlStringWhereProperty : SqlProperty
     {
         private ListBox lstItems;
@@ -483,10 +567,13 @@ namespace CustomSQL
             set { }
         }
 
-        //Converts the values from the list into part of the SQL query
+        /// <summary>
+        /// Converts the values from the list into part of the SQL query
+        /// </summary>
+        /// <returns></returns>
         override public string toString()
         {
-            return "(" + columnName + " IN " + dataHelper.enumToSqlIn(Items) + ")";
+            return "(" + columnName + " IN " + DataHelper.enumToSqlIn(Items) + ")";
         }
     }
 
