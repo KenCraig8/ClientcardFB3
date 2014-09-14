@@ -55,6 +55,28 @@ namespace CustomSQL
         }
 
         /// <summary>
+        /// Used for testing. Make a copy so the original value can't be changed
+        /// </summary>
+        public SqlSelectProperty[] SqlSelectProperties
+        {
+            get
+            {
+                return (SqlSelectProperty[])sqlSelectProperties.ToArray(typeof(SqlSelectProperty));
+            }
+        }
+
+        /// <summary>
+        /// Used for testing. Make a copy so the original value can't be changed
+        /// </summary>
+        public SqlStringWhereProperty[] SqlStringWhereProperties
+        {
+            get
+            {
+                return (SqlStringWhereProperty[])sqlWhereProperties.ToArray(typeof(SqlStringWhereProperty));
+            }
+        }
+
+        /// <summary>
         /// Sets the parameters passed in from the other form
         /// </summary>
         /// <param name="dataHelper"></param>
@@ -74,6 +96,9 @@ namespace CustomSQL
             kDateTypes = new string[] { "datetime" };
 
             sqlFromString = " FROM [" + databaseName + "].[dbo].[" + selectedTableName + "]";
+
+            sqlWhereProperties = new ArrayList();
+            sqlSelectProperties = new ArrayList();
 
             InitializeComponent();
         }
@@ -98,7 +123,7 @@ namespace CustomSQL
             string stringTypeSpecs = "(DATA_TYPE NOT IN " + rangeTypesSqlPart + ")";
             setupStringSelect(getColsOfType(stringTypeSpecs));
 
-            lstOrder.Items.AddRange((SqlSelectProperty[])sqlSelectProperties.ToArray(typeof(SqlSelectProperty)));
+            lstOrder.Items.AddRange(SqlSelectProperties);
             lstOrder.DisplayMember = "columnName";
         }
 
@@ -138,7 +163,7 @@ namespace CustomSQL
         /// adds the controls to select the displayed values for the string columns
         /// </summary>
         /// <param name="columnNames"></param>
-        private void setupStringSelect(string[] columnNames)
+        public void setupStringSelect(string[] columnNames)
         {
             for (int columnNum = 0; columnNum < columnNames.Length; columnNum++)
             {
@@ -172,7 +197,6 @@ namespace CustomSQL
                     sqlWhereProperties.Add(sqlStringWhere);
                 }
                 sqlSelectProperties.Add(sqlSelect);
-                //flpSelection.AutoScroll = true;
                 flpSelection.AutoSize = true;
                 flpSelection.FlowDirection = FlowDirection.TopDown;
                 flpStringSelect.Controls.Add(flpSelection);
@@ -187,9 +211,6 @@ namespace CustomSQL
         /// <param name="columnNames"></param>
         /// <param name="numColNames"></param>
         private void setupRangeSelect(string[] columnNames, string[] numColNames){
-            sqlWhereProperties = new ArrayList();
-            sqlSelectProperties = new ArrayList();
-
             for (int entryNum = 0; entryNum < columnNames.Length; entryNum++)
             {
                 SqlRangeWhereProperty sqlWhere;
@@ -580,11 +601,28 @@ namespace CustomSQL
             this.columnName = columnName;
         }
 
+        /// <summary>
+        /// Gets all of the items in the DataSource of the list box.
+        /// </summary>
+        public string[] AllItems
+        {
+            get
+            {
+                string[] origVals = (string[])lstItems.DataSource;
+                string[] vals = new string[origVals.Length];
+                origVals.CopyTo(vals, 0);
+                return vals; 
+            }
+        }
+
+        /// <summary>
+        /// Gets the selected items from the list box.
+        /// </summary>
         public string[] Items
         {
             get
             {
-                string[] vals = new string[lstItems.Items.Count];
+                string[] vals = new string[lstItems.SelectedItems.Count];
                 lstItems.SelectedItems.CopyTo(vals, 0);
                 return vals;
             }

@@ -55,5 +55,51 @@ namespace Tests
 
             Assert.AreEqual(namesList, columnAct);
         }
+
+        /// <summary>
+        /// Make sure the controls are added and the sqlWhereProperties get's populated correctly
+        /// </summary>
+        [Test]
+        public void setupStringSelectTest()
+        {
+            // Setup mock data to return first names or last names
+            var dataMock = new Mock<DataHelper>();
+            DataTable firstNameTable = new DataTable();
+            firstNameTable.Columns.Add("FirstName");
+            string[] firstNames = new string[] { "Billy", "John"};
+            foreach (string name in firstNames)
+            {
+                firstNameTable.Rows.Add(new string[] { name });
+            }
+            dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.Is<string>(s => s.Contains("FirstName")))).Returns(firstNameTable);
+            DataTable lastNameTable = new DataTable();
+            lastNameTable.Columns.Add("LastName");
+            string[] lastNames = new string[] { "Joe", "Doe"};
+            foreach (string name in lastNames)
+            {
+                lastNameTable.Rows.Add(new string[] { name });
+            }
+            dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.Is<string>(s => s.Contains("LastName")))).Returns(lastNameTable);
+            
+            CustSqlWhere sqlWhere = new CustSqlWhere(dataMock.Object, "", new string[0], "ClientCardFB3", "HouseholdMembers");
+
+            string[] colNames = new string[]{ "FirstName", "LastName" };
+            sqlWhere.setupStringSelect(colNames);
+
+            SqlSelectProperty[] selectProps = (SqlSelectProperty[])sqlWhere.SqlSelectProperties;
+            Assert.AreEqual(2, selectProps.Length);
+            Assert.AreEqual("FirstName", selectProps[0].columnName);
+            Assert.AreEqual("LastName", selectProps[1].columnName);
+
+            SqlStringWhereProperty[] stringWhereProps = (SqlStringWhereProperty[])sqlWhere.SqlStringWhereProperties;
+            Assert.AreEqual(2, stringWhereProps.Length);
+            Assert.AreEqual("FirstName", stringWhereProps[0].columnName);
+            Assert.AreEqual("LastName", stringWhereProps[1].columnName);
+            Assert.AreEqual(firstNames, stringWhereProps[0].AllItems);
+            Assert.AreEqual(lastNames, stringWhereProps[1].AllItems);
+          
+
+        }
+
     }
 }
