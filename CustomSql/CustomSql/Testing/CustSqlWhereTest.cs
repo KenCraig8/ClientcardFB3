@@ -41,15 +41,19 @@ namespace Tests
         {
             var dataMock = new Mock<DataHelper>();
             DataTable outTable = new DataTable();
+            string[] namesList = new string[] { "Bob", "Joe" };
             outTable.Columns.Add("LastName");
-            outTable.Columns.Add("FirstName");
-            string queryToMock = "SELECT DISTINCT LastName FROM [ClientcardFB3].[dbo].[HouseholdMembers]";
+            foreach (string name in namesList)
+            {
+                outTable.Rows.Add(new string[] { name });
+            }
+            string queryToMock = "SELECT DISTINCT LastName FROM [ClientCardFB3].[dbo].[HouseholdMembers]";
             dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), queryToMock)).Returns(outTable);
 
             CustSqlWhere sqlWhere = new CustSqlWhere(dataMock.Object, "", new string[] { "1st", "2nd" }, "ClientCardFB3", "HouseholdMembers");
             string[] columnAct = sqlWhere.getDistinctValsInCol("LastName");
 
-            Assert.AreEqual(new string[]{"LastName"}, columnAct);
+            Assert.AreEqual(namesList, columnAct);
         }
     }
 }
