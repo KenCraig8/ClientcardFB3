@@ -64,7 +64,7 @@
             this.lstSelectColumns.Size = new System.Drawing.Size(378, 196);
             this.lstSelectColumns.TabIndex = 3;
             // 
-            // Form1
+            // SelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -72,9 +72,9 @@
             this.Controls.Add(this.lstSelectColumns);
             this.Controls.Add(this.btnSelectWhere);
             this.Controls.Add(this.lstSelectTable);
-            this.Name = "Form1";
+            this.Name = "SelectForm";
             this.Text = "Select Tables";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.SelectForm_Load);
             this.ResumeLayout(false);
 
         }

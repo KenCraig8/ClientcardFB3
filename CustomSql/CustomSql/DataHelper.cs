@@ -19,7 +19,7 @@ namespace CustomSQL
         /// <param name="connectionString"></param>
         /// <param name="sqlSelectQuery"></param>
         /// <returns>DataTable containing the result</returns>
-        public DataTable sqlSelectQuery(string connectionString, string sqlQuery)
+        public virtual DataTable sqlSelectQuery(string connectionString, string sqlQuery)
         {
             SqlConnection databaseConnection = new SqlConnection(connectionString);
             databaseConnection.Open();
@@ -54,7 +54,6 @@ namespace CustomSQL
         public static string enumToSqlIn(System.Collections.IEnumerable inEnum)
         {
             const string kSeperator = ", ";
-
             string valuesStr = "";
 
             //I can't use the String.Join for this because it will put the empty string in for null values
@@ -64,8 +63,13 @@ namespace CustomSQL
                 if (item != null)
                     valuesStr += "'"+item+"'" + kSeperator;
             }
-            
-            return "(" + valuesStr.Substring(0, valuesStr.Length - kSeperator.Length) + ")";
+
+            if (valuesStr.Length >= kSeperator.Length)
+            {
+                valuesStr = valuesStr.Substring(0, valuesStr.Length - kSeperator.Length);
+            }
+
+            return "(" + valuesStr + ")";
         }
     }
 }

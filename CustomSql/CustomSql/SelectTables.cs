@@ -17,16 +17,24 @@ namespace CustomSQL
         string connectionString = @"Server=MYCOMPUTER\SQLEXPRESS;initial catalog=" + databaseName + "; UID=CCFB_User; PWD='19800612'; Trusted_Connection = False; Connect Timeout=10;";
         DataHelper dataHelper;
 
-        string selectedTableName;
-        public SelectTables()
-        {
-            dataHelper = new DataHelper();
-            InitializeComponent();
-        }
-
+        /// <summary>
+        /// For testing. Dependency injection.
+        /// </summary>
+        /// <param name="dataHelper"></param>
         public SelectTables(DataHelper dataHelper)
         {
             this.dataHelper = dataHelper;
+            InitializeComponent();
+        }
+
+        string selectedTableName;
+        public SelectTables() : this(new DataHelper()){}
+
+        /// <summary>
+        /// Return the connection string for testing
+        /// </summary>
+        public string getConnectionString(){
+            return connectionString;
         }
 
         /// <summary>
@@ -34,7 +42,7 @@ namespace CustomSQL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Form1_Load(object sender, EventArgs e)
+        private void SelectForm_Load(object sender, EventArgs e)
         {
             ArrayList tableChoices = new ArrayList {"HouseholdMembers", "Household", "Donors", "Volunteers" };
 
