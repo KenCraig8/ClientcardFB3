@@ -67,12 +67,25 @@ namespace CustomSQL
 
         /// <summary>
         /// Used for testing. Make a copy so the original value can't be changed
+        /// Warning: won't work if there are SqlRangeWhereProperty in sqlWhereProperties
         /// </summary>
         public SqlStringWhereProperty[] SqlStringWhereProperties
         {
             get
             {
                 return (SqlStringWhereProperty[])sqlWhereProperties.ToArray(typeof(SqlStringWhereProperty));
+            }
+        }
+
+        /// <summary>
+        /// Used for testing. Make a copy so the original value can't be changed
+        /// Warning: won't work if there are SqlRangeStringProperty in sqlWhereProperties
+        /// </summary>
+        public SqlRangeWhereProperty[] SqlRangeWhereProperties
+        {
+            get
+            {
+                return (SqlRangeWhereProperty[])sqlWhereProperties.ToArray(typeof(SqlRangeWhereProperty));
             }
         }
 
@@ -208,9 +221,9 @@ namespace CustomSQL
         /// <summary>
         /// adds the controls to select the range of the number columns to the form with the appropriate binding
         /// </summary>
-        /// <param name="columnNames"></param>
-        /// <param name="numColNames"></param>
-        private void setupRangeSelect(string[] columnNames, string[] numColNames){
+        /// <param name="columnNames"> The names of all of the columns </param>
+        /// <param name="numColNames"> The names of the num columns (the rest are the date)</param>
+        public void setupRangeSelect(string[] columnNames, string[] numColNames){
             for (int entryNum = 0; entryNum < columnNames.Length; entryNum++)
             {
                 SqlRangeWhereProperty sqlWhere;
@@ -234,6 +247,9 @@ namespace CustomSQL
                     ((MaskedTextBox)txtLower).Mask = kDateMaskString;
                     ((MaskedTextBox)txtUpper).Mask = kDateMaskString;
                 }
+
+                txtLower.Name = "txtLower" + entryNum;
+                txtUpper.Name = "txtUpper" + entryNum;
               
                 sqlWhere.columnName = columnNames[entryNum];
                 sqlSelect.columnName = columnNames[entryNum];
@@ -241,10 +257,10 @@ namespace CustomSQL
                 txtLower.DataBindings.Add("Text", sqlWhere, "LowerLimit");
                 txtUpper.DataBindings.Add("Text", sqlWhere, "UpperLimit");
 
-                CheckBox chkDisplay = new CheckBox() { Text = "Display", Checked = true };
+                CheckBox chkDisplay = new CheckBox() { Name="chkDisplay"+entryNum, Text = "Display", Checked = true };
                 chkDisplay.DataBindings.Add("Checked", sqlSelect, "IsEnabled");
 
-                CheckBox chkEnabled = new CheckBox(){ Text = "Enabled" };
+                CheckBox chkEnabled = new CheckBox(){Name="chkEnabled"+entryNum, Text = "Enabled" };
                 chkEnabled.DataBindings.Add("Checked", sqlWhere, "IsEnabled");
 
                 sqlWhereProperties.Add(sqlWhere);
