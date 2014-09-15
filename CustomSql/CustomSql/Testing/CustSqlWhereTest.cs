@@ -60,10 +60,12 @@ namespace Tests
         /// Make sure the controls are added and the sqlWhereProperties get's populated correctly
         /// </summary>
         [Test]
+        [STAThread]
         public void setupStringSelectTest()
         {
             // Setup mock data to return first names or last names
             var dataMock = new Mock<DataHelper>();
+            dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.IsAny<string>())).Returns(new DataTable());
             DataTable firstNameTable = new DataTable();
             firstNameTable.Columns.Add("FirstName");
             string[] firstNames = new string[] { "Billy", "John"};
@@ -80,16 +82,17 @@ namespace Tests
                 lastNameTable.Rows.Add(new string[] { name });
             }
             dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.Is<string>(s => s.Contains("LastName")))).Returns(lastNameTable);
-            
+
             CustSqlWhere sqlWhere = new CustSqlWhere(dataMock.Object, "", new string[0], "ClientCardFB3", "HouseholdMembers");
+            sqlWhere.Show();
 
             string[] colNames = new string[]{ "FirstName", "LastName" };
             sqlWhere.setupStringSelect(colNames);
 
             SqlSelectProperty[] selectProps = (SqlSelectProperty[])sqlWhere.SqlSelectProperties;
             Assert.AreEqual(2, selectProps.Length);
-            Assert.AreEqual("FirstName", selectProps[0].columnName);
-            Assert.AreEqual("LastName", selectProps[1].columnName);
+            Assert.AreEqual("FirstName", (string)selectProps[0]);
+            Assert.AreEqual("LastName", (string)selectProps[1]);
 
             SqlStringWhereProperty[] stringWhereProps = (SqlStringWhereProperty[])sqlWhere.SqlStringWhereProperties;
             Assert.AreEqual(2, stringWhereProps.Length);
@@ -97,9 +100,52 @@ namespace Tests
             Assert.AreEqual("LastName", stringWhereProps[1].columnName);
             Assert.AreEqual(firstNames, stringWhereProps[0].AllItems);
             Assert.AreEqual(lastNames, stringWhereProps[1].AllItems);
-          
 
+            /*ControlTester panTest = new ControlTester("flpStringSelect");
+            panTest.Click();
+
+            ControlTester panSlectionTest = new ControlTester("flpSelection0");
+            panSlectionTest.Click();*/
+
+            LabelTester colLabel0Tester = new LabelTester("flpStringSelect.flpSelection0.colLabel");
+            Assert.AreEqual("FirstName", colLabel0Tester.Text);
+            LabelTester colLabel1Tester = new LabelTester("flpStringSelect.flpSelection1.colLabel");
+            Assert.AreEqual("LastName", colLabel1Tester.Text);
+
+            string[][] allNames = new string[][]{firstNames, lastNames};
+            for (int columnNum = 0; columnNum < colNames.Length; columnNum++)
+            {
+                string panelNameCol = "flpStringSelect.flpSelection"+columnNum;
+                CheckBoxTester chkDisplayTester = new CheckBoxTester(panelNameCol + ".chkDisplay");
+                Assert.NotNull(chkDisplayTester.Text);
+
+                ListBoxTester lstSelectionsTester = new ListBoxTester(panelNameCol + ".lstSelections");
+                Assert.AreEqual(allNames[columnNum], lstSelectionsTester.Properties.DataSource);
+
+                CheckBoxTester chkEnabledTester = new CheckBoxTester(panelNameCol + ".chkEnabled");
+                Assert.NotNull(chkEnabledTester.Text);
+            }
+
+            string panelName = "flpStringSelect.flpSelection";
+            CheckBoxTester chkDisplayTester0 = new CheckBoxTester(panelName + "0.chkDisplay");
+            chkDisplayTester0.Check();
+
+            selectProps = (SqlSelectProperty[])sqlWhere.SqlSelectProperties;
+            Assert.True(selectProps[0].IsEnabled);
+            Assert.False(selectProps[1].IsEnabled);
+
+            CheckBoxTester chkEnabledTester1 = new CheckBoxTester(panelName + "1.chkEnabled");
+            chkEnabledTester1.Check();
+            ListBoxTester lstSelectionsTester0 = new ListBoxTester(panelName + "0.lstSelections");
+            lstSelectionsTester0.SetSelected(0, false);
+            lstSelectionsTester0.SetSelected(1, true);
+            ListBoxTester lstSelectionsTester1 = new ListBoxTester(panelName + "1.lstSelections");
+            lstSelectionsTester1.SetSelected(0, true);
+            lstSelectionsTester1.SetSelected(1, true);
+
+            stringWhereProps = (SqlStringWhereProperty[])sqlWhere.SqlStringWhereProperties;
+            Assert.AreEqual("(FirstName IN ('John'))", (string)stringWhereProps[0]);
+            Assert.AreEqual("(LastName IN ('Joe', 'Doe'))", (string)stringWhereProps[1]);
         }
-
     }
 }

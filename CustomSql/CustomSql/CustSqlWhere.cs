@@ -170,25 +170,25 @@ namespace CustomSQL
                 string colName = columnNames[columnNum];
                 string[] values = getDistinctValsInCol(colName);
 
-                FlowLayoutPanel flpSelection = new FlowLayoutPanel();
+                FlowLayoutPanel flpSelection = new FlowLayoutPanel() { Name = "flpSelection" + columnNum };
 
-                flpSelection.Controls.Add(new Label() { Text = colName });
+                flpSelection.Controls.Add(new Label() {Name="colLabel", Text = colName });
 
                 SqlSelectProperty sqlSelect = new SqlSelectProperty() { columnName = colName };
-
-                CheckBox chkDisplay = new CheckBox(){ Text = "Display", Checked = true};
+                
+                CheckBox chkDisplay = new CheckBox() { Name = "chkDisplay", Text = "Display", Checked = true };
                 chkDisplay.DataBindings.Add("Checked", sqlSelect, "IsEnabled");
                 flpSelection.Controls.Add(chkDisplay);
 
                 if (values.Length < kMaxValsToSelect)
                 {
-                    ListBox lstSelections = new ListBox();
+                    ListBox lstSelections = new ListBox() { Name = "lstSelections"};
                     lstSelections.DataSource = values;
                     lstSelections.SelectionMode = SelectionMode.MultiExtended;
 
                     SqlStringWhereProperty sqlStringWhere = new SqlStringWhereProperty(lstSelections, colName);
 
-                    CheckBox chkEnabled = new CheckBox() { Text = "Apply filter" };
+                    CheckBox chkEnabled = new CheckBox() { Name = "chkEnabled", Text = "Apply filter" };
                     chkEnabled.DataBindings.Add("Checked", sqlStringWhere, "IsEnabled");
 
                     flpSelection.Controls.Add(chkEnabled);
