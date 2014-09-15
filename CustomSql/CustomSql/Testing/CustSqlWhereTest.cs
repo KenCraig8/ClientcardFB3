@@ -4,6 +4,7 @@ using NUnit.Extensions.Forms;
 using Moq;
 using CustomSQL;
 using System.Data;
+using System.Collections;
 
 namespace Tests
 {
@@ -27,7 +28,7 @@ namespace Tests
             string queryToMock = "SELECT COLUMN_NAME FROM [ClientCardFB3].information_schema.columns WHERE TABLE_NAME = 'HouseholdMembers' AND (DATA_TYPE IN ('int')) AND (COLUMN_NAME = '1st' OR COLUMN_NAME = '2nd')";
             dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), queryToMock)).Returns(outTable);
 
-            CustSqlWhere sqlWhere = new CustSqlWhere(dataMock.Object, "", new string[]{"1st", "2nd"}, "ClientCardFB3", "HouseholdMembers");
+            CustSqlWhere sqlWhere = new CustSqlWhere(dataMock.Object, "", new string[] { "1st", "2nd" }, "ClientCardFB3", "HouseholdMembers");
             string[] columnAct = sqlWhere.getColsOfType("(DATA_TYPE IN ('int'))");
 
             Assert.AreEqual(columnsList, columnAct);
@@ -68,7 +69,7 @@ namespace Tests
             dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.IsAny<string>())).Returns(new DataTable());
             DataTable firstNameTable = new DataTable();
             firstNameTable.Columns.Add("FirstName");
-            string[] firstNames = new string[] { "Billy", "John"};
+            string[] firstNames = new string[] { "Billy", "John" };
             foreach (string name in firstNames)
             {
                 firstNameTable.Rows.Add(new string[] { name });
@@ -76,7 +77,7 @@ namespace Tests
             dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.Is<string>(s => s.Contains("FirstName")))).Returns(firstNameTable);
             DataTable lastNameTable = new DataTable();
             lastNameTable.Columns.Add("LastName");
-            string[] lastNames = new string[] { "Joe", "Doe"};
+            string[] lastNames = new string[] { "Joe", "Doe" };
             foreach (string name in lastNames)
             {
                 lastNameTable.Rows.Add(new string[] { name });
@@ -88,7 +89,7 @@ namespace Tests
             sqlWhere.Show();
 
             // Cal funct to test
-            string[] colNames = new string[]{ "FirstName", "LastName" };
+            string[] colNames = new string[] { "FirstName", "LastName" };
             sqlWhere.setupStringSelect(colNames);
 
             // Check the sqlProperties have the correct values
@@ -110,10 +111,10 @@ namespace Tests
             LabelTester colLabel1Tester = new LabelTester("flpStringSelect.flpSelection1.colLabel");
             Assert.AreEqual("LastName", colLabel1Tester.Text);
 
-            string[][] allNames = new string[][]{firstNames, lastNames};
+            string[][] allNames = new string[][] { firstNames, lastNames };
             for (int columnNum = 0; columnNum < colNames.Length; columnNum++)
             {
-                string panelNameCol = "flpStringSelect.flpSelection"+columnNum;
+                string panelNameCol = "flpStringSelect.flpSelection" + columnNum;
                 CheckBoxTester chkDisplayTester = new CheckBoxTester(panelNameCol + ".chkDisplay");
                 Assert.NotNull(chkDisplayTester.Text);
 
@@ -190,32 +191,107 @@ namespace Tests
             Assert.AreEqual("ID", (string)selectProps[0]);
             Assert.AreEqual("Birth", (string)selectProps[1]);
 
-            SqlRangeWhereProperty[] stringWhereProps = sqlWhere.SqlRangeWhereProperties;
+            SqlProperty[] stringWhereProps = sqlWhere.SqlRangeWhereProperties;
             Assert.AreEqual(2, stringWhereProps.Length);
             Assert.AreEqual("ID", stringWhereProps[0].columnName);
             Assert.AreEqual("Birth", stringWhereProps[1].columnName);
 
-            // TODO: add this part
-            /*
-            // Check the correct controls were put on the form
-            LabelTester colLabel0Tester = new LabelTester("flpStringSelect.flpSelection0.colLabel");
-            Assert.AreEqual("FirstName", colLabel0Tester.Text);
-            LabelTester colLabel1Tester = new LabelTester("flpStringSelect.flpSelection1.colLabel");
-            Assert.AreEqual("LastName", colLabel1Tester.Text);
-
-            string[][] allNames = new string[][]{firstNames, lastNames};
+            // Check the controls are correct
             for (int columnNum = 0; columnNum < colNames.Length; columnNum++)
             {
-                string panelNameCol = "flpStringSelect.flpSelection"+columnNum;
-                CheckBoxTester chkDisplayTester = new CheckBoxTester(panelNameCol + ".chkDisplay");
+                TextBoxTester txtLowerTester = new TextBoxTester("txtLower" + columnNum);
+                Assert.NotNull(txtLowerTester.Text);
+                TextBoxTester txtUpperTester = new TextBoxTester("txtUpper" + columnNum);
+                Assert.NotNull(txtUpperTester.Text);
+
+                CheckBoxTester chkDisplayTester = new CheckBoxTester("chkDisplay" + columnNum);
                 Assert.NotNull(chkDisplayTester.Text);
-
-                ListBoxTester lstSelectionsTester = new ListBoxTester(panelNameCol + ".lstSelections");
-                Assert.AreEqual(allNames[columnNum], lstSelectionsTester.Properties.DataSource);
-
-                CheckBoxTester chkEnabledTester = new CheckBoxTester(panelNameCol + ".chkEnabled");
+                CheckBoxTester chkEnabledTester = new CheckBoxTester("chkEnabled" + columnNum);
                 Assert.NotNull(chkEnabledTester.Text);
-            }*/
+            }
+
+            // Change what should be displayed
+            CheckBoxTester chkDisplayTester0 = new CheckBoxTester("chkDisplay0");
+            chkDisplayTester0.Check();
+            CheckBoxTester chkDisplayTester1 = new CheckBoxTester("chkDisplay1");
+            chkDisplayTester1.UnCheck();
+            selectProps = (SqlSelectProperty[])sqlWhere.SqlSelectProperties;
+            // Check the props were affected
+            Assert.True(selectProps[0].IsEnabled);
+            Assert.False(selectProps[1].IsEnabled);
+
+            // Change the ranges
+            TextBoxTester txtLowerTester0 = new TextBoxTester("txtLower0");
+            TextBoxTester txtUpperTester0 = new TextBoxTester("txtUpper0");
+            txtLowerTester0.Enter("2");
+            txtUpperTester0.Enter("7");
+            // TextBoxTester doesn't work with a MaskedTextBox
+            ControlTester txtLowerTester1 = new ControlTester("txtLower1");
+            ControlTester txtUpperTester1 = new ControlTester("txtUpper1");
+            DateTime lower = new DateTime(1950, 1, 1);
+            DateTime upper = new DateTime(2014, 1, 1);
+            txtLowerTester1["Text"] = lower.ToString();
+            txtLowerTester1.EndCurrentEdit("Text");
+            txtUpperTester1["Text"] = upper.ToString();
+            txtUpperTester1.EndCurrentEdit("Text");
+
+            // Check that the properties were affected correctly
+            stringWhereProps = sqlWhere.SqlRangeWhereProperties;
+            SqlNumWhereProperty numWhereProp = ((SqlNumWhereProperty)stringWhereProps[0]);
+            SqlDateWhereProperty dateWhereProp = ((SqlDateWhereProperty)stringWhereProps[1]);
+
+            Assert.AreEqual("2", numWhereProp.LowerLimit);
+            Assert.AreEqual("7", numWhereProp.UpperLimit);
+            Assert.AreEqual("(ID >= 2 AND ID <= 7)", (string)numWhereProp);
+
+            Assert.AreEqual(lower.ToString(), dateWhereProp.LowerLimit);
+            Assert.AreEqual(upper.ToString(), dateWhereProp.UpperLimit);
+            Assert.AreEqual("(Birth >= '1950-01-01T00:00:00' AND Birth <= '2014-01-01T00:00:00')", (string)dateWhereProp);
         }
+
+        [Test]
+        public void sqlPropertiesToStringSelectTest()
+        {
+            ArrayList sqlProps = new ArrayList();
+            sqlProps.Add(new SqlSelectProperty() { IsEnabled = true, columnName = "FirstName" });
+            sqlProps.Add(new SqlSelectProperty() { IsEnabled = false, columnName = "LastName" });
+            sqlProps.Add(new SqlSelectProperty() { IsEnabled = true, columnName = "BirthDay" });
+
+            string result = CustSqlWhere.sqlPropertiesToString(sqlProps, ",");
+
+            Assert.AreEqual("FirstName,BirthDay", result);
+
+        }
+
+        [Test]
+        public void sqlPropertiesToStringWhereTest()
+        {
+            ArrayList sqlProps = new ArrayList();
+
+            sqlProps.Add(new SqlDateWhereProperty()
+            {
+                IsEnabled = true,
+                columnName = "date",
+                LowerLimit = (new DateTime(2000, 1, 1)).ToString(),
+                UpperLimit = (new DateTime(2020, 1, 1)).ToString()
+            });
+
+            sqlProps.Add(new SqlNumWhereProperty() { IsEnabled = true, columnName="num", LowerLimit = "2", UpperLimit = "5" });
+            sqlProps.Add(new SqlNumWhereProperty() { IsEnabled = false, columnName = "notEnabled"});
+
+            // No upper or lower initialize
+            sqlProps.Add(new SqlDateWhereProperty(){IsEnabled=true, columnName = "notSet"});
+            // Non numbers
+            sqlProps.Add(new SqlNumWhereProperty() {columnName = "notNum", IsEnabled = true, LowerLimit = "not a num", UpperLimit="4" });
+            // Non dates
+            sqlProps.Add(new SqlDateWhereProperty(){IsEnabled=true, columnName = "notDate", LowerLimit="Not a date", UpperLimit=(new DateTime(2000, 1, 1)).ToString()});
+            sqlProps.Add(new SqlDateWhereProperty() { IsEnabled = true, columnName = "smallDate", LowerLimit = (new DateTime(1, 1, 1)).ToString(), UpperLimit = (new DateTime(2000, 1, 1)).ToString() });
+
+            string result = CustSqlWhere.sqlPropertiesToString(sqlProps, ",");
+
+            Assert.AreEqual("(date >= '2000-01-01T00:00:00' AND date <= '2020-01-01T00:00:00'),(num >= 2 AND num <= 5),(notSet >= '1800-01-01T00:00:00' AND notSet <= '9999-12-31T23:59:59'),(notNum >= 0 AND notNum <= 4),(notDate >= '1800-01-01T00:00:00' AND notDate <= '2000-01-01T00:00:00'),(smallDate >= '1800-01-01T00:00:00' AND smallDate <= '2000-01-01T00:00:00')", result);
+        }
+
+
     }
 }
