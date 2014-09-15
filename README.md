@@ -3,8 +3,10 @@ ClientCardFB3
 
 An application to allow food banks to store and view their data
 
+View our planning page here: https://trello.com/clientcardfb3
 
 Getting started with the project
+Contact me if you would like to contibute
 
 Download these files:
 ClientCard install: http://1drv.ms/1p9tSYe FB3Installion-2014-04-27.zip
