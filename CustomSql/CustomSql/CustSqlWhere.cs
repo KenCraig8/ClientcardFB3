@@ -111,7 +111,7 @@ namespace CustomSQL
         /// <param name="selectedColumns"></param>
         /// <param name="databaseName"></param>
         /// <param name="selectedTableName"></param>
-        public CustSqlWhere(DataHelper dataHelper, string connectionString, string[] selectedColumns, string databaseName, string selectedTableName, ArrayList sqlWhereProperties, ArrayList sqlSelectProperties)
+        public CustSqlWhere(DataHelper dataHelper, string connectionString, string[] selectedColumns, string databaseName, string selectedTableName, ArrayList sqlSelectProperties, ArrayList sqlWhereProperties)
         {
             this.connectionString = connectionString;
             this.selectedColumns = selectedColumns;
@@ -128,6 +128,14 @@ namespace CustomSQL
             this.sqlSelectProperties = sqlSelectProperties;
 
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Populates lstOrder from the SqlSelectProperties
+        /// </summary>
+        public void lstOrderLoad(){
+            lstOrder.Items.AddRange(SqlSelectProperties);
+            lstOrder.DisplayMember = "columnName";
         }
 
         /// <summary>
@@ -150,8 +158,7 @@ namespace CustomSQL
             string stringTypeSpecs = "(DATA_TYPE NOT IN " + rangeTypesSqlPart + ")";
             setupStringSelect(getColsOfType(stringTypeSpecs));
 
-            lstOrder.Items.AddRange(SqlSelectProperties);
-            lstOrder.DisplayMember = "columnName";
+            lstOrderLoad();
         }
 
         /// <summary>
@@ -297,7 +304,7 @@ namespace CustomSQL
         /// Creates the sql query with the information the user selected
         /// </summary>
         /// <returns></returns>
-        private string makeSqlQuery()
+        public string makeSqlQuery()
         {
             //create query with appropriate columns selected
             string selectedColumnsSql = sqlPropertiesToString(lstOrder.Items, ", ");
@@ -348,33 +355,9 @@ namespace CustomSQL
             gvPreview.DataSource = new DataTable();
             gvPreview.DataSource = loadedData;
         }
-        /*      
-      //write the data in the table to an excel file
-      private void btnExcel_Click(object sender, EventArgs e)
-      {
-        * sfdSaveExcel.Filter = "excel files|*.csv";
-        * 
-          const string separator = ",";
-
-          var lines = new List<string>();
-
-          //for some reason excel doesn't like .csv files to have the capital ID in them
-          string[] columnNames = loadedData.Columns.Cast<DataColumn>().Select(column => column.ColumnName.Replace("ID", "id")).ToArray();
-
-          var header = string.Join(separator, columnNames);
-          lines.Add(header + separator);
-
-          var valueLines = loadedData.AsEnumerable().Select(row => string.Join(separator, row.ItemArray));
-          lines.AddRange(valueLines);
-
-          sfdSaveExcel.ShowDialog();
-
-          File.WriteAllLines(sfdSaveExcel.FileName, lines);
-      }*/
 
         /// <summary>
         /// Saves the sql query in a text file.
-
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -423,10 +406,7 @@ namespace CustomSQL
         }
     }
 
-
-
-    //
-
+    #region SqlProperties
     /// <summary>
     /// Inheritance is used so much here so that the same code can be used for different sql properties if they are similar enough
     /// The setupSqlRange function can use do the same thing for a number range or a date range this way
@@ -492,13 +472,6 @@ namespace CustomSQL
             return columnName;
         }
     }
-
-    // For classes that involve ranges with sql queries
-    /*  public abstract class SqlProperty : SqlProperty
-      {
-          //public string LowerLimit;
-          //public string UpperLimit;
-      }*/
 
     /// <summary>
     /// Stores information about a range of dates and can be converted into an SQL query
@@ -674,6 +647,5 @@ namespace CustomSQL
             return "(" + columnName + " IN " + DataHelper.enumToSqlIn(Items) + ")";
         }
     }
-
-
+    #endregion
 }

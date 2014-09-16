@@ -156,7 +156,7 @@ namespace Tests
         [STAThread]
         public void setupRangeSelectTest()
         {
-            // Setup mock data to return first names or last names
+            // Setup mock data to return ids or birthdays
             var dataMock = new Mock<DataHelper>();
             dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.IsAny<string>())).Returns(new DataTable());
             DataTable idTable = new DataTable();
@@ -248,23 +248,25 @@ namespace Tests
             Assert.AreEqual(upper.ToString(), dateWhereProp.UpperLimit);
             Assert.AreEqual("(Birth >= '1950-01-01T00:00:00' AND Birth <= '2014-01-01T00:00:00')", (string)dateWhereProp);
         }
-
-        [Test]
-        public void sqlPropertiesToStringSelectTest()
-        {
+        
+        /// <summary>
+        /// Creates the properties for testing
+        /// </summary>
+        /// <returns></returns>
+        public ArrayList setupSqlSelectProperties(){
             ArrayList sqlProps = new ArrayList();
             sqlProps.Add(new SqlSelectProperty() { IsEnabled = true, columnName = "FirstName" });
             sqlProps.Add(new SqlSelectProperty() { IsEnabled = false, columnName = "LastName" });
             sqlProps.Add(new SqlSelectProperty() { IsEnabled = true, columnName = "BirthDay" });
 
-            string result = CustSqlWhere.sqlPropertiesToString(sqlProps, ",");
-
-            Assert.AreEqual("FirstName,BirthDay", result);
-
+            return sqlProps;
         }
 
-        [Test]
-        public void sqlPropertiesToStringWhereTest()
+        /// <summary>
+        /// Creates the properties for testing
+        /// </summary>
+        /// <returns></returns>
+        public ArrayList setupSqWhereProperties()
         {
             ArrayList sqlProps = new ArrayList();
 
@@ -276,20 +278,89 @@ namespace Tests
                 UpperLimit = (new DateTime(2020, 1, 1)).ToString()
             });
 
-            sqlProps.Add(new SqlNumWhereProperty() { IsEnabled = true, columnName="num", LowerLimit = "2", UpperLimit = "5" });
-            sqlProps.Add(new SqlNumWhereProperty() { IsEnabled = false, columnName = "notEnabled"});
+            sqlProps.Add(new SqlNumWhereProperty() { IsEnabled = true, columnName = "num", LowerLimit = "2", UpperLimit = "5" });
+            sqlProps.Add(new SqlNumWhereProperty() { IsEnabled = false, columnName = "notEnabled" });
 
             // No upper or lower initialize
-            sqlProps.Add(new SqlDateWhereProperty(){IsEnabled=true, columnName = "notSet"});
+            sqlProps.Add(new SqlDateWhereProperty() { IsEnabled = true, columnName = "notSet" });
             // Non numbers
-            sqlProps.Add(new SqlNumWhereProperty() {columnName = "notNum", IsEnabled = true, LowerLimit = "not a num", UpperLimit="4" });
+            sqlProps.Add(new SqlNumWhereProperty() { columnName = "notNum", IsEnabled = true, LowerLimit = "not a num", UpperLimit = "4" });
             // Non dates
-            sqlProps.Add(new SqlDateWhereProperty(){IsEnabled=true, columnName = "notDate", LowerLimit="Not a date", UpperLimit=(new DateTime(2000, 1, 1)).ToString()});
+            sqlProps.Add(new SqlDateWhereProperty() { IsEnabled = true, columnName = "notDate", LowerLimit = "Not a date", UpperLimit = (new DateTime(2000, 1, 1)).ToString() });
             sqlProps.Add(new SqlDateWhereProperty() { IsEnabled = true, columnName = "smallDate", LowerLimit = (new DateTime(1, 1, 1)).ToString(), UpperLimit = (new DateTime(2000, 1, 1)).ToString() });
+
+            return sqlProps;
+        }
+
+        [Test]
+        public void sqlPropertiesToStringSelectTest()
+        {
+            ArrayList sqlProps = setupSqlSelectProperties();
 
             string result = CustSqlWhere.sqlPropertiesToString(sqlProps, ",");
 
+            Assert.AreEqual("FirstName,BirthDay", result);
+        }
+
+        [Test]
+        public void sqlPropertiesToStringWhereTest()
+        {
+            ArrayList sqlProps = setupSqWhereProperties();
+            
+            string result = CustSqlWhere.sqlPropertiesToString(sqlProps, ",");
+
             Assert.AreEqual("(date >= '2000-01-01T00:00:00' AND date <= '2020-01-01T00:00:00'),(num >= 2 AND num <= 5),(notSet >= '1800-01-01T00:00:00' AND notSet <= '9999-12-31T23:59:59'),(notNum >= 0 AND notNum <= 4),(notDate >= '1800-01-01T00:00:00' AND notDate <= '2000-01-01T00:00:00'),(smallDate >= '1800-01-01T00:00:00' AND smallDate <= '2000-01-01T00:00:00')", result);
+        }
+
+        [Test]
+        public void makeSqlQueryTest()
+        {
+            var dataMock = new Mock<DataHelper>();
+            ArrayList sqlSelectProps = setupSqlSelectProperties();
+            ArrayList sqlWhereProps = setupSqWhereProperties();
+            CustSqlWhere whereForm = new CustSqlWhere(dataMock.Object, "", new string[] { "FirstName", "LastName", "BirthDay" }, "ClientCardFB3", "HouseholdMembers", sqlSelectProps, sqlWhereProps);
+            whereForm.lstOrderLoad();
+
+            string query = whereForm.makeSqlQuery();
+            string expected = "SELECT FirstName, BirthDay FROM [ClientCardFB3].[dbo].[HouseholdMembers] WHERE (date >= '2000-01-01T00:00:00' AND date <= '2020-01-01T00:00:00') AND (num >= 2 AND num <= 5) AND (notSet >= '1800-01-01T00:00:00' AND notSet <= '9999-12-31T23:59:59') AND (notNum >= 0 AND notNum <= 4) AND (notDate >= '1800-01-01T00:00:00' AND notDate <= '2000-01-01T00:00:00') AND (smallDate >= '1800-01-01T00:00:00' AND smallDate <= '2000-01-01T00:00:00')";
+            Assert.AreEqual(expected, query);
+        }
+
+        /// <summary>
+        /// Test that the button populates the preview data
+        /// </summary>
+        [Test]
+        [STAThread]
+        public void btnLoadData_ClickTest()
+        {
+            // public CustSqlWhere(DataHelper dataHelper, string connectionString, string[] selectedColumns, string databaseName, string selectedTableName)
+            // Setup mock data to return first names or last names
+            var dataMock = new Mock<DataHelper>();
+            dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.IsAny<string>())).Returns(new DataTable());
+            DataTable table = new DataTable();
+            table.Columns.Add("ID");
+            int[] ids = new int[] { 0, 5 };
+            foreach (int id in ids)
+            {
+                table.Rows.Add(new int[] { id });
+            }
+            table.Columns.Add("Birth");
+            DateTime[] birthDays = new DateTime[] { new DateTime(1900, 1, 1), new DateTime(2000, 1, 1) };
+            foreach (DateTime birthDay in birthDays)
+            {
+                table.Rows.Add(new DateTime[] { birthDay });
+            }
+            dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.IsAny<string>())).Returns(table);
+
+            CustSqlWhere whereForm = new CustSqlWhere(dataMock.Object, "", new string[] { }, "ClientCardFB3", "HouseholdMembers");
+            whereForm.Show();
+
+            ButtonTester btnLoadDataTester = new ButtonTester("btnLoadData");
+            btnLoadDataTester.Click();
+
+            ControlTester gvPreviewTester = new ControlTester("gvPreview");
+            DataTable loaded = (DataTable)gvPreviewTester["DataSource"];
+            Assert.AreEqual(table, loaded);
         }
 
 
