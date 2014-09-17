@@ -374,7 +374,7 @@ namespace CustomSQL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lstOrder_MouseDown(object sender, MouseEventArgs e)
+        public void lstOrder_MouseDown(object sender, MouseEventArgs e)
         {
             if (this.lstOrder.SelectedItem == null) return;
             this.lstOrder.DoDragDrop(this.lstOrder.SelectedItem, DragDropEffects.Move);
@@ -385,7 +385,7 @@ namespace CustomSQL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lstOrder_DragOver(object sender, DragEventArgs e)
+        public void lstOrder_DragOver(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
@@ -395,7 +395,7 @@ namespace CustomSQL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void lstOrder_DragDrop(object sender, DragEventArgs e)
+        public void lstOrder_DragDrop(object sender, DragEventArgs e)
         {
             Point point = lstOrder.PointToClient(new Point(e.X, e.Y));
             int index = this.lstOrder.IndexFromPoint(point);

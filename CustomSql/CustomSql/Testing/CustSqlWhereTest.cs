@@ -5,6 +5,7 @@ using Moq;
 using CustomSQL;
 using System.Data;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace Tests
 {
@@ -363,6 +364,50 @@ namespace Tests
             Assert.AreEqual(table, loaded);
         }
 
+        #if DRAG_DROP_WORKING
+        /// <summary>
+        /// Uses the mouse to drag and drop something in lstOrder and makes sure the order changes
+        /// </summary>
+        [Test]
+        [STAThread]
+        public void lstOrder_DragDropTest()
+        {
+            // I'm having trouble getting this to work right. The fire event and call functions methods both halt in lstOrder_MouseDown.
+            // The mouse controller throws a exception for access denied
+            var dataMock = new Mock<DataHelper>();
+            dataMock.Setup(_ => _.sqlSelectQuery(It.IsAny<string>(), It.IsAny<string>())).Returns(new DataTable());
+            CustSqlWhere whereForm = new CustSqlWhere(dataMock.Object, "", new string[] { "FirstName", "LastName", "BirthDay" }, "ClientCardFB3", "HouseholdMembers", setupSqlSelectProperties(), new ArrayList());
+            whereForm.Show();
 
+            ListBoxTester lstOrderTester = new ListBoxTester("lstOrder");
+            lstOrderTester.Select(0);
+            // Fire event attempt
+            /*lstOrderTester.FireEvent("MouseDown", new MouseEventArgs(new MouseButtons(),0,0,0,0));
+            DragEventArgs dragArgs = new DragEventArgs(null, 0, 20, 20, new DragDropEffects(), new DragDropEffects());
+            lstOrderTester.FireEvent("DragDrop", dragArgs);*/
+
+            // Call functions attempt
+            /*whereForm.lstOrder_MouseDown(null, null);
+            DragEventArgs dragArgs = new DragEventArgs(null,0,20,20,new DragDropEffects(),new DragDropEffects());
+            whereForm.lstOrder_DragOver(null, dragArgs);
+            whereForm.lstOrder_DragDrop(null, dragArgs);*/
+
+            // Mouse controller attempt
+            /*lstOrderTester.Click();
+            using (MouseController mouse = lstOrderTester.MouseController())
+            {
+                //System.Drawing.Point topLeft = lstOrderTester.Properties.Location;
+                mouse.Drag(10, 10, 50, 50);
+                //mouse.Drag(topLeft.X + 10, topLeft.Y + 10, topLeft.X + 50, topLeft.Y + 50);
+            }*/
+
+            //SqlProperty[] items = new SqlProperty[lstOrderTester.Properties.Items.Count];
+            //lstOrderTester.Properties.Items.CopyTo(items, 0);
+            string[] expected = new string[]{ "LastName", "FirstName", "BirthDay" };
+            for( int i = 0; i < lstOrderTester.Properties.Items.Count; ++i){ // SqlProperty item in lstOrderTester.Properties.Items){
+                Assert.AreEqual(expected[i], lstOrderTester.Properties.Items[i]);
+            }
+        }
+        # endif
     }
 }
