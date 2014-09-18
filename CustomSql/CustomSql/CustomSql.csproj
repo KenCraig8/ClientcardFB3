@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CCFBGlobal.cs" />
     <Compile Include="CustSqlWhere.cs">
       <SubType>Form</SubType>
     </Compile>

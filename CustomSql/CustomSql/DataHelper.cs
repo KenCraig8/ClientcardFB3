@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using ClientcardFB3;
 
 namespace CustomSQL
 {
@@ -13,8 +14,6 @@ namespace CustomSQL
     /// </summary>
     public class DataHelper
     {
-        public static string homeDrive = @"C:\";
-
         /// <summary>
         /// Runs the query.
         /// </summary>
@@ -42,7 +41,7 @@ namespace CustomSQL
             catch (Exception ex)
             {
                 string param = "Con str: " + connectionString + " Sql Query: " + sqlQuery;
-                appendErrorToErrorReport(param, ex.ToString());
+                CCFBGlobal.appendErrorToErrorReport(param, ex.ToString());
                 return new DataTable();
             }
         }
@@ -82,52 +81,5 @@ namespace CustomSQL
 
             return "(" + valuesStr + ")";
         }
-
-        // this is coppied from CCFBGlobal
-        // TODO: find a way to not have this coppied
-        #region CCFBGlobal
-        /// <summary>
-        /// Appends the error log with the error
-        /// </summary>
-        /// <param name="funtionParams">Any parameters the calling funtioin used</param>
-        /// <param name="errorInfo">The info about the error</param>
-        public static void appendErrorToErrorReport(string funtionParams, string errorInfo)
-        {
-            appendGeneralErrorInfo(funtionParams, errorInfo);
-            string fileName = "ErrorLog.txt";
-            string folderPath = homeDrive + @"ClientcardFB3\Log";
-            string filePath = folderPath + "\\" + fileName;
-            string whiteSpace = " ";
-            using (System.IO.StreamWriter sw = System.IO.File.AppendText(filePath))
-            {
-                sw.Write(whiteSpace.PadLeft(3, ' '));
-            }
-        }
-
-        /// <summary>
-        /// Appends the error log with the general info about the error
-        /// </summary>
-        /// <param name="funtionParams">Any parameters the calling funtioin used</param>
-        /// <param name="errorInfo">The info about the error</param>
-        private static void appendGeneralErrorInfo(string funtionParams, string errorInfo)
-        {
-            string fileName = "ErrorLog.txt";
-            string destFile = System.IO.Path.Combine("~", fileName);
-            string[] todaysDateFormats = DateTime.Now.GetDateTimeFormats();
-            string now = todaysDateFormats[55];
-            string whiteSpace = " ";
-
-            using (System.IO.StreamWriter sw = System.IO.File.AppendText(destFile))
-            {
-                sw.WriteLine();
-                sw.WriteLine();
-                sw.Write(now);
-                sw.Write(whiteSpace.PadLeft(2, ' '));
-                sw.WriteLine(errorInfo);
-                sw.Write(whiteSpace.PadLeft(3, ' '));
-                sw.WriteLine(funtionParams);
-            }
-        }
-        #endregion
     }
 }
