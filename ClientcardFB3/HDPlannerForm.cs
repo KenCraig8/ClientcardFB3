@@ -18,13 +18,15 @@ namespace ClientcardFB3
 
         TrxLog clsTrxLog;
         TrxLogItem clsTrxItem;
-        HDRoutes clsHDRoutes = new HDRoutes(CCFBGlobal.connectionString);
+        HDRoutes clsHDRoutes;
         HDRouteSheet clsHDRouteSheet = new HDRouteSheet(CCFBGlobal.connectionString);
+        EditVolunteerForm frmVolunteers;
         HDRSHist clsHDRSHist = new HDRSHist(CCFBGlobal.connectionString);
         parmTypeCodes parmHDRouteSheetStatus = new parmTypeCodes(CCFBGlobal.parmTbl_HDRouteSheetStatus, CCFBGlobal.connectionString, "");
         HDItems clsHDItems = new HDItems(CCFBGlobal.connectionString);
 
         MainForm frmMain;
+        FindClientForm frmFindClient;
 
         DataTable rtplnDTbl = new DataTable();
         SqlDataAdapter rtplnDadAdpt = new SqlDataAdapter();
@@ -57,10 +59,7 @@ namespace ClientcardFB3
         const int maxRouteStatusRows = 4;
         int[] cntrsRoutesStatus;
 
-        FindClientForm frmFindClient;
-
-
-        public HDPlannerForm(MainForm frmMainIn)
+        public HDPlannerForm(MainForm frmMainIn, HDRoutes clsHDRoutes, EditVolunteerForm frmVolunteers)
         {
             InitializeComponent();
             frmMain = frmMainIn;
@@ -74,6 +73,8 @@ namespace ClientcardFB3
             rtplnRefreshlbxRoutes(-1);
             rtplnDisplaySelectedRoute();
             frmFindClient = new FindClientForm();
+            this.clsHDRoutes = clsHDRoutes;
+            this.frmVolunteers = frmVolunteers;
         }
 
         private string convertToShortDate(string date)
@@ -919,7 +920,6 @@ namespace ClientcardFB3
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
             frmVolunteers.ShowDialog();
             int newVolId = frmVolunteers.SelectedId;
             bool isDriver = ((Button)sender).Name.Equals("btnSelectDriver");

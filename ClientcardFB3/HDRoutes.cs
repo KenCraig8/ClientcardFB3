@@ -6,6 +6,9 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
+    /// <summary>
+    /// Stores the info for a voulenteer needed for this
+    /// </summary>
     public class VolContactInfo
     {
         public int id;
@@ -43,12 +46,6 @@ namespace ClientcardFB3
         Volunteers clsVol;
 
         /// <summary>
-        /// Initializes values
-        /// </summary>
-        /// <param name="connStringIn"></param>
-        public HDRoutes(string connStringIn) : this(connStringIn, new Volunteers(connStringIn)) { }
-
-        /// <summary>
         /// Injects the dependencies
         /// Used for testing
         /// </summary>
@@ -75,22 +72,22 @@ namespace ClientcardFB3
 
         public string DriverName
         {
-            get { return driverName; }
+            get { return driverInfo.name; }
         }
 
         public string DriverPhone
         {
-            get { return driverPhone.Replace("-",""); }
+            get { return driverInfo.phone.Replace("-",""); }
         }
 
         public string FBContactName
         {
-            get { return fbContactName; }
+            get { return fbContactInfo.name; }
         }
 
         public string FBContactPhone
         {
-            get { return fbContactPhone.Replace("-", ""); }
+            get { return fbContactInfo.phone.Replace("-", ""); }
         }
 
         public int ID
