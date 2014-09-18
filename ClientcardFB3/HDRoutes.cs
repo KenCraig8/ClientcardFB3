@@ -5,6 +5,10 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
+    /// <summary>
+    /// Performes opperations on the routes
+    /// Used by the HDPlannerForm
+    /// </summary>
     public class HDRoutes
     {
         string connString;
@@ -18,14 +22,27 @@ namespace ClientcardFB3
         string driverPhone = "";
         string fbContactName = "";
         string fbContactPhone = "";
+        Volunteers clsVol;
 
-        public HDRoutes(string connStringIn)
+        /// <summary>
+        /// Initializes values
+        /// </summary>
+        /// <param name="connStringIn"></param>
+        public HDRoutes(string connStringIn) : this(connStringIn, new Volunteers(connStringIn)) { }
+
+        /// <summary>
+        /// Injects the dependencies
+        /// Used for testing
+        /// </summary>
+        /// <param name="connStringIn"></param>
+        public HDRoutes(string connStringIn, Volunteers clsVol)
         {
             conn = new System.Data.SqlClient.SqlConnection();
             connString = connStringIn;
             conn.ConnectionString = connString;
             dtbl = new DataTable();
             dadAdpt = new SqlDataAdapter();
+            this.clsVol = new Volunteers(connString);
         }
 
         #region Get/Set Accessors
@@ -234,7 +251,6 @@ namespace ClientcardFB3
             driverPhone = "";
             if (volId > 0)
             {
-                Volunteers clsVol = new Volunteers(connString);
                 if (clsVol.open(volId) == true)
                 {
                     driverName = clsVol.Name;
@@ -249,7 +265,6 @@ namespace ClientcardFB3
             fbContactPhone = "";
             if (volId > 0)
             {
-                Volunteers clsVol = new Volunteers(connString);
                 if (clsVol.open(volId) == true)
                 {
                     fbContactName = clsVol.Name;
