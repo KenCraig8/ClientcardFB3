@@ -917,34 +917,19 @@ namespace ClientcardFB3
             }
         }
 
-        private void btnSelectDriver_Click(object sender, EventArgs e)
+        private void btnSelect_Click(object sender, EventArgs e)
         {
             EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
             frmVolunteers.ShowDialog();
             int newVolId = frmVolunteers.SelectedId;
+            bool isDriver = ((Button)sender).Name.Equals("btnSelectDriver");
             if (newVolId > 0)
             {
                 loading = true;
                 clsHDRoutes.DefaultDriver = newVolId;
-                clsHDRoutes.loadDriverInfo(newVolId);
+                clsHDRoutes.loadCertainVolInfo(newVolId, isDriver);
                 rtplntbDriver.Text = clsHDRoutes.DriverName;
                 rtplnmtDriverPhone.Text = clsHDRoutes.DriverPhone;
-                loading = false;
-                rtplnbtnSaveRoute.Enabled = true;
-            }
-        }
-        private void btnSelectContact_Click(object sender, EventArgs e)
-        {
-            EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
-            frmVolunteers.ShowDialog();
-            int newVolId = frmVolunteers.SelectedId;
-            if (newVolId > 0)
-            {
-                loading = true;
-                clsHDRoutes.FBContact = newVolId;
-                clsHDRoutes.loadFBContactInfo(newVolId);
-                rtplntbFBContact.Text = clsHDRoutes.FBContactName;
-                rtplnmtFBContactPhone.Text = clsHDRoutes.FBContactPhone;
                 loading = false;
                 rtplnbtnSaveRoute.Enabled = true;
             }
