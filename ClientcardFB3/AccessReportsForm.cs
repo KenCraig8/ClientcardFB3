@@ -658,7 +658,8 @@ namespace ClientcardFB3
                 {
                     if (tmp != "")
                         tmp += ",";
-                    tmp += "'" + CCFBGlobal.SQLApostrophe(item.Text) + "'";
+                    tmp += "'" + item.Text + "'";
+                    //tmp += "'" + CCFBGlobal.SQLApostrophe(item.Text) + "'";
                 }
             }
             return tmp;

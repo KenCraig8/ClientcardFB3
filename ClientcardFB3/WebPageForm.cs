@@ -17,5 +17,24 @@ namespace ClientcardFB3
             this.Text = title;
             webBrowser1.Navigate(url);
         }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (webBrowser1.IsBusy == false)
+            {
+                webBrowser1.GoBack();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoForward();
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            btnPrevious.Enabled = webBrowser1.CanGoBack;
+            btnNext.Enabled = webBrowser1.CanGoForward;
+        }
     }
 }

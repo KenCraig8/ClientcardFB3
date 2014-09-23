@@ -936,7 +936,7 @@ namespace ClientcardFB3
                 cmdUpdate.Parameters.AddWithValue("@HiDate", CCFBGlobal.CurrentFiscalEndDate().ToShortDateString());
                 cmdUpdate.Parameters.AddWithValue("@ServiceDate", dateOfService);
                 cmdUpdate.ExecuteNonQuery();
-                if (DateTime.Compare(FirstService, DateTime.Parse(dateOfService)) > 0)
+                if (DateTime.Compare(FirstService, DateTime.Parse(dateOfService)) > 0 || DateTime.Compare(FirstService, CCFBGlobal.FBNullDateValue) <= 0)
                 {
                     cmdUpdate = new SqlCommand("UpdateHouseholdFirstServiceDate", conn);
                     cmdUpdate.CommandType = CommandType.StoredProcedure;

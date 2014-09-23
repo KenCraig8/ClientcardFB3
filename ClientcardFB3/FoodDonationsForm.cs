@@ -246,6 +246,10 @@ namespace ClientcardFB3
                 //If a Donor has been selected
                 if (tbDonorID.Text.Trim() != "" && tbName.Text.Trim() != "" && tbLbs.Text.Trim() != "")
                 {
+                    if (clsFoodDonations.TrxID != trxID)
+                    {
+                        clsFoodDonations.open(trxID);
+                    }
                     //Go through each textbox and set data int the dataset
                     foreach (TextBox tb in tbList)
                     {
@@ -370,30 +374,33 @@ namespace ClientcardFB3
             //If date was found in collection
             if (dateIndex == -1)
             {
-                //If given date is greater than the Max Date in colection
-                if(dtDateDL.Value > donationDates[0])
+                if (donationDates.Count > 0)
                 {
-                    //Dissable the next button
-                    btnNextDL.Enabled = false;
-                }
-                //Else, if date is less than the min date in collection
-                else if (dtDateDL.Value < donationDates[donationDates.Count - 1])
-                {
-                    //Set dateIndex to the end of collection
-                    dateIndex = donationDates.Count;
-                    //Dissable the Previous Button
-                    btnPrevDL.Enabled = false;
-                }
-                else
-                {
-                    //Traverse the collection and find out where the new
-                    //Date should be inserted into collection 
-                    //if the user does a new Donation
-                    for (int i = 0; i < donationDates.Count; i++)
+                    //If given date is greater than the Max Date in colection
+                    if (dtDateDL.Value > donationDates[0])
                     {
-                        if (donationDates[i] > dtDateDL.Value)
+                        //Dissable the next button
+                        btnNextDL.Enabled = false;
+                    }
+                    //Else, if date is less than the min date in collection
+                    else if (dtDateDL.Value < donationDates[donationDates.Count - 1])
+                    {
+                        //Set dateIndex to the end of collection
+                        dateIndex = donationDates.Count;
+                        //Dissable the Previous Button
+                        btnPrevDL.Enabled = false;
+                    }
+                    else
+                    {
+                        //Traverse the collection and find out where the new
+                        //Date should be inserted into collection 
+                        //if the user does a new Donation
+                        for (int i = 0; i < donationDates.Count; i++)
                         {
-                            dateIndex = i - 1;
+                            if (donationDates[i] > dtDateDL.Value)
+                            {
+                                dateIndex = i - 1;
+                            }
                         }
                     }
                 }
@@ -852,7 +859,7 @@ namespace ClientcardFB3
                 donorID = idDonor;
                 tbName.Text = clsDonors.Name;
                 tbDonorID.Text = donorID.ToString();
-                cboFoodCat.SelectedValue = "9";
+                //cboFoodCat.SelectedValue = "9";
                 cboDonationType.SelectedValue = clsDonors.DefaultDonationType.ToString();
                 //clsFoodDonations.openWhere(" Where DonorID=" + donorID.ToString());
                 lblDnrHist.Text = "[" + clsDonors.ID.ToString() + "] " + clsDonors.Name;

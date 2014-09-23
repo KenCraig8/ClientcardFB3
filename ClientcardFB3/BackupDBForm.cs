@@ -84,7 +84,7 @@ namespace ClientcardFB3
                     CCFBGlobal.saveRegServerBackupPath(fileSource);
                 }
                 
-                conn = new SqlConnection(CCFBGlobal.connectionString); 
+                conn = new SqlConnection(CCFBGlobal.connectionString);
                 if (conn.State != ConnectionState.Open)
                 { 
                     conn.Open(); 

@@ -241,7 +241,7 @@ namespace ClientcardFB3
                         }
                         else
                         {
-                        newRow["PhoneType"] = cboPhoneType.SelectedValue;
+                            newRow["PhoneType"] = cboPhoneType.SelectedValue;
                         }
                         newRow["Phone"] = tbPhone.Text;
                         newRow["EthnicSpeaking"] = cboSpecialLang.SelectedValue;

@@ -657,7 +657,7 @@ namespace ClientcardFB3
             {
                 if ((fSize + fsmBase) < 21)
                 {
-                return Convert.ToInt32(drow[fSize + fsmBase]) * LbsPerItem;
+                    return Convert.ToInt32(drow[fSize + fsmBase]) * LbsPerItem;
                 }
                 else
                 {

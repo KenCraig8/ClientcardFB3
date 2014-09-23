@@ -127,6 +127,8 @@ namespace ClientcardFB3
             //Sets visibility level on the menu items 
             //depending on CurrentUsers Permissions Level
             setPermissionsForMenu();
+            mnuClient_SchSupply.Visible = CCFBPrefs.EnableSchSupply;
+
             SetEnvironmentFromPrefs();
             if (CCFBPrefs.EnablePointsTracking == true)
             {
@@ -3486,9 +3488,9 @@ namespace ClientcardFB3
             frmMarkInactive.ShowDialog(this);
             if (frmMarkInactive.NeedToRefresh == true)
             {
-            frmFindClient.loadList();
-            frmFindClient.SetIdAndClose();
-        }
+                frmFindClient.loadList();
+                frmFindClient.SetIdAndClose();
+            }
             ////////if (MessageBox.Show("WARNING: You Are About To Set All Households Who Have Not Had A Transaction For The Last Year As Inactive. Do You Want To Continue?",
             ////////    "WARNING: Inactive Flags About To Change", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
             ////////    System.Windows.Forms.DialogResult.Yes)
@@ -3578,9 +3580,9 @@ namespace ClientcardFB3
         private void mnuHD_Planner_Click(object sender, EventArgs e)
         {
             HDPlannerForm frmHDPlanner = new HDPlannerForm(this);
-            // Use Show instead of ShowDialog here. This way we can edit the main form while the dialog is open
-            frmHDPlanner.Show();
-            // Don't populate the combo box here. It is already updated automaticly as the user makes changes in the planner
+            frmHDPlanner.ShowDialog();
+            CCFBGlobal.dtPopulateCombo(cboHDRoute, "SELECT * FROM HDRoutes ORDER BY ID", "RouteTitle", "ID", "No Routes Available", conn);
+
         }
 
         public void refreshHDRoute()
@@ -3676,8 +3678,19 @@ namespace ClientcardFB3
 
         private void mnuWSDAFAP_Click(object sender, EventArgs e)
         {
-            WebPageForm frmTemp = new WebPageForm("WA State Food Assistance Programs",
-                "http://agr.wa.gov/FoodProg/");
+            string sTitle = "Washington State Food Assistance Programs";
+            string sURL = "http://agr.wa.gov/FoodProg/";
+            switch (CCFBPrefs.DefaultState)
+            {
+                case "OR":
+                    sTitle = "Oregon State Food Assistance Programs";
+                    sURL = "http://www.oregon.gov/ohcs/pages/css_emergency_food_assistance_usda_commodities_oregon.aspx";
+                    break;
+                default:
+                    break;
+            }
+            WebPageForm frmTemp = new WebPageForm(sTitle,
+                sURL);
             frmTemp.ShowDialog();
         }
 

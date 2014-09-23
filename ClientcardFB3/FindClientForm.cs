@@ -36,21 +36,13 @@ namespace ClientcardFB3
         string sWhereClause = "";
         string filterDateRange = "";
         string filterDateFldName = "";
-        public const int NULL_MEM_ID = -1;
-        int hhMemID = NULL_MEM_ID;
-        int newHhID = NULL_MEM_ID;
+        int hhMemID = 0;
         int rowCount = 0;
 
         public int HHMemID
         {
             get { return hhMemID; }
         }
-
-        public int HHid
-        {
-            get { return newHhID; }
-        }
-
 
         public int RowCount
         {
@@ -67,9 +59,14 @@ namespace ClientcardFB3
             set { transferHHMemMode = value; }
         }
 
-        public FindClientForm(MainForm FrmMainIn) :this()
+        public FindClientForm(MainForm FrmMainIn)
         {
-            frmMainIn = FrmMainIn;            
+            InitializeComponent();
+            frmMainIn = FrmMainIn;
+            clsParm_ClientType = new parm_ClientType(clsClient.connectionString);
+            clsParm_ClientType.openAll();
+            includeInactiveClause = donotincludeInactivePhrase;
+            cboOrderBy.SelectedIndex = 0;
         }
 
         public FindClientForm()
@@ -559,32 +556,32 @@ namespace ClientcardFB3
             if (dgvClientList.CurrentRow != null)
             {
                 hhMemID = Convert.ToInt32(dgvClientList.CurrentRow.Cells["clmID"].Value.ToString());
-                newHhID = Convert.ToInt32(dgvClientList.CurrentRow.Cells["clmHHID"].Value.ToString());
+                int newHHId = Convert.ToInt32(dgvClientList.CurrentRow.Cells["clmHHID"].Value.ToString());
                 if (frmMainIn != null)
                 {
                     if (transferHHMemMode == false)
                     {
-                        frmMainIn.setHousehold(newHhID, hhMemID);
+                        frmMainIn.setHousehold(newHHId, hhMemID);
                         indexFindClient = dgvClientList.CurrentRow.Index;
-                        currentHHId = newHhID;
+                        currentHHId = newHHId;
                         this.Visible = false;
                     }
                     else
                     {
                         if (MessageBox.Show("Are You Sure You Want To Transfer The Household Member To Household "
-                            + newHhID.ToString() + " With Member Name " + dgvClientList.CurrentRow.Cells["colName"].Value.ToString()
+                            + newHHId.ToString() + " With Member Name " + dgvClientList.CurrentRow.Cells["colName"].Value.ToString()
                             + "?", "Transfer Member?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                              == System.Windows.Forms.DialogResult.Yes)
                         {
                             frmMainIn.transferMember();
                             indexFindClient = dgvClientList.CurrentRow.Index;
-                            currentHHId = newHhID;
+                            currentHHId = newHHId;
                             this.Visible = false;
                         }
                     }
                 }
                 indexFindClient = dgvClientList.CurrentRow.Index;
-                currentHHId = newHhID;
+                currentHHId = newHHId;
                 this.Visible = false;
             }
         }

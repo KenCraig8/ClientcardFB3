@@ -37,6 +37,8 @@ namespace ClientcardFB3
             //
             chkEnableHomeDeliv.Checked = CCFBPrefs.EnableHomeDeliv;
             chkEnableClientReceipt.Checked = CCFBPrefs.EnableClientReceipt;
+            chkFTScaleLbsIncludeTEFAP.Checked = CCFBPrefs.LbsIncludeCommodityWt;
+            chkEnableFTScale.Checked = CCFBPrefs.EnableFTscale;
             cboSvcMnuTyp.SelectedIndex  = CCFBPrefs.ServiceMenuType;
             chkEnablePointsTracking.Checked = CCFBPrefs.EnablePointsTracking;
             tbPointsPerWeek.Text = CCFBPrefs.PointsPerWeek.ToString();
@@ -54,6 +56,7 @@ namespace ClientcardFB3
             chkEnableCSFP.Checked = CCFBPrefs.EnableCSFP;
             chkEnableCSFPOnNewSvc.Checked = CCFBPrefs.EnableCSFPOnNewSvc;
             chkCSFPShowRoutes.Checked = CCFBPrefs.EnableCSFPShowRoutes;
+            chkEnableSchSupply.Checked = CCFBPrefs.EnableSchSupply;
             chkEnableTEFAP.Checked = CCFBPrefs.EnableTEFAP;
             chkEnableBackPack.Checked = CCFBPrefs.EnableBackPack;
             chkMustBeACommodityDay.Checked = CCFBPrefs.MustBeACommodityDay;

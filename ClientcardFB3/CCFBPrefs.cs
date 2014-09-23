@@ -58,6 +58,7 @@ namespace ClientcardFB3
         public static bool EnableFastTrack = false;
         public static bool EnableHUDCategory = false;
         public static bool EnableTransportation = false;
+        public static bool EnableSchSupply = false;
         public static bool UseTimeInOutForVols = false;
         public static bool EnableBarcodePrompts = false;
         public static bool BarcodeUseFamilyMember = false;
@@ -85,6 +86,11 @@ namespace ClientcardFB3
         public static int AlertMinimumMonths = 0;
         public static bool IncludeLbsOnSvcList = true;
         public static bool AllowLbsManualEntry = false;
+        #endregion
+
+        #region Automated Scale Feature
+        public static bool EnableFTscale = true;
+        public static bool LbsIncludeCommodityWt = true;
         #endregion
 
         #region Add Client Options
@@ -243,6 +249,7 @@ namespace ClientcardFB3
                     case "enableidflds":            EnableIDFlds = drow.Field<bool>(constBoolVal); break;
                     case "enablepointstracking":    EnablePointsTracking = drow.Field<bool>(constBoolVal); break;
                     case "enableprintclientcard":   EnablePrintClientCard = drow.Field<bool>(constBoolVal); break;
+                    case "enableschsupply":     EnableSchSupply = drow.Field<bool>(constBoolVal); break;
                     case "enableservicegroups":     EnableServiceGroups = drow.Field<bool>(constBoolVal); break;
                     case "enablesupplemental":      EnableSupplemental = drow.Field<bool>(constBoolVal); break;
                     case "enabletefap":             EnableTEFAP = drow.Field<bool>(constBoolVal); break;

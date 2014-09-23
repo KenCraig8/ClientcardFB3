@@ -57,8 +57,6 @@ namespace ClientcardFB3
         const int maxRouteStatusRows = 4;
         int[] cntrsRoutesStatus;
 
-        FindClientForm frmFindClient;
-
 
         public HDPlannerForm(MainForm frmMainIn)
         {
@@ -73,7 +71,6 @@ namespace ClientcardFB3
             loadRouteList(dfltServiceDate);
             rtplnRefreshlbxRoutes(-1);
             rtplnDisplaySelectedRoute();
-            frmFindClient = new FindClientForm();
         }
 
         private string convertToShortDate(string date)
@@ -151,7 +148,7 @@ namespace ClientcardFB3
         private void EditHDForm_Resize(object sender, EventArgs e)
         {
             if (this.WindowState != FormWindowState.Minimized)
-                rtplndgvHD.Top = 140;
+                rtplndgvHDClientList.Top = 140;
         }
 
         private void DeleteService_Click(object sender, EventArgs e)
@@ -197,7 +194,7 @@ namespace ClientcardFB3
         private void tsbToggle_CheckedChanged(object sender, EventArgs e)
         {
             string colName  = ((ToolStripButton)sender).Tag.ToString();
-            rtplndgvHD.Columns[colName].Visible = !rtplndgvHD.Columns[colName].Visible;
+            rtplndgvHDClientList.Columns[colName].Visible = !rtplndgvHDClientList.Columns[colName].Visible;
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -584,7 +581,7 @@ namespace ClientcardFB3
             rtplntbDriverNotes.Text = "";
             rtplntbFBContact.Text = "";
             rtplnmtFBContactPhone.Text = "";
-            rtplndgvHD.Rows.Clear();
+            rtplndgvHDClientList.Rows.Clear();
         }
 
         private void rtplndgvHD_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -614,7 +611,7 @@ namespace ClientcardFB3
                 if (e.ColumnIndex > 1)
                 {
                     int rowIdx = e.RowIndex;
-                    int hhID = Convert.ToInt32(rtplndgvHD["clmID", rowIdx].Value);
+                    int hhID = Convert.ToInt32(rtplndgvHDClientList["clmID", rowIdx].Value);
                     frmMain.setHousehold(hhID, 0);
                 }
             }
@@ -664,17 +661,17 @@ namespace ClientcardFB3
             else
                 rowStart = 0;
             rtplnLastSearchText = rtplntbFindName.Text.ToUpper().Trim();
-            for (int i = rowStart; i < rtplndgvHD.Rows.Count; i++)
+            for (int i = rowStart; i < rtplndgvHDClientList.Rows.Count; i++)
             {
-                if (rtplndgvHD.Rows[i].Cells[colNameFull].FormattedValue.ToString().ToUpper().StartsWith(rtplnLastSearchText) == true)
+                if (rtplndgvHDClientList.Rows[i].Cells[colNameFull].FormattedValue.ToString().ToUpper().StartsWith(rtplnLastSearchText) == true)
                 {
-                    rtplndgvHD.CurrentCell = rtplndgvHD[0, i];
-                    if (i < rtplndgvHD.FirstDisplayedScrollingRowIndex
-                        || i > rtplndgvHD.Rows.GetLastRow(DataGridViewElementStates.Displayed) - 5)
+                    rtplndgvHDClientList.CurrentCell = rtplndgvHDClientList[0, i];
+                    if (i < rtplndgvHDClientList.FirstDisplayedScrollingRowIndex
+                        || i > rtplndgvHDClientList.Rows.GetLastRow(DataGridViewElementStates.Displayed) - 5)
                         if (i > 5)
-                            rtplndgvHD.FirstDisplayedScrollingRowIndex = i - 5;
+                            rtplndgvHDClientList.FirstDisplayedScrollingRowIndex = i - 5;
                         else
-                            rtplndgvHD.FirstDisplayedScrollingRowIndex = i;
+                            rtplndgvHDClientList.FirstDisplayedScrollingRowIndex = i;
                     break;
                 }
             }
@@ -720,39 +717,37 @@ namespace ClientcardFB3
         {
             rtplntbFindName.Text = "";
             rtplnLastSearchText = "";
-            rtplndgvHD.Rows.Clear();
+            rtplndgvHDClientList.Rows.Clear();
             progressBar1.Value = 0;
             progressBar1.Show();
             rtplntbFindName.Visible = rtplncboFilter.Visible = lblFilterBy.Visible = false;
             Application.DoEvents();
             progressBar1.Maximum = dRows.Length;
-
             for (int i = 0; i < dRows.Length; i++)
             {
-                rtplndgvHD.Rows.Add();
-                rtplndgvHD["clmCnt", i].Value = (i + 1).ToString();
-                rtplndgvHD["clmRouteID", i].Value = true;
-                rtplndgvHD["clmRouteID", i].Value = dRows[i]["HDRoute"];
-                rtplndgvHD["clmRouteTitle", i].Value = dRows[i]["RouteTitle"];
-                rtplndgvHD["clmID", i].Value = dRows[i]["ID"];
-                rtplndgvHD["clmName", i].Value = dRows[i]["Name"];
-                rtplndgvHD["clmAddress", i].Value = dRows[i]["Address"].ToString() + "\r\n     " + dRows[i]["City"].ToString() + ", " + dRows[i]["ZipCode"].ToString();
-                rtplndgvHD["clmApt", i].Value = dRows[i]["AptNbr"];
-                rtplndgvHD["clmPhone", i].Value = CCFBGlobal.FormatPhone(dRows[i]["Phone"].ToString());
-                rtplndgvHD["clmFamilySize", i].Value = dRows[i]["FamilySize"];
-                rtplndgvHD["clmComments", i].Value = dRows[i]["Comments"];
-                rtplndgvHD["clmDriverNotes", i].Value = dRows[i]["DriverNotes"];
-                rtplndgvHD["clmSvcItem", i].Value = dRows[i]["HDItem"];
-                rtplndgvHD["clmLastSvc", i].Value = CCFBGlobal.ValidDateString(dRows[i]["LatestService"]);
-                rtplndgvHD[rtplnSortColName, i].Style.BackColor = Color.Azure;
+                rtplndgvHDClientList.Rows.Add();
+                rtplndgvHDClientList["clmCnt", i].Value = (i + 1).ToString();
+                rtplndgvHDClientList["clmRouteID", i].Value = true;
+                rtplndgvHDClientList["clmRouteID", i].Value = dRows[i]["HDRoute"];
+                rtplndgvHDClientList["clmRouteTitle", i].Value = dRows[i]["RouteTitle"];
+                rtplndgvHDClientList["clmID", i].Value = dRows[i]["ID"];
+                rtplndgvHDClientList["clmName", i].Value = dRows[i]["Name"];
+                rtplndgvHDClientList["clmAddress", i].Value = dRows[i]["Address"].ToString() + "\r\n     " + dRows[i]["City"].ToString() + ", " + dRows[i]["ZipCode"].ToString();
+                rtplndgvHDClientList["clmApt", i].Value = dRows[i]["AptNbr"];
+                rtplndgvHDClientList["clmPhone", i].Value = CCFBGlobal.FormatPhone(dRows[i]["Phone"].ToString());
+                rtplndgvHDClientList["clmFamilySize", i].Value = dRows[i]["FamilySize"];
+                rtplndgvHDClientList["clmComments", i].Value = dRows[i]["Comments"];
+                rtplndgvHDClientList["clmDriverNotes", i].Value = dRows[i]["DriverNotes"];
+                rtplndgvHDClientList["clmSvcItem", i].Value = dRows[i]["HDItem"];
+                rtplndgvHDClientList["clmLastSvc", i].Value = CCFBGlobal.ValidDateString(dRows[i]["LatestService"]);
+                rtplndgvHDClientList[rtplnSortColName, i].Style.BackColor = Color.Azure;
                 progressBar1.PerformStep();
             }
-
-            lblRowCnt.Text = "[ " + rtplndgvHD.Rows.Count.ToString() + " ]";
+            lblRowCnt.Text = "[ " + rtplndgvHDClientList.Rows.Count.ToString() + " ]";
             rtplnrowIndex = 0;
             foreach (ToolStripButton tsb in toolStrip2.Items)
             {
-                rtplndgvHD.Columns[tsb.Tag.ToString()].Visible = tsb.Checked;
+                rtplndgvHDClientList.Columns[tsb.Tag.ToString()].Visible = tsb.Checked;
             }
             progressBar1.Value = 0;
             progressBar1.Visible = false;
@@ -854,7 +849,7 @@ namespace ClientcardFB3
 
         private void rtplnSetFindClientVisible()
         {
-            if (rtplndgvHD.Rows.Count > 0)
+            if (rtplndgvHDClientList.Rows.Count > 0)
                 pnlFindClient.Visible = true;
             else
                 pnlFindClient.Visible = false;
@@ -863,7 +858,7 @@ namespace ClientcardFB3
         private void rtplntbFindName_TextChanged(object sender, EventArgs e)
         {
             if (rtplntbFindName.Text.Trim() == "")
-            { rtplndgvHD.CurrentCell = rtplndgvHD[0, 0]; }
+            { rtplndgvHDClientList.CurrentCell = rtplndgvHDClientList[0, 0]; }
             else
             {
                 switch (rtplncboOrderBy.SelectedIndex)
@@ -955,26 +950,14 @@ namespace ClientcardFB3
 
         }
 
-        /// <summary>
-        /// Opens the FindClientForm so the user can select a household to add to the route.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAddClient_Click(object sender, EventArgs e)
+        private void tsbAddress_Click(object sender, EventArgs e)
         {
-            frmFindClient.ShowDialog();
-            int hhId = frmFindClient.HHid;
 
-            if (hhId != FindClientForm.NULL_MEM_ID)
-            {
-                Household hh = new Household(CCFBGlobal.connectionString);
-                hh.open(hhId);
-                hh.ServiceMethod = (int)CCFBGlobal.ServiceMethodCodes.HomeDeliveryActive;
-                hh.SetDataValue("HDRoute", clsHDRoutes.ID.ToString());
-                hh.update(true);
+        }
 
-                rtplnDisplaySelectedRoute();
-            }
+        private void tsbComments_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

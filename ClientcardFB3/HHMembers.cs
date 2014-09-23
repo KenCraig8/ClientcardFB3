@@ -26,7 +26,8 @@ namespace ClientcardFB3
         int iRowCountDemo = 0;
         DataRow drowHhm = null;
         DataRow drowDemoGraphics = null;
-
+        
+        //HouseholdMembers
         const string fldID = "ID";
         const string fldInactive = "Inactive";
         const string fldHouseholdID = "HouseholdID";
@@ -524,6 +525,7 @@ namespace ClientcardFB3
         #endregion
 //Demographics
         #region Get/Set Accessors [Demographics]
+
         public int DemographicsId
         {
             get { return (int)drowDemoGraphics[fldID]; }

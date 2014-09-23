@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ClientcardFB3")]
-[assembly: AssemblyDescription("Food Bank Client Intake Tracking Software")]
+[assembly: AssemblyDescription("Food Bank/Pantry Client Intake Tracking and Management Software")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Craig Software Development Group (CSDG)")]
 [assembly: AssemblyProduct("ClientcardFB3")]
-[assembly: AssemblyCopyright("COPYRIGHT © CSDG 2000-2013")]
+[assembly: AssemblyCopyright("COPYRIGHT © 2000-2014 CSDG; Programmers Ken Craig, Steve Staley, Nevan Wichers, Rich Sinha, and Gayathri Pingali; Includes PBCalendar Copyright © 2005, Patrik Bohman")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0")]
-[assembly: AssemblyFileVersion("2014.09.09")]
+[assembly: AssemblyFileVersion("2014.09.17")]
