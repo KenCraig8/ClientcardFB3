@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClientcardFB3_Installer", "ClientcardFB3_Installer.vdproj", "{82960645-F48D-455B-AE24-08C204E1D5D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientcardFB3", "..\ClientcardFB3\ClientcardFB3.csproj", "{21E3B373-F9A1-4AD7-A357-0E37718F066D}"
