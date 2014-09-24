@@ -86,6 +86,11 @@ namespace ClientcardFB3
             return "";
         }
 
+        /// <summary>
+        /// Adds the 1st column of the dataTable to the combo
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="cbo"></param>
         private void FillFilterByCombo(DataTable dt, ComboBox cbo)
         {
             loading = true;

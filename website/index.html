@@ -40,10 +40,9 @@
 <!-- home page starts -->
 <div id="Home">
 <script>
-    var link = document.getElementById('homeImport');
+     var link = document.getElementById('homeImport');
     var template = link.import.querySelector('template');
     var clone = document.importNode(template.content, true);
-
     document.querySelector('#Home').appendChild(clone);
   </script>
 
