@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("FoodReceipt")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Logging food receipts via scale interface")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Toshiba")]
-[assembly: AssemblyProduct("FoodReceipt")]
-[assembly: AssemblyCopyright("Copyright © Toshiba 2014")]
+[assembly: AssemblyCompany("Craig Software Development Group (CSDG)")]
+[assembly: AssemblyProduct("CcFB3FoodReceipt")]
+[assembly: AssemblyCopyright("COPYRIGHT © 2014 CSDG; Programmers Ken Craig, Rich Sinha, and Gayathri Pingali")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("2014.09.23.0")]

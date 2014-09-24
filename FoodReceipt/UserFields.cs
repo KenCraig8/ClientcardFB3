@@ -218,7 +218,19 @@ namespace FoodReceipt
         {
             try
             {
-                return dset.Tables[tbName].Rows[rowNum][FieldName];
+                if (dset.Tables[tbName].Rows.Count > 0)
+                {
+                    return dset.Tables[tbName].Rows[rowNum][FieldName];
+                }
+                switch (FieldName)
+                {
+                    case "AutoAlert":
+                        return false;
+                        break;
+                    default:
+                        return "";
+                        break;
+                }
             }
             catch (IndexOutOfRangeException ex)
             {

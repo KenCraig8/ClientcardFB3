@@ -22,11 +22,13 @@ namespace FoodReceipt
         string donorID, donorName;
         int FoodClassSelected = 0;
         string FoodCodeSelected = "";
-        public FoodDonationForm(string val1, String val2)
+        List<Button> btnListFoodClass = new List<Button>();     //Collection of Food Class buttons
+
+        public FoodDonationForm(string newDonorID, String newDonorName)
         {
             InitializeComponent();
-            donorID = val1;
-            donorName = val2;
+            donorID = newDonorID;
+            donorName = newDonorName;
             formLoad();
             fillCombos();
             initScalePort();
@@ -34,8 +36,8 @@ namespace FoodReceipt
         }
         private void FoodDonation_Load(object sender, EventArgs e)
         {
-            labelDonorID.Text = donorID;
-            labelDonorName.Text = donorName;
+            tbDonorID.Text = donorID;
+            tbDonorName.Text = donorName;
         }
         private void fillCombos()
         {
@@ -45,19 +47,29 @@ namespace FoodReceipt
         }
         private void formLoad()
         {
-            IEnumerator enumerator1 = this.groupBox2.Controls.GetEnumerator();
+            loadFoodClassButtonList();
+            foreach (Button item in btnListFoodClass)
+            {
+                item.Visible = false;
+                item.Text = "--";
+            }
+            LoadUserFlags();
+            //IEnumerator enumerator1 = this.groupFoodClass.Controls.GetEnumerator();
             System.Windows.Forms.Button button;
             try
             {
+                string tmp = "";
                 for (int i = 0; i < parmFoodClass.TypeCodesArray.Count; i++)
                 {
-                    enumerator1.MoveNext();
-                    button = (System.Windows.Forms.Button)enumerator1.Current;
+                    //enumerator1.MoveNext();
+                    button = btnListFoodClass[i];
                     button.Text = parmFoodClass.GetLongName(i);
-                    string tmp = parmFoodClass.GetLongName(i);
-                    button.Name = parmFoodClass.GetId(tmp).ToString();
+                    tmp = parmFoodClass.GetLongName(i);
+                    button.Tag = parmFoodClass.GetId(tmp).ToString();
+                    button.Visible = true;
                 }
-                clsFoodDonations.openAll();
+                clsFoodDonations.OpenWhere("DonorId = " + donorID + " AND TrxDate > DATEADD(dd,-90,GETDATE())");
+                
             }
             catch (Exception ex)
             {
@@ -69,12 +81,12 @@ namespace FoodReceipt
             updateOtherBtnColor();
             Button b = (Button)sender;
             b.BackColor = Color.Aqua;
-            FoodClassSelected = Convert.ToInt32(b.Name);
+            FoodClassSelected = Convert.ToInt32(b.Tag.ToString());
             FoodCodeSelected = b.Text;
         }
         private void updateOtherBtnColor()
         {
-            IEnumerator enumerator1 = this.groupBox2.Controls.GetEnumerator();
+            IEnumerator enumerator1 = this.groupFoodClass.Controls.GetEnumerator();
             System.Windows.Forms.Button button;
             for (int i = 0; i < parmFoodClass.TypeCodesArray.Count; i++)
             {
@@ -135,7 +147,7 @@ namespace FoodReceipt
             if (tbLbs.Text.Trim() != "")
             {
                 DataRow drow = clsFoodDonations.DSet.Tables[0].NewRow();
-                drow["DonorID"] = labelDonorID.Text;
+                drow["DonorID"] = tbDonorID.Text;
                 if (string.IsNullOrEmpty(tbLbs.Text))
                 {
                     drow["Pounds"] = "0";
@@ -181,6 +193,48 @@ namespace FoodReceipt
         {
             scaleWt.Text = "0";
             tbLbs.Text = "0";
+        }
+
+        private void loadFoodClassButtonList()
+        {
+            btnListFoodClass.Clear();
+            btnListFoodClass.Add(button0);
+            btnListFoodClass.Add(button1);
+            btnListFoodClass.Add(button2);
+            btnListFoodClass.Add(button3);
+            btnListFoodClass.Add(button4);
+            btnListFoodClass.Add(button5);
+            btnListFoodClass.Add(button6);
+            btnListFoodClass.Add(button7);
+            btnListFoodClass.Add(button8);
+            btnListFoodClass.Add(button9);
+            btnListFoodClass.Add(button10);
+            btnListFoodClass.Add(button11);
+            btnListFoodClass.Add(button12);
+            btnListFoodClass.Add(button13);
+            btnListFoodClass.Add(button14);
+        }
+
+        private void LoadUserFlags()
+        {
+            UserFields clsUserFields = new UserFields(CCFBGlobal.connectionString);
+            clsUserFields.open("FoodDonations");
+            setUserFlagText(chkUserFlag0, clsUserFields.GetDataValue("EditLabel", 0).ToString().Trim());
+            setUserFlagText(chkUserFlag1, clsUserFields.GetDataValue("EditLabel", 1).ToString().Trim());
+            setUserFlagText(chkUserFlag2, clsUserFields.GetDataValue("EditLabel", 2).ToString().Trim());
+        }
+
+        private void setUserFlagText(CheckBox chkbox, string fieldLabel)
+        {
+            if (fieldLabel == "")
+            {
+                chkbox.Visible = false;
+            }
+            else
+            {
+                chkbox.Visible = true;
+                chkbox.Text = fieldLabel;
+            }
         }
     }
 }

@@ -10,6 +10,9 @@ namespace FoodReceipt
 {
     public class USBScale
     {
+        private HidDevice scale;
+        private HidDeviceData inData;
+
         public bool IsConnected
         {
             get
@@ -31,8 +34,6 @@ namespace FoodReceipt
                 return inData.Data[2];
             }
         }
-        private HidDevice scale;
-        private HidDeviceData inData;
 
         public HidDevice GetDevice()
         {

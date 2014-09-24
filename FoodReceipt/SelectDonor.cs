@@ -18,7 +18,11 @@ namespace FoodReceipt
         LoginForm frmLogIn;
         FoodDonations clsFoodDonations = new FoodDonations(CCFBGlobal.connectionString);
         Donors clsDonors = new Donors(CCFBGlobal.connectionString);
-        parmTypeCodes parmDonorTypeCode = new parmTypeCodes(CCFBGlobal.parmTbl_Donor, CCFBGlobal.connectionString, "");
+        parmTypeCodes parmDonorTypeCode = null;  //new parmTypeCodes(CCFBGlobal.parmTbl_Donor, CCFBGlobal.connectionString, "");
+
+        List<Button> btnListFavorites = new List<Button>();     //Collection of tpgFavorites Buttons
+        List<Button> btnListDonorType = new List<Button>();     //Collection of tpgDonorType Buttons
+
         public DataGridView dataGridView1;
         
 
@@ -26,47 +30,49 @@ namespace FoodReceipt
         {
             frmLogIn = loginform;
             InitializeComponent();
-            formLoad();
+            parmDonorTypeCode = CCFBGlobal.parmTableTypeCodes(CCFBGlobal.parmTbl_Donor);
+            LoadListFavoritesButtons();
+            LoadListDonorTypeButtons();
         }
-        private void formLoad()
+
+        private void SelectDonor_Load(object sender, EventArgs e)
         {
-            IEnumerator enumerator = this.tabPage2.Controls.GetEnumerator();
-            IEnumerator enumerator1 = this.tabPage1.Controls.GetEnumerator();
+//            IEnumerator enumerator1 = this.tpgDonorType.Controls.GetEnumerator();
             clsFoodDonations.getFavorite();
             System.Windows.Forms.Button button;
             try
             {
+                for (int j = 0; j < this.tpgFavorites.Controls.Count; j++)
+                {
+                    btnListFavorites[j].Hide();
+                    btnListFavorites[j].Text = "";
+                }
                 for (int i = 0; i < clsFoodDonations.RowCount; i++)
                 {
-                    enumerator.MoveNext();
-                    button = (System.Windows.Forms.Button)enumerator.Current;
+                    button = btnListFavorites[i];
                     button.Text = clsFoodDonations.DSet.Tables["FoodDonations"].Rows[i][1].ToString();
-                    button.Name = clsFoodDonations.DSet.Tables["FoodDonations"].Rows[i][0].ToString();
-                }   
-                for (int j = 0; j < this.tabPage2.Controls.Count; j++)
-                {
-                    enumerator.MoveNext();
-                    button = (System.Windows.Forms.Button)enumerator.Current;
-                    if (button.Text == "")
-                    {
-                        button.Hide();
-                    }
+                    button.Tag = clsFoodDonations.DSet.Tables["FoodDonations"].Rows[i][0].ToString();
+                    button.Show();
                 }
-                for (int i = 0; i < parmDonorTypeCode.TypeCodesArray.Count; i++)
+
+                for (int j = 0; j < this.tpgDonorType.Controls.Count; j++)
                 {
-                    enumerator1.MoveNext();
-                    button = (System.Windows.Forms.Button)enumerator1.Current;
-                    button.Text = parmDonorTypeCode.GetLongName(i);
-                    string tmp = parmDonorTypeCode.GetLongName(i);
-                    button.Name = parmDonorTypeCode.GetId(tmp).ToString();
+                    btnListDonorType[j].Hide();
+                    btnListDonorType[j].Text = "";
                 }
-                for (int j = 0; j < this.tabPage1.Controls.Count; j++)
+                int btnCnt = -1;
+                //for (int i = 0; i < parmDonorTypeCode.TypeCodesArray.Count; i++)
+                foreach (parmType item in parmDonorTypeCode.TypeCodesArray)
                 {
-                    enumerator1.MoveNext();
-                    button = (System.Windows.Forms.Button)enumerator1.Current;
-                    if (button.Text == "")
+                    int itmID = item.ID;
+                    clsDonors.openWhere(" WHERE RcdType = " + itmID.ToString());
+                    if (clsDonors.RowCount > 0)
                     {
-                        button.Hide();
+                        btnCnt ++;
+                        button = btnListDonorType[btnCnt];
+                        button.Text = item.LongName;
+                        button.Tag = itmID;
+                        button.Show();
                     }
                 }
 
@@ -82,16 +88,17 @@ namespace FoodReceipt
             frmLogIn.Close();
         }
 
-        private void fillDataGrid_DnrType(String buttonID)
+        private void fillDataGrid_DnrType(Button btnSelected)
         {
-            int val = Convert.ToInt32(buttonID);
-            string whereClause = " WHERE RcdType=" + val;
+            tbGridDesc.Text = "DONORS with Type Code = " + btnSelected.Text;
+            string whereClause = " WHERE RcdType=" + btnSelected.Tag.ToString() + " ORDER BY Name";
             clsDonors.openWhere(whereClause);
             fillDgv();
         }
-        private void fillDataGridFilterByAlphabet(String StartsWith)
+        private void fillDataGridFilterByAlphabet(Button btnSelected)
         {
-            string whereClause = " WHERE Name LIKE '" + StartsWith + "%'";
+            tbGridDesc.Text = "DONORS starting with " + btnSelected.Text;
+            string whereClause = " WHERE Name LIKE '" + btnSelected.Text + "%'";
             clsDonors.openWhere(whereClause);
             fillDgv();
         }
@@ -154,7 +161,7 @@ namespace FoodReceipt
         private void favBtn_Click(object sender, MouseEventArgs e)
         {
             Button b = (Button)sender;
-            FoodDonationForm frm2 = new FoodDonationForm(b.Name, b.Text);
+            FoodDonationForm frm2 = new FoodDonationForm(b.Tag.ToString(), b.Text);
             frm2.Show();
         }
 
@@ -162,13 +169,13 @@ namespace FoodReceipt
 
         private void dnrTypeBtn_Click(object sender, MouseEventArgs e)
         {
-            fillDataGrid_DnrType(((Button)sender).Name);
+            fillDataGrid_DnrType((Button)sender);
         }
         //Alphabet button click
 
         private void alphabetBtn_Click(object sender, MouseEventArgs e)
         {
-            fillDataGridFilterByAlphabet(((Button)sender).Text);
+            fillDataGridFilterByAlphabet((Button)sender);
         }
 
         //NumPad button click
@@ -200,6 +207,7 @@ namespace FoodReceipt
         }
         void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tbGridDesc.Text = "";
             dgvDonorList.Rows.Clear();
         }
         private void dgvDonorList_Resize(object sender, EventArgs e)
@@ -233,6 +241,55 @@ namespace FoodReceipt
             }
             //dgvFT.Columns[dgvFT.ColumnCount - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvDonorList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
+        private void LoadListFavoritesButtons()
+        {
+            btnListFavorites.Clear();
+            btnListFavorites.Add(btnFavorites0);
+            btnListFavorites.Add(btnFavorites1);
+            btnListFavorites.Add(btnFavorites2);
+            btnListFavorites.Add(btnFavorites3);
+            btnListFavorites.Add(btnFavorites4);
+            btnListFavorites.Add(btnFavorites5);
+            btnListFavorites.Add(btnFavorites6);
+            btnListFavorites.Add(btnFavorites7);
+            btnListFavorites.Add(btnFavorites8);
+            btnListFavorites.Add(btnFavorites9);
+            btnListFavorites.Add(btnFavorites10);
+            btnListFavorites.Add(btnFavorites11);
+            btnListFavorites.Add(btnFavorites12);
+            btnListFavorites.Add(btnFavorites13);
+            btnListFavorites.Add(btnFavorites14);
+            btnListFavorites.Add(btnFavorites15); 
+            btnListFavorites.Add(btnFavorites16); 
+            btnListFavorites.Add(btnFavorites17); 
+            btnListFavorites.Add(btnFavorites18); 
+            btnListFavorites.Add(btnFavorites19); 
+            btnListFavorites.Add(btnFavorites20);
+        }
+
+        private void LoadListDonorTypeButtons()
+        {
+            btnListDonorType.Clear();
+            btnListDonorType.Add(btnDonorType0);
+            btnListDonorType.Add(btnDonorType1);
+            btnListDonorType.Add(btnDonorType2);
+            btnListDonorType.Add(btnDonorType3);
+            btnListDonorType.Add(btnDonorType4);
+            btnListDonorType.Add(btnDonorType5);
+            btnListDonorType.Add(btnDonorType6);
+            btnListDonorType.Add(btnDonorType7);
+            btnListDonorType.Add(btnDonorType8);
+            btnListDonorType.Add(btnDonorType9);
+            btnListDonorType.Add(btnDonorType10);
+            btnListDonorType.Add(btnDonorType11);
+            btnListDonorType.Add(btnDonorType12);
+            btnListDonorType.Add(btnDonorType13);
+            btnListDonorType.Add(btnDonorType14);
+            btnListDonorType.Add(btnDonorType15);
+            btnListDonorType.Add(btnDonorType16);
+            btnListDonorType.Add(btnDonorType17);
         }
     }
 }

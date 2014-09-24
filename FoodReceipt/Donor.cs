@@ -529,11 +529,11 @@ namespace FoodReceipt
                 dset.Clear();
                 iRowCount = dadAdpt.Fill(dset, tbName);
                 closeConnection();
-                for (int i = 0; i < iRowCount; i++)
+                if ( iRowCount>0)
                 {
-                    drow = dset.Tables[tbName].Rows[i];
+                    drow = dset.Tables[tbName].Rows[0];
                 }
-                isValid = false;
+                isValid = (iRowCount>0);
             }
             catch (SqlException ex)
             {

@@ -187,7 +187,12 @@ namespace FoodReceipt
             try
              {
                 openConnection();
-                string sql = "Select  DISTINCT TOP 20 DonorID,Name,Trxdate FROM " + tbName + " f1 join Donors f2 on f1.DonorID=f2.ID order by TrxDate DESC";
+                string sql = "SELECT TOP 21 fd.DonorID,d.Name,sum(Pounds)"
+                           + "  FROM FoodDonations fd INNER JOIN Donors d ON fd.DonorID=d.ID"
+                           + " WHERE TrxDate > DateAdd(yy,-1,GetDate()) "
+                           + " GROUP BY fd.DonorID,d.Name "
+                           + "HAVING sum(pounds) > 500"
+                           + "ORDER BY Sum(Pounds) DESC";
                 command = new SqlCommand(sql, conn);
                 dadAdpt.SelectCommand = command;
                 dset.Clear();
@@ -226,6 +231,31 @@ namespace FoodReceipt
                 iRowCount = 0;
             }
         }
+
+        public void OpenWhere(string whereClause)
+        {
+            try
+            {
+                closeConnection();
+                command = new SqlCommand("SELECT * FROM " + tbName + " WHERE " + whereClause, conn);
+                dadAdpt = new SqlDataAdapter(command);
+                dadAdpt.SelectCommand = command;
+                dset.Clear();
+                iRowCount = dadAdpt.Fill(dset, tbName);
+                if (iRowCount > 0)
+                {
+                    dRow = dset.Tables[tbName].Rows[0];
+                }
+                closeConnection();
+            }
+            catch (SqlException ex)
+            {
+                CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
+                closeConnection();
+                iRowCount = 0;
+            }
+        }
+
         public void insert()
         {
             if (dadAdpt.UpdateCommand == null || dadAdpt.InsertCommand == null)
@@ -236,7 +266,7 @@ namespace FoodReceipt
             try
             {
                 openConnection();
-                dadAdpt.Update(dset, tbName);
+                int nbrrows = dadAdpt.Update(dset, tbName);
                 closeConnection();
             }
             catch (SqlException ex)

@@ -967,6 +967,15 @@ namespace FoodReceipt
             return testpath;
         }
 
+        public static parmTypeCodes parmTableTypeCodes(string tableName)
+        {
+            for (int i = 0; i < typeCodeLists.Count; i++)
+            {
+                if (((parmTypeCodes)typeCodeLists[i]).ParmTable == tableName)
+                    return ((parmTypeCodes)typeCodeLists[i]);
+            }
+            return null;
+        }		// end of parmTableCodes
 
         //-----------------------------------------------------------------------------------------
         /// <summary>
