@@ -130,7 +130,6 @@
             this.colDescrLog,
             this.colDonorIdLog,
             this.colTrxIdLog});
-            this.lvFoodDonations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvFoodDonations.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvFoodDonations.FullRowSelect = true;
             this.lvFoodDonations.GridLines = true;
@@ -277,7 +276,6 @@
             this.tbTotalCount.Size = new System.Drawing.Size(42, 23);
             this.tbTotalCount.TabIndex = 10;
             this.tbTotalCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-
             // 
             // btnNextDL
             // 
@@ -463,6 +461,7 @@
             this.dtpFrom.TabIndex = 21;
             this.dtpFrom.Value = new System.DateTime(2010, 11, 17, 12, 1, 0, 0);
             this.dtpFrom.Visible = false;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // btnHideDonorHist
             // 
@@ -826,8 +825,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(1004, 691);
-            this.Controls.Add(this.spltctrlDailyLog);
             this.Controls.Add(this.spltctrlEdit);
+            this.Controls.Add(this.spltctrlDailyLog);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);

@@ -13,7 +13,7 @@ namespace ClientcardFB3
 {
     public partial class MainForm : Form
     {
-
+        public static DailyItemsClass clsDailyItems;
         #region Variables
         string[] ageGroups;     //An array of age groups used to set AgeGroup in HHMem listview
 
@@ -83,7 +83,6 @@ namespace ClientcardFB3
             frmLogIn = FrmLogInIn;
 
             InitializeComponent();
-
             conn = new SqlConnection(CCFBGlobal.connectionString);
 
             for (int i = 0; i < chkLstBxUserFields.Items.Count; i++)
@@ -110,7 +109,7 @@ namespace ClientcardFB3
             frmClientSearch = new ClientSearch(CCFBGlobal.connectionString, this);
 
             clsClient.open(frmFindClient.CurrentHHId, true, true);
-            CCFBGlobal.clsDailyItems = new DailyItemsClass();
+            clsDailyItems = new DailyItemsClass();
 
             //Fills the AgeGroups array
             ageGroups = new string[6];
@@ -151,6 +150,7 @@ namespace ClientcardFB3
             {
                 clearForm();
             }
+            
         }
 
         private void addHousehold(int memID)
@@ -2162,7 +2162,7 @@ namespace ClientcardFB3
             ServiceItemsForm frmServiceItems = new ServiceItemsForm();
             frmServiceItems.ShowDialog();
             if (CCFBGlobal.ServiceItemsChanged == true)
-                CCFBGlobal.clsDailyItems.Refresh(false);
+                clsDailyItems.Refresh(false);
         }
 
         private void mnuAdmin_UserDefinedFields_Click(object sender, EventArgs e)
@@ -3724,11 +3724,23 @@ namespace ClientcardFB3
                         , MessageBoxDefaultButton.Button1);
                     if (dr == DialogResult.Yes)
                     {
+                        int cntr = 0;
+                        splCntrCardMembers.Hide();
+                        pnlProgress.Show();
+                        lblProgress.Text = "Print All Family Cards Progress";
+                        progressBar1.Minimum = 0;
+                        progressBar1.Maximum = dtblHH.Rows.Count;
+                        Application.DoEvents();
                         foreach (DataRow drow in dtblHH.Rows)
                         {
+                            cntr ++;
+                            progressBar1.Value = cntr;
+                            Application.DoEvents();
                             setHousehold(Convert.ToInt32(drow[0]), 0);
                             printFamilyCard();
                         }
+                        pnlProgress.Hide();
+                        splCntrCardMembers.Show();
                     }
                 }
                 sqlConn.Close();

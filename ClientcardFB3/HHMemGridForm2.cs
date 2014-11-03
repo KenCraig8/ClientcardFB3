@@ -178,6 +178,7 @@ namespace ClientcardFB3
             CCFBGlobal.InitCombo(cboMemIDType, CCFBGlobal.parmTbl_IdVerify);
             CCFBGlobal.InitCombo(cboRace, CCFBGlobal.parmTbl_Race);
             CCFBGlobal.InitCombo(cboCSFPRoute, CCFBGlobal.parmTbl_CSFPRoutes);
+            CCFBGlobal.InitCombo(cboCSFPStatus, CCFBGlobal.parmTbl_CSFPStatus);
             CCFBGlobal.InitCombo(cboBPSchool, CCFBGlobal.parmTbl_BackPackSchool);
             CCFBGlobal.InitCombo(cboBPSize, CCFBGlobal.parmTbl_BackPackSize);
             CCFBGlobal.InitCombo(cboRelationship, CCFBGlobal.parmTbl_Relationship);
@@ -258,7 +259,6 @@ namespace ClientcardFB3
             lvwLastName.Dock = DockStyle.Fill;
             lvwPeople.Dock = DockStyle.Fill;
             showlvwControl(0);
-
             setDisplayMode(true); 
         }
 
@@ -276,18 +276,18 @@ namespace ClientcardFB3
 
         private void btnSaveNewMem_Click(object sender, EventArgs e)
         {
-            if (tbAge.Text.Trim() == "" && tbBirthDate.Text.Trim() == "")
+            if (tbAge.Text.Trim() == "" && msktbBirthDate.Text.Trim() == "")
             {
                 MessageBox.Show("Cannot Save When Both Age And Birthdate Are Blank", this.Text);
             }
             else if (lblDateError.Visible == true && chkEnterAge.Checked == false)
             {
                 MessageBox.Show("Cannot Save With Invalid Birthdate", this.Text);
-                tbBirthDate.Focus();
+                msktbBirthDate.Focus();
             }
             else
             {
-                if (clsClient.clsHHmem.nameExists(tbLastName.Text, tbFirstName.Text, tbBirthDate.Text, true) == false || CCFBPrefs.AllowDuplicateMemberNames == true)
+                if (clsClient.clsHHmem.nameExists(tbLastName.Text, tbFirstName.Text, msktbBirthDate.Text, true) == false || CCFBPrefs.AllowDuplicateMemberNames == true)
                 {
                     clsClient.clsHHmem.newHHMemberSave(itemHHMember);
                     clsClient.clsHHmem.openHHID(clsClient.clsHH.ID);
@@ -444,7 +444,7 @@ namespace ClientcardFB3
         {
             if (tabCtrl.SelectedTab.Name == tpgMember.Name)
             {
-                if (tbBirthDate.Text == null && tbAge.Text == null && clsClient.clsHH.UseFamilyList == true)
+                if (msktbBirthDate.Text == null && tbAge.Text == null && clsClient.clsHH.UseFamilyList == true)
                 {
                     MessageBox.Show("Cannot Save Household Member When Both Age And Birthdate Are Blank");
                 }
@@ -786,8 +786,8 @@ namespace ClientcardFB3
                     tb.ForeColor = Color.Black;
                     tb.BackColor = Color.White;
                 }
-                tbBirthDate.Text = CCFBGlobal.ValidDateString(itemHHMember.BirthDate);
-                tbBirthDate.BackColor = Color.White;
+                msktbBirthDate.Text = CCFBGlobal.ValidDateString(itemHHMember.BirthDate);
+                msktbBirthDate.BackColor = Color.White;
                 foreach (CheckBox chk in chkList)
                 {
                     if (chk.Tag != null && chk.Tag.ToString().Trim() != "")
@@ -1116,11 +1116,11 @@ namespace ClientcardFB3
         private void setupBirthdateAndAge(bool useAge)
         {
             tbAge.Enabled = useAge;
-            tbBirthDate.Enabled = (useAge == false);
+            msktbBirthDate.Enabled = (useAge == false);
             if (useAge == false)
             {
                 //tbBirthdate.ReadOnly = false;
-                tbBirthDate.ForeColor = Color.Black;
+                msktbBirthDate.ForeColor = Color.Black;
                 //tbAge.ReadOnly = true;
                 tbAge.BackColor = Color.White;
                 tbAge.ForeColor = CCFBGlobal.AgeBirthdateColor;
@@ -1128,8 +1128,8 @@ namespace ClientcardFB3
             else
             {
                 //tbBirthdate.ReadOnly = true;
-                tbBirthDate.BackColor = Color.White;
-                tbBirthDate.ForeColor = CCFBGlobal.AgeBirthdateColor;
+                msktbBirthDate.BackColor = Color.White;
+                msktbBirthDate.ForeColor = CCFBGlobal.AgeBirthdateColor;
                 lblDateError.Visible = false;
                 tbAge.ForeColor = Color.Black;
             }
@@ -1227,8 +1227,8 @@ namespace ClientcardFB3
                 if (itemHHMember.UseAge == true)
                 {
                     itemHHMember.BirthDate = CCFBGlobal.calcBirthdateFromAge(Convert.ToInt32(tbAge.Text));
-                    tbBirthDate.ForeColor = Color.Aqua;
-                    tbBirthDate.Text = itemHHMember.BirthDate.ToShortDateString();
+                    msktbBirthDate.ForeColor = Color.Aqua;
+                    msktbBirthDate.Text = itemHHMember.BirthDate.ToShortDateString();
                     SetFieldsBasedOnAge(tbAge.Text);
                 }
             }
@@ -1240,46 +1240,46 @@ namespace ClientcardFB3
 
         private void tbBirthDate_Enter(object sender, EventArgs e)
         {
-            stbOriValue = tbBirthDate.Text;
+            stbOriValue = msktbBirthDate.Text;
         }
 
         private void tbBirthdate_Leave(object sender, EventArgs e)
         {
             try
             {
-                DateTime tmp = Convert.ToDateTime(tbBirthDate.Text);
+                DateTime tmp = Convert.ToDateTime(msktbBirthDate.Text);
                 if (tmp > CCFBGlobal.FBNullDateValue && tmp < DateTime.Today)
                 {
-                    if (stbOriValue != tbBirthDate.Text)
+                    if (stbOriValue != msktbBirthDate.Text)
                     {
-                        tbBirthDate.Text = tmp.ToShortDateString();
-                        tbBirthDate.ForeColor = Color.Black;
+                        msktbBirthDate.Text = tmp.ToShortDateString();
+                        msktbBirthDate.ForeColor = Color.Black;
                         lblDateError.Visible = false;
                         if (lvHHMembers.SelectedItems.Count > 0)
                         {
                             lvHHMembers.SelectedItems[0].ImageIndex = 0;
                         }
-                        itemHHMember.SetDataValue(tbBirthDate.Tag.ToString(), tbBirthDate.Text);
-                        tbBirthDate.BackColor = Color.Pink;
+                        itemHHMember.SetDataValue(msktbBirthDate.Tag.ToString(), msktbBirthDate.Text);
+                        msktbBirthDate.BackColor = Color.Pink;
                         lblNeedToSave.Visible = true;
 
                         tbAge.Text = CCFBGlobal.calcAge(tmp, DateTime.Today).ToString();
                         tbList_Leave(tbAge, null);
                         SetFieldsBasedOnAge(tbAge.Text);
                         EnableMemIdFields();
-                        FilllvwHHMByBirthdate(tbBirthDate.Text);
+                        FilllvwHHMByBirthdate(msktbBirthDate.Text);
                         showlvwControl(3);
                     }
                 }
                 else
                 {
-                    tbBirthDate.ForeColor = Color.DarkRed;
+                    msktbBirthDate.ForeColor = Color.DarkRed;
                     lblDateError.Visible = true;
                 }
             }
             catch
             {
-                tbBirthDate.ForeColor = Color.DarkRed;
+                msktbBirthDate.ForeColor = Color.DarkRed;
                 lblDateError.Visible = true;
             }
         }
@@ -1290,7 +1290,7 @@ namespace ClientcardFB3
             {
                 try
                 {
-                    DateTime.Parse(tbBirthDate.Text);
+                    DateTime.Parse(msktbBirthDate.Text);
                 }
                 catch
                 {
@@ -1302,7 +1302,7 @@ namespace ClientcardFB3
                     }
                     else
                     {
-                        tbBirthDate.Text = itemHHMember.GetDataString(tbBirthDate.Tag.ToString());
+                        msktbBirthDate.Text = itemHHMember.GetDataString(msktbBirthDate.Tag.ToString());
                     }
                 }
             }
@@ -1598,11 +1598,13 @@ namespace ClientcardFB3
 
         private void toggleCSFPFields(bool isVisible)
         {
+            lblCSFPStatus.Visible = isVisible;
+            lblCSFPRoute.Visible = isVisible; 
             lblCSFPExpires.Visible = isVisible;
-            lblCSFPRoute.Visible = isVisible;
             lblCSFPComments.Visible = isVisible;
-            tbExpires.Visible = isVisible;
+            cboCSFPStatus.Visible = isVisible;
             cboCSFPRoute.Visible = isVisible;
+            tbExpires.Visible = isVisible;
             tbCSFPComments.Visible = isVisible;
         }
 
@@ -1863,7 +1865,7 @@ namespace ClientcardFB3
 
         private void pnlCSFPInfo_Paint(object sender, PaintEventArgs e)
         {
-
+            
         }
         //private void dgvHHM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         //{

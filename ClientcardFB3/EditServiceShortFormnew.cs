@@ -13,6 +13,7 @@ namespace ClientcardFB3
         Client clsClient;
         TrxLog clsTrxLog;
         TrxLogItem clsTrxItem;
+        //DailyItemsClass clsDailyItems;
         DaysOpen clsDaysOpen = new DaysOpen(CCFBGlobal.connectionString);
         parm_ClientType clsParmClientType = new parm_ClientType(CCFBGlobal.connectionString);
 
@@ -81,6 +82,11 @@ namespace ClientcardFB3
         {
             get { return clsTrxItem.TrxDate; }
         }
+
+        ////public DailyItemsClass DailyItems
+        ////{
+        ////    set { clsDailyItems = value; }
+        ////}
 
         public void initForm(Client clsClientIn, bool ModeIn, bool isApptIn, int TrxIndexIn, string hhMemName, string txtAlert)
         {
@@ -172,8 +178,8 @@ namespace ClientcardFB3
                 }
                 clsDaysOpen.openTopTwentyWithinDate(clsTrxItem.TrxDate);
                 clsDaysOpen.FindDate(clsTrxItem.TrxDate);
-                CCFBGlobal.clsDailyItems.SetServiceDate(trxDateIn, clsDaysOpen.IsCommodity, clsDaysOpen.SpecialItems, false);
-                CCFBGlobal.clsDailyItems.InitClientData(clsClient); 
+                MainForm.clsDailyItems.SetServiceDate(trxDateIn, clsDaysOpen.IsCommodity, clsDaysOpen.SpecialItems, false);
+                MainForm.clsDailyItems.InitClientData(clsClient); 
                 MarkNewServiceItems();
                 if (isAppt == false)
                 {
@@ -214,8 +220,8 @@ namespace ClientcardFB3
                     BackColor = CCFBGlobal.bkColorApptEdit;
                 }
                 clsDaysOpen.FindDate(clsTrxItem.TrxDate);
-                CCFBGlobal.clsDailyItems.SetServiceDate(trxDateIn, clsDaysOpen.IsCommodity, clsDaysOpen.SpecialItems, true);
-                CCFBGlobal.clsDailyItems.InitClientData(clsClient);
+                MainForm.clsDailyItems.SetServiceDate(trxDateIn, clsDaysOpen.IsCommodity, clsDaysOpen.SpecialItems, true);
+                MainForm.clsDailyItems.InitClientData(clsClient);
                 if (DateTime.Compare(clsTrxItem.TrxDate, Convert.ToDateTime(CCFBGlobal.DefaultServiceDate)) < 0)
                 {
                     chkFoodLbsManualEntry.Checked = true;
@@ -225,11 +231,11 @@ namespace ClientcardFB3
                 {
                     allowEntryOverride = true;
                 }
-                CheckServiceItemsFromList(clsTrxItem.ConcatFoodSvcItemsList, CCFBGlobal.clsDailyItems.FoodItemsList);
-                CheckServiceItemsFromList(clsTrxItem.ConcatNonFoodSvcItemsList, CCFBGlobal.clsDailyItems.NonFoodItemsList);
+                CheckServiceItemsFromList(clsTrxItem.ConcatFoodSvcItemsList, MainForm.clsDailyItems.FoodItemsList);
+                CheckServiceItemsFromList(clsTrxItem.ConcatNonFoodSvcItemsList, MainForm.clsDailyItems.NonFoodItemsList);
             }
             cboHHMem.Text = clsTrxItem.HHMemID.ToString();
-            CCFBGlobal.clsDailyItems.fillListViewItems(lvwFoodSvcItems, lvwNonFoodSvcItems, lvwBabyServices, bShowAllFoodSvcItems);
+            MainForm.clsDailyItems.fillListViewItems(lvwFoodSvcItems, lvwNonFoodSvcItems, lvwBabyServices, bShowAllFoodSvcItems);
             lvwNonFoodSvcItems.Visible = (lvwNonFoodSvcItems.Items.Count > 0);
             chkNonFoodManualEntry.Checked = (lvwNonFoodSvcItems.Items.Count == 0);
             if (clsClient.clsHH.BabyServices == true)
@@ -605,14 +611,14 @@ namespace ClientcardFB3
             clsTrxItem.LbsStandard = 0;
             clsTrxItem.LbsSupplemental = 0;
             clsTrxItem.LbsOther = 0;
-            clsTrxItem.FoodSvcList  = TestSvcItems(CCFBGlobal.clsDailyItems.FoodItemsList);
+            clsTrxItem.FoodSvcList  = TestSvcItems(MainForm.clsDailyItems.FoodItemsList);
             clsTrxItem.LbsNonFood = 0; 
-            clsTrxItem.NonFoodSvcList = TestSvcItems(CCFBGlobal.clsDailyItems.NonFoodItemsList);
+            clsTrxItem.NonFoodSvcList = TestSvcItems(MainForm.clsDailyItems.NonFoodItemsList);
             clsTrxItem.LbsBabySvc = 0;
             if (clsClient.clsHH.BabyServices == true)
             {
                 pnlBabyServices.Enabled = true;
-                clsTrxItem.BabySvcList = TestSvcItems(CCFBGlobal.clsDailyItems.BabyServicesList);
+                clsTrxItem.BabySvcList = TestSvcItems(MainForm.clsDailyItems.BabyServicesList);
             }
             else
             {
@@ -628,7 +634,7 @@ namespace ClientcardFB3
             bool haveexclusive = false;
             foreach (ServiceItem si in siList)
             {
-                si.IsSelected = CCFBGlobal.clsDailyItems.checkRule(si); 
+                si.IsSelected = MainForm.clsDailyItems.checkRule(si); 
 
                 if (si.IsSelected)
                 {
@@ -731,7 +737,7 @@ namespace ClientcardFB3
             if (loadingControls == false)
             {
                 int SvcItemId = Int32.Parse(e.Item.SubItems[2].Text.ToString());
-                ServiceItem si = CCFBGlobal.clsDailyItems.BabyServicesList.Find(delegate(ServiceItem si0) { return si0.ItemKey == SvcItemId; });
+                ServiceItem si = MainForm.clsDailyItems.BabyServicesList.Find(delegate(ServiceItem si0) { return si0.ItemKey == SvcItemId; });
                 if (si != null)
                 {
                     si.IsSelected = e.Item.Checked;
@@ -760,7 +766,7 @@ namespace ClientcardFB3
         {
             ListViewItem itm = lvwFoodSvcItems.Items[idx];
             int svcItemId = Convert.ToInt32(itm.Tag.ToString());
-            ServiceItem si = CCFBGlobal.clsDailyItems.FoodItemsList.Find(delegate(ServiceItem si0) { return si0.ItemKey == svcItemId; });
+            ServiceItem si = MainForm.clsDailyItems.FoodItemsList.Find(delegate(ServiceItem si0) { return si0.ItemKey == svcItemId; });
             if (si != null)
             {
                 si.IsSelected = itm.Checked;
@@ -770,7 +776,7 @@ namespace ClientcardFB3
                         if (item.Index != idx)
                         {
                             item.Checked = false;
-                            CCFBGlobal.clsDailyItems.FoodItemsList.Find(delegate(ServiceItem si0) { return si0.ItemKey == Convert.ToInt32(item.Tag.ToString()); }).IsSelected = false;
+                            MainForm.clsDailyItems.FoodItemsList.Find(delegate(ServiceItem si0) { return si0.ItemKey == Convert.ToInt32(item.Tag.ToString()); }).IsSelected = false;
                         }
                     }
                 SumFoodServiceItems();
@@ -787,7 +793,7 @@ namespace ClientcardFB3
             if (loadingControls == false)
             {
                 int SvcItemId = Int32.Parse(e.Item.SubItems[2].Text.ToString());
-                ServiceItem si = CCFBGlobal.clsDailyItems.NonFoodItemsList.Find(delegate(ServiceItem si0) { return si0.ItemKey == SvcItemId; });
+                ServiceItem si = MainForm.clsDailyItems.NonFoodItemsList.Find(delegate(ServiceItem si0) { return si0.ItemKey == SvcItemId; });
                 if (si != null)
                 {
                     si.IsSelected = e.Item.Checked;
@@ -819,7 +825,7 @@ namespace ClientcardFB3
             clsTrxItem.BabySvcList = "";
             clsTrxItem.LbsBabySvc = 0;
             int lbsCalc = 0;
-            foreach (ServiceItem si in CCFBGlobal.clsDailyItems.BabyServicesList)
+            foreach (ServiceItem si in MainForm.clsDailyItems.BabyServicesList)
             {
                 if (si.IsSelected)
                 {
@@ -846,7 +852,7 @@ namespace ClientcardFB3
             string tmpFoodSvcList = "";
    
             int lbsCalc = 0;
-            foreach (ServiceItem si in CCFBGlobal.clsDailyItems.FoodItemsList)
+            foreach (ServiceItem si in MainForm.clsDailyItems.FoodItemsList)
             {
                 if (si.IsSelected)
                 {
@@ -910,7 +916,7 @@ namespace ClientcardFB3
             clsTrxItem.NonFoodSvcList = "";
             clsTrxItem.LbsNonFood = 0;
             int lbsCalc = 0;
-            foreach (ServiceItem si in CCFBGlobal.clsDailyItems.NonFoodItemsList)
+            foreach (ServiceItem si in MainForm.clsDailyItems.NonFoodItemsList)
             {
                 if (si.IsSelected)
                 {
@@ -961,7 +967,7 @@ namespace ClientcardFB3
             //else
             //{
             //    clsClient.clsHHSvcTrans.openForHH(clsClient.clsHH.ID);
-            //    clsDailyItems.setForToday();
+            //    MainForm.clsDailyItems.setForToday();
             }
         }
 
@@ -1194,7 +1200,7 @@ namespace ClientcardFB3
             clsTrxItem.FastTrack = false;
             clsTrxItem.PrintReceipt = false;
             clsTrxItem.FullService = false;
-            foreach (ServiceItem si in CCFBGlobal.clsDailyItems.FoodItemsList)
+            foreach (ServiceItem si in MainForm.clsDailyItems.FoodItemsList)
             {
                 if (si.IsSelected)
                 {

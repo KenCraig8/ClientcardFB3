@@ -48,7 +48,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>documentation\ClientCardFB3.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>ClientcardFB3.Program</StartupObject>
@@ -102,10 +104,6 @@
     <Reference Include="Ionic.Zip">
       <HintPath>E:\Users\Public\ClientcardFB3\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Access, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="MonthCalendar, Version=1.8.2.0, Culture=neutral, PublicKeyToken=9d22151b1b463438" />
@@ -128,13 +126,242 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CcFB3Common\CCFBGlobal.cs">
+      <Link>CCFBGlobal.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3Common\CCFBPrefs.cs">
+      <Link>CCFBPrefs.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3Common\CSDGColumn.cs">
+      <Link>CSDGColumn.cs</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="..\CcFB3Common\CSFPLog.cs">
+      <Link>CSFPLog.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3Common\LoginForm.cs">
+      <Link>LoginForm.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\CcFB3Common\LoginForm.Designer.cs">
+      <Link>LoginForm.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3Common\Program.cs">
+      <Link>Program.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\AccessReports.cs">
+      <Link>AccessReports.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\BackPackLog.cs">
+      <Link>BackPackLog.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\CashDonations.cs">
+      <Link>CashDonations.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\CCFBOpenDayOfWeek.cs">
+      <Link>CCFBOpenDayOfWeek.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\Client.cs">
+      <Link>Client.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\DailyItemsClass.cs">
+      <Link>DailyItemsClass.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\DaysOpen.cs">
+      <Link>DaysOpen.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\DistinctLogDays.cs">
+      <Link>DistinctLogDays.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\Donors.cs">
+      <Link>Donors.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\EmailInfo.cs">
+      <Link>EmailInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\EmailRecipients.cs">
+      <Link>EmailRecipients.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\FBJobsActuals.cs">
+      <Link>FBJobsActuals.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\FBJobsPlan.cs">
+      <Link>FBJobsPlan.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\FoodDonations.cs">
+      <Link>FoodDonations.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HDBuildings.cs">
+      <Link>HDBuildings.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HDItems.cs">
+      <Link>HDItems.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HDRoutes.cs">
+      <Link>HDRoutes.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HDRouteSheet.cs">
+      <Link>HDRouteSheet.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HDRSClients.cs">
+      <Link>HDRSClients.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HDRSHist.cs">
+      <Link>HDRSHist.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HHMembers.cs">
+      <Link>HHMembers.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HHPoints.cs">
+      <Link>HHPoints.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\Household.cs">
+      <Link>Household.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\IncomeGroups.cs">
+      <Link>IncomeGroups.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\IncomeMatrix.cs">
+      <Link>IncomeMatrix.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\IncomeMatrixGroup.cs">
+      <Link>IncomeMatrixGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\IncomeMatrixItem.cs">
+      <Link>IncomeMatrixItem.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\ListViewColumnSorter.cs">
+      <Link>ListViewColumnSorter.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\MonthlyReports.cs">
+      <Link>MonthlyReports.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\parmTypeCodes.cs">
+      <Link>parmTypeCodes.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\parm_ClientType.cs">
+      <Link>parm_ClientType.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\PrintPanel.cs">
+      <Link>PrintPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\ReceiptPrinter.cs">
+      <Link>ReceiptPrinter.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\ServiceItems.cs">
+      <Link>ServiceItems.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\TrxLog.cs">
+      <Link>TrxLog.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\TrxLogPeriodTotals.cs">
+      <Link>TrxLogPeriodTotals.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\UserFields.cs">
+      <Link>UserFields.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\Userlist.cs">
+      <Link>Userlist.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\VolGroup.cs">
+      <Link>VolGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\VolGroups.cs">
+      <Link>VolGroups.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\VolunteerHours.cs">
+      <Link>VolunteerHours.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\Volunteers.cs">
+      <Link>Volunteers.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\VolunteerStats.cs">
+      <Link>VolunteerStats.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\VoucherItems.cs">
+      <Link>VoucherItems.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\Zipcodes.cs">
+      <Link>Zipcodes.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\CreateUnitedWayExport.cs">
+      <Link>CreateUnitedWayExport.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\FamilyCardSig.cs">
+      <Link>FamilyCardSig.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\PRNTFamilyCard.cs">
+      <Link>PRNTFamilyCard.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\Rpt2ndHarvMthly.cs">
+      <Link>Rpt2ndHarvMthly.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\Rpt2ndHarvPantryMthly.cs">
+      <Link>Rpt2ndHarvPantryMthly.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptBMAC.cs">
+      <Link>RptBMAC.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptCSFPPicklist.cs">
+      <Link>RptCSFPPicklist.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptEFAPSubcontractors.cs">
+      <Link>RptEFAPSubcontractors.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptEFNXls.cs">
+      <Link>RptEFNXls.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptFBCoalition.cs">
+      <Link>RptFBCoalition.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptFoodLifeLine.cs">
+      <Link>RptFoodLifeLine.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptFoodMenu01.cs">
+      <Link>RptFoodMenu01.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptFoodOrder01.cs">
+      <Link>RptFoodOrder01.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptFoodOrder02.cs">
+      <Link>RptFoodOrder02.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptFreshAlliance.cs">
+      <Link>RptFreshAlliance.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptGroceryRescue.cs">
+      <Link>RptGroceryRescue.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptHDRouteSheet.cs">
+      <Link>RptHDRouteSheet.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptKCCDBG.cs">
+      <Link>RptKCCDBG.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptMonthEndStats.cs">
+      <Link>RptMonthEndStats.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptNewEFAP.cs">
+      <Link>RptNewEFAP.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptNWHarvest.cs">
+      <Link>RptNWHarvest.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptSkagitEFAP.cs">
+      <Link>RptSkagitEFAP.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptVoucherOrder01.cs">
+      <Link>RptVoucherOrder01.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\SchSupplyPickupTicket.cs">
+      <Link>SchSupplyPickupTicket.cs</Link>
+    </Compile>
     <Compile Include="AboutBoxCSDG.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AboutBoxCSDG.Designer.cs">
       <DependentUpon>AboutBoxCSDG.cs</DependentUpon>
     </Compile>
-    <Compile Include="AccessReports.cs" />
     <Compile Include="AccessReportsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,7 +386,6 @@
     <Compile Include="AddNewVolDateForm.Designer.cs">
       <DependentUpon>AddNewVolDateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="BackPackLog.cs" />
     <Compile Include="BarCodeEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,55 +398,36 @@
     <Compile Include="CalendarForm.designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CashDonations.cs" />
     <Compile Include="CashDonationsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CashDonationsForm.designer.cs">
       <DependentUpon>CashDonationsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CCFBGlobal.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CCFBPrefs.cs" />
     <Compile Include="CCFBStatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CCFBStatisticsForm.Designer.cs">
       <DependentUpon>CCFBStatisticsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Client.cs" />
     <Compile Include="ClientSearch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientSearch.Designer.cs">
       <DependentUpon>ClientSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmailInfo.cs" />
     <Compile Include="FreshAllianceForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FreshAllianceForm.designer.cs">
       <DependentUpon>FreshAllianceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HHPoints.cs" />
     <Compile Include="MarkHouseholdInactive.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MarkHouseholdInactive.Designer.cs">
       <DependentUpon>MarkHouseholdInactive.cs</DependentUpon>
     </Compile>
-    <Compile Include="SchSupplyPickupTicket.cs" />
-    <Compile Include="PRNTFamilyCard.cs" />
-    <Compile Include="Rpt2ndHarvPantryMthly.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="RptBMAC.cs" />
-    <Compile Include="RptFoodMenu01.cs" />
-    <Compile Include="RptFoodOrder01.cs" />
-    <Compile Include="RptFoodOrder02.cs" />
-    <Compile Include="RptFreshAlliance.cs" />
-    <Compile Include="RptVoucherOrder01.cs" />
     <Compile Include="EditSchoolSupplyPickupTicket.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,25 +440,6 @@
     <Compile Include="SelectDateRange.Designer.cs">
       <DependentUpon>SelectDateRange.cs</DependentUpon>
     </Compile>
-    <Compile Include="FamilyCardSig.cs" />
-    <Compile Include="RptEFNXls.cs" />
-    <Compile Include="RptMonthEndStats.cs" />
-    <Compile Include="RptEFAPSubcontractors.cs" />
-    <Compile Include="RptFBCoalition.cs" />
-    <Compile Include="RptFoodLifeLine.cs" />
-    <Compile Include="RptKCCDBG.cs" />
-    <Compile Include="RptNewEFAP.cs" />
-    <Compile Include="RptHDRouteSheet.cs" />
-    <Compile Include="RptCSFPPicklist.cs" />
-    <Compile Include="RptNWHarvest.cs" />
-    <Compile Include="Rpt2ndHarvMthly.cs" />
-    <Compile Include="RptGroceryRescue.cs" />
-    <Compile Include="CreateUnitedWayExport.cs" />
-    <Compile Include="CSDGColumn.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CSFPLog.cs" />
-    <Compile Include="DailyItemsClass.cs" />
     <Compile Include="DateSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,7 +452,6 @@
     <Compile Include="DeleteHousehold.Designer.cs">
       <DependentUpon>DeleteHousehold.cs</DependentUpon>
     </Compile>
-    <Compile Include="Donors.cs" />
     <Compile Include="EditAlertForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -331,15 +518,12 @@
     <Compile Include="EmailBodyInputForm.designer.cs">
       <DependentUpon>EmailBodyInputForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FBJobsActuals.cs" />
-    <Compile Include="FBJobsPlan.cs" />
     <Compile Include="FBJobsPlanForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FBJobsPlanForm.Designer.cs">
       <DependentUpon>FBJobsPlanForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FoodDonations.cs" />
     <Compile Include="FoodDonationsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,34 +542,24 @@
     <Compile Include="BackupDBForm.Designer.cs">
       <DependentUpon>BackupDBForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HDItems.cs" />
     <Compile Include="HDPlannerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HDPlannerForm.designer.cs">
       <DependentUpon>HDPlannerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HDBuildings.cs" />
-    <Compile Include="HDRoutes.cs" />
-    <Compile Include="HDRouteSheet.cs" />
-    <Compile Include="HDRSClients.cs" />
-    <Compile Include="HDRSHist.cs" />
     <Compile Include="HHMemGridForm2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HHMemGridForm2.Designer.cs">
       <DependentUpon>HHMemGridForm2.cs</DependentUpon>
     </Compile>
-    <Compile Include="IncomeGroups.cs" />
-    <Compile Include="IncomeMatrix.cs" />
     <Compile Include="IncomeMatrixForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IncomeMatrixForm.Designer.cs">
       <DependentUpon>IncomeMatrixForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IncomeMatrixGroup.cs" />
-    <Compile Include="IncomeMatrixItem.cs" />
     <Compile Include="KCReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,7 +578,6 @@
     <Compile Include="MonthlyReportPreferencesForm.designer.cs">
       <DependentUpon>MonthlyReportPreferencesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MonthlyReports.cs" />
     <Compile Include="NewCSFPSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -417,12 +590,6 @@
     <Compile Include="NewMatrixGroupForm.Designer.cs">
       <DependentUpon>NewMatrixGroupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="parm_ClientType.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="PrintPanel.cs" />
-    <Compile Include="ReceiptPrinter.cs" />
-    <Compile Include="RptSkagitEFAP.cs" />
     <Compile Include="SignFamilyCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -436,35 +603,17 @@
     <Compile Include="SqlGridDataSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DaysOpen.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CCFBOpenDayOfWeek.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="DistinctLogDays.cs" />
-    <Compile Include="EmailRecipients.cs" />
     <Compile Include="TestExportToCSV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TestExportToCSV.Designer.cs">
       <DependentUpon>TestExportToCSV.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrxLog.cs" />
-    <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="FindClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FindClientForm.Designer.cs">
       <DependentUpon>FindClientForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Household.cs" />
-    <Compile Include="HHMembers.cs" />
-    <Compile Include="LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -472,38 +621,31 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="RowComparer.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceItems.cs" />
     <Compile Include="ServiceItemsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ServiceItemsForm.Designer.cs">
       <DependentUpon>ServiceItemsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TrxLogPeriodTotals.cs" />
     <Compile Include="TrxLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TrxLogForm.designer.cs">
       <DependentUpon>TrxLogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="parmTypeCodes.cs" />
     <Compile Include="TypeCodeChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TypeCodeChangeForm.Designer.cs">
       <DependentUpon>TypeCodeChangeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserFields.cs" />
     <Compile Include="UserInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserInputForm.Designer.cs">
       <DependentUpon>UserInputForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Userlist.cs" />
     <Compile Include="UsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -516,37 +658,33 @@
     <Compile Include="UWKCExportForm.designer.cs">
       <DependentUpon>UWKCExportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VolGroup.cs" />
-    <Compile Include="VolGroups.cs" />
     <Compile Include="VolunteerEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VolunteerEditForm.Designer.cs">
       <DependentUpon>VolunteerEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VolunteerHours.cs" />
     <Compile Include="VolunteerHoursForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VolunteerHoursForm.Designer.cs">
       <DependentUpon>VolunteerHoursForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Volunteers.cs" />
-    <Compile Include="VolunteerStats.cs" />
     <Compile Include="VoucherShortForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VoucherShortForm.Designer.cs">
       <DependentUpon>VoucherShortForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VoucherItems.cs" />
     <Compile Include="WebPageForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WebPageForm.Designer.cs">
       <DependentUpon>WebPageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Zipcodes.cs" />
+    <EmbeddedResource Include="..\CcFB3Common\LoginForm.resx">
+      <Link>LoginForm.resx</Link>
+    </EmbeddedResource>
     <EmbeddedResource Include="AboutBoxCSDG.resx">
       <DependentUpon>AboutBoxCSDG.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -678,10 +816,6 @@
     <EmbeddedResource Include="FindClientForm.resx">
       <DependentUpon>FindClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -762,10 +896,37 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{00000205-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Access">
+      <Guid>{4AFFC9A0-5F99-101B-AF4E-00AA003F0F07}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Access.Dao">
+      <Guid>{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}</Guid>
+      <VersionMajor>12</VersionMajor>
+      <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
@@ -798,15 +959,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-    <COMReference Include="stdole">
-      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
     <COMReference Include="VBIDE">
       <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>5</VersionMajor>
@@ -821,6 +973,7 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\FBLogo.bmp" />
     <None Include="Resources\media_pause.png" />
     <None Include="Resources\bullet_square_red.png" />
     <None Include="Resources\arrow_down_green.png" />

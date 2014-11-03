@@ -30,47 +30,47 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "Allocated",
             "120"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "Monday",
             "40"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tuesday",
             "30"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "Wednesday",
             "0"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "Thursday",
             "0"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             "Friday",
             "0"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
             "Saturday",
             "0"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
             "Avaialable",
             "50"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFile_FindClient = new System.Windows.Forms.ToolStripMenuItem();
@@ -198,8 +198,16 @@
             this.tpgFamilyDetail = new System.Windows.Forms.TabPage();
             this.dgvHHMembers = new System.Windows.Forms.DataGridView();
             this.clmInactive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmBirthdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCSFP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmDiet = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Disabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmHMID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsHHMembers = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiExport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMoveHHMem = new System.Windows.Forms.ToolStripMenuItem();
@@ -400,14 +408,9 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmBirthdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCSFP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmHMID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlProgress = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblProgress = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splCntrCardMembers)).BeginInit();
             this.splCntrCardMembers.Panel1.SuspendLayout();
@@ -464,6 +467,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picSignature)).BeginInit();
             this.tpgVouchers.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.pnlProgress.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -477,7 +481,7 @@
             this.menuAdmin,
             this.mnuHD,
             this.menuHelp});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 80);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(984, 24);
@@ -1214,7 +1218,7 @@
             // 
             this.splCntrCardMembers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splCntrCardMembers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splCntrCardMembers.Location = new System.Drawing.Point(0, 24);
+            this.splCntrCardMembers.Location = new System.Drawing.Point(0, 104);
             this.splCntrCardMembers.Margin = new System.Windows.Forms.Padding(4);
             this.splCntrCardMembers.Name = "splCntrCardMembers";
             this.splCntrCardMembers.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -1232,8 +1236,8 @@
             this.splCntrCardMembers.Panel2.Controls.Add(this.splitMemTrans);
             this.splCntrCardMembers.Panel2.Controls.Add(this.toolStrip2);
             this.splCntrCardMembers.Panel2MinSize = 160;
-            this.splCntrCardMembers.Size = new System.Drawing.Size(984, 638);
-            this.splCntrCardMembers.SplitterDistance = 309;
+            this.splCntrCardMembers.Size = new System.Drawing.Size(984, 558);
+            this.splCntrCardMembers.SplitterDistance = 290;
             this.splCntrCardMembers.TabIndex = 1;
             this.splCntrCardMembers.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splCntrCardMembers_SplitterMoved);
             // 
@@ -1284,7 +1288,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer3.Size = new System.Drawing.Size(900, 307);
+            this.splitContainer3.Size = new System.Drawing.Size(900, 288);
             this.splitContainer3.SplitterDistance = 610;
             this.splitContainer3.SplitterWidth = 1;
             this.splitContainer3.TabIndex = 128;
@@ -1747,14 +1751,14 @@
             this.dgvHHMembers.AllowUserToResizeRows = false;
             this.dgvHHMembers.BackgroundColor = System.Drawing.Color.Cornsilk;
             this.dgvHHMembers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHHMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHHMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvHHMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHHMembers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmInactive,
@@ -1795,6 +1799,86 @@
             this.clmInactive.Name = "clmInactive";
             this.clmInactive.Width = 30;
             // 
+            // clmLastName
+            // 
+            this.clmLastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmLastName.DefaultCellStyle = dataGridViewCellStyle19;
+            this.clmLastName.HeaderText = "Last Name";
+            this.clmLastName.Name = "clmLastName";
+            this.clmLastName.ReadOnly = true;
+            this.clmLastName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmFirstName
+            // 
+            this.clmFirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmFirstName.DefaultCellStyle = dataGridViewCellStyle20;
+            this.clmFirstName.HeaderText = "First Name";
+            this.clmFirstName.Name = "clmFirstName";
+            this.clmFirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // clmBirthdate
+            // 
+            this.clmBirthdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmBirthdate.DefaultCellStyle = dataGridViewCellStyle21;
+            this.clmBirthdate.HeaderText = "BirthDate";
+            this.clmBirthdate.Name = "clmBirthdate";
+            this.clmBirthdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmBirthdate.Width = 90;
+            // 
+            // clmAge
+            // 
+            this.clmAge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmAge.DefaultCellStyle = dataGridViewCellStyle22;
+            this.clmAge.HeaderText = "Age";
+            this.clmAge.Name = "clmAge";
+            this.clmAge.ReadOnly = true;
+            this.clmAge.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmAge.Width = 35;
+            // 
+            // clmGroup
+            // 
+            this.clmGroup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmGroup.DefaultCellStyle = dataGridViewCellStyle23;
+            this.clmGroup.HeaderText = "Group";
+            this.clmGroup.Name = "clmGroup";
+            this.clmGroup.ReadOnly = true;
+            this.clmGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmGroup.Width = 45;
+            // 
+            // clmSex
+            // 
+            this.clmSex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmSex.DefaultCellStyle = dataGridViewCellStyle24;
+            this.clmSex.HeaderText = "Sex";
+            this.clmSex.Name = "clmSex";
+            this.clmSex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmSex.Width = 25;
+            // 
+            // clmCSFP
+            // 
+            this.clmCSFP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmCSFP.DefaultCellStyle = dataGridViewCellStyle25;
+            this.clmCSFP.HeaderText = "CSFP";
+            this.clmCSFP.Name = "clmCSFP";
+            this.clmCSFP.ReadOnly = true;
+            this.clmCSFP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmCSFP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmCSFP.Width = 70;
+            // 
             // clmDiet
             // 
             this.clmDiet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -1810,6 +1894,17 @@
             this.Disabled.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Disabled.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Disabled.Width = 45;
+            // 
+            // clmHMID
+            // 
+            this.clmHMID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmHMID.DefaultCellStyle = dataGridViewCellStyle26;
+            this.clmHMID.HeaderText = "ID";
+            this.clmHMID.Name = "clmHMID";
+            this.clmHMID.ReadOnly = true;
+            this.clmHMID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmHMID.Visible = false;
             // 
             // cmsHHMembers
             // 
@@ -2155,8 +2250,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
-            this.splitContainer4.Size = new System.Drawing.Size(289, 307);
-            this.splitContainer4.SplitterDistance = 141;
+            this.splitContainer4.Size = new System.Drawing.Size(289, 288);
+            this.splitContainer4.SplitterDistance = 132;
             this.splitContainer4.TabIndex = 0;
             // 
             // pbxEditAlert
@@ -2164,7 +2259,7 @@
             this.pbxEditAlert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxEditAlert.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pbxEditAlert.Image = global::ClientcardFB3.Properties.Resources.edit;
-            this.pbxEditAlert.Location = new System.Drawing.Point(271, 123);
+            this.pbxEditAlert.Location = new System.Drawing.Point(271, 114);
             this.pbxEditAlert.Name = "pbxEditAlert";
             this.pbxEditAlert.Size = new System.Drawing.Size(16, 16);
             this.pbxEditAlert.TabIndex = 128;
@@ -2180,7 +2275,7 @@
             this.tbAlert.Name = "tbAlert";
             this.tbAlert.ReadOnly = true;
             this.tbAlert.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.tbAlert.Size = new System.Drawing.Size(289, 141);
+            this.tbAlert.Size = new System.Drawing.Size(289, 132);
             this.tbAlert.TabIndex = 115;
             this.tbAlert.TabStop = false;
             this.tbAlert.Text = "";
@@ -2202,8 +2297,8 @@
             // 
             this.splitContainer5.Panel2.BackColor = System.Drawing.Color.Wheat;
             this.splitContainer5.Panel2.Controls.Add(this.splitContainer6);
-            this.splitContainer5.Size = new System.Drawing.Size(289, 162);
-            this.splitContainer5.SplitterDistance = 92;
+            this.splitContainer5.Size = new System.Drawing.Size(289, 152);
+            this.splitContainer5.SplitterDistance = 82;
             this.splitContainer5.TabIndex = 19;
             // 
             // tbeNotes
@@ -2219,7 +2314,7 @@
             this.tbeNotes.Multiline = true;
             this.tbeNotes.Name = "tbeNotes";
             this.tbeNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbeNotes.Size = new System.Drawing.Size(289, 92);
+            this.tbeNotes.Size = new System.Drawing.Size(289, 82);
             this.tbeNotes.TabIndex = 25;
             this.tbeNotes.Tag = "Comments";
             this.tbeNotes.Text = "123456789012345678901234567890123456789\r\nLine 2\r\nLine 3\r\nLine 4\r\nLine 5\r\nLine 6\r\n" +
@@ -2313,7 +2408,7 @@
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(82, 307);
+            this.toolStrip1.Size = new System.Drawing.Size(82, 288);
             this.toolStrip1.TabIndex = 75;
             this.toolStrip1.Text = "MainMenuControls";
             // 
@@ -2412,7 +2507,7 @@
             this.tsbLog.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbLog.ImageTransparentColor = System.Drawing.Color.Red;
             this.tsbLog.Name = "tsbLog";
-            this.tsbLog.Size = new System.Drawing.Size(80, 49);
+            this.tsbLog.Size = new System.Drawing.Size(36, 49);
             this.tsbLog.Text = "&Log";
             this.tsbLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLog.ToolTipText = "Display Log Form";
@@ -2435,7 +2530,7 @@
             // splitMemTrans.Panel2
             // 
             this.splitMemTrans.Panel2.Controls.Add(this.splitContainer2);
-            this.splitMemTrans.Size = new System.Drawing.Size(902, 325);
+            this.splitMemTrans.Size = new System.Drawing.Size(902, 264);
             this.splitMemTrans.SplitterDistance = 294;
             this.splitMemTrans.SplitterWidth = 5;
             this.splitMemTrans.TabIndex = 1;
@@ -2454,7 +2549,7 @@
             this.tabCntrlMain.Name = "tabCntrlMain";
             this.tabCntrlMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabCntrlMain.SelectedIndex = 0;
-            this.tabCntrlMain.Size = new System.Drawing.Size(292, 323);
+            this.tabCntrlMain.Size = new System.Drawing.Size(292, 262);
             this.tabCntrlMain.TabIndex = 29;
             // 
             // tpgHHData
@@ -2478,7 +2573,7 @@
             this.tpgHHData.Location = new System.Drawing.Point(4, 44);
             this.tpgHHData.Name = "tpgHHData";
             this.tpgHHData.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgHHData.Size = new System.Drawing.Size(284, 275);
+            this.tpgHHData.Size = new System.Drawing.Size(284, 214);
             this.tpgHHData.TabIndex = 0;
             this.tpgHHData.Text = "ID/Phone";
             // 
@@ -2757,7 +2852,7 @@
             this.tpgUserFields.Location = new System.Drawing.Point(4, 44);
             this.tpgUserFields.Name = "tpgUserFields";
             this.tpgUserFields.Padding = new System.Windows.Forms.Padding(3, 10, 3, 20);
-            this.tpgUserFields.Size = new System.Drawing.Size(284, 275);
+            this.tpgUserFields.Size = new System.Drawing.Size(283, 212);
             this.tpgUserFields.TabIndex = 1;
             this.tpgUserFields.Text = "User Fields";
             // 
@@ -2840,7 +2935,7 @@
             this.tpgIncome.Controls.Add(this.grpbxIncome);
             this.tpgIncome.Location = new System.Drawing.Point(4, 44);
             this.tpgIncome.Name = "tpgIncome";
-            this.tpgIncome.Size = new System.Drawing.Size(284, 275);
+            this.tpgIncome.Size = new System.Drawing.Size(283, 212);
             this.tpgIncome.TabIndex = 2;
             this.tpgIncome.Text = "Income";
             // 
@@ -2978,7 +3073,7 @@
             this.tpgHD.Controls.Add(this.splitContainer1);
             this.tpgHD.Location = new System.Drawing.Point(4, 44);
             this.tpgHD.Name = "tpgHD";
-            this.tpgHD.Size = new System.Drawing.Size(284, 275);
+            this.tpgHD.Size = new System.Drawing.Size(283, 212);
             this.tpgHD.TabIndex = 3;
             this.tpgHD.Text = "Home Delivery";
             // 
@@ -3006,7 +3101,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tbDriverNotes);
-            this.splitContainer1.Size = new System.Drawing.Size(284, 295);
+            this.splitContainer1.Size = new System.Drawing.Size(283, 212);
             this.splitContainer1.SplitterDistance = 135;
             this.splitContainer1.TabIndex = 131;
             // 
@@ -3154,7 +3249,7 @@
             this.tpgPointSys.Controls.Add(this.lvwPoints);
             this.tpgPointSys.Location = new System.Drawing.Point(4, 44);
             this.tpgPointSys.Name = "tpgPointSys";
-            this.tpgPointSys.Size = new System.Drawing.Size(284, 275);
+            this.tpgPointSys.Size = new System.Drawing.Size(283, 212);
             this.tpgPointSys.TabIndex = 4;
             this.tpgPointSys.Text = "Points";
             // 
@@ -3186,14 +3281,14 @@
             this.lvwPoints.GridLines = true;
             this.lvwPoints.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvwPoints.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8});
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16});
             this.lvwPoints.Location = new System.Drawing.Point(0, 0);
             this.lvwPoints.Name = "lvwPoints";
             this.lvwPoints.Size = new System.Drawing.Size(248, 204);
@@ -3234,7 +3329,7 @@
             // 
             this.splitContainer2.Panel2.ContextMenuStrip = this.cmsLog;
             this.splitContainer2.Panel2.Controls.Add(this.tabCntrlLog);
-            this.splitContainer2.Size = new System.Drawing.Size(601, 323);
+            this.splitContainer2.Size = new System.Drawing.Size(601, 262);
             this.splitContainer2.SplitterDistance = 94;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 10;
@@ -3637,7 +3732,7 @@
             this.tsmiExpandLog,
             this.tsmiExportToExcel});
             this.cmsLog.Name = "cmsLog";
-            this.cmsLog.Size = new System.Drawing.Size(204, 70);
+            this.cmsLog.Size = new System.Drawing.Size(204, 92);
             this.cmsLog.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsLog_ItemClicked);
             // 
             // tsmiShowSignature
@@ -3668,7 +3763,7 @@
             this.tabCntrlLog.Name = "tabCntrlLog";
             this.tabCntrlLog.Padding = new System.Drawing.Point(10, 3);
             this.tabCntrlLog.SelectedIndex = 0;
-            this.tabCntrlLog.Size = new System.Drawing.Size(601, 228);
+            this.tabCntrlLog.Size = new System.Drawing.Size(601, 167);
             this.tabCntrlLog.TabIndex = 0;
             // 
             // tpgTrxLog
@@ -3683,7 +3778,7 @@
             this.tpgTrxLog.Location = new System.Drawing.Point(4, 25);
             this.tpgTrxLog.Margin = new System.Windows.Forms.Padding(0);
             this.tpgTrxLog.Name = "tpgTrxLog";
-            this.tpgTrxLog.Size = new System.Drawing.Size(593, 199);
+            this.tpgTrxLog.Size = new System.Drawing.Size(593, 138);
             this.tpgTrxLog.TabIndex = 0;
             this.tpgTrxLog.Text = "Food Services Log";
             this.tpgTrxLog.UseVisualStyleBackColor = true;
@@ -3947,7 +4042,7 @@
             this.tpgVouchers.Location = new System.Drawing.Point(4, 25);
             this.tpgVouchers.Margin = new System.Windows.Forms.Padding(0);
             this.tpgVouchers.Name = "tpgVouchers";
-            this.tpgVouchers.Size = new System.Drawing.Size(593, 199);
+            this.tpgVouchers.Size = new System.Drawing.Size(592, 136);
             this.tpgVouchers.TabIndex = 1;
             this.tpgVouchers.Text = "Voucher Log";
             this.tpgVouchers.Resize += new System.EventHandler(this.tpgVouchers_Resize);
@@ -4091,7 +4186,7 @@
             this.toolStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(82, 325);
+            this.toolStrip2.Size = new System.Drawing.Size(82, 264);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -4210,9 +4305,9 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn1.HeaderText = "Last Name";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -4221,9 +4316,9 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridViewTextBoxColumn2.HeaderText = "First Name";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -4231,9 +4326,9 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle28;
             this.dataGridViewTextBoxColumn3.HeaderText = "BirthDate";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -4242,9 +4337,9 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridViewTextBoxColumn4.HeaderText = "Age";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -4254,9 +4349,9 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridViewTextBoxColumn5.HeaderText = "Group";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -4266,9 +4361,9 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle31;
             this.dataGridViewTextBoxColumn6.HeaderText = "Sex";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -4277,9 +4372,9 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle32;
             this.dataGridViewTextBoxColumn7.HeaderText = "CSFP";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -4290,104 +4385,48 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle33;
             this.dataGridViewTextBoxColumn8.HeaderText = "ID";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn8.Visible = false;
             // 
-            // clmLastName
+            // pnlProgress
             // 
-            this.clmLastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmLastName.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clmLastName.HeaderText = "Last Name";
-            this.clmLastName.Name = "clmLastName";
-            this.clmLastName.ReadOnly = true;
-            this.clmLastName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pnlProgress.Controls.Add(this.progressBar1);
+            this.pnlProgress.Controls.Add(this.lblProgress);
+            this.pnlProgress.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlProgress.Location = new System.Drawing.Point(0, 0);
+            this.pnlProgress.Name = "pnlProgress";
+            this.pnlProgress.Size = new System.Drawing.Size(984, 80);
+            this.pnlProgress.TabIndex = 2;
+            this.pnlProgress.Visible = false;
             // 
-            // clmFirstName
+            // progressBar1
             // 
-            this.clmFirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmFirstName.DefaultCellStyle = dataGridViewCellStyle3;
-            this.clmFirstName.HeaderText = "First Name";
-            this.clmFirstName.Name = "clmFirstName";
-            this.clmFirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.progressBar1.BackColor = System.Drawing.Color.BurlyWood;
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.ForeColor = System.Drawing.Color.Navy;
+            this.progressBar1.Location = new System.Drawing.Point(0, 32);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(984, 48);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 1;
             // 
-            // clmBirthdate
+            // lblProgress
             // 
-            this.clmBirthdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmBirthdate.DefaultCellStyle = dataGridViewCellStyle4;
-            this.clmBirthdate.HeaderText = "BirthDate";
-            this.clmBirthdate.Name = "clmBirthdate";
-            this.clmBirthdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmBirthdate.Width = 90;
-            // 
-            // clmAge
-            // 
-            this.clmAge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmAge.DefaultCellStyle = dataGridViewCellStyle5;
-            this.clmAge.HeaderText = "Age";
-            this.clmAge.Name = "clmAge";
-            this.clmAge.ReadOnly = true;
-            this.clmAge.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmAge.Width = 35;
-            // 
-            // clmGroup
-            // 
-            this.clmGroup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmGroup.DefaultCellStyle = dataGridViewCellStyle6;
-            this.clmGroup.HeaderText = "Group";
-            this.clmGroup.Name = "clmGroup";
-            this.clmGroup.ReadOnly = true;
-            this.clmGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmGroup.Width = 45;
-            // 
-            // clmSex
-            // 
-            this.clmSex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmSex.DefaultCellStyle = dataGridViewCellStyle7;
-            this.clmSex.HeaderText = "Sex";
-            this.clmSex.Name = "clmSex";
-            this.clmSex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmSex.Width = 25;
-            // 
-            // clmCSFP
-            // 
-            this.clmCSFP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmCSFP.DefaultCellStyle = dataGridViewCellStyle8;
-            this.clmCSFP.HeaderText = "CSFP";
-            this.clmCSFP.Name = "clmCSFP";
-            this.clmCSFP.ReadOnly = true;
-            this.clmCSFP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmCSFP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmCSFP.Width = 70;
-            // 
-            // clmHMID
-            // 
-            this.clmHMID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmHMID.DefaultCellStyle = dataGridViewCellStyle9;
-            this.clmHMID.HeaderText = "ID";
-            this.clmHMID.Name = "clmHMID";
-            this.clmHMID.ReadOnly = true;
-            this.clmHMID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmHMID.Visible = false;
+            this.lblProgress.BackColor = System.Drawing.Color.BurlyWood;
+            this.lblProgress.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgress.ForeColor = System.Drawing.Color.Navy;
+            this.lblProgress.Location = new System.Drawing.Point(0, 0);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(984, 32);
+            this.lblProgress.TabIndex = 0;
+            this.lblProgress.Text = "Print All Family Cards";
+            this.lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
@@ -4398,6 +4437,7 @@
             this.ClientSize = new System.Drawing.Size(984, 662);
             this.Controls.Add(this.splCntrCardMembers);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pnlProgress);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -4483,6 +4523,7 @@
             this.tpgVouchers.ResumeLayout(false);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.pnlProgress.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4827,6 +4868,9 @@
         private System.Windows.Forms.ToolStripSeparator mnuClientSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem mnuReports_CustomQuery;
+        private System.Windows.Forms.Panel pnlProgress;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label lblProgress;
     }
 }
 

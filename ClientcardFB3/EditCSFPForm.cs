@@ -18,16 +18,16 @@ namespace ClientcardFB3
         SqlDataAdapter dadAdpt;
         DataTable dtbl;
         SqlCommand command;
-        SqlCommand updateAndInsertComm;
         SqlConnection conn;
         List<ComboBox> cboSort = new List<ComboBox>();
-        string sqlCommandText = "Select Distinct DateName(yy, TrxDate) as 'Year' "
-            + "From CSFPLog where TrxDate is not null Order By 'Year' DESC";
+        List<ComboBox> cboAscDesc = new List<ComboBox>();
+        List<CheckBox> chkBoxList = new List<CheckBox>();
+
         int rowCount = 0;
         string lastSearchText = "";
         int rowIndex = 0;
         int hhID = 0;
-        bool loading = false;
+        bool loading = true;
         string filterFldName = "";
         bool isShortDate = false;
         DateTime svcDate = DateTime.Today;
@@ -40,33 +40,47 @@ namespace ClientcardFB3
             cboSort.Add(cboOrderBy0);
             cboSort.Add(cboOrderBy1);
             cboSort.Add(cboOrderBy2);
-            loading = true;
+            cboAscDesc.Add(cboAscDesc0);
+            cboAscDesc.Add(cboAscDesc1);
+            cboAscDesc.Add(cboAscDesc2);
+            foreach (ComboBox cbo in cboAscDesc)
+            {
+                cbo.SelectedIndex = 0;
+            }
             setcboSortOrder(0);
             if (CCFBPrefs.EnableCSFPShowRoutes == true)
             {
-                cboSort[0].SelectedIndex = 3;
+                setcboSortSelectedIndex(0,3);
+                setcboSortOrder(1);
+                setcboSortSelectedIndex(1,1);
             }
             else
             {
-                cboSort[0].SelectedIndex = 1;
-                dgvCSFP.Columns[5].HeaderText = "Previous Svc";
+                setcboSortSelectedIndex(0,1);
+                setcboSortOrder(1);
+                cboSort[1].SelectedIndex = 0;
             }
             setcboSortOrder(2);
+            cboSort[2].SelectedIndex = 0;
+
+            chkBoxList.Add(chkStatus0);
+            chkBoxList.Add(chkStatus1);
+            chkBoxList.Add(chkStatus2);
+            chkBoxList.Add(chkStatus3);
+            chkBoxList.Add(chkStatus4);
+            chkBoxList.Add(chkStatus5);
 
             dtpSvcDate.Value = DateTime.Today;
             dadAdpt = new SqlDataAdapter();
             dtbl = new DataTable();
             conn = new SqlConnection(CCFBGlobal.connectionString);
-            SqlCommand selectComm = new SqlCommand(sqlCommandText, conn);
-            
-            dadAdpt.SelectCommand = selectComm;
             getDistinctYears();
-            fillYearsCombo();
+            
 
             //cboOrderBy0.SelectedIndex = 0;
             //getDefaultCSFPLbs();
             clsCSFPLog.openWhere("");
-            tbsMarkNewCSFP.Text = "New CSFP " + Environment.NewLine + "Client";
+            tsbMarkNewCSFP.Text = "New CSFP " + Environment.NewLine + "Client";
 
             bool connected = CCFBGlobal.IsConnectedToInternet();
             menuFNSWebSite.Enabled = connected;
@@ -82,6 +96,7 @@ namespace ClientcardFB3
 
         private void EditCSFPForm_Load(object sender, EventArgs e)
         {
+            gbNewService.Top = gbOrderBy.Top;
             gbRenewExpDate.Left = gbNewService.Left;
             gbRenewExpDate.Top = gbNewService.Top;
             gbNewService.BackColor = CCFBGlobal.bkColorAltEdit;
@@ -91,70 +106,86 @@ namespace ClientcardFB3
         private void fillYearsCombo()
         {
             cboYear.Items.Clear();
+            bool bCurYearOK = false;
             if (dtbl.Rows.Count > 0)
             {
                 for (int i = 0; i < dtbl.Rows.Count; i++)
                 {
-                    if (i ==0)
-                    {
-                        DateTime tmp = CCFBGlobal.CurrentFiscalEndDate();
-                        if (Convert.ToInt32(dtbl.Rows[i]["Year"]) < tmp.Year)
-                        {
-                            cboYear.Items.Add(CCFBGlobal.CurrentFiscalEndDate().Year.ToString());
-                        }
-                    }
                     cboYear.Items.Add(dtbl.Rows[i]["Year"]);
 
                     if (dtbl.Rows[i]["Year"].ToString() == DateTime.Today.Year.ToString())
-                        cboYear.SelectedIndex = i;
-
-                    if (DateTime.Today.Day > 10)
-                        cboMonth.SelectedIndex = DateTime.Today.Month - 1;
-                    else if (DateTime.Today.Month == 1)
-                        cboMonth.SelectedIndex = 11;
-                    else
-                        cboMonth.SelectedIndex = DateTime.Today.Month - 2;
+                    {
+                        cboYear.SelectedItem = cboYear.Items[cboYear.Items.Count - 1];
+                        bCurYearOK = true;
+                    }
                 }
             }
             else
+            {
                 cboYear.Items.Add(DateTime.Today.Year.ToString());
-
+                cboYear.SelectedItem = cboYear.Items[0];
+                bCurYearOK = true;
+            }
+            if (bCurYearOK == false)
+            {
+                cboYear.Items.Insert(0,DateTime.Today.Year.ToString());
+                cboYear.SelectedItem = cboYear.Items[0];
+            }
             if (cboYear.SelectedIndex == -1 && cboYear.Items.Count > 0)
+            {
                 cboYear.SelectedIndex = 0;
+            }
+            if (cboYear.Items[0].ToString().Equals(DateTime.Today.Year.ToString()) == true)
+            {
+                if (DateTime.Today.Month == 12)
+                {
+                    cboYear.Items.Insert(0, DateTime.Today.AddMonths(1).Year.ToString());
+                }
+            }
+            if (DateTime.Today.Day > 10)
+            {
+                cboMonth.SelectedIndex = DateTime.Today.Month - 1;
+            }
+            else if (DateTime.Today.Month == 1)
+            {
+                cboMonth.SelectedIndex = 11;
+            }
+            else
+            {
+                cboMonth.SelectedIndex = DateTime.Today.Month - 2;
+            }
         }
 
         private void getDistinctYears()
         {
             try
             {
-                if (conn.State == ConnectionState.Closed)
-                    conn.Open();
-
+                openConnection();
+                SqlCommand selectComm = new SqlCommand("Select Distinct DateName(yy, TrxDate) as 'Year' "
+                        + "From CSFPLog where TrxDate is not null Order By 'Year' DESC", conn);
+                dadAdpt.SelectCommand = selectComm;
                 dadAdpt.Fill(dtbl);
-
-                if (conn.State == ConnectionState.Open)
-                    conn.Close();
+                closeConnection();
+                fillYearsCombo();
             }
             catch (SqlException ex)
             {
-                if (conn.State == ConnectionState.Open)
-                    conn.Close();
-                CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
+                closeConnection();
+                CCFBGlobal.appendErrorToErrorReport("getDistinctsYears", ex.GetBaseException().ToString());
             }
 
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            getClientsList();
-            toolStrip1.Enabled = true;
+            getClientsList(true);
         }
 
         /// <summary>
         /// Gets the CSFP Clients for the given period using a stored procedure
         /// in the database
         /// </summary>
-        private void getClientsList()
+        private void getClientsList(bool loaddgvCSFP)
         {
             if (cboYear.SelectedIndex != -1 && cboMonth.SelectedIndex != -1)
             {
@@ -183,23 +214,26 @@ namespace ClientcardFB3
                     parameter2.Direction = ParameterDirection.Input;
                     parameter2.Value = getOrderByText();
 
-                    //SqlParameter parameter3 = new SqlParameter();
-                    //parameter3.ParameterName = "@SubSort";
-                    //parameter3.SqlDbType = SqlDbType.SmallInt;
-                    //parameter3.Direction = ParameterDirection.Input;
-                    //parameter3.Value = subSortIndexValue();
+                    SqlParameter parameter3 = new SqlParameter();
+                    parameter3.ParameterName = "@WhereClause";
+                    parameter3.SqlDbType = SqlDbType.NVarChar;
+                    parameter3.Direction = ParameterDirection.Input;
+                    parameter3.Value = getWhereClause();
                     
                     // Add the parameter to the Parameters collection. 
                     command.Parameters.Add(parameter);
                     command.Parameters.Add(parameter2);
-                    //command.Parameters.Add(parameter3);
+                    command.Parameters.Add(parameter3);
 
                     using (SqlDataAdapter da = new SqlDataAdapter(command))
                     {
                         rowCount = da.Fill(dtbl);
                     }
                     closeConnection();
-                    loadList(dtbl.Select());
+                    if (loaddgvCSFP == true)
+                    {
+                        loadList(dtbl.Select());
+                    }
                     initFilterInfo();              
                     svcDate = new DateTime(Convert.ToInt32(cboYear.SelectedItem), 
                                             cboMonth.SelectedIndex + 1, 1);
@@ -214,6 +248,7 @@ namespace ClientcardFB3
                         //dtpSvcDate.MinDate = svcDate;
                         dtpSvcDate.MaxDate = new DateTime(svcDate.Year, svcDate.Month,
                             DateTime.DaysInMonth(svcDate.Year, svcDate.Month)).AddDays(14);                     }
+                    toolStrip1.Enabled = true;
                 }
                 catch (SqlException ex)
                 {
@@ -259,13 +294,13 @@ namespace ClientcardFB3
         /// <param name="drows">The Array of DataRows to load the data from</param>
         private void loadList(DataRow[] drows)
         {
-            if (progressBar1.Visible == false)
-            {
-                btnRefreshList.Visible = false;
-                progressBar1.Value = 0;
-                progressBar1.Visible = true;
-                progressBar1.Maximum = drows.Count();
-            }
+            btnRefreshList.Visible = false;
+            progressBar1.Value = 0;
+            progressBar1.Visible = true;
+            progressBar1.Step = 1;
+            progressBar1.Maximum = drows.Length;
+
+            tbCnt.Text = drows.Length.ToString();
             tbFindName.Text = "";
             lastSearchText = "";
             dgvCSFP.Rows.Clear();
@@ -288,61 +323,48 @@ namespace ClientcardFB3
                     dgvCSFP.Rows[i].DefaultCellStyle.BackColor = Color.White;
                 }
 
+                dgvCSFP["Route", i].Value = drows[i]["Route"]; 
                 dgvCSFP["HouseholdID", i].Value = drows[i]["HouseholdID"];
+                dgvCSFP["clmCSFPStatus", i].Value = drows[i]["StatusDescr"];
                 dgvCSFP["clmName", i].Value = drows[i]["colNameLF"];
                 dgvCSFP["Address", i].Value = drows[i]["Address"];
                 dgvCSFP["AptNbr", i].Value = drows[i]["AptNbr"];
-                dgvCSFP["CSFPExpiration", i].Value = convertToShortDate(
-                    CCFBGlobal.NullToBlank(drows[i]["CSFPExpiration"]));
+                dgvCSFP["CSFPExpiration", i].Value = drows[i]["CSFPExpiration"];
                 if (dgvCSFP["CSFPExpiration", i].Value.ToString() != "" &&
-                    (DateTime)drows[i]["CSFPExpiration"] < toCheck)
+                    Convert.ToDateTime(dgvCSFP["CSFPExpiration", i].Value) < toCheck)
                 {
                     dgvCSFP["CSFPExpiration", i].Style.BackColor = Color.Yellow;
                 }
-                if (CCFBPrefs.EnableCSFPShowRoutes == true)
+
+                if (drows[i]["PrevService"] == DBNull.Value)
                 {
-                    dgvCSFP["Route", i].Value = drows[i]["Route"];
+                    dgvCSFP["clmLastService", i].Value = "----";
                 }
                 else
                 {
-                    if (drows[i]["PrevService"] == DBNull.Value)
-                    {
-                        dgvCSFP["Route", i].Value = "New";
-                    }
-                    else
-                    {
-                        dgvCSFP["Route", i].Value = Convert.ToDateTime(drows[i]["PrevService"]).ToShortDateString();
-                    }
+                    dgvCSFP["clmLastService", i].Value = Convert.ToDateTime(drows[i]["PrevService"]).ToShortDateString();
                 }
                 dgvCSFP["clmMethodAsInt", i].Value = drows[i]["RouteAsInt"];
-                dgvCSFP["clmDateServed", i].Value = convertToShortDate(
-                    CCFBGlobal.NullToBlank(drows[i]["TrxDate"]));
-                dgvCSFP["clmLbs", i].Value = CCFBGlobal.NullToBlank(drows[i]["Lbs"]);
-                dgvCSFP["clmHHMemID", i].Value = CCFBGlobal.NullToBlank(drows[i]["hhmID"]);
+                dgvCSFP["clmDateServed", i].Value = drows[i]["TrxDate"];
+                dgvCSFP["clmLbs", i].Value = drows[i]["Lbs"];
+                dgvCSFP["clmHHMemID", i].Value = drows[i]["hhmID"];
                 dgvCSFP.Rows[i].Cells["colNameLF"].Value = drows[i]["colNameLF"].ToString().ToUpper().Trim();
                 dgvCSFP.Rows[i].Cells["colNameFL"].Value = drows[i]["colNameFL"].ToString().ToUpper().Trim();
                 dgvCSFP.Rows[i].Cells["clmCSFP"].Value = drows[i]["CSFP"];
                 dgvCSFP.Rows[i].Cells["clmLogID"].Value = drows[i]["LogId"];
                 dgvCSFP.Rows[i].Cells["clmPhone"].Value = drows[i]["Phone"].ToString().Trim();
+                dgvCSFP.Rows[i].Cells["clmCSFPComments"].Value = drows[i]["CSFPComments"].ToString().Trim();
                 progressBar1.PerformStep();
             }
 
             rowIndex = 0;
             progressBar1.Value = 0;
             progressBar1.Visible = false;
-            btnRefreshList.Visible = true;
+            btnRefreshList.Show();
             setFindClientVisible();
             tbFindName.Visible = true;
-            Application.DoEvents();
-        }
 
-        private string convertToShortDate(string date)
-        {
-            if(date != "")
-            {
-                return DateTime.Parse(date).ToShortDateString();
-            }
-            return "";
+            Application.DoEvents();
         }
 
         private void FindByName(string colNameFull)
@@ -407,32 +429,30 @@ namespace ClientcardFB3
 
         private void cboFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //getCSFPClients();
             if (loading == false)
             {
-                if (rowCount > 0 && cboFilter.Text != nofilter)
-                {
-                    DataRow[] drows;
-                    drows = dtbl.Select(filterFldName + "='" + cboFilter.SelectedItem.ToString() + "'");
-                    loadList(drows);
-                }
-                else if (cboFilter.Text == nofilter)
-                {
-                    loadList(dtbl.Select());
-                }
+                loadListOncboFilter();
             }
         }
 
+        private void loadListOncboFilter()
+        {
+            if (rowCount > 0 && cboFilter.Text != nofilter && cboFilterFld.SelectedIndex >0)
+            {
+                DataRow[] drows;
+                drows = dtbl.Select(filterFldName + "='" + cboFilter.SelectedItem.ToString() + "'");
+                loadList(drows);
+            }
+            else 
+            {
+                loadList(dtbl.Select());
+            }
+        }
+        
         private void getDistincts(string colName, bool fmtAsShortdate)
         {
             filterFldName = colName;
-            isShortDate = fmtAsShortdate;
-            fillFilterCombo();
-        }
-
-        private void fillFilterCombo()
-        {
-            cboFilter.Visible = true;
+            //Fill cboFilter
             DataView Dv = dtbl.DefaultView;
             DataTable dtDistinct = Dv.ToTable(true, filterFldName);
             loading = true;
@@ -441,11 +461,12 @@ namespace ClientcardFB3
             cboFilter.SelectedIndex = 0;
             for (int i = 0; i < dtDistinct.Rows.Count; i++)
             {
-                if (isShortDate==true)
+                if (fmtAsShortdate == true)
                     cboFilter.Items.Add(CCFBGlobal.ValidDate(dtDistinct.Rows[i][0]).ToShortDateString());
                 else
                     cboFilter.Items.Add(dtDistinct.Rows[i][0].ToString());
             }
+            cboFilter.Visible = (cboFilter.Items.Count > 1);
             loading = false;
         }
 
@@ -454,11 +475,17 @@ namespace ClientcardFB3
             if (loading == false)
             {
                 ComboBox cbo = (ComboBox)sender;
-                getClientsList();
-                for (int i = Convert.ToInt32(cbo.Tag)+1; i < 3; i++)
+                string curUID = "";
+                loading = true;
+                for (int i = Convert.ToInt32(cbo.Tag)+1; i < cboSort.Count; i++)
                 {
-                    setcboSortOrder(i);
+                    curUID = ((parmType)cboSort[i].SelectedItem).UID;
+                    setcboSortOrder(Convert.ToInt32(cboSort[i].Tag));
+                    setcboSortSelectedIndex(i,Convert.ToInt32(curUID));
                 }
+                loading = false;
+                getClientsList(true);
+
             }
         }
 
@@ -568,38 +595,27 @@ namespace ClientcardFB3
                         break;
                     }
             }
+            Application.DoEvents();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int checkState = 0;
-
+            string checkState = "0";
             if (chkCSFP.Checked == true)
-                checkState = 1;
-            for (int i = 0; i < dgvCSFP.SelectedRows.Count; i++)
             {
-                try
-                {
-                    openConnection();
-                    updateAndInsertComm = new SqlCommand("Update HouseholdMembers Set CSFPExpiration =' "
-                        + dtpExpDate.Value.ToString() + "', CSFP = " + checkState.ToString()
-                    + " Where ID=" + dgvCSFP.SelectedRows[i].Cells["clmHHMemID"].Value.ToString(), conn);
-                    updateAndInsertComm.ExecuteNonQuery();
-                    closeConnection();
-                }
-                catch (SqlException ex)
-                {
-                    closeConnection();
-                    CCFBGlobal.appendErrorToErrorReport("CSFPExpiration = " + dtpExpDate.Value.ToString()
-                        + " ID=" + dgvCSFP.SelectedRows[i].Cells["clmHHMemID"].ToString(), ex.GetBaseException().ToString());
-                }
+                checkState = "1";
+            }
+            string updateIDs = getHhMUpdateIds();
+            if (updateIDs != "")
+            {
+                int nbrRows = CCFBGlobal.executeQuery("Update HouseholdMembers Set CSFPExpiration =' "
+                            + dtpExpDate.Value.ToString() + "', CSFP = " + checkState
+                            + " Where ID IN (" + updateIDs + ")");
+                MessageBox.Show("The CSFP Expiration date on " + nbrRows.ToString() + " CSFP Clients has been changed to [" + dtpExpDate.Value.ToString() + "]"
+               , "CSFP Expiration Date Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             changeGroupBoxVisibility(0);
-            if (cboFilter.Visible == true)
-                cboFilter_SelectedIndexChanged(cboFilter, EventArgs.Empty);
-            else
-                cboOrderBy_SelectedIndexChanged(cboOrderBy0, EventArgs.Empty);
-           
+            refreshdgvCSFP();
         }
 
         private void MarkNewCSFPClient_Click(object sender, EventArgs e)
@@ -614,11 +630,7 @@ namespace ClientcardFB3
 
                 NewCSFPSelectionForm frmNewCSFP = new NewCSFPSelectionForm(hhID);
                 frmNewCSFP.ShowDialog();
-                if (cboFilter.Visible == true)
-                    cboFilter_SelectedIndexChanged(cboFilter, EventArgs.Empty);
-                else
-                    cboOrderBy_SelectedIndexChanged(cboOrderBy0, EventArgs.Empty);
-           
+                refreshdgvCSFP();
             }
         }
 
@@ -640,18 +652,13 @@ namespace ClientcardFB3
 
         private void updateExistingService(string updateIDs)
         {
-            try
-            {
-                updateAndInsertComm = new SqlCommand("Update CSFPLog Set TrxDate='" + dtpSvcDate.Value.ToString() + "', "
+            int nbrRows = CCFBGlobal.executeQuery("Update CSFPLog Set TrxDate='" + dtpSvcDate.Value.ToString() + "', "
                           + "Lbs=" + tbLbsCSFP.Text + ", Modified='" + DateTime.Now.ToString() + "', "
-                          + "ModifiedBy='" + CCFBGlobal.currentUser_Name + "' "
-                          + "Where ID in (" + updateIDs + ")", conn);
-                updateAndInsertComm.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
-            }
+                          + "ModifiedBy='" + CCFBGlobal.dbUserName + "' "
+                          + "Where ID in (" + updateIDs + ")");
+            MessageBox.Show("The TrxDate and Lbs on " + nbrRows.ToString() + " CSFP Transaction Log has been changed"
+               , "Update Existing CSFP Service", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void btnSvcSave_Click(object sender, EventArgs e)
@@ -688,14 +695,14 @@ namespace ClientcardFB3
                 clsCSFPLog.insertNewService(insertIDs, dtpSvcDate.Value, tbLbsCSFP.Text);
 
             if (updateIDs != "")
+            {
                 updateExistingService(updateIDs);
+            }
             svcDate = dtpSvcDate.Value;
             closeConnection();
             changeGroupBoxVisibility(0);
-            if (cboFilter.Visible == true)
-                cboFilter_SelectedIndexChanged(cboFilter, EventArgs.Empty);
-            else
-                cboOrderBy_SelectedIndexChanged(cboOrderBy0, EventArgs.Empty);
+            refreshdgvCSFP();
+
             if (Convert.ToInt32(tbLbsCSFP.Text) != CCFBPrefs.CSFPLbsPerService)
             {
                 if (MessageBox.Show("Do you want to set " + tbLbsCSFP.Text + " as the default CSFP Service Lbs?",
@@ -705,6 +712,28 @@ namespace ClientcardFB3
                     CCFBPrefs.UpdateCSFPServiceLbs(tbLbsCSFP.Text);
                 }
             }
+        }
+
+        private void refreshdgvCSFP()
+        {
+            int cboFilterFldValue = cboFilterFld.SelectedIndex;
+            string cboFilterValue = cboFilter.Text;
+            getClientsList(false);
+            loading = true;
+            if (cboFilterFldValue != 0)
+            {
+                cboFilterFld.SelectedIndex = cboFilterFldValue;
+            }
+            for (int i = 0; i < cboFilter.Items.Count; i++)
+            {
+                if (cboFilter.Items[i].ToString() == cboFilterValue)
+                {
+                    cboFilter.SelectedIndex = i;
+                    break;
+                }
+            }
+            loading = false;
+            loadListOncboFilter();
         }
 
         private void tbLbsCSFP_Leave(object sender, EventArgs e)
@@ -721,18 +750,11 @@ namespace ClientcardFB3
         private void PrintPicketlist_Click(object sender, EventArgs e)
         {
             string route = "";
-            if(cboOrderBy0.SelectedItem.ToString() != "DistributionMethod")
-            {
-                route += "ALL Routes";
-            }
+            if(cboFilterFld.SelectedIndex == 1 && cboFilter.SelectedIndex !=0)
+                route += cboFilter.SelectedItem.ToString();
             else
             {
-                if(cboFilter.SelectedIndex == 0)
-                    route += "ALL Routes";
-                else
-                {
-                    route += cboFilter.SelectedItem.ToString();
-                }
+                route += "ALL Routes";
             }
 
 
@@ -788,25 +810,16 @@ namespace ClientcardFB3
                 openConnection();
                 deleteCSFPServices(deleteIDs);
                 closeConnection();
-                if (cboFilter.Visible == true)
-                    cboFilter_SelectedIndexChanged(cboFilter, EventArgs.Empty);
-                else
-                    cboOrderBy_SelectedIndexChanged(cboOrderBy0, EventArgs.Empty);
+                refreshdgvCSFP();
             }
         }
 
         private void deleteCSFPServices(string deleteIDs)
         {
-            try
-            {
-                updateAndInsertComm = new SqlCommand("Delete From CSFPLog "
-                          + "Where ID in (" + deleteIDs + ")", conn);
-                updateAndInsertComm.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
-            }
+            int nbrRows = CCFBGlobal.executeQuery("Delete From CSFPLog "
+                          + "Where ID in (" + deleteIDs + ")");
+            MessageBox.Show(nbrRows.ToString() + " CSFP Service have been deleted."
+                           , "Delete CSFP Service", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void cboPeriod_SelectionChangeCommitted(object sender, EventArgs e)
@@ -830,13 +843,22 @@ namespace ClientcardFB3
             switch (cboFilterFld.SelectedIndex)
             {
                 case 1:
-                    getDistincts("Route", false);
+                    getDistincts("Route", false);       //Distribution Method
                     break;
                 case 2:
-                    getDistincts("Address",false);
+                    getDistincts("CSFPStatus", false);  //Status
                     break;
                 case 3:
-                    getDistincts("CSFPExpiration",true);
+                    getDistincts("Address", false);     //Address
+                    break;
+                case 4:
+                    getDistincts("TrxDate", true);      //Period Service Date
+                    break;
+                case 5:
+                    getDistincts("PrevService", true);  //Previous Service Date
+                    break;
+                case 6:
+                    getDistincts("CSFPExpiration",true);//Expiration Date
                     break;
                 default:
                     //loadList(dtbl.Select());
@@ -852,8 +874,9 @@ namespace ClientcardFB3
 
         private void setcboSortOrder(int idx)
         {
-            bool tmpLoading = loading;
+            bool curLoading = loading;
             string whereClause = "";
+            loading = true;
             if (idx > 0)
             {
                 for (int i = 0; i < idx; i++)
@@ -873,21 +896,34 @@ namespace ClientcardFB3
                 if (whereClause != "")
                     whereClause += ")";
             }
-            loading = true;
             object sortList = new parmTypeCodes(CCFBGlobal.parmTbl_CSFPSortOrder, CCFBGlobal.connectionString, whereClause);
             if (sortList != null)
             {
-                cboSort[idx].DataSource = ((parmTypeCodes)sortList).TypeCodesArray;
-                cboSort[idx].DisplayMember = "LongName";
-                cboSort[idx].ValueMember = "UID";
+                    cboSort[idx].DataSource = ((parmTypeCodes)sortList).TypeCodesArray;
+                    cboSort[idx].DisplayMember = "LongName";
+                    cboSort[idx].ValueMember = "UID";
             }
             else
             {
-                cboSort[idx].DataSource = null;
-                cboSort[idx].Items.Add("Not Initialized");
+                    cboSort[idx].DataSource = null;
+                    cboSort[idx].Items.Add("Not Initialized");
             }
-            cboSort[idx].SelectedIndex = 0;
-            loading = tmpLoading;
+            loading = curLoading;
+        }
+
+        private void setcboSortSelectedIndex(int idx, int parmID)
+        {
+            bool curLoading = loading;
+            loading = true;
+            foreach (parmType item in cboSort[idx].Items)
+            {
+                if (Convert.ToInt32(item.UID) == parmID)
+                {
+                    cboSort[idx].SelectedItem = item;
+                    break;
+                }
+            }
+            loading = curLoading;
         }
 
         private string getOrderByText()
@@ -906,9 +942,96 @@ namespace ClientcardFB3
                         sql += ", "; 
                     }
                     sql += ((parmType)cbo.Items[cbo.SelectedIndex]).ShortName;
+                    int i = Convert.ToInt32(cbo.Tag.ToString());
+                    if (cboAscDesc[i].SelectedIndex > 0)
+                    {
+                        sql += " DESC";
+                    }
                 }
             }
             return sql;
+        }
+
+        private string getWhereClause()
+        {
+            string sList = "";
+            foreach (CheckBox chk in chkBoxList)
+	        {
+		        if (chk.Checked == true)
+                {
+                    if (sList == "")
+                    {
+                        sList = chk.Tag.ToString();
+                    }
+                    else
+                    {
+                        sList += "," + chk.Tag.ToString();
+                    }
+                }
+	        }
+            if (sList == "")
+            {
+                sList = "1";
+            }
+            return " WHERE hhm.ID IN (SELECT ID hhmID FROM HouseholdMembers WHERE CSFP = 1 AND Inactive = 0 AND CSFPStatus IN (" + sList + "))";
+        }
+
+        private void gbRenewExpDate_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboAscDesc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (loading == false)
+            {
+                refreshdgvCSFP();
+            }
+        }
+
+        private void cmsdgvCSFP_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            string tmp = "CSFPClients-" + cboYear.Text + '-' + cboMonth.Text;
+            if (cboFilterFld.SelectedIndex > 0 && cboFilter.SelectedIndex > 0)
+            {
+                tmp += "-" + cboFilterFld.Text + " " + cboFilter.Text;
+            }
+            CCFBGlobal.ExportToExcel(dgvCSFP,tmp);
+        }
+
+        private void tsbMarkStatus_Click(object sender, EventArgs e)
+        {
+            ToolStripButton btn = (ToolStripButton)sender;
+            string newStatus = btn.Tag.ToString();
+            string updateIDs = getHhMUpdateIds();
+            if (updateIDs != "")
+            {
+                int nbrRows = CCFBGlobal.executeQuery("Update Householdmembers Set CSFPStatus=" + newStatus
+                            + ", Modified='" + DateTime.Now.ToString() + "', "
+                            + "ModifiedBy='" + CCFBGlobal.dbUserName + "' "
+                            + "Where ID in (" + updateIDs + ")");
+                MessageBox.Show("The CSFPStatus on " + nbrRows.ToString() + " CSFP Clients has been changed to [" + btn.Text.Replace("Mark", "") + "]"
+                               , "CSFP Status Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                refreshdgvCSFP();
+            }
+            else
+            {
+                MessageBox.Show("No CSFP Clients are selected", "Change CSFP Status", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private string getHhMUpdateIds()
+        {
+            string updateIDs = "";
+            for (int i = 0; i < dgvCSFP.SelectedRows.Count; i++)
+            {
+                if (updateIDs != "")
+                {
+                    updateIDs += ", ";
+                }
+                updateIDs += dgvCSFP.SelectedRows[i].Cells["clmHHMemID"].Value.ToString();
+            }
+            return updateIDs;
         }
     }
 }

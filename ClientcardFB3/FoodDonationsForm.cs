@@ -194,6 +194,7 @@ namespace ClientcardFB3
                 if (tbDonorID.Text.Trim() != "" && tbName.Text.Trim() != "" && tbLbs.Text.Trim() != "")
                 {
                     //Create a new row from the DataSet
+                    clsFoodDonations.openWhere(" WHERE DonorID = " + tbDonorID.Text + " AND TrxDate = '" + dtDonationDate.Value.ToShortDateString() + "'"); 
                     DataRow drow = clsFoodDonations.DSet.Tables[0].NewRow();
                     //if (drow.Table.Columns.Count < 10)
                     //{
@@ -865,6 +866,17 @@ namespace ClientcardFB3
                 lblDnrHist.Text = "[" + clsDonors.ID.ToString() + "] " + clsDonors.Name;
                 loadDonorLogList();
                 //clsFoodDonations.openForDate((int)FoodDonations.datefieldselection.TrxDate, dtDonationDate.Value);
+            }
+        }
+
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            if (bNormalMode == true)
+            {
+                if (dtpTo.Value < dtpFrom.Value)
+                {
+                    dtpTo.Value = dtpFrom.Value.AddMonths(1);
+                }
             }
         }
     }

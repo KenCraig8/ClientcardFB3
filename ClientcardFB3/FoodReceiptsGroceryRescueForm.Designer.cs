@@ -79,7 +79,7 @@
             this.rdoWeek2 = new System.Windows.Forms.RadioButton();
             this.rdoWeek1 = new System.Windows.Forms.RadioButton();
             this.btnClose = new System.Windows.Forms.Button();
-            this.dgvMonthReceipts = new System.Windows.Forms.DataGridView();
+            this.dgvDailyReceipts = new System.Windows.Forms.DataGridView();
             this.colFoodClass = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmSunday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColMonday = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,14 +98,16 @@
             this.clmWeek5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmWeek6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmWeekTotals = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlMonthly = new System.Windows.Forms.Panel();
-            this.pnlEditDaily = new System.Windows.Forms.Panel();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnSummary = new System.Windows.Forms.Button();
             this.cboDonationType = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnEmailRpt = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pnlMonthly = new System.Windows.Forms.Panel();
+            this.pnlEditDaily = new System.Windows.Forms.Panel();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,17 +126,25 @@
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpWeek.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMonthReceipts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDailyReceipts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonthTotals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.pnlMonthly.SuspendLayout();
             this.pnlEditDaily.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboYear
             // 
             this.cboYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboYear.FormattingEnabled = true;
-            this.cboYear.Location = new System.Drawing.Point(12, 78);
+            this.cboYear.Location = new System.Drawing.Point(341, 25);
             this.cboYear.Name = "cboYear";
             this.cboYear.Size = new System.Drawing.Size(61, 24);
             this.cboYear.TabIndex = 1;
@@ -143,7 +153,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 62);
+            this.label1.Location = new System.Drawing.Point(338, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 38;
@@ -152,7 +162,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 62);
+            this.label2.Location = new System.Drawing.Point(405, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 39;
@@ -175,7 +185,7 @@
             "October",
             "November",
             "December"});
-            this.cboReportMonth.Location = new System.Drawing.Point(79, 78);
+            this.cboReportMonth.Location = new System.Drawing.Point(408, 25);
             this.cboReportMonth.Name = "cboReportMonth";
             this.cboReportMonth.Size = new System.Drawing.Size(107, 24);
             this.cboReportMonth.TabIndex = 40;
@@ -183,7 +193,7 @@
             // 
             // btnLoadPeriodData
             // 
-            this.btnLoadPeriodData.Location = new System.Drawing.Point(207, 73);
+            this.btnLoadPeriodData.Location = new System.Drawing.Point(536, 20);
             this.btnLoadPeriodData.Name = "btnLoadPeriodData";
             this.btnLoadPeriodData.Size = new System.Drawing.Size(110, 32);
             this.btnLoadPeriodData.TabIndex = 41;
@@ -194,7 +204,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 14);
+            this.label3.Location = new System.Drawing.Point(4, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 43;
@@ -204,7 +214,7 @@
             // 
             this.cboStore.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboStore.FormattingEnabled = true;
-            this.cboStore.Location = new System.Drawing.Point(12, 30);
+            this.cboStore.Location = new System.Drawing.Point(7, 24);
             this.cboStore.Name = "cboStore";
             this.cboStore.Size = new System.Drawing.Size(305, 24);
             this.cboStore.TabIndex = 42;
@@ -212,15 +222,16 @@
             // 
             // grpWeek
             // 
+            this.grpWeek.BackColor = System.Drawing.Color.LightGreen;
             this.grpWeek.Controls.Add(this.rdoWeek6);
             this.grpWeek.Controls.Add(this.rdoWeek5);
             this.grpWeek.Controls.Add(this.rdoWeek4);
             this.grpWeek.Controls.Add(this.rdoWeek3);
             this.grpWeek.Controls.Add(this.rdoWeek2);
             this.grpWeek.Controls.Add(this.rdoWeek1);
-            this.grpWeek.Location = new System.Drawing.Point(188, 0);
+            this.grpWeek.Location = new System.Drawing.Point(334, 0);
             this.grpWeek.Name = "grpWeek";
-            this.grpWeek.Size = new System.Drawing.Size(452, 37);
+            this.grpWeek.Size = new System.Drawing.Size(450, 37);
             this.grpWeek.TabIndex = 32;
             this.grpWeek.TabStop = false;
             // 
@@ -300,7 +311,8 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(896, 8);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Location = new System.Drawing.Point(886, 28);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(82, 32);
             this.btnClose.TabIndex = 34;
@@ -308,13 +320,13 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // dgvMonthReceipts
+            // dgvDailyReceipts
             // 
-            this.dgvMonthReceipts.AllowUserToAddRows = false;
-            this.dgvMonthReceipts.AllowUserToDeleteRows = false;
-            this.dgvMonthReceipts.AllowUserToOrderColumns = true;
-            this.dgvMonthReceipts.AllowUserToResizeRows = false;
-            this.dgvMonthReceipts.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvDailyReceipts.AllowUserToAddRows = false;
+            this.dgvDailyReceipts.AllowUserToDeleteRows = false;
+            this.dgvDailyReceipts.AllowUserToOrderColumns = true;
+            this.dgvDailyReceipts.AllowUserToResizeRows = false;
+            this.dgvDailyReceipts.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -322,9 +334,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMonthReceipts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvMonthReceipts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMonthReceipts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDailyReceipts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDailyReceipts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDailyReceipts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colFoodClass,
             this.clmSunday,
             this.ColMonday,
@@ -334,20 +346,19 @@
             this.colFriday,
             this.colSaturday,
             this.colTotal});
-            this.dgvMonthReceipts.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvMonthReceipts.GridColor = System.Drawing.Color.Gray;
-            this.dgvMonthReceipts.Location = new System.Drawing.Point(0, 41);
-            this.dgvMonthReceipts.Name = "dgvMonthReceipts";
-            this.dgvMonthReceipts.RowHeadersVisible = false;
-            this.dgvMonthReceipts.RowHeadersWidth = 5;
-            this.dgvMonthReceipts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvMonthReceipts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMonthReceipts.Size = new System.Drawing.Size(980, 295);
-            this.dgvMonthReceipts.TabIndex = 1;
-            this.dgvMonthReceipts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonthReceipts_CellContentClick);
-            this.dgvMonthReceipts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonthReceipts_CellEndEdit);
-            this.dgvMonthReceipts.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMonthReceipts_CellEnter);
-            this.dgvMonthReceipts.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvMonthReceipts_CellValidating);
+            this.dgvDailyReceipts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDailyReceipts.GridColor = System.Drawing.Color.Gray;
+            this.dgvDailyReceipts.Location = new System.Drawing.Point(0, 0);
+            this.dgvDailyReceipts.Name = "dgvDailyReceipts";
+            this.dgvDailyReceipts.RowHeadersVisible = false;
+            this.dgvDailyReceipts.RowHeadersWidth = 5;
+            this.dgvDailyReceipts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvDailyReceipts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvDailyReceipts.Size = new System.Drawing.Size(972, 137);
+            this.dgvDailyReceipts.TabIndex = 1;
+            this.dgvDailyReceipts.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDailyReceipts_CellEndEdit);
+            this.dgvDailyReceipts.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDailyReceipts_CellEnter);
+            this.dgvDailyReceipts.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvMonthReceipts_CellValidating);
             // 
             // colFoodClass
             // 
@@ -481,7 +492,7 @@
             this.dgvMonthTotals.RowHeadersVisible = false;
             this.dgvMonthTotals.RowHeadersWidth = 5;
             this.dgvMonthTotals.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvMonthTotals.Size = new System.Drawing.Size(962, 277);
+            this.dgvMonthTotals.Size = new System.Drawing.Size(968, 232);
             this.dgvMonthTotals.TabIndex = 2;
             // 
             // clmWeekFoodClass
@@ -572,31 +583,12 @@
             this.clmWeekTotals.ReadOnly = true;
             this.clmWeekTotals.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // pnlMonthly
-            // 
-            this.pnlMonthly.Controls.Add(this.dgvMonthTotals);
-            this.pnlMonthly.Location = new System.Drawing.Point(1008, 136);
-            this.pnlMonthly.Name = "pnlMonthly";
-            this.pnlMonthly.Size = new System.Drawing.Size(962, 277);
-            this.pnlMonthly.TabIndex = 37;
-            // 
-            // pnlEditDaily
-            // 
-            this.pnlEditDaily.BackColor = System.Drawing.Color.LightGreen;
-            this.pnlEditDaily.Controls.Add(this.grpWeek);
-            this.pnlEditDaily.Controls.Add(this.dgvMonthReceipts);
-            this.pnlEditDaily.Location = new System.Drawing.Point(1, 124);
-            this.pnlEditDaily.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlEditDaily.Name = "pnlEditDaily";
-            this.pnlEditDaily.Size = new System.Drawing.Size(980, 336);
-            this.pnlEditDaily.TabIndex = 38;
-            this.pnlEditDaily.Visible = false;
-            // 
             // btnEdit
             // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnEdit.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Location = new System.Drawing.Point(362, 92);
+            this.btnEdit.Location = new System.Drawing.Point(423, 80);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(110, 32);
@@ -608,10 +600,11 @@
             // 
             // btnSummary
             // 
+            this.btnSummary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSummary.BackColor = System.Drawing.Color.Gainsboro;
             this.btnSummary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSummary.ForeColor = System.Drawing.Color.Black;
-            this.btnSummary.Location = new System.Drawing.Point(472, 92);
+            this.btnSummary.Location = new System.Drawing.Point(536, 80);
             this.btnSummary.Margin = new System.Windows.Forms.Padding(0);
             this.btnSummary.Name = "btnSummary";
             this.btnSummary.Size = new System.Drawing.Size(110, 32);
@@ -625,7 +618,7 @@
             // 
             this.cboDonationType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDonationType.FormattingEnabled = true;
-            this.cboDonationType.Location = new System.Drawing.Point(345, 30);
+            this.cboDonationType.Location = new System.Drawing.Point(115, 8);
             this.cboDonationType.Name = "cboDonationType";
             this.cboDonationType.Size = new System.Drawing.Size(178, 24);
             this.cboDonationType.TabIndex = 44;
@@ -634,16 +627,19 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(345, 14);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(5, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 13);
+            this.label4.Size = new System.Drawing.Size(101, 17);
             this.label4.TabIndex = 45;
             this.label4.Text = "Donation Type";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnPrint
             // 
+            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPrint.Enabled = false;
-            this.btnPrint.Location = new System.Drawing.Point(896, 43);
+            this.btnPrint.Location = new System.Drawing.Point(796, 12);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(82, 32);
             this.btnPrint.TabIndex = 46;
@@ -653,14 +649,88 @@
             // 
             // btnEmailRpt
             // 
+            this.btnEmailRpt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEmailRpt.Enabled = false;
-            this.btnEmailRpt.Location = new System.Drawing.Point(896, 79);
+            this.btnEmailRpt.Location = new System.Drawing.Point(796, 48);
             this.btnEmailRpt.Name = "btnEmailRpt";
             this.btnEmailRpt.Size = new System.Drawing.Size(82, 32);
             this.btnEmailRpt.TabIndex = 47;
             this.btnEmailRpt.Text = "Email Report";
             this.btnEmailRpt.UseVisualStyleBackColor = true;
             this.btnEmailRpt.Click += new System.EventHandler(this.btnEmailRpt_Click);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSummary);
+            this.splitContainer1.Panel1.Controls.Add(this.btnEmailRpt);
+            this.splitContainer1.Panel1.Controls.Add(this.btnEdit);
+            this.splitContainer1.Panel1.Controls.Add(this.cboYear);
+            this.splitContainer1.Panel1.Controls.Add(this.btnPrint);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
+            this.splitContainer1.Panel1.Controls.Add(this.btnClose);
+            this.splitContainer1.Panel1.Controls.Add(this.cboReportMonth);
+            this.splitContainer1.Panel1.Controls.Add(this.btnLoadPeriodData);
+            this.splitContainer1.Panel1.Controls.Add(this.cboStore);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.pnlMonthly);
+            this.splitContainer1.Panel2.Controls.Add(this.pnlEditDaily);
+            this.splitContainer1.Size = new System.Drawing.Size(974, 642);
+            this.splitContainer1.SplitterDistance = 116;
+            this.splitContainer1.SplitterWidth = 1;
+            this.splitContainer1.TabIndex = 48;
+            // 
+            // pnlMonthly
+            // 
+            this.pnlMonthly.Controls.Add(this.dgvMonthTotals);
+            this.pnlMonthly.Location = new System.Drawing.Point(0, 224);
+            this.pnlMonthly.Name = "pnlMonthly";
+            this.pnlMonthly.Size = new System.Drawing.Size(968, 232);
+            this.pnlMonthly.TabIndex = 3;
+            // 
+            // pnlEditDaily
+            // 
+            this.pnlEditDaily.Controls.Add(this.splitContainer2);
+            this.pnlEditDaily.Location = new System.Drawing.Point(0, 0);
+            this.pnlEditDaily.Name = "pnlEditDaily";
+            this.pnlEditDaily.Size = new System.Drawing.Size(972, 176);
+            this.pnlEditDaily.TabIndex = 1;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.LightGreen;
+            this.splitContainer2.Panel1.Controls.Add(this.grpWeek);
+            this.splitContainer2.Panel1.Controls.Add(this.cboDonationType);
+            this.splitContainer2.Panel1.Controls.Add(this.label4);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.dgvDailyReceipts);
+            this.splitContainer2.Size = new System.Drawing.Size(972, 176);
+            this.splitContainer2.SplitterDistance = 38;
+            this.splitContainer2.SplitterWidth = 1;
+            this.splitContainer2.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -776,6 +846,7 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn11.Width = 95;
             // 
             // dataGridViewTextBoxColumn12
             // 
@@ -786,6 +857,7 @@
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn12.Width = 95;
             // 
             // dataGridViewTextBoxColumn13
             // 
@@ -796,6 +868,7 @@
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
             this.dataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn13.Width = 95;
             // 
             // dataGridViewTextBoxColumn14
             // 
@@ -806,6 +879,7 @@
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
             this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn14.Width = 95;
             // 
             // dataGridViewTextBoxColumn15
             // 
@@ -816,6 +890,7 @@
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn15.Width = 95;
             // 
             // dataGridViewTextBoxColumn16
             // 
@@ -826,6 +901,7 @@
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
             this.dataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn16.Width = 95;
             // 
             // dataGridViewTextBoxColumn17
             // 
@@ -836,39 +912,34 @@
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
             this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn17.Width = 95;
             // 
             // FoodReceiptsGroceryRescueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(984, 485);
-            this.Controls.Add(this.pnlMonthly);
-            this.Controls.Add(this.btnEmailRpt);
-            this.Controls.Add(this.btnPrint);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.cboDonationType);
-            this.Controls.Add(this.btnSummary);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.cboStore);
-            this.Controls.Add(this.btnLoadPeriodData);
-            this.Controls.Add(this.cboReportMonth);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cboYear);
-            this.Controls.Add(this.pnlEditDaily);
+            this.ClientSize = new System.Drawing.Size(974, 642);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "FoodReceiptsGroceryRescueForm";
             this.Text = "Grocery Rescue";
             this.grpWeek.ResumeLayout(false);
             this.grpWeek.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMonthReceipts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDailyReceipts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonthTotals)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.pnlMonthly.ResumeLayout(false);
             this.pnlEditDaily.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -889,10 +960,8 @@
         private System.Windows.Forms.RadioButton rdoWeek2;
         private System.Windows.Forms.RadioButton rdoWeek1;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.DataGridView dgvMonthReceipts;
+        private System.Windows.Forms.DataGridView dgvDailyReceipts;
         private System.Windows.Forms.DataGridView dgvMonthTotals;
-        private System.Windows.Forms.Panel pnlMonthly;
-        private System.Windows.Forms.Panel pnlEditDaily;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnSummary;
         private System.Windows.Forms.ComboBox cboDonationType;
@@ -933,5 +1002,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmWeek5;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmWeek6;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmWeekTotals;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel pnlMonthly;
+        private System.Windows.Forms.Panel pnlEditDaily;
+        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }

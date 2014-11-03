@@ -28,11 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditCSFPForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,6 +54,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuActions = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEditExpiration = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +74,8 @@
             this.cboYear = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvCSFP = new System.Windows.Forms.DataGridView();
+            this.cmsdgvCSFP = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiExport = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cboOrderBy0 = new System.Windows.Forms.ComboBox();
@@ -91,16 +105,33 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbEditExp = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbsGiveSvc = new System.Windows.Forms.ToolStripButton();
+            this.tsbGiveSvc = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbsDeleteSvc = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeleteSvc = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbsMarkNewCSFP = new System.Windows.Forms.ToolStripButton();
+            this.tsbMarkNewCSFP = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.tbsPrintPickList = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrintPickList = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbMarkWaiting = new System.Windows.Forms.ToolStripButton();
+            this.tsbMarkActive = new System.Windows.Forms.ToolStripButton();
+            this.tbsMarkHold = new System.Windows.Forms.ToolStripButton();
+            this.tsbMarkWarned = new System.Windows.Forms.ToolStripButton();
+            this.tsbMarkTerminated = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gbStatusFlags = new System.Windows.Forms.GroupBox();
+            this.chkStatus5 = new System.Windows.Forms.CheckBox();
+            this.chkStatus4 = new System.Windows.Forms.CheckBox();
+            this.chkStatus2 = new System.Windows.Forms.CheckBox();
+            this.chkStatus3 = new System.Windows.Forms.CheckBox();
+            this.chkStatus1 = new System.Windows.Forms.CheckBox();
+            this.chkStatus0 = new System.Windows.Forms.CheckBox();
+            this.tbCnt = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.gbOrderBy = new System.Windows.Forms.GroupBox();
+            this.cboAscDesc2 = new System.Windows.Forms.ComboBox();
+            this.cboAscDesc1 = new System.Windows.Forms.ComboBox();
+            this.cboAscDesc0 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cboOrderBy2 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -120,16 +151,22 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Route = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmMethodAsInt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HouseholdID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCSFPStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AptNbr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CSFPExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Route = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmMethodAsInt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCSFPComments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmDateServed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmLbs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmLastService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSFPExpiration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmHHMemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNameFL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNameLF = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -137,6 +174,7 @@
             this.clmLogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCSFP)).BeginInit();
+            this.cmsdgvCSFP.SuspendLayout();
             this.gbFilter.SuspendLayout();
             this.gbRenewExpDate.SuspendLayout();
             this.gbNewService.SuspendLayout();
@@ -145,6 +183,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.gbStatusFlags.SuspendLayout();
             this.gbOrderBy.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,7 +195,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -273,7 +312,7 @@
             "October",
             "November",
             "December"});
-            this.cboMonth.Location = new System.Drawing.Point(86, 60);
+            this.cboMonth.Location = new System.Drawing.Point(86, 56);
             this.cboMonth.Margin = new System.Windows.Forms.Padding(4);
             this.cboMonth.Name = "cboMonth";
             this.cboMonth.Size = new System.Drawing.Size(90, 24);
@@ -282,7 +321,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(12, 41);
+            this.label2.Location = new System.Drawing.Point(12, 37);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 17);
@@ -293,7 +332,7 @@
             // cboYear
             // 
             this.cboYear.FormattingEnabled = true;
-            this.cboYear.Location = new System.Drawing.Point(8, 60);
+            this.cboYear.Location = new System.Drawing.Point(8, 56);
             this.cboYear.Margin = new System.Windows.Forms.Padding(4);
             this.cboYear.Name = "cboYear";
             this.cboYear.Size = new System.Drawing.Size(70, 24);
@@ -302,7 +341,7 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(86, 41);
+            this.label3.Location = new System.Drawing.Point(86, 37);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 17);
@@ -317,21 +356,25 @@
             this.dgvCSFP.AllowUserToResizeRows = false;
             this.dgvCSFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCSFP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Route,
+            this.clmMethodAsInt,
             this.HouseholdID,
+            this.clmCSFPStatus,
             this.clmName,
             this.Address,
             this.AptNbr,
-            this.CSFPExpiration,
-            this.Route,
-            this.clmMethodAsInt,
+            this.clmPhone,
+            this.clmCSFPComments,
             this.clmDateServed,
             this.clmLbs,
-            this.clmPhone,
+            this.clmLastService,
+            this.CSFPExpiration,
             this.clmHHMemID,
             this.colNameFL,
             this.colNameLF,
             this.clmCSFP,
             this.clmLogID});
+            this.dgvCSFP.ContextMenuStrip = this.cmsdgvCSFP;
             this.dgvCSFP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCSFP.Location = new System.Drawing.Point(0, 0);
             this.dgvCSFP.Name = "dgvCSFP";
@@ -339,12 +382,26 @@
             this.dgvCSFP.RowHeadersVisible = false;
             this.dgvCSFP.RowTemplate.Height = 24;
             this.dgvCSFP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCSFP.Size = new System.Drawing.Size(984, 398);
+            this.dgvCSFP.Size = new System.Drawing.Size(1184, 449);
             this.dgvCSFP.TabIndex = 32;
+            // 
+            // cmsdgvCSFP
+            // 
+            this.cmsdgvCSFP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiExport});
+            this.cmsdgvCSFP.Name = "cmsdgvCSFP";
+            this.cmsdgvCSFP.Size = new System.Drawing.Size(154, 26);
+            this.cmsdgvCSFP.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsdgvCSFP_ItemClicked);
+            // 
+            // tsmiExport
+            // 
+            this.tsmiExport.Name = "tsmiExport";
+            this.tsmiExport.Size = new System.Drawing.Size(153, 22);
+            this.tsmiExport.Text = "Export To Excel";
             // 
             // btnRefreshList
             // 
-            this.btnRefreshList.Location = new System.Drawing.Point(25, 91);
+            this.btnRefreshList.Location = new System.Drawing.Point(25, 87);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Size = new System.Drawing.Size(122, 27);
             this.btnRefreshList.TabIndex = 33;
@@ -356,13 +413,13 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 2);
+            this.label1.Location = new System.Drawing.Point(40, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 17);
+            this.label1.Size = new System.Drawing.Size(57, 17);
             this.label1.TabIndex = 79;
             this.label1.Tag = "";
-            this.label1.Text = "Search Field:";
+            this.label1.Text = "Search:";
             // 
             // cboOrderBy0
             // 
@@ -376,10 +433,13 @@
             this.cboOrderBy0.Items.AddRange(new object[] {
             "Last, First Name",
             "FirstName, LastName",
-            "DistributionMethod",
+            "Route",
             "HouseholdID",
+            "Date Served",
+            "Last Service",
             "Expiration Date",
-            "Address"});
+            "Address",
+            "Phone"});
             this.cboOrderBy0.Location = new System.Drawing.Point(41, 23);
             this.cboOrderBy0.Margin = new System.Windows.Forms.Padding(4);
             this.cboOrderBy0.Name = "cboOrderBy0";
@@ -402,25 +462,24 @@
             // 
             // lblFilterBy
             // 
-            this.lblFilterBy.AutoSize = true;
             this.lblFilterBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilterBy.Location = new System.Drawing.Point(165, 22);
+            this.lblFilterBy.Location = new System.Drawing.Point(5, 60);
             this.lblFilterBy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFilterBy.Name = "lblFilterBy";
-            this.lblFilterBy.Size = new System.Drawing.Size(99, 17);
+            this.lblFilterBy.Size = new System.Drawing.Size(56, 17);
             this.lblFilterBy.TabIndex = 72;
             this.lblFilterBy.Tag = "SortOrder";
-            this.lblFilterBy.Text = "Filtered Value:";
+            this.lblFilterBy.Text = "Value:";
+            this.lblFilterBy.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // cboFilter
             // 
             this.cboFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFilter.FormattingEnabled = true;
-            this.cboFilter.Location = new System.Drawing.Point(165, 40);
+            this.cboFilter.Location = new System.Drawing.Point(68, 56);
             this.cboFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cboFilter.Name = "cboFilter";
             this.cboFilter.Size = new System.Drawing.Size(237, 24);
-            this.cboFilter.Sorted = true;
             this.cboFilter.TabIndex = 73;
             this.cboFilter.Visible = false;
             this.cboFilter.SelectedIndexChanged += new System.EventHandler(this.cboFilter_SelectedIndexChanged);
@@ -429,7 +488,7 @@
             // 
             this.tbFindName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.tbFindName.HideSelection = false;
-            this.tbFindName.Location = new System.Drawing.Point(195, 22);
+            this.tbFindName.Location = new System.Drawing.Point(105, 48);
             this.tbFindName.Margin = new System.Windows.Forms.Padding(4);
             this.tbFindName.Name = "tbFindName";
             this.tbFindName.Size = new System.Drawing.Size(146, 24);
@@ -439,7 +498,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(3, 90);
+            this.progressBar1.Location = new System.Drawing.Point(3, 86);
             this.progressBar1.Margin = new System.Windows.Forms.Padding(4);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(169, 28);
@@ -454,11 +513,12 @@
             this.gbFilter.Controls.Add(this.label8);
             this.gbFilter.Controls.Add(this.cboFilter);
             this.gbFilter.Controls.Add(this.lblFilterBy);
-            this.gbFilter.Location = new System.Drawing.Point(180, 120);
+            this.gbFilter.Location = new System.Drawing.Point(443, 4);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(413, 70);
+            this.gbFilter.Size = new System.Drawing.Size(312, 88);
             this.gbFilter.TabIndex = 80;
             this.gbFilter.TabStop = false;
+            this.gbFilter.Text = "Filter";
             this.gbFilter.Visible = false;
             // 
             // cboFilterFld
@@ -473,26 +533,29 @@
             this.cboFilterFld.Items.AddRange(new object[] {
             "<None>",
             "Distribution Method",
+            "Status",
             "Address",
+            "Date Served",
+            "Previous Service Date",
             "Expiration Date"});
-            this.cboFilterFld.Location = new System.Drawing.Point(11, 40);
+            this.cboFilterFld.Location = new System.Drawing.Point(68, 24);
             this.cboFilterFld.Margin = new System.Windows.Forms.Padding(4);
             this.cboFilterFld.Name = "cboFilterFld";
-            this.cboFilterFld.Size = new System.Drawing.Size(148, 23);
+            this.cboFilterFld.Size = new System.Drawing.Size(172, 23);
             this.cboFilterFld.TabIndex = 83;
             this.cboFilterFld.SelectedIndexChanged += new System.EventHandler(this.cboFilterFld_SelectedIndexChanged);
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(5, 21);
+            this.label8.Location = new System.Drawing.Point(5, 27);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 17);
+            this.label8.Size = new System.Drawing.Size(56, 17);
             this.label8.TabIndex = 82;
             this.label8.Tag = "SortOrder";
-            this.label8.Text = "Filter Field:";
+            this.label8.Text = "Field:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // gbRenewExpDate
             // 
@@ -502,16 +565,17 @@
             this.gbRenewExpDate.Controls.Add(this.chkCSFP);
             this.gbRenewExpDate.Controls.Add(this.dtpExpDate);
             this.gbRenewExpDate.Controls.Add(this.label5);
-            this.gbRenewExpDate.Location = new System.Drawing.Point(848, 7);
+            this.gbRenewExpDate.Location = new System.Drawing.Point(759, 122);
             this.gbRenewExpDate.Name = "gbRenewExpDate";
-            this.gbRenewExpDate.Size = new System.Drawing.Size(270, 105);
+            this.gbRenewExpDate.Size = new System.Drawing.Size(270, 92);
             this.gbRenewExpDate.TabIndex = 81;
             this.gbRenewExpDate.TabStop = false;
             this.gbRenewExpDate.Visible = false;
+            this.gbRenewExpDate.Enter += new System.EventHandler(this.gbRenewExpDate_Enter);
             // 
             // btnAdd6Months
             // 
-            this.btnAdd6Months.Location = new System.Drawing.Point(144, 36);
+            this.btnAdd6Months.Location = new System.Drawing.Point(144, 30);
             this.btnAdd6Months.Name = "btnAdd6Months";
             this.btnAdd6Months.Size = new System.Drawing.Size(112, 24);
             this.btnAdd6Months.TabIndex = 5;
@@ -522,7 +586,7 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(205, 64);
+            this.btnCancel.Location = new System.Drawing.Point(205, 58);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(60, 30);
             this.btnCancel.TabIndex = 4;
@@ -533,7 +597,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(139, 64);
+            this.btnSave.Location = new System.Drawing.Point(139, 58);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(60, 30);
             this.btnSave.TabIndex = 3;
@@ -554,7 +618,7 @@
             // dtpExpDate
             // 
             this.dtpExpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpDate.Location = new System.Drawing.Point(6, 71);
+            this.dtpExpDate.Location = new System.Drawing.Point(6, 65);
             this.dtpExpDate.Name = "dtpExpDate";
             this.dtpExpDate.Size = new System.Drawing.Size(127, 23);
             this.dtpExpDate.TabIndex = 1;
@@ -562,7 +626,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 51);
+            this.label5.Location = new System.Drawing.Point(3, 45);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 17);
             this.label5.TabIndex = 0;
@@ -576,9 +640,9 @@
             this.gbNewService.Controls.Add(this.btnSvcCancel);
             this.gbNewService.Controls.Add(this.btnSvcSave);
             this.gbNewService.Controls.Add(this.lblService);
-            this.gbNewService.Location = new System.Drawing.Point(531, 7);
+            this.gbNewService.Location = new System.Drawing.Point(444, 122);
             this.gbNewService.Name = "gbNewService";
-            this.gbNewService.Size = new System.Drawing.Size(309, 109);
+            this.gbNewService.Size = new System.Drawing.Size(309, 92);
             this.gbNewService.TabIndex = 82;
             this.gbNewService.TabStop = false;
             this.gbNewService.Visible = false;
@@ -594,7 +658,7 @@
             // 
             // tbLbsCSFP
             // 
-            this.tbLbsCSFP.Location = new System.Drawing.Point(88, 73);
+            this.tbLbsCSFP.Location = new System.Drawing.Point(88, 63);
             this.tbLbsCSFP.Name = "tbLbsCSFP";
             this.tbLbsCSFP.Size = new System.Drawing.Size(70, 23);
             this.tbLbsCSFP.TabIndex = 6;
@@ -605,7 +669,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(9, 76);
+            this.label6.Location = new System.Drawing.Point(9, 67);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 15);
             this.label6.TabIndex = 5;
@@ -614,7 +678,7 @@
             // btnSvcCancel
             // 
             this.btnSvcCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSvcCancel.Location = new System.Drawing.Point(239, 69);
+            this.btnSvcCancel.Location = new System.Drawing.Point(239, 59);
             this.btnSvcCancel.Name = "btnSvcCancel";
             this.btnSvcCancel.Size = new System.Drawing.Size(60, 30);
             this.btnSvcCancel.TabIndex = 4;
@@ -625,7 +689,7 @@
             // btnSvcSave
             // 
             this.btnSvcSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSvcSave.Location = new System.Drawing.Point(164, 69);
+            this.btnSvcSave.Location = new System.Drawing.Point(164, 59);
             this.btnSvcSave.Name = "btnSvcSave";
             this.btnSvcSave.Size = new System.Drawing.Size(60, 30);
             this.btnSvcSave.TabIndex = 3;
@@ -637,7 +701,7 @@
             // 
             this.lblService.AutoSize = true;
             this.lblService.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblService.Location = new System.Drawing.Point(9, 12);
+            this.lblService.Location = new System.Drawing.Point(6, 12);
             this.lblService.Name = "lblService";
             this.lblService.Size = new System.Drawing.Size(105, 17);
             this.lblService.TabIndex = 109;
@@ -647,7 +711,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 9);
+            this.label7.Location = new System.Drawing.Point(12, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(164, 32);
             this.label7.TabIndex = 83;
@@ -662,17 +726,22 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbEditExp,
             this.toolStripSeparator3,
-            this.tbsGiveSvc,
+            this.tsbGiveSvc,
             this.toolStripSeparator4,
-            this.tbsDeleteSvc,
+            this.tsbDeleteSvc,
             this.toolStripSeparator5,
-            this.tbsMarkNewCSFP,
+            this.tsbMarkNewCSFP,
             this.toolStripSeparator6,
-            this.tbsPrintPickList,
-            this.toolStripSeparator7});
+            this.tsbPrintPickList,
+            this.toolStripSeparator7,
+            this.tsbMarkWaiting,
+            this.tsbMarkActive,
+            this.tbsMarkHold,
+            this.tsbMarkWarned,
+            this.tsbMarkTerminated});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(984, 60);
+            this.toolStrip1.Size = new System.Drawing.Size(1184, 60);
             this.toolStrip1.TabIndex = 84;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -696,85 +765,155 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 60);
             // 
-            // tbsGiveSvc
+            // tsbGiveSvc
             // 
-            this.tbsGiveSvc.AutoSize = false;
-            this.tbsGiveSvc.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.tbsGiveSvc.Image = ((System.Drawing.Image)(resources.GetObject("tbsGiveSvc.Image")));
-            this.tbsGiveSvc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tbsGiveSvc.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tbsGiveSvc.ImageTransparentColor = System.Drawing.Color.Red;
-            this.tbsGiveSvc.Name = "tbsGiveSvc";
-            this.tbsGiveSvc.Size = new System.Drawing.Size(90, 60);
-            this.tbsGiveSvc.Text = "&Give Service";
-            this.tbsGiveSvc.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.tbsGiveSvc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tbsGiveSvc.Click += new System.EventHandler(this.GiveCSFPService_Click);
+            this.tsbGiveSvc.AutoSize = false;
+            this.tsbGiveSvc.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.tsbGiveSvc.Image = ((System.Drawing.Image)(resources.GetObject("tsbGiveSvc.Image")));
+            this.tsbGiveSvc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbGiveSvc.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbGiveSvc.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tsbGiveSvc.Name = "tsbGiveSvc";
+            this.tsbGiveSvc.Size = new System.Drawing.Size(90, 60);
+            this.tsbGiveSvc.Text = "&Give Service";
+            this.tsbGiveSvc.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbGiveSvc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbGiveSvc.Click += new System.EventHandler(this.GiveCSFPService_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 60);
             // 
-            // tbsDeleteSvc
+            // tsbDeleteSvc
             // 
-            this.tbsDeleteSvc.AutoSize = false;
-            this.tbsDeleteSvc.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.tbsDeleteSvc.Image = ((System.Drawing.Image)(resources.GetObject("tbsDeleteSvc.Image")));
-            this.tbsDeleteSvc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tbsDeleteSvc.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tbsDeleteSvc.ImageTransparentColor = System.Drawing.Color.Red;
-            this.tbsDeleteSvc.Name = "tbsDeleteSvc";
-            this.tbsDeleteSvc.Size = new System.Drawing.Size(90, 60);
-            this.tbsDeleteSvc.Text = "&Delete Service";
-            this.tbsDeleteSvc.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.tbsDeleteSvc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tbsDeleteSvc.Click += new System.EventHandler(this.DeleteService_Click);
+            this.tsbDeleteSvc.AutoSize = false;
+            this.tsbDeleteSvc.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.tsbDeleteSvc.Image = ((System.Drawing.Image)(resources.GetObject("tsbDeleteSvc.Image")));
+            this.tsbDeleteSvc.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbDeleteSvc.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbDeleteSvc.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tsbDeleteSvc.Name = "tsbDeleteSvc";
+            this.tsbDeleteSvc.Size = new System.Drawing.Size(90, 60);
+            this.tsbDeleteSvc.Text = "&Delete Service";
+            this.tsbDeleteSvc.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbDeleteSvc.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbDeleteSvc.Click += new System.EventHandler(this.DeleteService_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 60);
             // 
-            // tbsMarkNewCSFP
+            // tsbMarkNewCSFP
             // 
-            this.tbsMarkNewCSFP.AutoSize = false;
-            this.tbsMarkNewCSFP.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.tbsMarkNewCSFP.Image = ((System.Drawing.Image)(resources.GetObject("tbsMarkNewCSFP.Image")));
-            this.tbsMarkNewCSFP.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tbsMarkNewCSFP.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tbsMarkNewCSFP.ImageTransparentColor = System.Drawing.Color.Red;
-            this.tbsMarkNewCSFP.Name = "tbsMarkNewCSFP";
-            this.tbsMarkNewCSFP.Size = new System.Drawing.Size(95, 60);
-            this.tbsMarkNewCSFP.Text = "&New CSFP Client";
-            this.tbsMarkNewCSFP.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.tbsMarkNewCSFP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tbsMarkNewCSFP.Click += new System.EventHandler(this.MarkNewCSFPClient_Click);
+            this.tsbMarkNewCSFP.AutoSize = false;
+            this.tsbMarkNewCSFP.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.tsbMarkNewCSFP.Image = ((System.Drawing.Image)(resources.GetObject("tsbMarkNewCSFP.Image")));
+            this.tsbMarkNewCSFP.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbMarkNewCSFP.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbMarkNewCSFP.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tsbMarkNewCSFP.Name = "tsbMarkNewCSFP";
+            this.tsbMarkNewCSFP.Size = new System.Drawing.Size(95, 60);
+            this.tsbMarkNewCSFP.Text = "&New CSFP Client";
+            this.tsbMarkNewCSFP.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbMarkNewCSFP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbMarkNewCSFP.Click += new System.EventHandler(this.MarkNewCSFPClient_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 60);
             // 
-            // tbsPrintPickList
+            // tsbPrintPickList
             // 
-            this.tbsPrintPickList.AutoSize = false;
-            this.tbsPrintPickList.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.tbsPrintPickList.Image = ((System.Drawing.Image)(resources.GetObject("tbsPrintPickList.Image")));
-            this.tbsPrintPickList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tbsPrintPickList.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tbsPrintPickList.ImageTransparentColor = System.Drawing.Color.Red;
-            this.tbsPrintPickList.Name = "tbsPrintPickList";
-            this.tbsPrintPickList.Size = new System.Drawing.Size(90, 60);
-            this.tbsPrintPickList.Text = "&Print Picklist";
-            this.tbsPrintPickList.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.tbsPrintPickList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tbsPrintPickList.Click += new System.EventHandler(this.PrintPicketlist_Click);
+            this.tsbPrintPickList.AutoSize = false;
+            this.tsbPrintPickList.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.tsbPrintPickList.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrintPickList.Image")));
+            this.tsbPrintPickList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbPrintPickList.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbPrintPickList.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tsbPrintPickList.Name = "tsbPrintPickList";
+            this.tsbPrintPickList.Size = new System.Drawing.Size(90, 60);
+            this.tsbPrintPickList.Text = "&Print Picklist";
+            this.tsbPrintPickList.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbPrintPickList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbPrintPickList.Click += new System.EventHandler(this.PrintPicketlist_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 60);
+            // 
+            // tsbMarkWaiting
+            // 
+            this.tsbMarkWaiting.Image = ((System.Drawing.Image)(resources.GetObject("tsbMarkWaiting.Image")));
+            this.tsbMarkWaiting.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbMarkWaiting.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbMarkWaiting.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tsbMarkWaiting.Name = "tsbMarkWaiting";
+            this.tsbMarkWaiting.Size = new System.Drawing.Size(82, 57);
+            this.tsbMarkWaiting.Tag = "0";
+            this.tsbMarkWaiting.Text = "Mark Waiting";
+            this.tsbMarkWaiting.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbMarkWaiting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbMarkWaiting.Click += new System.EventHandler(this.tsbMarkStatus_Click);
+            // 
+            // tsbMarkActive
+            // 
+            this.tsbMarkActive.Image = ((System.Drawing.Image)(resources.GetObject("tsbMarkActive.Image")));
+            this.tsbMarkActive.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbMarkActive.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbMarkActive.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tsbMarkActive.Name = "tsbMarkActive";
+            this.tsbMarkActive.Size = new System.Drawing.Size(74, 57);
+            this.tsbMarkActive.Tag = "1";
+            this.tsbMarkActive.Text = "Mark Active";
+            this.tsbMarkActive.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbMarkActive.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbMarkActive.Click += new System.EventHandler(this.tsbMarkStatus_Click);
+            // 
+            // tbsMarkHold
+            // 
+            this.tbsMarkHold.Image = ((System.Drawing.Image)(resources.GetObject("tbsMarkHold.Image")));
+            this.tbsMarkHold.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tbsMarkHold.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tbsMarkHold.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tbsMarkHold.Name = "tbsMarkHold";
+            this.tbsMarkHold.Size = new System.Drawing.Size(56, 57);
+            this.tbsMarkHold.Tag = "2";
+            this.tbsMarkHold.Text = "On Hold";
+            this.tbsMarkHold.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tbsMarkHold.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tbsMarkHold.Click += new System.EventHandler(this.tsbMarkStatus_Click);
+            // 
+            // tsbMarkWarned
+            // 
+            this.tsbMarkWarned.Image = ((System.Drawing.Image)(resources.GetObject("tsbMarkWarned.Image")));
+            this.tsbMarkWarned.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbMarkWarned.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbMarkWarned.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tsbMarkWarned.Name = "tsbMarkWarned";
+            this.tsbMarkWarned.Size = new System.Drawing.Size(82, 57);
+            this.tsbMarkWarned.Tag = "3";
+            this.tsbMarkWarned.Text = "Mark Warned";
+            this.tsbMarkWarned.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbMarkWarned.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbMarkWarned.Click += new System.EventHandler(this.tsbMarkStatus_Click);
+            // 
+            // tsbMarkTerminated
+            // 
+            this.tsbMarkTerminated.Image = ((System.Drawing.Image)(resources.GetObject("tsbMarkTerminated.Image")));
+            this.tsbMarkTerminated.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbMarkTerminated.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbMarkTerminated.ImageTransparentColor = System.Drawing.Color.Red;
+            this.tsbMarkTerminated.Name = "tsbMarkTerminated";
+            this.tsbMarkTerminated.Size = new System.Drawing.Size(102, 57);
+            this.tsbMarkTerminated.Tag = "4";
+            this.tsbMarkTerminated.Text = "Mark Terminated";
+            this.tsbMarkTerminated.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbMarkTerminated.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbMarkTerminated.Click += new System.EventHandler(this.tsbMarkStatus_Click);
             // 
             // splitContainer1
             // 
@@ -786,6 +925,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.gbStatusFlags);
+            this.splitContainer1.Panel1.Controls.Add(this.tbCnt);
+            this.splitContainer1.Panel1.Controls.Add(this.label11);
             this.splitContainer1.Panel1.Controls.Add(this.gbOrderBy);
             this.splitContainer1.Panel1.Controls.Add(this.label7);
             this.splitContainer1.Panel1.Controls.Add(this.gbNewService);
@@ -801,12 +943,146 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvCSFP);
-            this.splitContainer1.Size = new System.Drawing.Size(984, 598);
-            this.splitContainer1.SplitterDistance = 196;
+            this.splitContainer1.Size = new System.Drawing.Size(1184, 598);
+            this.splitContainer1.SplitterDistance = 148;
+            this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 85;
+            // 
+            // gbStatusFlags
+            // 
+            this.gbStatusFlags.Controls.Add(this.chkStatus5);
+            this.gbStatusFlags.Controls.Add(this.chkStatus4);
+            this.gbStatusFlags.Controls.Add(this.chkStatus2);
+            this.gbStatusFlags.Controls.Add(this.chkStatus3);
+            this.gbStatusFlags.Controls.Add(this.chkStatus1);
+            this.gbStatusFlags.Controls.Add(this.chkStatus0);
+            this.gbStatusFlags.Location = new System.Drawing.Point(764, 4);
+            this.gbStatusFlags.Name = "gbStatusFlags";
+            this.gbStatusFlags.Size = new System.Drawing.Size(304, 112);
+            this.gbStatusFlags.TabIndex = 87;
+            this.gbStatusFlags.TabStop = false;
+            this.gbStatusFlags.Text = "Include Status";
+            // 
+            // chkStatus5
+            // 
+            this.chkStatus5.AutoSize = true;
+            this.chkStatus5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStatus5.Image = ((System.Drawing.Image)(resources.GetObject("chkStatus5.Image")));
+            this.chkStatus5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.chkStatus5.Location = new System.Drawing.Point(132, 75);
+            this.chkStatus5.Name = "chkStatus5";
+            this.chkStatus5.Size = new System.Drawing.Size(162, 22);
+            this.chkStatus5.TabIndex = 5;
+            this.chkStatus5.Tag = "5";
+            this.chkStatus5.Text = "Other Termination";
+            this.chkStatus5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.chkStatus5.UseVisualStyleBackColor = true;
+            // 
+            // chkStatus4
+            // 
+            this.chkStatus4.AutoSize = true;
+            this.chkStatus4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStatus4.Image = ((System.Drawing.Image)(resources.GetObject("chkStatus4.Image")));
+            this.chkStatus4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.chkStatus4.Location = new System.Drawing.Point(132, 49);
+            this.chkStatus4.Name = "chkStatus4";
+            this.chkStatus4.Size = new System.Drawing.Size(155, 22);
+            this.chkStatus4.TabIndex = 4;
+            this.chkStatus4.Tag = "4";
+            this.chkStatus4.Text = "Termination Sent";
+            this.chkStatus4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.chkStatus4.UseVisualStyleBackColor = true;
+            // 
+            // chkStatus2
+            // 
+            this.chkStatus2.AutoSize = true;
+            this.chkStatus2.Checked = true;
+            this.chkStatus2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatus2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStatus2.Image = ((System.Drawing.Image)(resources.GetObject("chkStatus2.Image")));
+            this.chkStatus2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.chkStatus2.Location = new System.Drawing.Point(8, 75);
+            this.chkStatus2.Name = "chkStatus2";
+            this.chkStatus2.Size = new System.Drawing.Size(98, 22);
+            this.chkStatus2.TabIndex = 3;
+            this.chkStatus2.Tag = "2";
+            this.chkStatus2.Text = "On Hold";
+            this.chkStatus2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.chkStatus2.UseVisualStyleBackColor = true;
+            // 
+            // chkStatus3
+            // 
+            this.chkStatus3.AutoSize = true;
+            this.chkStatus3.Checked = true;
+            this.chkStatus3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatus3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStatus3.Image = ((System.Drawing.Image)(resources.GetObject("chkStatus3.Image")));
+            this.chkStatus3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.chkStatus3.Location = new System.Drawing.Point(132, 24);
+            this.chkStatus3.Name = "chkStatus3";
+            this.chkStatus3.Size = new System.Drawing.Size(132, 22);
+            this.chkStatus3.TabIndex = 2;
+            this.chkStatus3.Tag = "3";
+            this.chkStatus3.Text = "Warning Sent";
+            this.chkStatus3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.chkStatus3.UseVisualStyleBackColor = true;
+            // 
+            // chkStatus1
+            // 
+            this.chkStatus1.AutoSize = true;
+            this.chkStatus1.Checked = true;
+            this.chkStatus1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkStatus1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStatus1.Image = ((System.Drawing.Image)(resources.GetObject("chkStatus1.Image")));
+            this.chkStatus1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.chkStatus1.Location = new System.Drawing.Point(8, 49);
+            this.chkStatus1.Name = "chkStatus1";
+            this.chkStatus1.Size = new System.Drawing.Size(82, 22);
+            this.chkStatus1.TabIndex = 1;
+            this.chkStatus1.Tag = "1";
+            this.chkStatus1.Text = "Active";
+            this.chkStatus1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.chkStatus1.UseVisualStyleBackColor = true;
+            // 
+            // chkStatus0
+            // 
+            this.chkStatus0.AutoSize = true;
+            this.chkStatus0.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStatus0.Image = ((System.Drawing.Image)(resources.GetObject("chkStatus0.Image")));
+            this.chkStatus0.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.chkStatus0.Location = new System.Drawing.Point(8, 23);
+            this.chkStatus0.Name = "chkStatus0";
+            this.chkStatus0.Size = new System.Drawing.Size(92, 22);
+            this.chkStatus0.TabIndex = 0;
+            this.chkStatus0.Tag = "0";
+            this.chkStatus0.Text = "Waiting";
+            this.chkStatus0.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.chkStatus0.UseVisualStyleBackColor = true;
+            // 
+            // tbCnt
+            // 
+            this.tbCnt.Location = new System.Drawing.Point(85, 126);
+            this.tbCnt.Name = "tbCnt";
+            this.tbCnt.Size = new System.Drawing.Size(48, 23);
+            this.tbCnt.TabIndex = 86;
+            this.tbCnt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(2, 129);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(73, 15);
+            this.label11.TabIndex = 85;
+            this.label11.Text = "Client Count";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // gbOrderBy
             // 
+            this.gbOrderBy.Controls.Add(this.cboAscDesc2);
+            this.gbOrderBy.Controls.Add(this.cboAscDesc1);
+            this.gbOrderBy.Controls.Add(this.cboAscDesc0);
             this.gbOrderBy.Controls.Add(this.label10);
             this.gbOrderBy.Controls.Add(this.cboOrderBy2);
             this.gbOrderBy.Controls.Add(this.label1);
@@ -815,18 +1091,76 @@
             this.gbOrderBy.Controls.Add(this.label4);
             this.gbOrderBy.Controls.Add(this.tbFindName);
             this.gbOrderBy.Controls.Add(this.cboOrderBy0);
-            this.gbOrderBy.Location = new System.Drawing.Point(180, 8);
+            this.gbOrderBy.Location = new System.Drawing.Point(180, 4);
             this.gbOrderBy.Name = "gbOrderBy";
-            this.gbOrderBy.Size = new System.Drawing.Size(344, 108);
+            this.gbOrderBy.Size = new System.Drawing.Size(256, 136);
             this.gbOrderBy.TabIndex = 84;
             this.gbOrderBy.TabStop = false;
             this.gbOrderBy.Text = "Sort Order";
+            // 
+            // cboAscDesc2
+            // 
+            this.cboAscDesc2.BackColor = System.Drawing.Color.OldLace;
+            this.cboAscDesc2.DropDownHeight = 225;
+            this.cboAscDesc2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAscDesc2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAscDesc2.ForeColor = System.Drawing.Color.Black;
+            this.cboAscDesc2.FormattingEnabled = true;
+            this.cboAscDesc2.IntegralHeight = false;
+            this.cboAscDesc2.Items.AddRange(new object[] {
+            "ASC",
+            "DESC"});
+            this.cboAscDesc2.Location = new System.Drawing.Point(195, 105);
+            this.cboAscDesc2.Margin = new System.Windows.Forms.Padding(4);
+            this.cboAscDesc2.Name = "cboAscDesc2";
+            this.cboAscDesc2.Size = new System.Drawing.Size(57, 23);
+            this.cboAscDesc2.TabIndex = 85;
+            this.cboAscDesc2.Tag = "0";
+            // 
+            // cboAscDesc1
+            // 
+            this.cboAscDesc1.BackColor = System.Drawing.Color.OldLace;
+            this.cboAscDesc1.DropDownHeight = 225;
+            this.cboAscDesc1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAscDesc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAscDesc1.ForeColor = System.Drawing.Color.Black;
+            this.cboAscDesc1.FormattingEnabled = true;
+            this.cboAscDesc1.IntegralHeight = false;
+            this.cboAscDesc1.Items.AddRange(new object[] {
+            "ASC",
+            "DESC"});
+            this.cboAscDesc1.Location = new System.Drawing.Point(195, 78);
+            this.cboAscDesc1.Margin = new System.Windows.Forms.Padding(4);
+            this.cboAscDesc1.Name = "cboAscDesc1";
+            this.cboAscDesc1.Size = new System.Drawing.Size(57, 23);
+            this.cboAscDesc1.TabIndex = 84;
+            this.cboAscDesc1.Tag = "0";
+            // 
+            // cboAscDesc0
+            // 
+            this.cboAscDesc0.BackColor = System.Drawing.Color.OldLace;
+            this.cboAscDesc0.DropDownHeight = 225;
+            this.cboAscDesc0.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAscDesc0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAscDesc0.ForeColor = System.Drawing.Color.Black;
+            this.cboAscDesc0.FormattingEnabled = true;
+            this.cboAscDesc0.IntegralHeight = false;
+            this.cboAscDesc0.Items.AddRange(new object[] {
+            "ASC",
+            "DESC"});
+            this.cboAscDesc0.Location = new System.Drawing.Point(195, 23);
+            this.cboAscDesc0.Margin = new System.Windows.Forms.Padding(4);
+            this.cboAscDesc0.Name = "cboAscDesc0";
+            this.cboAscDesc0.Size = new System.Drawing.Size(57, 23);
+            this.cboAscDesc0.TabIndex = 83;
+            this.cboAscDesc0.Tag = "0";
+            this.cboAscDesc0.SelectedIndexChanged += new System.EventHandler(this.cboAscDesc_SelectedIndexChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 79);
+            this.label10.Location = new System.Drawing.Point(3, 108);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
@@ -846,11 +1180,14 @@
             this.cboOrderBy2.Items.AddRange(new object[] {
             "Last, First Name",
             "FirstName, LastName",
-            "DistributionMethod",
+            "Route",
             "HouseholdID",
+            "Date Served",
+            "Last Service",
             "Expiration Date",
-            "Address"});
-            this.cboOrderBy2.Location = new System.Drawing.Point(41, 76);
+            "Address",
+            "Phone"});
+            this.cboOrderBy2.Location = new System.Drawing.Point(41, 105);
             this.cboOrderBy2.Margin = new System.Windows.Forms.Padding(4);
             this.cboOrderBy2.Name = "cboOrderBy2";
             this.cboOrderBy2.Size = new System.Drawing.Size(151, 23);
@@ -862,7 +1199,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 52);
+            this.label9.Location = new System.Drawing.Point(3, 81);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(33, 13);
@@ -882,11 +1219,14 @@
             this.cboOrderBy1.Items.AddRange(new object[] {
             "Last, First Name",
             "FirstName, LastName",
-            "DistributionMethod",
+            "Route",
             "HouseholdID",
+            "Date Served",
+            "Last Service",
             "Expiration Date",
-            "Address"});
-            this.cboOrderBy1.Location = new System.Drawing.Point(41, 49);
+            "Address",
+            "Phone"});
+            this.cboOrderBy1.Location = new System.Drawing.Point(41, 78);
             this.cboOrderBy1.Margin = new System.Windows.Forms.Padding(4);
             this.cboOrderBy1.Name = "cboOrderBy1";
             this.cboOrderBy1.Size = new System.Drawing.Size(151, 23);
@@ -896,6 +1236,8 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewTextBoxColumn1.HeaderText = "HHID";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -904,14 +1246,19 @@
             // 
             // dataGridViewTextBoxColumn2
             // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewTextBoxColumn2.HeaderText = "Family Member Name";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn2.Visible = false;
             this.dataGridViewTextBoxColumn2.Width = 200;
             // 
             // dataGridViewTextBoxColumn3
             // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn3.HeaderText = "Address";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
@@ -920,6 +1267,8 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn4.HeaderText = "Exp. Date";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -928,8 +1277,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn5.HeaderText = "Method";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -938,8 +1287,8 @@
             // 
             // dataGridViewTextBoxColumn6
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewTextBoxColumn6.HeaderText = "Column1";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -949,17 +1298,21 @@
             // 
             // dataGridViewTextBoxColumn7
             // 
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewTextBoxColumn7.HeaderText = "Date Served";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dataGridViewTextBoxColumn7.Visible = false;
+            this.dataGridViewTextBoxColumn7.Width = 60;
             // 
             // dataGridViewTextBoxColumn8
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewTextBoxColumn8.HeaderText = "Lbs";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 25;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
@@ -967,8 +1320,8 @@
             // 
             // dataGridViewTextBoxColumn9
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            this.dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewTextBoxColumn9.HeaderText = "HHMemID";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
@@ -977,6 +1330,8 @@
             // 
             // dataGridViewTextBoxColumn10
             // 
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewTextBoxColumn10.HeaderText = "NameFL";
             this.dataGridViewTextBoxColumn10.MinimumWidth = 25;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
@@ -987,7 +1342,10 @@
             // 
             // dataGridViewTextBoxColumn11
             // 
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle22;
             this.dataGridViewTextBoxColumn11.HeaderText = "NameLF";
+            this.dataGridViewTextBoxColumn11.MinimumWidth = 25;
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             this.dataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
@@ -996,27 +1354,36 @@
             // 
             // dataGridViewTextBoxColumn12
             // 
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewTextBoxColumn12.HeaderText = "CSFP";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dataGridViewTextBoxColumn12.Visible = false;
+            this.dataGridViewTextBoxColumn12.Width = 80;
             // 
             // dataGridViewTextBoxColumn13
             // 
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle24;
             this.dataGridViewTextBoxColumn13.HeaderText = "ID";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
             this.dataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dataGridViewTextBoxColumn13.Visible = false;
+            this.dataGridViewTextBoxColumn13.Width = 80;
             // 
             // dataGridViewTextBoxColumn14
             // 
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridViewTextBoxColumn14.HeaderText = "ID";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
             this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dataGridViewTextBoxColumn14.Visible = false;
+            this.dataGridViewTextBoxColumn14.Width = 80;
             // 
             // dataGridViewTextBoxColumn15
             // 
@@ -1024,23 +1391,70 @@
             this.dataGridViewTextBoxColumn15.MinimumWidth = 25;
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.dataGridViewTextBoxColumn15.Visible = false;
             this.dataGridViewTextBoxColumn15.Width = 120;
             // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn16.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataGridViewTextBoxColumn17.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.Visible = false;
+            // 
+            // Route
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Route.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Route.HeaderText = "Route";
+            this.Route.Name = "Route";
+            this.Route.ReadOnly = true;
+            this.Route.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.Route.Width = 120;
+            // 
+            // clmMethodAsInt
+            // 
+            this.clmMethodAsInt.HeaderText = "Route ID";
+            this.clmMethodAsInt.Name = "clmMethodAsInt";
+            this.clmMethodAsInt.ReadOnly = true;
+            this.clmMethodAsInt.Visible = false;
+            // 
             // HouseholdID
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.HouseholdID.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.HouseholdID.DefaultCellStyle = dataGridViewCellStyle2;
             this.HouseholdID.HeaderText = "HHID";
             this.HouseholdID.Name = "HouseholdID";
             this.HouseholdID.ReadOnly = true;
             this.HouseholdID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.HouseholdID.Width = 60;
             // 
+            // clmCSFPStatus
+            // 
+            this.clmCSFPStatus.HeaderText = "Status";
+            this.clmCSFPStatus.Name = "clmCSFPStatus";
+            this.clmCSFPStatus.ReadOnly = true;
+            this.clmCSFPStatus.Width = 70;
+            // 
             // clmName
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmName.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmName.DefaultCellStyle = dataGridViewCellStyle3;
             this.clmName.HeaderText = "Family Member Name";
             this.clmName.Name = "clmName";
             this.clmName.ReadOnly = true;
@@ -1049,8 +1463,8 @@
             // 
             // Address
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Address.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Address.DefaultCellStyle = dataGridViewCellStyle4;
             this.Address.HeaderText = "Address";
             this.Address.Name = "Address";
             this.Address.ReadOnly = true;
@@ -1059,38 +1473,29 @@
             // 
             // AptNbr
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.AptNbr.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.AptNbr.DefaultCellStyle = dataGridViewCellStyle5;
             this.AptNbr.HeaderText = "Apt. Num.";
             this.AptNbr.Name = "AptNbr";
             this.AptNbr.ReadOnly = true;
             this.AptNbr.Width = 60;
             // 
-            // CSFPExpiration
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.CSFPExpiration.DefaultCellStyle = dataGridViewCellStyle5;
-            this.CSFPExpiration.HeaderText = "Exp. Date";
-            this.CSFPExpiration.Name = "CSFPExpiration";
-            this.CSFPExpiration.ReadOnly = true;
-            this.CSFPExpiration.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // Route
+            // clmPhone
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Route.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Route.HeaderText = "Method";
-            this.Route.Name = "Route";
-            this.Route.ReadOnly = true;
-            this.Route.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.Route.Width = 120;
+            this.clmPhone.DefaultCellStyle = dataGridViewCellStyle6;
+            this.clmPhone.HeaderText = "Phone";
+            this.clmPhone.MinimumWidth = 25;
+            this.clmPhone.Name = "clmPhone";
+            this.clmPhone.ReadOnly = true;
+            this.clmPhone.Width = 120;
             // 
-            // clmMethodAsInt
+            // clmCSFPComments
             // 
-            this.clmMethodAsInt.HeaderText = "Column1";
-            this.clmMethodAsInt.Name = "clmMethodAsInt";
-            this.clmMethodAsInt.ReadOnly = true;
-            this.clmMethodAsInt.Visible = false;
+            this.clmCSFPComments.HeaderText = "Comments";
+            this.clmCSFPComments.Name = "clmCSFPComments";
+            this.clmCSFPComments.ReadOnly = true;
+            this.clmCSFPComments.Width = 140;
             // 
             // clmDateServed
             // 
@@ -1111,20 +1516,27 @@
             this.clmLbs.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.clmLbs.Width = 70;
             // 
-            // clmPhone
+            // clmLastService
             // 
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmPhone.DefaultCellStyle = dataGridViewCellStyle9;
-            this.clmPhone.HeaderText = "Phone";
-            this.clmPhone.MinimumWidth = 25;
-            this.clmPhone.Name = "clmPhone";
-            this.clmPhone.ReadOnly = true;
-            this.clmPhone.Width = 120;
+            this.clmLastService.DefaultCellStyle = dataGridViewCellStyle9;
+            this.clmLastService.HeaderText = "Previous Svc Date";
+            this.clmLastService.Name = "clmLastService";
+            this.clmLastService.ReadOnly = true;
+            // 
+            // CSFPExpiration
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.CSFPExpiration.DefaultCellStyle = dataGridViewCellStyle10;
+            this.CSFPExpiration.HeaderText = "Exp. Date";
+            this.CSFPExpiration.Name = "CSFPExpiration";
+            this.CSFPExpiration.ReadOnly = true;
+            this.CSFPExpiration.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // clmHHMemID
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmHHMemID.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmHHMemID.DefaultCellStyle = dataGridViewCellStyle11;
             this.clmHHMemID.HeaderText = "HHMemID";
             this.clmHHMemID.Name = "clmHHMemID";
             this.clmHHMemID.ReadOnly = true;
@@ -1166,8 +1578,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(984, 682);
+            this.ClientSize = new System.Drawing.Size(1184, 682);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -1181,8 +1594,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCSFP)).EndInit();
+            this.cmsdgvCSFP.ResumeLayout(false);
             this.gbFilter.ResumeLayout(false);
-            this.gbFilter.PerformLayout();
             this.gbRenewExpDate.ResumeLayout(false);
             this.gbRenewExpDate.PerformLayout();
             this.gbNewService.ResumeLayout(false);
@@ -1190,9 +1603,12 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.gbStatusFlags.ResumeLayout(false);
+            this.gbStatusFlags.PerformLayout();
             this.gbOrderBy.ResumeLayout(false);
             this.gbOrderBy.PerformLayout();
             this.ResumeLayout(false);
@@ -1247,13 +1663,13 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbEditExp;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton tbsGiveSvc;
+        private System.Windows.Forms.ToolStripButton tsbGiveSvc;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton tbsDeleteSvc;
+        private System.Windows.Forms.ToolStripButton tsbDeleteSvc;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton tbsMarkNewCSFP;
+        private System.Windows.Forms.ToolStripButton tsbMarkNewCSFP;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton tbsPrintPickList;
+        private System.Windows.Forms.ToolStripButton tsbPrintPickList;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -1279,20 +1695,45 @@
         private System.Windows.Forms.ComboBox cboOrderBy2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboOrderBy1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.ComboBox cboAscDesc2;
+        private System.Windows.Forms.ComboBox cboAscDesc1;
+        private System.Windows.Forms.ComboBox cboAscDesc0;
+        private System.Windows.Forms.TextBox tbCnt;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ToolStripButton tsbMarkWaiting;
+        private System.Windows.Forms.ToolStripButton tsbMarkActive;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.ToolStripButton tsbMarkWarned;
+        private System.Windows.Forms.ToolStripButton tsbMarkTerminated;
+        private System.Windows.Forms.ToolStripButton tbsMarkHold;
+        private System.Windows.Forms.GroupBox gbStatusFlags;
+        private System.Windows.Forms.CheckBox chkStatus5;
+        private System.Windows.Forms.CheckBox chkStatus4;
+        private System.Windows.Forms.CheckBox chkStatus2;
+        private System.Windows.Forms.CheckBox chkStatus3;
+        private System.Windows.Forms.CheckBox chkStatus1;
+        private System.Windows.Forms.CheckBox chkStatus0;
+        private System.Windows.Forms.ContextMenuStrip cmsdgvCSFP;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Route;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmMethodAsInt;
         private System.Windows.Forms.DataGridViewTextBoxColumn HouseholdID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCSFPStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn AptNbr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CSFPExpiration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Route;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmMethodAsInt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCSFPComments;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDateServed;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLbs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmLastService;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSFPExpiration;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmHHMemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNameFL;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNameLF;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmCSFP;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmLogID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
     }
 }

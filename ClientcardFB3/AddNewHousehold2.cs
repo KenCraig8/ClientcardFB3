@@ -143,6 +143,10 @@ namespace ClientcardFB3
             itemHHM.SchSupply = false;
             itemHHM.SchSupplyDelivered = CCFBGlobal.FBNullDateValue;
             itemHHM.SchSupplySchool = 0;
+            itemHHM.CSFP = false;
+            itemHHM.CSFPRoute = 0;
+            itemHHM.CSFPComments = "";
+            itemHHM.CSFPStatus = 0;
          }
 
         public void setHHMember(HHMemberItem clshhmItm)
