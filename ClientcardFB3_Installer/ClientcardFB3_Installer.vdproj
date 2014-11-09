@@ -801,10 +801,10 @@
             "FileType" = "3:1"
             "InstallAction" = "3:2"
             "Arguments" = "8:"
-            "EntryPoint" = "8:"
+            "EntryPoint" = "8:SqlInstaller.install()"
             "Sequence" = "3:1"
             "Identifier" = "8:_E3FA1026_906E_4D02_ADD9_F05C83F230D3"
-            "InstallerClass" = "11:TRUE"
+            "InstallerClass" = "11:FALSE"
             "CustomActionData" = "8:"
             }
         }
