@@ -82,7 +82,11 @@ namespace SqlInstaller
                 Process.Start("CMD.exe", "/C SQLCMD -S %COMPUTERNAME%\\SQLEXPRESS -i " + scriptsPath + "ResetCCFBUser.sql");
             }
 
-            // Might have to configure firewall: http://msdn.microsoft.com/en-us/library/cc646023.aspx
+            // Command from: http://msdn.microsoft.com/en-us/library/cc646023.aspx
+
+            Process.Start("netsh", "firewall set portopening protocol = TCP port = 1433 name = SQLPortTCP mode = ENABLE scope = SUBNET profile = CURRENT");
+            Process.Start("netsh", "firewall set portopening protocol = UDP port = 1434 name = SQLPortUDP mode = ENABLE scope = SUBNET profile = CURRENT");
+
             // Might also need to follow these steps: http://stackoverflow.com/questions/11278114/enable-remote-connections-for-sql-server-express-2012
         }
     }
