@@ -13,9 +13,30 @@ ClientCard install: http://1drv.ms/1p9tSYe FB3Installion-2014-04-27.zip
 
 Install Client Card:
 	Run .msi installer
+	
+Install Microsoft Access 2010 or better
 
-Install these:
-Microsoft Access 2010 or better
+Next install the SQL server:
+IMPORTANT: For both options, your computer name must be different than your user name. If they are the same, you won't be able to log into the sql server on your computer.
+
+
+Automatic install:
+I created a simple script to make it easier to install the Sql server properly. 
+You can download it here: https://www.dropbox.com/s/3f6h84t2kge28ax/SqlInstallScript.zip?dl=0 Just unzip the folder and run the "installScript.cmd".
+
+This will automaticly download the correct SQL server installer. Then it will install this with the correct parameters.
+
+Here's a few errors that are common and easy to fix:
+Error with line: "powershell (New-Object System.Net.WebClient).DownloadFile(\"%downloadFile%\", \"%CD%\%sqlInstallName%\")"
+For some reason, the exe file can't be automaticly downloaded. 
+Solution: Download the file: https://www.dropbox.com/s/tohv09k9os60yd1/SQLEXPRWT_x86_ENU.exe?dl=1 or https://www.dropbox.com/s/5c1f9hosz1f8gw2/SQLEXPRWT_x64_ENU.exe?dl=1 depending on your operating system. Then rename this to "SQLEXPRWT_ENU.exe" and put it in the SQLInstallScript folder. Just remove the above line and run the script again.
+
+Error: SQLCMD command not found
+This is because the command prompt commands haven't been updated yet.
+Solution: Run the "databaseSetup.cmd" file in a separate command prompt window.
+
+
+Manual install:
 SQL server 2008 R2 Express with tools: http://www.microsoft.com/en-us/download/details.aspx?id=30438
 Configuration file: https://drive.google.com/file/d/0B1DTcD94cvvBamlaZXFzckQ3MWM/edit?usp=sharing
 The file SQLEXPRWT_x64_ENU.exe or SQLEXPRWT_x86_ENU.exe
