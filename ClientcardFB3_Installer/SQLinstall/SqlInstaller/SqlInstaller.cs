@@ -83,7 +83,6 @@ namespace SqlInstaller
             }
 
             // Command from: http://msdn.microsoft.com/en-us/library/cc646023.aspx
-
             Process.Start("netsh", "firewall set portopening protocol = TCP port = 1433 name = SQLPortTCP mode = ENABLE scope = SUBNET profile = CURRENT");
             Process.Start("netsh", "firewall set portopening protocol = UDP port = 1434 name = SQLPortUDP mode = ENABLE scope = SUBNET profile = CURRENT");
 
