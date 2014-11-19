@@ -1,4 +1,4 @@
-ClientCardFB3
+﻿ClientCardFB3
 ==========
 
 An application to allow food banks to store and view their data
@@ -53,7 +53,6 @@ LogIn to SQL Management Studio using Windows Authentication or the SA user
 
 Run Client Card with login Admin, password: master
 
-
 Getting started mini guide:
 
 If you would like to use Git and Github for to work with the project:
@@ -75,7 +74,15 @@ Follow these steps if you would like to contribute.
 We're using Nunit, NunitForms and Moq for testing.
 These are easy to install, just follow this guide: http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog
 
-
-
-
+SQL-
+Helpful link to learn: http://www.w3schools.com/SQl/default.asp
+•	Provide a way to take in a SQL query that could be specified in the excel document but easy to change 
+o	This would be a select query to get the top 1000 rows 
+o	This tells you what data to put in the data base because you can have excel how to run the SQL query 
+•	Knowing how to format the data 
+o	Flexible 
+o	Easy to change the format just by changing it within excel 
+•	Excel would be running the SQL query in the database 
+o	The SQL query would be giving data like the ones listed below 
+>>>>>>> 7f3345f19d1e719e80329e0edb66723e13fe72f0
 
