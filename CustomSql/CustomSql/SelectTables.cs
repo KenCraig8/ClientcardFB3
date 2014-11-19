@@ -16,28 +16,39 @@ namespace CustomSQL
         const string databaseName = "ClientcardFB3";
         string connectionString = @"Server=MYCOMPUTER\SQLEXPRESS;initial catalog=" + databaseName + "; UID=CCFB_User; PWD='19800612'; Trusted_Connection = False; Connect Timeout=10;";
         DataHelper dataHelper;
+        // Access this for testing
+        public CustSqlWhere sqlWhereForm;
 
-        string selectedTableName;
-        public SelectTables()
-        {
-            dataHelper = new DataHelper();
-            InitializeComponent();
-        }
-
+        /// <summary>
+        /// For testing. Dependency injection.
+        /// </summary>
+        /// <param name="dataHelper"></param>
         public SelectTables(DataHelper dataHelper)
         {
             this.dataHelper = dataHelper;
+            InitializeComponent();
         }
 
-        //Display the user choices for the table in a list box
-        private void Form1_Load(object sender, EventArgs e)
+        string selectedTableName;
+        public SelectTables() : this(new DataHelper()){}
+
+        /// <summary>
+        /// Display the user choices for the table in a list box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectForm_Load(object sender, EventArgs e)
         {
             ArrayList tableChoices = new ArrayList {"HouseholdMembers", "Household", "Donors", "Volunteers" };
 
             lstSelectTable.DataSource = tableChoices;
         }
 
-        //Change the columns in the list to match the selected columns
+        /// <summary>
+        /// Change the columns in the list to match the selected columns
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstSelectTable_SelectedValueChanged(object sender, EventArgs e)
         {
             //use the table name the user selected in the list box
@@ -45,22 +56,24 @@ namespace CustomSQL
 
             string sqlQuery = "SELECT COLUMN_NAME FROM [" + databaseName + "].information_schema.columns WHERE TABLE_NAME = '"+selectedTableName+"'";
 
-            DataTable columnNamesTable = DataHelper.sqlQuery(connectionString, sqlQuery);
+            DataTable columnNamesTable = dataHelper.sqlSelectQuery(connectionString, sqlQuery);
 
             //put the columns in the list box
             string[] columnList = columnNamesTable.AsEnumerable().Select(row => row.Field<string>("COLUMN_NAME")).ToArray();
             lstSelectColumns.DataSource = columnList;
         }
 
-        //display the window for the user to select the where clause
+        /// <summary>
+        /// display the window for the user to select the where clause
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelectWhere_Click(object sender, EventArgs e)
         {
             string[] selectedColumns = lstSelectColumns.SelectedItems.Cast<string>().ToArray();
 
-            CustSqlWhere sqlWhereForm = new CustSqlWhere(connectionString, selectedColumns, databaseName, selectedTableName);
+            sqlWhereForm = new CustSqlWhere(dataHelper, connectionString, selectedColumns, databaseName, selectedTableName);
             sqlWhereForm.Show();
-
-            
         }
     }
 }

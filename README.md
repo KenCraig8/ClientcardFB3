@@ -71,10 +71,15 @@ Have fun!
 
 We need lots of help with testing:
 Follow these steps if you would like to contribute.
-We're using Nunit, NunitForms and Moq for testing.
+We're using Nunit (basic testing), NunitForms (tests that interact with user interface) and Moq (Mocking) for testing.
 These are easy to install, just follow this guide: http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog
 
-SQL-
+For an example of how to do testing in this project, look at
+ClientcardFB3\CustomSql\CustomSql\Testing
+
+Also research on hot to do testing and mocking in general and also how use the tools above specificity.
+
+SQL- For Chloe Margaret
 Helpful link to learn: http://www.w3schools.com/SQl/default.asp
 •	Provide a way to take in a SQL query that could be specified in the excel document but easy to change 
 o	This would be a select query to get the top 1000 rows 
@@ -84,5 +89,4 @@ o	Flexible
 o	Easy to change the format just by changing it within excel 
 •	Excel would be running the SQL query in the database 
 o	The SQL query would be giving data like the ones listed below 
->>>>>>> 7f3345f19d1e719e80329e0edb66723e13fe72f0
 
