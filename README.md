@@ -6,7 +6,7 @@ An application to allow food banks to store and view their data
 View our planning page here: https://trello.com/clientcardfb3
 
 Getting started with the project
-Contact me if you would like to contibute
+Contact me if you would like to contribute
 
 Download these files:
 ClientCard install: http://1drv.ms/1p9tSYe FB3Installion-2014-04-27.zip
@@ -18,7 +18,6 @@ Install Microsoft Access 2010 or better
 
 Next install the SQL server:
 IMPORTANT: For both options, your computer name must be different than your user name. If they are the same, you won't be able to log into the sql server on your computer.
-
 
 Automatic install:
 I created a simple script to make it easier to install the Sql server properly. 
@@ -53,3 +52,30 @@ LogIn to SQL Management Studio using Windows Authentication or the SA user
 	Reset permissions:  Open file icon, open: C:\Users\Public\ClientcardFB3\Scripts\ResetCCFBUser.sql, click execute
 
 Run Client Card with login Admin, password: master
+
+
+Getting started mini guide:
+
+If you would like to use Git and Github for to work with the project:
+Download it here: http://git-scm.com/downloads
+I think it will be helpful to skim the sections up to 1.5 of this tutorial: http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control Don't get caught up in the details, just try to get a sense of the general workflow and philosophy of git.
+
+If you would like to use the github client instead of command line:
+To install the github client: https://windows.github.com/
+The getting started guide is also helpful for how to use the tool: https://windows.github.com/help.html​
+
+For working with this project specifically:
+Create a github account and send me your username. I will add you as a collaborator so you can push to the repository.
+Clone the repository, then you have a copy of everything on your computer.
+To test if it's working, make a change to one of the images or something and push it to Github. You should see your change on the website in a few minutes.
+Have fun!
+
+We need lots of help with testing:
+Follow these steps if you would like to contribute.
+We're using Nunit, NunitForms and Moq for testing.
+These are easy to install, just follow this guide: http://docs.nuget.org/docs/start-here/managing-nuget-packages-using-the-dialog
+
+
+
+
+
