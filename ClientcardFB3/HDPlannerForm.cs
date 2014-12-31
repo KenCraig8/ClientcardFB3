@@ -18,13 +18,15 @@ namespace ClientcardFB3
 
         TrxLog clsTrxLog;
         TrxLogItem clsTrxItem;
-        HDRoutes clsHDRoutes = new HDRoutes(CCFBGlobal.connectionString);
+        HDRoutes clsHDRoutes;
         HDRouteSheet clsHDRouteSheet = new HDRouteSheet(CCFBGlobal.connectionString);
+        EditVolunteerForm frmVolunteers;
         HDRSHist clsHDRSHist = new HDRSHist(CCFBGlobal.connectionString);
         parmTypeCodes parmHDRouteSheetStatus = new parmTypeCodes(CCFBGlobal.parmTbl_HDRouteSheetStatus, CCFBGlobal.connectionString, "");
         HDItems clsHDItems = new HDItems(CCFBGlobal.connectionString);
 
         MainForm frmMain;
+        FindClientForm frmFindClient;
 
         DataTable rtplnDTbl = new DataTable();
         SqlDataAdapter rtplnDadAdpt = new SqlDataAdapter();
@@ -57,9 +59,10 @@ namespace ClientcardFB3
         const int maxRouteStatusRows = 4;
         int[] cntrsRoutesStatus;
 
-
-        public HDPlannerForm(MainForm frmMainIn)
+        public HDPlannerForm(MainForm frmMainIn, HDRoutes clsHDRoutes, EditVolunteerForm frmVolunteers)
         {
+            this.clsHDRoutes = clsHDRoutes;
+            this.frmVolunteers = frmVolunteers;
             InitializeComponent();
             frmMain = frmMainIn;
             conn = new SqlConnection(CCFBGlobal.connectionString);
@@ -71,6 +74,7 @@ namespace ClientcardFB3
             loadRouteList(dfltServiceDate);
             rtplnRefreshlbxRoutes(-1);
             rtplnDisplaySelectedRoute();
+            frmFindClient = new FindClientForm();
         }
 
         private string convertToShortDate(string date)
@@ -82,6 +86,11 @@ namespace ClientcardFB3
             return "";
         }
 
+        /// <summary>
+        /// Adds the 1st column of the dataTable to the combo
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="cbo"></param>
         private void FillFilterByCombo(DataTable dt, ComboBox cbo)
         {
             loading = true;
@@ -912,34 +921,18 @@ namespace ClientcardFB3
             }
         }
 
-        private void btnSelectDriver_Click(object sender, EventArgs e)
+        private void btnSelect_Click(object sender, EventArgs e)
         {
-            EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
             frmVolunteers.ShowDialog();
             int newVolId = frmVolunteers.SelectedId;
+            bool isDriver = ((Button)sender).Name.Equals("btnSelectDriver");
             if (newVolId > 0)
             {
                 loading = true;
                 clsHDRoutes.DefaultDriver = newVolId;
-                clsHDRoutes.loadDriverInfo(newVolId);
+                clsHDRoutes.loadCertainVolInfo(newVolId, isDriver);
                 rtplntbDriver.Text = clsHDRoutes.DriverName;
                 rtplnmtDriverPhone.Text = clsHDRoutes.DriverPhone;
-                loading = false;
-                rtplnbtnSaveRoute.Enabled = true;
-            }
-        }
-        private void btnSelectContact_Click(object sender, EventArgs e)
-        {
-            EditVolunteerForm frmVolunteers = new EditVolunteerForm(CCFBGlobal.connectionString, true);
-            frmVolunteers.ShowDialog();
-            int newVolId = frmVolunteers.SelectedId;
-            if (newVolId > 0)
-            {
-                loading = true;
-                clsHDRoutes.FBContact = newVolId;
-                clsHDRoutes.loadFBContactInfo(newVolId);
-                rtplntbFBContact.Text = clsHDRoutes.FBContactName;
-                rtplnmtFBContactPhone.Text = clsHDRoutes.FBContactPhone;
                 loading = false;
                 rtplnbtnSaveRoute.Enabled = true;
             }
@@ -956,7 +949,7 @@ namespace ClientcardFB3
         }
 
         private void tsbComments_Click(object sender, EventArgs e)
-        {
+            {
 
         }
     }

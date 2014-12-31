@@ -1,10 +1,37 @@
 
 using System;
+using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
+    /// <summary>
+    /// Stores the info for a voulenteer needed for this
+    /// </summary>
+    public class VolContactInfo
+    {
+        public int id;
+        public string name;
+        public string phone;
+
+        public VolContactInfo()
+        {
+            reset();
+        }
+
+        public void reset()
+        {
+            id = 0;
+            name = "";
+            phone = "";
+        }
+    }
+
+    /// <summary>
+    /// Performes opperations on the routes
+    /// Used by the HDPlannerForm
+    /// </summary>
     public class HDRoutes
     {
         string connString;
@@ -14,18 +41,23 @@ namespace ClientcardFB3
         System.Data.SqlClient.SqlConnection conn;
         DataRow drow;
         int iRowCount = 0;
-        string driverName = "";
-        string driverPhone = "";
-        string fbContactName = "";
-        string fbContactPhone = "";
+        VolContactInfo driverInfo;
+        VolContactInfo fbContactInfo;
+        Volunteers clsVol;
 
-        public HDRoutes(string connStringIn)
+        /// <summary>
+        /// Injects the dependencies
+        /// Used for testing
+        /// </summary>
+        /// <param name="connStringIn"></param>
+        public HDRoutes(string connStringIn, Volunteers clsVol)
         {
             conn = new System.Data.SqlClient.SqlConnection();
             connString = connStringIn;
             conn.ConnectionString = connString;
             dtbl = new DataTable();
             dadAdpt = new SqlDataAdapter();
+            this.clsVol = new Volunteers(connString);
         }
 
         #region Get/Set Accessors
@@ -40,22 +72,22 @@ namespace ClientcardFB3
 
         public string DriverName
         {
-            get { return driverName; }
+            get { return driverInfo.name; }
         }
 
         public string DriverPhone
         {
-            get { return driverPhone.Replace("-",""); }
+            get { return driverInfo.phone.Replace("-",""); }
         }
 
         public string FBContactName
         {
-            get { return fbContactName; }
+            get { return fbContactInfo.name; }
         }
 
         public string FBContactPhone
         {
-            get { return fbContactPhone.Replace("-", ""); }
+            get { return fbContactInfo.phone.Replace("-", ""); }
         }
 
         public int ID
@@ -66,7 +98,7 @@ namespace ClientcardFB3
         public string RouteTitle
         {
             get { return drow["RouteTitle"].ToString(); }
-            set { drow["RouteTitle"] = value; }
+            set { drow["RouteTitle"] = value; } // Null arguement exeption here. Column 'RouteTitle' does not belong to table .
         }
         public int DeliveryDOW
         {
@@ -86,6 +118,7 @@ namespace ClientcardFB3
         public int DefaultDriver
         {
             get { return Convert.ToInt32(drow["DefaultDriver"]); }
+            //Crashes right here. invalid argument exception on drow
             set { drow["DefaultDriver"] = value; }
         }
         public int FBContact
@@ -174,16 +207,19 @@ namespace ClientcardFB3
         }
         #endregion
 
-
+        /// <summary>
+        /// Adds a new row to the data table and initializes the values
+        /// </summary>
+        /// <returns></returns>
         public int Add()
         {
             drow = dtbl.NewRow();
-            DefaultDriver = 0;
+            //DefaultDriver = 0;
             RouteTitle = "Route " + (dtbl.Rows.Count+1).ToString();
             Notes = "";
             DriverNotes = "";
-            driverPhone = "";
-            driverName = "";
+            driverInfo = new VolContactInfo();
+            fbContactInfo = new VolContactInfo();
             InActive = false;
             DeliveryDOW = 1;
             DeliveryCycle = 0;
@@ -210,8 +246,9 @@ namespace ClientcardFB3
         {
             if (getName == true)
             {
-                driverName = "";
-                driverPhone = "";
+                driverInfo.reset();
+                fbContactInfo.reset();
+
             }
             for (int i = 0; i < iRowCount; i++)
             {
@@ -220,42 +257,40 @@ namespace ClientcardFB3
                     drow = dtbl.Rows[i];
                     if (getName == true)
                     {
-                        loadDriverInfo(DefaultDriver);
-                        loadFBContactInfo(FBContact);
+                        loadVolInfo(DefaultDriver, driverInfo);
+                        loadVolInfo(FBContact, fbContactInfo);
                     }
                     break;
                 }
             }
         }
 
-        public void loadDriverInfo(int volId)
+        /// <summary>
+        /// Loads a Voulenteer with the id
+        /// </summary>
+        /// <param name="volId">Id to load</param>
+        /// <param name="volInfo">The info to set it to</param>
+        public void loadVolInfo(int volId, VolContactInfo volInfo)
         {
-            driverName = "";
-            driverPhone = "";
-            if (volId > 0)
-            {
-                Volunteers clsVol = new Volunteers(connString);
-                if (clsVol.open(volId) == true)
-                {
-                    driverName = clsVol.Name;
-                    driverPhone = clsVol.Phone;
-                }
+            volInfo.reset();
+            if ((volId > 0) && (clsVol.open(volId) == true)){
+                volInfo.id = volId;
+                volInfo.name = clsVol.Name;
+                volInfo.phone = clsVol.Phone;
             }
         }
 
-        public void loadFBContactInfo(int volId)
+        /// <summary>
+        /// Loads either the driver or FBcontact info
+        /// </summary>
+        /// <param name="volId"></param>
+        /// <param name="isDriver">If true, load to the driver, if false, load to fbContact</param>
+        public void loadCertainVolInfo(int volId, bool isDriver)
         {
-            fbContactName = "";
-            fbContactPhone = "";
-            if (volId > 0)
-            {
-                Volunteers clsVol = new Volunteers(connString);
-                if (clsVol.open(volId) == true)
-                {
-                    fbContactName = clsVol.Name;
-                    fbContactPhone = clsVol.Phone;
-                }
-            }
+            if(isDriver)
+                loadVolInfo(volId, driverInfo);
+            else
+                loadVolInfo(volId, fbContactInfo);
         }
 
         public int maxRouteId()
@@ -344,7 +379,8 @@ namespace ClientcardFB3
             {
                 iRowCount = 0;
                 drow = null;
-                CCFBGlobal.appendErrorToErrorReport("Select Command = " + command.CommandText,
+                string comText = command != null ? command.CommandText : "openConnection problem";
+                CCFBGlobal.appendErrorToErrorReport("Select Command = " + comText,
                     ex.GetBaseException().ToString());
             }
         }

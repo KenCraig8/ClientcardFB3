@@ -474,35 +474,34 @@ namespace ClientcardFB3
 
             for (int i = 0; i < clsClient.RowCount; i++)
             {
-                DataRow drow = clsClient.DSet.Tables[0].Rows[i];
                 dgvClientList.Rows.Add();
-                dgvClientList.Rows[i].Tag = drow["HHId"].ToString();
-                if ((bool)drow["HHInactive"] == true)
+                dgvClientList.Rows[i].Tag = clsClient.DSet.Tables[0].Rows[i]["HHId"].ToString();
+                if ((bool)clsClient.DSet.Tables[0].Rows[i]["HHInactive"] == true)
                     dgvClientList.Rows[i].DefaultCellStyle.ForeColor = Color.Maroon;
-                else if (Convert.ToBoolean(CCFBGlobal.NullToZero(drow["Inactive"])) == true)
+                else if (Convert.ToBoolean(CCFBGlobal.NullToZero(clsClient.DSet.Tables[0].Rows[i]["Inactive"])) == true)
                     dgvClientList.Rows[i].DefaultCellStyle.ForeColor = Color.DarkViolet;
                 else
                     dgvClientList.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
-                if (drow[firstColName] == DBNull.Value)
-                    dgvClientList.Rows[i].Cells["colName"].Value = drow["Name"].ToString();
+                if (clsClient.DSet.Tables[0].Rows[i][firstColName] == DBNull.Value)
+                    dgvClientList.Rows[i].Cells["colName"].Value = clsClient.DSet.Tables[0].Rows[i]["Name"].ToString();
                 else
-                    dgvClientList.Rows[i].Cells["colName"].Value = drow[firstColName].ToString();
-                dgvClientList.Rows[i].Cells["clmCity"].Value = drow["City"].ToString();
-                if (drow["ID"].ToString() == "")
+                    dgvClientList.Rows[i].Cells["colName"].Value = clsClient.DSet.Tables[0].Rows[i][firstColName].ToString();
+                dgvClientList.Rows[i].Cells["clmCity"].Value = clsClient.DSet.Tables[0].Rows[i]["City"].ToString();
+                if (clsClient.DSet.Tables[0].Rows[i]["ID"].ToString() == "")
                     dgvClientList.Rows[i].Cells["clmID"].Value = "0";
                 else
-                    dgvClientList.Rows[i].Cells["clmID"].Value = drow["ID"].ToString();
-                dgvClientList.Rows[i].Cells["clmZip"].Value = drow["Zipcode"].ToString();
-                dgvClientList.Rows[i].Cells["clmHHID"].Value = drow["HHId"].ToString();
-                dgvClientList.Rows[i].Cells["clmPhone"].Value = drow["Phone"].ToString();
-                dgvClientList.Rows[i].Cells["clmAddress"].Value = drow["Address"].ToString();
-                dgvClientList.Rows[i].Cells["clmAptNbr"].Value = drow["AptNbr"].ToString();
-                dgvClientList.Rows[i].Cells["clmHeadHH"].Value = CCFBGlobal.NullToBlank(drow["HeadHH"].ToString());
-                dgvClientList.Rows[i].Cells["clmClientType"].Value = CCFBGlobal.LongNameFromId(CCFBGlobal.parmTbl_Client, Convert.ToInt32(drow["ClientType"]));
-                dgvClientList.Rows[i].Cells["colHHName"].Value = drow["Name"].ToString();
-                dgvClientList.Rows[i].Cells["colNameLF"].Value = drow["colNameLF"].ToString().ToUpper().Trim();
-                dgvClientList.Rows[i].Cells["colNameFL"].Value = drow["colNameFL"].ToString().ToUpper().Trim();
-                if (drow["LatestService"].ToString() != "")
+                    dgvClientList.Rows[i].Cells["clmID"].Value = clsClient.DSet.Tables[0].Rows[i]["ID"].ToString();
+                dgvClientList.Rows[i].Cells["clmZip"].Value = clsClient.DSet.Tables[0].Rows[i]["Zipcode"].ToString();
+                dgvClientList.Rows[i].Cells["clmHHID"].Value = clsClient.DSet.Tables[0].Rows[i]["HHId"].ToString();
+                dgvClientList.Rows[i].Cells["clmPhone"].Value = clsClient.DSet.Tables[0].Rows[i]["Phone"].ToString();
+                dgvClientList.Rows[i].Cells["clmAddress"].Value = clsClient.DSet.Tables[0].Rows[i]["Address"].ToString();
+                dgvClientList.Rows[i].Cells["clmAptNbr"].Value = clsClient.DSet.Tables[0].Rows[i]["AptNbr"].ToString();
+                dgvClientList.Rows[i].Cells["clmHeadHH"].Value = CCFBGlobal.NullToBlank(clsClient.DSet.Tables[0].Rows[i]["HeadHH"].ToString());
+                dgvClientList.Rows[i].Cells["clmClientType"].Value = CCFBGlobal.LongNameFromId(CCFBGlobal.parmTbl_Client, Convert.ToInt32(clsClient.DSet.Tables[0].Rows[i]["ClientType"]));
+                dgvClientList.Rows[i].Cells["colHHName"].Value = clsClient.DSet.Tables[0].Rows[i]["Name"].ToString();
+                dgvClientList.Rows[i].Cells["colNameLF"].Value = clsClient.DSet.Tables[0].Rows[i]["colNameLF"].ToString().ToUpper().Trim();
+                dgvClientList.Rows[i].Cells["colNameFL"].Value = clsClient.DSet.Tables[0].Rows[i]["colNameFL"].ToString().ToUpper().Trim();
+                if (clsClient.DSet.Tables[0].Rows[i]["LatestService"].ToString() != "")
                 {
                     dgvClientList.Rows[i].Cells["clmLatestService"].Value =
                         CCFBGlobal.formatDateYMD(clsClient.DSet.Tables[0].Rows[i].Field<DateTime>("LatestService"));

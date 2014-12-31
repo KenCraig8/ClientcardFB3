@@ -564,7 +564,7 @@
             this.btnSelectContact.Text = "...";
             this.btnSelectContact.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSelectContact.UseVisualStyleBackColor = true;
-            this.btnSelectContact.Click += new System.EventHandler(this.btnSelectContact_Click);
+            this.btnSelectContact.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // rtplnmtFBContactPhone
             // 
@@ -764,7 +764,7 @@
             this.btnSelectDriver.Text = "...";
             this.btnSelectDriver.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSelectDriver.UseVisualStyleBackColor = true;
-            this.btnSelectDriver.Click += new System.EventHandler(this.btnSelectDriver_Click);
+            this.btnSelectDriver.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // rtplntbDriver
             // 
@@ -1961,14 +1961,14 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            /*this.data .Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.BackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle49;*/
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1,
@@ -1984,14 +1984,14 @@
             this.dataGridViewTextBoxColumn21,
             this.dataGridViewComboBoxColumn1,
             this.dataGridViewTextBoxColumn22});
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.PaleGoldenrod;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle25;
+           /* dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle62.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle62.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle62.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.Color.PaleGoldenrod;
+            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle62.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle62;*/
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -2003,10 +2003,10 @@
             // 
             // dataGridViewCheckBoxColumn1
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle13.NullValue = false;
-            this.dataGridViewCheckBoxColumn1.DefaultCellStyle = dataGridViewCellStyle13;
+           /* dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle50.NullValue = false;
+            this.dataGridViewCheckBoxColumn1.DefaultCellStyle = dataGridViewCellStyle50;*/
             this.dataGridViewCheckBoxColumn1.Frozen = true;
             this.dataGridViewCheckBoxColumn1.HeaderText = "sel";
             this.dataGridViewCheckBoxColumn1.MinimumWidth = 30;
@@ -2164,8 +2164,8 @@
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle14;
+            ///dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+           // this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle51;
             this.dataGridViewTextBoxColumn12.HeaderText = "RouteID";
             this.dataGridViewTextBoxColumn12.MaxInputLength = 10;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
@@ -2178,8 +2178,8 @@
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle15;
+           // dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+           // this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridViewTextBoxColumn13.HeaderText = "Rt";
             this.dataGridViewTextBoxColumn13.MaxInputLength = 10;
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
@@ -2191,9 +2191,9 @@
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle16;
+           // dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+           // dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+          //  this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle53;
             this.dataGridViewTextBoxColumn14.HeaderText = "Address";
             this.dataGridViewTextBoxColumn14.MaxInputLength = 50;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
@@ -2206,8 +2206,8 @@
             // dataGridViewTextBoxColumn15
             // 
             this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle17;
+          //  dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+          //  this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle54;
             this.dataGridViewTextBoxColumn15.HeaderText = "Apt";
             this.dataGridViewTextBoxColumn15.MaxInputLength = 40;
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
@@ -2219,8 +2219,8 @@
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle18;
+         //   dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         //   this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle55;
             this.dataGridViewTextBoxColumn16.HeaderText = "Hh ID";
             this.dataGridViewTextBoxColumn16.MaxInputLength = 40;
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
@@ -2233,8 +2233,8 @@
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle19;
+            //dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            //this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle56;
             this.dataGridViewTextBoxColumn17.HeaderText = "Client Name";
             this.dataGridViewTextBoxColumn17.MaxInputLength = 50;
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
@@ -2246,8 +2246,8 @@
             // dataGridViewTextBoxColumn18
             // 
             this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle20;
+            //dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            //this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle57;
             this.dataGridViewTextBoxColumn18.HeaderText = "Phone";
             this.dataGridViewTextBoxColumn18.MaxInputLength = 50;
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
@@ -2259,8 +2259,8 @@
             // dataGridViewTextBoxColumn19
             // 
             this.dataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle21;
+            ///dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            //this.dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle58;
             this.dataGridViewTextBoxColumn19.HeaderText = "Size";
             this.dataGridViewTextBoxColumn19.MaxInputLength = 50;
             this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
@@ -2272,9 +2272,9 @@
             // dataGridViewTextBoxColumn20
             // 
             this.dataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn20.DefaultCellStyle = dataGridViewCellStyle22;
+            //dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            //dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            //this.dataGridViewTextBoxColumn20.DefaultCellStyle = dataGridViewCellStyle59;
             this.dataGridViewTextBoxColumn20.HeaderText = "Comments";
             this.dataGridViewTextBoxColumn20.MaxInputLength = 300;
             this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
@@ -2286,9 +2286,9 @@
             // dataGridViewTextBoxColumn21
             // 
             this.dataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn21.DefaultCellStyle = dataGridViewCellStyle23;
+            //dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            //dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            //this.dataGridViewTextBoxColumn21.DefaultCellStyle = dataGridViewCellStyle60;
             this.dataGridViewTextBoxColumn21.HeaderText = "Driver Notes";
             this.dataGridViewTextBoxColumn21.MaxInputLength = 300;
             this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
@@ -2300,8 +2300,8 @@
             // dataGridViewTextBoxColumn22
             // 
             this.dataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn22.DefaultCellStyle = dataGridViewCellStyle24;
+            //dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            //this.dataGridViewTextBoxColumn22.DefaultCellStyle = dataGridViewCellStyle61;
             this.dataGridViewTextBoxColumn22.HeaderText = "Last Svc";
             this.dataGridViewTextBoxColumn22.MaxInputLength = 10;
             this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";

@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using NUnit.Extensions.Forms;
-using Moq.AutoMock;
+//using Moq.AutoMock;
 
 namespace ClientcardFB3.Tests
 {
     [TestFixture]
     class HDRoutesTest
     {
-        [Test]
-        public void findTest(){
-            AutoMocker hdRoutesMock = new AutoMocker();
-            hdRoutesMock.CreateSelfMock<HDRoutes>();
-            hdRoutesMock.GetMock<string>();
-            hdRoutesMock.GetMock<Volunteers>();
-        }
+
+
+        //[Test]
+        //public void findTest(){
+        //    AutoMocker hdRoutesMock = new AutoMocker();
+        //    hdRoutesMock.CreateSelfMock<HDRoutes>();
+        //    hdRoutesMock.GetMock<string>();
+        //    hdRoutesMock.GetMock<Volunteers>();
+        //}
     }
 }

@@ -109,6 +109,17 @@
     <Reference Include="MonthCalendar">
       <HintPath>..\MonthCalendar.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="NUnitForms, Version=1.3.1771.29165, Culture=neutral, PublicKeyToken=9df516afcc0d4103">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnitForms.Framework.1.3.1\lib\NUnitForms.dll</HintPath>
+    </Reference>
     <Reference Include="SigPadCtrl">
       <HintPath>..\SigPadCtrl.dll</HintPath>
     </Reference>
@@ -423,6 +434,8 @@
     <Compile Include="FreshAllianceForm.designer.cs">
       <DependentUpon>FreshAllianceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tests2\HDPlannerFormTest.cs" />
+    <Compile Include="Tests2\HDRoutesTest.cs" />
     <Compile Include="MarkHouseholdInactive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -864,6 +877,7 @@
       <DependentUpon>WebPageForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -971,6 +985,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
