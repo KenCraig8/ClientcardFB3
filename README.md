@@ -66,8 +66,13 @@ The getting started guide is also helpful for how to use the tool: https://windo
 For working with this project specifically:
 Create a github account and send me your username. I will add you as a collaborator so you can push to the repository.
 Clone the repository, then you have a copy of everything on your computer.
+The main project is ClientcardFB3/ClientcardFB3.sln . The other folders are for sub projects or for classes that multiple projects share.
 To test if it's working, make a change to one of the images or something and push it to Github. You should see your change on the website in a few minutes.
 Have fun!
+
+Use SQL management studio for viewing and modifying the database and also for testing SQL queries on the database. For more info see: http://msdn.microsoft.com/en-us/library/hh213248.aspx
+
+If you get errors when you try to run the code that reference tables in the database, read Scripts\ScriptsReadme.md for an explanation and how to fix this.
 
 We need lots of help with testing:
 Follow these steps if you would like to contribute.
@@ -77,7 +82,7 @@ These are easy to install, just follow this guide: http://docs.nuget.org/docs/st
 For an example of how to do testing in this project, look at
 ClientcardFB3\CustomSql\CustomSql\Testing
 
-Also research on hot to do testing and mocking in general and also how use the tools above specificity.
+Also research on how to do testing and mocking in general and also how use the tools above specificity.
 
 SQL- For Chloe Margaret
 Helpful link to learn: http://www.w3schools.com/SQl/default.asp
