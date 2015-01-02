@@ -98,7 +98,7 @@ namespace ClientcardFB3
         public string RouteTitle
         {
             get { return drow["RouteTitle"].ToString(); }
-            set { drow["RouteTitle"] = value; } // Null arguement exeption here. Column 'RouteTitle' does not belong to table .
+            set { drow["RouteTitle"] = value; } // arguement exeption here. Column 'RouteTitle' does not belong to table .
         }
         public int DeliveryDOW
         {
@@ -214,7 +214,7 @@ namespace ClientcardFB3
         public int Add()
         {
             drow = dtbl.NewRow();
-            //DefaultDriver = 0;
+            DefaultDriver = 0;
             RouteTitle = "Route " + (dtbl.Rows.Count+1).ToString();
             Notes = "";
             DriverNotes = "";
@@ -330,37 +330,38 @@ namespace ClientcardFB3
         /// Sets the DataRow for the given RowIndex
         /// </summary>
         /// <param name="rowIndex"></param>
-        public DataRow setDataRow(int rowIndex)
-        {
-            if (dtbl.Rows.Count >= rowIndex)
-            {
-                drow = dtbl.Rows[rowIndex];
-                return drow;
-            }
-            return null;
-        }
+        // Looks more like this is getting the data row
+        //public DataRow setDataRow(int rowIndex)
+        //{
+        //    if (dtbl.Rows.Count >= rowIndex)
+        //    {
+        //        drow = dtbl.Rows[rowIndex];
+        //        return drow;
+        //    }
+        //    return null;
+        //}
 
-        public void open(System.Int32 key)
-        {
-            try
-            {
-                openConnection();
-                command = new SqlCommand("SELECT * FROM HDRoutes WHERE ID=" + key.ToString(), conn);
-                dadAdpt.SelectCommand = command;
-                dtbl.Clear();
-                iRowCount = dadAdpt.Fill(dtbl);
-                closeConnection();
-                if (iRowCount > 0)
-                    drow = dtbl.Rows[0];
-            }
-            catch (SqlException ex)
-            {
-                iRowCount = 0;
-                drow = null;
-                CCFBGlobal.appendErrorToErrorReport("Select Command = " + command.CommandText,
-                    ex.GetBaseException().ToString());
-            }
-        }
+        //public void open(System.Int32 key)
+        //{
+        //    try
+        //    {
+        //        openConnection();
+        //        command = new SqlCommand("SELECT * FROM HDRoutes WHERE ID=" + key.ToString(), conn);
+        //        dadAdpt.SelectCommand = command;
+        //        dtbl.Clear();
+        //        iRowCount = dadAdpt.Fill(dtbl);
+        //        closeConnection();
+        //        if (iRowCount > 0)
+        //            drow = dtbl.Rows[0];
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        iRowCount = 0;
+        //        drow = null;
+        //        CCFBGlobal.appendErrorToErrorReport("Select Command = " + command.CommandText,
+        //            ex.GetBaseException().ToString());
+        //    }
+        //}
 
         public void openWhere(string whereClause)
         {
