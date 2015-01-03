@@ -83,15 +83,3 @@ For an example of how to do testing in this project, look at
 ClientcardFB3\CustomSql\CustomSql\Testing
 
 Also research on how to do testing and mocking in general and also how use the tools above specificity.
-
-SQL- For Chloe Margaret
-Helpful link to learn: http://www.w3schools.com/SQl/default.asp
-•	Provide a way to take in a SQL query that could be specified in the excel document but easy to change 
-o	This would be a select query to get the top 1000 rows 
-o	This tells you what data to put in the data base because you can have excel how to run the SQL query 
-•	Knowing how to format the data 
-o	Flexible 
-o	Easy to change the format just by changing it within excel 
-•	Excel would be running the SQL query in the database 
-o	The SQL query would be giving data like the ones listed below 
-
