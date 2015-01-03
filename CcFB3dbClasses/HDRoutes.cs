@@ -122,6 +122,7 @@ namespace ClientcardFB3
         }
         public int FBContact
         {
+            // TODO: The FBContact type should actually be a name string instead of the int id to make it compatable with the previous version
             get { return Convert.ToInt32(drow["FBContact"]); }
             set { drow["FBContact"] = value; }
         }
