@@ -770,7 +770,7 @@ namespace ClientcardFB3
         private void rtplnRefreshlbxRoutes(int newID)
         {
             loading = true;
-            clsHDRoutes.openWhere(" WHERE ID >0 ORDER BY RouteTitle");
+            clsHDRoutes.openWhere(" WHERE ID >0 ORDER BY RouteTitle"); //This line should add the apropriate columns to the DTable, but it doesn't
             if (clsHDRoutes.RowCount > 0)
             {
                 rtplnlbxRoutes.DataSource = clsHDRoutes.DTable;

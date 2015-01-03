@@ -41,8 +41,8 @@ namespace ClientcardFB3
         System.Data.SqlClient.SqlConnection conn;
         DataRow drow;
         int iRowCount = 0;
-        VolContactInfo driverInfo;
-        VolContactInfo fbContactInfo;
+        VolContactInfo driverInfo =  new VolContactInfo();
+        VolContactInfo fbContactInfo =  new VolContactInfo();
         Volunteers clsVol;
 
         /// <summary>
@@ -53,11 +53,10 @@ namespace ClientcardFB3
         public HDRoutes(string connStringIn, Volunteers clsVol)
         {
             conn = new System.Data.SqlClient.SqlConnection();
-            connString = connStringIn;
-            conn.ConnectionString = connString;
+            conn.ConnectionString = connStringIn;
             dtbl = new DataTable();
             dadAdpt = new SqlDataAdapter();
-            this.clsVol = new Volunteers(connString);
+            this.clsVol = new Volunteers(connStringIn);
         }
 
         #region Get/Set Accessors
@@ -330,16 +329,15 @@ namespace ClientcardFB3
         /// Sets the DataRow for the given RowIndex
         /// </summary>
         /// <param name="rowIndex"></param>
-        // Looks more like this is getting the data row
-        //public DataRow setDataRow(int rowIndex)
-        //{
-        //    if (dtbl.Rows.Count >= rowIndex)
-        //    {
-        //        drow = dtbl.Rows[rowIndex];
-        //        return drow;
-        //    }
-        //    return null;
-        //}
+        public DataRow setDataRow(int rowIndex)
+        {
+            if (dtbl.Rows.Count >= rowIndex)
+            {
+                drow = dtbl.Rows[rowIndex];
+                return drow;
+            }
+            return null;
+        }
 
         //public void open(System.Int32 key)
         //{
@@ -367,7 +365,7 @@ namespace ClientcardFB3
         {
             try
             {
-                openConnection();
+                openConnection(); //Sql exception here
                 command = new SqlCommand("SELECT * FROM HDRoutes " + whereClause, conn);
                 dadAdpt.SelectCommand = command;
                 dtbl.Clear();
