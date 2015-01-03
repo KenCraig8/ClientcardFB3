@@ -97,7 +97,7 @@ namespace ClientcardFB3
         public string RouteTitle
         {
             get { return drow["RouteTitle"].ToString(); }
-            set { drow["RouteTitle"] = value; } // arguement exeption here. Column 'RouteTitle' does not belong to table .
+            set { drow["RouteTitle"] = value; }
         }
         public int DeliveryDOW
         {
@@ -117,12 +117,10 @@ namespace ClientcardFB3
         public int DefaultDriver
         {
             get { return Convert.ToInt32(drow["DefaultDriver"]); }
-            //Crashes right here. invalid argument exception on drow
             set { drow["DefaultDriver"] = value; }
         }
         public int FBContact
         {
-            // TODO: The FBContact type should actually be a name string instead of the int id to make it compatable with the previous version
             get { return Convert.ToInt32(drow["FBContact"]); }
             set { drow["FBContact"] = value; }
         }

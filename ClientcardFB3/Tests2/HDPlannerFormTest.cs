@@ -8,6 +8,7 @@ using NUnit.Framework;
 using NUnit.Extensions.Forms;
 using System.Windows.Forms;
 using System.Data;
+using UnitTestingTools = Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ClientcardFB3.Tests
 {
@@ -30,7 +31,15 @@ namespace ClientcardFB3.Tests
                 inTable.Rows.Add(new string[] { item });
             }
 
-            //planForm
+            ComboBox outCombo = new ComboBox();
+
+            UnitTestingTools.PrivateObject privPlanForm = new UnitTestingTools.PrivateObject(planForm);
+            privPlanForm.Invoke("FillFilterByCombo", new object[] {inTable, outCombo});
+
+            string[] outputItems = new string[itemsList.Length];
+            outCombo.Items.CopyTo(outputItems, 0);
+
+            Assert.AreEqual(itemsList, outputItems);
         }
      /*   [Test]
         public void FillFilterByComboTest()

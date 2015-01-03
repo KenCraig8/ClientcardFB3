@@ -74,6 +74,8 @@ Use SQL management studio for viewing and modifying the database and also for te
 
 If you get errors when you try to run the code that reference tables in the database, read Scripts\ScriptsReadme.md for an explanation and how to fix this.
 
+You may wish to use a database that one of your team members gave you as a .bak file. Follow this guide for this: http://msdn.microsoft.com/en-us/library/ms177429.aspx
+
 We need lots of help with testing:
 Follow these steps if you would like to contribute.
 We're using Nunit (basic testing), NunitForms (tests that interact with user interface) and Moq (Mocking) for testing.
