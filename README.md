@@ -19,11 +19,24 @@ Install Microsoft Access 2010 or better
 Next install the SQL server:
 IMPORTANT: For both options, your computer name must be different than your user name. If they are the same, you won't be able to log into the sql server on your computer.
 
+Install Git Hub for Windows
+
+Search clientcardFB3 on Git Hub website. User is Zenev
+
+Select clone to desktop from clientcard page on Git Hub
+
+Open directory clientcardFB3\clientcardFB3_installer\SQLinstaller\SQLinstallscript on command line(admin mode)
+
+run installscript.cmd
+
+notes:
+vbpowerpacks must be downloaded for visual basic before building
+
 Automatic install:
 I created a simple script to make it easier to install the Sql server properly. 
 You can download it here: https://www.dropbox.com/s/3f6h84t2kge28ax/SqlInstallScript.zip?dl=0 Just unzip the folder and run the "installScript.cmd".
 
-This will automaticly download the correct SQL server installer. Then it will install this with the correct parameters.
+This will automatically download the correct SQL server installer. Then it will install this with the correct parameters.
 
 Here's a few errors that are common and easy to fix:
 Error with line: "powershell (New-Object System.Net.WebClient).DownloadFile(\"%downloadFile%\", \"%CD%\%sqlInstallName%\")"
