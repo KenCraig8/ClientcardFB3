@@ -59,7 +59,9 @@ namespace ClientcardFB3
         const int maxRouteStatusRows = 4;
         int[] cntrsRoutesStatus;
 
-        public HDPlannerForm(MainForm frmMainIn, HDRoutes clsHDRoutes, EditVolunteerForm frmVolunteers)
+        public HDPlannerForm(MainForm frmMainIn) : this(frmMainIn, new HDRoutes(CCFBGlobal.connectionString), new EditVolunteerForm(CCFBGlobal.connectionString, true)) { }
+
+        public HDPlannerForm(MainForm frmMainIn, HDRoutes clsHDRoutes = new HDRoutes(CCFBGlobal.connectionString), EditVolunteerForm frmVolunteers)
         {
             this.clsHDRoutes = clsHDRoutes;
             this.frmVolunteers = frmVolunteers;

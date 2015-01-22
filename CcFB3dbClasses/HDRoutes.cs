@@ -46,6 +46,13 @@ namespace ClientcardFB3
         Volunteers clsVol;
 
         /// <summary>
+        /// Constructor without dependency injection. Used normaly
+        /// </summary>
+        /// <param name="connStringIn"></param>
+        /// <param name="?"></param>
+        public HDRoutes(string connStringIn) : this(connStringIn, new Volunteers(connStringIn)) { }
+
+        /// <summary>
         /// Injects the dependencies
         /// Used for testing
         /// </summary>
@@ -56,7 +63,7 @@ namespace ClientcardFB3
             conn.ConnectionString = connStringIn;
             dtbl = new DataTable();
             dadAdpt = new SqlDataAdapter();
-            this.clsVol = new Volunteers(connStringIn);
+            this.clsVol = clsVol;
         }
 
         #region Get/Set Accessors
