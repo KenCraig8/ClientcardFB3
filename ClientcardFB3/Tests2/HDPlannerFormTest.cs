@@ -18,14 +18,13 @@ namespace ClientcardFB3.Tests
         [Test]
         public void FillFilterByComboTest()
         {
-            Mock<LoginForm> loginFormMock = new Mock<LoginForm>();
-            Mock<MainForm> mainFormMock = new Mock<MainForm>(loginFormMock.Object);
+            LoginFormFake loginFormFake = new LoginFormFake();
+            Mock<MainForm> mainFormMock = new Mock<MainForm>(loginFormFake);
             Mock<HDRoutes> hdRoutesMock = new Mock<HDRoutes>("");
             Mock<EditVolunteerForm> voulenteerFormMock = new Mock<EditVolunteerForm>("");
 
-            //Problem here: error with the mainForm and LoginForm ect not being properly initialised. Potential solution: mock them.
+            //TODO: Error here with main form. Replace the main form used with a fake, similar to the login form
             HDPlannerForm planForm = new HDPlannerForm(mainFormMock.Object, hdRoutesMock.Object, voulenteerFormMock.Object);
-            // Find out where the error is.
 
             ComboBox cbo = new ComboBox();
 

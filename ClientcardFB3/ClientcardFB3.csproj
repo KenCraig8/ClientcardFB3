@@ -644,6 +644,7 @@
     <Compile Include="ServiceItemsForm.Designer.cs">
       <DependentUpon>ServiceItemsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tests2\LoginFormFake.cs" />
     <Compile Include="TrxLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
