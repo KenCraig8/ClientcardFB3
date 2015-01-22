@@ -38,7 +38,7 @@ namespace ClientcardFB3
         ClientSearch frmClientSearch;
         HDBuildings clsHdBuildings = new HDBuildings(CCFBGlobal.connectionString);
         FindClientForm frmFindClient;   //A pointer to the FindClientForm
-        LoginForm frmLogIn;
+        ILoginForm frmLogIn;
         TrxLogForm frmTrxLog;
         //CreateUnitedWayExport clsCreateUWExport;
         BarCodeEntryForm frmBarCodeEntry; //= new BarCodeEntryForm();
@@ -78,10 +78,13 @@ namespace ClientcardFB3
         Client.statsTrx clientTrxStats = new Client.statsTrx();
 
 
-        public MainForm(LoginForm FrmLogInIn)
+        public MainForm(ILoginForm FrmLogInIn)
         {
             frmLogIn = FrmLogInIn;
-
+        }
+        
+        // Initialises the variables in the form
+        public void InitialiseForm(){
             InitializeComponent();
             conn = new SqlConnection(CCFBGlobal.connectionString);
 
@@ -150,7 +153,6 @@ namespace ClientcardFB3
             {
                 clearForm();
             }
-            
         }
 
         private void addHousehold(int memID)

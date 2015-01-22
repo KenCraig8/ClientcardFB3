@@ -435,6 +435,7 @@
     <Compile Include="FreshAllianceForm.designer.cs">
       <DependentUpon>FreshAllianceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ILoginForm.cs" />
     <Compile Include="Tests2\HDPlannerFormTest.cs" />
     <Compile Include="Tests2\HDRoutesTest.cs" />
     <Compile Include="MarkHouseholdInactive.cs">

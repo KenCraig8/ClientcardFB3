@@ -10,7 +10,7 @@ using Microsoft.Win32;
 
 namespace ClientcardFB3
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Form, ILoginForm
     {
         bool needtoUpdate = false;
         bool cancelLogIn = false;
@@ -232,8 +232,8 @@ namespace ClientcardFB3
                             #if CCFB
                                 CCFBPrefs.Init();
                                 formMain = new MainForm(this);
+                                formMain.InitialiseForm();
                             #endif
-
                                 formMain.ShowDialog();
                                 resetForm();
                                 break;
