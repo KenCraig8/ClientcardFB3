@@ -18,6 +18,10 @@ namespace ClientcardFB3.Tests
         [Test]
         public void FillFilterByComboTest()
         {
+            //var mainFormMock = new Mock<MainForm>();
+            //mainFormMock.Setup(_ => _.);
+
+
             //Problem here: error with the mainForm and LoginForm ect not being properly initialised. Potential solution: mock them.
             HDPlannerForm planForm = new HDPlannerForm(new MainForm(new LoginForm()), new HDRoutes("", new Volunteers("")), new EditVolunteerForm(""));
             // Find out where the error is.

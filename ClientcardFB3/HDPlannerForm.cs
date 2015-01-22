@@ -61,7 +61,7 @@ namespace ClientcardFB3
 
         public HDPlannerForm(MainForm frmMainIn) : this(frmMainIn, new HDRoutes(CCFBGlobal.connectionString), new EditVolunteerForm(CCFBGlobal.connectionString, true)) { }
 
-        public HDPlannerForm(MainForm frmMainIn, HDRoutes clsHDRoutes = new HDRoutes(CCFBGlobal.connectionString), EditVolunteerForm frmVolunteers)
+        public HDPlannerForm(MainForm frmMainIn, HDRoutes clsHDRoutes, EditVolunteerForm frmVolunteers)
         {
             this.clsHDRoutes = clsHDRoutes;
             this.frmVolunteers = frmVolunteers;
