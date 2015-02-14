@@ -30,47 +30,47 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Allocated",
             "120"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Monday",
             "40"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tuesday",
             "30"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "Wednesday",
             "0"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "Thursday",
             "0"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "Friday",
             "0"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Saturday",
             "0"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "Avaialable",
             "50"}, -1, System.Drawing.Color.Empty, System.Drawing.Color.Empty, new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFile_FindClient = new System.Windows.Forms.ToolStripMenuItem();
@@ -472,6 +472,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
             this.menuClient,
@@ -484,7 +485,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 80);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -499,14 +500,14 @@
             this.mnuFile_LogOut,
             this.mnuFile_Exit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(37, 20);
+            this.menuFile.Size = new System.Drawing.Size(44, 24);
             this.menuFile.Tag = "0";
             this.menuFile.Text = "&File";
             // 
             // mnuFile_FindClient
             // 
             this.mnuFile_FindClient.Name = "mnuFile_FindClient";
-            this.mnuFile_FindClient.Size = new System.Drawing.Size(254, 22);
+            this.mnuFile_FindClient.Size = new System.Drawing.Size(302, 24);
             this.mnuFile_FindClient.Tag = "0";
             this.mnuFile_FindClient.Text = "&Find Client or Household Member";
             this.mnuFile_FindClient.Click += new System.EventHandler(this.mnuFile_FindClient_Click);
@@ -514,7 +515,7 @@
             // mnuFile_AddHH
             // 
             this.mnuFile_AddHH.Name = "mnuFile_AddHH";
-            this.mnuFile_AddHH.Size = new System.Drawing.Size(254, 22);
+            this.mnuFile_AddHH.Size = new System.Drawing.Size(302, 24);
             this.mnuFile_AddHH.Tag = "0";
             this.mnuFile_AddHH.Text = "&Add Client";
             this.mnuFile_AddHH.Click += new System.EventHandler(this.mnuFile_AddHH_Click);
@@ -522,12 +523,12 @@
             // mnuFile_Separator1
             // 
             this.mnuFile_Separator1.Name = "mnuFile_Separator1";
-            this.mnuFile_Separator1.Size = new System.Drawing.Size(251, 6);
+            this.mnuFile_Separator1.Size = new System.Drawing.Size(299, 6);
             // 
             // mnuFile_PrintAllClientCards
             // 
             this.mnuFile_PrintAllClientCards.Name = "mnuFile_PrintAllClientCards";
-            this.mnuFile_PrintAllClientCards.Size = new System.Drawing.Size(254, 22);
+            this.mnuFile_PrintAllClientCards.Size = new System.Drawing.Size(302, 24);
             this.mnuFile_PrintAllClientCards.Tag = "1";
             this.mnuFile_PrintAllClientCards.Text = "&Print All Client Cards";
             this.mnuFile_PrintAllClientCards.Click += new System.EventHandler(this.mnuFile_PrintAllClientCards_Click);
@@ -535,12 +536,12 @@
             // mnuFile_Separator2
             // 
             this.mnuFile_Separator2.Name = "mnuFile_Separator2";
-            this.mnuFile_Separator2.Size = new System.Drawing.Size(251, 6);
+            this.mnuFile_Separator2.Size = new System.Drawing.Size(299, 6);
             // 
             // mnuFile_LogOut
             // 
             this.mnuFile_LogOut.Name = "mnuFile_LogOut";
-            this.mnuFile_LogOut.Size = new System.Drawing.Size(254, 22);
+            this.mnuFile_LogOut.Size = new System.Drawing.Size(302, 24);
             this.mnuFile_LogOut.Tag = "0";
             this.mnuFile_LogOut.Text = "&Log Out";
             this.mnuFile_LogOut.Click += new System.EventHandler(this.mnuFile_LogOut_Click);
@@ -548,7 +549,7 @@
             // mnuFile_Exit
             // 
             this.mnuFile_Exit.Name = "mnuFile_Exit";
-            this.mnuFile_Exit.Size = new System.Drawing.Size(254, 22);
+            this.mnuFile_Exit.Size = new System.Drawing.Size(302, 24);
             this.mnuFile_Exit.Tag = "0";
             this.mnuFile_Exit.Text = "E&xit";
             this.mnuFile_Exit.Click += new System.EventHandler(this.mnuFile_Exit_Click);
@@ -570,14 +571,14 @@
             this.mnuClientSeparator4,
             this.mnuClient_SchSupply});
             this.menuClient.Name = "menuClient";
-            this.menuClient.Size = new System.Drawing.Size(50, 20);
+            this.menuClient.Size = new System.Drawing.Size(59, 24);
             this.menuClient.Tag = "0";
             this.menuClient.Text = "&Client";
             // 
             // mnuClient_NewSvcOverRide
             // 
             this.mnuClient_NewSvcOverRide.Name = "mnuClient_NewSvcOverRide";
-            this.mnuClient_NewSvcOverRide.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_NewSvcOverRide.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_NewSvcOverRide.Tag = "0";
             this.mnuClient_NewSvcOverRide.Text = "&Allow New Service";
             this.mnuClient_NewSvcOverRide.Click += new System.EventHandler(this.mnuClient_NewSvcOverRide_Click);
@@ -585,7 +586,7 @@
             // mnuClient_NewService
             // 
             this.mnuClient_NewService.Name = "mnuClient_NewService";
-            this.mnuClient_NewService.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_NewService.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_NewService.Tag = "0";
             this.mnuClient_NewService.Text = "Give &New Service";
             this.mnuClient_NewService.Click += new System.EventHandler(this.mnuClient_NewService_Click);
@@ -593,13 +594,13 @@
             // mnuClient_Separator1
             // 
             this.mnuClient_Separator1.Name = "mnuClient_Separator1";
-            this.mnuClient_Separator1.Size = new System.Drawing.Size(235, 6);
+            this.mnuClient_Separator1.Size = new System.Drawing.Size(280, 6);
             this.mnuClient_Separator1.Tag = "0";
             // 
             // mnuClient_BeginEditClient
             // 
             this.mnuClient_BeginEditClient.Name = "mnuClient_BeginEditClient";
-            this.mnuClient_BeginEditClient.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_BeginEditClient.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_BeginEditClient.Tag = "0";
             this.mnuClient_BeginEditClient.Text = "&Begin Editing Client";
             this.mnuClient_BeginEditClient.Click += new System.EventHandler(this.mnuClient_BeginEditClient_Click);
@@ -608,7 +609,7 @@
             // 
             this.mnuClient_CancelEdit.Enabled = false;
             this.mnuClient_CancelEdit.Name = "mnuClient_CancelEdit";
-            this.mnuClient_CancelEdit.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_CancelEdit.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_CancelEdit.Tag = "0";
             this.mnuClient_CancelEdit.Text = "&Cancel Edit";
             this.mnuClient_CancelEdit.Click += new System.EventHandler(this.mnuClient_CancelEdit_Click);
@@ -617,7 +618,7 @@
             // 
             this.mnuClient_SaveHHChanges.Enabled = false;
             this.mnuClient_SaveHHChanges.Name = "mnuClient_SaveHHChanges";
-            this.mnuClient_SaveHHChanges.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_SaveHHChanges.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_SaveHHChanges.Tag = "0";
             this.mnuClient_SaveHHChanges.Text = "&Save Changes To Client Record";
             this.mnuClient_SaveHHChanges.Click += new System.EventHandler(this.mnuClient_SaveHHChanges_Click);
@@ -625,12 +626,12 @@
             // mnuClient_Separator2
             // 
             this.mnuClient_Separator2.Name = "mnuClient_Separator2";
-            this.mnuClient_Separator2.Size = new System.Drawing.Size(235, 6);
+            this.mnuClient_Separator2.Size = new System.Drawing.Size(280, 6);
             // 
             // mnuClient_DeleteClient
             // 
             this.mnuClient_DeleteClient.Name = "mnuClient_DeleteClient";
-            this.mnuClient_DeleteClient.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_DeleteClient.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_DeleteClient.Tag = "1";
             this.mnuClient_DeleteClient.Text = "&Delete Client";
             this.mnuClient_DeleteClient.Click += new System.EventHandler(this.mnuClient_DeleteClient_Click);
@@ -638,13 +639,13 @@
             // mnuClient_Separator3
             // 
             this.mnuClient_Separator3.Name = "mnuClient_Separator3";
-            this.mnuClient_Separator3.Size = new System.Drawing.Size(235, 6);
+            this.mnuClient_Separator3.Size = new System.Drawing.Size(280, 6);
             this.mnuClient_Separator3.Tag = "0";
             // 
             // mnuClient_PrintClientCard
             // 
             this.mnuClient_PrintClientCard.Name = "mnuClient_PrintClientCard";
-            this.mnuClient_PrintClientCard.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_PrintClientCard.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_PrintClientCard.Tag = "0";
             this.mnuClient_PrintClientCard.Text = "&Print Client Card";
             this.mnuClient_PrintClientCard.Click += new System.EventHandler(this.mnuClient_PrintClientCard_Click);
@@ -652,7 +653,7 @@
             // mnuClient_PrintForm
             // 
             this.mnuClient_PrintForm.Name = "mnuClient_PrintForm";
-            this.mnuClient_PrintForm.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_PrintForm.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_PrintForm.Tag = "0";
             this.mnuClient_PrintForm.Text = "Print Client &Household Form";
             this.mnuClient_PrintForm.Click += new System.EventHandler(this.mnuClient_PrintForm_Click);
@@ -660,13 +661,13 @@
             // mnuClientSeparator4
             // 
             this.mnuClientSeparator4.Name = "mnuClientSeparator4";
-            this.mnuClientSeparator4.Size = new System.Drawing.Size(235, 6);
+            this.mnuClientSeparator4.Size = new System.Drawing.Size(280, 6);
             // 
             // mnuClient_SchSupply
             // 
             this.mnuClient_SchSupply.Enabled = false;
             this.mnuClient_SchSupply.Name = "mnuClient_SchSupply";
-            this.mnuClient_SchSupply.Size = new System.Drawing.Size(238, 22);
+            this.mnuClient_SchSupply.Size = new System.Drawing.Size(283, 24);
             this.mnuClient_SchSupply.Tag = "1";
             this.mnuClient_SchSupply.Text = "Edit School S&upply";
             this.mnuClient_SchSupply.Click += new System.EventHandler(this.mnuClient_SchSupply_Click);
@@ -680,14 +681,14 @@
             this.mnuTrx_Delete,
             this.toolStripSeparator8});
             this.menuTrx.Name = "menuTrx";
-            this.menuTrx.Size = new System.Drawing.Size(86, 20);
+            this.menuTrx.Size = new System.Drawing.Size(103, 24);
             this.menuTrx.Tag = "0";
             this.menuTrx.Text = "&Transactions";
             // 
             // mnuTrx_NewAppointment
             // 
             this.mnuTrx_NewAppointment.Name = "mnuTrx_NewAppointment";
-            this.mnuTrx_NewAppointment.Size = new System.Drawing.Size(217, 22);
+            this.mnuTrx_NewAppointment.Size = new System.Drawing.Size(259, 24);
             this.mnuTrx_NewAppointment.Tag = "0";
             this.mnuTrx_NewAppointment.Text = "Ne&w Appointment";
             this.mnuTrx_NewAppointment.Click += new System.EventHandler(this.mnuTrx_NewAppointment_Click);
@@ -695,14 +696,14 @@
             // mnuTrx_NewServiceTrx
             // 
             this.mnuTrx_NewServiceTrx.Name = "mnuTrx_NewServiceTrx";
-            this.mnuTrx_NewServiceTrx.Size = new System.Drawing.Size(217, 22);
+            this.mnuTrx_NewServiceTrx.Size = new System.Drawing.Size(259, 24);
             this.mnuTrx_NewServiceTrx.Tag = "0";
             this.mnuTrx_NewServiceTrx.Text = "&New Service";
             // 
             // mnuTrx_Edit
             // 
             this.mnuTrx_Edit.Name = "mnuTrx_Edit";
-            this.mnuTrx_Edit.Size = new System.Drawing.Size(217, 22);
+            this.mnuTrx_Edit.Size = new System.Drawing.Size(259, 24);
             this.mnuTrx_Edit.Tag = "0";
             this.mnuTrx_Edit.Text = "&Edit Transaction";
             this.mnuTrx_Edit.Click += new System.EventHandler(this.mnuTrx_Edit_Click);
@@ -710,7 +711,7 @@
             // mnuTrx_Delete
             // 
             this.mnuTrx_Delete.Name = "mnuTrx_Delete";
-            this.mnuTrx_Delete.Size = new System.Drawing.Size(217, 22);
+            this.mnuTrx_Delete.Size = new System.Drawing.Size(259, 24);
             this.mnuTrx_Delete.Tag = "1";
             this.mnuTrx_Delete.Text = "&Delete Service Transactions";
             this.mnuTrx_Delete.Click += new System.EventHandler(this.mnuTrx_Delete_Click);
@@ -718,7 +719,7 @@
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(214, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(256, 6);
             // 
             // menuReports
             // 
@@ -731,14 +732,14 @@
             this.toolStripSeparator6,
             this.mnuReports_CustomQuery});
             this.menuReports.Name = "menuReports";
-            this.menuReports.Size = new System.Drawing.Size(59, 20);
+            this.menuReports.Size = new System.Drawing.Size(72, 24);
             this.menuReports.Tag = "0";
             this.menuReports.Text = "&Reports";
             // 
             // mnuReports_MonthlyForm
             // 
             this.mnuReports_MonthlyForm.Name = "mnuReports_MonthlyForm";
-            this.mnuReports_MonthlyForm.Size = new System.Drawing.Size(194, 22);
+            this.mnuReports_MonthlyForm.Size = new System.Drawing.Size(226, 24);
             this.mnuReports_MonthlyForm.Tag = "1";
             this.mnuReports_MonthlyForm.Text = "Monthly Reports";
             this.mnuReports_MonthlyForm.Click += new System.EventHandler(this.mnuReports_MonthlyForm_Click);
@@ -746,7 +747,7 @@
             // mnuReports_AccessRpts
             // 
             this.mnuReports_AccessRpts.Name = "mnuReports_AccessRpts";
-            this.mnuReports_AccessRpts.Size = new System.Drawing.Size(194, 22);
+            this.mnuReports_AccessRpts.Size = new System.Drawing.Size(226, 24);
             this.mnuReports_AccessRpts.Tag = "0";
             this.mnuReports_AccessRpts.Text = "&Access Reports";
             this.mnuReports_AccessRpts.Click += new System.EventHandler(this.mnuReports_AccessRpts_Click);
@@ -754,7 +755,7 @@
             // mnuDatabaseStatistics
             // 
             this.mnuDatabaseStatistics.Name = "mnuDatabaseStatistics";
-            this.mnuDatabaseStatistics.Size = new System.Drawing.Size(194, 22);
+            this.mnuDatabaseStatistics.Size = new System.Drawing.Size(226, 24);
             this.mnuDatabaseStatistics.Tag = "1";
             this.mnuDatabaseStatistics.Text = "Database Statistics";
             this.mnuDatabaseStatistics.Click += new System.EventHandler(this.mnuDatabaseStatistics_Click);
@@ -762,12 +763,12 @@
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(191, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(223, 6);
             // 
             // tsmiKingCountyReport
             // 
             this.tsmiKingCountyReport.Name = "tsmiKingCountyReport";
-            this.tsmiKingCountyReport.Size = new System.Drawing.Size(194, 22);
+            this.tsmiKingCountyReport.Size = new System.Drawing.Size(226, 24);
             this.tsmiKingCountyReport.Tag = "1";
             this.tsmiKingCountyReport.Text = "King County Report";
             this.tsmiKingCountyReport.Click += new System.EventHandler(this.tsmiKingCountyReport_Click);
@@ -775,12 +776,12 @@
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(191, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(223, 6);
             // 
             // mnuReports_CustomQuery
             // 
             this.mnuReports_CustomQuery.Name = "mnuReports_CustomQuery";
-            this.mnuReports_CustomQuery.Size = new System.Drawing.Size(194, 22);
+            this.mnuReports_CustomQuery.Size = new System.Drawing.Size(226, 24);
             this.mnuReports_CustomQuery.Tag = "1";
             this.mnuReports_CustomQuery.Text = "Custom Query Reports";
             this.mnuReports_CustomQuery.Click += new System.EventHandler(this.mnuReports_CustomQuery_Click);
@@ -801,14 +802,14 @@
             this.mnuTools_CSFPServices,
             this.freshAllianceToolStripMenuItem});
             this.menuTools.Name = "menuTools";
-            this.menuTools.Size = new System.Drawing.Size(48, 20);
+            this.menuTools.Size = new System.Drawing.Size(57, 24);
             this.menuTools.Tag = "1";
             this.menuTools.Text = "T&ools";
             // 
             // mnuTools_VolHoursForm
             // 
             this.mnuTools_VolHoursForm.Name = "mnuTools_VolHoursForm";
-            this.mnuTools_VolHoursForm.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_VolHoursForm.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_VolHoursForm.Tag = "1";
             this.mnuTools_VolHoursForm.Text = "Enter Volunteer &Hours";
             this.mnuTools_VolHoursForm.Click += new System.EventHandler(this.mnuTools_VolHoursForm_Click);
@@ -816,7 +817,7 @@
             // mnuTools_DonationsForm
             // 
             this.mnuTools_DonationsForm.Name = "mnuTools_DonationsForm";
-            this.mnuTools_DonationsForm.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_DonationsForm.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_DonationsForm.Tag = "1";
             this.mnuTools_DonationsForm.Text = "Enter Food &Receipts";
             this.mnuTools_DonationsForm.Click += new System.EventHandler(this.mnuTools_DonationsForm_Click);
@@ -824,7 +825,7 @@
             // mnuTools_GroceryRescue
             // 
             this.mnuTools_GroceryRescue.Name = "mnuTools_GroceryRescue";
-            this.mnuTools_GroceryRescue.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_GroceryRescue.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_GroceryRescue.Tag = "1";
             this.mnuTools_GroceryRescue.Text = "Enter &Grocery Rescue";
             this.mnuTools_GroceryRescue.Click += new System.EventHandler(this.mnuTools_GroceryRescueToolStripMenuItem_Click);
@@ -832,12 +833,12 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(231, 6);
             // 
             // mnuTools_DonorsForm
             // 
             this.mnuTools_DonorsForm.Name = "mnuTools_DonorsForm";
-            this.mnuTools_DonorsForm.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_DonorsForm.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_DonorsForm.Tag = "1";
             this.mnuTools_DonorsForm.Text = "Maintain &Donors";
             this.mnuTools_DonorsForm.Click += new System.EventHandler(this.mnuTools_DonorsForm_Click);
@@ -845,7 +846,7 @@
             // mnuTools_VolunteersForm
             // 
             this.mnuTools_VolunteersForm.Name = "mnuTools_VolunteersForm";
-            this.mnuTools_VolunteersForm.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_VolunteersForm.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_VolunteersForm.Tag = "1";
             this.mnuTools_VolunteersForm.Text = "Maintain &Volunteers";
             this.mnuTools_VolunteersForm.Click += new System.EventHandler(this.mnuTools_VolunteersForm_Click);
@@ -853,7 +854,7 @@
             // mnuTools_MaintainVoucherItems
             // 
             this.mnuTools_MaintainVoucherItems.Name = "mnuTools_MaintainVoucherItems";
-            this.mnuTools_MaintainVoucherItems.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_MaintainVoucherItems.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_MaintainVoucherItems.Tag = "1";
             this.mnuTools_MaintainVoucherItems.Text = "Maintain Voucher &Items";
             this.mnuTools_MaintainVoucherItems.Click += new System.EventHandler(this.mnuTools_MaintainVoucherItems_Click);
@@ -861,12 +862,12 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(197, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(231, 6);
             // 
             // mnuTools_Backpack
             // 
             this.mnuTools_Backpack.Name = "mnuTools_Backpack";
-            this.mnuTools_Backpack.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_Backpack.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_Backpack.Tag = "1";
             this.mnuTools_Backpack.Text = "&Backpack Services";
             this.mnuTools_Backpack.Click += new System.EventHandler(this.mnuTools_Backpack_Click);
@@ -874,7 +875,7 @@
             // mnuTools_CashDonations
             // 
             this.mnuTools_CashDonations.Name = "mnuTools_CashDonations";
-            this.mnuTools_CashDonations.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_CashDonations.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_CashDonations.Tag = "2";
             this.mnuTools_CashDonations.Text = "&Cash Donations";
             this.mnuTools_CashDonations.Click += new System.EventHandler(this.mnuTools_CashDonations_Click);
@@ -882,7 +883,7 @@
             // mnuTools_CSFPServices
             // 
             this.mnuTools_CSFPServices.Name = "mnuTools_CSFPServices";
-            this.mnuTools_CSFPServices.Size = new System.Drawing.Size(200, 22);
+            this.mnuTools_CSFPServices.Size = new System.Drawing.Size(234, 24);
             this.mnuTools_CSFPServices.Tag = "1";
             this.mnuTools_CSFPServices.Text = "C&SFP Services";
             this.mnuTools_CSFPServices.Click += new System.EventHandler(this.mnuTools_CSFPServices_Click);
@@ -890,7 +891,7 @@
             // freshAllianceToolStripMenuItem
             // 
             this.freshAllianceToolStripMenuItem.Name = "freshAllianceToolStripMenuItem";
-            this.freshAllianceToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.freshAllianceToolStripMenuItem.Size = new System.Drawing.Size(234, 24);
             this.freshAllianceToolStripMenuItem.Tag = "1";
             this.freshAllianceToolStripMenuItem.Text = "Fresh Alliance";
             this.freshAllianceToolStripMenuItem.Click += new System.EventHandler(this.freshAllianceToolStripMenuItem_Click);
@@ -922,14 +923,14 @@
             this.tsmiPrintClientForm,
             this.tsmiCreateUnitedWayExport});
             this.menuAdmin.Name = "menuAdmin";
-            this.menuAdmin.Size = new System.Drawing.Size(55, 20);
+            this.menuAdmin.Size = new System.Drawing.Size(65, 24);
             this.menuAdmin.Tag = "1";
             this.menuAdmin.Text = "Adm&in";
             // 
             // mnuAdmin_ServiceItemsForm
             // 
             this.mnuAdmin_ServiceItemsForm.Name = "mnuAdmin_ServiceItemsForm";
-            this.mnuAdmin_ServiceItemsForm.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_ServiceItemsForm.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_ServiceItemsForm.Tag = "1";
             this.mnuAdmin_ServiceItemsForm.Text = "Edit Service &Items";
             this.mnuAdmin_ServiceItemsForm.Click += new System.EventHandler(this.mnuAdmin_ServiceItemsForm_Click);
@@ -937,7 +938,7 @@
             // mnuAdmin_YearlyCalendarForm
             // 
             this.mnuAdmin_YearlyCalendarForm.Name = "mnuAdmin_YearlyCalendarForm";
-            this.mnuAdmin_YearlyCalendarForm.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_YearlyCalendarForm.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_YearlyCalendarForm.Tag = "1";
             this.mnuAdmin_YearlyCalendarForm.Text = "&Yearly Calendar";
             this.mnuAdmin_YearlyCalendarForm.Click += new System.EventHandler(this.mnuAdmin_YearlyCalendarForm_Click);
@@ -945,12 +946,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(272, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(328, 6);
             // 
             // mnuAdmin_BackupDatabase
             // 
             this.mnuAdmin_BackupDatabase.Name = "mnuAdmin_BackupDatabase";
-            this.mnuAdmin_BackupDatabase.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_BackupDatabase.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_BackupDatabase.Tag = "1";
             this.mnuAdmin_BackupDatabase.Text = "Backup Database";
             this.mnuAdmin_BackupDatabase.Click += new System.EventHandler(this.mnuAdmin_BackupDatabase_Click);
@@ -958,7 +959,7 @@
             // tsmiToggleUserInfo
             // 
             this.tsmiToggleUserInfo.Name = "tsmiToggleUserInfo";
-            this.tsmiToggleUserInfo.Size = new System.Drawing.Size(275, 22);
+            this.tsmiToggleUserInfo.Size = new System.Drawing.Size(331, 24);
             this.tsmiToggleUserInfo.Tag = "2";
             this.tsmiToggleUserInfo.Text = "Toggle User Info";
             this.tsmiToggleUserInfo.Click += new System.EventHandler(this.tsmiToggleUserInfo_Click);
@@ -966,12 +967,12 @@
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(272, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(328, 6);
             // 
             // mnuAdmin_PreferencesForm
             // 
             this.mnuAdmin_PreferencesForm.Name = "mnuAdmin_PreferencesForm";
-            this.mnuAdmin_PreferencesForm.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_PreferencesForm.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_PreferencesForm.Tag = "2";
             this.mnuAdmin_PreferencesForm.Text = "&Preferences";
             this.mnuAdmin_PreferencesForm.Click += new System.EventHandler(this.mnuAdmin_PreferencesForm_Click);
@@ -979,7 +980,7 @@
             // mnuAdmin_UserDefinedFields
             // 
             this.mnuAdmin_UserDefinedFields.Name = "mnuAdmin_UserDefinedFields";
-            this.mnuAdmin_UserDefinedFields.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_UserDefinedFields.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_UserDefinedFields.Tag = "2";
             this.mnuAdmin_UserDefinedFields.Text = "User &Defined Fields";
             this.mnuAdmin_UserDefinedFields.Click += new System.EventHandler(this.mnuAdmin_UserDefinedFields_Click);
@@ -987,7 +988,7 @@
             // mnuAdmin_TypeCodesForm
             // 
             this.mnuAdmin_TypeCodesForm.Name = "mnuAdmin_TypeCodesForm";
-            this.mnuAdmin_TypeCodesForm.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_TypeCodesForm.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_TypeCodesForm.Tag = "1";
             this.mnuAdmin_TypeCodesForm.Text = "&Type Codes";
             this.mnuAdmin_TypeCodesForm.Click += new System.EventHandler(this.typeCodesToolStripMenuItem_Click);
@@ -995,12 +996,12 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(272, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(328, 6);
             // 
             // mnuAdmin_UserListForm
             // 
             this.mnuAdmin_UserListForm.Name = "mnuAdmin_UserListForm";
-            this.mnuAdmin_UserListForm.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_UserListForm.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_UserListForm.Tag = "2";
             this.mnuAdmin_UserListForm.Text = "&User List";
             this.mnuAdmin_UserListForm.Click += new System.EventHandler(this.userListToolStripMenuItem_Click);
@@ -1008,7 +1009,7 @@
             // mnuAdmin_EmailRecipients
             // 
             this.mnuAdmin_EmailRecipients.Name = "mnuAdmin_EmailRecipients";
-            this.mnuAdmin_EmailRecipients.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_EmailRecipients.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_EmailRecipients.Tag = "1";
             this.mnuAdmin_EmailRecipients.Text = "Manage &Monthly Reports";
             this.mnuAdmin_EmailRecipients.Click += new System.EventHandler(this.mnuAdmin_EmailRecipients_Click);
@@ -1016,12 +1017,12 @@
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(272, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(328, 6);
             // 
             // mnuAdmin_SaveAsNewClientDefaults
             // 
             this.mnuAdmin_SaveAsNewClientDefaults.Name = "mnuAdmin_SaveAsNewClientDefaults";
-            this.mnuAdmin_SaveAsNewClientDefaults.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_SaveAsNewClientDefaults.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_SaveAsNewClientDefaults.Tag = "1";
             this.mnuAdmin_SaveAsNewClientDefaults.Text = "New &Client Defaults";
             this.mnuAdmin_SaveAsNewClientDefaults.Visible = false;
@@ -1030,7 +1031,7 @@
             // mnuAdmin_IncomeMatrix
             // 
             this.mnuAdmin_IncomeMatrix.Name = "mnuAdmin_IncomeMatrix";
-            this.mnuAdmin_IncomeMatrix.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_IncomeMatrix.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_IncomeMatrix.Tag = "1";
             this.mnuAdmin_IncomeMatrix.Text = "Update Income Matri&x";
             this.mnuAdmin_IncomeMatrix.Click += new System.EventHandler(this.mnuAdmin_IncomeMatrix_Click);
@@ -1038,7 +1039,7 @@
             // mnuAdmin_EditJobsPlan
             // 
             this.mnuAdmin_EditJobsPlan.Name = "mnuAdmin_EditJobsPlan";
-            this.mnuAdmin_EditJobsPlan.Size = new System.Drawing.Size(275, 22);
+            this.mnuAdmin_EditJobsPlan.Size = new System.Drawing.Size(331, 24);
             this.mnuAdmin_EditJobsPlan.Tag = "1";
             this.mnuAdmin_EditJobsPlan.Text = "Edit Jobs Plan";
             this.mnuAdmin_EditJobsPlan.Click += new System.EventHandler(this.mnuAdmin_EditJobsPlan_Click);
@@ -1046,12 +1047,12 @@
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(272, 6);
+            this.toolStripSeparator10.Size = new System.Drawing.Size(328, 6);
             // 
             // tsmiResetPOAFlag
             // 
             this.tsmiResetPOAFlag.Name = "tsmiResetPOAFlag";
-            this.tsmiResetPOAFlag.Size = new System.Drawing.Size(275, 22);
+            this.tsmiResetPOAFlag.Size = new System.Drawing.Size(331, 24);
             this.tsmiResetPOAFlag.Tag = "2";
             this.tsmiResetPOAFlag.Text = "Reset Proof Of Address Flag";
             this.tsmiResetPOAFlag.Click += new System.EventHandler(this.tsmiResetPOAFlag_Click);
@@ -1059,7 +1060,7 @@
             // tsmiResetNeedCommSigFlag
             // 
             this.tsmiResetNeedCommSigFlag.Name = "tsmiResetNeedCommSigFlag";
-            this.tsmiResetNeedCommSigFlag.Size = new System.Drawing.Size(275, 22);
+            this.tsmiResetNeedCommSigFlag.Size = new System.Drawing.Size(331, 24);
             this.tsmiResetNeedCommSigFlag.Tag = "2";
             this.tsmiResetNeedCommSigFlag.Text = "Reset Need Commodity Signiture Flag";
             this.tsmiResetNeedCommSigFlag.Click += new System.EventHandler(this.tsmiResetNeedCommSigFlag_Click);
@@ -1067,7 +1068,7 @@
             // tsmiResetInactiveFlag
             // 
             this.tsmiResetInactiveFlag.Name = "tsmiResetInactiveFlag";
-            this.tsmiResetInactiveFlag.Size = new System.Drawing.Size(275, 22);
+            this.tsmiResetInactiveFlag.Size = new System.Drawing.Size(331, 24);
             this.tsmiResetInactiveFlag.Tag = "2";
             this.tsmiResetInactiveFlag.Text = "Reset Inactive Flag";
             this.tsmiResetInactiveFlag.Click += new System.EventHandler(this.tsmiResetInactiveFlag_Click);
@@ -1075,7 +1076,7 @@
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(272, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(328, 6);
             // 
             // tsmiPrintClientForm
             // 
@@ -1084,14 +1085,14 @@
             this.tsmiPrintClientFormRUS,
             this.tsmiPrintClientFormSPN});
             this.tsmiPrintClientForm.Name = "tsmiPrintClientForm";
-            this.tsmiPrintClientForm.Size = new System.Drawing.Size(275, 22);
+            this.tsmiPrintClientForm.Size = new System.Drawing.Size(331, 24);
             this.tsmiPrintClientForm.Tag = "2";
             this.tsmiPrintClientForm.Text = "Print Blank Client Information Form";
             // 
             // tsmiPrintClientFormENG
             // 
             this.tsmiPrintClientFormENG.Name = "tsmiPrintClientFormENG";
-            this.tsmiPrintClientFormENG.Size = new System.Drawing.Size(115, 22);
+            this.tsmiPrintClientFormENG.Size = new System.Drawing.Size(129, 24);
             this.tsmiPrintClientFormENG.Tag = "2";
             this.tsmiPrintClientFormENG.Text = "English";
             this.tsmiPrintClientFormENG.Click += new System.EventHandler(this.tsmiPrintClientForm_Click);
@@ -1099,7 +1100,7 @@
             // tsmiPrintClientFormRUS
             // 
             this.tsmiPrintClientFormRUS.Name = "tsmiPrintClientFormRUS";
-            this.tsmiPrintClientFormRUS.Size = new System.Drawing.Size(115, 22);
+            this.tsmiPrintClientFormRUS.Size = new System.Drawing.Size(129, 24);
             this.tsmiPrintClientFormRUS.Tag = "2";
             this.tsmiPrintClientFormRUS.Text = "Russian";
             this.tsmiPrintClientFormRUS.Click += new System.EventHandler(this.tsmiPrintClientForm_Click);
@@ -1107,7 +1108,7 @@
             // tsmiPrintClientFormSPN
             // 
             this.tsmiPrintClientFormSPN.Name = "tsmiPrintClientFormSPN";
-            this.tsmiPrintClientFormSPN.Size = new System.Drawing.Size(115, 22);
+            this.tsmiPrintClientFormSPN.Size = new System.Drawing.Size(129, 24);
             this.tsmiPrintClientFormSPN.Tag = "2";
             this.tsmiPrintClientFormSPN.Text = "Spanish";
             this.tsmiPrintClientFormSPN.Click += new System.EventHandler(this.tsmiPrintClientForm_Click);
@@ -1115,7 +1116,7 @@
             // tsmiCreateUnitedWayExport
             // 
             this.tsmiCreateUnitedWayExport.Name = "tsmiCreateUnitedWayExport";
-            this.tsmiCreateUnitedWayExport.Size = new System.Drawing.Size(275, 22);
+            this.tsmiCreateUnitedWayExport.Size = new System.Drawing.Size(331, 24);
             this.tsmiCreateUnitedWayExport.Tag = "2";
             this.tsmiCreateUnitedWayExport.Text = "Create United Way Export";
             this.tsmiCreateUnitedWayExport.Click += new System.EventHandler(this.tsmiCreateUnitedWayExport_Click);
@@ -1128,7 +1129,7 @@
             this.mnuHD_FundingPrograms,
             this.mnuHD_Buildings});
             this.mnuHD.Name = "mnuHD";
-            this.mnuHD.Size = new System.Drawing.Size(97, 20);
+            this.mnuHD.Size = new System.Drawing.Size(120, 24);
             this.mnuHD.Tag = "1";
             this.mnuHD.Text = "H&ome Delivery";
             this.mnuHD.Visible = false;
@@ -1136,7 +1137,7 @@
             // mnuHD_Planner
             // 
             this.mnuHD_Planner.Name = "mnuHD_Planner";
-            this.mnuHD_Planner.Size = new System.Drawing.Size(172, 22);
+            this.mnuHD_Planner.Size = new System.Drawing.Size(198, 24);
             this.mnuHD_Planner.Tag = "1";
             this.mnuHD_Planner.Text = "&Planner";
             this.mnuHD_Planner.Click += new System.EventHandler(this.mnuHD_Planner_Click);
@@ -1144,12 +1145,12 @@
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator14.Size = new System.Drawing.Size(195, 6);
             // 
             // mnuHD_FundingPrograms
             // 
             this.mnuHD_FundingPrograms.Name = "mnuHD_FundingPrograms";
-            this.mnuHD_FundingPrograms.Size = new System.Drawing.Size(172, 22);
+            this.mnuHD_FundingPrograms.Size = new System.Drawing.Size(198, 24);
             this.mnuHD_FundingPrograms.Tag = "1";
             this.mnuHD_FundingPrograms.Text = "&Funding Programs";
             this.mnuHD_FundingPrograms.Click += new System.EventHandler(this.mnuHD_FundingPrograms_Click);
@@ -1157,7 +1158,7 @@
             // mnuHD_Buildings
             // 
             this.mnuHD_Buildings.Name = "mnuHD_Buildings";
-            this.mnuHD_Buildings.Size = new System.Drawing.Size(172, 22);
+            this.mnuHD_Buildings.Size = new System.Drawing.Size(198, 24);
             this.mnuHD_Buildings.Tag = "1";
             this.mnuHD_Buildings.Text = "&Buildings";
             this.mnuHD_Buildings.Click += new System.EventHandler(this.mnuHD_Buildings_Click);
@@ -1171,7 +1172,7 @@
             this.mnuWSDAFAP,
             this.mnuHelp_About});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(44, 20);
+            this.menuHelp.Size = new System.Drawing.Size(53, 24);
             this.menuHelp.Tag = "0";
             this.menuHelp.Text = "&Help";
             // 
@@ -1179,7 +1180,7 @@
             // 
             this.mnuHelp_Contents.Enabled = false;
             this.mnuHelp_Contents.Name = "mnuHelp_Contents";
-            this.mnuHelp_Contents.Size = new System.Drawing.Size(252, 22);
+            this.mnuHelp_Contents.Size = new System.Drawing.Size(302, 24);
             this.mnuHelp_Contents.Tag = "0";
             this.mnuHelp_Contents.Text = "&Contents";
             // 
@@ -1187,7 +1188,7 @@
             // 
             this.mnuHelp_Index.Enabled = false;
             this.mnuHelp_Index.Name = "mnuHelp_Index";
-            this.mnuHelp_Index.Size = new System.Drawing.Size(252, 22);
+            this.mnuHelp_Index.Size = new System.Drawing.Size(302, 24);
             this.mnuHelp_Index.Tag = "0";
             this.mnuHelp_Index.Text = "&Index";
             this.mnuHelp_Index.Click += new System.EventHandler(this.mnuHelp_Index_Click);
@@ -1195,13 +1196,13 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(249, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(299, 6);
             this.toolStripSeparator4.Tag = "0";
             // 
             // mnuWSDAFAP
             // 
             this.mnuWSDAFAP.Name = "mnuWSDAFAP";
-            this.mnuWSDAFAP.Size = new System.Drawing.Size(252, 22);
+            this.mnuWSDAFAP.Size = new System.Drawing.Size(302, 24);
             this.mnuWSDAFAP.Tag = "0";
             this.mnuWSDAFAP.Text = "WSDA - Food Assistance Program";
             this.mnuWSDAFAP.Click += new System.EventHandler(this.mnuWSDAFAP_Click);
@@ -1209,7 +1210,7 @@
             // mnuHelp_About
             // 
             this.mnuHelp_About.Name = "mnuHelp_About";
-            this.mnuHelp_About.Size = new System.Drawing.Size(252, 22);
+            this.mnuHelp_About.Size = new System.Drawing.Size(302, 24);
             this.mnuHelp_About.Tag = "0";
             this.mnuHelp_About.Text = "&About";
             this.mnuHelp_About.Click += new System.EventHandler(this.mnuHelp_About_Click);
@@ -1218,7 +1219,7 @@
             // 
             this.splCntrCardMembers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splCntrCardMembers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splCntrCardMembers.Location = new System.Drawing.Point(0, 104);
+            this.splCntrCardMembers.Location = new System.Drawing.Point(0, 108);
             this.splCntrCardMembers.Margin = new System.Windows.Forms.Padding(4);
             this.splCntrCardMembers.Name = "splCntrCardMembers";
             this.splCntrCardMembers.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -1236,7 +1237,7 @@
             this.splCntrCardMembers.Panel2.Controls.Add(this.splitMemTrans);
             this.splCntrCardMembers.Panel2.Controls.Add(this.toolStrip2);
             this.splCntrCardMembers.Panel2MinSize = 160;
-            this.splCntrCardMembers.Size = new System.Drawing.Size(984, 558);
+            this.splCntrCardMembers.Size = new System.Drawing.Size(984, 554);
             this.splCntrCardMembers.SplitterDistance = 290;
             this.splCntrCardMembers.TabIndex = 1;
             this.splCntrCardMembers.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splCntrCardMembers_SplitterMoved);
@@ -1338,11 +1339,11 @@
             this.cboClientType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboClientType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboClientType.FormattingEnabled = true;
-            this.cboClientType.ItemHeight = 14;
+            this.cboClientType.ItemHeight = 18;
             this.cboClientType.Location = new System.Drawing.Point(195, 82);
             this.cboClientType.Margin = new System.Windows.Forms.Padding(4);
             this.cboClientType.Name = "cboClientType";
-            this.cboClientType.Size = new System.Drawing.Size(186, 22);
+            this.cboClientType.Size = new System.Drawing.Size(186, 26);
             this.cboClientType.TabIndex = 16;
             this.cboClientType.Tag = "ClientType";
             this.cboClientType.SelectionChangeCommitted += new System.EventHandler(this.cboClientType_SelectionChangeCommitted);
@@ -1366,11 +1367,11 @@
             this.cboServiceMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboServiceMethod.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboServiceMethod.FormattingEnabled = true;
-            this.cboServiceMethod.ItemHeight = 14;
+            this.cboServiceMethod.ItemHeight = 18;
             this.cboServiceMethod.Location = new System.Drawing.Point(195, 108);
             this.cboServiceMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cboServiceMethod.Name = "cboServiceMethod";
-            this.cboServiceMethod.Size = new System.Drawing.Size(186, 22);
+            this.cboServiceMethod.Size = new System.Drawing.Size(186, 26);
             this.cboServiceMethod.TabIndex = 18;
             this.cboServiceMethod.Tag = "ServiceMethod";
             this.cboServiceMethod.SelectionChangeCommitted += new System.EventHandler(this.cboServiceMethod_SelectionChangeCommitted);
@@ -1394,7 +1395,7 @@
             this.lblSupplOnly.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSupplOnly.Location = new System.Drawing.Point(471, 148);
             this.lblSupplOnly.Name = "lblSupplOnly";
-            this.lblSupplOnly.Size = new System.Drawing.Size(84, 17);
+            this.lblSupplOnly.Size = new System.Drawing.Size(104, 20);
             this.lblSupplOnly.TabIndex = 111;
             this.lblSupplOnly.Text = "Suppl Only";
             // 
@@ -1440,7 +1441,7 @@
             this.lblName.ForeColor = System.Drawing.Color.DarkBlue;
             this.lblName.Location = new System.Drawing.Point(3, 3);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(86, 19);
+            this.lblName.Size = new System.Drawing.Size(108, 24);
             this.lblName.TabIndex = 121;
             this.lblName.Text = "lblName";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1453,7 +1454,7 @@
             this.label5.Location = new System.Drawing.Point(415, 60);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(24, 13);
+            this.label5.Size = new System.Drawing.Size(30, 17);
             this.label5.TabIndex = 11;
             this.label5.Text = "St:";
             // 
@@ -1464,7 +1465,7 @@
             this.lblNoCommodities.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNoCommodities.Location = new System.Drawing.Point(471, 126);
             this.lblNoCommodities.Name = "lblNoCommodities";
-            this.lblNoCommodities.Size = new System.Drawing.Size(123, 17);
+            this.lblNoCommodities.Size = new System.Drawing.Size(151, 20);
             this.lblNoCommodities.TabIndex = 112;
             this.lblNoCommodities.Text = "No Commodities";
             // 
@@ -1476,7 +1477,7 @@
             this.label6.Location = new System.Drawing.Point(494, 61);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.Size = new System.Drawing.Size(36, 17);
             this.label6.TabIndex = 13;
             this.label6.Text = "Zip:";
             // 
@@ -1506,7 +1507,7 @@
             this.tbeAddress.Margin = new System.Windows.Forms.Padding(4);
             this.tbeAddress.MaxLength = 50;
             this.tbeAddress.Name = "tbeAddress";
-            this.tbeAddress.Size = new System.Drawing.Size(329, 22);
+            this.tbeAddress.Size = new System.Drawing.Size(329, 26);
             this.tbeAddress.TabIndex = 6;
             this.tbeAddress.Tag = "Address";
             this.tbeAddress.Text = "12345678901234567890123456789012345678901234567890";
@@ -1533,7 +1534,7 @@
             this.tbeCity.Margin = new System.Windows.Forms.Padding(4);
             this.tbeCity.MaxLength = 40;
             this.tbeCity.Name = "tbeCity";
-            this.tbeCity.Size = new System.Drawing.Size(215, 21);
+            this.tbeCity.Size = new System.Drawing.Size(215, 24);
             this.tbeCity.TabIndex = 10;
             this.tbeCity.Tag = "City";
             this.tbeCity.Text = "123456789012345678901234567890";
@@ -1558,7 +1559,7 @@
             this.tbeZipCode.Margin = new System.Windows.Forms.Padding(4);
             this.tbeZipCode.MaxLength = 10;
             this.tbeZipCode.Name = "tbeZipCode";
-            this.tbeZipCode.Size = new System.Drawing.Size(80, 21);
+            this.tbeZipCode.Size = new System.Drawing.Size(80, 24);
             this.tbeZipCode.TabIndex = 14;
             this.tbeZipCode.Tag = "Zipcode";
             this.tbeZipCode.Text = "98072";
@@ -1573,7 +1574,7 @@
             this.tbeState.Margin = new System.Windows.Forms.Padding(4);
             this.tbeState.MaxLength = 2;
             this.tbeState.Name = "tbeState";
-            this.tbeState.Size = new System.Drawing.Size(40, 21);
+            this.tbeState.Size = new System.Drawing.Size(40, 24);
             this.tbeState.TabIndex = 12;
             this.tbeState.Tag = "State";
             this.tbeState.Text = "WW";
@@ -1585,7 +1586,7 @@
             this.tbID.Location = new System.Drawing.Point(29, 0);
             this.tbID.Margin = new System.Windows.Forms.Padding(4);
             this.tbID.Name = "tbID";
-            this.tbID.Size = new System.Drawing.Size(67, 23);
+            this.tbID.Size = new System.Drawing.Size(67, 26);
             this.tbID.TabIndex = 1;
             this.tbID.Tag = "ID";
             this.tbID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1599,7 +1600,7 @@
             this.lblSingleHeadHH.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSingleHeadHH.Location = new System.Drawing.Point(214, 142);
             this.lblSingleHeadHH.Name = "lblSingleHeadHH";
-            this.lblSingleHeadHH.Size = new System.Drawing.Size(179, 17);
+            this.lblSingleHeadHH.Size = new System.Drawing.Size(220, 20);
             this.lblSingleHeadHH.TabIndex = 117;
             this.lblSingleHeadHH.Text = "Single Parent Household";
             // 
@@ -1623,7 +1624,7 @@
             this.tbeApt.Location = new System.Drawing.Point(562, 33);
             this.tbeApt.Margin = new System.Windows.Forms.Padding(4);
             this.tbeApt.Name = "tbeApt";
-            this.tbeApt.Size = new System.Drawing.Size(44, 21);
+            this.tbeApt.Size = new System.Drawing.Size(44, 24);
             this.tbeApt.TabIndex = 8;
             this.tbeApt.Tag = "AptNbr";
             this.tbeApt.Text = "123456";
@@ -1660,7 +1661,7 @@
             this.lblHomeless.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHomeless.Location = new System.Drawing.Point(471, 105);
             this.lblHomeless.Name = "lblHomeless";
-            this.lblHomeless.Size = new System.Drawing.Size(75, 17);
+            this.lblHomeless.Size = new System.Drawing.Size(92, 20);
             this.lblHomeless.TabIndex = 110;
             this.lblHomeless.Text = "Homeless";
             // 
@@ -1672,7 +1673,7 @@
             this.label7.Location = new System.Drawing.Point(528, 36);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 12);
+            this.label7.Size = new System.Drawing.Size(37, 14);
             this.label7.TabIndex = 7;
             this.label7.Text = "Unit:";
             // 
@@ -1714,7 +1715,7 @@
             this.lblInCityLimits.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInCityLimits.Location = new System.Drawing.Point(471, 84);
             this.lblInCityLimits.Name = "lblInCityLimits";
-            this.lblInCityLimits.Size = new System.Drawing.Size(100, 17);
+            this.lblInCityLimits.Size = new System.Drawing.Size(126, 20);
             this.lblInCityLimits.TabIndex = 109;
             this.lblInCityLimits.Text = "In City Limits";
             // 
@@ -1751,14 +1752,14 @@
             this.dgvHHMembers.AllowUserToResizeRows = false;
             this.dgvHHMembers.BackgroundColor = System.Drawing.Color.Cornsilk;
             this.dgvHHMembers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.DarkBlue;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHHMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DarkBlue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHHMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHHMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHHMembers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmInactive,
@@ -1802,9 +1803,9 @@
             // clmLastName
             // 
             this.clmLastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmLastName.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmLastName.DefaultCellStyle = dataGridViewCellStyle2;
             this.clmLastName.HeaderText = "Last Name";
             this.clmLastName.Name = "clmLastName";
             this.clmLastName.ReadOnly = true;
@@ -1813,9 +1814,9 @@
             // clmFirstName
             // 
             this.clmFirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmFirstName.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmFirstName.DefaultCellStyle = dataGridViewCellStyle3;
             this.clmFirstName.HeaderText = "First Name";
             this.clmFirstName.Name = "clmFirstName";
             this.clmFirstName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -1823,9 +1824,9 @@
             // clmBirthdate
             // 
             this.clmBirthdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmBirthdate.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmBirthdate.DefaultCellStyle = dataGridViewCellStyle4;
             this.clmBirthdate.HeaderText = "BirthDate";
             this.clmBirthdate.Name = "clmBirthdate";
             this.clmBirthdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -1834,9 +1835,9 @@
             // clmAge
             // 
             this.clmAge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmAge.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmAge.DefaultCellStyle = dataGridViewCellStyle5;
             this.clmAge.HeaderText = "Age";
             this.clmAge.Name = "clmAge";
             this.clmAge.ReadOnly = true;
@@ -1846,9 +1847,9 @@
             // clmGroup
             // 
             this.clmGroup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmGroup.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmGroup.DefaultCellStyle = dataGridViewCellStyle6;
             this.clmGroup.HeaderText = "Group";
             this.clmGroup.Name = "clmGroup";
             this.clmGroup.ReadOnly = true;
@@ -1858,9 +1859,9 @@
             // clmSex
             // 
             this.clmSex.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmSex.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmSex.DefaultCellStyle = dataGridViewCellStyle7;
             this.clmSex.HeaderText = "Sex";
             this.clmSex.Name = "clmSex";
             this.clmSex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -1869,9 +1870,9 @@
             // clmCSFP
             // 
             this.clmCSFP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmCSFP.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmCSFP.DefaultCellStyle = dataGridViewCellStyle8;
             this.clmCSFP.HeaderText = "CSFP";
             this.clmCSFP.Name = "clmCSFP";
             this.clmCSFP.ReadOnly = true;
@@ -1898,8 +1899,8 @@
             // clmHMID
             // 
             this.clmHMID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clmHMID.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clmHMID.DefaultCellStyle = dataGridViewCellStyle9;
             this.clmHMID.HeaderText = "ID";
             this.clmHMID.Name = "clmHMID";
             this.clmHMID.ReadOnly = true;
@@ -1908,33 +1909,34 @@
             // 
             // cmsHHMembers
             // 
+            this.cmsHHMembers.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsHHMembers.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiExport,
             this.tsmiMoveHHMem,
             this.tsmiCreateHH});
             this.cmsHHMembers.Name = "cmsHHMembers";
-            this.cmsHHMembers.Size = new System.Drawing.Size(260, 70);
+            this.cmsHHMembers.Size = new System.Drawing.Size(314, 76);
             this.cmsHHMembers.Opening += new System.ComponentModel.CancelEventHandler(this.cmsHHMembers_Opening);
             this.cmsHHMembers.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsHHMembers_ItemClicked);
             // 
             // tsmiExport
             // 
             this.tsmiExport.Name = "tsmiExport";
-            this.tsmiExport.Size = new System.Drawing.Size(259, 22);
+            this.tsmiExport.Size = new System.Drawing.Size(313, 24);
             this.tsmiExport.Tag = "EXPORT";
             this.tsmiExport.Text = "Export Family Members list to Excel";
             // 
             // tsmiMoveHHMem
             // 
             this.tsmiMoveHHMem.Name = "tsmiMoveHHMem";
-            this.tsmiMoveHHMem.Size = new System.Drawing.Size(259, 22);
+            this.tsmiMoveHHMem.Size = new System.Drawing.Size(313, 24);
             this.tsmiMoveHHMem.Tag = "MOVE";
             this.tsmiMoveHHMem.Text = "Move HH Member";
             // 
             // tsmiCreateHH
             // 
             this.tsmiCreateHH.Name = "tsmiCreateHH";
-            this.tsmiCreateHH.Size = new System.Drawing.Size(259, 22);
+            this.tsmiCreateHH.Size = new System.Drawing.Size(313, 24);
             this.tsmiCreateHH.Tag = "NEW";
             this.tsmiCreateHH.Text = "Create New Household With";
             // 
@@ -1976,7 +1978,7 @@
             this.tbmEighteens.Location = new System.Drawing.Point(152, 56);
             this.tbmEighteens.Margin = new System.Windows.Forms.Padding(4);
             this.tbmEighteens.Name = "tbmEighteens";
-            this.tbmEighteens.Size = new System.Drawing.Size(40, 20);
+            this.tbmEighteens.Size = new System.Drawing.Size(40, 24);
             this.tbmEighteens.TabIndex = 16;
             this.tbmEighteens.Tag = "Eighteen";
             this.tbmEighteens.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2012,7 +2014,7 @@
             this.tbmInfants.Location = new System.Drawing.Point(7, 56);
             this.tbmInfants.Margin = new System.Windows.Forms.Padding(4);
             this.tbmInfants.Name = "tbmInfants";
-            this.tbmInfants.Size = new System.Drawing.Size(41, 20);
+            this.tbmInfants.Size = new System.Drawing.Size(41, 24);
             this.tbmInfants.TabIndex = 13;
             this.tbmInfants.Tag = "Infants";
             this.tbmInfants.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2024,7 +2026,7 @@
             this.tbmCSFP.Location = new System.Drawing.Point(536, 56);
             this.tbmCSFP.Margin = new System.Windows.Forms.Padding(4);
             this.tbmCSFP.Name = "tbmCSFP";
-            this.tbmCSFP.Size = new System.Drawing.Size(40, 20);
+            this.tbmCSFP.Size = new System.Drawing.Size(40, 24);
             this.tbmCSFP.TabIndex = 21;
             this.tbmCSFP.Tag = "NbrCSFP";
             this.tbmCSFP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2050,7 +2052,7 @@
             this.label9.Location = new System.Drawing.Point(461, 38);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(69, 13);
+            this.label9.Size = new System.Drawing.Size(83, 17);
             this.label9.TabIndex = 103;
             this.label9.Text = "# Disabled";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2061,7 +2063,7 @@
             this.tbmDisabled.Location = new System.Drawing.Point(471, 56);
             this.tbmDisabled.Margin = new System.Windows.Forms.Padding(0);
             this.tbmDisabled.Name = "tbmDisabled";
-            this.tbmDisabled.Size = new System.Drawing.Size(41, 20);
+            this.tbmDisabled.Size = new System.Drawing.Size(41, 24);
             this.tbmDisabled.TabIndex = 20;
             this.tbmDisabled.Tag = "Disabled";
             this.tbmDisabled.Text = "99";
@@ -2075,7 +2077,7 @@
             this.chkUseFamList.Location = new System.Drawing.Point(17, 11);
             this.chkUseFamList.Margin = new System.Windows.Forms.Padding(4);
             this.chkUseFamList.Name = "chkUseFamList";
-            this.chkUseFamList.Size = new System.Drawing.Size(137, 18);
+            this.chkUseFamList.Size = new System.Drawing.Size(162, 22);
             this.chkUseFamList.TabIndex = 12;
             this.chkUseFamList.Tag = "UseFamilyList";
             this.chkUseFamList.Text = "Use Members List";
@@ -2092,7 +2094,7 @@
             this.tbmDiet.Location = new System.Drawing.Point(405, 56);
             this.tbmDiet.Margin = new System.Windows.Forms.Padding(4);
             this.tbmDiet.Name = "tbmDiet";
-            this.tbmDiet.Size = new System.Drawing.Size(35, 20);
+            this.tbmDiet.Size = new System.Drawing.Size(35, 24);
             this.tbmDiet.TabIndex = 18;
             this.tbmDiet.Tag = "SpecialDiet";
             this.tbmDiet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2106,7 +2108,7 @@
             this.label18.Location = new System.Drawing.Point(378, 39);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 13);
+            this.label18.Size = new System.Drawing.Size(105, 17);
             this.label18.TabIndex = 51;
             this.label18.Text = "# Special Diet";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2117,7 +2119,7 @@
             this.tbmYouth.Location = new System.Drawing.Point(56, 56);
             this.tbmYouth.Margin = new System.Windows.Forms.Padding(4);
             this.tbmYouth.Name = "tbmYouth";
-            this.tbmYouth.Size = new System.Drawing.Size(41, 20);
+            this.tbmYouth.Size = new System.Drawing.Size(41, 24);
             this.tbmYouth.TabIndex = 14;
             this.tbmYouth.Tag = "Youth";
             this.tbmYouth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2156,7 +2158,7 @@
             this.tbTotalFam.Margin = new System.Windows.Forms.Padding(4);
             this.tbTotalFam.Name = "tbTotalFam";
             this.tbTotalFam.ReadOnly = true;
-            this.tbTotalFam.Size = new System.Drawing.Size(41, 22);
+            this.tbTotalFam.Size = new System.Drawing.Size(41, 26);
             this.tbTotalFam.TabIndex = 18;
             this.tbTotalFam.TabStop = false;
             this.tbTotalFam.Tag = "TotalFamily";
@@ -2168,7 +2170,7 @@
             this.tbmTeens.Location = new System.Drawing.Point(104, 56);
             this.tbmTeens.Margin = new System.Windows.Forms.Padding(4);
             this.tbmTeens.Name = "tbmTeens";
-            this.tbmTeens.Size = new System.Drawing.Size(41, 20);
+            this.tbmTeens.Size = new System.Drawing.Size(41, 24);
             this.tbmTeens.TabIndex = 15;
             this.tbmTeens.Tag = "Teens";
             this.tbmTeens.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2204,7 +2206,7 @@
             this.tbmSeniors.Location = new System.Drawing.Point(249, 56);
             this.tbmSeniors.Margin = new System.Windows.Forms.Padding(4);
             this.tbmSeniors.Name = "tbmSeniors";
-            this.tbmSeniors.Size = new System.Drawing.Size(39, 20);
+            this.tbmSeniors.Size = new System.Drawing.Size(39, 24);
             this.tbmSeniors.TabIndex = 17;
             this.tbmSeniors.Tag = "Seniors";
             this.tbmSeniors.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2216,7 +2218,7 @@
             this.tbmAdults.Location = new System.Drawing.Point(200, 56);
             this.tbmAdults.Margin = new System.Windows.Forms.Padding(4);
             this.tbmAdults.Name = "tbmAdults";
-            this.tbmAdults.Size = new System.Drawing.Size(40, 20);
+            this.tbmAdults.Size = new System.Drawing.Size(40, 24);
             this.tbmAdults.TabIndex = 16;
             this.tbmAdults.Tag = "Adults";
             this.tbmAdults.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2350,7 +2352,7 @@
             this.lblBabyServices.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBabyServices.Location = new System.Drawing.Point(28, 2);
             this.lblBabyServices.Name = "lblBabyServices";
-            this.lblBabyServices.Size = new System.Drawing.Size(81, 17);
+            this.lblBabyServices.Size = new System.Drawing.Size(98, 20);
             this.lblBabyServices.TabIndex = 115;
             this.lblBabyServices.Text = "Baby Svcs";
             // 
@@ -2361,7 +2363,7 @@
             this.chkShowOnLog.Location = new System.Drawing.Point(144, 3);
             this.chkShowOnLog.Margin = new System.Windows.Forms.Padding(4);
             this.chkShowOnLog.Name = "chkShowOnLog";
-            this.chkShowOnLog.Size = new System.Drawing.Size(144, 18);
+            this.chkShowOnLog.Size = new System.Drawing.Size(171, 22);
             this.chkShowOnLog.TabIndex = 24;
             this.chkShowOnLog.Tag = "IncludeOnLog";
             this.chkShowOnLog.Text = "Show Note On Log";
@@ -2397,6 +2399,7 @@
             this.toolStrip1.AutoSize = false;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbFindClient,
             this.tsbHHMem,
@@ -2507,7 +2510,7 @@
             this.tsbLog.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbLog.ImageTransparentColor = System.Drawing.Color.Red;
             this.tsbLog.Name = "tsbLog";
-            this.tsbLog.Size = new System.Drawing.Size(36, 49);
+            this.tsbLog.Size = new System.Drawing.Size(36, 55);
             this.tsbLog.Text = "&Log";
             this.tsbLog.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLog.ToolTipText = "Display Log Form";
@@ -2530,7 +2533,7 @@
             // splitMemTrans.Panel2
             // 
             this.splitMemTrans.Panel2.Controls.Add(this.splitContainer2);
-            this.splitMemTrans.Size = new System.Drawing.Size(902, 264);
+            this.splitMemTrans.Size = new System.Drawing.Size(902, 260);
             this.splitMemTrans.SplitterDistance = 294;
             this.splitMemTrans.SplitterWidth = 5;
             this.splitMemTrans.TabIndex = 1;
@@ -2549,7 +2552,7 @@
             this.tabCntrlMain.Name = "tabCntrlMain";
             this.tabCntrlMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabCntrlMain.SelectedIndex = 0;
-            this.tabCntrlMain.Size = new System.Drawing.Size(292, 262);
+            this.tabCntrlMain.Size = new System.Drawing.Size(292, 258);
             this.tabCntrlMain.TabIndex = 29;
             // 
             // tpgHHData
@@ -2570,10 +2573,10 @@
             this.tpgHHData.Controls.Add(this.lblPhoneNum);
             this.tpgHHData.Controls.Add(this.chkNeedCommSig);
             this.tpgHHData.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tpgHHData.Location = new System.Drawing.Point(4, 44);
+            this.tpgHHData.Location = new System.Drawing.Point(4, 54);
             this.tpgHHData.Name = "tpgHHData";
             this.tpgHHData.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgHHData.Size = new System.Drawing.Size(284, 214);
+            this.tpgHHData.Size = new System.Drawing.Size(284, 200);
             this.tpgHHData.TabIndex = 0;
             this.tpgHHData.Text = "ID/Phone";
             // 
@@ -2592,7 +2595,7 @@
             this.cboTransportation.Location = new System.Drawing.Point(125, 249);
             this.cboTransportation.Margin = new System.Windows.Forms.Padding(4);
             this.cboTransportation.Name = "cboTransportation";
-            this.cboTransportation.Size = new System.Drawing.Size(150, 23);
+            this.cboTransportation.Size = new System.Drawing.Size(150, 25);
             this.cboTransportation.TabIndex = 121;
             this.cboTransportation.Tag = "Transportation";
             // 
@@ -2616,7 +2619,7 @@
             this.tbPhone.Location = new System.Drawing.Point(126, 139);
             this.tbPhone.Mask = "(999) 000-0000 aaaaaa";
             this.tbPhone.Name = "tbPhone";
-            this.tbPhone.Size = new System.Drawing.Size(150, 17);
+            this.tbPhone.Size = new System.Drawing.Size(150, 21);
             this.tbPhone.TabIndex = 24;
             this.tbPhone.Tag = "phone";
             this.tbPhone.Leave += new System.EventHandler(this.tbPhone_Leave);
@@ -2631,7 +2634,7 @@
             this.cboSpecialLang.Location = new System.Drawing.Point(126, 191);
             this.cboSpecialLang.Margin = new System.Windows.Forms.Padding(4);
             this.cboSpecialLang.Name = "cboSpecialLang";
-            this.cboSpecialLang.Size = new System.Drawing.Size(119, 23);
+            this.cboSpecialLang.Size = new System.Drawing.Size(119, 25);
             this.cboSpecialLang.TabIndex = 19;
             this.cboSpecialLang.Tag = "EthnicSpeaking";
             this.cboSpecialLang.SelectionChangeCommitted += new System.EventHandler(this.cboSpecialLang_SelectionChangeCommitted);
@@ -2651,7 +2654,7 @@
             this.cboHUDCategory.Location = new System.Drawing.Point(126, 222);
             this.cboHUDCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cboHUDCategory.Name = "cboHUDCategory";
-            this.cboHUDCategory.Size = new System.Drawing.Size(150, 23);
+            this.cboHUDCategory.Size = new System.Drawing.Size(150, 25);
             this.cboHUDCategory.TabIndex = 26;
             this.cboHUDCategory.Tag = "HUDCategory";
             this.cboHUDCategory.Visible = false;
@@ -2689,7 +2692,7 @@
             this.lblNeedCommodSignature.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNeedCommodSignature.Location = new System.Drawing.Point(37, 8);
             this.lblNeedCommodSignature.Name = "lblNeedCommodSignature";
-            this.lblNeedCommodSignature.Size = new System.Drawing.Size(201, 17);
+            this.lblNeedCommodSignature.Size = new System.Drawing.Size(248, 20);
             this.lblNeedCommodSignature.TabIndex = 113;
             this.lblNeedCommodSignature.Text = "Need Commodity Signature";
             // 
@@ -2714,7 +2717,7 @@
             this.lblNeedToVerifyId.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNeedToVerifyId.Location = new System.Drawing.Point(34, 16);
             this.lblNeedToVerifyId.Name = "lblNeedToVerifyId";
-            this.lblNeedToVerifyId.Size = new System.Drawing.Size(167, 17);
+            this.lblNeedToVerifyId.Size = new System.Drawing.Size(199, 20);
             this.lblNeedToVerifyId.TabIndex = 113;
             this.lblNeedToVerifyId.Text = "Need Proof of Address";
             // 
@@ -2742,7 +2745,7 @@
             this.cboIDType.Location = new System.Drawing.Point(125, 42);
             this.cboIDType.Margin = new System.Windows.Forms.Padding(4);
             this.cboIDType.Name = "cboIDType";
-            this.cboIDType.Size = new System.Drawing.Size(148, 22);
+            this.cboIDType.Size = new System.Drawing.Size(148, 26);
             this.cboIDType.TabIndex = 22;
             this.cboIDType.Tag = "IdType";
             this.cboIDType.SelectionChangeCommitted += new System.EventHandler(this.cboIDType_SelectionChangeCommitted);
@@ -2780,7 +2783,7 @@
             this.tbeDateIDVerified.Location = new System.Drawing.Point(125, 75);
             this.tbeDateIDVerified.Margin = new System.Windows.Forms.Padding(4);
             this.tbeDateIDVerified.Name = "tbeDateIDVerified";
-            this.tbeDateIDVerified.Size = new System.Drawing.Size(104, 21);
+            this.tbeDateIDVerified.Size = new System.Drawing.Size(104, 24);
             this.tbeDateIDVerified.TabIndex = 23;
             this.tbeDateIDVerified.TabStop = false;
             this.tbeDateIDVerified.Tag = "DateIDVerified";
@@ -2798,7 +2801,7 @@
             this.cboPhoneType.Location = new System.Drawing.Point(126, 162);
             this.cboPhoneType.Margin = new System.Windows.Forms.Padding(4);
             this.cboPhoneType.Name = "cboPhoneType";
-            this.cboPhoneType.Size = new System.Drawing.Size(151, 22);
+            this.cboPhoneType.Size = new System.Drawing.Size(151, 26);
             this.cboPhoneType.TabIndex = 25;
             this.cboPhoneType.Tag = "PhoneType";
             this.cboPhoneType.SelectionChangeCommitted += new System.EventHandler(this.cboPhoneType_SelectionChangeCommitted);
@@ -2849,10 +2852,10 @@
             this.tpgUserFields.Controls.Add(this.lblUserNum1);
             this.tpgUserFields.Controls.Add(this.chkLstBxUserFields);
             this.tpgUserFields.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tpgUserFields.Location = new System.Drawing.Point(4, 44);
+            this.tpgUserFields.Location = new System.Drawing.Point(4, 54);
             this.tpgUserFields.Name = "tpgUserFields";
             this.tpgUserFields.Padding = new System.Windows.Forms.Padding(3, 10, 3, 20);
-            this.tpgUserFields.Size = new System.Drawing.Size(283, 212);
+            this.tpgUserFields.Size = new System.Drawing.Size(283, 202);
             this.tpgUserFields.TabIndex = 1;
             this.tpgUserFields.Text = "User Fields";
             // 
@@ -2863,7 +2866,7 @@
             this.tbUserNum0.Location = new System.Drawing.Point(9, 226);
             this.tbUserNum0.Margin = new System.Windows.Forms.Padding(4);
             this.tbUserNum0.Name = "tbUserNum0";
-            this.tbUserNum0.Size = new System.Drawing.Size(97, 21);
+            this.tbUserNum0.Size = new System.Drawing.Size(97, 24);
             this.tbUserNum0.TabIndex = 40;
             this.tbUserNum0.Tag = "UserNum0";
             this.tbUserNum0.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbInteger_KeyDown);
@@ -2875,7 +2878,7 @@
             this.tbUserNum1.Location = new System.Drawing.Point(151, 226);
             this.tbUserNum1.Margin = new System.Windows.Forms.Padding(4);
             this.tbUserNum1.Name = "tbUserNum1";
-            this.tbUserNum1.Size = new System.Drawing.Size(97, 21);
+            this.tbUserNum1.Size = new System.Drawing.Size(97, 24);
             this.tbUserNum1.TabIndex = 42;
             this.tbUserNum1.Tag = "UserNum1";
             this.tbUserNum1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbInteger_KeyDown);
@@ -2886,7 +2889,7 @@
             this.lblUserNum0.Location = new System.Drawing.Point(5, 209);
             this.lblUserNum0.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserNum0.Name = "lblUserNum0";
-            this.lblUserNum0.Size = new System.Drawing.Size(132, 13);
+            this.lblUserNum0.Size = new System.Drawing.Size(159, 19);
             this.lblUserNum0.TabIndex = 39;
             this.lblUserNum0.Text = "Number of Food Stamps";
             this.lblUserNum0.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -2897,7 +2900,7 @@
             this.lblUserNum1.Location = new System.Drawing.Point(144, 209);
             this.lblUserNum1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserNum1.Name = "lblUserNum1";
-            this.lblUserNum1.Size = new System.Drawing.Size(120, 13);
+            this.lblUserNum1.Size = new System.Drawing.Size(145, 19);
             this.lblUserNum1.TabIndex = 41;
             this.lblUserNum1.Text = "Total Assistance Given";
             this.lblUserNum1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -2933,9 +2936,9 @@
             // 
             this.tpgIncome.BackColor = System.Drawing.Color.Cornsilk;
             this.tpgIncome.Controls.Add(this.grpbxIncome);
-            this.tpgIncome.Location = new System.Drawing.Point(4, 44);
+            this.tpgIncome.Location = new System.Drawing.Point(4, 54);
             this.tpgIncome.Name = "tpgIncome";
-            this.tpgIncome.Size = new System.Drawing.Size(283, 212);
+            this.tpgIncome.Size = new System.Drawing.Size(283, 202);
             this.tpgIncome.TabIndex = 2;
             this.tpgIncome.Text = "Income";
             // 
@@ -2960,7 +2963,7 @@
             this.tbAnualIncome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbAnualIncome.Location = new System.Drawing.Point(120, 69);
             this.tbAnualIncome.Name = "tbAnualIncome";
-            this.tbAnualIncome.Size = new System.Drawing.Size(70, 23);
+            this.tbAnualIncome.Size = new System.Drawing.Size(70, 27);
             this.tbAnualIncome.TabIndex = 48;
             this.tbAnualIncome.Tag = "AnnualIncome";
             this.tbAnualIncome.Text = "99999";
@@ -2973,7 +2976,7 @@
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.label24.Location = new System.Drawing.Point(134, 51);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(45, 15);
+            this.label24.Size = new System.Drawing.Size(55, 20);
             this.label24.TabIndex = 47;
             this.label24.Text = "Annual";
             // 
@@ -2984,7 +2987,7 @@
             this.label10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(32, 24);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(163, 14);
+            this.label10.Size = new System.Drawing.Size(192, 18);
             this.label10.TabIndex = 44;
             this.label10.Text = "Need Income Verification";
             // 
@@ -3049,7 +3052,7 @@
             this.tbIncomeMonthly.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbIncomeMonthly.Location = new System.Drawing.Point(23, 69);
             this.tbIncomeMonthly.Name = "tbIncomeMonthly";
-            this.tbIncomeMonthly.Size = new System.Drawing.Size(70, 23);
+            this.tbIncomeMonthly.Size = new System.Drawing.Size(70, 27);
             this.tbIncomeMonthly.TabIndex = 46;
             this.tbIncomeMonthly.Tag = "";
             this.tbIncomeMonthly.Text = "99999";
@@ -3063,7 +3066,7 @@
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Location = new System.Drawing.Point(31, 51);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(52, 15);
+            this.label26.Size = new System.Drawing.Size(63, 20);
             this.label26.TabIndex = 45;
             this.label26.Text = "Monthly";
             // 
@@ -3071,9 +3074,9 @@
             // 
             this.tpgHD.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.tpgHD.Controls.Add(this.splitContainer1);
-            this.tpgHD.Location = new System.Drawing.Point(4, 44);
+            this.tpgHD.Location = new System.Drawing.Point(4, 54);
             this.tpgHD.Name = "tpgHD";
-            this.tpgHD.Size = new System.Drawing.Size(283, 212);
+            this.tpgHD.Size = new System.Drawing.Size(283, 202);
             this.tpgHD.TabIndex = 3;
             this.tpgHD.Text = "Home Delivery";
             // 
@@ -3101,7 +3104,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tbDriverNotes);
-            this.splitContainer1.Size = new System.Drawing.Size(283, 212);
+            this.splitContainer1.Size = new System.Drawing.Size(283, 202);
             this.splitContainer1.SplitterDistance = 135;
             this.splitContainer1.TabIndex = 131;
             // 
@@ -3129,7 +3132,7 @@
             this.cboHDPrograms.Location = new System.Drawing.Point(113, 34);
             this.cboHDPrograms.Margin = new System.Windows.Forms.Padding(4);
             this.cboHDPrograms.Name = "cboHDPrograms";
-            this.cboHDPrograms.Size = new System.Drawing.Size(155, 22);
+            this.cboHDPrograms.Size = new System.Drawing.Size(155, 26);
             this.cboHDPrograms.TabIndex = 122;
             this.cboHDPrograms.Tag = "HDProgram";
             this.cboHDPrograms.Visible = false;
@@ -3143,7 +3146,7 @@
             this.cboHDBuilding.FormattingEnabled = true;
             this.cboHDBuilding.Location = new System.Drawing.Point(113, 61);
             this.cboHDBuilding.Name = "cboHDBuilding";
-            this.cboHDBuilding.Size = new System.Drawing.Size(155, 22);
+            this.cboHDBuilding.Size = new System.Drawing.Size(155, 26);
             this.cboHDBuilding.TabIndex = 123;
             this.cboHDBuilding.Tag = "HDBuilding";
             this.cboHDBuilding.Visible = false;
@@ -3183,7 +3186,7 @@
             this.cboHDRoute.FormattingEnabled = true;
             this.cboHDRoute.Location = new System.Drawing.Point(113, 7);
             this.cboHDRoute.Name = "cboHDRoute";
-            this.cboHDRoute.Size = new System.Drawing.Size(155, 22);
+            this.cboHDRoute.Size = new System.Drawing.Size(155, 26);
             this.cboHDRoute.TabIndex = 121;
             this.cboHDRoute.Tag = "HDRoute";
             this.cboHDRoute.SelectionChangeCommitted += new System.EventHandler(this.cboHD_SelectionChangeCommitted);
@@ -3208,7 +3211,7 @@
             this.cboHDItem.FormattingEnabled = true;
             this.cboHDItem.Location = new System.Drawing.Point(113, 89);
             this.cboHDItem.Name = "cboHDItem";
-            this.cboHDItem.Size = new System.Drawing.Size(155, 22);
+            this.cboHDItem.Size = new System.Drawing.Size(155, 26);
             this.cboHDItem.TabIndex = 124;
             this.cboHDItem.Tag = "HDItem";
             this.cboHDItem.SelectionChangeCommitted += new System.EventHandler(this.cboHD_SelectionChangeCommitted);
@@ -3247,9 +3250,9 @@
             this.tpgPointSys.Controls.Add(this.tbpPoints);
             this.tpgPointSys.Controls.Add(this.lblPoints);
             this.tpgPointSys.Controls.Add(this.lvwPoints);
-            this.tpgPointSys.Location = new System.Drawing.Point(4, 44);
+            this.tpgPointSys.Location = new System.Drawing.Point(4, 54);
             this.tpgPointSys.Name = "tpgPointSys";
-            this.tpgPointSys.Size = new System.Drawing.Size(283, 212);
+            this.tpgPointSys.Size = new System.Drawing.Size(283, 202);
             this.tpgPointSys.TabIndex = 4;
             this.tpgPointSys.Text = "Points";
             // 
@@ -3257,7 +3260,7 @@
             // 
             this.tbpPoints.Location = new System.Drawing.Point(180, 213);
             this.tbpPoints.Name = "tbpPoints";
-            this.tbpPoints.Size = new System.Drawing.Size(68, 23);
+            this.tbpPoints.Size = new System.Drawing.Size(68, 27);
             this.tbpPoints.TabIndex = 3;
             this.tbpPoints.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbpPoints_KeyPress);
             // 
@@ -3267,7 +3270,7 @@
             this.lblPoints.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPoints.Location = new System.Drawing.Point(8, 216);
             this.lblPoints.Name = "lblPoints";
-            this.lblPoints.Size = new System.Drawing.Size(159, 14);
+            this.lblPoints.Size = new System.Drawing.Size(198, 17);
             this.lblPoints.TabIndex = 2;
             this.lblPoints.Text = "Points for Thursday";
             // 
@@ -3281,14 +3284,14 @@
             this.lvwPoints.GridLines = true;
             this.lvwPoints.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvwPoints.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8});
             this.lvwPoints.Location = new System.Drawing.Point(0, 0);
             this.lvwPoints.Name = "lvwPoints";
             this.lvwPoints.Size = new System.Drawing.Size(248, 204);
@@ -3329,7 +3332,7 @@
             // 
             this.splitContainer2.Panel2.ContextMenuStrip = this.cmsLog;
             this.splitContainer2.Panel2.Controls.Add(this.tabCntrlLog);
-            this.splitContainer2.Size = new System.Drawing.Size(601, 262);
+            this.splitContainer2.Size = new System.Drawing.Size(601, 258);
             this.splitContainer2.SplitterDistance = 94;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 10;
@@ -3392,7 +3395,7 @@
             this.tbxMonthsSinceLstSrvc.Margin = new System.Windows.Forms.Padding(4);
             this.tbxMonthsSinceLstSrvc.Name = "tbxMonthsSinceLstSrvc";
             this.tbxMonthsSinceLstSrvc.ReadOnly = true;
-            this.tbxMonthsSinceLstSrvc.Size = new System.Drawing.Size(36, 14);
+            this.tbxMonthsSinceLstSrvc.Size = new System.Drawing.Size(36, 17);
             this.tbxMonthsSinceLstSrvc.TabIndex = 131;
             this.tbxMonthsSinceLstSrvc.TabStop = false;
             this.tbxMonthsSinceLstSrvc.Tag = "";
@@ -3420,7 +3423,7 @@
             this.tbdFirstCalService.Margin = new System.Windows.Forms.Padding(4);
             this.tbdFirstCalService.Name = "tbdFirstCalService";
             this.tbdFirstCalService.ReadOnly = true;
-            this.tbdFirstCalService.Size = new System.Drawing.Size(90, 14);
+            this.tbdFirstCalService.Size = new System.Drawing.Size(90, 17);
             this.tbdFirstCalService.TabIndex = 130;
             this.tbdFirstCalService.Tag = "FirstCalService";
             this.tbdFirstCalService.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3447,7 +3450,7 @@
             this.tbdFirstFiscal.Margin = new System.Windows.Forms.Padding(4);
             this.tbdFirstFiscal.Name = "tbdFirstFiscal";
             this.tbdFirstFiscal.ReadOnly = true;
-            this.tbdFirstFiscal.Size = new System.Drawing.Size(90, 14);
+            this.tbdFirstFiscal.Size = new System.Drawing.Size(90, 17);
             this.tbdFirstFiscal.TabIndex = 128;
             this.tbdFirstFiscal.Tag = "FirstSvcThisYear";
             this.tbdFirstFiscal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3474,7 +3477,7 @@
             this.tbdLastSupplService.Margin = new System.Windows.Forms.Padding(4);
             this.tbdLastSupplService.Name = "tbdLastSupplService";
             this.tbdLastSupplService.ReadOnly = true;
-            this.tbdLastSupplService.Size = new System.Drawing.Size(90, 14);
+            this.tbdLastSupplService.Size = new System.Drawing.Size(90, 17);
             this.tbdLastSupplService.TabIndex = 125;
             this.tbdLastSupplService.TabStop = false;
             this.tbdLastSupplService.Tag = "LastSupplService";
@@ -3489,7 +3492,7 @@
             this.label30.Location = new System.Drawing.Point(464, 68);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(110, 14);
+            this.label30.Size = new System.Drawing.Size(146, 16);
             this.label30.TabIndex = 113;
             this.label30.Text = "Supplemental - Month";
             // 
@@ -3514,7 +3517,7 @@
             this.tbxNbrSupplThisMonth.Location = new System.Drawing.Point(421, 70);
             this.tbxNbrSupplThisMonth.Name = "tbxNbrSupplThisMonth";
             this.tbxNbrSupplThisMonth.ReadOnly = true;
-            this.tbxNbrSupplThisMonth.Size = new System.Drawing.Size(36, 14);
+            this.tbxNbrSupplThisMonth.Size = new System.Drawing.Size(36, 17);
             this.tbxNbrSupplThisMonth.TabIndex = 112;
             this.tbxNbrSupplThisMonth.TabStop = false;
             this.tbxNbrSupplThisMonth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3528,7 +3531,7 @@
             this.lblNbrTEFAP.Location = new System.Drawing.Point(464, 48);
             this.lblNbrTEFAP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNbrTEFAP.Name = "lblNbrTEFAP";
-            this.lblNbrTEFAP.Size = new System.Drawing.Size(93, 14);
+            this.lblNbrTEFAP.Size = new System.Drawing.Size(126, 16);
             this.lblNbrTEFAP.TabIndex = 111;
             this.lblNbrTEFAP.Text = "TEFAP This Month";
             // 
@@ -3541,7 +3544,7 @@
             this.tbeFirstService.Location = new System.Drawing.Point(4, 9);
             this.tbeFirstService.Margin = new System.Windows.Forms.Padding(4);
             this.tbeFirstService.Name = "tbeFirstService";
-            this.tbeFirstService.Size = new System.Drawing.Size(90, 14);
+            this.tbeFirstService.Size = new System.Drawing.Size(90, 17);
             this.tbeFirstService.TabIndex = 102;
             this.tbeFirstService.Tag = "FirstService";
             this.tbeFirstService.Text = "12/24/2022";
@@ -3556,7 +3559,7 @@
             this.tbxNbrTEFAPThisMonth.Location = new System.Drawing.Point(421, 50);
             this.tbxNbrTEFAPThisMonth.Name = "tbxNbrTEFAPThisMonth";
             this.tbxNbrTEFAPThisMonth.ReadOnly = true;
-            this.tbxNbrTEFAPThisMonth.Size = new System.Drawing.Size(36, 14);
+            this.tbxNbrTEFAPThisMonth.Size = new System.Drawing.Size(36, 17);
             this.tbxNbrTEFAPThisMonth.TabIndex = 110;
             this.tbxNbrTEFAPThisMonth.TabStop = false;
             this.tbxNbrTEFAPThisMonth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3570,7 +3573,7 @@
             this.label25.Location = new System.Drawing.Point(464, 25);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(98, 14);
+            this.label25.Size = new System.Drawing.Size(129, 16);
             this.label25.TabIndex = 109;
             this.label25.Text = "Full Svc This Week";
             // 
@@ -3583,7 +3586,7 @@
             this.tbxNbrTrxThisWeek.Location = new System.Drawing.Point(421, 26);
             this.tbxNbrTrxThisWeek.Name = "tbxNbrTrxThisWeek";
             this.tbxNbrTrxThisWeek.ReadOnly = true;
-            this.tbxNbrTrxThisWeek.Size = new System.Drawing.Size(36, 14);
+            this.tbxNbrTrxThisWeek.Size = new System.Drawing.Size(36, 17);
             this.tbxNbrTrxThisWeek.TabIndex = 108;
             this.tbxNbrTrxThisWeek.TabStop = false;
             this.tbxNbrTrxThisWeek.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3597,7 +3600,7 @@
             this.label29.Location = new System.Drawing.Point(464, 8);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(100, 14);
+            this.label29.Size = new System.Drawing.Size(132, 16);
             this.label29.TabIndex = 107;
             this.label29.Text = "Full Svc This Month";
             // 
@@ -3634,7 +3637,7 @@
             this.tbxNbrTrxThisMonth.Location = new System.Drawing.Point(421, 9);
             this.tbxNbrTrxThisMonth.Name = "tbxNbrTrxThisMonth";
             this.tbxNbrTrxThisMonth.ReadOnly = true;
-            this.tbxNbrTrxThisMonth.Size = new System.Drawing.Size(36, 14);
+            this.tbxNbrTrxThisMonth.Size = new System.Drawing.Size(36, 17);
             this.tbxNbrTrxThisMonth.TabIndex = 124;
             this.tbxNbrTrxThisMonth.TabStop = false;
             this.tbxNbrTrxThisMonth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -3649,7 +3652,7 @@
             this.tbdLastService.Margin = new System.Windows.Forms.Padding(4);
             this.tbdLastService.Name = "tbdLastService";
             this.tbdLastService.ReadOnly = true;
-            this.tbdLastService.Size = new System.Drawing.Size(90, 14);
+            this.tbdLastService.Size = new System.Drawing.Size(90, 17);
             this.tbdLastService.TabIndex = 103;
             this.tbdLastService.TabStop = false;
             this.tbdLastService.Tag = "LatestService";
@@ -3665,7 +3668,7 @@
             this.tbdLastComodity.Margin = new System.Windows.Forms.Padding(4);
             this.tbdLastComodity.Name = "tbdLastComodity";
             this.tbdLastComodity.ReadOnly = true;
-            this.tbdLastComodity.Size = new System.Drawing.Size(90, 14);
+            this.tbdLastComodity.Size = new System.Drawing.Size(90, 17);
             this.tbdLastComodity.TabIndex = 25;
             this.tbdLastComodity.TabStop = false;
             this.tbdLastComodity.Tag = "LastCommodityService";
@@ -3693,7 +3696,7 @@
             this.tbxDaysSinceLstSrvc.Margin = new System.Windows.Forms.Padding(4);
             this.tbxDaysSinceLstSrvc.Name = "tbxDaysSinceLstSrvc";
             this.tbxDaysSinceLstSrvc.ReadOnly = true;
-            this.tbxDaysSinceLstSrvc.Size = new System.Drawing.Size(36, 14);
+            this.tbxDaysSinceLstSrvc.Size = new System.Drawing.Size(36, 17);
             this.tbxDaysSinceLstSrvc.TabIndex = 23;
             this.tbxDaysSinceLstSrvc.TabStop = false;
             this.tbxDaysSinceLstSrvc.Tag = "";
@@ -3708,7 +3711,7 @@
             this.lblHHModified.Location = new System.Drawing.Point(6, 34);
             this.lblHHModified.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHHModified.Name = "lblHHModified";
-            this.lblHHModified.Size = new System.Drawing.Size(61, 12);
+            this.lblHHModified.Size = new System.Drawing.Size(79, 15);
             this.lblHHModified.TabIndex = 117;
             this.lblHHModified.Text = "Modified";
             // 
@@ -3721,36 +3724,37 @@
             this.lblHHCreated.Location = new System.Drawing.Point(6, 10);
             this.lblHHCreated.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHHCreated.Name = "lblHHCreated";
-            this.lblHHCreated.Size = new System.Drawing.Size(54, 12);
+            this.lblHHCreated.Size = new System.Drawing.Size(70, 15);
             this.lblHHCreated.TabIndex = 116;
             this.lblHHCreated.Text = "Created";
             // 
             // cmsLog
             // 
+            this.cmsLog.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmsLog.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiShowSignature,
             this.tsmiExpandLog,
             this.tsmiExportToExcel});
             this.cmsLog.Name = "cmsLog";
-            this.cmsLog.Size = new System.Drawing.Size(204, 92);
+            this.cmsLog.Size = new System.Drawing.Size(240, 76);
             this.cmsLog.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.cmsLog_ItemClicked);
             // 
             // tsmiShowSignature
             // 
             this.tsmiShowSignature.Name = "tsmiShowSignature";
-            this.tsmiShowSignature.Size = new System.Drawing.Size(203, 22);
+            this.tsmiShowSignature.Size = new System.Drawing.Size(239, 24);
             this.tsmiShowSignature.Text = "Show Signature";
             // 
             // tsmiExpandLog
             // 
             this.tsmiExpandLog.Name = "tsmiExpandLog";
-            this.tsmiExpandLog.Size = new System.Drawing.Size(203, 22);
+            this.tsmiExpandLog.Size = new System.Drawing.Size(239, 24);
             this.tsmiExpandLog.Text = "Expand HH Transactions";
             // 
             // tsmiExportToExcel
             // 
             this.tsmiExportToExcel.Name = "tsmiExportToExcel";
-            this.tsmiExportToExcel.Size = new System.Drawing.Size(203, 22);
+            this.tsmiExportToExcel.Size = new System.Drawing.Size(239, 24);
             this.tsmiExportToExcel.Text = "Export To Excel";
             // 
             // tabCntrlLog
@@ -3763,7 +3767,7 @@
             this.tabCntrlLog.Name = "tabCntrlLog";
             this.tabCntrlLog.Padding = new System.Drawing.Point(10, 3);
             this.tabCntrlLog.SelectedIndex = 0;
-            this.tabCntrlLog.Size = new System.Drawing.Size(601, 167);
+            this.tabCntrlLog.Size = new System.Drawing.Size(601, 163);
             this.tabCntrlLog.TabIndex = 0;
             // 
             // tpgTrxLog
@@ -3778,7 +3782,7 @@
             this.tpgTrxLog.Location = new System.Drawing.Point(4, 25);
             this.tpgTrxLog.Margin = new System.Windows.Forms.Padding(0);
             this.tpgTrxLog.Name = "tpgTrxLog";
-            this.tpgTrxLog.Size = new System.Drawing.Size(593, 138);
+            this.tpgTrxLog.Size = new System.Drawing.Size(593, 134);
             this.tpgTrxLog.TabIndex = 0;
             this.tpgTrxLog.Text = "Food Services Log";
             this.tpgTrxLog.UseVisualStyleBackColor = true;
@@ -4002,7 +4006,7 @@
             this.cboTrxLogPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cboTrxLogPeriod.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTrxLogPeriod.FormattingEnabled = true;
-            this.cboTrxLogPeriod.ItemHeight = 14;
+            this.cboTrxLogPeriod.ItemHeight = 18;
             this.cboTrxLogPeriod.Items.AddRange(new object[] {
             "Current Month",
             "Last 90 Days",
@@ -4014,7 +4018,7 @@
             this.cboTrxLogPeriod.Location = new System.Drawing.Point(103, 6);
             this.cboTrxLogPeriod.Margin = new System.Windows.Forms.Padding(4);
             this.cboTrxLogPeriod.Name = "cboTrxLogPeriod";
-            this.cboTrxLogPeriod.Size = new System.Drawing.Size(169, 22);
+            this.cboTrxLogPeriod.Size = new System.Drawing.Size(169, 26);
             this.cboTrxLogPeriod.TabIndex = 48;
             this.cboTrxLogPeriod.Tag = "";
             this.cboTrxLogPeriod.SelectionChangeCommitted += new System.EventHandler(this.cboTrxLogPeriod_SelectionChangeCommitted);
@@ -4123,7 +4127,7 @@
             this.cboVoucherLogPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cboVoucherLogPeriod.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboVoucherLogPeriod.FormattingEnabled = true;
-            this.cboVoucherLogPeriod.ItemHeight = 14;
+            this.cboVoucherLogPeriod.ItemHeight = 18;
             this.cboVoucherLogPeriod.Items.AddRange(new object[] {
             "Current Month",
             "Last 90 Days",
@@ -4135,7 +4139,7 @@
             this.cboVoucherLogPeriod.Location = new System.Drawing.Point(103, 6);
             this.cboVoucherLogPeriod.Margin = new System.Windows.Forms.Padding(4);
             this.cboVoucherLogPeriod.Name = "cboVoucherLogPeriod";
-            this.cboVoucherLogPeriod.Size = new System.Drawing.Size(169, 22);
+            this.cboVoucherLogPeriod.Size = new System.Drawing.Size(169, 26);
             this.cboVoucherLogPeriod.TabIndex = 53;
             this.cboVoucherLogPeriod.Tag = "";
             this.cboVoucherLogPeriod.SelectionChangeCommitted += new System.EventHandler(this.cboVoucherLogPeriod_SelectionChangeCommitted);
@@ -4176,6 +4180,7 @@
             // 
             this.toolStrip2.AutoSize = false;
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCreateAppt,
             this.tsbDfltApptDate,
@@ -4186,7 +4191,7 @@
             this.toolStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(82, 264);
+            this.toolStrip2.Size = new System.Drawing.Size(82, 260);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -4199,7 +4204,7 @@
             this.tsbCreateAppt.ImageTransparentColor = System.Drawing.Color.Red;
             this.tsbCreateAppt.Margin = new System.Windows.Forms.Padding(0);
             this.tsbCreateAppt.Name = "tsbCreateAppt";
-            this.tsbCreateAppt.Size = new System.Drawing.Size(80, 51);
+            this.tsbCreateAppt.Size = new System.Drawing.Size(80, 56);
             this.tsbCreateAppt.Tag = "CreateAppt";
             this.tsbCreateAppt.Text = "Ne&w Appt.";
             this.tsbCreateAppt.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -4216,7 +4221,7 @@
             this.tsbDfltApptDate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDfltApptDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.tsbDfltApptDate.Name = "tsbDfltApptDate";
-            this.tsbDfltApptDate.Size = new System.Drawing.Size(80, 17);
+            this.tsbDfltApptDate.Size = new System.Drawing.Size(80, 23);
             this.tsbDfltApptDate.Text = "11/25/2011";
             this.tsbDfltApptDate.Click += new System.EventHandler(this.tsbDfltApptDate_Click);
             // 
@@ -4227,7 +4232,7 @@
             this.tsbCSFP.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbCSFP.ImageTransparentColor = System.Drawing.Color.Red;
             this.tsbCSFP.Name = "tsbCSFP";
-            this.tsbCSFP.Size = new System.Drawing.Size(80, 51);
+            this.tsbCSFP.Size = new System.Drawing.Size(80, 56);
             this.tsbCSFP.Tag = "CSFP";
             this.tsbCSFP.Text = "C&SFP";
             this.tsbCSFP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -4305,9 +4310,9 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn1.HeaderText = "Last Name";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -4316,9 +4321,9 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn2.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn2.HeaderText = "First Name";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -4326,9 +4331,9 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewTextBoxColumn3.HeaderText = "BirthDate";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -4337,9 +4342,9 @@
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewTextBoxColumn4.HeaderText = "Age";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
@@ -4349,9 +4354,9 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn5.HeaderText = "Group";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -4361,9 +4366,9 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn6.HeaderText = "Sex";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -4372,9 +4377,9 @@
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn7.HeaderText = "CSFP";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
@@ -4385,8 +4390,8 @@
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewTextBoxColumn8.HeaderText = "ID";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -4431,7 +4436,7 @@
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(984, 662);

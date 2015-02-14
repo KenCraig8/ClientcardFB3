@@ -11,7 +11,7 @@ using Microsoft.Win32;
 
 namespace ClientcardFB3
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IMainForm
     {
         public static DailyItemsClass clsDailyItems;
         #region Variables

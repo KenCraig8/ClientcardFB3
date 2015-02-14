@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace ClientcardFB3
 {
-	public partial class EditVolunteerForm : SqlGridDataSet
+	public partial class EditVolunteerForm : SqlGridDataSet, IEditVolunteerForm
 	{
 		#region ----------Constants----------
 

@@ -106,7 +106,10 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
     <Reference Include="MonthCalendar">
       <HintPath>..\MonthCalendar.dll</HintPath>
     </Reference>
@@ -435,9 +438,11 @@
     <Compile Include="FreshAllianceForm.designer.cs">
       <DependentUpon>FreshAllianceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HDPlannerModel.cs" />
+    <Compile Include="IEditVolunteerForm.cs" />
     <Compile Include="ILoginForm.cs" />
-    <Compile Include="Tests2\HDPlannerFormTest.cs" />
-    <Compile Include="Tests2\HDRoutesTest.cs" />
+    <Compile Include="Tests\HDPlannerFormTest.cs" />
+    <Compile Include="Tests\HDRoutesTest.cs" />
     <Compile Include="MarkHouseholdInactive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -644,7 +649,9 @@
     <Compile Include="ServiceItemsForm.Designer.cs">
       <DependentUpon>ServiceItemsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tests2\LoginFormFake.cs" />
+    <Compile Include="IMainForm.cs" />
+    <Compile Include="Tests\LoginFormFake.cs" />
+    <Compile Include="Tests\MainFormFake.cs" />
     <Compile Include="TrxLogForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -20,12 +20,12 @@ namespace ClientcardFB3
         TrxLogItem clsTrxItem;
         HDRoutes clsHDRoutes;
         HDRouteSheet clsHDRouteSheet = new HDRouteSheet(CCFBGlobal.connectionString);
-        EditVolunteerForm frmVolunteers;
+        IEditVolunteerForm frmVolunteers;
         HDRSHist clsHDRSHist = new HDRSHist(CCFBGlobal.connectionString);
         parmTypeCodes parmHDRouteSheetStatus = new parmTypeCodes(CCFBGlobal.parmTbl_HDRouteSheetStatus, CCFBGlobal.connectionString, "");
         HDItems clsHDItems = new HDItems(CCFBGlobal.connectionString);
 
-        MainForm frmMain;
+        IMainForm frmMain;
         FindClientForm frmFindClient;
 
         DataTable rtplnDTbl = new DataTable();
@@ -59,9 +59,9 @@ namespace ClientcardFB3
         const int maxRouteStatusRows = 4;
         int[] cntrsRoutesStatus;
 
-        public HDPlannerForm(MainForm frmMainIn) : this(frmMainIn, new HDRoutes(CCFBGlobal.connectionString), new EditVolunteerForm(CCFBGlobal.connectionString, true)) { }
+        public HDPlannerForm(IMainForm frmMainIn) : this(frmMainIn, new HDRoutes(CCFBGlobal.connectionString), new EditVolunteerForm(CCFBGlobal.connectionString, true)) { }
 
-        public HDPlannerForm(MainForm frmMainIn, HDRoutes clsHDRoutes, EditVolunteerForm frmVolunteers)
+        public HDPlannerForm(IMainForm frmMainIn, HDRoutes clsHDRoutes, IEditVolunteerForm frmVolunteers)
         {
             this.clsHDRoutes = clsHDRoutes;
             this.frmVolunteers = frmVolunteers;
