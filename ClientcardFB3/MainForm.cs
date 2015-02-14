@@ -3581,7 +3581,7 @@ namespace ClientcardFB3
 
         private void mnuHD_Planner_Click(object sender, EventArgs e)
         {
-            HDPlannerForm frmHDPlanner = new HDPlannerForm(this);
+            HDPlannerView frmHDPlanner = new HDPlannerView(this);
             // Use Show instead of ShowDialog here. This way we can edit the main form while the dialog is open
             frmHDPlanner.Show();
             // Don't populate the combo box here. It is already updated automaticly as the user makes changes in the planner

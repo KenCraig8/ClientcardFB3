@@ -22,11 +22,11 @@ namespace ClientcardFB3.Tests
             //Mock<MainForm> mainFormMock = new Mock<MainForm>(loginFormFake);
             //IMainForm mainFormFake = new MainFormFake();
             Mock<IMainForm> mainFormMock = new Mock<IMainForm>();
-            Mock<HDRoutes> hdRoutesMock = new Mock<HDRoutes>("");
+            Mock<HDRoutesModel> hdRoutesMock = new Mock<HDRoutesModel>("");
             Mock<IEditVolunteerForm> voulenteerFormMock = new Mock<IEditVolunteerForm>();
 
             //TODO: Error here with main form. Replace the main form used with a fake, similar to the login form
-            HDPlannerForm planForm = new HDPlannerForm(mainFormMock.Object, hdRoutesMock.Object, voulenteerFormMock.Object);
+            HDPlannerView planForm = new HDPlannerView(mainFormMock.Object, hdRoutesMock.Object, voulenteerFormMock.Object);
 
             ComboBox cbo = new ComboBox();
 

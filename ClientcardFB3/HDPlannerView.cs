@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace ClientcardFB3
 {
-    public partial class HDPlannerForm : Form
+    public partial class HDPlannerView : Form
     {
         SqlConnection conn;
 
         TrxLog clsTrxLog;
         TrxLogItem clsTrxItem;
-        HDRoutes clsHDRoutes;
+        HDRoutesModel clsHDRoutes;
         HDRouteSheet clsHDRouteSheet = new HDRouteSheet(CCFBGlobal.connectionString);
         IEditVolunteerForm frmVolunteers;
         HDRSHist clsHDRSHist = new HDRSHist(CCFBGlobal.connectionString);
@@ -59,9 +59,9 @@ namespace ClientcardFB3
         const int maxRouteStatusRows = 4;
         int[] cntrsRoutesStatus;
 
-        public HDPlannerForm(IMainForm frmMainIn) : this(frmMainIn, new HDRoutes(CCFBGlobal.connectionString), new EditVolunteerForm(CCFBGlobal.connectionString, true)) { }
+        public HDPlannerView(IMainForm frmMainIn) : this(frmMainIn, new HDRoutesModel(CCFBGlobal.connectionString), new EditVolunteerForm(CCFBGlobal.connectionString, true)) { }
 
-        public HDPlannerForm(IMainForm frmMainIn, HDRoutes clsHDRoutes, IEditVolunteerForm frmVolunteers)
+        public HDPlannerView(IMainForm frmMainIn, HDRoutesModel clsHDRoutes, IEditVolunteerForm frmVolunteers)
         {
             this.clsHDRoutes = clsHDRoutes;
             this.frmVolunteers = frmVolunteers;

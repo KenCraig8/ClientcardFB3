@@ -7,32 +7,10 @@ using System.Data.SqlClient;
 namespace ClientcardFB3
 {
     /// <summary>
-    /// Stores the info for a voulenteer needed for this
-    /// </summary>
-    public class VolContactInfo
-    {
-        public int id;
-        public string name;
-        public string phone;
-
-        public VolContactInfo()
-        {
-            reset();
-        }
-
-        public void reset()
-        {
-            id = 0;
-            name = "";
-            phone = "";
-        }
-    }
-
-    /// <summary>
     /// Performes opperations on the routes
     /// Used by the HDPlannerForm
     /// </summary>
-    public class HDRoutes
+    public class HDRoutesModel
     {
         string connString;
         SqlDataAdapter dadAdpt;
@@ -41,8 +19,8 @@ namespace ClientcardFB3
         System.Data.SqlClient.SqlConnection conn;
         DataRow drow;
         int iRowCount = 0;
-        VolContactInfo driverInfo =  new VolContactInfo();
-        VolContactInfo fbContactInfo =  new VolContactInfo();
+        HDVolContactInfo driverInfo =  new HDVolContactInfo();
+        HDVolContactInfo fbContactInfo =  new HDVolContactInfo();
         Volunteers clsVol;
 
         /// <summary>
@@ -50,14 +28,14 @@ namespace ClientcardFB3
         /// </summary>
         /// <param name="connStringIn"></param>
         /// <param name="?"></param>
-        public HDRoutes(string connStringIn) : this(connStringIn, new Volunteers(connStringIn)) { }
+        public HDRoutesModel(string connStringIn) : this(connStringIn, new Volunteers(connStringIn)) { }
 
         /// <summary>
         /// Injects the dependencies
         /// Used for testing
         /// </summary>
         /// <param name="connStringIn"></param>
-        public HDRoutes(string connStringIn, Volunteers clsVol)
+        public HDRoutesModel(string connStringIn, Volunteers clsVol)
         {
             conn = new System.Data.SqlClient.SqlConnection();
             conn.ConnectionString = connStringIn;
@@ -223,8 +201,8 @@ namespace ClientcardFB3
             RouteTitle = "Route " + (dtbl.Rows.Count+1).ToString();
             Notes = "";
             DriverNotes = "";
-            driverInfo = new VolContactInfo();
-            fbContactInfo = new VolContactInfo();
+            driverInfo = new HDVolContactInfo();
+            fbContactInfo = new HDVolContactInfo();
             InActive = false;
             DeliveryDOW = 1;
             DeliveryCycle = 0;
@@ -275,7 +253,7 @@ namespace ClientcardFB3
         /// </summary>
         /// <param name="volId">Id to load</param>
         /// <param name="volInfo">The info to set it to</param>
-        public void loadVolInfo(int volId, VolContactInfo volInfo)
+        public void loadVolInfo(int volId, HDVolContactInfo volInfo)
         {
             volInfo.reset();
             if ((volId > 0) && (clsVol.open(volId) == true)){

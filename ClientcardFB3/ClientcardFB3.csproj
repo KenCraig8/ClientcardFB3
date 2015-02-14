@@ -213,9 +213,6 @@
     <Compile Include="..\CcFB3dbClasses\HDItems.cs">
       <Link>HDItems.cs</Link>
     </Compile>
-    <Compile Include="..\CcFB3dbClasses\HDRoutes.cs">
-      <Link>HDRoutes.cs</Link>
-    </Compile>
     <Compile Include="..\CcFB3dbClasses\HDRouteSheet.cs">
       <Link>HDRouteSheet.cs</Link>
     </Compile>
@@ -438,7 +435,9 @@
     <Compile Include="FreshAllianceForm.designer.cs">
       <DependentUpon>FreshAllianceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HDPlannerModel.cs" />
+    <Compile Include="HDPlannerControler.cs" />
+    <Compile Include="HDRoutesModel.cs" />
+    <Compile Include="HDVolContactInfo.cs" />
     <Compile Include="IEditVolunteerForm.cs" />
     <Compile Include="ILoginForm.cs" />
     <Compile Include="Tests\HDPlannerFormTest.cs" />
@@ -563,11 +562,11 @@
     <Compile Include="BackupDBForm.Designer.cs">
       <DependentUpon>BackupDBForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HDPlannerForm.cs">
+    <Compile Include="HDPlannerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HDPlannerForm.designer.cs">
-      <DependentUpon>HDPlannerForm.cs</DependentUpon>
+    <Compile Include="HDPlannerView.designer.cs">
+      <DependentUpon>HDPlannerView.cs</DependentUpon>
     </Compile>
     <Compile Include="HHMemGridForm2.cs">
       <SubType>Form</SubType>
@@ -807,8 +806,8 @@
     <EmbeddedResource Include="SelectDateRange.resx">
       <DependentUpon>SelectDateRange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HDPlannerForm.resx">
-      <DependentUpon>HDPlannerForm.cs</DependentUpon>
+    <EmbeddedResource Include="HDPlannerView.resx">
+      <DependentUpon>HDPlannerView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HHMemGridForm2.resx">
       <DependentUpon>HHMemGridForm2.cs</DependentUpon>
