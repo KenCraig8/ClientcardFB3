@@ -101,6 +101,12 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -128,9 +134,12 @@
       <HintPath>..\SigPadCtrl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -375,6 +384,7 @@
     <Compile Include="AboutBoxCSDG.Designer.cs">
       <DependentUpon>AboutBoxCSDG.cs</DependentUpon>
     </Compile>
+    <Compile Include="AccessReport.cs" />
     <Compile Include="AccessReportsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -423,6 +433,92 @@
     <Compile Include="CCFBStatisticsForm.Designer.cs">
       <DependentUpon>CCFBStatisticsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientcardORM\AccessReport.cs" />
+    <Compile Include="ClientcardORM\BackPackLog.cs" />
+    <Compile Include="ClientcardORM\CashDonation.cs" />
+    <Compile Include="ClientcardORM\ClientcardORM.cs" />
+    <Compile Include="ClientcardORM\CSFPLog.cs" />
+    <Compile Include="ClientcardORM\DaysOpen.cs" />
+    <Compile Include="ClientcardORM\Default.cs" />
+    <Compile Include="ClientcardORM\Demographic.cs" />
+    <Compile Include="ClientcardORM\Donor.cs" />
+    <Compile Include="ClientcardORM\EmailRecipient.cs" />
+    <Compile Include="ClientcardORM\FamilyCardSig.cs" />
+    <Compile Include="ClientcardORM\FB3.cs" />
+    <Compile Include="ClientcardORM\FBJobsActual.cs" />
+    <Compile Include="ClientcardORM\FBJobsPlan.cs" />
+    <Compile Include="ClientcardORM\FoodDonation.cs" />
+    <Compile Include="ClientcardORM\HDBuilding.cs" />
+    <Compile Include="ClientcardORM\HDDeliveryDay.cs" />
+    <Compile Include="ClientcardORM\HDItem.cs" />
+    <Compile Include="ClientcardORM\HDLbsPerService.cs" />
+    <Compile Include="ClientcardORM\HDRoute.cs" />
+    <Compile Include="ClientcardORM\HDRouteSheet.cs" />
+    <Compile Include="ClientcardORM\HDRSClient.cs" />
+    <Compile Include="ClientcardORM\HHPoint.cs" />
+    <Compile Include="ClientcardORM\Household.cs" />
+    <Compile Include="ClientcardORM\HouseholdMember.cs" />
+    <Compile Include="ClientcardORM\IncomeGroup.cs" />
+    <Compile Include="ClientcardORM\IncomeMatrix.cs" />
+    <Compile Include="ClientcardORM\MonthlyReport.cs" />
+    <Compile Include="ClientcardORM\parm_AddressID.cs" />
+    <Compile Include="ClientcardORM\parm_BackPackSchool.cs" />
+    <Compile Include="ClientcardORM\parm_BackPackSize.cs" />
+    <Compile Include="ClientcardORM\parm_ClientType.cs" />
+    <Compile Include="ClientcardORM\parm_CSFPRoutes.cs" />
+    <Compile Include="ClientcardORM\parm_CSFPSortOrder.cs" />
+    <Compile Include="ClientcardORM\parm_CSFPStatus.cs" />
+    <Compile Include="ClientcardORM\parm_DonationType.cs" />
+    <Compile Include="ClientcardORM\parm_DonorType.cs" />
+    <Compile Include="ClientcardORM\parm_EducationLevel.cs" />
+    <Compile Include="ClientcardORM\parm_EmploymentStatus.cs" />
+    <Compile Include="ClientcardORM\parm_FBJobs.cs" />
+    <Compile Include="ClientcardORM\parm_FBProgram.cs" />
+    <Compile Include="ClientcardORM\parm_FoodClass.cs" />
+    <Compile Include="ClientcardORM\parm_Gender.cs" />
+    <Compile Include="ClientcardORM\parm_HDBldgOperator.cs" />
+    <Compile Include="ClientcardORM\parm_HDPrograms.cs" />
+    <Compile Include="ClientcardORM\parm_HDRouteSheetStatus.cs" />
+    <Compile Include="ClientcardORM\parm_HomeDeliveryRoutes.cs" />
+    <Compile Include="ClientcardORM\parm_HUDCategory.cs" />
+    <Compile Include="ClientcardORM\parm_IDType.cs" />
+    <Compile Include="ClientcardORM\parm_IncomeProcessID.cs" />
+    <Compile Include="ClientcardORM\parm_LanguageType.cs" />
+    <Compile Include="ClientcardORM\parm_MilitaryDischarge.cs" />
+    <Compile Include="ClientcardORM\parm_MilitaryService.cs" />
+    <Compile Include="ClientcardORM\parm_PhoneType.cs" />
+    <Compile Include="ClientcardORM\parm_Race.cs" />
+    <Compile Include="ClientcardORM\parm_Relationship.cs" />
+    <Compile Include="ClientcardORM\parm_RouteSheetStatus.cs" />
+    <Compile Include="ClientcardORM\parm_SchSupplyRegistration.cs" />
+    <Compile Include="ClientcardORM\parm_SchSupplySchool.cs" />
+    <Compile Include="ClientcardORM\parm_ServiceGroup.cs" />
+    <Compile Include="ClientcardORM\parm_ServiceMethod.cs" />
+    <Compile Include="ClientcardORM\parm_SurveyFields.cs" />
+    <Compile Include="ClientcardORM\parm_SvcCategory.cs" />
+    <Compile Include="ClientcardORM\parm_SvcRules.cs" />
+    <Compile Include="ClientcardORM\parm_Transportation.cs" />
+    <Compile Include="ClientcardORM\parm_TrueFalse.cs" />
+    <Compile Include="ClientcardORM\parm_VolunteerGroups.cs" />
+    <Compile Include="ClientcardORM\parm_VolunteerType.cs" />
+    <Compile Include="ClientcardORM\parm_VoucherType.cs" />
+    <Compile Include="ClientcardORM\parm_YesNoUnk.cs" />
+    <Compile Include="ClientcardORM\Preference.cs" />
+    <Compile Include="ClientcardORM\ServiceItem.cs" />
+    <Compile Include="ClientcardORM\SignaturePrompt.cs" />
+    <Compile Include="ClientcardORM\sysdiagram.cs" />
+    <Compile Include="ClientcardORM\TrxLog.cs" />
+    <Compile Include="ClientcardORM\TrxLogHouseholdsCalFirstService.cs" />
+    <Compile Include="ClientcardORM\TrxLogSig.cs" />
+    <Compile Include="ClientcardORM\UserField.cs" />
+    <Compile Include="ClientcardORM\Userlist.cs" />
+    <Compile Include="ClientcardORM\Volunteer.cs" />
+    <Compile Include="ClientcardORM\VolunteerGroup.cs" />
+    <Compile Include="ClientcardORM\VolunteerHour.cs" />
+    <Compile Include="ClientcardORM\VoucherItem.cs" />
+    <Compile Include="ClientcardORM\VoucherLog.cs" />
+    <Compile Include="ClientcardORM\zData.cs" />
+    <Compile Include="ClientcardORM\Zipcode.cs" />
     <Compile Include="ClientSearch.cs">
       <SubType>Form</SubType>
     </Compile>

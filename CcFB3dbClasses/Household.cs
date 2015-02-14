@@ -44,6 +44,7 @@ namespace ClientcardFB3
         }
         public int ID
         {
+            // TODO: fix null reference here
             get { return Convert.ToInt32(drow["ID"]); }
             set { drow["ID"] = value; }
         }
