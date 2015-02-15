@@ -19,22 +19,9 @@ Install Microsoft Access 2010 or better
 Next install the SQL server:
 IMPORTANT: For both options, your computer name must be different than your user name. If they are the same, you won't be able to log into the sql server on your computer.
 
-Install Git Hub for Windows
-
-Search clientcardFB3 on Git Hub website. User is Zenev
-
-Select clone to desktop from clientcard page on Git Hub
-
-Open directory clientcardFB3\clientcardFB3_installer\SQLinstaller\SQLinstallscript on command line(admin mode)
-
-run installscript.cmd
-
-notes:
-vbpowerpacks must be downloaded for visual basic before building
-
 Automatic install:
 I created a simple script to make it easier to install the Sql server properly. 
-You can download it here: https://www.dropbox.com/s/3f6h84t2kge28ax/SqlInstallScript.zip?dl=0 Just unzip the folder and run the "installScript.cmd".
+You can download it here: https://www.dropbox.com/s/3f6h84t2kge28ax/SqlInstallScript.zip?dl=0 Just unzip the folder and run the "installScript.cmd" on command line(admin mode)
 
 This will automatically download the correct SQL server installer. Then it will install this with the correct parameters.
 
@@ -46,7 +33,6 @@ Solution: Download the file: https://www.dropbox.com/s/tohv09k9os60yd1/SQLEXPRWT
 Error: SQLCMD command not found
 This is because the command prompt commands haven't been updated yet.
 Solution: Run the "databaseSetup.cmd" file in a separate command prompt window.
-
 
 Manual install:
 SQL server 2008 R2 Express with tools: http://www.microsoft.com/en-us/download/details.aspx?id=30438
@@ -65,6 +51,8 @@ LogIn to SQL Management Studio using Windows Authentication or the SA user
 	Reset permissions:  Open file icon, open: C:\Users\Public\ClientcardFB3\Scripts\ResetCCFBUser.sql, click execute
 
 Run Client Card with login Admin, password: master
+
+Next install vbpowerpacks here: http://www.microsoft.com/en-us/download/details.aspx?id=25169
 
 Getting started mini guide:
 
