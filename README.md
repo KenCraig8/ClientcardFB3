@@ -21,7 +21,7 @@ IMPORTANT: For both options, your computer name must be different than your user
 
 Automatic install:
 I created a simple script to make it easier to install the Sql server properly. 
-You can download it here: https://www.dropbox.com/s/3f6h84t2kge28ax/SqlInstallScript.zip?dl=0 Just unzip the folder and run the "installScript.cmd" on command line(admin mode)
+You can download it here: https://www.dropbox.com/s/gwqqvqadq2fnazf/SqlInstallScript.zip?dl=0 Just unzip the folder and run the "installScript.cmd" on command line(admin mode)
 
 This will automatically download the correct SQL server installer. Then it will install this with the correct parameters.
 
