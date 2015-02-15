@@ -1,8 +1,4 @@
-echo "Must run this as administrator"
-echo "IMPORTANT: make sure your username isn't the same as your computer name"
-
 set sqlInstallName=SQLEXPRWT_ENU.exe
-set configFileName=ConfigSqlFullInstall.ini
 
 echo "Determine 32 vs 64 bit"
 wmic os get osarchitecture | find /i "64" > nul
@@ -22,6 +18,3 @@ if %is32%==1 (
 
 powershell (New-Object System.Net.WebClient).DownloadFile(\"%downloadFile%\", \"%CD%\%sqlInstallName%\")
 
-SQLEXPRWT_ENU.exe /IACCEPTSQLSERVERLICENSETERMS /ACTION=Install /CONFIGURATIONFILE="%CD%\%configFileName%"
-
-START cmd /k databaseSetup.cmd
