@@ -8,7 +8,7 @@ echo %is32%
 if %is32%==1 (
 	echo "32 bit"
 	
-	set downloadFile=http://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLManagementStudio_x86_ENU.exe
+	set downloadFile=http://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPRWT_x86_ENU.exe
 	
 ) else (
 	echo "64 bit"

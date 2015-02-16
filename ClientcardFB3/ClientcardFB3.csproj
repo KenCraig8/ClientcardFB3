@@ -384,7 +384,6 @@
     <Compile Include="AboutBoxCSDG.Designer.cs">
       <DependentUpon>AboutBoxCSDG.cs</DependentUpon>
     </Compile>
-    <Compile Include="AccessReport.cs" />
     <Compile Include="AccessReportsForm.cs">
       <SubType>Form</SubType>
     </Compile>
