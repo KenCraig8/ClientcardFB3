@@ -6,20 +6,19 @@ using Microsoft.Office.Interop.Excel;
 
 namespace ClientcardFB3
 {
-    class RptFoodMenu01
+    class RptFoodMenu01 : IDisposable
     {
         Household clsHH;
         HHMembers clsHHM;
         TrxLogItem clsTLItm;
         bool error = false;
+        bool _disposed = false;
         string rptDate;
         string savePath;
+
         public bool Error
         {
-            get
-            {
-                return error;
-            }
+            get { return error; }
         }
 
         public RptFoodMenu01(Household hhIN, HHMembers hhmemIN, TrxLogItem tlitmIN)
@@ -30,6 +29,33 @@ namespace ClientcardFB3
             rptDate = clsTLItm.TrxDate.ToShortDateString();
             savePath = CCFBGlobal.pathLog + "Services" + rptDate.Substring(6, 4) + "\\" + rptDate.Substring(0, 2) + "\\" + rptDate.Substring(3, 2) +"\\";
             CCFBGlobal.verifyPath(savePath);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsHH != null)
+                        clsHH.Dispose();
+                    if (clsHHM != null)
+                        clsHHM.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                clsHH = null;
+                clsHHM = null;
+                _disposed = true;
+            }
         }
 
         public void createReport(string templatePath)
@@ -86,21 +112,21 @@ namespace ClientcardFB3
                     clsHHM.SetRecord(i);
                     if (clsHHM.Inactive == false)
                     {
-                        if (clsHHM.Notes != "")
+                        if (clsHHM.Notes.Length >0)
                         {
-                            if (tmpDislikes != "")
+                            if (tmpDislikes.Length >0)
                             { tmpDislikes += ", "; }
                             tmpDislikes += clsHHM.Notes;
                         }
                         if (clsHHM.Age > 18)
                         {
-                            if (tmpA != "")
+                            if (tmpA.Length >0)
                             { tmpA += ", "; }
                             tmpA += clsHHM.Age.ToString();
                         }
                         else
                         {
-                            if (tmpC != "")
+                            if (tmpC.Length >0)
                             { tmpC += ", "; }
                             tmpC += clsHHM.Age.ToString();
                         }

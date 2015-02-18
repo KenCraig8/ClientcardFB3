@@ -5,17 +5,19 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class Household
+    public class Household : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
         DataSet dset;
         SqlCommand command;
+        SqlCommandBuilder commBuild;
         SqlConnection conn;
         static string tblName = "Household";
         bool isValid = false;
         int iRowCount = 0;
         DataRow drow;
+        private bool _disposed;
 
         public Household(string ConnString)
         {
@@ -24,6 +26,41 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (commBuild != null)
+                        commBuild.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -44,7 +81,6 @@ namespace ClientcardFB3
         }
         public int ID
         {
-            // TODO: fix null reference here
             get { return Convert.ToInt32(drow["ID"]); }
             set { drow["ID"] = value; }
         }
@@ -292,7 +328,7 @@ namespace ClientcardFB3
         {
             get 
             {
-                if (drow["DateIDVerified"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["DateIDVerified"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["DateIDVerified"];
@@ -404,7 +440,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["FirstCalService"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["FirstCalService"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["FirstCalService"];
@@ -415,7 +451,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["LastSupplService"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["LastSupplService"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["LastSupplService"];
@@ -427,6 +463,7 @@ namespace ClientcardFB3
             get { return Convert.ToInt32(drow["Transportation"]); }
             set { drow["Transportation"] = value; }
         }
+        #region School Supply Fields
         public string SchSupplyPickupPerson
         {
             get { return drow["SchSupplyPickupPerson"].ToString(); }
@@ -436,7 +473,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["SchSupplyRegDate"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["SchSupplyRegDate"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["SchSupplyRegDate"];
@@ -453,119 +490,97 @@ namespace ClientcardFB3
             get { return Convert.ToInt32(drow["SchSupplyRegistration"]); }
             set { drow["SchSupplyRegistration"] = value; }
         }
-
-
-        #region Ethnicity Accessors
-        //public bool AmericanIndian
-        //{
-        //    get { return (bool)drow["AmericanIndian"]; }
-        //    set { drow["AmericanIndian"] = value; }
-        //}
-        //public bool AlaskaNative
-        //{
-        //    get { return (bool)drow["AlaskaNative"]; }
-        //    set { drow["AlaskaNative"] = value; }
-        //}
-        //public bool IndigenousToAmericas
-        //{
-        //    get { return (bool)drow["IndigenousToAmericas"]; }
-        //    set { drow["IndigenousToAmericas"] = value; }
-        //}
-        //public bool AsianIndian
-        //{
-        //    get { return (bool)drow["AsianIndian"]; }
-        //    set { drow["AsianIndian"] = value; }
-        //}
-        //public bool Cambodian
-        //{
-        //    get { return (bool)drow["Cambodian"]; }
-        //    set { drow["Cambodian"] = value; }
-        //}
-        //public bool Chinese
-        //{
-        //    get { return (bool)drow["Chinese"]; }
-        //    set { drow["Chinese"] = value; }
-        //}
-        //public bool Filipino
-        //{
-        //    get { return (bool)drow["Filipino"];}
-        //    set { drow["Filipino"] = value; }
-        //}
-        //public bool Japanese
-        //{
-        //    get { return (bool)drow["Japanese"]; }
-        //    set { drow["Japanese"] = value; }
-        //}
-        //public bool Korean
-        //{
-        //    get { return (bool)drow["Korean"]; }
-        //    set { drow["Korean"] = value; }
-        //}
-        //public bool Vietnamese
-        //{
-        //    get { return (bool)drow["Vietnamese"]; }
-        //    set { drow["Vietnamese"] = value; }
-        //}
-        //public bool OtherAsian
-        //{
-        //    get { return (bool)drow["OtherAsian"]; }
-        //    set { drow["OtherAsian"] = value; }
-        //}
-        //public bool IndigenousAfricanBlack
-        //{
-        //    get { return (bool)drow["IndigenousAfricanBlack"]; }
-        //    set { drow["IndigenousAfricanBlack"] = value; }
-        //}
-        //public bool AfricanAmericanBlack
-        //{
-        //    get { return (bool)drow["AfricanAmericanBlack"]; }
-        //    set { drow["AfricanAmericanBlack"] = value; }
-        //}
-        //public bool OtherBlack
-        //{
-        //    get { return (bool)drow["OtherBlack"]; }
-        //    set { drow["OtherBlack"] = value; }
-        //}
-        //public bool HawaiianNative
-        //{
-        //    get { return (bool)drow["HawaiianNative"]; }
-        //    set { drow["HawaiianNative"] = value; }
-        //}
-        //public bool Polynesian
-        //{
-        //    get { return (bool)drow["Polynesian"]; }
-        //    set { drow["Polynesian"] = value; }
-        //}
-        //public bool Micronesian
-        //{
-        //    get { return (bool)drow["Micronesian"]; }
-        //    set { drow["Micronesian"] = value; }
-        //}
-        //public bool OtherPacificIslander
-        //{
-        //    get { return (bool)drow["OtherPacificIslander"]; }
-        //    set { drow["OtherPacificIslander"] = value; }
-        //}
-        //public bool ArabIranianMiddleEastern
-        //{
-        //    get { return (bool)drow["ArabIranianMiddleEastern"]; }
-        //    set { drow["ArabIranianMiddleEastern"] = value; }
-        //}
-        //public bool OtherWhiteCaucasian
-        //{
-        //    get { return (bool)drow["OtherWhiteCaucasian"]; }
-        //    set{ drow["OtherWhiteCaucasian"] = value; }
-        //}
-        //public bool Other
-        //{
-        //    get { return (bool)drow["Other"]; }
-        //    set { drow["Other"] = value; }
-        //}
-        //public bool Unknown
-        //{
-        //    get{ return (bool)drow["Unknown"]; }
-        //    set{ drow["Unknown"] = value; }
-        //}
+        #endregion
+        #region Christmas Assistance Program Fields
+        public bool CAFlag
+        {
+            get { return (bool)drow["CAFlag"]; }
+            set { drow["CAFlag"] = value; }
+        }
+        public DateTime CAApplicationDate
+        {
+            get
+            {
+                if (drow["CAApplicationDate"].ToString() == "")
+                    return CCFBGlobal.FBNullDateValue;
+                else
+                    return (DateTime)drow["CAApplicationDate"];
+            }
+            set { drow["CAApplicationDate"] = value; }
+        }
+        public DateTime CADBInputDate
+        {
+            get
+            {
+                if (drow["CADBInputDate"].ToString() == "")
+                    return CCFBGlobal.FBNullDateValue;
+                else
+                    return (DateTime)drow["CADBInputDate"];
+            }
+            set { drow["CADBInputDate"] = value; }
+        }
+        public DateTime CAAdoptedDate
+        {
+            get
+            {
+                if (drow["CAAdoptedDate"].ToString() == "")
+                    return CCFBGlobal.FBNullDateValue;
+                else
+                    return (DateTime)drow["CAAdoptedDate"];
+            }
+            set { drow["CAAdoptedDate"] = value; }
+        }
+        public DateTime CAFilledDate
+        {
+            get
+            {
+                if (drow["CAFilledDate"].ToString() == "")
+                    return CCFBGlobal.FBNullDateValue;
+                else
+                    return (DateTime)drow["CAFilledDate"];
+            }
+            set { drow["CAFilledDate"] = value; }
+        }
+        public int CAAdoptedBy
+        {
+            get { return Convert.ToInt32(drow["CAAdoptedBy"]); }
+            set { drow["CAAdoptedBy"] = value; }
+        }
+        public string CAAdoptedContactName
+        {
+            get { return drow["CAAdoptedContactName"].ToString(); }
+            set { drow["CAAdoptedContactName"] = value; }
+        }
+        public string CAAdoptedContactPhone
+        {
+            get { return drow["CAAdoptedContactPhone"].ToString(); }
+            set { drow["CAAdoptedContactPhone"] = value; }
+        }
+        public bool CAFoodBoxOnly
+        {
+            get { return (bool)drow["CAFoodBoxOnly"]; }
+            set { drow["CAFoodBoxOnly"] = value; }
+        }
+        public bool CAHasPickupInfo
+        {
+            get { return (bool)drow["CAHasPickupInfo"]; }
+            set { drow["CAHasPickupInfo"] = value; }
+        }
+        public bool CAFoodBoxRequest
+        {
+            get { return (bool)drow["CAFoodBoxRequest"]; }
+            set { drow["CAFoodBoxRequest"] = value; }
+        }
+        public bool CAReceived
+        {
+            get { return (bool)drow["CAReceived"]; }
+            set { drow["CAReceived"] = value; }
+        }
+        public int CASignedByID
+        {
+            get { return Convert.ToInt32(drow["CASignedByID"]); }
+            set { drow["CASignedByID"] = value; }
+        }
         #endregion
 
         #endregion
@@ -610,7 +625,7 @@ namespace ClientcardFB3
         //Gets property through use of just the collum name in database
         public object GetDataValue(string FieldName)
         {
-            if (FieldName != "")
+            if (FieldName.Length >0)
             {
                 if (dset.Tables[tblName].Columns[FieldName] != null)
                 {
@@ -636,7 +651,7 @@ namespace ClientcardFB3
 
         public string GetDataString(string FieldName)
         {
-            if (FieldName != "")
+            if (FieldName.Length >0)
                 try
                 {
                     if (dset.Tables[0].Columns[FieldName].DataType == System.Type.GetType("System.DateTime"))
@@ -825,6 +840,7 @@ namespace ClientcardFB3
             SqlCommand commDelete = new SqlCommand(" DELETE FROM " + tblName + " WHERE ID=" + ID.ToString(), conn);
             openConnection();
             commDelete.ExecuteNonQuery();
+            commDelete.Dispose();
             closeConnection();
         }
 
@@ -832,7 +848,7 @@ namespace ClientcardFB3
         {
             if (dadAdpt.UpdateCommand == null || dadAdpt.InsertCommand == null)
             {
-                SqlCommandBuilder commBuild = new SqlCommandBuilder(dadAdpt);
+                commBuild = new SqlCommandBuilder(dadAdpt);
             }
             try
             {
@@ -920,7 +936,10 @@ namespace ClientcardFB3
             conn.Open();
             cmdQuery.ExecuteNonQuery();
             conn.Close();
-            return Convert.ToInt32(cmdQuery.Parameters[1].Value.ToString());
+            int retValue = Convert.ToInt32(cmdQuery.Parameters[1].Value.ToString());
+            cmdQuery.Dispose();
+            return retValue;
+;
         }
        
         public void UpdateLatestServiceDates(string dateOfService)
@@ -959,6 +978,7 @@ namespace ClientcardFB3
                 // back out to the caller.
                 Console.WriteLine("Error: {0}", ex.Message);
             }
+            cmdUpdate.Dispose();
             closeConnection();
         }
     }

@@ -78,11 +78,11 @@ namespace ClientcardFB3
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (tbExpireDate.Text.Trim() != "" && cboRoute.SelectedIndex != -1)
+            if (tbExpireDate.Text.Trim().Length >0 && cboRoute.SelectedIndex != -1)
             {
                 foreach (ListViewItem lvi in lvHHMems.Items)
                 {
-                    if (lvi.Checked && lvi.SubItems[4].Text == "")
+                    if (lvi.Checked && String.IsNullOrEmpty(lvi.SubItems[4].Text) == true)
                     {
                         clsClient.clsHHmem.find(rowMemberId(lvi));
                         clsClient.clsHHmem.SetDataValue("CSFPExpiration", tbExpireDate.Text);

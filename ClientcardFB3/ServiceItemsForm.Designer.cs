@@ -15,6 +15,10 @@
         {
             if (disposing && (components != null))
             {
+                if (clsSvcItems != null)
+                {
+                    clsSvcItems.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

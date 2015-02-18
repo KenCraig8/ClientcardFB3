@@ -74,12 +74,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>false</Optimize>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\..\Settings\CcFB3MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
-  <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x64\Debug\</OutputPath>
@@ -100,46 +101,23 @@
     <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Ionic.Zip">
-      <HintPath>..\Ionic.Zip.dll</HintPath>
+      <HintPath>E:\Users\Public\ClientcardFB3\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="MonthCalendar, Version=1.8.2.0, Culture=neutral, PublicKeyToken=9d22151b1b463438, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MonthCalendar">
-      <HintPath>..\MonthCalendar.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="NUnitForms, Version=1.3.1771.29165, Culture=neutral, PublicKeyToken=9df516afcc0d4103">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnitForms.Framework.1.3.1\lib\NUnitForms.dll</HintPath>
-    </Reference>
-    <Reference Include="SigPadCtrl">
-      <HintPath>..\SigPadCtrl.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\ClientcardFB3\MonthCalendar.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -221,6 +199,9 @@
     </Compile>
     <Compile Include="..\CcFB3dbClasses\HDItems.cs">
       <Link>HDItems.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3dbClasses\HDRoutes.cs">
+      <Link>HDRoutes.cs</Link>
     </Compile>
     <Compile Include="..\CcFB3dbClasses\HDRouteSheet.cs">
       <Link>HDRouteSheet.cs</Link>
@@ -323,6 +304,9 @@
     </Compile>
     <Compile Include="..\CcFB3ReportClasses\RptBMAC.cs">
       <Link>RptBMAC.cs</Link>
+    </Compile>
+    <Compile Include="..\CcFB3ReportClasses\RptCDBGWorksheet.cs">
+      <Link>RptCDBGWorksheet.cs</Link>
     </Compile>
     <Compile Include="..\CcFB3ReportClasses\RptCSFPPicklist.cs">
       <Link>RptCSFPPicklist.cs</Link>
@@ -432,97 +416,24 @@
     <Compile Include="CCFBStatisticsForm.Designer.cs">
       <DependentUpon>CCFBStatisticsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientcardORM\AccessReport.cs" />
-    <Compile Include="ClientcardORM\BackPackLog.cs" />
-    <Compile Include="ClientcardORM\CashDonation.cs" />
-    <Compile Include="ClientcardORM\ClientcardORM.cs" />
-    <Compile Include="ClientcardORM\CSFPLog.cs" />
-    <Compile Include="ClientcardORM\DaysOpen.cs" />
-    <Compile Include="ClientcardORM\Default.cs" />
-    <Compile Include="ClientcardORM\Demographic.cs" />
-    <Compile Include="ClientcardORM\Donor.cs" />
-    <Compile Include="ClientcardORM\EmailRecipient.cs" />
-    <Compile Include="ClientcardORM\FamilyCardSig.cs" />
-    <Compile Include="ClientcardORM\FB3.cs" />
-    <Compile Include="ClientcardORM\FBJobsActual.cs" />
-    <Compile Include="ClientcardORM\FBJobsPlan.cs" />
-    <Compile Include="ClientcardORM\FoodDonation.cs" />
-    <Compile Include="ClientcardORM\HDBuilding.cs" />
-    <Compile Include="ClientcardORM\HDDeliveryDay.cs" />
-    <Compile Include="ClientcardORM\HDItem.cs" />
-    <Compile Include="ClientcardORM\HDLbsPerService.cs" />
-    <Compile Include="ClientcardORM\HDRoute.cs" />
-    <Compile Include="ClientcardORM\HDRouteSheet.cs" />
-    <Compile Include="ClientcardORM\HDRSClient.cs" />
-    <Compile Include="ClientcardORM\HHPoint.cs" />
-    <Compile Include="ClientcardORM\Household.cs" />
-    <Compile Include="ClientcardORM\HouseholdMember.cs" />
-    <Compile Include="ClientcardORM\IncomeGroup.cs" />
-    <Compile Include="ClientcardORM\IncomeMatrix.cs" />
-    <Compile Include="ClientcardORM\MonthlyReport.cs" />
-    <Compile Include="ClientcardORM\parm_AddressID.cs" />
-    <Compile Include="ClientcardORM\parm_BackPackSchool.cs" />
-    <Compile Include="ClientcardORM\parm_BackPackSize.cs" />
-    <Compile Include="ClientcardORM\parm_ClientType.cs" />
-    <Compile Include="ClientcardORM\parm_CSFPRoutes.cs" />
-    <Compile Include="ClientcardORM\parm_CSFPSortOrder.cs" />
-    <Compile Include="ClientcardORM\parm_CSFPStatus.cs" />
-    <Compile Include="ClientcardORM\parm_DonationType.cs" />
-    <Compile Include="ClientcardORM\parm_DonorType.cs" />
-    <Compile Include="ClientcardORM\parm_EducationLevel.cs" />
-    <Compile Include="ClientcardORM\parm_EmploymentStatus.cs" />
-    <Compile Include="ClientcardORM\parm_FBJobs.cs" />
-    <Compile Include="ClientcardORM\parm_FBProgram.cs" />
-    <Compile Include="ClientcardORM\parm_FoodClass.cs" />
-    <Compile Include="ClientcardORM\parm_Gender.cs" />
-    <Compile Include="ClientcardORM\parm_HDBldgOperator.cs" />
-    <Compile Include="ClientcardORM\parm_HDPrograms.cs" />
-    <Compile Include="ClientcardORM\parm_HDRouteSheetStatus.cs" />
-    <Compile Include="ClientcardORM\parm_HomeDeliveryRoutes.cs" />
-    <Compile Include="ClientcardORM\parm_HUDCategory.cs" />
-    <Compile Include="ClientcardORM\parm_IDType.cs" />
-    <Compile Include="ClientcardORM\parm_IncomeProcessID.cs" />
-    <Compile Include="ClientcardORM\parm_LanguageType.cs" />
-    <Compile Include="ClientcardORM\parm_MilitaryDischarge.cs" />
-    <Compile Include="ClientcardORM\parm_MilitaryService.cs" />
-    <Compile Include="ClientcardORM\parm_PhoneType.cs" />
-    <Compile Include="ClientcardORM\parm_Race.cs" />
-    <Compile Include="ClientcardORM\parm_Relationship.cs" />
-    <Compile Include="ClientcardORM\parm_RouteSheetStatus.cs" />
-    <Compile Include="ClientcardORM\parm_SchSupplyRegistration.cs" />
-    <Compile Include="ClientcardORM\parm_SchSupplySchool.cs" />
-    <Compile Include="ClientcardORM\parm_ServiceGroup.cs" />
-    <Compile Include="ClientcardORM\parm_ServiceMethod.cs" />
-    <Compile Include="ClientcardORM\parm_SurveyFields.cs" />
-    <Compile Include="ClientcardORM\parm_SvcCategory.cs" />
-    <Compile Include="ClientcardORM\parm_SvcRules.cs" />
-    <Compile Include="ClientcardORM\parm_Transportation.cs" />
-    <Compile Include="ClientcardORM\parm_TrueFalse.cs" />
-    <Compile Include="ClientcardORM\parm_VolunteerGroups.cs" />
-    <Compile Include="ClientcardORM\parm_VolunteerType.cs" />
-    <Compile Include="ClientcardORM\parm_VoucherType.cs" />
-    <Compile Include="ClientcardORM\parm_YesNoUnk.cs" />
-    <Compile Include="ClientcardORM\Preference.cs" />
-    <Compile Include="ClientcardORM\ServiceItem.cs" />
-    <Compile Include="ClientcardORM\SignaturePrompt.cs" />
-    <Compile Include="ClientcardORM\sysdiagram.cs" />
-    <Compile Include="ClientcardORM\TrxLog.cs" />
-    <Compile Include="ClientcardORM\TrxLogHouseholdsCalFirstService.cs" />
-    <Compile Include="ClientcardORM\TrxLogSig.cs" />
-    <Compile Include="ClientcardORM\UserField.cs" />
-    <Compile Include="ClientcardORM\Userlist.cs" />
-    <Compile Include="ClientcardORM\Volunteer.cs" />
-    <Compile Include="ClientcardORM\VolunteerGroup.cs" />
-    <Compile Include="ClientcardORM\VolunteerHour.cs" />
-    <Compile Include="ClientcardORM\VoucherItem.cs" />
-    <Compile Include="ClientcardORM\VoucherLog.cs" />
-    <Compile Include="ClientcardORM\zData.cs" />
-    <Compile Include="ClientcardORM\Zipcode.cs" />
+    <Compile Include="CDBGWorksheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CDBGWorksheetForm.designer.cs">
+      <DependentUpon>CDBGWorksheetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientSearch.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientSearch.Designer.cs">
       <DependentUpon>ClientSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCAListA.cs" />
+    <Compile Include="EditChristmasGifts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditChristmasGifts.Designer.cs">
+      <DependentUpon>EditChristmasGifts.cs</DependentUpon>
     </Compile>
     <Compile Include="FreshAllianceForm.cs">
       <SubType>Form</SubType>
@@ -530,13 +441,6 @@
     <Compile Include="FreshAllianceForm.designer.cs">
       <DependentUpon>FreshAllianceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HDPlannerControler.cs" />
-    <Compile Include="HDRoutesModel.cs" />
-    <Compile Include="HDVolContactInfo.cs" />
-    <Compile Include="IEditVolunteerForm.cs" />
-    <Compile Include="ILoginForm.cs" />
-    <Compile Include="Tests\HDPlannerFormTest.cs" />
-    <Compile Include="Tests\HDRoutesTest.cs" />
     <Compile Include="MarkHouseholdInactive.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -657,11 +561,11 @@
     <Compile Include="BackupDBForm.Designer.cs">
       <DependentUpon>BackupDBForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HDPlannerView.cs">
+    <Compile Include="HDPlannerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HDPlannerView.designer.cs">
-      <DependentUpon>HDPlannerView.cs</DependentUpon>
+    <Compile Include="HDPlannerForm.designer.cs">
+      <DependentUpon>HDPlannerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HHMemGridForm2.cs">
       <SubType>Form</SubType>
@@ -674,12 +578,6 @@
     </Compile>
     <Compile Include="IncomeMatrixForm.Designer.cs">
       <DependentUpon>IncomeMatrixForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="KCReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KCReportForm.designer.cs">
-      <DependentUpon>KCReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MonthEndReportsForm.cs">
       <SubType>Form</SubType>
@@ -718,11 +616,11 @@
     <Compile Include="SqlGridDataSet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestExportToCSV.cs">
+    <Compile Include="ExportSQLToExcel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestExportToCSV.Designer.cs">
-      <DependentUpon>TestExportToCSV.cs</DependentUpon>
+    <Compile Include="ExportSQLToExcel.Designer.cs">
+      <DependentUpon>ExportSQLToExcel.cs</DependentUpon>
     </Compile>
     <Compile Include="FindClientForm.cs">
       <SubType>Form</SubType>
@@ -743,9 +641,6 @@
     <Compile Include="ServiceItemsForm.Designer.cs">
       <DependentUpon>ServiceItemsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMainForm.cs" />
-    <Compile Include="Tests\LoginFormFake.cs" />
-    <Compile Include="Tests\MainFormFake.cs" />
     <Compile Include="TrxLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -838,6 +733,9 @@
     <EmbeddedResource Include="CCFBStatisticsForm.resx">
       <DependentUpon>CCFBStatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CDBGWorksheetForm.resx">
+      <DependentUpon>CDBGWorksheetForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientSearch.resx">
       <DependentUpon>ClientSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -852,6 +750,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditBackPackForm.resx">
       <DependentUpon>EditBackPackForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditChristmasGifts.resx">
+      <DependentUpon>EditChristmasGifts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditCSFPForm.resx">
       <DependentUpon>EditCSFPForm.cs</DependentUpon>
@@ -901,17 +802,14 @@
     <EmbeddedResource Include="SelectDateRange.resx">
       <DependentUpon>SelectDateRange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HDPlannerView.resx">
-      <DependentUpon>HDPlannerView.cs</DependentUpon>
+    <EmbeddedResource Include="HDPlannerForm.resx">
+      <DependentUpon>HDPlannerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HHMemGridForm2.resx">
       <DependentUpon>HHMemGridForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IncomeMatrixForm.resx">
       <DependentUpon>IncomeMatrixForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KCReportForm.resx">
-      <DependentUpon>KCReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MonthEndReportsForm.resx">
       <DependentUpon>MonthEndReportsForm.cs</DependentUpon>
@@ -950,8 +848,8 @@
     <EmbeddedResource Include="ServiceItemsForm.resx">
       <DependentUpon>ServiceItemsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestExportToCSV.resx">
-      <DependentUpon>TestExportToCSV.cs</DependentUpon>
+    <EmbeddedResource Include="ExportSQLToExcel.resx">
+      <DependentUpon>ExportSQLToExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TrxLogForm.resx">
       <DependentUpon>TrxLogForm.cs</DependentUpon>
@@ -981,7 +879,6 @@
       <DependentUpon>WebPageForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1089,7 +986,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
@@ -1106,6 +1002,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SigPadCtrl\SigPadCtrl\SigPadCtrl.csproj">
+      <Project>{757033a0-0889-4300-a616-bbc545a9b511}</Project>
+      <Name>SigPadCtrl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

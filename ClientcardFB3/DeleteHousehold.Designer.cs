@@ -15,6 +15,14 @@
         {
             if (disposing && (components != null))
             {
+                if (clsClientToDelete != null)
+                {
+                    clsClientToDelete.Dispose();
+                }
+                if (clsClientToTransfer != null)
+                {
+                    clsClientToTransfer.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

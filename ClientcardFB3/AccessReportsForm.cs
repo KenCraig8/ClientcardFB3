@@ -123,26 +123,33 @@ namespace ClientcardFB3
                             sWhereClause = sWhereClause.Replace("mdy0", dtFrom.Value.ToShortDateString()).Replace("mdy1", dtTo.Value.ToShortDateString());
                             // parmType cboResult = (parmType)cboUserSelection.SelectedItem;
                             //Put user selected values into where clause
-                            switch (clsAccessReports.CboResultType)
+                            if (chkAllItems.Checked != true)
                             {
-                                case 0:
-                                    sWhereClause = sWhereClause.Replace("xxx", gatherInListNumbers());
-                                    break;
-                                case 1:
-                                    sWhereClause = sWhereClause.Replace("xxx", gatherInListString());
-                                    break;
-                                case 2:
-                                    //if (cboResult.ID != 99)
-                                    //{
-                                    //    sWhereClause = sWhereClause.Replace("xxx", cboResult.ShortName);
-                                    //    //sWhereClause = sWhereClause.Replace("zz", cboResult.ID.ToString());
-                                    //}
-                                    break;
+                                sWhereClause += " " + clsAccessReports.SqlQuery;
+                                switch (clsAccessReports.CboResultType)
+                                {
+                                    case 0:
+                                        sWhereClause = sWhereClause.Replace("xxx", gatherInListNumbers());
+                                        break;
+                                    case 1:
+                                        sWhereClause = sWhereClause.Replace("xxx", gatherInListString());
+                                        break;
+                                    case 2:
+                                        //if (cboResult.ID != 99)
+                                        //{
+                                        //    sWhereClause = sWhereClause.Replace("xxx", cboResult.ShortName);
+                                        //    //sWhereClause = sWhereClause.Replace("zz", cboResult.ID.ToString());
+                                        //}
+                                        break;
 
-                                default:
-                                    break;
+                                    default:
+                                        break;
+                                }
                             }
-                            sWhereClause += AddInactiveFlag(sWhereClause, clsAccessReports.RptGroup);
+                            if (clsAccessReports.UseActive == true)
+                            {
+                                sWhereClause += AddInactiveFlag(sWhereClause, clsAccessReports.RptGroup);
+                            }
                             //Create Report
                             createReport(sWhereClause,"");
                             break;
@@ -211,7 +218,7 @@ namespace ClientcardFB3
                    );
                 CCFBGlobal.appendErrorToErrorReport("WhereClause: " + whereClause,"CreateReport: " + clsAccessReports.ReportTitle);
                // oAccess.DoCmd.DoMenuItem("Shutter Bar", "Navigation Pane", "Close", Type.Missing);
-                if (recordsource != "")
+                if (String.IsNullOrEmpty(recordsource) == false)
                 {
                     oAccess.DoCmd.OpenReport(
                             clsAccessReports.ReportTitle, //ReportName
@@ -226,7 +233,7 @@ namespace ClientcardFB3
                     if (clsAccessReports.UseFilter == false)
                     {
                         // Preview a report
-                        if (clsAccessReports.UseWhere == true || whereClause !="")
+                        if (clsAccessReports.UseWhere == true || whereClause.Length > 0)
                             oAccess.DoCmd.OpenReport(
                                clsAccessReports.ReportTitle, //ReportName
                                Microsoft.Office.Interop.Access.AcView.acViewPreview, //View
@@ -281,8 +288,14 @@ namespace ClientcardFB3
             {
                 CCFBGlobal.appendErrorToErrorReport("createReport: " + whereClause + recordsource, ex.GetBaseException().ToString());
             }
-            ((Microsoft.Office.Interop.Access._Application)oAccess).
+            try
+            {
+                ((Microsoft.Office.Interop.Access._Application)oAccess).
                 Quit(Microsoft.Office.Interop.Access.AcQuitOption.acQuitSaveNone);
+            }
+            catch (Exception ex1)
+            {
+            }
         }
 
         /// <summary>
@@ -511,6 +524,13 @@ namespace ClientcardFB3
         {
             DateTimePicker dtp = (DateTimePicker)sender;
             clsAccessReports.SetDataValue(dtp.Tag.ToString(), dtp.Value.ToShortDateString());
+            if (dtp.Name == "dtFrom")
+            {
+                if (dtFrom.Value > dtTo.Value)
+                {
+                    dtTo.Value = dtFrom.Value;
+                }
+            }
         }
 
         private void tb_Leave(object sender, EventArgs e)
@@ -552,13 +572,13 @@ namespace ClientcardFB3
             {
                 if (rdoOnlyActive.Checked == true)
                 {
-                    if (sOriClause != "")
+                    if (sOriClause.Length >0)
                         sRetVal = " AND ";
                     sRetVal += nameTbl + ".Inactive = 0";
                 }
                 else if (rdoOnlyInactive.Checked == true)
                 {
-                    if (sOriClause != "")
+                    if (sOriClause.Length >0)
                         sRetVal = " AND ";
                     sRetVal += nameTbl + ".Inactive = 1";
                 }
@@ -641,7 +661,7 @@ namespace ClientcardFB3
             {
                 if (item.Checked == true || chkAllItems.Checked == true)
                 {
-                    if (tmp != "")
+                    if (tmp.Length > 0)
                         tmp += ",";
                     tmp += item.Tag.ToString();
                 }
@@ -656,7 +676,7 @@ namespace ClientcardFB3
             {
                 if (item.Checked == true || chkAllItems.Checked == true)
                 {
-                    if (tmp != "")
+                    if (tmp.Length >0)
                         tmp += ",";
                     tmp += "'" + item.Text + "'";
                     //tmp += "'" + CCFBGlobal.SQLApostrophe(item.Text) + "'";
@@ -667,7 +687,10 @@ namespace ClientcardFB3
 
         private void chkAllItems_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (chkAllItems.Focused == true )
+            {
+                lvwFilter.Visible = !chkAllItems.Checked;
+            }
         }
 
         private void chkPreview_CheckedChanged(object sender, EventArgs e)

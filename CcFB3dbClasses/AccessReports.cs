@@ -1,28 +1,68 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace ClientcardFB3
 {
-    public class AccessReports
+    public class AccessReports : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
         DataSet dset;
         SqlCommand command;
+        SqlCommand commDelete;
+        SqlCommandBuilder commBuilder;
         System.Data.SqlClient.SqlConnection conn;
         static string tbName = "AccessReports";
         int iRowCount = 0;
         bool isValid = false;
         DataRow dRow;
+        private bool _disposed;
 
-        public AccessReports(string connStringIn)
+        public AccessReports(string connValueIn)
         {
             conn = new System.Data.SqlClient.SqlConnection();
-            connString = connStringIn;
+            connString = connValueIn;
             conn.ConnectionString = connString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (commDelete != null)
+                        commDelete.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -287,10 +327,11 @@ namespace ClientcardFB3
 
         public void delete(System.Int32 key)
         {
-            SqlCommand commDelete = new SqlCommand(" DELETE FROM AccessReports WHERE ID=" + ID.ToString(), conn);
+            commDelete = new SqlCommand(" DELETE FROM AccessReports WHERE ID=" + ID.ToString(), conn);
             openConnection();
             commDelete.ExecuteNonQuery();
             closeConnection();
+            commDelete.Dispose();
         }
 
         public void update()
@@ -302,7 +343,7 @@ namespace ClientcardFB3
                     conn.Open();
                     if (dadAdpt.UpdateCommand == null)
                     {
-                        SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                        commBuilder = new SqlCommandBuilder(dadAdpt);
                     }
                     dadAdpt.Update(dset, "AccessReports");
                     conn.Close();

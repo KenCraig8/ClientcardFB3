@@ -6,7 +6,7 @@ using Microsoft.Office.Interop.Word;
 
 namespace ClientcardFB3
 {
-    public class FamilyCardSig
+    public class FamilyCardSig : IDisposable
     {
         bool haveSig = false;
         int sigUID;
@@ -27,8 +27,8 @@ namespace ClientcardFB3
                           + " WHERE UID = @UID";
         SqlCommand sqlInsertCmd;
         SqlCommand sqlLoadCmd;
-
         SqlConnection sqlConn;
+        private bool _disposed;
         
         public FamilyCardSig(string connString)
         {
@@ -49,6 +49,39 @@ namespace ClientcardFB3
 
             sqlLoadCmd = new SqlCommand(textLoad, sqlConn);
             sqlLoadCmd.Parameters.Add("@UID", SqlDbType.Int);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (sqlConn != null)
+                        sqlConn.Dispose();
+                    if (sigImage != null)
+                        sigImage.Dispose();
+                    if (sqlInsertCmd != null)
+                        sqlInsertCmd.Dispose();
+                    if (sqlLoadCmd != null)
+                        sqlLoadCmd.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                sqlConn = null;
+                sigImage = null;
+                sqlInsertCmd = null;
+                sqlLoadCmd = null;
+                _disposed = true;
+            }
         }
 
         public bool HaveSignature
@@ -158,6 +191,7 @@ namespace ClientcardFB3
             sqlUpdateCmd.Parameters.Add(new SqlParameter("@SigStr", sigStr));
             sqlUpdateCmd.Parameters.Add(new SqlParameter("@CreatedBy", CCFBGlobal.dbUserName));
             sqlUpdateCmd.ExecuteNonQuery();
+            sqlUpdateCmd.Dispose();
         }
     }
 }

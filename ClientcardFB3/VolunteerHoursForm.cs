@@ -133,7 +133,7 @@ namespace ClientcardFB3
             int[] hrsGroup = new int[clsVolGroups.NbrGroups + 1];
             dgvVols.Rows.Clear();
             Application.DoEvents();
-            if (groupVolIdList == "")
+            if (String.IsNullOrEmpty(groupVolIdList) == true)
                 clsVols.openWhere(baseWhereClause + " Order By Name");
             else
                 clsVols.openWhere(baseWhereClause + " AND Id IN ( " + groupVolIdList + ")" + " Order By Name"); 
@@ -333,8 +333,8 @@ namespace ClientcardFB3
                 dgvVols[e.ColumnIndex, e.RowIndex].Value = timeBeforeFormat;
                 if (dgvVols[1, e.RowIndex].Value != null
                     && dgvVols[2, e.RowIndex].Value != null
-                    && dgvVols[1, e.RowIndex].Value.ToString().Trim() != ""
-                    && dgvVols[2, e.RowIndex].Value.ToString().Trim() != "")
+                    && dgvVols[1, e.RowIndex].Value.ToString().Trim().Length >0
+                    && dgvVols[2, e.RowIndex].Value.ToString().Trim().Length >0)
                 {
                     TimeSpan difference;
                     try
@@ -470,7 +470,7 @@ namespace ClientcardFB3
                 }
                 tbWorkDate.Tag = TrxDate;
             }
-            frmAddTrxDate.Close();
+            frmAddTrxDate.Dispose();
         }
 
         private void btnSaveHrs_Click(object sender, EventArgs e)
@@ -505,7 +505,7 @@ namespace ClientcardFB3
                     {
                         if (lvItm.Checked == true )
                         {
-                            if (groupVolIdList == "")
+                            if (String.IsNullOrEmpty(groupVolIdList) == true)
                                 lvVolGroups.Items[0].Checked = false;
                             else
                                 groupVolIdList += ",";
@@ -537,7 +537,7 @@ namespace ClientcardFB3
                 timeBeforeFormat = "";
                 if (dgvVols[e.ColumnIndex, e.RowIndex].
                     GetEditedFormattedValue(e.RowIndex, DataGridViewDataErrorContexts.Formatting)
-                    .ToString().Trim() != "")
+                    .ToString().Trim().Length >0)
                 {
                     timeBeforeFormat = e.FormattedValue.ToString();
 

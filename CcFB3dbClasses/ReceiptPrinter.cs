@@ -6,14 +6,40 @@ using System.Windows.Forms;
 
 namespace ClientcardFB3
 {
-    public class ReceiptPrinter
+    public class ReceiptPrinter : IDisposable
     {
         private Font printFont;
         private Client mclsClient;
+        private bool _disposed;
 
         public ReceiptPrinter(Client tmpClient)
         {
             mclsClient = tmpClient;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (printFont != null)
+                        printFont.Dispose();
+
+                }
+
+                // Indicate that the instance has been disposed.
+                printFont = null;
+                _disposed = true;
+            }
         }
 
         public void printIssaquah()

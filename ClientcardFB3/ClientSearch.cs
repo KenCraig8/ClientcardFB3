@@ -102,11 +102,11 @@ namespace ClientcardFB3
             if (chkIncludeInactive.Checked == false)
                 sql += appendClause("hh.Inactive = 0");
 
-            if (tbBirthDate.Text.Trim() != "")
+            if (tbBirthDate.Text.Trim().Length >0)
             {
                 sql += appendClause("BirthDate = '" + tbBirthDate.Text.Trim() + "'");
             }
-            if (tbLastName.Text != "")
+            if (tbLastName.Text.Length >0)
             {
                 sql += appendClause("LastName ");
                 if (rdoLastStartsWith.Checked == true)
@@ -116,7 +116,7 @@ namespace ClientcardFB3
                 else
                     sql += " = '" + tbLastName.Text.Trim() + "'";
             }
-            if (tbFirstName.Text != "")
+            if (tbFirstName.Text.Length >0)
             {
                 sql += appendClause("FirstName ");
                 if (rdoFirstStartsWith.Checked == true)
@@ -127,17 +127,17 @@ namespace ClientcardFB3
                     sql += " = '" + tbFirstName.Text.Trim() + "'";
                 //sortorder = "Name, hh.ID, HeadHH DESC, FirstName";
             }
-            if (tbHouseNbr.Text != "")
+            if (tbHouseNbr.Text.Length >0)
             {
                 sql += appendClause("Address like '" + tbHouseNbr.Text.Trim() + "%'");
                 sortorder = "Address, hh.ID, HeadHH DESC, ClientName";
             }
-            if (tbAptNbr.Text != "")
+            if (tbAptNbr.Text.Length >0)
             {
                 sql += appendClause("AptNbr LIKE '%" + tbAptNbr.Text.Trim() + "%'");
                 sortorder = "AptNbr, Address, hh.ID, HeadHH DESC, ClientName";
             }
-            if (tbZipCode.Text != "")
+            if (tbZipCode.Text.Length >0)
             {
                 sql += appendClause("Zipcode = '" + tbZipCode.Text.Trim() + "'");
             }
@@ -266,7 +266,7 @@ namespace ClientcardFB3
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                if (tbBarCode.Text != "")
+                if (tbBarCode.Text.Length >0)
                 {
                     string testBarCode = tbBarCode.Text;
                     int testID = -1;

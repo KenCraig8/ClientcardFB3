@@ -5,21 +5,59 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class HHPoints
+    public class HHPoints : IDisposable
     {
         SqlDataAdapter dadAdpt;
         DataRow dRow;
         DataTable dtbl;
         SqlCommand sqlCmd;
+        SqlCommandBuilder commBuilder;
         SqlConnection conn;
         const string tblName = "HHPoints";
         int iRowCount = 0;
         public string errorMsg;
+        private bool _disposed;
 
         public HHPoints(SqlConnection connIN)
         {
             conn = connIN;
             dtbl = new DataTable();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dtbl != null)
+                        dtbl.Dispose();
+                    if (sqlCmd != null)
+                        sqlCmd.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dtbl = null;
+                sqlCmd = null;
+                dadAdpt = null;
+                commBuilder = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -146,7 +184,7 @@ namespace ClientcardFB3
                 if (fldIndex >= 0)
                 {
                     if (dtbl.Columns[fldIndex].DataType.Name == "DateTime")
-                        if (dRow[FieldName].ToString() != "")
+                        if (dRow[FieldName].ToString().Length >0)
                         { return CCFBGlobal.ValidDateString(dRow[FieldName]); }
                         else
                         { return ""; }
@@ -223,6 +261,7 @@ namespace ClientcardFB3
                 openConnection();
                 SqlCommand cmdDelete = new SqlCommand(" DELETE FROM HHPoints WHERE UID=" + key.ToString(), conn);
                 int iRows = cmdDelete.ExecuteNonQuery();
+                cmdDelete.Dispose();
                 closeConnection();
                 return (iRows > 0);
             }
@@ -295,7 +334,7 @@ namespace ClientcardFB3
         public void openWhere(string whereclause)
         {
             string sqlTxt = "SELECT * FROM " + tblName;
-            if (whereclause != "")
+            if (whereclause.Length >0)
             {
                 sqlTxt += " WHERE " + whereclause;
             }
@@ -345,7 +384,7 @@ namespace ClientcardFB3
                 openConnection();
                 if (dadAdpt.UpdateCommand == null || dadAdpt.InsertCommand == null)
                 {
-                    SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                    commBuilder = new SqlCommandBuilder(dadAdpt);
                 }
                 dadAdpt.Update(dtbl);
                 closeConnection();
@@ -366,6 +405,7 @@ namespace ClientcardFB3
                 dadAdpt = new SqlDataAdapter(cmd);
                 DataTable datatbl = new DataTable();
                 dadAdpt.Fill(datatbl);
+                cmd.Dispose();
                 closeConnection();
                 return datatbl;
             }

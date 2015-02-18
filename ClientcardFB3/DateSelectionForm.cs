@@ -108,6 +108,7 @@ namespace ClientcardFB3
                 dItem.Text = SpecialItemList;
 
             pbCalendar.AddDateInfo(dItem);
+            dItem.Dispose();
         }
 
         private void pbCalendar_DayClick(object sender, Pabo.Calendar.DayClickEventArgs e)

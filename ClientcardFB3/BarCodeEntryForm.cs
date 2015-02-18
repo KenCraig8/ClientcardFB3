@@ -35,7 +35,7 @@ namespace ClientcardFB3
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                if (tbBarcode.Text != "")
+                if (tbBarcode.Text.Length >0)
                 {
                     try
                     {
@@ -83,7 +83,7 @@ namespace ClientcardFB3
 
         private void tbBarcode_Leave(object sender, EventArgs e)
         {
-            if (sbarcode == "")
+            if (String.IsNullOrEmpty(sbarcode) == true)
             {
                 sbarcode = tbBarcode.Text.Trim().ToUpper();
             }

@@ -15,6 +15,10 @@
         {
             if (disposing && (components != null))
             {
+                if (clsAccessReports != null)
+                {
+                    clsAccessReports.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -86,7 +90,7 @@
             this.lblType5Hi.AutoSize = true;
             this.lblType5Hi.Location = new System.Drawing.Point(45, 74);
             this.lblType5Hi.Name = "lblType5Hi";
-            this.lblType5Hi.Size = new System.Drawing.Size(24, 15);
+            this.lblType5Hi.Size = new System.Drawing.Size(37, 22);
             this.lblType5Hi.TabIndex = 3;
             this.lblType5Hi.Text = "To:";
             // 
@@ -95,7 +99,7 @@
             this.lblType5Low.AutoSize = true;
             this.lblType5Low.Location = new System.Drawing.Point(45, 27);
             this.lblType5Low.Name = "lblType5Low";
-            this.lblType5Low.Size = new System.Drawing.Size(39, 15);
+            this.lblType5Low.Size = new System.Drawing.Size(56, 22);
             this.lblType5Low.TabIndex = 2;
             this.lblType5Low.Text = "From:";
             // 
@@ -103,7 +107,7 @@
             // 
             this.dtTo.Location = new System.Drawing.Point(45, 90);
             this.dtTo.Name = "dtTo";
-            this.dtTo.Size = new System.Drawing.Size(204, 21);
+            this.dtTo.Size = new System.Drawing.Size(204, 28);
             this.dtTo.TabIndex = 1;
             this.dtTo.Tag = "Date1";
             this.dtTo.Leave += new System.EventHandler(this.dtp_Leave);
@@ -119,7 +123,7 @@
             this.dtFrom.Location = new System.Drawing.Point(45, 44);
             this.dtFrom.MinDate = new System.DateTime(1990, 1, 1, 0, 0, 0, 0);
             this.dtFrom.Name = "dtFrom";
-            this.dtFrom.Size = new System.Drawing.Size(204, 21);
+            this.dtFrom.Size = new System.Drawing.Size(204, 28);
             this.dtFrom.TabIndex = 0;
             this.dtFrom.Tag = "Date0";
             this.dtFrom.Leave += new System.EventHandler(this.dtp_Leave);
@@ -130,7 +134,7 @@
             this.lblType1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType1.Location = new System.Drawing.Point(545, 7);
             this.lblType1.Name = "lblType1";
-            this.lblType1.Size = new System.Drawing.Size(47, 17);
+            this.lblType1.Size = new System.Drawing.Size(64, 25);
             this.lblType1.TabIndex = 2;
             this.lblType1.Text = "Date:";
             this.lblType1.Visible = false;
@@ -139,7 +143,7 @@
             // 
             this.dtDate.Location = new System.Drawing.Point(8, 35);
             this.dtDate.Name = "dtDate";
-            this.dtDate.Size = new System.Drawing.Size(233, 21);
+            this.dtDate.Size = new System.Drawing.Size(233, 28);
             this.dtDate.TabIndex = 0;
             this.dtDate.Tag = "Date0";
             this.dtDate.Leave += new System.EventHandler(this.dtp_Leave);
@@ -149,7 +153,7 @@
             this.tbYearTo.Location = new System.Drawing.Point(17, 67);
             this.tbYearTo.MaxLength = 4;
             this.tbYearTo.Name = "tbYearTo";
-            this.tbYearTo.Size = new System.Drawing.Size(102, 21);
+            this.tbYearTo.Size = new System.Drawing.Size(102, 28);
             this.tbYearTo.TabIndex = 3;
             this.tbYearTo.Tag = "Date1";
             this.tbYearTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -161,7 +165,7 @@
             this.lblType7Hi.AutoSize = true;
             this.lblType7Hi.Location = new System.Drawing.Point(3, 50);
             this.lblType7Hi.Name = "lblType7Hi";
-            this.lblType7Hi.Size = new System.Drawing.Size(60, 15);
+            this.lblType7Hi.Size = new System.Drawing.Size(97, 22);
             this.lblType7Hi.TabIndex = 2;
             this.lblType7Hi.Text = "To(YYYY):";
             // 
@@ -170,7 +174,7 @@
             this.tbYearFrom.Location = new System.Drawing.Point(19, 23);
             this.tbYearFrom.MaxLength = 4;
             this.tbYearFrom.Name = "tbYearFrom";
-            this.tbYearFrom.Size = new System.Drawing.Size(100, 21);
+            this.tbYearFrom.Size = new System.Drawing.Size(100, 28);
             this.tbYearFrom.TabIndex = 1;
             this.tbYearFrom.Tag = "Date0";
             this.tbYearFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -182,7 +186,7 @@
             this.lblType7Low.AutoSize = true;
             this.lblType7Low.Location = new System.Drawing.Point(10, 5);
             this.lblType7Low.Name = "lblType7Low";
-            this.lblType7Low.Size = new System.Drawing.Size(75, 15);
+            this.lblType7Low.Size = new System.Drawing.Size(116, 22);
             this.lblType7Low.TabIndex = 0;
             this.lblType7Low.Text = "From(YYYY):";
             // 
@@ -191,7 +195,7 @@
             this.cboUserSelection.FormattingEnabled = true;
             this.cboUserSelection.Location = new System.Drawing.Point(3, 27);
             this.cboUserSelection.Name = "cboUserSelection";
-            this.cboUserSelection.Size = new System.Drawing.Size(152, 23);
+            this.cboUserSelection.Size = new System.Drawing.Size(152, 30);
             this.cboUserSelection.TabIndex = 3;
             this.cboUserSelection.Tag = "Date0";
             this.cboUserSelection.Leave += new System.EventHandler(this.cboUserSelection_Leave);
@@ -201,7 +205,7 @@
             this.lblType2.AutoSize = true;
             this.lblType2.Location = new System.Drawing.Point(3, 9);
             this.lblType2.Name = "lblType2";
-            this.lblType2.Size = new System.Drawing.Size(37, 15);
+            this.lblType2.Size = new System.Drawing.Size(52, 22);
             this.lblType2.TabIndex = 2;
             this.lblType2.Text = "Items";
             // 
@@ -212,7 +216,7 @@
             this.chkPreview.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPreview.Location = new System.Drawing.Point(554, 357);
             this.chkPreview.Name = "chkPreview";
-            this.chkPreview.Size = new System.Drawing.Size(69, 19);
+            this.chkPreview.Size = new System.Drawing.Size(100, 26);
             this.chkPreview.TabIndex = 6;
             this.chkPreview.Text = "Preview";
             this.chkPreview.UseVisualStyleBackColor = true;
@@ -327,7 +331,7 @@
             this.rdoOnlyInactive.AutoSize = true;
             this.rdoOnlyInactive.Location = new System.Drawing.Point(43, 72);
             this.rdoOnlyInactive.Name = "rdoOnlyInactive";
-            this.rdoOnlyInactive.Size = new System.Drawing.Size(93, 19);
+            this.rdoOnlyInactive.Size = new System.Drawing.Size(138, 26);
             this.rdoOnlyInactive.TabIndex = 2;
             this.rdoOnlyInactive.Text = "Only Inactive";
             this.rdoOnlyInactive.UseVisualStyleBackColor = true;
@@ -338,7 +342,7 @@
             this.rdoOnlyActive.Checked = true;
             this.rdoOnlyActive.Location = new System.Drawing.Point(43, 46);
             this.rdoOnlyActive.Name = "rdoOnlyActive";
-            this.rdoOnlyActive.Size = new System.Drawing.Size(86, 19);
+            this.rdoOnlyActive.Size = new System.Drawing.Size(131, 26);
             this.rdoOnlyActive.TabIndex = 1;
             this.rdoOnlyActive.TabStop = true;
             this.rdoOnlyActive.Text = "Only Active ";
@@ -349,7 +353,7 @@
             this.rdoAll.AutoSize = true;
             this.rdoAll.Location = new System.Drawing.Point(8, 21);
             this.rdoAll.Name = "rdoAll";
-            this.rdoAll.Size = new System.Drawing.Size(87, 19);
+            this.rdoAll.Size = new System.Drawing.Size(127, 26);
             this.rdoAll.TabIndex = 0;
             this.rdoAll.Text = "All Records";
             this.rdoAll.UseVisualStyleBackColor = true;
@@ -393,7 +397,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(5, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 15);
+            this.label1.Size = new System.Drawing.Size(154, 22);
             this.label1.TabIndex = 4;
             this.label1.Text = "Enter Date Range";
             // 
@@ -413,7 +417,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(5, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 15);
+            this.label2.Size = new System.Drawing.Size(155, 22);
             this.label2.TabIndex = 4;
             this.label2.Text = "Enter Report Date";
             // 
@@ -444,7 +448,7 @@
             this.chkAllItems.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAllItems.Location = new System.Drawing.Point(548, 7);
             this.chkAllItems.Name = "chkAllItems";
-            this.chkAllItems.Size = new System.Drawing.Size(72, 19);
+            this.chkAllItems.Size = new System.Drawing.Size(103, 26);
             this.chkAllItems.TabIndex = 21;
             this.chkAllItems.Text = "All Items";
             this.chkAllItems.UseVisualStyleBackColor = true;
@@ -455,7 +459,7 @@
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(556, 428);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(40, 21);
+            this.numericUpDown1.Size = new System.Drawing.Size(40, 28);
             this.numericUpDown1.TabIndex = 22;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown1.Value = new decimal(new int[] {
@@ -470,13 +474,13 @@
             this.lblCopies.AutoSize = true;
             this.lblCopies.Location = new System.Drawing.Point(600, 430);
             this.lblCopies.Name = "lblCopies";
-            this.lblCopies.Size = new System.Drawing.Size(45, 15);
+            this.lblCopies.Size = new System.Drawing.Size(66, 22);
             this.lblCopies.TabIndex = 23;
             this.lblCopies.Text = "Copies";
             // 
             // AccessReportsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(984, 557);

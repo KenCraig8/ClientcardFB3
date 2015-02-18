@@ -281,7 +281,7 @@ namespace ClientcardFB3
             {
                 if (loadingName == false)
                 {
-                    if (tbFindName.Text.CompareTo(lastSearchText) >= 0 && lastSearchText != "")
+                    if (tbFindName.Text.CompareTo(lastSearchText) >= 0 && lastSearchText.Length >0)
                         rowStart = rowIndex;
                     else
                         rowStart = 0;
@@ -431,9 +431,9 @@ namespace ClientcardFB3
 
         private void AppendToWhereClause(string testclause)
         {
-            if (testclause != "")
+            if (testclause.Length >0)
             {
-                if (sWhereClause == "")
+                if (String.IsNullOrEmpty(sWhereClause) == true)
                 {
                     sWhereClause = testclause;
                 }
@@ -464,6 +464,15 @@ namespace ClientcardFB3
             AppendToWhereClause(filterByClause);
             AppendToWhereClause(includeInactiveClause);
             AppendToWhereClause(filterDateRange);
+            if (chkCSFP.Checked == true)
+            { AppendToWhereClause("CSFP = 1"); }
+            if (chkBackPack.Checked == true)
+            { AppendToWhereClause("BackPack = 1"); }
+            if (chkSchSupply.Checked == true)
+            { AppendToWhereClause("SchSupplyFlag = 1"); }
+            if (chkCAFlag.Checked == true)
+            { AppendToWhereClause("CAFlag = 1"); }
+
             if (chkHeahHouseOnly.Checked == true)
             {
                 AppendToWhereClause("m.HeadHH = 1");
@@ -474,43 +483,48 @@ namespace ClientcardFB3
 
             for (int i = 0; i < clsClient.RowCount; i++)
             {
+                DataRow drow = clsClient.DSet.Tables[0].Rows[i];
                 dgvClientList.Rows.Add();
-                dgvClientList.Rows[i].Tag = clsClient.DSet.Tables[0].Rows[i]["HHId"].ToString();
-                if ((bool)clsClient.DSet.Tables[0].Rows[i]["HHInactive"] == true)
+                dgvClientList.Rows[i].Tag = drow["HHId"].ToString();
+                if ((bool)drow["HHInactive"] == true)
                     dgvClientList.Rows[i].DefaultCellStyle.ForeColor = Color.Maroon;
-                else if (Convert.ToBoolean(CCFBGlobal.NullToZero(clsClient.DSet.Tables[0].Rows[i]["Inactive"])) == true)
+                else if (Convert.ToBoolean(CCFBGlobal.NullToZero(drow["Inactive"])) == true)
                     dgvClientList.Rows[i].DefaultCellStyle.ForeColor = Color.DarkViolet;
                 else
                     dgvClientList.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
-                if (clsClient.DSet.Tables[0].Rows[i][firstColName] == DBNull.Value)
-                    dgvClientList.Rows[i].Cells["colName"].Value = clsClient.DSet.Tables[0].Rows[i]["Name"].ToString();
+                if (drow[firstColName] == DBNull.Value)
+                    dgvClientList.Rows[i].Cells["colName"].Value = drow["Name"].ToString();
                 else
-                    dgvClientList.Rows[i].Cells["colName"].Value = clsClient.DSet.Tables[0].Rows[i][firstColName].ToString();
-                dgvClientList.Rows[i].Cells["clmCity"].Value = clsClient.DSet.Tables[0].Rows[i]["City"].ToString();
-                if (clsClient.DSet.Tables[0].Rows[i]["ID"].ToString() == "")
+                    dgvClientList.Rows[i].Cells["colName"].Value = drow[firstColName].ToString();
+                dgvClientList.Rows[i].Cells["clmCity"].Value = drow["City"].ToString();
+                if (String.IsNullOrEmpty(drow["ID"].ToString()) == true)
                     dgvClientList.Rows[i].Cells["clmID"].Value = "0";
                 else
-                    dgvClientList.Rows[i].Cells["clmID"].Value = clsClient.DSet.Tables[0].Rows[i]["ID"].ToString();
-                dgvClientList.Rows[i].Cells["clmZip"].Value = clsClient.DSet.Tables[0].Rows[i]["Zipcode"].ToString();
-                dgvClientList.Rows[i].Cells["clmHHID"].Value = clsClient.DSet.Tables[0].Rows[i]["HHId"].ToString();
-                dgvClientList.Rows[i].Cells["clmPhone"].Value = clsClient.DSet.Tables[0].Rows[i]["Phone"].ToString();
-                dgvClientList.Rows[i].Cells["clmAddress"].Value = clsClient.DSet.Tables[0].Rows[i]["Address"].ToString();
-                dgvClientList.Rows[i].Cells["clmAptNbr"].Value = clsClient.DSet.Tables[0].Rows[i]["AptNbr"].ToString();
-                dgvClientList.Rows[i].Cells["clmHeadHH"].Value = CCFBGlobal.NullToBlank(clsClient.DSet.Tables[0].Rows[i]["HeadHH"].ToString());
-                dgvClientList.Rows[i].Cells["clmClientType"].Value = CCFBGlobal.LongNameFromId(CCFBGlobal.parmTbl_Client, Convert.ToInt32(clsClient.DSet.Tables[0].Rows[i]["ClientType"]));
-                dgvClientList.Rows[i].Cells["colHHName"].Value = clsClient.DSet.Tables[0].Rows[i]["Name"].ToString();
-                dgvClientList.Rows[i].Cells["colNameLF"].Value = clsClient.DSet.Tables[0].Rows[i]["colNameLF"].ToString().ToUpper().Trim();
-                dgvClientList.Rows[i].Cells["colNameFL"].Value = clsClient.DSet.Tables[0].Rows[i]["colNameFL"].ToString().ToUpper().Trim();
-                if (clsClient.DSet.Tables[0].Rows[i]["LatestService"].ToString() != "")
+                    dgvClientList.Rows[i].Cells["clmID"].Value = drow["ID"].ToString();
+                dgvClientList.Rows[i].Cells["clmZip"].Value = drow["Zipcode"].ToString();
+                dgvClientList.Rows[i].Cells["clmHHID"].Value = drow["HHId"].ToString();
+                dgvClientList.Rows[i].Cells["clmPhone"].Value = drow["Phone"].ToString();
+                dgvClientList.Rows[i].Cells["clmAddress"].Value = drow["Address"].ToString();
+                dgvClientList.Rows[i].Cells["clmAptNbr"].Value = drow["AptNbr"].ToString();
+                dgvClientList.Rows[i].Cells["clmHeadHH"].Value = CCFBGlobal.NullToBlank(drow["HeadHH"].ToString());
+                dgvClientList.Rows[i].Cells["clmClientType"].Value = CCFBGlobal.LongNameFromId(CCFBGlobal.parmTbl_Client, Convert.ToInt32(drow["ClientType"]));
+                dgvClientList.Rows[i].Cells["colHHName"].Value = drow["Name"].ToString();
+                dgvClientList.Rows[i].Cells["colNameLF"].Value = drow["colNameLF"].ToString().ToUpper().Trim();
+                dgvClientList.Rows[i].Cells["colNameFL"].Value = drow["colNameFL"].ToString().ToUpper().Trim();
+                if (drow["LatestService"].ToString().Length >0)
                 {
                     dgvClientList.Rows[i].Cells["clmLatestService"].Value =
-                        CCFBGlobal.formatDateYMD(clsClient.DSet.Tables[0].Rows[i].Field<DateTime>("LatestService"));
+                        CCFBGlobal.ValidDateString(clsClient.DSet.Tables[0].Rows[i].Field<DateTime>("LatestService"));
+                    //CCFBGlobal.formatDateYMD(clsClient.DSet.Tables[0].Rows[i].Field<DateTime>("LatestService"));
                 }
                 else
                 {
                     dgvClientList.Rows[i].Cells["clmLatestService"].Value = "";
                 }
-
+                dgvClientList.Rows[i].Cells["colCSFP"].Value = drow["CSFP"].ToString();
+                dgvClientList.Rows[i].Cells["colBackPack"].Value = drow["BackPack"].ToString();
+                dgvClientList.Rows[i].Cells["colSchSupply"].Value = drow["SchSupply"].ToString();
+                dgvClientList.Rows[i].Cells["colCAFlag"].Value = drow["CAFlag"].ToString();
                 progressBar1.PerformStep();
             }
 
@@ -616,7 +630,7 @@ namespace ClientcardFB3
         {
             if (bNormalMode == true)
             {
-                if (tbFindName.Text.Trim() == "")
+                if (String.IsNullOrEmpty(tbFindName.Text.Trim()) == true)
                 { dgvClientList.CurrentCell = dgvClientList[0, 0]; }
                 else
                 {
@@ -666,24 +680,24 @@ namespace ClientcardFB3
 
         private void bntAddNewClient_Click(object sender, EventArgs e)
         {
-            AddNewHousehold2 frmAddNew = new AddNewHousehold2(clsClient);
+            AddNewHousehold2 frmAddNew = new AddNewHousehold2();
             frmAddNew.ShowDialog();
-
-            if (frmAddNew.HHID > 0)
+            int newHHID = frmAddNew.HHID;
+            frmAddNew.Dispose(); 
+            if (newHHID > 0)
             {
-                frmMainIn.setHousehold(frmAddNew.HHID, 0);
+                frmMainIn.setHousehold(newHHID, 0);
                 if (CCFBPrefs.FindClientAutoRefresh == true)
                     loadList();
             }
-
-            this.Close();
+            this.Hide();
         }
 
         private void dgvClientList_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (tbID.Text != "")
+                if (tbID.Text.Length >0)
                     SetIdAndClose();
             }
         }
@@ -736,6 +750,8 @@ namespace ClientcardFB3
             {
                 ClearHeader();
                 string testBarCode = frmBarCodeEntry.BarCode;
+                bool autoGiveService = frmBarCodeEntry.GiveService();
+                frmBarCodeEntry.Dispose();
                 int testID = -1;
                 if (CCFBPrefs.BarcodeUseFamilyMember == true)
                 {
@@ -763,7 +779,7 @@ namespace ClientcardFB3
                     tbID.Text = currentHHId.ToString();
                     tbName.Text = frmMainIn.HHName();
                     tbAddress.Text = frmMainIn.HHAddress();
-                    if (frmBarCodeEntry.GiveService() == true && frmMainIn.get_tsbNewServiceEnabled() == true)
+                    if (autoGiveService == true && frmMainIn.get_tsbNewServiceEnabled() == true)
                     {
                         frmMainIn.CreateNewFoodService();
                     }
@@ -877,7 +893,7 @@ namespace ClientcardFB3
                     case 7: filterDateFldName = "DateIdVerified"; break;
                     case 8: filterDateFldName = "IncomeVerifiedDate"; break;
                     case 9: filterDateFldName = "TEFAPSignDate"; break;
-                    case 10: filterDateFldName = "Created"; break;
+                    case 10: filterDateFldName = "h.Created"; break;
                     case 11: filterDateFldName = "Modified"; break;
                     default:
                         break;
@@ -888,7 +904,7 @@ namespace ClientcardFB3
         private void setFilterDateRange()
         {
             setFilterDateFld();
-            if (filterDateFldName == "")
+            if (String.IsNullOrEmpty(filterDateFldName) == true)
             {
                 filterDateRange = "";
             }

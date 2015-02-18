@@ -15,6 +15,10 @@
         {
             if (disposing && (components != null))
             {
+                if (csdgdataaccess != null)
+                {
+                    csdgdataaccess.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -30,30 +34,30 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HHMemGridForm2));
-            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("American Indian (U.S. Tribe)");
-            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Alaska Native, Aleut, Eskimo");
-            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Indigenous to Americas (Other than U.S.)");
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Asian Indian");
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Cambodian");
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Chinese, Except Taiwanese");
-            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Filipino");
-            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("Japanese");
-            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Korean");
-            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("Vietnamese");
-            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Other Asian");
-            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("Indigenous African/Black");
-            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("African American/Black");
-            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Other Black");
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Hawaiian Native");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Polynesian");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Micronesian");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Other Pacific Islander");
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("Arab/Iranian or Middle Eastern");
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("Other/White Caucasian");
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem("Other");
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem("Unknown");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("American Indian (U.S. Tribe)");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Alaska Native, Aleut, Eskimo");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Indigenous to Americas (Other than U.S.)");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Asian Indian");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Cambodian");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Chinese, Except Taiwanese");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Filipino");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Japanese");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Korean");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Vietnamese");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Other Asian");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Indigenous African/Black");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("African American/Black");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Other Black");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Hawaiian Native");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Polynesian");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Micronesian");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Other Pacific Islander");
+            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Arab/Iranian or Middle Eastern");
+            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Other/White Caucasian");
+            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("Other");
+            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("Unknown");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lblHouseholdData = new System.Windows.Forms.Label();
             this.pnlEditBtns = new System.Windows.Forms.Panel();
@@ -323,11 +327,11 @@
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.RosyBrown;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(2, 2, 3, 2);
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(3, 3, 4, 3);
             this.splitContainer1.Panel2MinSize = 200;
-            this.splitContainer1.Size = new System.Drawing.Size(517, 633);
+            this.splitContainer1.Size = new System.Drawing.Size(1006, 989);
             this.splitContainer1.SplitterDistance = 136;
-            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 98;
             this.splitContainer1.TabStop = false;
             // 
@@ -337,8 +341,9 @@
             this.lblHouseholdData.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHouseholdData.ForeColor = System.Drawing.Color.Blue;
             this.lblHouseholdData.Location = new System.Drawing.Point(0, 0);
+            this.lblHouseholdData.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHouseholdData.Name = "lblHouseholdData";
-            this.lblHouseholdData.Size = new System.Drawing.Size(196, 135);
+            this.lblHouseholdData.Size = new System.Drawing.Size(293, 207);
             this.lblHouseholdData.TabIndex = 97;
             this.lblHouseholdData.Text = "12345678901234567890";
             // 
@@ -353,17 +358,19 @@
             this.pnlEditBtns.Controls.Add(this.btnPrint);
             this.pnlEditBtns.Controls.Add(this.btnSave);
             this.pnlEditBtns.Controls.Add(this.lblNeedToSave);
-            this.pnlEditBtns.Location = new System.Drawing.Point(199, 0);
+            this.pnlEditBtns.Location = new System.Drawing.Point(298, 0);
+            this.pnlEditBtns.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlEditBtns.Name = "pnlEditBtns";
-            this.pnlEditBtns.Size = new System.Drawing.Size(325, 135);
+            this.pnlEditBtns.Size = new System.Drawing.Size(488, 208);
             this.pnlEditBtns.TabIndex = 51;
             // 
             // btnAddNew
             // 
             this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNew.Location = new System.Drawing.Point(4, 3);
+            this.btnAddNew.Location = new System.Drawing.Point(6, 5);
+            this.btnAddNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAddNew.Name = "btnAddNew";
-            this.btnAddNew.Size = new System.Drawing.Size(219, 28);
+            this.btnAddNew.Size = new System.Drawing.Size(328, 43);
             this.btnAddNew.TabIndex = 112;
             this.btnAddNew.Text = "&Add Family Member";
             this.btnAddNew.UseVisualStyleBackColor = true;
@@ -373,9 +380,10 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(263, 3);
+            this.btnClose.Location = new System.Drawing.Point(394, 5);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(55, 24);
+            this.btnClose.Size = new System.Drawing.Size(82, 37);
             this.btnClose.TabIndex = 120;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -383,10 +391,10 @@
             // 
             // chkSurveyComplete
             // 
-            this.chkSurveyComplete.Location = new System.Drawing.Point(7, 72);
-            this.chkSurveyComplete.Margin = new System.Windows.Forms.Padding(4);
+            this.chkSurveyComplete.Location = new System.Drawing.Point(10, 111);
+            this.chkSurveyComplete.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.chkSurveyComplete.Name = "chkSurveyComplete";
-            this.chkSurveyComplete.Size = new System.Drawing.Size(20, 18);
+            this.chkSurveyComplete.Size = new System.Drawing.Size(30, 28);
             this.chkSurveyComplete.TabIndex = 114;
             this.chkSurveyComplete.Tag = "";
             this.chkSurveyComplete.UseVisualStyleBackColor = true;
@@ -395,9 +403,10 @@
             // btnReset
             // 
             this.btnReset.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReset.Location = new System.Drawing.Point(160, 92);
+            this.btnReset.Location = new System.Drawing.Point(240, 142);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(63, 28);
+            this.btnReset.Size = new System.Drawing.Size(94, 43);
             this.btnReset.TabIndex = 117;
             this.btnReset.Text = "&Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -407,18 +416,20 @@
             // 
             this.lblSurveyComplete.BackColor = System.Drawing.Color.Transparent;
             this.lblSurveyComplete.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSurveyComplete.Location = new System.Drawing.Point(22, 72);
+            this.lblSurveyComplete.Location = new System.Drawing.Point(33, 111);
+            this.lblSurveyComplete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSurveyComplete.Name = "lblSurveyComplete";
-            this.lblSurveyComplete.Size = new System.Drawing.Size(161, 18);
+            this.lblSurveyComplete.Size = new System.Drawing.Size(242, 28);
             this.lblSurveyComplete.TabIndex = 115;
             this.lblSurveyComplete.Text = "Survey Complete";
             // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(229, 92);
+            this.btnDelete.Location = new System.Drawing.Point(344, 142);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(63, 28);
+            this.btnDelete.Size = new System.Drawing.Size(94, 43);
             this.btnDelete.TabIndex = 118;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -427,9 +438,10 @@
             // btnPrint
             // 
             this.btnPrint.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(229, 61);
+            this.btnPrint.Location = new System.Drawing.Point(344, 94);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(63, 28);
+            this.btnPrint.Size = new System.Drawing.Size(94, 43);
             this.btnPrint.TabIndex = 119;
             this.btnPrint.Text = "&Print";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -438,9 +450,10 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(4, 92);
+            this.btnSave.Location = new System.Drawing.Point(6, 142);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(150, 28);
+            this.btnSave.Size = new System.Drawing.Size(225, 43);
             this.btnSave.TabIndex = 116;
             this.btnSave.Text = "&Save Changes";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -451,9 +464,10 @@
             this.lblNeedToSave.AutoSize = true;
             this.lblNeedToSave.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNeedToSave.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblNeedToSave.Location = new System.Drawing.Point(3, 46);
+            this.lblNeedToSave.Location = new System.Drawing.Point(4, 71);
+            this.lblNeedToSave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNeedToSave.Name = "lblNeedToSave";
-            this.lblNeedToSave.Size = new System.Drawing.Size(155, 13);
+            this.lblNeedToSave.Size = new System.Drawing.Size(226, 21);
             this.lblNeedToSave.TabIndex = 113;
             this.lblNeedToSave.Text = "YOU Have Unsaved Changes";
             this.lblNeedToSave.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -465,9 +479,10 @@
             this.pnlAddNew.Controls.Add(this.lblDupHHMError);
             this.pnlAddNew.Controls.Add(this.btnCancelAdd);
             this.pnlAddNew.Controls.Add(this.lblErrSameNameBirth);
-            this.pnlAddNew.Location = new System.Drawing.Point(199, 0);
+            this.pnlAddNew.Location = new System.Drawing.Point(298, 0);
+            this.pnlAddNew.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlAddNew.Name = "pnlAddNew";
-            this.pnlAddNew.Size = new System.Drawing.Size(325, 135);
+            this.pnlAddNew.Size = new System.Drawing.Size(488, 208);
             this.pnlAddNew.TabIndex = 69;
             this.pnlAddNew.Visible = false;
             // 
@@ -475,9 +490,10 @@
             // 
             this.btnSaveNewMem.Enabled = false;
             this.btnSaveNewMem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveNewMem.Location = new System.Drawing.Point(3, 3);
+            this.btnSaveNewMem.Location = new System.Drawing.Point(4, 5);
+            this.btnSaveNewMem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSaveNewMem.Name = "btnSaveNewMem";
-            this.btnSaveNewMem.Size = new System.Drawing.Size(96, 53);
+            this.btnSaveNewMem.Size = new System.Drawing.Size(144, 82);
             this.btnSaveNewMem.TabIndex = 69;
             this.btnSaveNewMem.Text = "&Save New Family Member";
             this.btnSaveNewMem.UseVisualStyleBackColor = true;
@@ -490,9 +506,10 @@
             this.lblDupHHMError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDupHHMError.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDupHHMError.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblDupHHMError.Location = new System.Drawing.Point(108, 77);
+            this.lblDupHHMError.Location = new System.Drawing.Point(162, 118);
+            this.lblDupHHMError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDupHHMError.Name = "lblDupHHMError";
-            this.lblDupHHMError.Size = new System.Drawing.Size(210, 51);
+            this.lblDupHHMError.Size = new System.Drawing.Size(314, 77);
             this.lblDupHHMError.TabIndex = 70;
             this.lblDupHHMError.Text = "Duplicate Family Member Name IS NOT ALLOWED";
             this.lblDupHHMError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -501,9 +518,10 @@
             // btnCancelAdd
             // 
             this.btnCancelAdd.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelAdd.Location = new System.Drawing.Point(3, 66);
+            this.btnCancelAdd.Location = new System.Drawing.Point(4, 102);
+            this.btnCancelAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancelAdd.Name = "btnCancelAdd";
-            this.btnCancelAdd.Size = new System.Drawing.Size(96, 29);
+            this.btnCancelAdd.Size = new System.Drawing.Size(144, 45);
             this.btnCancelAdd.TabIndex = 73;
             this.btnCancelAdd.Text = "&Cancel Add";
             this.btnCancelAdd.UseVisualStyleBackColor = true;
@@ -516,11 +534,12 @@
             this.lblErrSameNameBirth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblErrSameNameBirth.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrSameNameBirth.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblErrSameNameBirth.Location = new System.Drawing.Point(108, 3);
+            this.lblErrSameNameBirth.Location = new System.Drawing.Point(162, 5);
+            this.lblErrSameNameBirth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lblErrSameNameBirth.Multiline = true;
             this.lblErrSameNameBirth.Name = "lblErrSameNameBirth";
             this.lblErrSameNameBirth.ReadOnly = true;
-            this.lblErrSameNameBirth.Size = new System.Drawing.Size(210, 56);
+            this.lblErrSameNameBirth.Size = new System.Drawing.Size(314, 85);
             this.lblErrSameNameBirth.TabIndex = 72;
             this.lblErrSameNameBirth.TabStop = false;
             this.lblErrSameNameBirth.Text = "Duplicate Member Name \r\nwith Same Birth Date\r\nNOT ALLOWED";
@@ -531,7 +550,8 @@
             // 
             this.splitContainer3.BackColor = System.Drawing.Color.RosyBrown;
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(2, 2);
+            this.splitContainer3.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -547,9 +567,9 @@
             this.splitContainer3.Panel2.Controls.Add(this.lvwLastName);
             this.splitContainer3.Panel2.Controls.Add(this.lvwPeople);
             this.splitContainer3.Panel2MinSize = 50;
-            this.splitContainer3.Size = new System.Drawing.Size(512, 490);
-            this.splitContainer3.SplitterDistance = 120;
-            this.splitContainer3.SplitterWidth = 6;
+            this.splitContainer3.Size = new System.Drawing.Size(999, 842);
+            this.splitContainer3.SplitterDistance = 206;
+            this.splitContainer3.SplitterWidth = 9;
             this.splitContainer3.TabIndex = 90;
             // 
             // toolStrip2
@@ -559,9 +579,10 @@
             this.tsbLastName,
             this.tsbPeople,
             this.tsbBirthDate});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 95);
+            this.toolStrip2.Location = new System.Drawing.Point(0, 174);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(512, 25);
+            this.toolStrip2.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip2.Size = new System.Drawing.Size(999, 32);
             this.toolStrip2.TabIndex = 137;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -578,7 +599,7 @@
             this.tsbLastName.Image = ((System.Drawing.Image)(resources.GetObject("tsbLastName.Image")));
             this.tsbLastName.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLastName.Name = "tsbLastName";
-            this.tsbLastName.Size = new System.Drawing.Size(67, 22);
+            this.tsbLastName.Size = new System.Drawing.Size(103, 29);
             this.tsbLastName.Text = "Last Name";
             this.tsbLastName.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tsbLastName.Click += new System.EventHandler(this.tsbLastName_Click);
@@ -592,7 +613,7 @@
             this.tsbPeople.Image = ((System.Drawing.Image)(resources.GetObject("tsbPeople.Image")));
             this.tsbPeople.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPeople.Name = "tsbPeople";
-            this.tsbPeople.Size = new System.Drawing.Size(115, 22);
+            this.tsbPeople.Size = new System.Drawing.Size(180, 29);
             this.tsbPeople.Text = "Last and First Name";
             this.tsbPeople.Click += new System.EventHandler(this.tsbPeople_Click);
             // 
@@ -605,7 +626,7 @@
             this.tsbBirthDate.Image = ((System.Drawing.Image)(resources.GetObject("tsbBirthDate.Image")));
             this.tsbBirthDate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBirthDate.Name = "tsbBirthDate";
-            this.tsbBirthDate.Size = new System.Drawing.Size(64, 22);
+            this.tsbBirthDate.Size = new System.Drawing.Size(101, 29);
             this.tsbBirthDate.Text = "Birth Date";
             this.tsbBirthDate.Click += new System.EventHandler(this.tsbBirthDate_Click);
             // 
@@ -625,10 +646,10 @@
             this.lvHHMembers.GridLines = true;
             this.lvHHMembers.HideSelection = false;
             this.lvHHMembers.Location = new System.Drawing.Point(0, 0);
-            this.lvHHMembers.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.lvHHMembers.Margin = new System.Windows.Forms.Padding(4, 5, 15, 5);
             this.lvHHMembers.MultiSelect = false;
             this.lvHHMembers.Name = "lvHHMembers";
-            this.lvHHMembers.Size = new System.Drawing.Size(512, 120);
+            this.lvHHMembers.Size = new System.Drawing.Size(999, 206);
             this.lvHHMembers.SmallImageList = this.imageList1;
             this.lvHHMembers.TabIndex = 0;
             this.lvHHMembers.TabStop = false;
@@ -699,8 +720,9 @@
             this.lvwHHMByBirthdate.GridLines = true;
             this.lvwHHMByBirthdate.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvwHHMByBirthdate.Location = new System.Drawing.Point(0, 0);
+            this.lvwHHMByBirthdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvwHHMByBirthdate.Name = "lvwHHMByBirthdate";
-            this.lvwHHMByBirthdate.Size = new System.Drawing.Size(512, 364);
+            this.lvwHHMByBirthdate.Size = new System.Drawing.Size(999, 627);
             this.lvwHHMByBirthdate.TabIndex = 16;
             this.lvwHHMByBirthdate.TabStop = false;
             this.lvwHHMByBirthdate.UseCompatibleStateImageBehavior = false;
@@ -776,8 +798,9 @@
             this.lvwLastName.GridLines = true;
             this.lvwLastName.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvwLastName.Location = new System.Drawing.Point(0, 0);
+            this.lvwLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvwLastName.Name = "lvwLastName";
-            this.lvwLastName.Size = new System.Drawing.Size(512, 364);
+            this.lvwLastName.Size = new System.Drawing.Size(999, 627);
             this.lvwLastName.TabIndex = 17;
             this.lvwLastName.TabStop = false;
             this.lvwLastName.UseCompatibleStateImageBehavior = false;
@@ -859,8 +882,9 @@
             this.lvwPeople.GridLines = true;
             this.lvwPeople.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvwPeople.Location = new System.Drawing.Point(0, 0);
+            this.lvwPeople.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvwPeople.Name = "lvwPeople";
-            this.lvwPeople.Size = new System.Drawing.Size(512, 364);
+            this.lvwPeople.Size = new System.Drawing.Size(999, 627);
             this.lvwPeople.TabIndex = 18;
             this.lvwPeople.TabStop = false;
             this.lvwPeople.UseCompatibleStateImageBehavior = false;
@@ -929,9 +953,10 @@
             // 
             this.btnMarkSame.AutoSize = true;
             this.btnMarkSame.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnMarkSame.Location = new System.Drawing.Point(3, 396);
+            this.btnMarkSame.Location = new System.Drawing.Point(4, 627);
+            this.btnMarkSame.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMarkSame.Name = "btnMarkSame";
-            this.btnMarkSame.Size = new System.Drawing.Size(441, 24);
+            this.btnMarkSame.Size = new System.Drawing.Size(666, 49);
             this.btnMarkSame.TabIndex = 76;
             this.btnMarkSame.Tag = "&Mark All Same AS";
             this.btnMarkSame.Text = "&Mark All Same AS";
@@ -957,8 +982,9 @@
             // 
             this.splitContainer4.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.splitContainer4.Panel2.Controls.Add(this.splitContainer1);
-            this.splitContainer4.Size = new System.Drawing.Size(973, 633);
+            this.splitContainer4.Size = new System.Drawing.Size(1464, 989);
             this.splitContainer4.SplitterDistance = 452;
+            this.splitContainer4.SplitterWidth = 6;
             this.splitContainer4.TabIndex = 99;
             this.splitContainer4.TabStop = false;
             // 
@@ -983,17 +1009,19 @@
             this.pnlName.Controls.Add(this.lblBirthdate);
             this.pnlName.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlName.Location = new System.Drawing.Point(0, 0);
+            this.pnlName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlName.Name = "pnlName";
-            this.pnlName.Size = new System.Drawing.Size(452, 156);
+            this.pnlName.Size = new System.Drawing.Size(452, 240);
             this.pnlName.TabIndex = 1;
             // 
             // chkNotCounted
             // 
             this.chkNotCounted.AutoSize = true;
             this.chkNotCounted.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkNotCounted.Location = new System.Drawing.Point(284, 9);
+            this.chkNotCounted.Location = new System.Drawing.Point(426, 14);
+            this.chkNotCounted.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkNotCounted.Name = "chkNotCounted";
-            this.chkNotCounted.Size = new System.Drawing.Size(97, 17);
+            this.chkNotCounted.Size = new System.Drawing.Size(137, 22);
             this.chkNotCounted.TabIndex = 71;
             this.chkNotCounted.TabStop = false;
             this.chkNotCounted.Tag = "NotCounted";
@@ -1006,10 +1034,11 @@
             this.lblDateError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDateError.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateError.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblDateError.Location = new System.Drawing.Point(229, 129);
+            this.lblDateError.Location = new System.Drawing.Point(344, 198);
+            this.lblDateError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateError.Name = "lblDateError";
-            this.lblDateError.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblDateError.Size = new System.Drawing.Size(147, 24);
+            this.lblDateError.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblDateError.Size = new System.Drawing.Size(220, 36);
             this.lblDateError.TabIndex = 70;
             this.lblDateError.Text = "INVALID BIRTHDATE";
             this.lblDateError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1018,10 +1047,11 @@
             // msktbBirthDate
             // 
             this.msktbBirthDate.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.msktbBirthDate.Location = new System.Drawing.Point(92, 101);
+            this.msktbBirthDate.Location = new System.Drawing.Point(138, 155);
+            this.msktbBirthDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.msktbBirthDate.Mask = "00/00/0000";
             this.msktbBirthDate.Name = "msktbBirthDate";
-            this.msktbBirthDate.Size = new System.Drawing.Size(108, 23);
+            this.msktbBirthDate.Size = new System.Drawing.Size(160, 31);
             this.msktbBirthDate.TabIndex = 10;
             this.msktbBirthDate.Tag = "BirthDate";
             this.msktbBirthDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1033,9 +1063,10 @@
             // tbLastName
             // 
             this.tbLastName.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLastName.Location = new System.Drawing.Point(92, 30);
+            this.tbLastName.Location = new System.Drawing.Point(138, 46);
+            this.tbLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbLastName.Name = "tbLastName";
-            this.tbLastName.Size = new System.Drawing.Size(316, 25);
+            this.tbLastName.Size = new System.Drawing.Size(472, 34);
             this.tbLastName.TabIndex = 5;
             this.tbLastName.Tag = "LastName";
             this.tbLastName.Leave += new System.EventHandler(this.tbLastName_Leave);
@@ -1044,9 +1075,10 @@
             // 
             this.chkInactive.AutoSize = true;
             this.chkInactive.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkInactive.Location = new System.Drawing.Point(152, 3);
+            this.chkInactive.Location = new System.Drawing.Point(228, 5);
+            this.chkInactive.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkInactive.Name = "chkInactive";
-            this.chkInactive.Size = new System.Drawing.Size(122, 27);
+            this.chkInactive.Size = new System.Drawing.Size(181, 38);
             this.chkInactive.TabIndex = 3;
             this.chkInactive.Tag = "Inactive";
             this.chkInactive.Text = "INACTIVE";
@@ -1055,9 +1087,10 @@
             // tbFirstName
             // 
             this.tbFirstName.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbFirstName.Location = new System.Drawing.Point(92, 58);
+            this.tbFirstName.Location = new System.Drawing.Point(138, 89);
+            this.tbFirstName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(316, 25);
+            this.tbFirstName.Size = new System.Drawing.Size(472, 34);
             this.tbFirstName.TabIndex = 7;
             this.tbFirstName.Tag = "FirstName";
             this.tbFirstName.Text = "1234567890123456789012345678901234567890";
@@ -1067,9 +1100,10 @@
             // 
             this.chkHeadHH.AutoSize = true;
             this.chkHeadHH.Font = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkHeadHH.Location = new System.Drawing.Point(9, 5);
+            this.chkHeadHH.Location = new System.Drawing.Point(14, 8);
+            this.chkHeadHH.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkHeadHH.Name = "chkHeadHH";
-            this.chkHeadHH.Size = new System.Drawing.Size(137, 22);
+            this.chkHeadHH.Size = new System.Drawing.Size(200, 30);
             this.chkHeadHH.TabIndex = 2;
             this.chkHeadHH.Tag = "HeadHH";
             this.chkHeadHH.Text = "Head of House";
@@ -1079,20 +1113,20 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(6, 61);
-            this.lblFirstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFirstName.Location = new System.Drawing.Point(9, 94);
+            this.lblFirstName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(79, 14);
+            this.lblFirstName.Size = new System.Drawing.Size(116, 22);
             this.lblFirstName.TabIndex = 6;
             this.lblFirstName.Text = "First Name:";
             // 
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(6, 33);
-            this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLastName.Location = new System.Drawing.Point(9, 51);
+            this.lblLastName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(79, 14);
+            this.lblLastName.Size = new System.Drawing.Size(114, 22);
             this.lblLastName.TabIndex = 4;
             this.lblLastName.Text = "Last Name:";
             // 
@@ -1104,10 +1138,11 @@
             this.tbID.Enabled = false;
             this.tbID.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbID.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.tbID.Location = new System.Drawing.Point(383, 0);
+            this.tbID.Location = new System.Drawing.Point(348, 0);
+            this.tbID.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbID.Name = "tbID";
             this.tbID.ReadOnly = true;
-            this.tbID.Size = new System.Drawing.Size(65, 13);
+            this.tbID.Size = new System.Drawing.Size(98, 20);
             this.tbID.TabIndex = 0;
             this.tbID.TabStop = false;
             this.tbID.Tag = "";
@@ -1117,9 +1152,10 @@
             // chkEnterAge
             // 
             this.chkEnterAge.AutoSize = true;
-            this.chkEnterAge.Location = new System.Drawing.Point(10, 83);
+            this.chkEnterAge.Location = new System.Drawing.Point(15, 128);
+            this.chkEnterAge.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkEnterAge.Name = "chkEnterAge";
-            this.chkEnterAge.Size = new System.Drawing.Size(176, 18);
+            this.chkEnterAge.Size = new System.Drawing.Size(250, 26);
             this.chkEnterAge.TabIndex = 8;
             this.chkEnterAge.Tag = "UseAge";
             this.chkEnterAge.Text = "Enter Age Not Birthdate";
@@ -1129,10 +1165,11 @@
             // tbSex
             // 
             this.tbSex.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSex.Location = new System.Drawing.Point(376, 101);
+            this.tbSex.Location = new System.Drawing.Point(564, 155);
+            this.tbSex.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbSex.MaxLength = 1;
             this.tbSex.Name = "tbSex";
-            this.tbSex.Size = new System.Drawing.Size(32, 24);
+            this.tbSex.Size = new System.Drawing.Size(46, 32);
             this.tbSex.TabIndex = 14;
             this.tbSex.Tag = "Sex";
             this.tbSex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1143,9 +1180,10 @@
             // tbAge
             // 
             this.tbAge.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAge.Location = new System.Drawing.Point(264, 101);
+            this.tbAge.Location = new System.Drawing.Point(396, 155);
+            this.tbAge.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbAge.Name = "tbAge";
-            this.tbAge.Size = new System.Drawing.Size(42, 24);
+            this.tbAge.Size = new System.Drawing.Size(61, 32);
             this.tbAge.TabIndex = 12;
             this.tbAge.Tag = "Age";
             this.tbAge.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1155,9 +1193,10 @@
             // 
             this.chkDoNotIncldeFamList.AutoSize = true;
             this.chkDoNotIncldeFamList.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDoNotIncldeFamList.Location = new System.Drawing.Point(10, 130);
+            this.chkDoNotIncldeFamList.Location = new System.Drawing.Point(15, 200);
+            this.chkDoNotIncldeFamList.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkDoNotIncldeFamList.Name = "chkDoNotIncldeFamList";
-            this.chkDoNotIncldeFamList.Size = new System.Drawing.Size(214, 21);
+            this.chkDoNotIncldeFamList.Size = new System.Drawing.Size(308, 29);
             this.chkDoNotIncldeFamList.TabIndex = 15;
             this.chkDoNotIncldeFamList.Tag = "NotIncludedInClientList";
             this.chkDoNotIncldeFamList.Text = "Don\'t Include In Client List";
@@ -1167,30 +1206,30 @@
             // lblSex
             // 
             this.lblSex.AutoSize = true;
-            this.lblSex.Location = new System.Drawing.Point(312, 104);
-            this.lblSex.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSex.Location = new System.Drawing.Point(468, 160);
+            this.lblSex.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSex.Name = "lblSex";
-            this.lblSex.Size = new System.Drawing.Size(58, 14);
+            this.lblSex.Size = new System.Drawing.Size(84, 22);
             this.lblSex.TabIndex = 13;
             this.lblSex.Text = "&Gender:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(221, 104);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(332, 160);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 14);
+            this.label1.Size = new System.Drawing.Size(52, 22);
             this.label1.TabIndex = 11;
             this.label1.Text = "Age:";
             // 
             // lblBirthdate
             // 
             this.lblBirthdate.AutoSize = true;
-            this.lblBirthdate.Location = new System.Drawing.Point(15, 104);
-            this.lblBirthdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBirthdate.Location = new System.Drawing.Point(22, 160);
+            this.lblBirthdate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBirthdate.Name = "lblBirthdate";
-            this.lblBirthdate.Size = new System.Drawing.Size(70, 14);
+            this.lblBirthdate.Size = new System.Drawing.Size(101, 22);
             this.lblBirthdate.TabIndex = 9;
             this.lblBirthdate.Text = "Birthdate:";
             // 
@@ -1202,21 +1241,23 @@
             this.tabCtrlDemographics.Controls.Add(this.tpgWIA);
             this.tabCtrlDemographics.Controls.Add(this.tpgBPCSFP);
             this.tabCtrlDemographics.ItemSize = new System.Drawing.Size(100, 24);
-            this.tabCtrlDemographics.Location = new System.Drawing.Point(0, 158);
+            this.tabCtrlDemographics.Location = new System.Drawing.Point(0, 243);
+            this.tabCtrlDemographics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabCtrlDemographics.Multiline = true;
             this.tabCtrlDemographics.Name = "tabCtrlDemographics";
             this.tabCtrlDemographics.Padding = new System.Drawing.Point(5, 5);
             this.tabCtrlDemographics.SelectedIndex = 0;
-            this.tabCtrlDemographics.Size = new System.Drawing.Size(452, 476);
+            this.tabCtrlDemographics.Size = new System.Drawing.Size(678, 732);
             this.tabCtrlDemographics.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabCtrlDemographics.TabIndex = 88;
             // 
             // tpHHM
             // 
             this.tpHHM.Controls.Add(this.pnlHHMFlds);
-            this.tpHHM.Location = new System.Drawing.Point(4, 52);
+            this.tpHHM.Location = new System.Drawing.Point(4, 28);
+            this.tpHHM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tpHHM.Name = "tpHHM";
-            this.tpHHM.Size = new System.Drawing.Size(444, 420);
+            this.tpHHM.Size = new System.Drawing.Size(670, 700);
             this.tpHHM.TabIndex = 2;
             this.tpHHM.Text = "Personal";
             this.tpHHM.UseVisualStyleBackColor = true;
@@ -1248,15 +1289,15 @@
             this.pnlHHMFlds.Location = new System.Drawing.Point(0, 0);
             this.pnlHHMFlds.Margin = new System.Windows.Forms.Padding(0);
             this.pnlHHMFlds.Name = "pnlHHMFlds";
-            this.pnlHHMFlds.Size = new System.Drawing.Size(444, 420);
+            this.pnlHHMFlds.Size = new System.Drawing.Size(670, 700);
             this.pnlHHMFlds.TabIndex = 16;
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(6, 67);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(9, 103);
+            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(94, 14);
+            this.label15.Size = new System.Drawing.Size(141, 22);
             this.label15.TabIndex = 20;
             this.label15.Text = "Email:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1265,9 +1306,10 @@
             // 
             this.tbEmailAddress.BackColor = System.Drawing.Color.White;
             this.tbEmailAddress.ForeColor = System.Drawing.Color.Black;
-            this.tbEmailAddress.Location = new System.Drawing.Point(100, 64);
+            this.tbEmailAddress.Location = new System.Drawing.Point(150, 98);
+            this.tbEmailAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbEmailAddress.Name = "tbEmailAddress";
-            this.tbEmailAddress.Size = new System.Drawing.Size(300, 22);
+            this.tbEmailAddress.Size = new System.Drawing.Size(448, 29);
             this.tbEmailAddress.TabIndex = 21;
             this.tbEmailAddress.Tag = "EmailAddress";
             this.tbEmailAddress.Text = "KenCraig8@Comcast.net";
@@ -1275,10 +1317,11 @@
             // tbPhone
             // 
             this.tbPhone.Font = new System.Drawing.Font("Lucida Console", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPhone.Location = new System.Drawing.Point(100, 38);
+            this.tbPhone.Location = new System.Drawing.Point(150, 58);
+            this.tbPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbPhone.Mask = "(999) 000-0000 aaaaaaaaaaaa";
             this.tbPhone.Name = "tbPhone";
-            this.tbPhone.Size = new System.Drawing.Size(190, 21);
+            this.tbPhone.Size = new System.Drawing.Size(283, 27);
             this.tbPhone.TabIndex = 19;
             this.tbPhone.Tag = "phone";
             // 
@@ -1286,10 +1329,10 @@
             // 
             this.lblPhoneNum.BackColor = System.Drawing.Color.Transparent;
             this.lblPhoneNum.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhoneNum.Location = new System.Drawing.Point(6, 38);
-            this.lblPhoneNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhoneNum.Location = new System.Drawing.Point(9, 58);
+            this.lblPhoneNum.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblPhoneNum.Name = "lblPhoneNum";
-            this.lblPhoneNum.Size = new System.Drawing.Size(94, 22);
+            this.lblPhoneNum.Size = new System.Drawing.Size(141, 34);
             this.lblPhoneNum.TabIndex = 18;
             this.lblPhoneNum.Text = "Phone";
             this.lblPhoneNum.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1301,10 +1344,10 @@
             this.cboRelationship.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboRelationship.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboRelationship.FormattingEnabled = true;
-            this.cboRelationship.Location = new System.Drawing.Point(101, 10);
-            this.cboRelationship.Margin = new System.Windows.Forms.Padding(4);
+            this.cboRelationship.Location = new System.Drawing.Point(152, 15);
+            this.cboRelationship.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboRelationship.Name = "cboRelationship";
-            this.cboRelationship.Size = new System.Drawing.Size(214, 22);
+            this.cboRelationship.Size = new System.Drawing.Size(319, 30);
             this.cboRelationship.TabIndex = 17;
             this.cboRelationship.Tag = "Relationship";
             this.cboRelationship.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1314,10 +1357,10 @@
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(6, 13);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(13, 20);
+            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 17);
+            this.label14.Size = new System.Drawing.Size(141, 26);
             this.label14.TabIndex = 16;
             this.label14.Text = "Relationship:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1326,9 +1369,10 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(12, 169);
+            this.checkBox1.Location = new System.Drawing.Point(18, 260);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(133, 21);
+            this.checkBox1.Size = new System.Drawing.Size(193, 29);
             this.checkBox1.TabIndex = 28;
             this.checkBox1.Tag = "Hispanic";
             this.checkBox1.Text = "Hispanic/Latino";
@@ -1343,10 +1387,10 @@
             this.cboRace.FormattingEnabled = true;
             this.cboRace.Items.AddRange(new object[] {
             "American Indian/Alaskan Native & Black/African American"});
-            this.cboRace.Location = new System.Drawing.Point(100, 144);
-            this.cboRace.Margin = new System.Windows.Forms.Padding(4);
+            this.cboRace.Location = new System.Drawing.Point(150, 222);
+            this.cboRace.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboRace.Name = "cboRace";
-            this.cboRace.Size = new System.Drawing.Size(316, 21);
+            this.cboRace.Size = new System.Drawing.Size(472, 26);
             this.cboRace.TabIndex = 27;
             this.cboRace.Tag = "Race";
             this.cboRace.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1356,10 +1400,10 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(6, 149);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(13, 229);
+            this.label10.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(94, 17);
+            this.label10.Size = new System.Drawing.Size(141, 26);
             this.label10.TabIndex = 26;
             this.label10.Text = "Race:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1367,10 +1411,10 @@
             // lblNotes
             // 
             this.lblNotes.AutoSize = true;
-            this.lblNotes.Location = new System.Drawing.Point(15, 325);
-            this.lblNotes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNotes.Location = new System.Drawing.Point(22, 500);
+            this.lblNotes.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(49, 14);
+            this.lblNotes.Size = new System.Drawing.Size(69, 22);
             this.lblNotes.TabIndex = 34;
             this.lblNotes.Text = "Notes:";
             // 
@@ -1381,10 +1425,10 @@
             this.cboMemIDType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboMemIDType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMemIDType.FormattingEnabled = true;
-            this.cboMemIDType.Location = new System.Drawing.Point(100, 117);
-            this.cboMemIDType.Margin = new System.Windows.Forms.Padding(4);
+            this.cboMemIDType.Location = new System.Drawing.Point(150, 180);
+            this.cboMemIDType.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboMemIDType.Name = "cboMemIDType";
-            this.cboMemIDType.Size = new System.Drawing.Size(214, 22);
+            this.cboMemIDType.Size = new System.Drawing.Size(319, 30);
             this.cboMemIDType.TabIndex = 25;
             this.cboMemIDType.Tag = "MemIdType";
             this.cboMemIDType.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1393,9 +1437,10 @@
             // 
             this.chkUserFlag1.AutoSize = true;
             this.chkUserFlag1.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkUserFlag1.Location = new System.Drawing.Point(12, 295);
+            this.chkUserFlag1.Location = new System.Drawing.Point(18, 454);
+            this.chkUserFlag1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkUserFlag1.Name = "chkUserFlag1";
-            this.chkUserFlag1.Size = new System.Drawing.Size(96, 21);
+            this.chkUserFlag1.Size = new System.Drawing.Size(139, 29);
             this.chkUserFlag1.TabIndex = 33;
             this.chkUserFlag1.Tag = "UserFlag1";
             this.chkUserFlag1.Text = "UserFlag1";
@@ -1406,10 +1451,10 @@
             this.lblMemIdType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMemIdType.BackColor = System.Drawing.Color.Transparent;
             this.lblMemIdType.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMemIdType.Location = new System.Drawing.Point(6, 120);
-            this.lblMemIdType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMemIdType.Location = new System.Drawing.Point(13, 185);
+            this.lblMemIdType.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMemIdType.Name = "lblMemIdType";
-            this.lblMemIdType.Size = new System.Drawing.Size(94, 17);
+            this.lblMemIdType.Size = new System.Drawing.Size(141, 26);
             this.lblMemIdType.TabIndex = 24;
             this.lblMemIdType.Text = "ID Type:";
             this.lblMemIdType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1419,9 +1464,10 @@
             this.chkUserFlag0.AutoSize = true;
             this.chkUserFlag0.BackColor = System.Drawing.Color.Cornsilk;
             this.chkUserFlag0.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkUserFlag0.Location = new System.Drawing.Point(12, 273);
+            this.chkUserFlag0.Location = new System.Drawing.Point(18, 420);
+            this.chkUserFlag0.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkUserFlag0.Name = "chkUserFlag0";
-            this.chkUserFlag0.Size = new System.Drawing.Size(96, 21);
+            this.chkUserFlag0.Size = new System.Drawing.Size(139, 29);
             this.chkUserFlag0.TabIndex = 32;
             this.chkUserFlag0.Tag = "UserFlag0";
             this.chkUserFlag0.Text = "UserFlag0";
@@ -1431,9 +1477,10 @@
             // 
             this.chkDissabled.AutoSize = true;
             this.chkDissabled.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkDissabled.Location = new System.Drawing.Point(12, 213);
+            this.chkDissabled.Location = new System.Drawing.Point(18, 328);
+            this.chkDissabled.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkDissabled.Name = "chkDissabled";
-            this.chkDissabled.Size = new System.Drawing.Size(86, 21);
+            this.chkDissabled.Size = new System.Drawing.Size(123, 29);
             this.chkDissabled.TabIndex = 30;
             this.chkDissabled.Tag = "IsDisabled";
             this.chkDissabled.Text = "Disabled";
@@ -1441,10 +1488,10 @@
             // 
             // lblMemIdNbr
             // 
-            this.lblMemIdNbr.Location = new System.Drawing.Point(6, 93);
-            this.lblMemIdNbr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMemIdNbr.Location = new System.Drawing.Point(9, 143);
+            this.lblMemIdNbr.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMemIdNbr.Name = "lblMemIdNbr";
-            this.lblMemIdNbr.Size = new System.Drawing.Size(94, 14);
+            this.lblMemIdNbr.Size = new System.Drawing.Size(141, 22);
             this.lblMemIdNbr.TabIndex = 22;
             this.lblMemIdNbr.Text = "ID Number:";
             this.lblMemIdNbr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1453,10 +1500,11 @@
             // 
             this.tbNotes.BackColor = System.Drawing.Color.Pink;
             this.tbNotes.ForeColor = System.Drawing.Color.Black;
-            this.tbNotes.Location = new System.Drawing.Point(15, 340);
+            this.tbNotes.Location = new System.Drawing.Point(22, 523);
+            this.tbNotes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbNotes.Multiline = true;
             this.tbNotes.Name = "tbNotes";
-            this.tbNotes.Size = new System.Drawing.Size(281, 56);
+            this.tbNotes.Size = new System.Drawing.Size(420, 84);
             this.tbNotes.TabIndex = 35;
             this.tbNotes.Tag = "Notes";
             // 
@@ -1464,9 +1512,10 @@
             // 
             this.tbMemIdNbr.BackColor = System.Drawing.Color.White;
             this.tbMemIdNbr.ForeColor = System.Drawing.Color.Black;
-            this.tbMemIdNbr.Location = new System.Drawing.Point(100, 90);
+            this.tbMemIdNbr.Location = new System.Drawing.Point(150, 138);
+            this.tbMemIdNbr.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbMemIdNbr.Name = "tbMemIdNbr";
-            this.tbMemIdNbr.Size = new System.Drawing.Size(300, 22);
+            this.tbMemIdNbr.Size = new System.Drawing.Size(448, 29);
             this.tbMemIdNbr.TabIndex = 23;
             this.tbMemIdNbr.Tag = "MemIDNbr";
             this.tbMemIdNbr.Text = "CRAIGKA529BD012000345";
@@ -1477,9 +1526,10 @@
             // 
             this.chkWorksAtFB.AutoSize = true;
             this.chkWorksAtFB.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkWorksAtFB.Location = new System.Drawing.Point(12, 235);
+            this.chkWorksAtFB.Location = new System.Drawing.Point(18, 362);
+            this.chkWorksAtFB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkWorksAtFB.Name = "chkWorksAtFB";
-            this.chkWorksAtFB.Size = new System.Drawing.Size(204, 21);
+            this.chkWorksAtFB.Size = new System.Drawing.Size(288, 29);
             this.chkWorksAtFB.TabIndex = 31;
             this.chkWorksAtFB.Tag = "VolunteersAtFoodBank";
             this.chkWorksAtFB.Text = "Volunteers At Food Bank";
@@ -1489,9 +1539,10 @@
             // 
             this.chkSpecialDiet.AutoSize = true;
             this.chkSpecialDiet.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSpecialDiet.Location = new System.Drawing.Point(12, 191);
+            this.chkSpecialDiet.Location = new System.Drawing.Point(18, 294);
+            this.chkSpecialDiet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkSpecialDiet.Name = "chkSpecialDiet";
-            this.chkSpecialDiet.Size = new System.Drawing.Size(108, 21);
+            this.chkSpecialDiet.Size = new System.Drawing.Size(158, 29);
             this.chkSpecialDiet.TabIndex = 29;
             this.chkSpecialDiet.Tag = "SpecialDiet";
             this.chkSpecialDiet.Text = "Special Diet";
@@ -1530,28 +1581,31 @@
             this.tpgAdditional.Controls.Add(this.cboMilitaryService);
             this.tpgAdditional.Controls.Add(this.label24);
             this.tpgAdditional.Location = new System.Drawing.Point(4, 52);
+            this.tpgAdditional.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tpgAdditional.Name = "tpgAdditional";
-            this.tpgAdditional.Padding = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.tpgAdditional.Size = new System.Drawing.Size(444, 420);
+            this.tpgAdditional.Padding = new System.Windows.Forms.Padding(4, 5, 0, 0);
+            this.tpgAdditional.Size = new System.Drawing.Size(670, 676);
             this.tpgAdditional.TabIndex = 0;
             this.tpgAdditional.Text = "Additional";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(52, 201);
+            this.label13.Location = new System.Drawing.Point(78, 309);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(237, 14);
+            this.label13.Size = new System.Drawing.Size(342, 22);
             this.label13.TabIndex = 61;
             this.label13.Text = "Nbr Months Homeless This Last Time";
             // 
             // tbHomelessNbrMonths
             // 
             this.tbHomelessNbrMonths.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHomelessNbrMonths.Location = new System.Drawing.Point(8, 197);
+            this.tbHomelessNbrMonths.Location = new System.Drawing.Point(12, 303);
+            this.tbHomelessNbrMonths.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbHomelessNbrMonths.MaxLength = 3;
             this.tbHomelessNbrMonths.Name = "tbHomelessNbrMonths";
-            this.tbHomelessNbrMonths.Size = new System.Drawing.Size(38, 24);
+            this.tbHomelessNbrMonths.Size = new System.Drawing.Size(55, 32);
             this.tbHomelessNbrMonths.TabIndex = 60;
             this.tbHomelessNbrMonths.Tag = "HomelessNbrMonths";
             this.tbHomelessNbrMonths.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1559,19 +1613,21 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(52, 171);
+            this.label12.Location = new System.Drawing.Point(78, 263);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(218, 14);
+            this.label12.Size = new System.Drawing.Size(314, 22);
             this.label12.TabIndex = 59;
             this.label12.Text = "Homeless Times Last Three Years";
             // 
             // tbHomelessNbrTimes
             // 
             this.tbHomelessNbrTimes.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHomelessNbrTimes.Location = new System.Drawing.Point(8, 167);
+            this.tbHomelessNbrTimes.Location = new System.Drawing.Point(12, 257);
+            this.tbHomelessNbrTimes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbHomelessNbrTimes.MaxLength = 3;
             this.tbHomelessNbrTimes.Name = "tbHomelessNbrTimes";
-            this.tbHomelessNbrTimes.Size = new System.Drawing.Size(38, 24);
+            this.tbHomelessNbrTimes.Size = new System.Drawing.Size(55, 32);
             this.tbHomelessNbrTimes.TabIndex = 58;
             this.tbHomelessNbrTimes.Tag = "HomelessNbrTimes";
             this.tbHomelessNbrTimes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1581,9 +1637,10 @@
             this.cboHomeless.BackColor = System.Drawing.Color.White;
             this.cboHomeless.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboHomeless.FormattingEnabled = true;
-            this.cboHomeless.Location = new System.Drawing.Point(8, 125);
+            this.cboHomeless.Location = new System.Drawing.Point(12, 192);
+            this.cboHomeless.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboHomeless.Name = "cboHomeless";
-            this.cboHomeless.Size = new System.Drawing.Size(110, 24);
+            this.cboHomeless.Size = new System.Drawing.Size(163, 33);
             this.cboHomeless.TabIndex = 56;
             this.cboHomeless.Tag = "Homeless";
             this.cboHomeless.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1591,9 +1648,10 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(123, 129);
+            this.label11.Location = new System.Drawing.Point(184, 198);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(68, 14);
+            this.label11.Size = new System.Drawing.Size(98, 22);
             this.label11.TabIndex = 57;
             this.label11.Text = "Homeless";
             // 
@@ -1602,9 +1660,10 @@
             this.cboEmployed.BackColor = System.Drawing.Color.White;
             this.cboEmployed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEmployed.FormattingEnabled = true;
-            this.cboEmployed.Location = new System.Drawing.Point(8, 308);
+            this.cboEmployed.Location = new System.Drawing.Point(12, 474);
+            this.cboEmployed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboEmployed.Name = "cboEmployed";
-            this.cboEmployed.Size = new System.Drawing.Size(110, 24);
+            this.cboEmployed.Size = new System.Drawing.Size(163, 33);
             this.cboEmployed.TabIndex = 70;
             this.cboEmployed.Tag = "Employed";
             this.cboEmployed.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1612,9 +1671,10 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(123, 312);
+            this.label9.Location = new System.Drawing.Point(184, 480);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 14);
+            this.label9.Size = new System.Drawing.Size(99, 22);
             this.label9.TabIndex = 71;
             this.label9.Text = "Employed";
             // 
@@ -1623,9 +1683,10 @@
             this.cboChronicallyHomeless.BackColor = System.Drawing.Color.White;
             this.cboChronicallyHomeless.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboChronicallyHomeless.FormattingEnabled = true;
-            this.cboChronicallyHomeless.Location = new System.Drawing.Point(297, 204);
+            this.cboChronicallyHomeless.Location = new System.Drawing.Point(446, 314);
+            this.cboChronicallyHomeless.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboChronicallyHomeless.Name = "cboChronicallyHomeless";
-            this.cboChronicallyHomeless.Size = new System.Drawing.Size(110, 24);
+            this.cboChronicallyHomeless.Size = new System.Drawing.Size(163, 33);
             this.cboChronicallyHomeless.TabIndex = 65;
             this.cboChronicallyHomeless.Tag = "ChronicallyHomeless";
             this.cboChronicallyHomeless.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1633,9 +1694,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(295, 187);
+            this.label8.Location = new System.Drawing.Point(442, 288);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 14);
+            this.label8.Size = new System.Drawing.Size(204, 22);
             this.label8.TabIndex = 64;
             this.label8.Text = "Chronically Homeless";
             // 
@@ -1644,9 +1706,10 @@
             this.cboLongTermHomeless.BackColor = System.Drawing.Color.White;
             this.cboLongTermHomeless.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLongTermHomeless.FormattingEnabled = true;
-            this.cboLongTermHomeless.Location = new System.Drawing.Point(297, 148);
+            this.cboLongTermHomeless.Location = new System.Drawing.Point(446, 228);
+            this.cboLongTermHomeless.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboLongTermHomeless.Name = "cboLongTermHomeless";
-            this.cboLongTermHomeless.Size = new System.Drawing.Size(110, 24);
+            this.cboLongTermHomeless.Size = new System.Drawing.Size(163, 33);
             this.cboLongTermHomeless.TabIndex = 63;
             this.cboLongTermHomeless.Tag = "LongTermHomeless";
             this.cboLongTermHomeless.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1654,9 +1717,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(294, 129);
+            this.label7.Location = new System.Drawing.Point(441, 198);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(138, 14);
+            this.label7.Size = new System.Drawing.Size(199, 22);
             this.label7.TabIndex = 62;
             this.label7.Text = "Long Term Homeless";
             // 
@@ -1665,9 +1729,10 @@
             this.cboMarried.BackColor = System.Drawing.Color.White;
             this.cboMarried.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMarried.FormattingEnabled = true;
-            this.cboMarried.Location = new System.Drawing.Point(8, 95);
+            this.cboMarried.Location = new System.Drawing.Point(12, 146);
+            this.cboMarried.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboMarried.Name = "cboMarried";
-            this.cboMarried.Size = new System.Drawing.Size(110, 24);
+            this.cboMarried.Size = new System.Drawing.Size(163, 33);
             this.cboMarried.TabIndex = 54;
             this.cboMarried.Tag = "PartneredMarried";
             this.cboMarried.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1675,9 +1740,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(123, 99);
+            this.label6.Location = new System.Drawing.Point(184, 152);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 14);
+            this.label6.Size = new System.Drawing.Size(176, 22);
             this.label6.TabIndex = 55;
             this.label6.Text = "Partnered/Married";
             // 
@@ -1686,9 +1752,10 @@
             this.cboLimitedEnglish.BackColor = System.Drawing.Color.White;
             this.cboLimitedEnglish.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLimitedEnglish.FormattingEnabled = true;
-            this.cboLimitedEnglish.Location = new System.Drawing.Point(8, 65);
+            this.cboLimitedEnglish.Location = new System.Drawing.Point(12, 100);
+            this.cboLimitedEnglish.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboLimitedEnglish.Name = "cboLimitedEnglish";
-            this.cboLimitedEnglish.Size = new System.Drawing.Size(110, 24);
+            this.cboLimitedEnglish.Size = new System.Drawing.Size(163, 33);
             this.cboLimitedEnglish.TabIndex = 52;
             this.cboLimitedEnglish.Tag = "LimitedEnglish";
             this.cboLimitedEnglish.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1696,9 +1763,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(123, 69);
+            this.label5.Location = new System.Drawing.Point(184, 106);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(171, 14);
+            this.label5.Size = new System.Drawing.Size(249, 22);
             this.label5.TabIndex = 53;
             this.label5.Text = "Limited English Proficiency";
             // 
@@ -1707,9 +1775,10 @@
             this.cboRefugee.BackColor = System.Drawing.Color.White;
             this.cboRefugee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboRefugee.FormattingEnabled = true;
-            this.cboRefugee.Location = new System.Drawing.Point(8, 35);
+            this.cboRefugee.Location = new System.Drawing.Point(12, 54);
+            this.cboRefugee.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboRefugee.Name = "cboRefugee";
-            this.cboRefugee.Size = new System.Drawing.Size(110, 24);
+            this.cboRefugee.Size = new System.Drawing.Size(163, 33);
             this.cboRefugee.TabIndex = 50;
             this.cboRefugee.Tag = "RefugeeImmigrant";
             this.cboRefugee.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1717,9 +1786,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(123, 39);
+            this.label4.Location = new System.Drawing.Point(184, 60);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 14);
+            this.label4.Size = new System.Drawing.Size(189, 22);
             this.label4.TabIndex = 51;
             this.label4.Text = "Refugee/Immigrant";
             // 
@@ -1728,9 +1798,10 @@
             this.cboLatino.BackColor = System.Drawing.Color.White;
             this.cboLatino.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLatino.FormattingEnabled = true;
-            this.cboLatino.Location = new System.Drawing.Point(8, 5);
+            this.cboLatino.Location = new System.Drawing.Point(12, 8);
+            this.cboLatino.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboLatino.Name = "cboLatino";
-            this.cboLatino.Size = new System.Drawing.Size(110, 24);
+            this.cboLatino.Size = new System.Drawing.Size(163, 33);
             this.cboLatino.TabIndex = 48;
             this.cboLatino.Tag = "HispanicLatino";
             this.cboLatino.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1738,9 +1809,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(123, 9);
+            this.label2.Location = new System.Drawing.Point(184, 14);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 14);
+            this.label2.Size = new System.Drawing.Size(148, 22);
             this.label2.TabIndex = 49;
             this.label2.Text = "Hispanic/Latino";
             // 
@@ -1749,9 +1821,10 @@
             this.cboEdLvl.BackColor = System.Drawing.Color.White;
             this.cboEdLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEdLvl.FormattingEnabled = true;
-            this.cboEdLvl.Location = new System.Drawing.Point(8, 368);
+            this.cboEdLvl.Location = new System.Drawing.Point(12, 566);
+            this.cboEdLvl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboEdLvl.Name = "cboEdLvl";
-            this.cboEdLvl.Size = new System.Drawing.Size(264, 24);
+            this.cboEdLvl.Size = new System.Drawing.Size(394, 33);
             this.cboEdLvl.TabIndex = 74;
             this.cboEdLvl.Tag = "EducationLevel";
             this.cboEdLvl.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1759,9 +1832,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(278, 371);
+            this.label3.Location = new System.Drawing.Point(417, 571);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 14);
+            this.label3.Size = new System.Drawing.Size(151, 22);
             this.label3.TabIndex = 75;
             this.label3.Text = "Education Level";
             // 
@@ -1770,9 +1844,10 @@
             this.cboEmploymentStatus.BackColor = System.Drawing.Color.White;
             this.cboEmploymentStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEmploymentStatus.FormattingEnabled = true;
-            this.cboEmploymentStatus.Location = new System.Drawing.Point(8, 338);
+            this.cboEmploymentStatus.Location = new System.Drawing.Point(12, 520);
+            this.cboEmploymentStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboEmploymentStatus.Name = "cboEmploymentStatus";
-            this.cboEmploymentStatus.Size = new System.Drawing.Size(264, 24);
+            this.cboEmploymentStatus.Size = new System.Drawing.Size(394, 33);
             this.cboEmploymentStatus.TabIndex = 72;
             this.cboEmploymentStatus.Tag = "EmplolymentStatus";
             this.cboEmploymentStatus.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1780,9 +1855,10 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(278, 343);
+            this.label27.Location = new System.Drawing.Point(417, 528);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(129, 14);
+            this.label27.Size = new System.Drawing.Size(187, 22);
             this.label27.TabIndex = 73;
             this.label27.Text = "Employment Status";
             // 
@@ -1791,9 +1867,10 @@
             this.cboDischargeStatus.BackColor = System.Drawing.Color.White;
             this.cboDischargeStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDischargeStatus.FormattingEnabled = true;
-            this.cboDischargeStatus.Location = new System.Drawing.Point(8, 278);
+            this.cboDischargeStatus.Location = new System.Drawing.Point(12, 428);
+            this.cboDischargeStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboDischargeStatus.Name = "cboDischargeStatus";
-            this.cboDischargeStatus.Size = new System.Drawing.Size(264, 24);
+            this.cboDischargeStatus.Size = new System.Drawing.Size(394, 33);
             this.cboDischargeStatus.TabIndex = 68;
             this.cboDischargeStatus.Tag = "DischargeStatus";
             this.cboDischargeStatus.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1801,9 +1878,10 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(278, 282);
+            this.label25.Location = new System.Drawing.Point(417, 434);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(114, 14);
+            this.label25.Size = new System.Drawing.Size(162, 22);
             this.label25.TabIndex = 69;
             this.label25.Text = "Discharge Status";
             // 
@@ -1812,9 +1890,10 @@
             this.cboMilitaryService.BackColor = System.Drawing.Color.White;
             this.cboMilitaryService.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMilitaryService.FormattingEnabled = true;
-            this.cboMilitaryService.Location = new System.Drawing.Point(8, 244);
+            this.cboMilitaryService.Location = new System.Drawing.Point(12, 375);
+            this.cboMilitaryService.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboMilitaryService.Name = "cboMilitaryService";
-            this.cboMilitaryService.Size = new System.Drawing.Size(264, 24);
+            this.cboMilitaryService.Size = new System.Drawing.Size(394, 33);
             this.cboMilitaryService.TabIndex = 66;
             this.cboMilitaryService.Tag = "MilitaryService";
             this.cboMilitaryService.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
@@ -1822,9 +1901,10 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(278, 248);
+            this.label24.Location = new System.Drawing.Point(417, 382);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(100, 14);
+            this.label24.Size = new System.Drawing.Size(150, 22);
             this.label24.TabIndex = 67;
             this.label24.Text = "Military Service";
             // 
@@ -1834,9 +1914,10 @@
             this.tpgEthnicity.Controls.Add(this.btnMarkSameB);
             this.tpgEthnicity.Controls.Add(this.lvEthnicity);
             this.tpgEthnicity.Location = new System.Drawing.Point(4, 52);
+            this.tpgEthnicity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tpgEthnicity.Name = "tpgEthnicity";
-            this.tpgEthnicity.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgEthnicity.Size = new System.Drawing.Size(444, 420);
+            this.tpgEthnicity.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tpgEthnicity.Size = new System.Drawing.Size(670, 676);
             this.tpgEthnicity.TabIndex = 1;
             this.tpgEthnicity.Text = "Ethnicity";
             // 
@@ -1844,10 +1925,10 @@
             // 
             this.btnMarkSameB.AutoSize = true;
             this.btnMarkSameB.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnMarkSameB.Location = new System.Drawing.Point(3, 393);
-            this.btnMarkSameB.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.btnMarkSameB.Location = new System.Drawing.Point(4, 622);
+            this.btnMarkSameB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 0);
             this.btnMarkSameB.Name = "btnMarkSameB";
-            this.btnMarkSameB.Size = new System.Drawing.Size(438, 24);
+            this.btnMarkSameB.Size = new System.Drawing.Size(662, 49);
             this.btnMarkSameB.TabIndex = 71;
             this.btnMarkSameB.Tag = "&Mark All Same AS";
             this.btnMarkSameB.Text = "&Mark All Same AS";
@@ -1865,76 +1946,77 @@
             this.lvEthnicity.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvEthnicity.GridLines = true;
             this.lvEthnicity.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            listViewItem23.StateImageIndex = 0;
-            listViewItem23.Tag = "AmericanIndian";
-            listViewItem24.StateImageIndex = 0;
-            listViewItem24.Tag = "AlaskaNative";
-            listViewItem25.StateImageIndex = 0;
-            listViewItem25.Tag = "IndigenousToAmericas";
-            listViewItem26.StateImageIndex = 0;
-            listViewItem26.Tag = "AsianIndian";
-            listViewItem27.StateImageIndex = 0;
-            listViewItem27.Tag = "Cambodian";
-            listViewItem28.StateImageIndex = 0;
-            listViewItem28.Tag = "Chinese";
-            listViewItem29.StateImageIndex = 0;
-            listViewItem29.Tag = "Filipino";
-            listViewItem30.StateImageIndex = 0;
-            listViewItem30.Tag = "Japanese";
-            listViewItem31.StateImageIndex = 0;
-            listViewItem31.Tag = "Korean";
-            listViewItem32.StateImageIndex = 0;
-            listViewItem32.Tag = "Vietnamese";
-            listViewItem33.StateImageIndex = 0;
-            listViewItem33.Tag = "OtherAsian";
-            listViewItem34.StateImageIndex = 0;
-            listViewItem34.Tag = "IndigenousAfricanBlack";
-            listViewItem35.StateImageIndex = 0;
-            listViewItem35.Tag = "AfricanAmericanBlack";
-            listViewItem36.StateImageIndex = 0;
-            listViewItem36.Tag = "OtherBlack";
-            listViewItem37.StateImageIndex = 0;
-            listViewItem37.Tag = "HawaiianNative";
-            listViewItem38.StateImageIndex = 0;
-            listViewItem38.Tag = "Polynesian";
-            listViewItem39.StateImageIndex = 0;
-            listViewItem39.Tag = "Micronesian";
-            listViewItem40.StateImageIndex = 0;
-            listViewItem40.Tag = "OtherPacificIslander";
-            listViewItem41.StateImageIndex = 0;
-            listViewItem41.Tag = "ArabIranianMiddleEastern";
-            listViewItem42.StateImageIndex = 0;
-            listViewItem42.Tag = "OtherWhiteCaucasian";
-            listViewItem43.StateImageIndex = 0;
-            listViewItem43.Tag = "EthnicOther";
-            listViewItem44.StateImageIndex = 0;
-            listViewItem44.Tag = "EthnicUnknown";
+            listViewItem1.StateImageIndex = 0;
+            listViewItem1.Tag = "AmericanIndian";
+            listViewItem2.StateImageIndex = 0;
+            listViewItem2.Tag = "AlaskaNative";
+            listViewItem3.StateImageIndex = 0;
+            listViewItem3.Tag = "IndigenousToAmericas";
+            listViewItem4.StateImageIndex = 0;
+            listViewItem4.Tag = "AsianIndian";
+            listViewItem5.StateImageIndex = 0;
+            listViewItem5.Tag = "Cambodian";
+            listViewItem6.StateImageIndex = 0;
+            listViewItem6.Tag = "Chinese";
+            listViewItem7.StateImageIndex = 0;
+            listViewItem7.Tag = "Filipino";
+            listViewItem8.StateImageIndex = 0;
+            listViewItem8.Tag = "Japanese";
+            listViewItem9.StateImageIndex = 0;
+            listViewItem9.Tag = "Korean";
+            listViewItem10.StateImageIndex = 0;
+            listViewItem10.Tag = "Vietnamese";
+            listViewItem11.StateImageIndex = 0;
+            listViewItem11.Tag = "OtherAsian";
+            listViewItem12.StateImageIndex = 0;
+            listViewItem12.Tag = "IndigenousAfricanBlack";
+            listViewItem13.StateImageIndex = 0;
+            listViewItem13.Tag = "AfricanAmericanBlack";
+            listViewItem14.StateImageIndex = 0;
+            listViewItem14.Tag = "OtherBlack";
+            listViewItem15.StateImageIndex = 0;
+            listViewItem15.Tag = "HawaiianNative";
+            listViewItem16.StateImageIndex = 0;
+            listViewItem16.Tag = "Polynesian";
+            listViewItem17.StateImageIndex = 0;
+            listViewItem17.Tag = "Micronesian";
+            listViewItem18.StateImageIndex = 0;
+            listViewItem18.Tag = "OtherPacificIslander";
+            listViewItem19.StateImageIndex = 0;
+            listViewItem19.Tag = "ArabIranianMiddleEastern";
+            listViewItem20.StateImageIndex = 0;
+            listViewItem20.Tag = "OtherWhiteCaucasian";
+            listViewItem21.StateImageIndex = 0;
+            listViewItem21.Tag = "EthnicOther";
+            listViewItem22.StateImageIndex = 0;
+            listViewItem22.Tag = "EthnicUnknown";
             this.lvEthnicity.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem23,
-            listViewItem24,
-            listViewItem25,
-            listViewItem26,
-            listViewItem27,
-            listViewItem28,
-            listViewItem29,
-            listViewItem30,
-            listViewItem31,
-            listViewItem32,
-            listViewItem33,
-            listViewItem34,
-            listViewItem35,
-            listViewItem36,
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40,
-            listViewItem41,
-            listViewItem42,
-            listViewItem43,
-            listViewItem44});
-            this.lvEthnicity.Location = new System.Drawing.Point(3, 3);
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20,
+            listViewItem21,
+            listViewItem22});
+            this.lvEthnicity.Location = new System.Drawing.Point(4, 5);
+            this.lvEthnicity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvEthnicity.Name = "lvEthnicity";
-            this.lvEthnicity.Size = new System.Drawing.Size(438, 417);
+            this.lvEthnicity.Size = new System.Drawing.Size(662, 642);
             this.lvEthnicity.TabIndex = 77;
             this.lvEthnicity.Tag = "Ethnicity";
             this.lvEthnicity.UseCompatibleStateImageBehavior = false;
@@ -1950,8 +2032,9 @@
             // 
             this.tpgWIA.Controls.Add(this.pnlEmployer);
             this.tpgWIA.Location = new System.Drawing.Point(4, 52);
+            this.tpgWIA.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tpgWIA.Name = "tpgWIA";
-            this.tpgWIA.Size = new System.Drawing.Size(444, 420);
+            this.tpgWIA.Size = new System.Drawing.Size(670, 676);
             this.tpgWIA.TabIndex = 3;
             this.tpgWIA.Text = "Works In Area";
             this.tpgWIA.UseVisualStyleBackColor = true;
@@ -1972,8 +2055,9 @@
             this.pnlEmployer.Controls.Add(this.chkWorksInArea);
             this.pnlEmployer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlEmployer.Location = new System.Drawing.Point(0, 0);
+            this.pnlEmployer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlEmployer.Name = "pnlEmployer";
-            this.pnlEmployer.Size = new System.Drawing.Size(444, 420);
+            this.pnlEmployer.Size = new System.Drawing.Size(670, 676);
             this.pnlEmployer.TabIndex = 80;
             // 
             // lblHhMModified
@@ -1982,10 +2066,10 @@
             this.lblHhMModified.BackColor = System.Drawing.Color.Transparent;
             this.lblHhMModified.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHhMModified.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblHhMModified.Location = new System.Drawing.Point(15, 228);
-            this.lblHhMModified.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHhMModified.Location = new System.Drawing.Point(22, 351);
+            this.lblHhMModified.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblHhMModified.Name = "lblHhMModified";
-            this.lblHhMModified.Size = new System.Drawing.Size(47, 14);
+            this.lblHhMModified.Size = new System.Drawing.Size(69, 18);
             this.lblHhMModified.TabIndex = 91;
             this.lblHhMModified.Text = "Modified";
             // 
@@ -1995,91 +2079,96 @@
             this.lblHhMCreated.BackColor = System.Drawing.Color.Transparent;
             this.lblHhMCreated.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHhMCreated.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblHhMCreated.Location = new System.Drawing.Point(15, 204);
-            this.lblHhMCreated.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHhMCreated.Location = new System.Drawing.Point(22, 314);
+            this.lblHhMCreated.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblHhMCreated.Name = "lblHhMCreated";
-            this.lblHhMCreated.Size = new System.Drawing.Size(45, 14);
+            this.lblHhMCreated.Size = new System.Drawing.Size(65, 18);
             this.lblHhMCreated.TabIndex = 90;
             this.lblHhMCreated.Text = "Created";
             // 
             // tbEmpZip
             // 
-            this.tbEmpZip.Location = new System.Drawing.Point(304, 147);
+            this.tbEmpZip.Location = new System.Drawing.Point(456, 226);
+            this.tbEmpZip.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbEmpZip.Name = "tbEmpZip";
-            this.tbEmpZip.Size = new System.Drawing.Size(107, 22);
+            this.tbEmpZip.Size = new System.Drawing.Size(158, 29);
             this.tbEmpZip.TabIndex = 89;
             this.tbEmpZip.Tag = "EmpZipcode";
             // 
             // tbEmplPhone
             // 
-            this.tbEmplPhone.Location = new System.Drawing.Point(100, 147);
+            this.tbEmplPhone.Location = new System.Drawing.Point(150, 226);
+            this.tbEmplPhone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbEmplPhone.Name = "tbEmplPhone";
-            this.tbEmplPhone.Size = new System.Drawing.Size(143, 22);
+            this.tbEmplPhone.Size = new System.Drawing.Size(212, 29);
             this.tbEmplPhone.TabIndex = 87;
             this.tbEmplPhone.Tag = "EmpPhone";
             // 
             // tbEmpAddress
             // 
-            this.tbEmpAddress.Location = new System.Drawing.Point(100, 93);
+            this.tbEmpAddress.Location = new System.Drawing.Point(150, 143);
+            this.tbEmpAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbEmpAddress.Name = "tbEmpAddress";
-            this.tbEmpAddress.Size = new System.Drawing.Size(311, 22);
+            this.tbEmpAddress.Size = new System.Drawing.Size(464, 29);
             this.tbEmpAddress.TabIndex = 85;
             this.tbEmpAddress.Tag = "EmpAddress";
             // 
             // tbEmployer
             // 
-            this.tbEmployer.Location = new System.Drawing.Point(100, 40);
+            this.tbEmployer.Location = new System.Drawing.Point(150, 62);
+            this.tbEmployer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbEmployer.Name = "tbEmployer";
-            this.tbEmployer.Size = new System.Drawing.Size(311, 22);
+            this.tbEmployer.Size = new System.Drawing.Size(464, 29);
             this.tbEmployer.TabIndex = 83;
             this.tbEmployer.Tag = "Employer";
             // 
             // lblEmpZip
             // 
             this.lblEmpZip.AutoSize = true;
-            this.lblEmpZip.Location = new System.Drawing.Point(267, 150);
-            this.lblEmpZip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmpZip.Location = new System.Drawing.Point(400, 231);
+            this.lblEmpZip.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblEmpZip.Name = "lblEmpZip";
-            this.lblEmpZip.Size = new System.Drawing.Size(31, 14);
+            this.lblEmpZip.Size = new System.Drawing.Size(46, 22);
             this.lblEmpZip.TabIndex = 88;
             this.lblEmpZip.Text = "Zip:";
             // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(34, 150);
-            this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhone.Location = new System.Drawing.Point(51, 231);
+            this.lblPhone.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(52, 14);
+            this.lblPhone.Size = new System.Drawing.Size(73, 22);
             this.lblPhone.TabIndex = 86;
             this.lblPhone.Text = "Phone:";
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(22, 96);
-            this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddress.Location = new System.Drawing.Point(33, 148);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(63, 14);
+            this.lblAddress.Size = new System.Drawing.Size(89, 22);
             this.lblAddress.TabIndex = 84;
             this.lblAddress.Text = "Address:";
             // 
             // lblEmployer
             // 
             this.lblEmployer.AutoSize = true;
-            this.lblEmployer.Location = new System.Drawing.Point(15, 43);
-            this.lblEmployer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmployer.Location = new System.Drawing.Point(22, 66);
+            this.lblEmployer.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblEmployer.Name = "lblEmployer";
-            this.lblEmployer.Size = new System.Drawing.Size(70, 14);
+            this.lblEmployer.Size = new System.Drawing.Size(104, 22);
             this.lblEmployer.TabIndex = 82;
             this.lblEmployer.Text = "Employer:";
             // 
             // chkWorksInArea
             // 
             this.chkWorksInArea.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkWorksInArea.Location = new System.Drawing.Point(9, 2);
+            this.chkWorksInArea.Location = new System.Drawing.Point(14, 3);
+            this.chkWorksInArea.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkWorksInArea.Name = "chkWorksInArea";
-            this.chkWorksInArea.Size = new System.Drawing.Size(126, 24);
+            this.chkWorksInArea.Size = new System.Drawing.Size(189, 37);
             this.chkWorksInArea.TabIndex = 81;
             this.chkWorksInArea.Tag = "WorksInArea";
             this.chkWorksInArea.Text = "Works In Area";
@@ -2090,8 +2179,9 @@
             this.tpgBPCSFP.Controls.Add(this.pnlBPInfo);
             this.tpgBPCSFP.Controls.Add(this.pnlCSFPInfo);
             this.tpgBPCSFP.Location = new System.Drawing.Point(4, 52);
+            this.tpgBPCSFP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tpgBPCSFP.Name = "tpgBPCSFP";
-            this.tpgBPCSFP.Size = new System.Drawing.Size(444, 420);
+            this.tpgBPCSFP.Size = new System.Drawing.Size(670, 676);
             this.tpgBPCSFP.TabIndex = 4;
             this.tpgBPCSFP.Text = "BP/CSFP";
             this.tpgBPCSFP.UseVisualStyleBackColor = true;
@@ -2108,26 +2198,28 @@
             this.pnlBPInfo.Controls.Add(this.lblBPSchool);
             this.pnlBPInfo.Controls.Add(this.tbBPExpires);
             this.pnlBPInfo.Controls.Add(this.lblBPExpires);
-            this.pnlBPInfo.Location = new System.Drawing.Point(2, 3);
+            this.pnlBPInfo.Location = new System.Drawing.Point(3, 5);
+            this.pnlBPInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlBPInfo.Name = "pnlBPInfo";
-            this.pnlBPInfo.Size = new System.Drawing.Size(442, 181);
+            this.pnlBPInfo.Size = new System.Drawing.Size(663, 278);
             this.pnlBPInfo.TabIndex = 92;
             // 
             // cboBPSize
             // 
             this.cboBPSize.FormattingEnabled = true;
-            this.cboBPSize.Location = new System.Drawing.Point(70, 60);
+            this.cboBPSize.Location = new System.Drawing.Point(105, 92);
+            this.cboBPSize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboBPSize.Name = "cboBPSize";
-            this.cboBPSize.Size = new System.Drawing.Size(100, 22);
+            this.cboBPSize.Size = new System.Drawing.Size(148, 30);
             this.cboBPSize.TabIndex = 97;
             this.cboBPSize.Tag = "BPSize";
             // 
             // lblBPSize
             // 
-            this.lblBPSize.Location = new System.Drawing.Point(2, 64);
-            this.lblBPSize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBPSize.Location = new System.Drawing.Point(3, 98);
+            this.lblBPSize.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBPSize.Name = "lblBPSize";
-            this.lblBPSize.Size = new System.Drawing.Size(64, 14);
+            this.lblBPSize.Size = new System.Drawing.Size(96, 22);
             this.lblBPSize.TabIndex = 96;
             this.lblBPSize.Tag = "BPSize";
             this.lblBPSize.Text = "BP Size:";
@@ -2136,9 +2228,10 @@
             // chkBackPack
             // 
             this.chkBackPack.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkBackPack.Location = new System.Drawing.Point(9, 3);
+            this.chkBackPack.Location = new System.Drawing.Point(14, 5);
+            this.chkBackPack.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkBackPack.Name = "chkBackPack";
-            this.chkBackPack.Size = new System.Drawing.Size(88, 20);
+            this.chkBackPack.Size = new System.Drawing.Size(132, 31);
             this.chkBackPack.TabIndex = 93;
             this.chkBackPack.Tag = "BackPack";
             this.chkBackPack.Text = "BackPack";
@@ -2149,19 +2242,20 @@
             // 
             this.tbBPNotes.BackColor = System.Drawing.Color.White;
             this.tbBPNotes.ForeColor = System.Drawing.Color.Black;
-            this.tbBPNotes.Location = new System.Drawing.Point(70, 121);
+            this.tbBPNotes.Location = new System.Drawing.Point(105, 186);
+            this.tbBPNotes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbBPNotes.Multiline = true;
             this.tbBPNotes.Name = "tbBPNotes";
-            this.tbBPNotes.Size = new System.Drawing.Size(210, 50);
+            this.tbBPNotes.Size = new System.Drawing.Size(313, 75);
             this.tbBPNotes.TabIndex = 101;
             this.tbBPNotes.Tag = "BPNotes";
             // 
             // lblBPNotes
             // 
-            this.lblBPNotes.Location = new System.Drawing.Point(2, 125);
-            this.lblBPNotes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBPNotes.Location = new System.Drawing.Point(3, 192);
+            this.lblBPNotes.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBPNotes.Name = "lblBPNotes";
-            this.lblBPNotes.Size = new System.Drawing.Size(64, 14);
+            this.lblBPNotes.Size = new System.Drawing.Size(96, 22);
             this.lblBPNotes.TabIndex = 100;
             this.lblBPNotes.Text = "Notes:";
             this.lblBPNotes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2169,18 +2263,19 @@
             // cboBPSchool
             // 
             this.cboBPSchool.FormattingEnabled = true;
-            this.cboBPSchool.Location = new System.Drawing.Point(70, 91);
+            this.cboBPSchool.Location = new System.Drawing.Point(105, 140);
+            this.cboBPSchool.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboBPSchool.Name = "cboBPSchool";
-            this.cboBPSchool.Size = new System.Drawing.Size(210, 22);
+            this.cboBPSchool.Size = new System.Drawing.Size(313, 30);
             this.cboBPSchool.TabIndex = 99;
             this.cboBPSchool.Tag = "BPSchool";
             // 
             // lblBPSchool
             // 
-            this.lblBPSchool.Location = new System.Drawing.Point(2, 95);
-            this.lblBPSchool.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBPSchool.Location = new System.Drawing.Point(3, 146);
+            this.lblBPSchool.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBPSchool.Name = "lblBPSchool";
-            this.lblBPSchool.Size = new System.Drawing.Size(64, 14);
+            this.lblBPSchool.Size = new System.Drawing.Size(96, 22);
             this.lblBPSchool.TabIndex = 36;
             this.lblBPSchool.Tag = "BPSchool";
             this.lblBPSchool.Text = "School";
@@ -2188,19 +2283,20 @@
             // 
             // tbBPExpires
             // 
-            this.tbBPExpires.Location = new System.Drawing.Point(70, 29);
+            this.tbBPExpires.Location = new System.Drawing.Point(105, 45);
+            this.tbBPExpires.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbBPExpires.Name = "tbBPExpires";
-            this.tbBPExpires.Size = new System.Drawing.Size(89, 22);
+            this.tbBPExpires.Size = new System.Drawing.Size(132, 29);
             this.tbBPExpires.TabIndex = 95;
             this.tbBPExpires.Tag = "BPExpiration";
             this.tbBPExpires.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblBPExpires
             // 
-            this.lblBPExpires.Location = new System.Drawing.Point(2, 31);
-            this.lblBPExpires.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBPExpires.Location = new System.Drawing.Point(3, 48);
+            this.lblBPExpires.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBPExpires.Name = "lblBPExpires";
-            this.lblBPExpires.Size = new System.Drawing.Size(64, 14);
+            this.lblBPExpires.Size = new System.Drawing.Size(96, 22);
             this.lblBPExpires.TabIndex = 94;
             this.lblBPExpires.Tag = "CSFPExpiredDate";
             this.lblBPExpires.Text = "Expires:";
@@ -2218,28 +2314,30 @@
             this.pnlCSFPInfo.Controls.Add(this.lblCSFPRoute);
             this.pnlCSFPInfo.Controls.Add(this.tbExpires);
             this.pnlCSFPInfo.Controls.Add(this.lblCSFPExpires);
-            this.pnlCSFPInfo.Location = new System.Drawing.Point(2, 192);
+            this.pnlCSFPInfo.Location = new System.Drawing.Point(3, 295);
+            this.pnlCSFPInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlCSFPInfo.Name = "pnlCSFPInfo";
-            this.pnlCSFPInfo.Size = new System.Drawing.Size(442, 211);
+            this.pnlCSFPInfo.Size = new System.Drawing.Size(663, 325);
             this.pnlCSFPInfo.TabIndex = 102;
             this.pnlCSFPInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCSFPInfo_Paint);
             // 
             // cboCSFPStatus
             // 
             this.cboCSFPStatus.FormattingEnabled = true;
-            this.cboCSFPStatus.Location = new System.Drawing.Point(70, 32);
+            this.cboCSFPStatus.Location = new System.Drawing.Point(105, 49);
+            this.cboCSFPStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboCSFPStatus.Name = "cboCSFPStatus";
-            this.cboCSFPStatus.Size = new System.Drawing.Size(144, 22);
+            this.cboCSFPStatus.Size = new System.Drawing.Size(214, 30);
             this.cboCSFPStatus.TabIndex = 105;
             this.cboCSFPStatus.Tag = "CSFPStatus";
             this.cboCSFPStatus.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
             // 
             // lblCSFPStatus
             // 
-            this.lblCSFPStatus.Location = new System.Drawing.Point(2, 36);
-            this.lblCSFPStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCSFPStatus.Location = new System.Drawing.Point(3, 55);
+            this.lblCSFPStatus.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCSFPStatus.Name = "lblCSFPStatus";
-            this.lblCSFPStatus.Size = new System.Drawing.Size(64, 14);
+            this.lblCSFPStatus.Size = new System.Drawing.Size(96, 22);
             this.lblCSFPStatus.TabIndex = 104;
             this.lblCSFPStatus.Tag = "CSFPStatus";
             this.lblCSFPStatus.Text = "Status:";
@@ -2248,9 +2346,10 @@
             // chkCSFP
             // 
             this.chkCSFP.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkCSFP.Location = new System.Drawing.Point(9, 3);
+            this.chkCSFP.Location = new System.Drawing.Point(14, 5);
+            this.chkCSFP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkCSFP.Name = "chkCSFP";
-            this.chkCSFP.Size = new System.Drawing.Size(64, 20);
+            this.chkCSFP.Size = new System.Drawing.Size(96, 31);
             this.chkCSFP.TabIndex = 103;
             this.chkCSFP.Tag = "CSFP";
             this.chkCSFP.Text = "CSFP";
@@ -2261,19 +2360,20 @@
             // 
             this.tbCSFPComments.BackColor = System.Drawing.Color.White;
             this.tbCSFPComments.ForeColor = System.Drawing.Color.Black;
-            this.tbCSFPComments.Location = new System.Drawing.Point(70, 137);
+            this.tbCSFPComments.Location = new System.Drawing.Point(105, 211);
+            this.tbCSFPComments.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbCSFPComments.Multiline = true;
             this.tbCSFPComments.Name = "tbCSFPComments";
-            this.tbCSFPComments.Size = new System.Drawing.Size(210, 50);
+            this.tbCSFPComments.Size = new System.Drawing.Size(313, 75);
             this.tbCSFPComments.TabIndex = 111;
             this.tbCSFPComments.Tag = "CSFPComments";
             // 
             // lblCSFPComments
             // 
-            this.lblCSFPComments.Location = new System.Drawing.Point(2, 138);
-            this.lblCSFPComments.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCSFPComments.Location = new System.Drawing.Point(3, 212);
+            this.lblCSFPComments.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCSFPComments.Name = "lblCSFPComments";
-            this.lblCSFPComments.Size = new System.Drawing.Size(64, 14);
+            this.lblCSFPComments.Size = new System.Drawing.Size(96, 22);
             this.lblCSFPComments.TabIndex = 110;
             this.lblCSFPComments.Text = "Notes:";
             this.lblCSFPComments.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2281,19 +2381,20 @@
             // cboCSFPRoute
             // 
             this.cboCSFPRoute.FormattingEnabled = true;
-            this.cboCSFPRoute.Location = new System.Drawing.Point(70, 66);
+            this.cboCSFPRoute.Location = new System.Drawing.Point(105, 102);
+            this.cboCSFPRoute.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cboCSFPRoute.Name = "cboCSFPRoute";
-            this.cboCSFPRoute.Size = new System.Drawing.Size(210, 22);
+            this.cboCSFPRoute.Size = new System.Drawing.Size(313, 30);
             this.cboCSFPRoute.TabIndex = 107;
             this.cboCSFPRoute.Tag = "CSFPRoute";
             this.cboCSFPRoute.SelectedIndexChanged += new System.EventHandler(this.cboList_SelectedIndexChanged);
             // 
             // lblCSFPRoute
             // 
-            this.lblCSFPRoute.Location = new System.Drawing.Point(2, 70);
-            this.lblCSFPRoute.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCSFPRoute.Location = new System.Drawing.Point(3, 108);
+            this.lblCSFPRoute.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCSFPRoute.Name = "lblCSFPRoute";
-            this.lblCSFPRoute.Size = new System.Drawing.Size(64, 14);
+            this.lblCSFPRoute.Size = new System.Drawing.Size(96, 22);
             this.lblCSFPRoute.TabIndex = 106;
             this.lblCSFPRoute.Tag = "Route";
             this.lblCSFPRoute.Text = "Route:";
@@ -2301,19 +2402,20 @@
             // 
             // tbExpires
             // 
-            this.tbExpires.Location = new System.Drawing.Point(70, 97);
+            this.tbExpires.Location = new System.Drawing.Point(105, 149);
+            this.tbExpires.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbExpires.Name = "tbExpires";
-            this.tbExpires.Size = new System.Drawing.Size(89, 22);
+            this.tbExpires.Size = new System.Drawing.Size(132, 29);
             this.tbExpires.TabIndex = 109;
             this.tbExpires.Tag = "CSFPExpiration";
             this.tbExpires.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblCSFPExpires
             // 
-            this.lblCSFPExpires.Location = new System.Drawing.Point(2, 100);
-            this.lblCSFPExpires.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCSFPExpires.Location = new System.Drawing.Point(3, 154);
+            this.lblCSFPExpires.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCSFPExpires.Name = "lblCSFPExpires";
-            this.lblCSFPExpires.Size = new System.Drawing.Size(64, 14);
+            this.lblCSFPExpires.Size = new System.Drawing.Size(96, 22);
             this.lblCSFPExpires.TabIndex = 108;
             this.lblCSFPExpires.Tag = "CSFPExpiredDate";
             this.lblCSFPExpires.Text = "Expires:";
@@ -2333,7 +2435,7 @@
             this.tabCtrl.Name = "tabCtrl";
             this.tabCtrl.Padding = new System.Drawing.Point(0, 5);
             this.tabCtrl.SelectedIndex = 0;
-            this.tabCtrl.Size = new System.Drawing.Size(984, 662);
+            this.tabCtrl.Size = new System.Drawing.Size(1476, 1018);
             this.tabCtrl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabCtrl.TabIndex = 0;
             this.tabCtrl.SelectedIndexChanged += new System.EventHandler(this.tabCtrl_SelectedIndexChanged);
@@ -2344,10 +2446,10 @@
             this.tpgMember.Controls.Add(this.splitContainer4);
             this.tpgMember.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpgMember.Location = new System.Drawing.Point(4, 4);
-            this.tpgMember.Margin = new System.Windows.Forms.Padding(20);
+            this.tpgMember.Margin = new System.Windows.Forms.Padding(30, 31, 30, 31);
             this.tpgMember.Name = "tpgMember";
-            this.tpgMember.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tpgMember.Size = new System.Drawing.Size(976, 633);
+            this.tpgMember.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            this.tpgMember.Size = new System.Drawing.Size(1468, 989);
             this.tpgMember.TabIndex = 0;
             this.tpgMember.Text = "Member View";
             // 
@@ -2357,8 +2459,8 @@
             this.tpgGrid.Location = new System.Drawing.Point(4, 4);
             this.tpgGrid.Margin = new System.Windows.Forms.Padding(0);
             this.tpgGrid.Name = "tpgGrid";
-            this.tpgGrid.Padding = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.tpgGrid.Size = new System.Drawing.Size(976, 633);
+            this.tpgGrid.Padding = new System.Windows.Forms.Padding(4, 5, 4, 0);
+            this.tpgGrid.Size = new System.Drawing.Size(1468, 989);
             this.tpgGrid.TabIndex = 1;
             this.tpgGrid.Text = "Grid View";
             this.tpgGrid.UseVisualStyleBackColor = true;
@@ -2368,8 +2470,8 @@
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.splitContainer2.Location = new System.Drawing.Point(4, 5);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(4, 5, 15, 5);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -2382,10 +2484,10 @@
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.Cornsilk;
             this.splitContainer2.Panel2.Controls.Add(this.dgvHHM2);
-            this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.splitContainer2.Size = new System.Drawing.Size(970, 630);
+            this.splitContainer2.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.splitContainer2.Size = new System.Drawing.Size(1460, 984);
             this.splitContainer2.SplitterDistance = 28;
-            this.splitContainer2.SplitterWidth = 1;
+            this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 0;
             // 
             // toolStrip1
@@ -2402,9 +2504,10 @@
             this.tsbMilitarySvc,
             this.tsbEmployment,
             this.tsbEthnicity});
-            this.toolStrip1.Location = new System.Drawing.Point(120, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(180, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(700, 25);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(981, 32);
             this.toolStrip1.TabIndex = 127;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -2428,7 +2531,7 @@
             this.tsbBasicInfo.Image = ((System.Drawing.Image)(resources.GetObject("tsbBasicInfo.Image")));
             this.tsbBasicInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBasicInfo.Name = "tsbBasicInfo";
-            this.tsbBasicInfo.Size = new System.Drawing.Size(62, 22);
+            this.tsbBasicInfo.Size = new System.Drawing.Size(92, 29);
             this.tsbBasicInfo.Text = "Basic Info";
             this.tsbBasicInfo.ToolTipText = "Show Birthdate, age, sex, Headhh, Special Diet, Disabled, Volunteers aT Food Bank" +
     ", Do Not Include on Find List, Flag0, Flag1";
@@ -2444,7 +2547,7 @@
             this.tsbNotes.Image = ((System.Drawing.Image)(resources.GetObject("tsbNotes.Image")));
             this.tsbNotes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNotes.Name = "tsbNotes";
-            this.tsbNotes.Size = new System.Drawing.Size(42, 22);
+            this.tsbNotes.Size = new System.Drawing.Size(63, 29);
             this.tsbNotes.Text = "Notes";
             this.tsbNotes.ToolTipText = "Show Notes";
             this.tsbNotes.Click += new System.EventHandler(this.tsbNotes_Click);
@@ -2459,7 +2562,7 @@
             this.tsbCSFP.Image = ((System.Drawing.Image)(resources.GetObject("tsbCSFP.Image")));
             this.tsbCSFP.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCSFP.Name = "tsbCSFP";
-            this.tsbCSFP.Size = new System.Drawing.Size(38, 22);
+            this.tsbCSFP.Size = new System.Drawing.Size(56, 29);
             this.tsbCSFP.Text = "CSFP";
             this.tsbCSFP.ToolTipText = "Show CSFP columns";
             this.tsbCSFP.Click += new System.EventHandler(this.tsbCSFP_Click);
@@ -2475,7 +2578,7 @@
             this.tsbWorksInArea.Image = ((System.Drawing.Image)(resources.GetObject("tsbWorksInArea.Image")));
             this.tsbWorksInArea.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbWorksInArea.Name = "tsbWorksInArea";
-            this.tsbWorksInArea.Size = new System.Drawing.Size(90, 22);
+            this.tsbWorksInArea.Size = new System.Drawing.Size(137, 29);
             this.tsbWorksInArea.Text = "Works In Area";
             this.tsbWorksInArea.Click += new System.EventHandler(this.tsbWorksInArea_Click);
             // 
@@ -2489,7 +2592,7 @@
             this.tsbOptional.Image = ((System.Drawing.Image)(resources.GetObject("tsbOptional.Image")));
             this.tsbOptional.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOptional.Name = "tsbOptional";
-            this.tsbOptional.Size = new System.Drawing.Size(81, 22);
+            this.tsbOptional.Size = new System.Drawing.Size(122, 29);
             this.tsbOptional.Text = "Optional Info";
             this.tsbOptional.Click += new System.EventHandler(this.tsbOptional_Click);
             // 
@@ -2503,7 +2606,7 @@
             this.tsbMilitarySvc.Image = ((System.Drawing.Image)(resources.GetObject("tsbMilitarySvc.Image")));
             this.tsbMilitarySvc.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbMilitarySvc.Name = "tsbMilitarySvc";
-            this.tsbMilitarySvc.Size = new System.Drawing.Size(91, 22);
+            this.tsbMilitarySvc.Size = new System.Drawing.Size(134, 29);
             this.tsbMilitarySvc.Text = "Military Service";
             this.tsbMilitarySvc.Click += new System.EventHandler(this.tsbMilitarySvc_Click);
             // 
@@ -2517,7 +2620,7 @@
             this.tsbEmployment.Image = ((System.Drawing.Image)(resources.GetObject("tsbEmployment.Image")));
             this.tsbEmployment.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEmployment.Name = "tsbEmployment";
-            this.tsbEmployment.Size = new System.Drawing.Size(116, 22);
+            this.tsbEmployment.Size = new System.Drawing.Size(171, 29);
             this.tsbEmployment.Text = "Employment/Educa";
             this.tsbEmployment.Click += new System.EventHandler(this.tsbEmployment_Click);
             // 
@@ -2530,7 +2633,7 @@
             this.tsbEthnicity.Image = ((System.Drawing.Image)(resources.GetObject("tsbEthnicity.Image")));
             this.tsbEthnicity.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEthnicity.Name = "tsbEthnicity";
-            this.tsbEthnicity.Size = new System.Drawing.Size(57, 22);
+            this.tsbEthnicity.Size = new System.Drawing.Size(82, 29);
             this.tsbEthnicity.Text = "Ethnicity";
             this.tsbEthnicity.Click += new System.EventHandler(this.tsbEthnicity_Click);
             // 
@@ -2540,14 +2643,14 @@
             this.dgvHHM2.AllowUserToDeleteRows = false;
             this.dgvHHM2.BackgroundColor = System.Drawing.Color.White;
             this.dgvHHM2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightCyan;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHHM2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHHM2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHHM2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHHM2.ColumnHeadersVisible = false;
             this.dgvHHM2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -2561,24 +2664,24 @@
             this.colPerson7,
             this.colPerson8,
             this.colPerson9});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.PaleGoldenrod;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHHM2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.PaleGoldenrod;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHHM2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvHHM2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHHM2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvHHM2.Location = new System.Drawing.Point(0, 0);
-            this.dgvHHM2.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.dgvHHM2.Margin = new System.Windows.Forms.Padding(4, 5, 15, 5);
             this.dgvHHM2.MultiSelect = false;
             this.dgvHHM2.Name = "dgvHHM2";
             this.dgvHHM2.RowHeadersWidth = 25;
             this.dgvHHM2.RowTemplate.Height = 24;
             this.dgvHHM2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvHHM2.Size = new System.Drawing.Size(965, 601);
+            this.dgvHHM2.Size = new System.Drawing.Size(1452, 954);
             this.dgvHHM2.TabIndex = 1;
             this.dgvHHM2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHHM2_CellEndEdit);
             // 
@@ -2704,11 +2807,12 @@
             // 
             // HHMemGridForm2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(984, 662);
+            this.ClientSize = new System.Drawing.Size(1476, 1018);
             this.Controls.Add(this.tabCtrl);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "HHMemGridForm2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Family Members Maintenance";

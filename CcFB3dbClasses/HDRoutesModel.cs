@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace ClientcardFB3
 {
@@ -42,6 +43,16 @@ namespace ClientcardFB3
             dtbl = new DataTable();
             dadAdpt = new SqlDataAdapter();
             this.clsVol = clsVol;
+
+            // Example of using the CLientcardORM
+            //ClientcardORM.ClientcardORM orm = new ClientcardORM.ClientcardORM();
+            //var query = from item in orm.HDRoutes
+            //            select item;
+
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item.FBContact);
+            //}
         }
 
         #region Get/Set Accessors

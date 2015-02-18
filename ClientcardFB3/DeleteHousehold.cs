@@ -20,7 +20,7 @@ namespace ClientcardFB3
         bool bClientDeleted = false;
         bool bClientMarkedInactive = false;
 
-        public DeleteHousehold(Client clientIn)
+        public DeleteHousehold(int idToDelete)
         {
             InitializeComponent();
             CCFBGlobal.InitCombo(cboClientType, CCFBGlobal.parmTbl_Client);
@@ -31,7 +31,9 @@ namespace ClientcardFB3
             CCFBGlobal.InitCombo(cboIDTypeMoveTo, CCFBGlobal.parmTbl_AddressID);
             CCFBGlobal.InitCombo(cboPhoneTypeMoveTo, CCFBGlobal.parmTbl_Phone);
 
-            clsClientToDelete = clientIn;
+            clsClientToDelete = new Client();
+            clsClientToDelete.connectionString = CCFBGlobal.connectionString;
+            clsClientToDelete.open(idToDelete, true, false);
             clsClientToDelete.clsHHSvcTrans.IncludeAppointments = false;
             clsClientToDelete.clsHHSvcTrans.openForHH(clsClientToDelete.clsHH.ID);
             grpbxClientToMoveTo.Enabled = false;
@@ -86,7 +88,7 @@ namespace ClientcardFB3
                 if (obj.GetType().ToString() == "System.Windows.Forms.TextBox")
                 {
                     TextBox tb = (TextBox)obj;
-                    if (tb.Tag != null && tb.Tag.ToString() != "")
+                    if (tb.Tag != null && tb.Tag.ToString().Length >0)
                     {
                         tb.Text = clsClient.clsHH.GetDataString(tb.Tag.ToString()).ToString();
                         tb.BackColor = Color.White;
@@ -95,7 +97,7 @@ namespace ClientcardFB3
                 else if (obj.GetType().ToString() == "System.Windows.Forms.CheckBox")
                 {
                     CheckBox chk = (CheckBox)obj;
-                    if (chk.Tag != null && chk.Tag.ToString() != "")
+                    if (chk.Tag != null && chk.Tag.ToString().Length >0)
                     {
                         chk.Checked = Convert.ToBoolean(clsClient.clsHH.GetDataString(chk.Tag.ToString()));
                     }
@@ -147,12 +149,12 @@ namespace ClientcardFB3
 
         private void tbClientId_TextChanged(object sender, EventArgs e)
         {
-            btnLoadClient.Enabled = (tbClientId.Text != "");
+            btnLoadClient.Enabled = (tbClientId.Text.Length >0);
         }
 
         private void btnLoadClient_Click(object sender, EventArgs e)
         {
-            if (tbClientId.Text != "")
+            if (tbClientId.Text.Length >0)
             {
                 idMoveTo = Convert.ToInt32(tbClientId.Text);
                 if (idMoveTo == 0)

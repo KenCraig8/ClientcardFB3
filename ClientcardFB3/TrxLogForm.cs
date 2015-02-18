@@ -76,7 +76,7 @@ namespace ClientcardFB3
 
         private void btnFirstDL_Click(object sender, EventArgs e)
         {
-            if (clsSvcDays.FirstDate() == "")
+            if (String.IsNullOrEmpty(clsSvcDays.FirstDate()) == true)
             {
                 btnFirstDL.Enabled = false;
             }
@@ -89,7 +89,7 @@ namespace ClientcardFB3
 
         private void btnLastDL_Click(object sender, EventArgs e)
         {
-            if (clsSvcDays.LastDate() == "")
+            if (String.IsNullOrEmpty(clsSvcDays.LastDate()) == true)
             {
                 btnLastDL.Enabled = false;
             }
@@ -148,7 +148,7 @@ namespace ClientcardFB3
 
         private void btnFirstAL_Click(object sender, EventArgs e)
         {
-            if (clsApptDays.FirstDate() == "")
+            if (String.IsNullOrEmpty(clsApptDays.FirstDate()) == true)
             {
                 btnFirstAL.Enabled = false;
             }
@@ -161,7 +161,7 @@ namespace ClientcardFB3
 
         private void btnLastAL_Click(object sender, EventArgs e)
         {
-            if (clsApptDays.LastDate() == "")
+            if (String.IsNullOrEmpty(clsApptDays.LastDate())  == true)
             {
                 btnLastAL.Enabled = false;
             }
@@ -174,7 +174,7 @@ namespace ClientcardFB3
 
         private void btnNextAL_Click(object sender, EventArgs e)
         {
-            if (clsApptDays.NextDate() == "" )
+            if (String.IsNullOrEmpty(clsApptDays.NextDate()) == true)
             {
                 btnNextAL.Enabled = false;
             }
@@ -187,7 +187,7 @@ namespace ClientcardFB3
 
         private void btnPrevAL_Click(object sender, EventArgs e)
         {
-            if (clsApptDays.PrevDate() == "")
+            if (String.IsNullOrEmpty(clsApptDays.PrevDate()) == true)
             {
                 btnPrevAL.Enabled = false; 
             }

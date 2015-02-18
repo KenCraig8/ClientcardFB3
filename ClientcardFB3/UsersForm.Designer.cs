@@ -15,6 +15,10 @@
         {
             if (disposing && (components != null))
             {
+                if (clsUsers != null)
+                {
+                    clsUsers.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

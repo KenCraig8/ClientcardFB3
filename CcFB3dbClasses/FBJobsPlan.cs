@@ -9,7 +9,7 @@ using Microsoft.SqlServer.Server;
 
 namespace ClientcardFB3
 {
-    public class FBJobsPlan
+    public class FBJobsPlan : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
@@ -20,6 +20,7 @@ namespace ClientcardFB3
         bool isValid = false;
         System.Data.SqlClient.SqlConnection conn;
         static string tblName = "FBJobsPlan";
+        private bool _disposed;
 
         public FBJobsPlan(string connectstring)
         {
@@ -27,6 +28,39 @@ namespace ClientcardFB3
             connString = connectstring;
             conn.ConnectionString = connectstring;
             dset = new DataSet();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -88,7 +122,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["Modified"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["Modified"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["Modified"];
@@ -178,6 +212,7 @@ namespace ClientcardFB3
                 openConnection();
                 SqlCommand commDelete = new SqlCommand("DELETE FROM " + tblName + " WHERE PlanID=" + ID.ToString(), conn);
                 commDelete.ExecuteNonQuery();
+                commDelete.Dispose();
                 closeConnection();
             }
             catch (SqlException ex)

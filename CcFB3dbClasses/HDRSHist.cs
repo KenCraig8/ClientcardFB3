@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class HDRSHist
+    public class HDRSHist : IDisposable
 
     {
         string connString;
@@ -15,6 +15,7 @@ namespace ClientcardFB3
         System.Data.SqlClient.SqlConnection conn;
         DataRow drowHist;
         int iHistRowCount = 0;
+        private bool _disposed;
 
         public HDRSHist(string connStringIn)
         {
@@ -23,6 +24,39 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dtblHist = new DataTable();
             dadAdptHist = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dtblHist != null)
+                        dtblHist.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (dadAdptHist != null)
+                        dadAdptHist.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dtblHist = null;
+                command = null;
+                dadAdptHist = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors

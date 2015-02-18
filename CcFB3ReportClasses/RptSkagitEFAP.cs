@@ -5,12 +5,13 @@ using Microsoft.Office.Interop.Word;
 
 namespace ClientcardFB3
 {
-    class RptSkagitEFAP
+    class RptSkagitEFAP : IDisposable
     {
         TrxLogPeriodTotals clsMonthStats;
         VolunteerStats clsVolunteerStats;
         System.Data.DataTable dtFoodReceipts;
         bool error = false;
+        bool _disposed = false;
 
         public bool Error
         {
@@ -25,6 +26,33 @@ namespace ClientcardFB3
             clsMonthStats = clsStatsIn;
             clsVolunteerStats = clsVolStats;
             dtFoodReceipts = dtfoodrcpts;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsMonthStats != null)
+                        clsMonthStats.Dispose();
+                    if (clsVolunteerStats != null)
+                        clsVolunteerStats.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                clsMonthStats = null;
+                clsVolunteerStats = null;
+                _disposed = true;
+            }
         }
 
         public void createReport(string foodBankName, string reportMonth, string reportYear,

@@ -25,7 +25,7 @@ namespace ClientcardFB3
 
         #region Assembly Attribute Accessors
 
-        public string AssemblyTitle
+        public static string AssemblyTitle
         {
             get
             {
@@ -33,7 +33,7 @@ namespace ClientcardFB3
                 if (attributes.Length > 0)
                 {
                     AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-                    if (titleAttribute.Title != "")
+                    if (String.IsNullOrEmpty(titleAttribute.Title) == false)
                     {
                         return titleAttribute.Title;
                     }
@@ -42,7 +42,7 @@ namespace ClientcardFB3
             }
         }
 
-        public string AssemblyVersion
+        public static string AssemblyVersion
         {
             get
             {
@@ -50,7 +50,7 @@ namespace ClientcardFB3
             }
         }
 
-        public string AssemblyDescription
+        public static string AssemblyDescription
         {
             get
             {
@@ -63,7 +63,7 @@ namespace ClientcardFB3
             }
         }
 
-        public string AssemblyProduct
+        public static string AssemblyProduct
         {
             get
             {
@@ -76,7 +76,7 @@ namespace ClientcardFB3
             }
         }
 
-        public string AssemblyCopyright
+        public static string AssemblyCopyright
         {
             get
             {
@@ -89,7 +89,7 @@ namespace ClientcardFB3
             }
         }
 
-        public string AssemblyCompany
+        public static string AssemblyCompany
         {
             get
             {
@@ -101,7 +101,7 @@ namespace ClientcardFB3
                 return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
         }
-        public string AssemblyFileVersion
+        public static string AssemblyFileVersion
         {
             get
             {

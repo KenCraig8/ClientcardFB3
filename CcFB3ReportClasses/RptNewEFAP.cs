@@ -7,10 +7,11 @@ using Microsoft.Office.Interop.Word;
 
 namespace ClientcardFB3
 {
-    class RptNewEFAP
+    class RptNewEFAP : IDisposable
     {
         TrxLogPeriodTotals clsMonthStats;
         bool error = false;
+        bool _disposed = false;
 
         public bool Error
         {
@@ -23,6 +24,30 @@ namespace ClientcardFB3
         public RptNewEFAP(TrxLogPeriodTotals clsStatsIn)
         {
             clsMonthStats = clsStatsIn;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsMonthStats != null)
+                        clsMonthStats.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                clsMonthStats = null;
+                _disposed = true;
+            }
         }
 
         public void createReport(string foodBankName, string month, string county,

@@ -5,12 +5,13 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class HDRouteSheet
+    public class HDRouteSheet : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
         DataTable dtbl;
         SqlCommand command;
+        SqlCommandBuilder commBuilder;
         System.Data.SqlClient.SqlConnection conn;
         DataRow drow;
         int iRowCount = 0;
@@ -18,6 +19,7 @@ namespace ClientcardFB3
         string driverPhone = "";
         HDRSClients clsHDRSClients = new HDRSClients(CCFBGlobal.connectionString);
         bool rsPlusRoute = false;
+        private bool _disposed;
         
         public enum HDRSStatus
         {
@@ -34,6 +36,43 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dtbl = new DataTable();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsHDRSClients != null)
+                        clsHDRSClients.Dispose();
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dtbl != null)
+                        dtbl.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dtbl = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -189,7 +228,7 @@ namespace ClientcardFB3
                 if (fldIndex >= 0)
                 {
                     if (dtbl.Columns[fldIndex].DataType.Name == "DateTime")
-                        if (drow[FieldName].ToString() != "")
+                        if (drow[FieldName].ToString().Length >0)
                         { return CCFBGlobal.ValidDateString(drow[FieldName]); }
                         else
                         { return ""; }
@@ -244,6 +283,7 @@ namespace ClientcardFB3
                 CCFBGlobal.appendErrorToErrorReport("HDRouteID= " + HDRoute.ToString() + "\r\nTrxDate =" + trxDate.ToShortDateString(),
                     ex.GetBaseException().ToString());
             }
+            cmdInsert.Dispose();
             return newRouteID;
         }
         
@@ -284,6 +324,7 @@ namespace ClientcardFB3
                     driverName = clsVol.Name;
                     driverPhone = clsVol.Phone;
                 }
+                clsVol.Dispose();
             }
         }
 
@@ -438,6 +479,7 @@ namespace ClientcardFB3
             {
                 openConnection();
                 int iRows = cmdDelete.ExecuteNonQuery();
+                cmdDelete.Dispose();
                 closeConnection();
                 return (iRows == 1);
             }
@@ -445,6 +487,7 @@ namespace ClientcardFB3
             {
                 CCFBGlobal.appendErrorToErrorReport("Delete Command = " + cmdDelete.CommandText,
                     ex.GetBaseException().ToString());
+                cmdDelete.Dispose();
                 return false;
             }
         }
@@ -472,7 +515,7 @@ namespace ClientcardFB3
                 openConnection();
                 if (dadAdpt.UpdateCommand == null)
                 {
-                    SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                    commBuilder = new SqlCommandBuilder(dadAdpt);
                 }
                 dadAdpt.Update(dtbl);
                 conn.Close();
@@ -492,6 +535,7 @@ namespace ClientcardFB3
                 SqlCommand cmd = new SqlCommand("UPDATE HDRouteSheet SET RouteStatus = " 
                                     + Convert.ToInt32(newStatus).ToString() + " WHERE ID = " + ID.ToString(), conn);
                 cmd.ExecuteNonQuery();
+                cmd.Dispose();
                 closeConnection();
             }
             catch (SqlException ex)

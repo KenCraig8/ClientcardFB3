@@ -125,7 +125,7 @@ namespace ClientcardFB3
 
         private void chkList_CheckedChanged(object sender, EventArgs e)
         {
-            if (tbID.Text != "" && loadingListView == false && loadingData == false)
+            if (tbID.Text.Length >0 && loadingListView == false && loadingData == false)
             {
                 CheckBox chkTest = (CheckBox)sender;
 
@@ -166,7 +166,7 @@ namespace ClientcardFB3
                 chkArray[i].Checked = false;
             }
 
-            if (clsSvcItems.ItemRule == CCFBGlobal.itemRule_MaskArray)
+            if (clsSvcItems.ItemRule == CCFBGlobal.itemRuleMaskArray)
             {
                 grpbxMask.Enabled = true;
                 char[] useForServiceCount = clsSvcItems.Mask.ToCharArray();
@@ -212,7 +212,7 @@ namespace ClientcardFB3
                 lvServiceItems.Items.Add(lvi);
                 Application.DoEvents();
             }
-            if (testId != "")
+            if (testId.Length >0)
                 lvServiceItems.Items[testId].Selected = true;
             else if (lvServiceItems.Items.Count > 0)
             {
@@ -262,7 +262,7 @@ namespace ClientcardFB3
             {
                 clsSvcItems.ItemRule = Convert.ToInt32(cboRules.SelectedValue.ToString());
                 
-                if (clsSvcItems.ItemRule == CCFBGlobal.itemRule_MaskArray)
+                if (clsSvcItems.ItemRule == CCFBGlobal.itemRuleMaskArray)
                     grpbxMask.Enabled = true;
 
                 SaveChangesToDB(false);
@@ -369,7 +369,7 @@ namespace ClientcardFB3
 
         private void tbList_LostFocus(object sender, EventArgs e)
         {
-            if (tbID.Text != "" && loadingListView == false)
+            if (tbID.Text.Length >0 && loadingListView == false)
             {
                 TextBox tbWork = (TextBox)sender;
 
@@ -464,7 +464,7 @@ namespace ClientcardFB3
         {
             foreach (Control cntrl in controlList.OfType<Control>())
             {
-                if (cntrl.Tag != null && cntrl.Tag.ToString() != "")
+                if (cntrl.Tag != null && cntrl.Tag.ToString().Length >0)
                 {
                     switch (cntrl.GetType().Name)
                     {

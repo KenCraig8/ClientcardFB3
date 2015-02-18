@@ -12,7 +12,7 @@ using Microsoft.Win32;
 
 namespace ClientcardFB3
 {
-    class CCFBGlobal
+    public static class CCFBGlobal
     {
         const string constLocalServer = "(Local)\\SQLExpress";
         public const string registryKeyCurrentUser = @"HKEY_CURRENT_USER\Software\CSDG\ClientcardFB3";
@@ -20,9 +20,11 @@ namespace ClientcardFB3
         public const string regsubkeyServer = "SQLServer";
         public const string regsubkeySavePath = "SaveBackupPath";
         public const string regsubkeyServerBackupPath = "ServerBackupPath";
+        public const string regsubkeySQLQueryPath = "SQLQueryPath";
+        public const string regsubkeySQLQueryResultsPath = "SQLQueryResultsPath";
         public const string regsubkeyTemplatePath = "TemplatePath";
         public const string regsubkeyUser = "CCFBUser";
-       
+
         public static string DefaultDatabase = "ClientcardFB3";
         public const string OURNULLDATE = "01/01/1900";
         public const string OUROTHERNULLDATE = "1/1/1900";
@@ -39,18 +41,18 @@ namespace ClientcardFB3
         public static string pathTemplates = "~";
         public static string pathFamilyCards = "~";
 
-        public const int itemRule_Always = 0;
-        public const int itemRule_OncePerMonth = 1;
-        public const int itemRule_SecondService = 2;
-        public const int itemRule_ManualSelection = 3;
-        public const int itemRule_SpecialService = 4;
-        public const int itemRule_OncePerWeek = 5;
-        public const int itemRule_HomelessTransient = 6;
-        public const int itemRule_MaskArray = 7;
-        public const int itemRule_2Months = 8;
-        public const int itemRule_3Months = 9;
-        public const int itemRule_4Months = 10;
-        
+        public const int itemRuleAlways = 0;
+        public const int itemRuleOncePerMonth = 1;
+        public const int itemRuleSecondService = 2;
+        public const int itemRuleManualSelection = 3;
+        public const int itemRuleSpecialService = 4;
+        public const int itemRuleOncePerWeek = 5;
+        public const int itemRuleHomelessTransient = 6;
+        public const int itemRuleMaskArray = 7;
+        public const int itemRule2Months = 8;
+        public const int itemRule3Months = 9;
+        public const int itemRule4Months = 10;
+
 
         public const int svcCat_NoSelection = 0;
         public const int svcCat_Standard = 1;
@@ -73,7 +75,7 @@ namespace ClientcardFB3
         public const int statusTrxLog_NoShow = 3;
 
         public static DateTime FBNullDateValue = Convert.ToDateTime(OURNULLDATE);
-        public static string sq1ServerName ="";
+        public static string sq1ServerName = "";
         public static string serverName = "";
         public static string connectionString = "";
         public static int connectionTimeout = 30;
@@ -98,7 +100,7 @@ namespace ClientcardFB3
         public static int currentUser_PermissionLevel = 1;
         public static string currentUser_Name = "";
         public static string dbUserName = "CCFB";
-        public static string fb3TemplatesPath= "";
+        public static string fb3TemplatesPath = "";
         public static bool HaveCommodities = false;
         public static bool HaveCSFP = false;
         public static bool ServiceItemsChanged = true;
@@ -153,7 +155,7 @@ namespace ClientcardFB3
         public static string parmTbl_VoucherType = "parm_VoucherType";
         public static string parmTbl_YesNoUnk = "parm_YesNoUnk";
 
-        public enum ServiceMethodCodes
+        public enum ServiceMethodsCode
         //This should match the parm_ServiceMethod table
         {
             Pickup = 0,
@@ -213,10 +215,6 @@ namespace ClientcardFB3
             return network.IsAvailable;
         }
 
-        ///Creating the extern function... 
-        [DllImport("wininet.dll")]
-        private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
-
         /// <summary>
         /// Creating a function that uses the API function... 
         /// </summary>
@@ -224,7 +222,7 @@ namespace ClientcardFB3
         public static bool IsConnectedToInternet()
         {
             int Desc;
-            return InternetGetConnectedState(out Desc, 0);
+            return NativeMethods.InternetGetConnectedState(out Desc, 0);
         }
 
         /// <summary>
@@ -279,10 +277,10 @@ namespace ClientcardFB3
             string filePath = folderPath + "\\" + fileName;
             string whiteSpace = " ";
             using (StreamWriter sw = File.AppendText(filePath))
-            {              
+            {
                 sw.Write(whiteSpace.PadLeft(3, ' '));
                 sw.WriteLine(sq1ServerName);
-            }  
+            }
         }
 
         /// <summary>
@@ -354,7 +352,7 @@ namespace ClientcardFB3
                 e.SuppressKeyPress = true;
         }
 
-        public static void dtPopulateCombo(ComboBox cbo,string sqlCmdText, string displayMember, string valueMember, string noValuesText, SqlConnection sqlConn)
+        public static void dtPopulateCombo(ComboBox cbo, string sqlCmdText, string displayMember, string valueMember, string noValuesText, SqlConnection sqlConn)
         {
             SqlCommand sqlCmd = new SqlCommand(sqlCmdText, sqlConn);
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -375,8 +373,11 @@ namespace ClientcardFB3
                 cbo.DataSource = null;
                 cbo.Items.Add(noValuesText);
             }
+            sqlCmd.Dispose();
+            adapter.Dispose();
+            table.Dispose();
         }
-        
+
         public static void dtPopulateCombo(DataGridViewComboBoxColumn cbo, string sqlCmdText, string displayMember, string valueMember, string noValuesText, SqlConnection sqlConn)
         {
             SqlCommand sqlCmd = new SqlCommand(sqlCmdText, sqlConn);
@@ -398,6 +399,9 @@ namespace ClientcardFB3
                 cbo.DataSource = null;
                 cbo.Items.Add(noValuesText);
             }
+            sqlCmd.Dispose();
+            adapter.Dispose();
+            table.Dispose();
         }
 
         /// <summary>
@@ -434,7 +438,7 @@ namespace ClientcardFB3
                         st1 = "\n";
                         for (int col = 0; col < lvToExport.Columns.Count; col++)
                         {
-                            if (lvToExport.Items[row].SubItems[col].Text.ToString() == "")
+                            if (String.IsNullOrEmpty(lvToExport.Items[row].SubItems[col].Text.ToString()) == true)
                             {
                                 st1 += "NULL" + lvToExport.Items[row].SubItems[col].Text.ToString();
                             }
@@ -447,13 +451,13 @@ namespace ClientcardFB3
                         sw.Write(st1);
                         //sw.Flush();
                     }
-                    sw.Close();
+                    sw.Dispose();
                     FileInfo fil = new FileInfo(fullname);
                     if (fil.Exists == true)
                     {
-                        if (MessageBox.Show("Grid has been exported to file" + Environment.NewLine + fil.FullName + Environment.NewLine + "Do you want to open file now?", "Export To Excel",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                        if (MessageBox.Show("Grid has been exported to file" + Environment.NewLine + fil.FullName + Environment.NewLine + "Do you want to open file now?", "Export To Excel", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                           CCFBGlobal.openDocumentOutsideCCFB(fil.FullName); 
+                            CCFBGlobal.openDocumentOutsideCCFB(fil.FullName);
                         }
                         return true;
                     }
@@ -463,7 +467,7 @@ namespace ClientcardFB3
                 {
                     FileInfo file = new FileInfo(pathExports + saveName + strExtension);
                     appendErrorToErrorReport(lvToExport.ToString(), ex.GetBaseException().ToString());
-                    MessageBox.Show("ERROR: Could not export the grid.", "Error", 
+                    MessageBox.Show("ERROR: Could not export the grid.", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
@@ -523,7 +527,7 @@ namespace ClientcardFB3
                         }
                         sw.Write(st1);
                     }
-                    sw.Close();
+                    sw.Dispose();
                     FileInfo fil = new FileInfo(fullname);
                     if (fil.Exists == true)
                     {
@@ -611,10 +615,10 @@ namespace ClientcardFB3
         {
             if (value == null)
                 return 0;
-            else if (value.ToString() == "")
+            else if (String.IsNullOrEmpty(value.ToString()) == true)
                 return 0;
 
-                return Convert.ToInt32(value);
+            return Convert.ToInt32(value);
         }
 
         /// <summary>
@@ -625,7 +629,7 @@ namespace ClientcardFB3
         /// <returns>The bool value</returns>
         public static bool NullToFalse(object value)
         {
-            if (value == null || Convert.ToString(value) == "")
+            if (value == null || String.IsNullOrEmpty(Convert.ToString(value)) == true)
                 return false;
             else
                 if (value.ToString() == "0" || value.ToString() == "False")
@@ -798,7 +802,7 @@ namespace ClientcardFB3
                 return phonenbr;
             }
 
-            string tmp = phonenbr.Replace(" ","").Replace("(","").Replace(")","").Replace("-","");
+            string tmp = phonenbr.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
             if (tmp.Length > 0)
             {
                 double number1 = Convert.ToDouble(tmp);
@@ -822,6 +826,7 @@ namespace ClientcardFB3
                 proc.EnableRaisingEvents = false;
                 proc.StartInfo.FileName = filePath;
                 proc.Start();
+                proc.Dispose();
             }
         }
 
@@ -841,10 +846,10 @@ namespace ClientcardFB3
         /// </summary>
         /// <param name="objValue">The value to check</param>
         /// <returns>A Valid ShortDateString</returns>
-        public static string  ValidDateString(object objValue)
+        public static string ValidDateString(object objValue)
         {
-            try 
-            { 
+            try
+            {
                 DateTime dt = Convert.ToDateTime(objValue);
                 if (dt > FBNullDateValue)
                     return dt.ToShortDateString();
@@ -857,41 +862,41 @@ namespace ClientcardFB3
         public static void LoadTypes()
         {
             typeCodeLists = new System.Collections.ArrayList();
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_Client,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_Donation,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_Donor,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_EducationLevel,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_Employment,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_FoodClass,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_IdVerify,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_SvcCategory,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_SvcRules,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_Language,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_MilitaryDischarge,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_MilitaryService,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_Phone,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_VolGroups,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_VolType,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_CSFPRoutes,connectionString,""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_Client, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_Donation, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_Donor, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_EducationLevel, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_Employment, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_FoodClass, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_IdVerify, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_SvcCategory, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_SvcRules, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_Language, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_MilitaryDischarge, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_MilitaryService, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_Phone, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_VolGroups, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_VolType, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_CSFPRoutes, connectionString, ""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_CSFPStatus, connectionString, ""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_IncomeProcessID,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_FBProgram,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_VoucherType,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_FBJobs,connectionString,""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_IncomeProcessID, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_FBProgram, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_VoucherType, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_FBJobs, connectionString, ""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_SchSupplyRegistration, connectionString, ""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_SchSupplySchool, connectionString, ""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_ServiceGroup,connectionString,""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_ServiceGroup, connectionString, ""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_ServiceMethod, connectionString, ""));
             //typeCodeLists.Add(new parmTypeCodes(parmTbl_HomeDeliveryRoutes,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_Gender,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_TrueFalse,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_YesNoUnk,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_HDPrograms,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_HUDCategory,connectionString,""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_Gender, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_TrueFalse, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_YesNoUnk, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_HDPrograms, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_HUDCategory, connectionString, ""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_Transportation, connectionString, ""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_Race,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_BackPackSchool,connectionString,""));
-            typeCodeLists.Add(new parmTypeCodes(parmTbl_BackPackSize,connectionString,""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_Race, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_BackPackSchool, connectionString, ""));
+            typeCodeLists.Add(new parmTypeCodes(parmTbl_BackPackSize, connectionString, ""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_Relationship, connectionString, ""));
             typeCodeLists.Add(new parmTypeCodes(parmTbl_AddressID, connectionString, ""));
         }
@@ -924,7 +929,7 @@ namespace ClientcardFB3
             CCFBGlobal.homeDrive = di.Root.ToString();
             //di.GetDirectories("*.*");
             DirectoryInfo[] directories = di.GetDirectories("*", SearchOption.TopDirectoryOnly);
-            foreach (System.IO.DirectoryInfo  item in directories)
+            foreach (System.IO.DirectoryInfo item in directories)
             {
                 switch (item.Name.ToLower())
                 {
@@ -959,7 +964,7 @@ namespace ClientcardFB3
             pathReports = setDefaultPath(pathReports, pathExe + "Reports");
             pathScreenshots = setDefaultPath(pathScreenshots, pathExe + "Screenshots");
             pathTemplates = setDefaultPath(pathTemplates, pathExe + "Templates");
-            pathFamilyCards = setDefaultPath(pathFamilyCards,pathExe + "FamilyCards");
+            pathFamilyCards = setDefaultPath(pathFamilyCards, pathExe + "FamilyCards");
         }
 
         private static string setDefaultPath(string testpath, string pathname)
@@ -1111,13 +1116,13 @@ namespace ClientcardFB3
                 FiscalMonth = TestDate.Month;
             }
             else if (TestDate.Month >= MonthStart)
-            { 
+            {
                 FiscalYear = CurrentYear + 1;
                 FiscalMonth = TestDate.Month - MonthStart + 1;
             }
             else
-            { 
-                FiscalYear = CurrentYear; 
+            {
+                FiscalYear = CurrentYear;
                 FiscalMonth = TestDate.Month + (12 - MonthStart) + 1;
             }
             return FiscalYear.ToString() + CCFBGlobal.formatNumberWithLeadingZero(FiscalMonth);
@@ -1180,13 +1185,13 @@ namespace ClientcardFB3
             return nbrFiles;
         }
 
-        public static void DeleteFile(string filename)
+        public static void DeleteFile(string fileName)
         {
             try
             {
-                if (File.Exists(filename) == true)
+                if (File.Exists(fileName) == true)
                 {
-                    File.Delete(filename);
+                    File.Delete(fileName);
                 }
             }
             catch (Exception)
@@ -1226,10 +1231,12 @@ namespace ClientcardFB3
                 }
                 catch (Exception)
                 {
-                    
+
                     throw;
                 }
-                sqlConn.Close();
+
+                sqlCmd.Dispose();
+                sqlConn.Dispose();
             }
             return iResult;
         }
@@ -1242,7 +1249,8 @@ namespace ClientcardFB3
                 SqlCommand sqlCmd = new SqlCommand(sqlQuery, sqlConn);
                 sqlConn.Open();
                 object iResult = sqlCmd.ExecuteScalar();
-                sqlConn.Close();
+                sqlCmd.Dispose();
+                sqlConn.Dispose();
                 return iResult;
             }
             catch (SqlException ex)
@@ -1255,13 +1263,13 @@ namespace ClientcardFB3
 
         public static void setConnectionString(string server)
         {
-            if (server != "" && server != null )
+            if (server.Length > 0 && server != null)
             {
                 sq1ServerName = server;
                 string[] tmp = server.Split('\\');
                 for (int i = 0; i < tmp.Length; i++)
                 {
-                    if (tmp[i] != "")
+                    if (tmp[i].Length > 0)
                     {
                         serverName = tmp[i];
                         Registry.SetValue(@"HKEY_CURRENT_USER\Software\CSDG\ClientcardFB3", "ServerName", serverName);
@@ -1280,10 +1288,10 @@ namespace ClientcardFB3
             else
                 return "inactive";
         }
-        
+
         public static void AppendTextWithComma(ref string textList, string newValue)
         {
-            if (textList != "")
+            if (textList.Length > 0)
                 textList += ",";
             textList += newValue;
         }
@@ -1297,13 +1305,14 @@ namespace ClientcardFB3
                 sqlConn.Open();
                 SqlCommand sqlCMD = new SqlCommand(sqlText, sqlConn);
                 nbrRows = sqlCMD.ExecuteNonQuery();
+                sqlCMD.Dispose();
             }
-            catch (SqlException ex) 
+            catch (SqlException ex)
             {
                 appendErrorToErrorReport("CCFBGlobal.executeQuery = " + sqlText,
                     ex.GetBaseException().ToString());
             }
-            sqlConn.Close();
+            sqlConn.Dispose();
             return nbrRows;
         }
 
@@ -1313,7 +1322,7 @@ namespace ClientcardFB3
             return tmp[0] + "/01/" + tmp[2];
         }
 
-        public static DateTime FirstDayOfMonth(DateTime dateWork)
+        public static DateTime firstDayOfMonth(DateTime dateWork)
         {
             return new DateTime(dateWork.Year, dateWork.Month, 1);
         }
@@ -1324,7 +1333,7 @@ namespace ClientcardFB3
             return new DateTime(Convert.ToInt32(tmp[2]), Convert.ToInt32(tmp[0]), 1).AddMonths(1).AddDays(-1).ToShortDateString();
         }
 
-        public static DateTime LastDayOfMonth(DateTime dateWork)
+        public static DateTime lastDayOfMonth(DateTime dateWork)
         {
             return new DateTime(dateWork.Year, dateWork.Month, 1).AddMonths(1).AddDays(-1);
         }
@@ -1333,12 +1342,47 @@ namespace ClientcardFB3
         {
             return text.Replace("'", "''");
         }
-        //default external path for database backup 
+        #region Get Registry File System Path Names
+        //default External path for database backup 
         public static string getRegExternalBackupPath()
         {
             return (string)Registry.GetValue(registryKeyCurrentUser, regsubkeySavePath, "");
         }
+        //default internal path for database backup 
+        public static string getRegServerBackupPath()
+        {
+            return (string)Registry.GetValue(registryKeyCurrentUser, regsubkeyServerBackupPath, "");
+        }
 
+        public static string getRegSQLQueryPath()
+        {
+            return (string)Registry.GetValue(registryKeyCurrentUser, regsubkeySQLQueryPath, @"C:\ClientcardFB3\CustomQuery\Queries\");
+        }
+
+        public static string getRegSQLQueryResultsPath()
+        {
+            return (string)Registry.GetValue(registryKeyCurrentUser, regsubkeySQLQueryResultsPath, @"C:\ClientcardFB3\CustomQuery\Results\");
+        }
+
+        public static string getRegTemplatePath()
+        {
+            if (String.IsNullOrEmpty(fb3TemplatesPath) == true)
+            {
+                fb3TemplatesPath = (string)Registry.GetValue(registryKeyCurrentUser, regsubkeyTemplatePath, "");
+                if (String.IsNullOrEmpty(fb3TemplatesPath) == true)
+                {
+                    fb3TemplatesPath = pathTemplates;
+                }
+            }
+            return fb3TemplatesPath;
+        }
+
+        public static string getRegUpdatePath()
+        {
+            string tmp = (string)Registry.GetValue(registryKeyCurrentUser, "UpdatePath", "");
+            return tmp;
+        }
+        #endregion
         public static string getRegSQLServer()
         {
             return (string)Registry.GetValue(registryKeyCurrentUser, regsubkeyServer, constLocalServer);
@@ -1358,7 +1402,7 @@ namespace ClientcardFB3
         {
             string retText = "";
             retText = (string)Registry.GetValue(ODBC_INI_REG_PATH, "Driver", System.IO.Path.Combine(Environment.SystemDirectory, "SQLSRV32.dll"));
-            if (retText == "" || retText == null)
+            if (String.IsNullOrEmpty(retText) == true || retText == null)
                 retText = System.IO.Path.Combine(Environment.SystemDirectory, "SQLSRV32.dll");
             return retText;
         }
@@ -1367,36 +1411,22 @@ namespace ClientcardFB3
         {
             return (string)Registry.GetValue(ODBC_INI_REG_PATH, "Server", "");
         }
-        //default internal path for database backup 
-        public static string getRegServerBackupPath()
-        {
-            return (string)Registry.GetValue(registryKeyCurrentUser, regsubkeyServerBackupPath, "");
-        }
-
-        public static string getRegTemplatePath()
-        {
-            if (fb3TemplatesPath == "")
-            {
-                fb3TemplatesPath = (string)Registry.GetValue(registryKeyCurrentUser, regsubkeyTemplatePath, "");
-                if (fb3TemplatesPath == "")
-                {
-                    fb3TemplatesPath =pathTemplates;
-                }
-            }
-            return fb3TemplatesPath;
-        }
-
-        public static string getRegUpdatePath()
-        {
-            string tmp = (string)Registry.GetValue(registryKeyCurrentUser, "UpdatePath", "");
-            return tmp;
-        }
-
+        #region Save Registry File System Path Names
         public static void saveRegServerBackupPath(string serverbackuppath)
         {
             Registry.SetValue(registryKeyCurrentUser, regsubkeyServerBackupPath, serverbackuppath);
         }
 
+        public static void saveRegSQLQueryPath(string pathSQLQuery)
+        {
+            Registry.SetValue(registryKeyCurrentUser, regsubkeySQLQueryPath, pathSQLQuery);
+        }
+
+        public static void saveRegUpdatePath(string updatepath)
+        {
+            Registry.SetValue(registryKeyCurrentUser, "UpdatePath", @"\\" + serverName + updatepath);
+        }
+        #endregion
         public static void saveRegSQLServer()
         {
             Registry.SetValue(registryKeyCurrentUser, regsubkeyServer, sq1ServerName);
@@ -1407,14 +1437,9 @@ namespace ClientcardFB3
             Registry.SetValue(registryKeyCurrentUser, regsubkeyUser, currentUser_Name);
         }
 
-        public static void saveRegUpdatePath(string updatepath)
-        {
-            Registry.SetValue(registryKeyCurrentUser, "UpdatePath", @"\\" + serverName + updatepath);
-        }
-
         public static int getRegValue(string valueName, object dfltValue)
         {
-            return Convert.ToInt32(Registry.GetValue(registryKeyCurrentUser,valueName,dfltValue));
+            return Convert.ToInt32(Registry.GetValue(registryKeyCurrentUser, valueName, dfltValue));
         }
 
         public static void saveRegValue(string valueName, object dfltValue)
@@ -1454,6 +1479,11 @@ namespace ClientcardFB3
             return tmp;
         }
 
+        public static Boolean UserIsIntake()
+        {
+            return CCFBGlobal.currentUser_PermissionLevel == CCFBGlobal.permissions_Intake;
+        }
+
         public static Boolean UserIsIntakeAdmin()
         {
             return CCFBGlobal.currentUser_PermissionLevel == CCFBGlobal.permissions_IntakeAdmin;
@@ -1466,13 +1496,16 @@ namespace ClientcardFB3
         {
             MemoryStream ms = new MemoryStream();
             imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-            return ms.ToArray();
+            byte[] thestream = ms.ToArray();
+            ms.Dispose();
+            return thestream;
         }
 
         public static Image byteArrayToImage(byte[] byteArrayIn)
         {
             MemoryStream ms = new MemoryStream(byteArrayIn);
             Image returnImage = Image.FromStream(ms);
+            ms.Dispose();
             return returnImage;
         }
 
@@ -1510,7 +1543,7 @@ namespace ClientcardFB3
         public static string ExcelColumnLetter(int iCol)
         {
             int x = (iCol / 26);
-            int y = (iCol % 26 );
+            int y = (iCol % 26);
             string xlsCode = "";
             if (x > 0)
             {
@@ -1522,5 +1555,19 @@ namespace ClientcardFB3
             }
             return xlsCode;
         }
+
+
+        public static string YesNo(bool testVal)
+        {
+            if (testVal == true)
+            { return "Yes"; }
+            return "No";
+        }
     }
+}
+internal static class NativeMethods
+{
+    ///Creating the extern function... 
+    [DllImport("wininet.dll")]
+    internal extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
 }

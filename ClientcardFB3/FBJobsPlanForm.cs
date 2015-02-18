@@ -66,7 +66,7 @@ namespace ClientcardFB3
                     case "shiftend":
                         {
                             string testval = dgvr.Cells[col].Value.ToString().Replace(".",":").Trim();
-                            if (testval != "")
+                            if (testval.Length >0)
                             {
                                 dgvr.Cells[col].ErrorText = "";
                                 verifyTimeHasColon(ref testval);

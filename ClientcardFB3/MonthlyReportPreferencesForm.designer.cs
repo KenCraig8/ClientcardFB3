@@ -15,6 +15,14 @@
         {
             if (disposing && (components != null))
             {
+                if (clsEmailAddr != null)
+                {
+                    clsEmailAddr.Dispose();
+                }
+                if (clsMonthlyReports != null)
+                {
+                    clsMonthlyReports.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

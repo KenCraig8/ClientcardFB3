@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class UserFields
+    public class UserFields : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
@@ -15,6 +15,7 @@ namespace ClientcardFB3
         bool isValid = false;
         int iRowCount = 0;
         DataRow drow;
+        private bool _disposed;
 
         public UserFields(string connStringIn)
         {
@@ -23,6 +24,39 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -323,6 +357,7 @@ namespace ClientcardFB3
             SqlCommand commDelete = new SqlCommand(" DELETE FROM " + tbName + " WHERE TableName=" + tableName, conn);
             openConnection();
             commDelete.ExecuteNonQuery();
+            commDelete.Dispose();
             closeConnection();
         }
 

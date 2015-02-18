@@ -330,7 +330,7 @@ namespace ClientcardFB3
                 dgvCSFP["Address", i].Value = drows[i]["Address"];
                 dgvCSFP["AptNbr", i].Value = drows[i]["AptNbr"];
                 dgvCSFP["CSFPExpiration", i].Value = drows[i]["CSFPExpiration"];
-                if (dgvCSFP["CSFPExpiration", i].Value.ToString() != "" &&
+                if (dgvCSFP["CSFPExpiration", i].Value.ToString().Length >0 &&
                     Convert.ToDateTime(dgvCSFP["CSFPExpiration", i].Value) < toCheck)
                 {
                     dgvCSFP["CSFPExpiration", i].Style.BackColor = Color.Yellow;
@@ -393,7 +393,7 @@ namespace ClientcardFB3
 
         private void tbFindName_TextChanged(object sender, EventArgs e)
         {
-            if (tbFindName.Text.Trim() == "")
+            if (String.IsNullOrEmpty(tbFindName.Text.Trim()) == true)
             { dgvCSFP.CurrentCell = dgvCSFP[0, 0]; }
             else
             {
@@ -498,7 +498,7 @@ namespace ClientcardFB3
                 DateTime dtTmp = baseDate;
                 foreach (DataGridViewRow  dgvRow in dgvCSFP.SelectedRows)
                 {
-                    if (dgvRow.Cells["CSFPExpiration"].Value.ToString() != "")
+                    if (dgvRow.Cells["CSFPExpiration"].Value.ToString().Length >0)
                     {
                         try
                         {
@@ -560,7 +560,7 @@ namespace ClientcardFB3
 
                         tmpdate = CCFBGlobal.NullToBlank(dgvCSFP.SelectedRows[0].Cells["CSFPExpiration"].Value);
 
-                        if (tmpdate != "")
+                        if (tmpdate.Length >0)
                         {
                             dtpExpDate.Value = DateTime.Parse(tmpdate);
                         }
@@ -584,7 +584,7 @@ namespace ClientcardFB3
                         dtpSvcDate.Value = svcDate;
                         tmpdate = CCFBGlobal.NullToBlank(dgvCSFP.SelectedRows[0].Cells["clmDateServed"].Value);
 
-                        if (tmpdate != "")
+                        if (tmpdate.Length >0)
                         {
                             dtpSvcDate.Value = DateTime.Parse(tmpdate);
                         }
@@ -606,7 +606,7 @@ namespace ClientcardFB3
                 checkState = "1";
             }
             string updateIDs = getHhMUpdateIds();
-            if (updateIDs != "")
+            if (updateIDs.Length >0)
             {
                 int nbrRows = CCFBGlobal.executeQuery("Update HouseholdMembers Set CSFPExpiration =' "
                             + dtpExpDate.Value.ToString() + "', CSFP = " + checkState
@@ -622,15 +622,15 @@ namespace ClientcardFB3
         {
             FindClientForm frmFindClient = new FindClientForm();
             frmFindClient.ShowDialog();
-
-            if (frmFindClient.Canceled == false)
+            bool findCanceled = frmFindClient.Canceled;
+            hhID = frmFindClient.CurrentHHId;
+            frmFindClient.Dispose();
+            if (findCanceled == false)
             {
-                hhID = frmFindClient.CurrentHHId;
-                frmFindClient.Close();
-
                 NewCSFPSelectionForm frmNewCSFP = new NewCSFPSelectionForm(hhID);
                 frmNewCSFP.ShowDialog();
                 refreshdgvCSFP();
+                frmNewCSFP.Dispose();
             }
         }
 
@@ -667,14 +667,14 @@ namespace ClientcardFB3
             string updateIDs = "";
             for (int i = 0; i < dgvCSFP.SelectedRows.Count; i++)
             {
-                if (dgvCSFP.SelectedRows[i].Cells["clmDateServed"].Value.ToString() != "")
+                if (dgvCSFP.SelectedRows[i].Cells["clmDateServed"].Value.ToString().Length >0)
                 {
                     if (MessageBox.Show("CSFP Client " + dgvCSFP.SelectedRows[i].Cells["clmName"].Value.ToString()
                          + " Already Has A Service For This Period. Would You Like To Update The Service?",
                          "Service Already Exists For This Period", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                         == System.Windows.Forms.DialogResult.Yes)
                     {
-                        if (updateIDs != "")
+                        if (updateIDs.Length >0)
                             updateIDs += ", ";
 
                         updateIDs += dgvCSFP.SelectedRows[i].Cells["clmLogID"].Value.ToString();
@@ -682,7 +682,7 @@ namespace ClientcardFB3
                 }
                 else
                 {
-                    if (insertIDs != "")
+                    if (insertIDs.Length >0)
                         insertIDs += ", ";
 
                     insertIDs += dgvCSFP.SelectedRows[i].Cells["clmHHMemID"].Value.ToString();
@@ -691,10 +691,10 @@ namespace ClientcardFB3
             }
 
             openConnection();
-            if (insertIDs != "")
+            if (insertIDs.Length >0)
                 clsCSFPLog.insertNewService(insertIDs, dtpSvcDate.Value, tbLbsCSFP.Text);
 
-            if (updateIDs != "")
+            if (updateIDs.Length >0)
             {
                 updateExistingService(updateIDs);
             }
@@ -738,7 +738,7 @@ namespace ClientcardFB3
 
         private void tbLbsCSFP_Leave(object sender, EventArgs e)
         {
-            if (tbLbsCSFP.Text.Trim() == "")
+            if (String.IsNullOrEmpty(tbLbsCSFP.Text.Trim()) == true)
                 tbLbsCSFP.Text = "0";
         }
 
@@ -774,6 +774,7 @@ namespace ClientcardFB3
         {
             WebPageForm frmTemp = new WebPageForm("Federal CSFP Fact Sheet", "http://www.fns.usda.gov/fdd/programs/csfp/pfs-csfp.pdf");
             frmTemp.ShowDialog();
+            frmTemp.Dispose();
         }
 
         private void menuFNSWebSite_Click(object sender, EventArgs e)
@@ -781,6 +782,7 @@ namespace ClientcardFB3
             WebPageForm frmTemp = new WebPageForm("Food and Nutrition Web Site", 
                 "http://www.fns.usda.gov/fdd/programs/csfp/");
             frmTemp.ShowDialog();
+            frmTemp.Dispose();
         }
 
         private void menuCSFPState_Click(object sender, EventArgs e)
@@ -788,6 +790,7 @@ namespace ClientcardFB3
             WebPageForm frmTemp = new WebPageForm("State CSFP Information",
                 "http://agr.wa.gov/FoodProg/CSFP.aspx");
             frmTemp.ShowDialog();
+            frmTemp.Dispose();
         }
 
         private void DeleteService_Click(object sender, EventArgs e)
@@ -796,16 +799,16 @@ namespace ClientcardFB3
 
             for (int i = 0; i < dgvCSFP.SelectedRows.Count; i++)
             {
-                if (dgvCSFP.SelectedRows[i].Cells["clmDateServed"].Value.ToString() != "")
+                if (dgvCSFP.SelectedRows[i].Cells["clmDateServed"].Value.ToString().Length >0)
                 {
-                    if (deleteIDs != "")
+                    if (deleteIDs.Length >0)
                         deleteIDs += ", ";
 
                     deleteIDs += dgvCSFP.SelectedRows[i].Cells["clmLogID"].Value.ToString();
                 }
             }
 
-            if (deleteIDs != "")
+            if (deleteIDs.Length >0)
             {
                 openConnection();
                 deleteCSFPServices(deleteIDs);
@@ -883,7 +886,7 @@ namespace ClientcardFB3
                 {
                     if (cboSort[i].SelectedIndex > 0)
                     {
-                        if (whereClause == "")
+                        if (String.IsNullOrEmpty(whereClause) == true)
                         {
                             whereClause = "WHERE ID NOT IN(" + cboSort[i].SelectedValue.ToString();
                         }
@@ -893,7 +896,7 @@ namespace ClientcardFB3
                         }
                     }
                 }
-                if (whereClause != "")
+                if (whereClause.Length >0)
                     whereClause += ")";
             }
             object sortList = new parmTypeCodes(CCFBGlobal.parmTbl_CSFPSortOrder, CCFBGlobal.connectionString, whereClause);
@@ -933,7 +936,7 @@ namespace ClientcardFB3
             {
                 if (cbo.SelectedIndex > 0)
                 {
-                    if (sql == "")
+                    if (String.IsNullOrEmpty(sql) == true)
                     {
                         sql = " ORDER BY ";
                     }
@@ -959,7 +962,7 @@ namespace ClientcardFB3
 	        {
 		        if (chk.Checked == true)
                 {
-                    if (sList == "")
+                    if (String.IsNullOrEmpty(sList)  == true)
                     {
                         sList = chk.Tag.ToString();
                     }
@@ -969,7 +972,7 @@ namespace ClientcardFB3
                     }
                 }
 	        }
-            if (sList == "")
+            if (String.IsNullOrEmpty(sList) == true)
             {
                 sList = "1";
             }
@@ -1004,7 +1007,7 @@ namespace ClientcardFB3
             ToolStripButton btn = (ToolStripButton)sender;
             string newStatus = btn.Tag.ToString();
             string updateIDs = getHhMUpdateIds();
-            if (updateIDs != "")
+            if (updateIDs.Length >0)
             {
                 int nbrRows = CCFBGlobal.executeQuery("Update Householdmembers Set CSFPStatus=" + newStatus
                             + ", Modified='" + DateTime.Now.ToString() + "', "
@@ -1025,7 +1028,7 @@ namespace ClientcardFB3
             string updateIDs = "";
             for (int i = 0; i < dgvCSFP.SelectedRows.Count; i++)
             {
-                if (updateIDs != "")
+                if (updateIDs.Length >0)
                 {
                     updateIDs += ", ";
                 }

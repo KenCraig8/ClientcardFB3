@@ -15,6 +15,10 @@
         {
             if (disposing && (components != null))
             {
+                if (clsBackpackLog != null)
+                {
+                    clsBackpackLog.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

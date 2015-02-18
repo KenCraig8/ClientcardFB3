@@ -5,12 +5,15 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Reflection;
+using System.Resources;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
+[assembly: CLSCompliant(true)]
+//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
 namespace ClientcardFB3
 {
-    public partial class LoginForm : Form, ILoginForm
+    public partial class LoginForm : Form
     {
         bool needtoUpdate = false;
         bool cancelLogIn = false;
@@ -68,7 +71,7 @@ namespace ClientcardFB3
                 SetVisibility(false);
                 CCFBGlobal.setConnectionString(cboServers.SelectedItem.ToString());
             }
-            else if (cboServers.Text != null && cboServers.Text != "")
+            else if (cboServers.Text != null && cboServers.Text.Length >0)
             {
                 SetVisibility(false);
                 CCFBGlobal.setConnectionString(cboServers.Text);
@@ -107,8 +110,8 @@ namespace ClientcardFB3
             try
             {
                 System.Diagnostics.Process p = new System.Diagnostics.Process();
-                p.StartInfo.FileName = "OSQL.exe";
-                p.StartInfo.Arguments = "-L";
+                p.StartInfo.FileName = "SQLCmd.exe";
+                p.StartInfo.Arguments = "-Lc";
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.CreateNoWindow = true;
@@ -120,6 +123,7 @@ namespace ClientcardFB3
                     data = outputStream.ReadToEnd();
                     //p.WaitForExit();
                 }
+                p.Dispose();
             }
             catch (Exception ex)
             {
@@ -128,7 +132,8 @@ namespace ClientcardFB3
 
             }
             outputStream.Close();
-            if (data == "")
+            
+            if (String.IsNullOrEmpty(data) == true)
                 MessageBox.Show("Failed To Get List Of Servers");
             return data;
         }
@@ -151,7 +156,7 @@ namespace ClientcardFB3
             SetVisibility(false);
             CCFBGlobal.sq1ServerName = "";
             string serverlist = getListOfServers();
-            if (serverlist != "")
+            if (serverlist.Length >0)
             {
                 processServerList(serverlist);
                 cboServers.Visible = true;
@@ -193,7 +198,7 @@ namespace ClientcardFB3
 
         private void logIn(string userName, string pwd)
         {
-            if (userName != "")
+            if (userName.Length >0)
             {
                 this.Enabled = false;
                 btnCancel.Tag = "login";
@@ -232,8 +237,8 @@ namespace ClientcardFB3
                             #if CCFB
                                 CCFBPrefs.Init();
                                 formMain = new MainForm(this);
-                                formMain.InitialiseForm();
                             #endif
+
                                 formMain.ShowDialog();
                                 resetForm();
                                 break;
@@ -288,7 +293,7 @@ namespace ClientcardFB3
             string baseTestName = "";
             string newName = "";
             bool inList = false;
-            if (ServerNameFromRegistry == null || ServerNameFromRegistry == "")
+            if (ServerNameFromRegistry == null || String.IsNullOrEmpty(ServerNameFromRegistry) == true)
             {
                 baseTestName = "(LOCAL)\\SQLEXPRESS";
             }
@@ -298,11 +303,11 @@ namespace ClientcardFB3
             }
             cboServers.Items.Clear();
             string[] splitData = data.Split(("\r\n").ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
-            string[] sqlservernames = new string[splitData.Length-1];
+            string[] sqlservernames = new string[splitData.Length];
             int nbrnames = 0;
             for (int i = 0; i < splitData.Length; i++)
             {
-                if (splitData[i] != "" && splitData[i] != "Servers:")
+                if (splitData[i].Length >0 && splitData[i] != "Servers:")
                 {
                     newName = splitData[i].ToUpper().Trim();
                     sqlservernames[nbrnames] = newName;
@@ -316,6 +321,7 @@ namespace ClientcardFB3
                         }
                         catch (Exception ex)
                         {
+                            CCFBGlobal.appendErrorToErrorReport("newName = " + newName, ex.GetBaseException().ToString());
                         }
                         
                     }
@@ -377,12 +383,12 @@ namespace ClientcardFB3
                 CCFBGlobal.saveRegDfltUser();
                 UserFromRegistry = CCFBGlobal.currentUser_Name;
             }
-            if (CCFBGlobal.serverName != "" && CCFBGlobal.getRegUpdatePath() == "") 
+            if (CCFBGlobal.serverName.Length > 0 && String.IsNullOrEmpty(CCFBGlobal.getRegUpdatePath()) == true) 
             {
                 if(CCFBGlobal.serverName == System.Environment.MachineName)
-                    CCFBGlobal.saveRegUpdatePath( @"\Users\Public\ClientcardFB3\ClientcardFB3.exe");
+                    CCFBGlobal.saveRegUpdatePath( @"C:\Users\Public\ClientcardFB3\ClientcardFB3.exe");
                 else
-                    CCFBGlobal.saveRegUpdatePath( @"\Public\ClientcardFB3\ClientcardFB3.exe");
+                    CCFBGlobal.saveRegUpdatePath(@"\\" + CCFBGlobal.serverName + @"\Users\Public\ClientcardFB3\ClientcardFB3.exe");
             }
         }
 
@@ -419,7 +425,7 @@ namespace ClientcardFB3
             int trycntr = 0;
             bool retVal = false;
             btnCancel.Tag = "testsql";
-            if (tmp == "")
+            if (String.IsNullOrEmpty(tmp) == true)
                 tmp = CCFBGlobal.sq1ServerName;
             cboUsers.Items.Clear();
             while (trycntr < 2)
@@ -442,7 +448,7 @@ namespace ClientcardFB3
                     CCFBGlobal.setConnectionString(server);
                     System.Data.SqlClient.SqlConnection conn = new SqlConnection(CCFBGlobal.connectionString);
                     conn.Open();
-                    conn.Close();
+                    conn.Dispose();
                     trycntr = 10;
                     retVal = true;
                 }
@@ -466,10 +472,10 @@ namespace ClientcardFB3
             SetVisibility(false);
             CCFBGlobal.setConnectionString(ServerNameFromRegistry);
 
-            if (ServerNameFromRegistry == null || ServerNameFromRegistry == "")
+            if (ServerNameFromRegistry == null || String.IsNullOrEmpty(ServerNameFromRegistry) == true)
             {
                 loadServers();
-                if (CCFBGlobal.sq1ServerName != "")
+                if (CCFBGlobal.sq1ServerName.Length >0)
                 {
                     if (TestSQLConnection("") == true)
                         loadUsers();
@@ -480,7 +486,7 @@ namespace ClientcardFB3
                 if (TestSQLConnection("") == false)
                 {
                     loadServers();
-                    if (CCFBGlobal.sq1ServerName != "")
+                    if (CCFBGlobal.sq1ServerName.Length >0)
                     {
                         if (TestSQLConnection("") == true)
                             loadUsers();
@@ -505,7 +511,7 @@ namespace ClientcardFB3
         {
             if (dsnServer == null)
                 dsnServer = "";
-            if (dsnServer == "" || dsnServer.ToUpper() != CCFBGlobal.sq1ServerName.ToUpper())
+            if (String.IsNullOrEmpty(dsnServer) == true || dsnServer.ToUpper() != CCFBGlobal.sq1ServerName.ToUpper())
             {
                 try
                 {

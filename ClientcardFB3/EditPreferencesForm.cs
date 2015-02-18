@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -16,89 +17,71 @@ namespace ClientcardFB3
         bool bNormalMode = false;
         bool oriBoolValue = false;
         string oriTextValue = "";
+        decimal oriNUDValue = 0;
         Zipcodes clsZipcodes;
+        List<TextBox> tbCntlList = new List<TextBox>();     //Collection of Editable Textboxes
+        List<TextBox> tbdList = new List<TextBox>();        //Collection of DonorID Textboxes
+        List<CheckBox> chkList = new List<CheckBox>();      //Collection of all Checkboxes
+        List<NumericUpDown> nudList = new List<NumericUpDown>();      //Collection of all NumericUpDown controls
 
         public EditPreferencesForm()
         {
             InitializeComponent();
             bNormalMode = false;
-            //My Food Bank
-            tbFoodBankName.Text = CCFBPrefs.FoodBankName;
-            tbPostalAddress.Text = CCFBPrefs.PostalAddress;
-            tbPhysicalAddress.Text = CCFBPrefs.PhysicalAddress;
-            tbPhoneNumber.Text = CCFBPrefs.PhoneNumber;
-            tbEmailAddress.Text = CCFBPrefs.EmailAddress;
-            tbFaxNum.Text = CCFBPrefs.FaxNumber;
-            tbCounty.Text = CCFBPrefs.County;
-            chkCaptureSignature.Checked = CCFBPrefs.CaptureSignature;
-            chkEnableCDBGReporting.Checked = CCFBPrefs.EnableCDBGReporting;
-            tbAgencyNbr.Text = CCFBPrefs.AgencyNumber;
-            tbEFAPLeadAgency.Text = CCFBPrefs.EFAPLeadAgency;
-            //
-            chkEnableHomeDeliv.Checked = CCFBPrefs.EnableHomeDeliv;
-            chkEnableClientReceipt.Checked = CCFBPrefs.EnableClientReceipt;
-            chkFTScaleLbsIncludeTEFAP.Checked = CCFBPrefs.LbsIncludeCommodityWt;
-            chkEnableFTScale.Checked = CCFBPrefs.EnableFTscale;
+            traverseAndAddControlsToCollections(this.Controls);
+            SqlConnection sqlConn = new SqlConnection(CCFBGlobal.connectionString);
+            SqlCommand sqlCmd = new SqlCommand("", sqlConn);
+            sqlCmd.CommandType = CommandType.Text;
+            SqlDataReader sqlReader;
+            string fldname = "";
+            sqlConn.Open();
+            foreach (TextBox tb in tbCntlList)
+            {
+                fldname = tb.Tag.ToString();
+                sqlCmd.CommandText = "SELECT FldVal,EditTip FROM Preferences WHERE FldName = '" + fldname + "'";
+                sqlReader = sqlCmd.ExecuteReader();
+                while (sqlReader.Read())
+                {
+                    tb.Text = sqlReader.GetString(0);
+                }
+                sqlReader.Close();
+            }
+            foreach (CheckBox chk in chkList)
+            {
+                fldname = chk.Tag.ToString();
+                sqlCmd.CommandText = "SELECT BoolVal,EditTip FROM Preferences WHERE FldName = '" + fldname + "'";
+                sqlReader = sqlCmd.ExecuteReader();
+                while (sqlReader.Read())
+                {
+                    chk.Checked = sqlReader.GetBoolean(0);
+                }
+                sqlReader.Close();
+            }
+            foreach (NumericUpDown nud in nudList)
+            {
+                fldname = nud.Tag.ToString();
+                sqlCmd.CommandText = "SELECT FldVal,EditTip FROM Preferences WHERE FldName = '" + fldname + "'";
+                sqlReader = sqlCmd.ExecuteReader();
+                while (sqlReader.Read())
+                {
+                    nud.Value = Convert.ToDecimal( sqlReader.GetString(0));
+                }
+                sqlReader.Close();
+            }
+            //sqlReader.Dispose();
+            //sqlCmd.Dispose();
+            //sqlConn.Dispose();
             cboSvcMnuTyp.SelectedIndex  = CCFBPrefs.ServiceMenuType;
-            chkEnablePointsTracking.Checked = CCFBPrefs.EnablePointsTracking;
-            tbPointsPerWeek.Text = CCFBPrefs.PointsPerWeek.ToString();
-            tbPointsPerFamMbr.Text = CCFBPrefs.PointsPerFamMbr.ToString();
-            tbPointsPerWeekOutOfArea.Text = CCFBPrefs.PointsPerWeekOutOfArea.ToString();
-            tbMaxPointsPerWeek.Text = CCFBPrefs.MaxPointsPerWeek.ToString();
-            //Features
-            chkEnableFoodService.Checked = CCFBPrefs.EnableFoodServices;
-            chkEnableAppointments.Checked = CCFBPrefs.EnableAppointments;
-            chkEnableFoodDonations.Checked = CCFBPrefs.EnableFoodDonations;
-            chkEnableCashDonations.Checked = CCFBPrefs.EnableCashDonations;
-            chkEnableVolunteerHours.Checked = CCFBPrefs.EnableVolunteerHours;
-            chkEnablePrintClientCard.Checked = CCFBPrefs.EnablePrintClientCard;
-            chkEnableVouchers.Checked = CCFBPrefs.EnableVouchers;
-            chkEnableCSFP.Checked = CCFBPrefs.EnableCSFP;
-            chkEnableCSFPOnNewSvc.Checked = CCFBPrefs.EnableCSFPOnNewSvc;
-            chkCSFPShowRoutes.Checked = CCFBPrefs.EnableCSFPShowRoutes;
-            chkEnableSchSupply.Checked = CCFBPrefs.EnableSchSupply;
-            chkEnableTEFAP.Checked = CCFBPrefs.EnableTEFAP;
-            chkEnableBackPack.Checked = CCFBPrefs.EnableBackPack;
-            chkMustBeACommodityDay.Checked = CCFBPrefs.MustBeACommodityDay;
-            tbCommSigValidFor.Text = CCFBPrefs.CommSigValidFor.ToString();
-            chkEnableSupplemental.Checked = CCFBPrefs.EnableSupplemental;
-            chkEnableServiceGroups.Checked = CCFBPrefs.EnableServiceGroups;
-            chkEnableBabyServices.Checked = CCFBPrefs.EnableBabyServices;
-            chkEnableBarcodePrompts.Checked = CCFBPrefs.EnableBarcodePrompts;
-            chkSearchFamilyMember.Checked = CCFBPrefs.BarcodeUseFamilyMember;
-            chkAutoGiveService.Checked = CCFBPrefs.AutomaticallyGiveService;
-            chkEnableClientPhone.Checked = CCFBPrefs.EnableClientPhone;
-            chkEnableVerifyId.Checked = CCFBPrefs.EnableVerifyId;
-            chkEnableHouseholdIncome.Checked = CCFBPrefs.EnableHouseholdIncome;
-            chkEnableHUDIncomeCategory.Checked = CCFBPrefs.EnableHUDCategory;
-            chkEnableHHUserDefinedFieldsTab.Checked = CCFBPrefs.EnableHHUserDefinedFields;
-            chkEnableWorksInArea.Checked = CCFBPrefs.EnableWorksInArea;
-            chkEnableAdditionalHHMDataTab.Checked = CCFBPrefs.EnableAdditionalHHMDataTab;
-            chkEnableEthnicityHHMTab.Checked = CCFBPrefs.EnableEthnicityHHMTab;
-            chkEnableIDFlds.Checked = CCFBPrefs.EnableIDFlds;
-            chkEnableFastTrack.Checked = CCFBPrefs.EnableFastTrack;
-            nudAlertMonthSvc.Value = CCFBPrefs.AlertMonthSvc;
-            tbAlertMonthSvcText.Text = CCFBPrefs.AlertMonthSvcText;
-            nudAlertWeekSvc.Value = CCFBPrefs.AlertWeekSvc;
-            tbAlertWeekSvcText.Text = CCFBPrefs.AlertWeekSvcText;
-            nudAlertMinimumDays.Value = CCFBPrefs.AlertMinimumDays;
-            tbAlertMinDaysText.Text = CCFBPrefs.AlertMinDaysText;
-            nudAlertMinimumMonths.Value = CCFBPrefs.AlertMinimumMonths;
-            tbAlertMinMonthsText.Text = CCFBPrefs.AlertMinMonthsText;
-            chkWarnSvcEachPerson.Checked = CCFBPrefs.WarnSvcEachPerson;
+            //Alerts
+            //nudAlertMonthSvc.Value = CCFBPrefs.AlertMonthSvc;
+            //nudAlertWeekSvc.Value = CCFBPrefs.AlertWeekSvc;
+            //nudAlertMinimumDays.Value = CCFBPrefs.AlertMinimumDays;
+            //nudAlertMinimumMonths.Value = CCFBPrefs.AlertMinimumMonths;
+            //
             CCFBGlobal.InitCombo(cboFMIDType, CCFBGlobal.parmTbl_IdVerify);
             cboFMIDType.SelectedValue = CCFBPrefs.DefaultFMIDType.ToString();
-            chkCaptureTEFAPSign.Checked = CCFBPrefs.CaptureTEFAPSignature;
-            chkIncludeLbsOnFoodSvcList.Checked = CCFBPrefs.IncludeLbsOnSvcList;
 
-            nudAlertMonthSvc_ValueChanged(null, null);
-            nudAlertWeekSvc_ValueChanged(null, null);
             //Add Client Options
-            tbDefaultCity.Text = CCFBPrefs.DefaultCity;
-            tbDefaultState.Text = CCFBPrefs.DefaultState;
-            tbDefaultZipcode.Text = CCFBPrefs.DefaultZipcode;
-            chkAllowDuplicateHHNames.Checked = CCFBPrefs.AllowDuplicateHHNames;
-            chkAllowDuplicateMemberNames.Checked = CCFBPrefs.AllowDuplicateMemberNames;
             if (CCFBPrefs.UseFamilyList == CCFBPrefs.UseFamilyListCode.Normally)
                 rdobNormally.Checked = true;
             else if (CCFBPrefs.UseFamilyList == CCFBPrefs.UseFamilyListCode.Sometimes)
@@ -119,16 +102,6 @@ namespace ClientcardFB3
                     rdoOverRideAdmin.Checked = true;
                     break;
             }
-            //Form Options
-            chkFindClientAutoRefresh.Checked = CCFBPrefs.FindClientAutoRefresh;
-            tbServiceLogRefreshRate.Text = CCFBPrefs.ServiceLogRefreshRate.ToString();
-            tbLbsPerCSFPService.Text = CCFBPrefs.CSFPLbsPerService.ToString();
-            tbApptLogRefreshRate.Text = CCFBPrefs.ApptLogRefreshRate.ToString();
-            tbNbrMealsPerService.Text = CCFBPrefs.NbrMealsPerService.ToString();
-            tbNbrDaysAllowMods.Text = CCFBPrefs.NbrDaysAllowMods.ToString();
-            tbNbrSvcDatesFuture.Text = CCFBPrefs.NbrSvcDatesFuture.ToString();
-            tbNbrSvcDatesPast.Text = CCFBPrefs.NbrSvcDatesPast.ToString();
-            chkFilterPeriodFromAddress.Checked = CCFBPrefs.FilterPeriodFromAddress;
 
             //Monthly Reports
             System.Collections.ArrayList ptList = new System.Collections.ArrayList();
@@ -140,14 +113,6 @@ namespace ClientcardFB3
             cboFiscalStartMonth.ValueMember = "UID";
             cboFiscalStartMonth.SelectedValue = CCFBPrefs.FiscalYearStartMonth.ToString();
 
-            chkMeregeTeens.Checked = CCFBPrefs.MergeTeens;
-
-            tbInkindDollarsPerHour.Text = CCFBPrefs.InkindDollarsPerHr.ToString("F");
-            tbInkindDollarsPerLb.Text = CCFBPrefs.InkindDollarsPerLb.ToString("F");
-            tbNWHDonorId.Text = CCFBPrefs.DonorIDNWH.ToString();
-            tbDonorIdEFAP.Text = CCFBPrefs.DonorIDEFAP.ToString();
-            tbDonorIdTEFAP.Text = CCFBPrefs.DonorIDTEFAP.ToString();
-            tbDonorId2ndHarvest.Text = CCFBPrefs.DonorID2ndHarvest.ToString();
 
             tbDonorId01.Text = CCFBPrefs.DonorId01.ToString();
             tbDonorId02.Text = CCFBPrefs.DonorId02.ToString();
@@ -169,27 +134,21 @@ namespace ClientcardFB3
             tbDonorId18.Text = CCFBPrefs.DonorId18.ToString();
             tbDonorId19.Text = CCFBPrefs.DonorId19.ToString();
             tbDonorId20.Text = CCFBPrefs.DonorId20.ToString();
-            chkIncludeCommodityLbsInCoalition.Checked = CCFBPrefs.IncludeCommodityLbsInCoalition;
-            chkIncludeCommodityLbsInFoodLifeline.Checked = CCFBPrefs.IncludeCommodityLbsInFoodLifeline;
-            chkIncludeCommodityLbsInNorthwestHarvest.Checked = CCFBPrefs.IncludeCommodityLbsInNorhtwestHarvest;
-            chkIncludeCommodityLbsInSecondHarvestInlandNW.Checked = CCFBPrefs.IncludeCommodityLbsInSecondHarvestInland;
             if (CCFBPrefs.DonorPercentCalcMethod == CCFBPrefs.DonorCalcPercentMethod.LbsServed)
                 rdoUseLbsServed.Checked = true;
             else if (CCFBPrefs.DonorPercentCalcMethod == CCFBPrefs.DonorCalcPercentMethod.LbsDonated)
                 rdoUseLbsDonated.Checked = true;
-            tbPreparedBy.Text = CCFBPrefs.PreparedBy;
             tbReportsSavePath.Text = CCFBPrefs.ReportsSavePath;
             LoadDonorLabelNames();
             dataChanged = false;
             bNormalMode = true;
-            chkUseTimeInOutForVols.Checked = CCFBPrefs.UseTimeInOutForVols;
             rdoViewByFullWeek.Checked = !CCFBPrefs.UseCalendarWeeks;
             rdoViewByCalendarWeek.Checked = CCFBPrefs.UseCalendarWeeks;
             clsZipcodes = new Zipcodes(CCFBGlobal.connectionString);
 
         }
 
-        private void textboxes_Leave(object sender, EventArgs e)
+        private void tbCntls_Leave(object sender, EventArgs e)
         {
             if (bNormalMode== true)
             {
@@ -203,14 +162,14 @@ namespace ClientcardFB3
             clearToolTip();
         }
 
-        private void textboxes_Enter(object sender, EventArgs e)
+        private void tbCntls_Enter(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
             oriTextValue = tb.Text;
             lblToolTip.Text = helpProvider1.GetHelpString(tb);
         }
 
-        private void checkBoxes_CheckedChanged(object sender, EventArgs e)
+        private void chkBoxes_CheckedChanged(object sender, EventArgs e)
         {
             if (bNormalMode == true)
             {
@@ -224,7 +183,7 @@ namespace ClientcardFB3
             }
         }
 
-        private void checkBoxes_Enter(object sender, EventArgs e)
+        private void chkBoxes_Enter(object sender, EventArgs e)
         {
             CheckBox chk = (CheckBox)sender;
             oriBoolValue = chk.Checked;
@@ -246,12 +205,11 @@ namespace ClientcardFB3
         {
             EditDonorForm frmTmp = new EditDonorForm(CCFBGlobal.connectionString, true);
             DialogResult dr = frmTmp.ShowDialog(this);
+            int newDonorId = frmTmp.SelectedId;
+            string newDonorName = frmTmp.SelectedName;
+            frmTmp.Dispose();
             if (dr == DialogResult.Yes)
             {
-                int newDonorId = frmTmp.SelectedId;
-                string newDonorName = frmTmp.SelectedName;
-                frmTmp.Close();
-                frmTmp.Dispose();
                 Button btn = (Button)sender;
                 string tagVal = btn.Tag.ToString();
                 foreach (TextBox tb in tpDonorPercent.Controls.OfType<TextBox>())
@@ -311,6 +269,7 @@ namespace ClientcardFB3
                     }
                 }
 	        }
+            clsDonors.Dispose();
         }
 
         private void tbDonor_KeyPress(object sender, KeyPressEventArgs e)
@@ -319,7 +278,7 @@ namespace ClientcardFB3
             {
                 TextBox tb = (TextBox)sender;
                 int donorid = 0;
-                if (tb.Text != "")
+                if (tb.Text.Length >0)
                 {
                     try
                     {
@@ -339,6 +298,7 @@ namespace ClientcardFB3
                         {
                             donorid = 0;
                         }
+                        clsDonors.Dispose();
                     }
                     catch (FormatException ex)
                     {
@@ -358,7 +318,7 @@ namespace ClientcardFB3
             {
                 if (lbl.Tag.ToString() == tagVal)
                 {
-                    if (donorname == "")
+                    if (String.IsNullOrEmpty(donorname) == true)
                         lbl.Text = ".....";
                     else
                         lbl.Text = donorname;
@@ -409,52 +369,12 @@ namespace ClientcardFB3
             dataChanged = true;
         }
 
-        private void nudAlertMonthSvc_Leave(object sender, EventArgs e)
+        private void nudList_Leave(object sender, EventArgs e)
         {
-            if (nudAlertMonthSvc.Value != CCFBPrefs.AlertMonthSvc)
+            NumericUpDown nud = (NumericUpDown)sender;
+            if (nud.Value != oriNUDValue)
             {
-                CCFBPrefs.AlertMonthSvc = Convert.ToInt32(nudAlertMonthSvc.Value);
-                CCFBPrefs.SaveValue("AlertMonthSvc", nudAlertMonthSvc.Value.ToString());
-            }
-            clearToolTip();
-        }
-
-        private void nudAlertWeekSvc_Leave(object sender, EventArgs e)
-        {
-            if (nudAlertWeekSvc.Value != CCFBPrefs.AlertWeekSvc)
-            {
-                CCFBPrefs.AlertWeekSvc = Convert.ToInt32(nudAlertWeekSvc.Value);
-                CCFBPrefs.SaveValue("AlertWeekSvc", nudAlertWeekSvc.Value.ToString());
-            }
-            clearToolTip();
-        }
-
-        private void nudAlertMonthSvc_ValueChanged(object sender, EventArgs e)
-        {
-            tbAlertMonthSvcText.Visible = (nudAlertMonthSvc.Value > 0);
-        }
-
-        private void nudAlertWeekSvc_ValueChanged(object sender, EventArgs e)
-        {
-            tbAlertWeekSvcText.Visible = (nudAlertWeekSvc.Value > 0);
-        }
-
-        private void tbAlertMonthSvcText_Leave(object sender, EventArgs e)
-        {
-            if (CCFBPrefs.AlertMonthSvcText != tbAlertMonthSvcText.Text)
-            {
-                CCFBPrefs.AlertMonthSvcText = tbAlertMonthSvcText.Text;
-                CCFBPrefs.SaveValue("AlertMonthSvcText", CCFBPrefs.AlertMonthSvcText);
-            }
-            clearToolTip();
-        }
-
-        private void tbAlertWeekSvcText_Leave(object sender, EventArgs e)
-        {
-            if (CCFBPrefs.AlertWeekSvcText != tbAlertWeekSvcText.Text)
-            {
-                CCFBPrefs.AlertWeekSvcText = tbAlertWeekSvcText.Text;
-                CCFBPrefs.SaveValue("AlertWeekSvcText", CCFBPrefs.AlertWeekSvcText);
+                CCFBPrefs.SaveValue(nud.Tag.ToString(), nud.Value.ToString());
             }
             clearToolTip();
         }
@@ -481,7 +401,7 @@ namespace ClientcardFB3
                 //Set default extension of the savefile dialog
                 folderBrowserDialog1.Description = "Save Path for Monthly Reports";
                 //If no value exists in registry for default save location
-                if (oriPath == "")
+                if (String.IsNullOrEmpty(oriPath) == true)
                 {
                     folderBrowserDialog1.SelectedPath = Path.GetDirectoryName(Application.ExecutablePath);
                 }
@@ -519,12 +439,12 @@ namespace ClientcardFB3
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (clsZipcodes.getCity(tbDefaultZipcode.Text) == true)
+                if (clsZipcodes.getCity(tbcDefaultZipcode.Text) == true)
                 {
-                    tbDefaultCity.Text = clsZipcodes.City.ToUpper();
-                    CCFBPrefs.SaveValue(tbDefaultCity.Tag.ToString(), tbDefaultCity.Text);
-                    tbDefaultState.Text = clsZipcodes.State.ToUpper();
-                    CCFBPrefs.SaveValue(tbDefaultState.Tag.ToString(), tbDefaultState.Text);
+                    tbcDefaultCity.Text = clsZipcodes.City.ToUpper();
+                    CCFBPrefs.SaveValue(tbcDefaultCity.Tag.ToString(), tbcDefaultCity.Text);
+                    tbcDefaultState.Text = clsZipcodes.State.ToUpper();
+                    CCFBPrefs.SaveValue(tbcDefaultState.Tag.ToString(), tbcDefaultState.Text);
                     dataChanged = true;
                 }
                 e.Handled = true;
@@ -536,7 +456,7 @@ namespace ClientcardFB3
             lblToolTip.Text = "";
         }
 
-        private void chkBox_Leave(object sender, EventArgs e)
+        private void chkBoxes_Leave(object sender, EventArgs e)
         {
             clearToolTip();
         }
@@ -556,57 +476,6 @@ namespace ClientcardFB3
             }
         }
 
-        private void nudAlertMinimumDays_Leave(object sender, EventArgs e)
-        {
-            if (nudAlertMinimumDays.Value != CCFBPrefs.AlertMinimumDays)
-            {
-                CCFBPrefs.AlertMinimumDays = Convert.ToInt32(nudAlertMinimumDays.Value);
-                CCFBPrefs.SaveValue("AlertMinimumDays", nudAlertMinimumDays.Value.ToString());
-            }
-            clearToolTip();
-
-        }
-
-        private void nudAlertMinimumDays_ValueChanged(object sender, EventArgs e)
-        {
-            tbAlertMinDaysText.Visible = (nudAlertMinimumDays.Value > 0);
-        }
-
-        private void tbAlertMinDaysText_Leave(object sender, EventArgs e)
-        {
-            if (CCFBPrefs.AlertMinDaysText != tbAlertMinDaysText.Text)
-            {
-                CCFBPrefs.AlertMinDaysText = tbAlertMinDaysText.Text;
-                CCFBPrefs.SaveValue("AlertMinDaysText", CCFBPrefs.AlertMinDaysText);
-            }
-            clearToolTip();
-        }
-        private void nudAlertMinimumMonths_Leave(object sender, EventArgs e)
-        {
-            if (nudAlertMinimumMonths.Value != CCFBPrefs.AlertMinimumMonths)
-            {
-                CCFBPrefs.AlertMinimumMonths = Convert.ToInt32(nudAlertMinimumMonths.Value);
-                CCFBPrefs.SaveValue("AlertMinimumMonths", nudAlertMinimumMonths.Value.ToString());
-            }
-            clearToolTip();
-
-        }
-
-        private void nudAlertMinimumMonths_ValueChanged(object sender, EventArgs e)
-        {
-            tbAlertMinMonthsText.Visible = (nudAlertMinimumMonths.Value > 0);
-        }
-
-        private void tbAlertMinMonthsText_Leave(object sender, EventArgs e)
-        {
-            if (CCFBPrefs.AlertMinMonthsText != tbAlertMinMonthsText.Text)
-            {
-                CCFBPrefs.AlertMinMonthsText = tbAlertMinMonthsText.Text;
-                CCFBPrefs.SaveValue("AlertMinMonthsText", CCFBPrefs.AlertMinMonthsText);
-            }
-            clearToolTip();
-        }
-
         private void cboSvcMnuTyp_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cboSvcMnuTyp.Focused == true)
@@ -614,6 +483,127 @@ namespace ClientcardFB3
                 CCFBPrefs.ServiceMenuType = cboSvcMnuTyp.SelectedIndex;
                 CCFBPrefs.SaveValue("ServiceMenuType", CCFBPrefs.ServiceMenuType);
             }
+        }
+
+        private void chkUseLocalOutOfAreaAlerts_CheckedChanged(object sender, EventArgs e)
+        {
+            if (bNormalMode == true)
+            {
+                if (oriBoolValue != chkUseLocalOutOfAreaAlerts.Checked)
+                {
+                    CCFBPrefs.SaveValue(chkUseLocalOutOfAreaAlerts.Tag.ToString(), chkUseLocalOutOfAreaAlerts.Checked);
+                    oriBoolValue = chkUseLocalOutOfAreaAlerts.Checked;
+                    dataChanged = true;
+                }
+                setAllertGrpDisplay(chkUseLocalOutOfAreaAlerts.Checked);
+            }
+        }
+
+        private void setAllertGrpDisplay(bool ischecked)
+        {
+            if (ischecked == true)
+            {
+                grpAll.Text = "Local Client Alerts";
+            }
+            else
+            {
+                grpAll.Text = "Alerts for All Clients";
+            }
+            grpOutofArea.Visible = ischecked;
+
+        }
+        /// <summary>
+        /// Traverses all controls on the page using recursion and adds the proper ones
+        /// to their proper collections and adds LostFocus event to Textboxes and Checkboxes
+        /// </summary>
+        /// <param name="controlList"></param>
+        private void traverseAndAddControlsToCollections(Control.ControlCollection controlList)
+        {
+            foreach (Control cntrl in controlList.OfType<Control>())
+            {
+                switch (cntrl.GetType().Name)
+                {
+                    case "TextBox":
+                        {
+                            if (cntrl.Tag != null
+                                && cntrl.Tag.ToString().Length > 0)
+                            {
+                                if (cntrl.Name.Substring(0, 3) == "tbc")
+                                {
+                                    tbCntlList.Add((TextBox)cntrl);
+                                    cntrl.Enter += new System.EventHandler(this.tbCntls_Enter);
+                                    cntrl.Leave += new System.EventHandler(this.tbCntls_Leave);
+                                }
+                                else if (cntrl.Name.Substring(0, 3) == "tbD")
+                                {
+                                    tbdList.Add((TextBox)cntrl);
+                                }
+
+                                else
+                                {
+                                    //if (cntrl.Name != "tbID")
+                                    //{
+                                    //    cntrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbList_KeyDown);
+                                    //    cntrl.Leave += new System.EventHandler(this.tbList_LostFocus);
+                                    //    tbList.Add((TextBox)cntrl);
+                                    //}
+                                }
+                            }
+                            break;
+                        }
+                    case "CheckBox":
+                        {
+                            CheckBox chk = (CheckBox)cntrl;
+                            chk.CheckedChanged += new System.EventHandler(this.chkBoxes_CheckedChanged);
+                            chk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.chkBoxes_KeyDown);
+                            chk.Enter += new System.EventHandler(this.chkBoxes_Enter);
+                            chk.Leave += new System.EventHandler(this.chkBoxes_Leave);
+                            chkList.Add(chk);
+                            break;
+                        }
+                    case "ComboBox":
+                        {
+                            //if (cntrl.Tag != null)
+                            //{
+                            //    if (cntrl.Tag.ToString().Trim().Length > 0)
+                            //    {
+                            //        cboList.Add((ComboBox)cntrl);
+                            //    }
+                            //}
+                            break;
+                        }
+                    case "NumericUpDown":
+                        {
+                            NumericUpDown nud = (NumericUpDown)cntrl;
+                            nud.Enter += new System.EventHandler(this.nudList_Enter);
+                            nud.Leave += new System.EventHandler(this.nudList_Leave);
+                            nudList.Add(nud);
+                            break;
+                        }
+                }
+
+                traverseAndAddControlsToCollections(cntrl.Controls);
+            }
+        }
+
+        private void grpOutofArea_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkBoxes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (bNormalMode == true && e.KeyCode == Keys.Enter)
+            {
+                CheckBox chkHH = (CheckBox)sender;
+                chkHH.Checked = !chkHH.Checked;
+            }
+        }
+
+        private void nudList_Enter(object sender, EventArgs e)
+        {
+            NumericUpDown nud = (NumericUpDown)sender;
+            oriNUDValue = nud.Value;
         }
     }
 }

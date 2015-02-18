@@ -117,6 +117,7 @@ namespace ClientcardFB3
             {
                 rtbAlertText.SelectionFont = fontfrm.Font;
             }
+            fontfrm.Dispose();
         }
         public string Rtf()
         {
@@ -133,6 +134,7 @@ namespace ClientcardFB3
                 rtbAlertText.SelectionColor = colorFrm.Color;
                 tsbColor.BackColor = colorFrm.Color;
             }
+            colorFrm.Dispose();
         }
     }
 }

@@ -41,7 +41,6 @@ namespace ClientcardFB3
                 dateModified = myDataReader.GetSqlDateTime(8).Value;
                 modifiedBy = myDataReader.GetSqlString(9).Value;
             }
-            myDataReader.Close();
             myDataReader.Dispose();
             objCmd.CommandText = "SELECT * FROM IncomeMatrix WHERE IncomeGroup = " + groupId;
             DataSet dset = new DataSet();
@@ -53,7 +52,10 @@ namespace ClientcardFB3
                     incomeCategories.Add(new IncomeMatrixItem(drow));
                 }
             }
-            conn.Close();
+            dataAdpt.Dispose();
+            dset.Dispose();
+            objCmd.Dispose();
+            conn.Dispose();
         }
         #region Get/Set Accessors
         public int ID

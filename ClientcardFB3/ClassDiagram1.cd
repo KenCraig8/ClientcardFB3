@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ClientcardFB3.IncomeMatrixItem">
+    <Position X="4.5" Y="0.5" Width="3.75" />
+    <NestedTypes>
+      <Struct Name="ClientcardFB3.IncomeMatrixItem.MatrixItem" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>C:\Users\Kenneth\Documents\GitHub\ClientcardFB3\CcFB3dbClasses\IncomeMatrixItem.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EQQACAAEAAAAkAAAEBAAAAAABAAABAQBAAAAABAAAgk=</HashCode>
+      <FileName>C:\Users\Kenneth\Documents\GitHub\ClientcardFB3\CcFB3dbClasses\IncomeMatrixItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClientcardFB3.MainForm">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>///99//7vf////v7////fvO3+l/27X///z/97+3f7/0=</HashCode>
+      <FileName>MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

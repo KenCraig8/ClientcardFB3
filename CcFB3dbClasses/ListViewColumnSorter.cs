@@ -66,15 +66,15 @@ namespace ClientcardFB3
 
         if (l1.ListView.Columns[ColumnToSort].Tag.ToString() == "Numeric")
         {
-            if (l1.SubItems[ColumnToSort].Text == "" && l2.SubItems[ColumnToSort].Text == "")
+            if (String.IsNullOrEmpty(l1.SubItems[ColumnToSort].Text)  == true && String.IsNullOrEmpty(l2.SubItems[ColumnToSort].Text)  == true)
             {
                 return 0;
             }
-            else if(l1.SubItems[ColumnToSort].Text == "")
+            else if (String.IsNullOrEmpty(l1.SubItems[ColumnToSort].Text)  == true)
             {
                 return 0;
             }
-            else if (l2.SubItems[ColumnToSort].Text == "")
+            else if (String.IsNullOrEmpty(l2.SubItems[ColumnToSort].Text) == true)
             {
                 return 1;
             }

@@ -15,6 +15,34 @@
         {
             if (disposing && (components != null))
             {
+                if (clsMonthlyReports != null)
+                {
+                    clsMonthlyReports.Dispose();
+                }
+                if (clsTrxLogCurFiscalYrHDStats != null)
+                {
+                    clsTrxLogCurFiscalYrHDStats.Dispose();
+                }
+                if (clsTrxLogCurFiscalYrStats != null)
+                {
+                    clsTrxLogCurFiscalYrStats.Dispose();
+                }
+                if (clsTrxLogPrvFiscalY2Stats != null)
+                {
+                    clsTrxLogPrvFiscalY2Stats.Dispose();
+                }
+                if (clsTrxLogPrvFiscalYrHDStats != null)
+                {
+                    clsTrxLogPrvFiscalYrHDStats.Dispose();
+                }
+                if (clsTrxLogPrvFiscalYrStats != null)
+                {
+                    clsTrxLogPrvFiscalYrStats.Dispose();
+                }
+                if (clsVolStats != null)
+                {
+                    clsVolStats.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

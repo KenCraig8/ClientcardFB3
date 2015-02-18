@@ -1,22 +1,39 @@
 ﻿using System;
 using Microsoft.Office.Interop.Word;
 
-namespace ClientcardFB3
+namespace ClientcardFB3 
 {
-    class PRNTFamilyCard
+    public class PRNTFamilyCard : IDisposable
     {
         Client clsClient;
-        Application oWord = new Application();
-        Document oWordDoc = new Document();
+        private bool _disposed;
 
         public PRNTFamilyCard(Client clientIn)
         {
             clsClient = clientIn;
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                _disposed = true;
+            }
+        }
+
         public void createReport(string foodBankName, string templatePath, bool fillClientInfo)
             //string[] fldNames, string[] fldVals)
         {
+            Application oWord = new Application();
+            Document oWordDoc;
             Object oMissing = System.Reflection.Missing.Value;
             Object missing = System.Reflection.Missing.Value;
             Object oTrue = true;
@@ -28,19 +45,19 @@ namespace ClientcardFB3
             {
                 oWordDoc = oWord.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
 
-                fillBookMark("FoodBankName",foodBankName);
-                fillBookMark("FBName1",foodBankName);
-                fillBookMark("FBName2",foodBankName);
+                fillBookMark(oWordDoc, "FoodBankName",foodBankName);
+                fillBookMark(oWordDoc, "FBName1", foodBankName);
+                fillBookMark(oWordDoc, "FBName2", foodBankName);
                 
                 if (fillClientInfo == true)
                 {
-                    fillBookMark("Date", DateTime.Today.ToShortDateString()); 
-                    fillBookMark("clientID", clsClient.clsHH.ID.ToString());
+                    fillBookMark(oWordDoc, "Date", DateTime.Today.ToShortDateString());
+                    fillBookMark(oWordDoc, "clientID", clsClient.clsHH.ID.ToString());
 
-                    Table table = oWordDoc.Tables[1];
+                    Table table = oWordDoc.Tables[2];
                     //table.Cell(1, 1).Range.Text = clsClient.clsHH.Name;
                     string fullAddress = clsClient.clsHH.Address;
-                    if (clsClient.clsHH.AptNbr.Trim() != "")
+                    if (clsClient.clsHH.AptNbr.Trim().Length >0)
                     {
                         fullAddress += "  Unit " + clsClient.clsHH.AptNbr.Trim();
                     }
@@ -48,7 +65,7 @@ namespace ClientcardFB3
                     table.Cell(5, 1).Range.Text = clsClient.clsHH.City + ", " + clsClient.clsHH.State;
                     table.Cell(5, 2).Range.Text = clsClient.clsHH.Zipcode;
                     int row = 2;
-                    Table table2 = oWordDoc.Tables[2];
+                    Table owdtblFamilyList = oWordDoc.Tables[3];
                     for (int i = 0; i < clsClient.clsHHmem.RowCount; i++)
                     {
                         clsClient.clsHHmem.SetRecord(i);
@@ -68,19 +85,23 @@ namespace ClientcardFB3
                         {
                             if (clsClient.clsHHmem.Inactive == false)
                             {
-                                table2.Cell(row, 1).Range.Text = clsClient.clsHHmem.LastName + ", " + clsClient.clsHHmem.FirstName;
+                                if (row > owdtblFamilyList.Rows.Count)
+                                {
+                                    owdtblFamilyList.Rows.Add();
+                                }
+                                owdtblFamilyList.Cell(row, 1).Range.Text = clsClient.clsHHmem.LastName + ", " + clsClient.clsHHmem.FirstName;
                                 if (clsClient.clsHHmem.UseAge == true)
-                                    table2.Cell(row, 2).Range.Text = clsClient.clsHHmem.Age.ToString();
+                                    owdtblFamilyList.Cell(row, 2).Range.Text = clsClient.clsHHmem.Age.ToString();
                                 else
-                                    table2.Cell(row, 2).Range.Text = CCFBGlobal.ValidDateString(clsClient.clsHHmem.Birthdate);
+                                    owdtblFamilyList.Cell(row, 2).Range.Text = CCFBGlobal.ValidDateString(clsClient.clsHHmem.Birthdate);
 
-                                table2.Cell(row, 3).Range.Text = clsClient.clsHHmem.Sex;
-                                if (table2.Columns.Count > 3)
+                                owdtblFamilyList.Cell(row, 3).Range.Text = clsClient.clsHHmem.Sex;
+                                if (owdtblFamilyList.Columns.Count > 3)
                                 {
                                     if (clsClient.clsHHmem.IsDisabled == true)
-                                    { table2.Cell(row, 4).Range.Text = "X"; }
+                                    { owdtblFamilyList.Cell(row, 4).Range.Text = "X"; }
                                     if (clsClient.clsHHmem.SpecialDiet == true)
-                                    { table2.Cell(row, 5).Range.Text = "X"; }
+                                    { owdtblFamilyList.Cell(row, 5).Range.Text = "X"; }
                                 }
                                 row++;
                             }
@@ -146,13 +167,13 @@ namespace ClientcardFB3
             }
         }
 
-        private void fillBookMark(String sBookMarkName, String sBookMarkText )
+        private void fillBookMark(Document wordDoc, String sBookMarkName, String sBookMarkText )
         {
             Object oBookMarkName;
             try
             {
                 oBookMarkName = sBookMarkName;
-                oWordDoc.Bookmarks.get_Item(ref oBookMarkName).Range.Text = sBookMarkText;
+                wordDoc.Bookmarks.get_Item(ref oBookMarkName).Range.Text = sBookMarkText;
             }
             catch (Exception)
             {

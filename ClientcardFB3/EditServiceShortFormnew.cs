@@ -69,7 +69,9 @@ namespace ClientcardFB3
                         sigPadInputCtrl1.AddPromptItem(reader.GetString(0), reader.GetString(1));
                     }
                 }
-                conn.Close();
+                reader.Dispose();
+                sqlCmd.Dispose();
+                conn.Dispose();
             }
         }
 
@@ -96,6 +98,7 @@ namespace ClientcardFB3
             isNewTrx = ModeIn;
             isAppt = isApptIn;
             loadingControls = true;
+            chkPrintReceipt.Visible = CCFBPrefs.EnableClientReceipt;
             tbAlert.Rtf = txtAlert;
             tbCSFPLbsPerService.Text = CCFBPrefs.CSFPLbsPerService.ToString();
             haveSigPad = sigPadInputCtrl1.initSigPad();
@@ -167,9 +170,9 @@ namespace ClientcardFB3
                 for (int i = 0; i < clsClient.clsHHmem.RowCount; i++)
                 {
                     clsClient.clsHHmem.SetRecord(i);
-                    if (clsClient.clsHHmem.Notes != "")
+                    if (clsClient.clsHHmem.Notes.Length >0)
                     {
-                        if (clsTrxItem.Notes != "")
+                        if (clsTrxItem.Notes.Length >0)
                         {
                             clsTrxItem.Notes += Environment.NewLine;
                         }
@@ -297,12 +300,16 @@ namespace ClientcardFB3
                 fillCSFP();
             }
             chkPrintReceipt.Checked = clsTrxItem.PrintReceipt;
+            if (CCFBPrefs.EnableServiceGroups == true)
+            {
+                cboSvcGroup.SelectedValue = clsTrxItem.ServiceGroup.ToString();
+            }
             enableSaveButton();
         }
 
         private void fillCSFP()
         {
-            DateTime monthStart = CCFBGlobal.FirstDayOfMonth(clsTrxItem.TrxDate);
+            DateTime monthStart = CCFBGlobal.firstDayOfMonth(clsTrxItem.TrxDate);
             DateTime lastService;   
             lvwCSFP.Items.Clear();
             bool okToAdd = false;
@@ -402,16 +409,17 @@ namespace ClientcardFB3
                         {
                             if (isNewTrx == true)
                             {
-                                if (listHHMInsertId != "")
+                                if (listHHMInsertId.Length >0)
                                     listHHMInsertId += ",";
                                 listHHMInsertId += item.Tag.ToString();
                             }
                         }
                     }
-                    if (listHHMInsertId != "")
+                    if (listHHMInsertId.Length >0)
                     {
                         CSFPLog clsCSFPLog = new CSFPLog(CCFBGlobal.connectionString);
                         clsCSFPLog.insertNewService(listHHMInsertId, clsTrxItem.TrxDate, tbCSFPLbsPerService.Text);
+                        clsCSFPLog.Dispose();
                     }
                 }
                 clsTrxLog.updateServiceBits(clsClient.clsHH.ID, Convert.ToDateTime(CCFBGlobal.DefaultServiceDate));
@@ -422,6 +430,7 @@ namespace ClientcardFB3
                         case 1:
                             ReceiptPrinter clsPrintReceipt = new ReceiptPrinter(clsClient);
                             clsPrintReceipt.printIssaquah();
+                            clsPrintReceipt.Dispose();
                             break;
                         case 2:
                             RptFoodMenu01 clsFoodMenu01 = new RptFoodMenu01(clsClient.clsHH,clsClient.clsHHmem,clsTrxItem);
@@ -467,6 +476,7 @@ namespace ClientcardFB3
                             {
                                 tlSig.Insert();
                             }
+                            tlSig.Dispose();
                             clsClient.clsHH.NeedCommoditySignature = false;
                             clsClient.clsHH.TEFAPSignDate = DateTime.Today;
                             clsClient.clsHH.update(false);
@@ -517,7 +527,7 @@ namespace ClientcardFB3
             TextBox tbHH = (TextBox)sender; //Get the correct textbox
             if (tbHH.Text != clsTrxItem.GetDataValue(tbHH.Tag.ToString()).ToString())
             {   //If current value does not = value of textbox
-                if (tbHH.Text == "")
+                if (String.IsNullOrEmpty(tbHH.Text) == true)
                     tbHH.Text = "0";
                 clsTrxItem.SetDataValue(tbHH.Tag.ToString(), tbHH.Text);
                 btnSave.Enabled = true;
@@ -550,7 +560,7 @@ namespace ClientcardFB3
                 for (int i = 0; i < tbLbsList.Count; i++)
                 {
                     if (tbLbsList[i].Tag.ToString().ToLower().Contains("lbs")
-                        && tbLbsList[i].Text.Trim() != ""
+                        && tbLbsList[i].Text.Trim().Length >0
                         && Convert.ToInt32(tbLbsList[i].Text.Trim()) > 0)
                     {
                         if (CCFBPrefs.IncludeLbsOnSvcList == true)
@@ -588,7 +598,7 @@ namespace ClientcardFB3
             string[] splitList = ServiceItemKeyList.Split('|');
             for (j = 0; j < splitList.Length; j++)
             {
-                if ( splitList[j] != "")
+                if ( splitList[j].Length >0)
                 {
                     for (int idx = 0; idx < siList.Count; idx++)
                     {
@@ -634,7 +644,14 @@ namespace ClientcardFB3
             bool haveexclusive = false;
             foreach (ServiceItem si in siList)
             {
-                si.IsSelected = MainForm.clsDailyItems.checkRule(si); 
+                if (si.ItemType == CCFBGlobal.svcCat_Commodity)
+                {
+                    si.IsSelected = MainForm.clsDailyItems.checkRule(si) && clsClient.clsHH.NoCommodities == false;
+                }
+                else
+                {
+                    si.IsSelected = MainForm.clsDailyItems.checkRule(si);
+                }
 
                 if (si.IsSelected)
                 {
@@ -779,6 +796,14 @@ namespace ClientcardFB3
                             MainForm.clsDailyItems.FoodItemsList.Find(delegate(ServiceItem si0) { return si0.ItemKey == Convert.ToInt32(item.Tag.ToString()); }).IsSelected = false;
                         }
                     }
+                if (itm.Checked && CCFBPrefs.EnableServiceGroups == true && si.DefaultSvcGrp > 0)
+                {
+                    if (lvwFoodSvcItems.CheckedItems.Count == 1 || si.FullService == true)
+                    {
+                        cboSvcGroup.SelectedValue = si.DefaultSvcGrp.ToString();
+                        clsTrxItem.ServiceGroup = si.DefaultSvcGrp;
+                    }
+                }
                 SumFoodServiceItems();
                 ShowFoodLbs();
             }
@@ -1021,7 +1046,7 @@ namespace ClientcardFB3
         {
             foreach (Control cntrl in controlList.OfType<Control>())
             {
-                if (cntrl.Tag != null && cntrl.Tag.ToString().Trim() != "")
+                if (cntrl.Tag != null && cntrl.Tag.ToString().Trim().Length >0)
                 switch (cntrl.GetType().Name)
                 {
                     case "TextBox":
@@ -1147,6 +1172,7 @@ namespace ClientcardFB3
                         sigPadInputCtrl1.Visible = true;
                         btnResetSig.Visible = true;
                     }
+                    tlSig.Dispose();
                 }
             }
         }

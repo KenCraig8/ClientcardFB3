@@ -9,8 +9,8 @@ namespace ClientcardFB3
 {
     public partial class YearlyForm : Form
     {
-        Int32 mClickMode = 0;
-        String[] ClickModeName =  new String[] 
+        static Int32 mClickMode = 0;
+        static String[] ClickModeName =  new String[] 
             {"Display Only","Add Days Open","Mark Commodity Days","Mark Special Food Days"};
         List<ComboBox> cbList = new List<ComboBox>();
         DateTime CurrentFiscalStart;
@@ -26,7 +26,7 @@ namespace ClientcardFB3
                 cbList.Add(cb);
             }
             ServiceItems clsServiceItems = new ServiceItems(CCFBGlobal.connectionString);
-            clsServiceItems.openWhere("ItemRule = " + CCFBGlobal.itemRule_SpecialService.ToString() );
+            clsServiceItems.openWhere("ItemRule = " + CCFBGlobal.itemRuleSpecialService.ToString() );
             lvwSpclFood.Items.Clear();
             ListViewItem lvwItm;
             for (int i = 0; i < clsServiceItems.DSet.Tables[0].Rows.Count; i++)
@@ -36,6 +36,7 @@ namespace ClientcardFB3
                 lvwItm.SubItems.Add(clsServiceItems.DSet.Tables[0].Rows[i]["ItemKey"].ToString());
                 lvwSpclFood.Items.Add(lvwItm);
             }
+            clsServiceItems.Dispose(); 
             CurrentFiscalStart = CCFBGlobal.CurrentFiscalStartDate();
             CurrentFiscalEnd = CCFBGlobal.CurrentFiscalEndDate();
             SetCalendarRange(CurrentFiscalStart, CurrentFiscalEnd);
@@ -91,7 +92,7 @@ namespace ClientcardFB3
             selctionCommited(cb);
         }
 
-        private void selctionCommited(ComboBox cb)
+        private static void selctionCommited(ComboBox cb)
         {
             for (int i = 0; i < CCFBOpenDayOfWeek.DSetDOWRowsCount; i++)
             {
@@ -102,7 +103,7 @@ namespace ClientcardFB3
                 }
             }
             CCFBOpenDayOfWeek.updateDOW();
-        }       
+        }
 
         private void ChangeMode(Int32 NewMode = 0)
         {
@@ -188,7 +189,7 @@ namespace ClientcardFB3
             else if (mClickMode == 3)
             {
                 dItems = pbCalendar1.Dates.DateInfo(dateWork);
-                if (dItems[0].Text  == "")
+                if (String.IsNullOrEmpty(dItems[0].Text)  == true)
                     { newDateText = "Spcl"; }
                 else
                     { newDateText = ""; }
@@ -198,7 +199,7 @@ namespace ClientcardFB3
                 dItems = pbCalendar3.Dates.DateInfo(dateWork);
                 dItems[0].Text = newDateText;
                 clsDaysOpen.FindDate(dateWork);
-                if (newDateText =="" )
+                if (String.IsNullOrEmpty(newDateText) == true)
                     { clsDaysOpen.SpecialItems = ""; }
                 else
                     { clsDaysOpen.SpecialItems = SpecialFoodList(); }
@@ -206,7 +207,7 @@ namespace ClientcardFB3
             clsDaysOpen.update(); 
         }
 
-        private bool CalendarDoubleClick(Pabo.Calendar.PBCalendar sender, Pabo.Calendar.DayClickEventArgs e)
+        private static bool CalendarDoubleClick(Pabo.Calendar.PBCalendar sender, Pabo.Calendar.DayClickEventArgs e)
         {
             DateTime dt = Convert.ToDateTime(e.Date);
             Int32 dtIndex = -1;
@@ -290,7 +291,7 @@ namespace ClientcardFB3
             butPrevQuarter.Enabled = (pbCalendar1.MinDate < DisplayDate);
             butNextQuarter.Enabled = (pbCalendar1.MaxDate > DisplayDate.AddMonths(4));
         }
-        private void SetCalendarActiveMonth(Pabo.Calendar.PBCalendar myCalendar, DateTime DisplayMonth)
+        private static void SetCalendarActiveMonth(Pabo.Calendar.PBCalendar myCalendar, DateTime DisplayMonth)
         {
             myCalendar.ActiveMonth.Year = DisplayMonth.Year;
             myCalendar.ActiveMonth.Month = DisplayMonth.Month;
@@ -358,7 +359,7 @@ namespace ClientcardFB3
                 SpecialItems = clsDaysOpen.DSet.Tables[0].Rows[i].Field<String>("SpecialItems");
                 if (SpecialItems == null)
                     { SpecialItems = ""; }
-                else if (SpecialItems != "" )
+                else if (SpecialItems.Length >0 )
                     { SpecialItems = "Spcl"; }
                 IsCommodity = clsDaysOpen.DSet.Tables[0].Rows[i].Field<Boolean>("IsCommodity");
                 AddDateToCalendar(OpenDate, IsCommodity, SpecialItems);
@@ -381,6 +382,7 @@ namespace ClientcardFB3
             pbCalendar1.AddDateInfo(dItem);
             pbCalendar2.AddDateInfo(dItem);
             pbCalendar3.AddDateInfo(dItem);
+            dItem.Dispose();
         }
 
         private string SpecialFoodList()
@@ -390,7 +392,7 @@ namespace ClientcardFB3
             {
                 if (lvItm.Checked)
                 {
-                    if (myList != "")
+                    if (myList.Length >0)
                     { myList += "|"; }
                     myList += lvItm.SubItems[1].Text;
                 }

@@ -67,6 +67,8 @@ namespace ClientcardFB3
                     count++;
                 }
                 conn.Close();
+                reader.Dispose();
+                sqlCmd.Dispose();
             }
             catch (SqlException ex)
             {
@@ -78,8 +80,6 @@ namespace ClientcardFB3
                 //closeConnection();
                 CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
             }
-
-
         }
 
         private void btnLoadStats_Click(object sender, EventArgs e)
@@ -117,7 +117,7 @@ namespace ClientcardFB3
                             + ", SUM(TotalFamily) Total_Individuals"
                             + ", AVG(CAST(TotalFamily as Float)) Avg_Family_Size"
                             + " FROM Household";
-                    if (inactiveclause != "")
+                    if (inactiveclause.Length >0)
                         sqlText += " WHERE " + inactiveclause;
 
                     sqlText += " GROUP by case Inactive WHEN 0 THEN 'Active' ELSE 'Inactive' END";
@@ -145,7 +145,7 @@ namespace ClientcardFB3
                             + ", SUM(TotalFamily) Total_Individuals"
                             + ", AVG(CAST(TotalFamily as Float)) Avg_Family_Size, h.ClientType"
                             + " FROM Household h LEFT join parm_ClientType pt on h.ClientType = pt.ID";
-                     if (inactiveclause != "")
+                     if (inactiveclause.Length >0)
                         sqlText += " WHERE " + inactiveclause;
 
                      sqlText += " GROUP by h.ClientType, case Inactive WHEN 0 THEN 'Active' ELSE 'Inactive' END,pt.Type"
@@ -169,7 +169,7 @@ namespace ClientcardFB3
                     sqlText = "";
                     break;
             }
-            if (sqlText != "")
+            if (sqlText.Length >0)
                 fillForm();
         }
     }

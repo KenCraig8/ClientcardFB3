@@ -15,6 +15,18 @@
         {
             if (disposing && (components != null))
             {
+                if (clsDaysOpen != null)
+                {
+                    clsDaysOpen.Dispose();
+                }
+                if (clsParmClientType != null)
+                {
+                    clsParmClientType.Dispose();
+                }
+                if (clsTrxLog != null)
+                {
+                    clsTrxLog.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

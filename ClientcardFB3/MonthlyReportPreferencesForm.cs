@@ -180,7 +180,7 @@ namespace ClientcardFB3
                 for (int j = 0; j < emails.Length; j++)
                 {
                     //Not empty and split adderess is not one to delete
-                    if (emails[j] != emailAddress && emails[j] != "")
+                    if (emails[j] != emailAddress && emails[j].Length >0)
                     {
                         //Add email address to new concatenated list
                         concatEmails += emails[j] + "|";

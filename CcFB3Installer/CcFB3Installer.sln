@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "CcFB3Installer", "CcFB3Installer\CcFB3Installer.isproj", "{B7BE2EC5-C147-4951-A737-E4263F62A4AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Default = CD_ROM|Default
+		DVD-5|Default = DVD-5|Default
+		SingleImage|Default = SingleImage|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7BE2EC5-C147-4951-A737-E4263F62A4AD}.CD_ROM|Default.ActiveCfg = CD_ROM
+		{B7BE2EC5-C147-4951-A737-E4263F62A4AD}.CD_ROM|Default.Build.0 = CD_ROM
+		{B7BE2EC5-C147-4951-A737-E4263F62A4AD}.DVD-5|Default.ActiveCfg = DVD-5
+		{B7BE2EC5-C147-4951-A737-E4263F62A4AD}.DVD-5|Default.Build.0 = DVD-5
+		{B7BE2EC5-C147-4951-A737-E4263F62A4AD}.SingleImage|Default.ActiveCfg = SingleImage
+		{B7BE2EC5-C147-4951-A737-E4263F62A4AD}.SingleImage|Default.Build.0 = SingleImage
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -5,12 +5,13 @@ using Microsoft.Office.Interop.Excel;
 
 namespace ClientcardFB3
 {
-    class RptBMAC
+    class RptBMAC : IDisposable
     {
         //Asotin Food Bank 1546 Maple St.	99403
 
         TrxLogPeriodTotals clsMonthStats;
         bool error = false;
+        bool _disposed = false;
 
         public bool Error
         {
@@ -23,6 +24,30 @@ namespace ClientcardFB3
         public RptBMAC(TrxLogPeriodTotals clsMonthStatsIn)
         {
             clsMonthStats = clsMonthStatsIn;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsMonthStats != null)
+                        clsMonthStats.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                clsMonthStats = null;
+                _disposed = true;
+            }
         }
 
         public void createReport(object saveAs, string templatePath, string totalLbs, string dollarsLabor,

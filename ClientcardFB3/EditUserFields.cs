@@ -27,7 +27,7 @@ namespace ClientcardFB3
 
         UserFields clsUserFields = new UserFields(CCFBGlobal.connectionString);
 		private bool m_dataChanged = false;
-        bool fieldLablesChanged = false;
+        bool fieldLabelsChanged = false;
         int editRow = 0;
         string currentValue = "";
         bool userFieldsReset = false;
@@ -48,11 +48,11 @@ namespace ClientcardFB3
             }
         }
 
-        public bool FieldsLableChanged
+        public bool FieldsLabelChanged
         {
             get
             {
-                return fieldLablesChanged;
+                return fieldLabelsChanged;
             }
         }
 
@@ -102,7 +102,7 @@ namespace ClientcardFB3
             for (int i = 0; i < clsUserFields.RowCount; i++)
             {
                 clsUserFields.setDataRow(i);
-                if (clsUserFields.AutoAlert == true && clsUserFields.AutoAlertText == "")
+                if (clsUserFields.AutoAlert == true && String.IsNullOrEmpty(clsUserFields.AutoAlertText) == true)
                     clsUserFields.AutoAlertText = clsUserFields.EditLabel;
             }
         }
@@ -207,7 +207,7 @@ namespace ClientcardFB3
             currentValue = gridUserField[e.ColumnIndex, e.RowIndex].Value.ToString();
             btnSave.Enabled = true;
             m_dataChanged = true;
-            fieldLablesChanged = true;
+            fieldLabelsChanged = true;
 		}		// end of grid_CellBeginEdit
 
 

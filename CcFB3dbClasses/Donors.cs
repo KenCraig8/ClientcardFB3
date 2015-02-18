@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class Donors
+    public class Donors : IDisposable
     {
 
         #region Donor Class Attributes
@@ -12,11 +12,13 @@ namespace ClientcardFB3
         SqlDataAdapter dadAdpt;
         DataSet dset;
         SqlCommand command;
+        SqlCommandBuilder commBuilder;
         SqlConnection conn;
         static string tbName = "Donors";
         int iRowCount = 0;
         DataRow drow = null;
         bool isValid = false;
+        private bool _disposed;
         #endregion
 
         public Donors(string connStringIn)
@@ -26,6 +28,41 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -308,7 +345,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["Date1"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["Date1"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)(drow["Date1"]);
@@ -323,7 +360,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["Date2"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["Date2"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)(drow["Date2"]);
@@ -362,7 +399,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["Modified"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["Modified"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)(drow["Modified"]);
@@ -551,6 +588,7 @@ namespace ClientcardFB3
             SqlCommand commDelete = new SqlCommand(" DELETE FROM " + tbName + " WHERE ID=" + ID.ToString(), conn);
             openConnection();
             commDelete.ExecuteNonQuery();
+            commDelete.Dispose();
             closeConnection();
         }
 
@@ -564,7 +602,7 @@ namespace ClientcardFB3
                     openConnection();
                     if (dadAdpt.UpdateCommand == null || dadAdpt.InsertCommand == null)
                     {
-                        SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                        commBuilder = new SqlCommandBuilder(dadAdpt);
                     }
                     dadAdpt.Update(dset, "Donors");
                     closeConnection();

@@ -4,12 +4,13 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class Volunteers
+    public class Volunteers : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
         DataSet dset;
         SqlCommand sqlCmd;
+        SqlCommandBuilder commBuilder;
         SqlConnection conn;
         static string tblName = "Volunteers";
         bool isValid = false;
@@ -20,6 +21,7 @@ namespace ClientcardFB3
         SqlCommand volGrpComm;
         int[] groupsForVolunteer;
         int[] jobsForVolunteer;
+        private bool _disposed;
 
         public Volunteers(string connStringIn)
         {
@@ -32,6 +34,49 @@ namespace ClientcardFB3
             volGrpsDset = new DataSet();
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (sqlCmd != null)
+                        sqlCmd.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                    if (volGrpsDset != null)
+                        volGrpsDset.Dispose();
+                    if (volGrpComm != null)
+                        volGrpComm.Dispose();
+                    if (volGrpsDadAdapt != null)
+                        volGrpsDadAdapt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                sqlCmd = null;
+                dadAdpt = null;
+                volGrpsDset = null;
+                volGrpComm = null;
+                volGrpsDadAdapt = null;
+                _disposed = true;
+            }
+        }
         #region Get/Set Accessors
 
         public int[] Groups
@@ -517,6 +562,7 @@ namespace ClientcardFB3
             SqlCommand commDelete = new SqlCommand(" DELETE FROM Volunteers WHERE ID=" + ID.ToString(), conn);
             openConnection();
             commDelete.ExecuteNonQuery();
+            commDelete.Dispose();
             closeConnection();
         }
 
@@ -531,7 +577,7 @@ namespace ClientcardFB3
 
                     if (dadAdpt.UpdateCommand == null || dadAdpt.InsertCommand == null)
                     {
-                        SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                        commBuilder = new SqlCommandBuilder(dadAdpt);
                     }
                     dadAdpt.Update(dset, tblName);
                     closeConnection();

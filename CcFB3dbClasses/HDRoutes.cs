@@ -1,58 +1,68 @@
 
 using System;
-using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace ClientcardFB3
 {
-    /// <summary>
-    /// Performes opperations on the routes
-    /// Used by the HDPlannerForm
-    /// </summary>
-    public class HDRoutesModel
+    public class HDRoutes : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
         DataTable dtbl;
         SqlCommand command;
+        SqlCommandBuilder commBuilder;
         System.Data.SqlClient.SqlConnection conn;
         DataRow drow;
         int iRowCount = 0;
-        HDVolContactInfo driverInfo =  new HDVolContactInfo();
-        HDVolContactInfo fbContactInfo =  new HDVolContactInfo();
-        Volunteers clsVol;
+        string driverName = "";
+        string driverPhone = "";
+        string fbContactName = "";
+        string fbContactPhone = "";
+        private bool _disposed;
 
-        /// <summary>
-        /// Constructor without dependency injection. Used normaly
-        /// </summary>
-        /// <param name="connStringIn"></param>
-        /// <param name="?"></param>
-        public HDRoutesModel(string connStringIn) : this(connStringIn, new Volunteers(connStringIn)) { }
-
-        /// <summary>
-        /// Injects the dependencies
-        /// Used for testing
-        /// </summary>
-        /// <param name="connStringIn"></param>
-        public HDRoutesModel(string connStringIn, Volunteers clsVol)
+        public HDRoutes(string connStringIn)
         {
             conn = new System.Data.SqlClient.SqlConnection();
-            conn.ConnectionString = connStringIn;
+            connString = connStringIn;
+            conn.ConnectionString = connString;
             dtbl = new DataTable();
             dadAdpt = new SqlDataAdapter();
-            this.clsVol = clsVol;
+        }
 
-            // Example of using the CLientcardORM
-            //ClientcardORM.ClientcardORM orm = new ClientcardORM.ClientcardORM();
-            //var query = from item in orm.HDRoutes
-            //            select item;
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-            //foreach (var item in query)
-            //{
-            //    Console.WriteLine(item.FBContact);
-            //}
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dtbl != null)
+                        dtbl.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dtbl = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -67,22 +77,22 @@ namespace ClientcardFB3
 
         public string DriverName
         {
-            get { return driverInfo.name; }
+            get { return driverName; }
         }
 
         public string DriverPhone
         {
-            get { return driverInfo.phone.Replace("-",""); }
+            get { return driverPhone.Replace("-",""); }
         }
 
         public string FBContactName
         {
-            get { return fbContactInfo.name; }
+            get { return fbContactName; }
         }
 
         public string FBContactPhone
         {
-            get { return fbContactInfo.phone.Replace("-", ""); }
+            get { return fbContactPhone.Replace("-", ""); }
         }
 
         public int ID
@@ -189,7 +199,7 @@ namespace ClientcardFB3
                 if (fldIndex >= 0)
                 {
                     if (dtbl.Columns[fldIndex].DataType.Name == "DateTime")
-                        if (drow[FieldName].ToString() != "")
+                        if (drow[FieldName].ToString().Length >0)
                         { return CCFBGlobal.ValidDateString(drow[FieldName]); }
                         else
                         { return ""; }
@@ -201,10 +211,7 @@ namespace ClientcardFB3
         }
         #endregion
 
-        /// <summary>
-        /// Adds a new row to the data table and initializes the values
-        /// </summary>
-        /// <returns></returns>
+
         public int Add()
         {
             drow = dtbl.NewRow();
@@ -212,8 +219,8 @@ namespace ClientcardFB3
             RouteTitle = "Route " + (dtbl.Rows.Count+1).ToString();
             Notes = "";
             DriverNotes = "";
-            driverInfo = new HDVolContactInfo();
-            fbContactInfo = new HDVolContactInfo();
+            driverPhone = "";
+            driverName = "";
             InActive = false;
             DeliveryDOW = 1;
             DeliveryCycle = 0;
@@ -240,9 +247,8 @@ namespace ClientcardFB3
         {
             if (getName == true)
             {
-                driverInfo.reset();
-                fbContactInfo.reset();
-
+                driverName = "";
+                driverPhone = "";
             }
             for (int i = 0; i < iRowCount; i++)
             {
@@ -251,40 +257,44 @@ namespace ClientcardFB3
                     drow = dtbl.Rows[i];
                     if (getName == true)
                     {
-                        loadVolInfo(DefaultDriver, driverInfo);
-                        loadVolInfo(FBContact, fbContactInfo);
+                        loadDriverInfo(DefaultDriver);
+                        loadFBContactInfo(FBContact);
                     }
                     break;
                 }
             }
         }
 
-        /// <summary>
-        /// Loads a Voulenteer with the id
-        /// </summary>
-        /// <param name="volId">Id to load</param>
-        /// <param name="volInfo">The info to set it to</param>
-        public void loadVolInfo(int volId, HDVolContactInfo volInfo)
+        public void loadDriverInfo(int volId)
         {
-            volInfo.reset();
-            if ((volId > 0) && (clsVol.open(volId) == true)){
-                volInfo.id = volId;
-                volInfo.name = clsVol.Name;
-                volInfo.phone = clsVol.Phone;
+            driverName = "";
+            driverPhone = "";
+            if (volId > 0)
+            {
+                Volunteers clsVol = new Volunteers(connString);
+                if (clsVol.open(volId) == true)
+                {
+                    driverName = clsVol.Name;
+                    driverPhone = clsVol.Phone;
+                }
+                clsVol.Dispose();
             }
         }
 
-        /// <summary>
-        /// Loads either the driver or FBcontact info
-        /// </summary>
-        /// <param name="volId"></param>
-        /// <param name="isDriver">If true, load to the driver, if false, load to fbContact</param>
-        public void loadCertainVolInfo(int volId, bool isDriver)
+        public void loadFBContactInfo(int volId)
         {
-            if(isDriver)
-                loadVolInfo(volId, driverInfo);
-            else
-                loadVolInfo(volId, fbContactInfo);
+            fbContactName = "";
+            fbContactPhone = "";
+            if (volId > 0)
+            {
+                Volunteers clsVol = new Volunteers(connString);
+                if (clsVol.open(volId) == true)
+                {
+                    fbContactName = clsVol.Name;
+                    fbContactPhone = clsVol.Phone;
+                }
+                clsVol.Dispose();
+            }
         }
 
         public int maxRouteId()
@@ -334,33 +344,33 @@ namespace ClientcardFB3
             return null;
         }
 
-        //public void open(System.Int32 key)
-        //{
-        //    try
-        //    {
-        //        openConnection();
-        //        command = new SqlCommand("SELECT * FROM HDRoutes WHERE ID=" + key.ToString(), conn);
-        //        dadAdpt.SelectCommand = command;
-        //        dtbl.Clear();
-        //        iRowCount = dadAdpt.Fill(dtbl);
-        //        closeConnection();
-        //        if (iRowCount > 0)
-        //            drow = dtbl.Rows[0];
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        iRowCount = 0;
-        //        drow = null;
-        //        CCFBGlobal.appendErrorToErrorReport("Select Command = " + command.CommandText,
-        //            ex.GetBaseException().ToString());
-        //    }
-        //}
+        public void open(System.Int32 key)
+        {
+            try
+            {
+                openConnection();
+                command = new SqlCommand("SELECT * FROM HDRoutes WHERE ID=" + key.ToString(), conn);
+                dadAdpt.SelectCommand = command;
+                dtbl.Clear();
+                iRowCount = dadAdpt.Fill(dtbl);
+                closeConnection();
+                if (iRowCount > 0)
+                    drow = dtbl.Rows[0];
+            }
+            catch (SqlException ex)
+            {
+                iRowCount = 0;
+                drow = null;
+                CCFBGlobal.appendErrorToErrorReport("Select Command = " + command.CommandText,
+                    ex.GetBaseException().ToString());
+            }
+        }
 
         public void openWhere(string whereClause)
         {
             try
             {
-                openConnection(); //Sql exception here
+                openConnection();
                 command = new SqlCommand("SELECT * FROM HDRoutes " + whereClause, conn);
                 dadAdpt.SelectCommand = command;
                 dtbl.Clear();
@@ -373,8 +383,7 @@ namespace ClientcardFB3
             {
                 iRowCount = 0;
                 drow = null;
-                string comText = command != null ? command.CommandText : "openConnection problem";
-                CCFBGlobal.appendErrorToErrorReport("Select Command = " + comText,
+                CCFBGlobal.appendErrorToErrorReport("Select Command = " + command.CommandText,
                     ex.GetBaseException().ToString());
             }
         }
@@ -386,6 +395,7 @@ namespace ClientcardFB3
             {
                 openConnection();
                 int iRows = cmdDelete.ExecuteNonQuery();
+                cmdDelete.Dispose();
                 closeConnection();
                 return (iRows == 1);
             }
@@ -393,6 +403,7 @@ namespace ClientcardFB3
             {
                 CCFBGlobal.appendErrorToErrorReport("Delete Command = " + cmdDelete.CommandText,
                     ex.GetBaseException().ToString());
+                cmdDelete.Dispose();
                 return false;
             }
         }
@@ -420,7 +431,7 @@ namespace ClientcardFB3
                 openConnection();
                 if (dadAdpt.UpdateCommand == null)
                 {
-                    SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                    commBuilder = new SqlCommandBuilder(dadAdpt);
                 }
                 dadAdpt.Update(dtbl);
                 conn.Close();

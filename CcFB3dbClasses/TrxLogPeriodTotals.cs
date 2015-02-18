@@ -10,7 +10,7 @@ using Microsoft.SqlServer.Server;
 
 namespace ClientcardFB3
 {
-    public class TrxLogPeriodTotals
+    public class TrxLogPeriodTotals : IDisposable
     {
         string connString;
         DataTable dtable;
@@ -20,12 +20,40 @@ namespace ClientcardFB3
         int iRowCount = 0;
         int iCurrentRow = 0;
         const string constKeyName = "FiscalPeriod";
+        private bool _disposed;
 
         public TrxLogPeriodTotals(string connStringIn)
         {
             conn = new System.Data.SqlClient.SqlConnection();
             conn.ConnectionString = connString = connStringIn;
             dtable = new DataTable();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dtable != null)
+                        dtable.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dtable = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -720,7 +748,7 @@ namespace ClientcardFB3
                 if (fldIndex >= 0)
                 {
                     if (dtable.Columns[fldIndex].DataType.Name == "DateTime")
-                        if (drow[FieldName].ToString() != "")
+                        if (drow[FieldName].ToString().Length >0)
                         { return CCFBGlobal.ValidDateString(drow[FieldName]); }
                         else
                         { return ""; }

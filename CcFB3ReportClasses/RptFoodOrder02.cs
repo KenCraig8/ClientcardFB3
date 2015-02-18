@@ -5,11 +5,12 @@ using Microsoft.Office.Interop.Word;
 
 namespace ClientcardFB3
 {
-    class RptFoodOrder02
+    class RptFoodOrder02 : IDisposable
     {
         Household clsHH;
         TrxLogItem clsTLItm;
         bool error = false;
+        bool _disposed = false;
         string rptDate;
 
         public bool Error
@@ -25,6 +26,30 @@ namespace ClientcardFB3
             clsHH = hhIN;
             clsTLItm = tlitmIN;
             rptDate = clsTLItm.TrxDate.ToShortDateString();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsHH != null)
+                        clsHH.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                clsHH = null;
+                _disposed = true;
+            }
         }
 
         public void createReport(string templatePath)

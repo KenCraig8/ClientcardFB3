@@ -186,6 +186,7 @@ namespace ClientcardFB3
 		/// unchanged.
 		/// </summary>
 		private SqlDataAdapter m_sqlAdapter;
+        private bool _disposed;
 
 		#endregion
 
@@ -205,17 +206,16 @@ namespace ClientcardFB3
 			ConnectionString = a_connectionString;
 		}		// end of constructor
 
-
-		//-----------------------------------------------------------------------------------------
-		/// <summary>
-		/// ********** Destructor **********
-		/// </summary>
-		/// <param name="a_connectionString"></param>
-		//-----------------------------------------------------------------------------------------
-		~SqlBaseDataSet ()
-		{
-			DbClose ();										// Close DataSet, connections, etc.
-		}		// end of destructor
+        ////////////-----------------------------------------------------------------------------------------
+        ///////////// <summary>
+        ///////////// ********** Destructor **********
+        ///////////// </summary>
+        ///////////// <param name="a_connectionString"></param>
+        ////////////-----------------------------------------------------------------------------------------
+        //////////~SqlBaseDataSet ()
+        //////////{
+        //////////    DbClose ();										// Close DataSet, connections, etc.
+        //////////}		// end of destructor
 
 
 		//-----------------------------------------------------------------------------------------
@@ -275,18 +275,18 @@ namespace ClientcardFB3
 		}		// end of property DataSetHasChanges
 
 
-		//-----------------------------------------------------------------------------------------
-		/// <summary>
-		/// Close the DataSet and connection and free all resources used by the class.
-		/// </summary>
-		/// <param name="a_save">TRUE = save DB updates, FALSE=close without saving.</param>
-		//-----------------------------------------------------------------------------------------
-		public void DbClose ()
-		{
-			if (m_sqlAdapter != null)
-				m_sqlAdapter.Dispose ();
-			m_sqlConnection.Close ();
-		}		// end of DbClose
+        //////////-----------------------------------------------------------------------------------------
+        /////////// <summary>
+        /////////// Close the DataSet and connection and free all resources used by the class.
+        /////////// </summary>
+        /////////// <param name="a_save">TRUE = save DB updates, FALSE=close without saving.</param>
+        //////////-----------------------------------------------------------------------------------------
+        ////////public void DbClose ()
+        ////////{
+        ////////    if (m_sqlAdapter != null)
+        ////////        m_sqlAdapter.Dispose ();
+        ////////    m_sqlConnection.Close ();
+        ////////}		// end of DbClose
 
 
 		//-----------------------------------------------------------------------------------------
@@ -335,7 +335,7 @@ namespace ClientcardFB3
 			{
 				// Create a connection to the database. The application must have supplied a
 				// connection string prior to trying to open the database.
-				if (ConnectionString == "")
+                if (String.IsNullOrEmpty(ConnectionString) == true)
 				{
 					// Developer message -- should never occur in a production application.
 					MessageBox.Show (
@@ -445,7 +445,7 @@ namespace ClientcardFB3
 
         public int ExecuteQuery(string queryText)
         {
-            if (m_sqlConnection.ConnectionString == "")
+            if (String.IsNullOrEmpty(m_sqlConnection.ConnectionString) == true)
                 m_sqlConnection.ConnectionString = ConnectionString;
             SqlCommand sqlCmd = new SqlCommand(queryText, m_sqlConnection);
             m_sqlConnection.Open();
@@ -454,5 +454,26 @@ namespace ClientcardFB3
             return retValue;
         }
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (m_sqlAdapter != null)
+                    m_sqlAdapter.Dispose();
+                if (m_sqlConnection != null)
+                    m_sqlConnection.Dispose();
+            }
+
+            // Indicate that the instance has been disposed.
+            m_sqlAdapter = null;
+            m_sqlConnection = null;
+            _disposed = true;
+        }
+
 	}		// end of class
+
 }		// end of namespace

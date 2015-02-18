@@ -15,6 +15,22 @@
         {
             if (disposing && (components != null))
             {
+                if (clsAppointments != null)
+                {
+                    clsAppointments.Dispose();
+                }
+                if (clsApptDays != null)
+                {
+                    clsApptDays.Dispose();
+                }
+                if (clsHHServiceTrans != null)
+                {
+                    clsHHServiceTrans.Dispose();
+                }
+                if (clsSvcDays != null)
+                {
+                    clsSvcDays.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

@@ -15,6 +15,14 @@
         {
             if (disposing && (components != null))
             {
+                if (clsJobsPlan != null)
+                {
+                    clsJobsPlan.Dispose();
+                }
+                if (clsVols != null)
+                {
+                    clsVols.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

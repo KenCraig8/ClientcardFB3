@@ -9,7 +9,7 @@ using Microsoft.SqlServer.Server;
 
 namespace ClientcardFB3
 {
-    public class DaysOpen
+    public class DaysOpen : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
@@ -19,6 +19,7 @@ namespace ClientcardFB3
         static string tbName = "DaysOpen";
         bool bisValid = false;
         int rowCurrent = 0;
+        private bool _disposed;
 
         public DaysOpen(string connStringIn)
         {
@@ -46,6 +47,38 @@ namespace ClientcardFB3
             dadAdpt.InsertCommand = command;
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
+        }
         #region Get/Set Accessors
 
         public int CurrentRow
@@ -157,7 +190,7 @@ namespace ClientcardFB3
             try
             {
                 command = new SqlCommand("SELECT * FROM " + tbName, conn);
-                if (WhereClause != "" )
+                if (WhereClause.Length >0 )
                 {
                     command.CommandText += " WHERE " + WhereClause;
                 }
@@ -247,6 +280,7 @@ namespace ClientcardFB3
             conn.Open();
             int NbrRows= myCommand.ExecuteNonQuery();
             conn.Close();
+            myCommand.Dispose();
             return NbrRows;
         }
 

@@ -11,7 +11,7 @@ using Microsoft.SqlServer.Server;
 
 namespace ClientcardFB3
 {
-    public class Client
+    public class Client : IDisposable
     {
         public Household clsHH;
         public TrxLog clsHHSvcTrans;
@@ -34,6 +34,7 @@ namespace ClientcardFB3
             internal int NbrTEFAPThisMonth;
             internal int NbrSupplThisMonth;
         }
+        private bool _disposed;
 
 //---------------------------------------Constructor-----------------------------------------------------
 /// <summary>
@@ -65,6 +66,50 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsHH != null)
+                        clsHH.Dispose();
+                    if (clsHHSvcTrans != null)
+                        clsHHSvcTrans.Dispose();
+                    if (clsHHmem != null)
+                        clsHHmem.Dispose();
+
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                clsHH = null;
+                clsHHSvcTrans = null;
+                clsHHmem = null;
+
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -130,6 +175,15 @@ namespace ClientcardFB3
             return (iResult > 0);
         }
 
+        public bool isLocal()
+        {
+            if (clsHH.ClientType == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool open(int HHID, bool loadHHmem, bool loadSvcTrans)
         {
             bool toReturn = clsHH.open(HHID);
@@ -183,6 +237,11 @@ namespace ClientcardFB3
                     + ",CASE WHEN m.ID IS NULL THEN h.Name ELSE ltrim(rtrim(m.FirstName)) + ' ' + ltrim(rtrim(m.LastName)) END colNameFL"
                     + ",ct.Type ClientTypeName "
                     + ",h.Inactive HHInactive"
+                    + ",m.CSFP"
+                    + ", m.BackPack"
+                    + ",h.SchSupplyFlag"
+                    + ",h.CAFlag"
+                    + ",h.Created DateAdded"
                     + " FROM  Household h Left Join HouseholdMembers m on h.ID=m.HouseholdID"
                     + " LEFT JOIN parm_ClientType ct ON h.ClientType = ct.ID"
                     + " Where " + whereClause, conn);
@@ -252,7 +311,7 @@ namespace ClientcardFB3
                             && clsHHMemberItem.BirthDate.ToShortDateString() != CCFBGlobal.OUROTHERNULLDATE))
                         {
                             BirthDay = clsHHMemberItem.BirthDate;
-                            if (BirthDay != null && BirthDay.ToShortDateString() != "" && BirthDay != DateTime.MaxValue)
+                            if (BirthDay != null && BirthDay.ToShortDateString().Length >0 && BirthDay != DateTime.MaxValue)
                             {
                                 newAge = CCFBGlobal.calcAge(BirthDay, BaseDate);
                                 clsHHMemberItem.Age = newAge;
@@ -362,10 +421,12 @@ namespace ClientcardFB3
                         if (!reader.IsDBNull(3))
                             trxStats.NbrTrxThisWeek = reader.GetInt32(3);
                     }
+                    reader.Dispose();
                 }
                 catch { };
                 if (conn.State == ConnectionState.Open)
                     conn.Close();
+                sqlCmd.Dispose();
             }
         }
 
@@ -396,15 +457,18 @@ namespace ClientcardFB3
             SqlCommand sqlCmd = new SqlCommand("SELECT HHMemID + ' served ' + DateName(dw,TrxDate) FROM TrxLog WHERE HouseholdID = " + clsHH.ID.ToString() + " AND TrxDate Between '" + date1.ToShortDateString() + "' AND '" + date2.ToShortDateString() + "'", conn);
             openConnection();
             SqlDataReader reader = sqlCmd.ExecuteReader();
+            sqlCmd.Dispose();
             while (reader.Read())
             {
                 if (!reader.IsDBNull(0))
                 {
-                    if (result != "")
+                    if (result.Length >0)
                         result += "~";
                     result += reader.GetString(0);
                 }
             }
+            reader.Dispose();
+
             closeConnection();
             return result;
         }

@@ -70,7 +70,7 @@ namespace ClientcardFB3
                     mytable.Cell(row, 1).Range.Text = (row-1).ToString() + ": " + dgv.Rows[i].Cells["HouseholdID"].Value.ToString();
                     mytable.Cell(row, 2).Range.Text = dgv.Rows[i].Cells["clmName"].Value.ToString();
                     tmp = dgv.Rows[i].Cells["Address"].Value.ToString();
-                    if (dgv.Rows[i].Cells["AptNbr"].Value.ToString() != "")
+                    if (dgv.Rows[i].Cells["AptNbr"].Value.ToString().Length >0)
                     {
                         tmp += " unit " + dgv.Rows[i].Cells["AptNbr"].Value.ToString();
                     }

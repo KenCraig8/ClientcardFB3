@@ -214,20 +214,28 @@ namespace ClientcardFB3
             int y = (iRow * (btnTemp.Height + 5)) + 4;
             btn.Location = new Point(x, y);
             pnlBtns.Controls.Add(btn);
+            //btn.Dispose();
         }
 
         private void btnVoucher_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            setEditMode(true);
             CreateNewVoucher(Convert.ToInt32(btn.Tag), btn.Text);
-
+            setEditMode(true);
         }
         private void setEditMode(bool editing)
         {
             pnlBtns.Visible = !editing;
             pnlEditVLog.Visible = editing;
             inEditMode = editing;
+            if (editing == true)
+            {
+                btnDelete.Visible = (clsVoucher.TrxId == 0);
+            }
+            else
+            {
+                btnDelete.Visible = false;
+            }
         }
 
 
@@ -454,7 +462,7 @@ namespace ClientcardFB3
                     count++;
                     lvi2 = new ListViewItem(count.ToString());
                     lvi2.Tag = reader.GetInt32(4);
-                    if (curgroup != reader.GetString(groupindx) || lvgrp.Header == "")
+                    if (curgroup != reader.GetString(groupindx) || String.IsNullOrEmpty(lvgrp.Header) == true)
                     {
                         curgroup = reader.GetString(groupindx);
                         lvgrp = lvw.Groups.Add(curgroup, curgroup);
@@ -628,6 +636,14 @@ namespace ClientcardFB3
                 clsVoucher.Amount = newamt;
                 oriAmt = newamt;
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            clsVoucher.delete(clsVoucher.TrxId);
+            setEditMode(false);
+            getVoucherLogForPeriod();
+            loadVItmsList();
         }
     }
 }

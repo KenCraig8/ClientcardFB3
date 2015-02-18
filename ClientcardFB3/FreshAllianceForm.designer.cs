@@ -15,6 +15,26 @@
         {
             if (disposing && (components != null))
             {
+                if (clsFoodDonations != null)
+                {
+                    clsFoodDonations.Dispose();
+                }
+                if (clsMonthlyReports != null)
+                {
+                    clsMonthlyReports.Dispose();
+                }
+                if (dset != null)
+                    dset.Dispose();
+                if (conn != null)
+                    conn.Dispose();
+                if (dadAdpt != null)
+                    dadAdpt.Dispose();
+                if (commandByDay != null)
+                    commandByDay.Dispose();
+                if (commandByWeek != null)
+                    commandByWeek.Dispose();
+                if (commBuilder != null)
+                    commBuilder.Dispose();
                 components.Dispose();
             }
             base.Dispose(disposing);

@@ -35,11 +35,11 @@ namespace ClientcardFB3
         /// </summary>
         /// <param name="clsIn">The client class</param>
         /// adds Household</param>
-        public AddNewHousehold2(Client clsIn)
+        public AddNewHousehold2()
         {
             InitializeComponent();
-            clsHH = clsIn.clsHH;
-            clsHHM = clsIn.clsHHmem;
+            clsHH = new Household(CCFBGlobal.connectionString);
+            clsHHM = new HHMembers(CCFBGlobal.connectionString);
             this.BackColor = CCFBGlobal.bkColorBaseEdit;
             lblHelp.BackColor = Color.Cornsilk;
             csdgdataaccess = new CSDGSqlDataAccess(CCFBGlobal.connectionString);
@@ -147,6 +147,15 @@ namespace ClientcardFB3
             itemHHM.CSFPRoute = 0;
             itemHHM.CSFPComments = "";
             itemHHM.CSFPStatus = 0;
+            itemHHM.CAGiftFlag = false;
+            itemHHM.CASize = "";
+            itemHHM.CAGiftIdeas = "";
+            itemHHM.CAHobbies = "";
+            itemHHM.CAAdoptedDate = CCFBGlobal.FBNullDateValue;
+            itemHHM.CAAdoptedBy = 0;
+            itemHHM.CAAdoptedName = "";
+            itemHHM.CAGiftReceived = false;
+            itemHHM.CAGiftReceivedDate = CCFBGlobal.FBNullDateValue;
          }
 
         public void setHHMember(HHMemberItem clshhmItm)
@@ -205,7 +214,7 @@ namespace ClientcardFB3
 
         private void btnSaveClient_Click(object sender, EventArgs e)
         {
-            if (tbAge.Text.Trim() == "" && tbBirthDate.Text.Trim() == "")
+            if (String.IsNullOrEmpty(tbAge.Text.Trim()) == true && String.IsNullOrEmpty(tbBirthDate.Text.Trim()) == true)
             {
                 MessageBox.Show("Cannot Save When Both Age And Birthdate Are Blank", modedescription);
             }
@@ -355,6 +364,19 @@ namespace ClientcardFB3
                         newRow["SchSupplyRegDate"] = CCFBGlobal.FBNullDateValue;
                         newRow["SchSupplyFlag"] = 0;
                         newRow["SchSupplyRegistration"] = 0;
+                        newRow["CAFlag"] = false;
+                        newRow["CAApplicationDate"] = CCFBGlobal.FBNullDateValue;
+                        newRow["CADBInputDate"] = CCFBGlobal.FBNullDateValue;
+                        newRow["CAAdoptedDate"] = CCFBGlobal.FBNullDateValue;
+                        newRow["CAFilledDate"] = CCFBGlobal.FBNullDateValue;
+                        newRow["CAAdoptedBy"] = 0;
+                        newRow["CAAdoptedContactName"] = "";
+                        newRow["CAAdoptedContactPhone"] = "";
+                        newRow["CAFoodBoxOnly"] = false;
+                        newRow["CAHasPickupInfo"] = false;
+                        newRow["CAFoodBoxRequest"] = false;
+                        newRow["CAReceived"] = false;
+                        newRow["CASignedByID"] = 0;
 
                         clsHH.DSet.Tables[0].Rows.Add(newRow);
                         clsHH.insert();
@@ -529,7 +551,7 @@ namespace ClientcardFB3
         {
             string tmp = tbFirstName.Text.Trim();
             lblDupHHError.Visible = false;
-            if (tmp != "")
+            if (tmp.Length >0)
             {
                 if (tmp.Substring(0, 1) != tmp.Substring(0, 1).ToUpper())
                     if (tmp.Length > 1)
@@ -611,7 +633,7 @@ namespace ClientcardFB3
 
         private void tbAge_Leave(object sender, EventArgs e)
         {
-            if (tbAge.Text != "" && tbAge.Enabled == true)
+            if (tbAge.Text.Length >0 && tbAge.Enabled == true)
             {
                 if (chkEnterAge.Checked == true)
                 {
@@ -673,7 +695,7 @@ namespace ClientcardFB3
             string tmp = CCFBGlobal.cleanAddress(tbeAddress.Text);
             if (tmp != tbeAddress.Text)
                 tbeAddress.Text = tmp;
-            if (tmp != "")
+            if (tmp.Length >0)
             {
                 FillSameHouseNbrGrid();
                 //Application.DoEvents();
@@ -715,6 +737,8 @@ namespace ClientcardFB3
                 //tpgSameHouseNbr.Text = "";
                 lvwSameHouseNbr.Visible = false;
             }
+            clsTmpHH.Dispose();
+            clsTmpTL.Dispose();
         }
 
         //private bool FillHHMemberGrid()
@@ -791,7 +815,7 @@ namespace ClientcardFB3
 
         private bool TestForBrithdateandName(string nameLast, string nameFirst, string dateBirth)
         {
-            Household clsTmpHH = new Household(CCFBGlobal.connectionString);
+            //Household clsTmpHH = new Household(CCFBGlobal.connectionString);
             string sqlText = "SELECT hm.ID MbrId, hm.HouseholdID, h.Name, h.Address, h.City, h.State, h.Zipcode, hhm.Inactive MbrInactive, h.Inactive HhInactive FROM HouseholdMembers hm "
                            + " INNER JOIN Household h ON hhm.HouseholdId = h.ID WHERE LastName = '" + CCFBGlobal.SQLApostrophe(tbLastName.Text) + "' AND FirstName = '" + CCFBGlobal.SQLApostrophe(tbFirstName.Text) + "' AND BirthDate = '" + dateBirth +"'";
             DataTable dtblwrk = csdgdataaccess.TransferDataToLocalDataTable(sqlText);
@@ -809,7 +833,9 @@ namespace ClientcardFB3
             if (TestHHId > 0)
                 sqlWhere += " OR ID = " + TestHHId.ToString();
             clsTmpHH.openWhere(sqlWhere);
-            return (clsTmpHH.RowCount > 0);
+            bool retValue = (clsTmpHH.RowCount > 0);
+            clsTmpHH.Dispose();
+            return retValue;
         }
 
         private bool TestHHMName(int iMode, ListView lvwGrid)
@@ -950,7 +976,7 @@ namespace ClientcardFB3
             if (tbMemIdNbr.Text != stbOriValue)
             {
                 tbMemIdNbr.Text = tbMemIdNbr.Text.ToUpper();
-                if (tbMemIdNbr.Text != "")
+                if (tbMemIdNbr.Text.Length >0)
                 {
                     int testHHMID = 0;
                     int testID = CCFBGlobal.getHHFromBarCode(tbMemIdNbr.Text,ref testHHMID);
@@ -1015,13 +1041,13 @@ namespace ClientcardFB3
             }
         }
 
-        private void setTSBUnchecked(ToolStripButton tsb)
+        private static void setTSBUnchecked(ToolStripButton tsb)
         {
             tsb.Checked = false;
             tsb.ForeColor = Color.Black;
         }
 
-        private void setTSBChecked(ToolStripButton tsb)
+        private static void setTSBChecked(ToolStripButton tsb)
         {
             tsb.Checked = true;
             tsb.ForeColor = Color.DarkBlue;

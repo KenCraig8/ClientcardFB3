@@ -154,8 +154,8 @@ namespace ClientcardFB3
             clsUserFields.open("HouseholdMembers");
             userField0 = clsUserFields.GetDataValue("EditLabel", 0).ToString().Trim();
             userField1 = clsUserFields.GetDataValue("EditLabel", 1).ToString().Trim();
-
-            if (userField0 == "")
+            clsUserFields.Dispose();
+            if (String.IsNullOrEmpty(userField0)  == true)
             {
                 showColumn[(int)dgvColNames.UserFlag0] = false;
                 chkUserFlag0.Visible = false;
@@ -163,7 +163,7 @@ namespace ClientcardFB3
             else
                 chkUserFlag0.Text = userField0;
 
-            if (userField1 == "")
+            if (String.IsNullOrEmpty(userField1)  == true)
             {
                 showColumn[(int)dgvColNames.UserFlag1] = false;
                 chkUserFlag1.Visible = false;
@@ -245,11 +245,11 @@ namespace ClientcardFB3
             catch { }
             dgvHHM2Init(clsClient.clsHHmem.RowCount);
             string stmp = clsClient.clsHHmem.getHeadHH(clsClient.clsHH.ID);
-            if (stmp == "")
+            if (String.IsNullOrEmpty(stmp) == true)
             {
                 stmp = clsClient.clsHH.Name;
             }
-            if (stmp != "")
+            if (stmp.Length >0)
             {
                 string[] tmpNames = stmp.Split(',');
                 baseLastName = tmpNames[0];
@@ -276,7 +276,7 @@ namespace ClientcardFB3
 
         private void btnSaveNewMem_Click(object sender, EventArgs e)
         {
-            if (tbAge.Text.Trim() == "" && msktbBirthDate.Text.Trim() == "")
+            if (String.IsNullOrEmpty(tbAge.Text.Trim()) == true && String.IsNullOrEmpty(msktbBirthDate.Text.Trim()) == true)
             {
                 MessageBox.Show("Cannot Save When Both Age And Birthdate Are Blank", this.Text);
             }
@@ -550,7 +550,7 @@ namespace ClientcardFB3
 
             if (inEditMode == true)
             {
-                if (chkBox.Tag != null && chkBox.Tag.ToString().Trim() != "")
+                if (chkBox.Tag != null && chkBox.Tag.ToString().Trim().Length >0)
                 {
                     if (chkBox.Checked != bchkOriValue)
                     {
@@ -591,7 +591,7 @@ namespace ClientcardFB3
 
             ////if (inEditMode == true)
             ////{
-            ////    if (chkBox.Tag != null && chkBox.Tag.ToString().Trim() != "")
+            ////    if (chkBox.Tag != null && chkBox.Tag.ToString().Trim().Length >0)
             ////    {
             ////        if (chkBox.Checked != bchkOriValue)
             ////        {
@@ -627,14 +627,14 @@ namespace ClientcardFB3
         {
             foreach (TextBox tb in tbList)
             {
-                if (tb.Tag != null && tb.Tag.ToString().Trim() != "")
+                if (tb.Tag != null && tb.Tag.ToString().Trim().Length >0)
                     tb.Text = "";
                 tb.Enabled = false;
             }
 
             foreach (CheckBox chk in chkList)
             {
-                if (chk.Tag != null && chk.Tag.ToString().Trim() != "")
+                if (chk.Tag != null && chk.Tag.ToString().Trim().Length >0)
                     chk.Checked = false;
                 chk.Enabled = false;
 
@@ -726,7 +726,7 @@ namespace ClientcardFB3
                 if (fldTypes[i] == CSDGCell.CSDGCellTypeEnum.Combo || fldTypes[i] == CSDGCell.CSDGCellTypeEnum.ComboText)
                 {
                     tblName = parmTableName(i);
-                    if (tblName != "")
+                    if (tblName.Length >0)
                     {
                         cboListGrid = new string[CCFBGlobal.TypeCodesArray(tblName).Count];
                         int k = 0;
@@ -780,7 +780,7 @@ namespace ClientcardFB3
                 tbID.Text = itemHHMember.ID.ToString();
                 foreach (TextBox tb in tbList)
                 {
-                    if (tb.Tag != null && tb.Tag.ToString().Trim() != "")
+                    if (tb.Tag != null && tb.Tag.ToString().Trim().Length >0)
                         tb.Text = itemHHMember.GetDataString(tb.Tag.ToString());
                     tb.Enabled = true;
                     tb.ForeColor = Color.Black;
@@ -790,7 +790,7 @@ namespace ClientcardFB3
                 msktbBirthDate.BackColor = Color.White;
                 foreach (CheckBox chk in chkList)
                 {
-                    if (chk.Tag != null && chk.Tag.ToString().Trim() != "")
+                    if (chk.Tag != null && chk.Tag.ToString().Trim().Length >0)
                         chk.Checked = CCFBGlobal.NullToFalse(itemHHMember.GetDataValue(chk.Tag.ToString()));
                     chk.Enabled = true;
                     chk.ForeColor = Color.Black;
@@ -852,7 +852,7 @@ namespace ClientcardFB3
                     {
                         case CSDGCell.CSDGCellTypeEnum.Combo:
                             string newvalue = clsClient.clsHHmem.GetDataString(colName);
-                            if (newvalue == "")
+                            if (String.IsNullOrEmpty(newvalue) == true)
                                 newvalue = "0";
                             else if (newvalue == "False")
                                 newvalue = "0";
@@ -1172,7 +1172,7 @@ namespace ClientcardFB3
 
         //private void dgvHHM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         //{
-        //    if (dgvOldOne.Columns[e.ColumnIndex].DataPropertyName.Trim() != "")
+        //    if (dgvOldOne.Columns[e.ColumnIndex].DataPropertyName.Trim().Length >0)
         //    {
         //        changesInGridMade = true;
         //        clsClient.clsHHmem.SetDataValue(dgvOldOne.Columns[e.ColumnIndex].DataPropertyName,dgvOldOne[e.ColumnIndex, e.RowIndex].Value.ToString());
@@ -1222,7 +1222,7 @@ namespace ClientcardFB3
         
         private void tbAge_Leave(object sender, EventArgs e)
         {
-            if (tbAge.Text != "" && tbAge.Enabled == true)
+            if (tbAge.Text.Length >0 && tbAge.Enabled == true)
             {
                 if (itemHHMember.UseAge == true)
                 {
@@ -1321,7 +1321,7 @@ namespace ClientcardFB3
                 bAlreadyHere = true;
                 string tmp = tbFirstName.Text.Trim();
                 lblDupHHMError.Visible = false;
-                if (tmp != "")
+                if (tmp.Length >0)
                 {
                     if (tmp.Substring(0, 1) != tmp.Substring(0, 1).ToUpper())
                         if (tmp.Length > 1)
@@ -1374,7 +1374,7 @@ namespace ClientcardFB3
 
             if (inEditMode == true)
             {
-                if (tbHHM.Tag != null && tbHHM.Tag.ToString().Trim() != "")
+                if (tbHHM.Tag != null && tbHHM.Tag.ToString().Trim().Length >0)
                     if (tbHHM.Text.Trim() != stbOriValue)
                     {
                         if (lvHHMembers.SelectedItems.Count > 0)
@@ -1416,7 +1416,7 @@ namespace ClientcardFB3
             if (tbMemIdNbr.Text != stbOriValue)
             {
                 tbMemIdNbr.Text = tbMemIdNbr.Text.ToUpper();
-                if (tbMemIdNbr.Text != "")
+                if (tbMemIdNbr.Text.Length >0)
                 {
                     int testHHMID = 0;
                     int testID = CCFBGlobal.getHHFromBarCode(tbMemIdNbr.Text, ref testHHMID);
@@ -1641,7 +1641,7 @@ namespace ClientcardFB3
                 {
                     case "TextBox":
                         {
-                            if (cntrl.Tag != null && cntrl.Tag.ToString().Trim() != "")
+                            if (cntrl.Tag != null && cntrl.Tag.ToString().Trim().Length >0)
                             {
                                 cntrl.ForeColor = Color.Black;
                                 cntrl.BackColor = Color.White;
@@ -1653,7 +1653,7 @@ namespace ClientcardFB3
                         }
                     case "CheckBox":
                         {
-                            if (cntrl.Tag != null && cntrl.Tag.ToString().Trim() != "")
+                            if (cntrl.Tag != null && cntrl.Tag.ToString().Trim().Length >0)
                             {
                                 CheckBox chk = (CheckBox)cntrl;
                                 chk.Enter += new System.EventHandler(this.chkList_Enter);
@@ -1668,7 +1668,7 @@ namespace ClientcardFB3
                         {
                             if (cntrl.Tag != null)
                             {
-                                if (cntrl.Tag.ToString().Trim() != "")
+                                if (cntrl.Tag.ToString().Trim().Length >0)
                                 {
                                     cboList.Add((ComboBox)cntrl);
                                 }
@@ -1757,6 +1757,7 @@ namespace ClientcardFB3
                     CCFBGlobal.appendErrorToErrorReport("HHMID= " + lvHHMembers.SelectedItems[0].Tag.ToString() + "\r\nProcName =" + procName,
                         ex.GetBaseException().ToString());
                 }
+                sqlCmd.Dispose();
             }
         }
 
@@ -1869,7 +1870,7 @@ namespace ClientcardFB3
         }
         //private void dgvHHM_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         //{
-        //    if (dgvOldOne.Columns[e.ColumnIndex].DataPropertyName.Trim() != "")
+        //    if (dgvOldOne.Columns[e.ColumnIndex].DataPropertyName.Trim().Length >0)
         //    {
         //        changesInGridMade = true;
         //        clsClient.clsHHmem.SetDataValue(dgvOldOne.Columns[e.ColumnIndex].DataPropertyName,dgvOldOne[e.ColumnIndex, e.RowIndex].Value.ToString());

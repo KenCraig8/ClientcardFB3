@@ -127,7 +127,7 @@ namespace ClientcardFB3
                         //dvr.Cells["clmSchool"].Value = CCFBGlobal.LongNameFromId(CCFBGlobal.parmTbl_SchSupplySchool, clsClient.clsHHmem.SchSupplySchool);
 
                         string tmp = "";
-                        if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["SchSupplyDelivered"].ToString() != "")
+                        if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["SchSupplyDelivered"].ToString().Length >0)
                         {
                             d = (DateTime)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["SchSupplyDelivered"];
                             if (d > CCFBGlobal.FBNullDateValue)

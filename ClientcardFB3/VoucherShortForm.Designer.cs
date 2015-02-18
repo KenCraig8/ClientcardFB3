@@ -15,6 +15,22 @@
         {
             if (disposing && (components != null))
             {
+                if (clsHH != null)
+                {
+                    clsHH.Dispose();
+                }
+                if (clsVItems != null)
+                {
+                    clsVItems.Dispose();
+                }
+                if (clsVoucher != null)
+                {
+                    clsVoucher.Dispose();
+                }
+                if (clsVoucherExisitsTest != null)
+                {
+                    clsVoucherExisitsTest.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -110,6 +126,7 @@
             this.mnuShowLeft = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowRight = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowBoth = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.spltrCtrls)).BeginInit();
             this.spltrCtrls.Panel1.SuspendLayout();
             this.spltrCtrls.Panel2.SuspendLayout();
@@ -134,9 +151,10 @@
             this.btnTemp.BackColor = System.Drawing.Color.LightCyan;
             this.btnTemp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTemp.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTemp.Location = new System.Drawing.Point(256, 4);
+            this.btnTemp.Location = new System.Drawing.Point(384, 6);
+            this.btnTemp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnTemp.Name = "btnTemp";
-            this.btnTemp.Size = new System.Drawing.Size(110, 64);
+            this.btnTemp.Size = new System.Drawing.Size(165, 98);
             this.btnTemp.TabIndex = 0;
             this.btnTemp.Text = "Christmas Basket Program";
             this.btnTemp.UseVisualStyleBackColor = false;
@@ -148,7 +166,8 @@
             this.spltrCtrls.BackColor = System.Drawing.Color.SaddleBrown;
             this.spltrCtrls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spltrCtrls.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.spltrCtrls.Location = new System.Drawing.Point(0, 28);
+            this.spltrCtrls.Location = new System.Drawing.Point(0, 38);
+            this.spltrCtrls.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.spltrCtrls.Name = "spltrCtrls";
             // 
             // spltrCtrls.Panel1
@@ -161,8 +180,9 @@
             this.spltrCtrls.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.spltrCtrls.Panel2.Controls.Add(this.pnlEditVLog);
             this.spltrCtrls.Panel2.Controls.Add(this.pnlBtns);
-            this.spltrCtrls.Size = new System.Drawing.Size(984, 626);
+            this.spltrCtrls.Size = new System.Drawing.Size(1476, 968);
             this.spltrCtrls.SplitterDistance = 390;
+            this.spltrCtrls.SplitterWidth = 6;
             this.spltrCtrls.TabIndex = 1;
             // 
             // spltr2
@@ -170,6 +190,7 @@
             this.spltr2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.spltr2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spltr2.Location = new System.Drawing.Point(0, 0);
+            this.spltr2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.spltr2.Name = "spltr2";
             this.spltr2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -185,16 +206,18 @@
             // 
             this.spltr2.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.spltr2.Panel2.Controls.Add(this.tabControl1);
-            this.spltr2.Size = new System.Drawing.Size(390, 626);
-            this.spltr2.SplitterDistance = 88;
+            this.spltr2.Size = new System.Drawing.Size(390, 968);
+            this.spltr2.SplitterDistance = 136;
+            this.spltr2.SplitterWidth = 6;
             this.spltr2.TabIndex = 0;
             // 
             // btnEditVoucherLog
             // 
             this.btnEditVoucherLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnEditVoucherLog.Location = new System.Drawing.Point(53, 47);
+            this.btnEditVoucherLog.Location = new System.Drawing.Point(80, 72);
+            this.btnEditVoucherLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnEditVoucherLog.Name = "btnEditVoucherLog";
-            this.btnEditVoucherLog.Size = new System.Drawing.Size(152, 36);
+            this.btnEditVoucherLog.Size = new System.Drawing.Size(228, 55);
             this.btnEditVoucherLog.TabIndex = 6;
             this.btnEditVoucherLog.Text = "&Edit";
             this.btnEditVoucherLog.UseVisualStyleBackColor = true;
@@ -203,10 +226,10 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(4, 4);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 18);
+            this.label1.Size = new System.Drawing.Size(120, 28);
             this.label1.TabIndex = 5;
             this.label1.Text = "History Period:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -218,7 +241,7 @@
             this.cboVHistoryPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cboVHistoryPeriod.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboVHistoryPeriod.FormattingEnabled = true;
-            this.cboVHistoryPeriod.ItemHeight = 14;
+            this.cboVHistoryPeriod.ItemHeight = 22;
             this.cboVHistoryPeriod.Items.AddRange(new object[] {
             "Current Month",
             "Last 90 Days",
@@ -227,10 +250,10 @@
             "Previous Calendar Year",
             "Previous Fiscal Year",
             "All"});
-            this.cboVHistoryPeriod.Location = new System.Drawing.Point(9, 20);
-            this.cboVHistoryPeriod.Margin = new System.Windows.Forms.Padding(4);
+            this.cboVHistoryPeriod.Location = new System.Drawing.Point(14, 31);
+            this.cboVHistoryPeriod.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboVHistoryPeriod.Name = "cboVHistoryPeriod";
-            this.cboVHistoryPeriod.Size = new System.Drawing.Size(195, 22);
+            this.cboVHistoryPeriod.Size = new System.Drawing.Size(290, 30);
             this.cboVHistoryPeriod.TabIndex = 4;
             this.cboVHistoryPeriod.Tag = "";
             this.cboVHistoryPeriod.SelectionChangeCommitted += new System.EventHandler(this.cboVHistoryPeriod_SelectionChangeCommitted);
@@ -242,18 +265,20 @@
             this.panel1.Controls.Add(this.rdoRight);
             this.panel1.Controls.Add(this.rdoLeft);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(262, 0);
+            this.panel1.Location = new System.Drawing.Point(198, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(128, 88);
+            this.panel1.Size = new System.Drawing.Size(192, 136);
             this.panel1.TabIndex = 2;
             // 
             // rboBoth
             // 
             this.rboBoth.AutoSize = true;
             this.rboBoth.Checked = true;
-            this.rboBoth.Location = new System.Drawing.Point(9, 59);
+            this.rboBoth.Location = new System.Drawing.Point(14, 91);
+            this.rboBoth.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rboBoth.Name = "rboBoth";
-            this.rboBoth.Size = new System.Drawing.Size(47, 17);
+            this.rboBoth.Size = new System.Drawing.Size(68, 24);
             this.rboBoth.TabIndex = 2;
             this.rboBoth.TabStop = true;
             this.rboBoth.Tag = "0";
@@ -264,9 +289,10 @@
             // rdoRight
             // 
             this.rdoRight.AutoSize = true;
-            this.rdoRight.Location = new System.Drawing.Point(9, 36);
+            this.rdoRight.Location = new System.Drawing.Point(14, 55);
+            this.rdoRight.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdoRight.Name = "rdoRight";
-            this.rdoRight.Size = new System.Drawing.Size(104, 17);
+            this.rdoRight.Size = new System.Drawing.Size(154, 24);
             this.rdoRight.TabIndex = 1;
             this.rdoRight.Tag = "2";
             this.rdoRight.Text = "Voucher Buttons";
@@ -276,9 +302,10 @@
             // rdoLeft
             // 
             this.rdoLeft.AutoSize = true;
-            this.rdoLeft.Location = new System.Drawing.Point(9, 12);
+            this.rdoLeft.Location = new System.Drawing.Point(14, 18);
+            this.rdoLeft.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdoLeft.Name = "rdoLeft";
-            this.rdoLeft.Size = new System.Drawing.Size(84, 17);
+            this.rdoLeft.Size = new System.Drawing.Size(123, 24);
             this.rdoLeft.TabIndex = 0;
             this.rdoLeft.Tag = "1";
             this.rdoLeft.Text = "Voucher List";
@@ -294,9 +321,10 @@
             this.tabControl1.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(54, 28);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(390, 534);
+            this.tabControl1.Size = new System.Drawing.Size(390, 826);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 61;
             // 
@@ -305,8 +333,9 @@
             this.tpgVItems.Controls.Add(this.lvwVItms);
             this.tpgVItems.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpgVItems.Location = new System.Drawing.Point(4, 32);
+            this.tpgVItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tpgVItems.Name = "tpgVItems";
-            this.tpgVItems.Size = new System.Drawing.Size(382, 498);
+            this.tpgVItems.Size = new System.Drawing.Size(382, 790);
             this.tpgVItems.TabIndex = 2;
             this.tpgVItems.Text = "Voucher Items";
             this.tpgVItems.UseVisualStyleBackColor = true;
@@ -328,9 +357,10 @@
             this.lvwVItms.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvwVItms.HideSelection = false;
             this.lvwVItms.Location = new System.Drawing.Point(0, 0);
+            this.lvwVItms.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvwVItms.MultiSelect = false;
             this.lvwVItms.Name = "lvwVItms";
-            this.lvwVItms.Size = new System.Drawing.Size(382, 498);
+            this.lvwVItms.Size = new System.Drawing.Size(382, 790);
             this.lvwVItms.TabIndex = 51;
             this.lvwVItms.UseCompatibleStateImageBehavior = false;
             this.lvwVItms.View = System.Windows.Forms.View.Details;
@@ -372,9 +402,10 @@
             this.tpgByDate.Controls.Add(this.lvByDate);
             this.tpgByDate.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tpgByDate.Location = new System.Drawing.Point(4, 32);
+            this.tpgByDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tpgByDate.Name = "tpgByDate";
-            this.tpgByDate.Padding = new System.Windows.Forms.Padding(3);
-            this.tpgByDate.Size = new System.Drawing.Size(382, 498);
+            this.tpgByDate.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tpgByDate.Size = new System.Drawing.Size(577, 786);
             this.tpgByDate.TabIndex = 0;
             this.tpgByDate.Text = "History by Date";
             this.tpgByDate.UseVisualStyleBackColor = true;
@@ -395,11 +426,11 @@
             this.lvByDate.FullRowSelect = true;
             this.lvByDate.GridLines = true;
             this.lvByDate.HideSelection = false;
-            this.lvByDate.Location = new System.Drawing.Point(3, 3);
-            this.lvByDate.Margin = new System.Windows.Forms.Padding(4);
+            this.lvByDate.Location = new System.Drawing.Point(4, 5);
+            this.lvByDate.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lvByDate.MultiSelect = false;
             this.lvByDate.Name = "lvByDate";
-            this.lvByDate.Size = new System.Drawing.Size(376, 492);
+            this.lvByDate.Size = new System.Drawing.Size(569, 776);
             this.lvByDate.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvByDate.TabIndex = 61;
             this.lvByDate.UseCompatibleStateImageBehavior = false;
@@ -442,8 +473,9 @@
             // 
             this.tpgByVType.Controls.Add(this.lvByVType);
             this.tpgByVType.Location = new System.Drawing.Point(4, 32);
+            this.tpgByVType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tpgByVType.Name = "tpgByVType";
-            this.tpgByVType.Size = new System.Drawing.Size(382, 498);
+            this.tpgByVType.Size = new System.Drawing.Size(577, 786);
             this.tpgByVType.TabIndex = 1;
             this.tpgByVType.Text = "History By Voucher Type";
             this.tpgByVType.UseVisualStyleBackColor = true;
@@ -466,10 +498,10 @@
             this.lvByVType.GridLines = true;
             this.lvByVType.HideSelection = false;
             this.lvByVType.Location = new System.Drawing.Point(0, 0);
-            this.lvByVType.Margin = new System.Windows.Forms.Padding(4);
+            this.lvByVType.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.lvByVType.MultiSelect = false;
             this.lvByVType.Name = "lvByVType";
-            this.lvByVType.Size = new System.Drawing.Size(382, 498);
+            this.lvByVType.Size = new System.Drawing.Size(577, 786);
             this.lvByVType.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.lvByVType.TabIndex = 62;
             this.lvByVType.UseCompatibleStateImageBehavior = false;
@@ -516,6 +548,7 @@
             // pnlEditVLog
             // 
             this.pnlEditVLog.BackColor = System.Drawing.Color.LightGreen;
+            this.pnlEditVLog.Controls.Add(this.btnDelete);
             this.pnlEditVLog.Controls.Add(this.tbTrxDate);
             this.pnlEditVLog.Controls.Add(this.tbVoucherType);
             this.pnlEditVLog.Controls.Add(this.lblSource);
@@ -531,9 +564,10 @@
             this.pnlEditVLog.Controls.Add(this.tbNotes);
             this.pnlEditVLog.Controls.Add(this.tbQty);
             this.pnlEditVLog.Controls.Add(this.btnPost);
-            this.pnlEditVLog.Location = new System.Drawing.Point(5, 89);
+            this.pnlEditVLog.Location = new System.Drawing.Point(20, 18);
+            this.pnlEditVLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlEditVLog.Name = "pnlEditVLog";
-            this.pnlEditVLog.Size = new System.Drawing.Size(569, 343);
+            this.pnlEditVLog.Size = new System.Drawing.Size(854, 569);
             this.pnlEditVLog.TabIndex = 18;
             // 
             // tbTrxDate
@@ -541,9 +575,10 @@
             this.tbTrxDate.BackColor = System.Drawing.Color.LightYellow;
             this.tbTrxDate.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTrxDate.ForeColor = System.Drawing.Color.Blue;
-            this.tbTrxDate.Location = new System.Drawing.Point(92, 30);
+            this.tbTrxDate.Location = new System.Drawing.Point(138, 46);
+            this.tbTrxDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbTrxDate.Name = "tbTrxDate";
-            this.tbTrxDate.Size = new System.Drawing.Size(319, 25);
+            this.tbTrxDate.Size = new System.Drawing.Size(476, 34);
             this.tbTrxDate.TabIndex = 191;
             this.tbTrxDate.TabStop = false;
             this.tbTrxDate.Tag = "TrxDate";
@@ -555,9 +590,10 @@
             this.tbVoucherType.BackColor = System.Drawing.Color.LightYellow;
             this.tbVoucherType.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbVoucherType.ForeColor = System.Drawing.Color.Blue;
-            this.tbVoucherType.Location = new System.Drawing.Point(92, 58);
+            this.tbVoucherType.Location = new System.Drawing.Point(138, 89);
+            this.tbVoucherType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbVoucherType.Name = "tbVoucherType";
-            this.tbVoucherType.Size = new System.Drawing.Size(319, 25);
+            this.tbVoucherType.Size = new System.Drawing.Size(476, 34);
             this.tbVoucherType.TabIndex = 190;
             this.tbVoucherType.TabStop = false;
             this.tbVoucherType.Tag = "VType";
@@ -566,9 +602,10 @@
             // 
             // lblSource
             // 
-            this.lblSource.Location = new System.Drawing.Point(2, 178);
+            this.lblSource.Location = new System.Drawing.Point(3, 274);
+            this.lblSource.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSource.Name = "lblSource";
-            this.lblSource.Size = new System.Drawing.Size(88, 13);
+            this.lblSource.Size = new System.Drawing.Size(132, 20);
             this.lblSource.TabIndex = 188;
             this.lblSource.Text = "Funds Source:";
             this.lblSource.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -578,11 +615,11 @@
             // 
             this.cboSource.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboSource.FormattingEnabled = true;
-            this.cboSource.ItemHeight = 16;
-            this.cboSource.Location = new System.Drawing.Point(92, 172);
-            this.cboSource.Margin = new System.Windows.Forms.Padding(4);
+            this.cboSource.ItemHeight = 24;
+            this.cboSource.Location = new System.Drawing.Point(138, 265);
+            this.cboSource.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboSource.Name = "cboSource";
-            this.cboSource.Size = new System.Drawing.Size(318, 24);
+            this.cboSource.Size = new System.Drawing.Size(475, 32);
             this.cboSource.TabIndex = 189;
             this.cboSource.Tag = "VoucherType";
             this.cboSource.Visible = false;
@@ -590,9 +627,10 @@
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.btnCancel.Location = new System.Drawing.Point(465, 164);
+            this.btnCancel.Location = new System.Drawing.Point(698, 223);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(68, 48);
+            this.btnCancel.Size = new System.Drawing.Size(102, 74);
             this.btnCancel.TabIndex = 187;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -625,17 +663,18 @@
             this.pnlDemographics.Controls.Add(this.tbfAdults);
             this.pnlDemographics.Controls.Add(this.label23);
             this.pnlDemographics.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlDemographics.Location = new System.Drawing.Point(0, 228);
+            this.pnlDemographics.Location = new System.Drawing.Point(0, 393);
+            this.pnlDemographics.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlDemographics.Name = "pnlDemographics";
-            this.pnlDemographics.Size = new System.Drawing.Size(569, 115);
+            this.pnlDemographics.Size = new System.Drawing.Size(854, 176);
             this.pnlDemographics.TabIndex = 17;
             // 
             // tbfEighteen
             // 
-            this.tbfEighteen.Location = new System.Drawing.Point(151, 56);
-            this.tbfEighteen.Margin = new System.Windows.Forms.Padding(4);
+            this.tbfEighteen.Location = new System.Drawing.Point(226, 86);
+            this.tbfEighteen.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbfEighteen.Name = "tbfEighteen";
-            this.tbfEighteen.Size = new System.Drawing.Size(41, 20);
+            this.tbfEighteen.Size = new System.Drawing.Size(60, 26);
             this.tbfEighteen.TabIndex = 26;
             this.tbfEighteen.Tag = "Eighteen";
             this.tbfEighteen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -646,11 +685,11 @@
             // 
             this.cboHHCat.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboHHCat.FormattingEnabled = true;
-            this.cboHHCat.ItemHeight = 13;
-            this.cboHHCat.Location = new System.Drawing.Point(92, 4);
-            this.cboHHCat.Margin = new System.Windows.Forms.Padding(4);
+            this.cboHHCat.ItemHeight = 18;
+            this.cboHHCat.Location = new System.Drawing.Point(138, 6);
+            this.cboHHCat.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cboHHCat.Name = "cboHHCat";
-            this.cboHHCat.Size = new System.Drawing.Size(177, 21);
+            this.cboHHCat.Size = new System.Drawing.Size(264, 26);
             this.cboHHCat.TabIndex = 18;
             this.cboHHCat.Tag = "ClientType";
             this.cboHHCat.SelectionChangeCommitted += new System.EventHandler(this.cboHHCat_SelectionChangeCommitted);
@@ -658,10 +697,10 @@
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(148, 36);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(222, 55);
+            this.label12.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 17);
+            this.label12.Size = new System.Drawing.Size(72, 26);
             this.label12.TabIndex = 25;
             this.label12.Text = "18\'s";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -670,10 +709,10 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(116, 89);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox1.Location = new System.Drawing.Point(174, 137);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 17);
+            this.checkBox1.Size = new System.Drawing.Size(106, 24);
             this.checkBox1.TabIndex = 38;
             this.checkBox1.Tag = "Homeless";
             this.checkBox1.Text = "Homeless";
@@ -683,10 +722,10 @@
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox2.Location = new System.Drawing.Point(12, 89);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.checkBox2.Location = new System.Drawing.Point(18, 137);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(84, 17);
+            this.checkBox2.Size = new System.Drawing.Size(124, 24);
             this.checkBox2.TabIndex = 37;
             this.checkBox2.Tag = "InCityLimits";
             this.checkBox2.Text = "In City Limits";
@@ -698,10 +737,10 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 5);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(14, 8);
+            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(69, 13);
+            this.label13.Size = new System.Drawing.Size(102, 20);
             this.label13.TabIndex = 17;
             this.label13.Text = "Hh Category:";
             // 
@@ -709,19 +748,19 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(422, 40);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(633, 62);
+            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(56, 13);
+            this.label14.Size = new System.Drawing.Size(79, 18);
             this.label14.TabIndex = 35;
             this.label14.Text = "Disabled";
             // 
             // tbfInfants
             // 
-            this.tbfInfants.Location = new System.Drawing.Point(10, 56);
-            this.tbfInfants.Margin = new System.Windows.Forms.Padding(4);
+            this.tbfInfants.Location = new System.Drawing.Point(15, 86);
+            this.tbfInfants.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbfInfants.Name = "tbfInfants";
-            this.tbfInfants.Size = new System.Drawing.Size(41, 20);
+            this.tbfInfants.Size = new System.Drawing.Size(60, 26);
             this.tbfInfants.TabIndex = 20;
             this.tbfInfants.Tag = "Infants";
             this.tbfInfants.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -730,10 +769,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(425, 57);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Location = new System.Drawing.Point(638, 88);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(41, 20);
+            this.textBox1.Size = new System.Drawing.Size(60, 26);
             this.textBox1.TabIndex = 36;
             this.textBox1.Tag = "Disabled";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -743,10 +782,10 @@
             // label15
             // 
             this.label15.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(7, 36);
-            this.label15.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(10, 55);
+            this.label15.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(48, 17);
+            this.label15.Size = new System.Drawing.Size(72, 26);
             this.label15.TabIndex = 19;
             this.label15.Text = "Infants";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -754,20 +793,20 @@
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(366, 28);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(549, 43);
+            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(48, 26);
+            this.label16.Size = new System.Drawing.Size(72, 40);
             this.label16.TabIndex = 33;
             this.label16.Text = "Special Diet";
             this.label16.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // tbfYouth
             // 
-            this.tbfYouth.Location = new System.Drawing.Point(58, 55);
-            this.tbfYouth.Margin = new System.Windows.Forms.Padding(4);
+            this.tbfYouth.Location = new System.Drawing.Point(87, 85);
+            this.tbfYouth.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbfYouth.Name = "tbfYouth";
-            this.tbfYouth.Size = new System.Drawing.Size(41, 20);
+            this.tbfYouth.Size = new System.Drawing.Size(60, 26);
             this.tbfYouth.TabIndex = 22;
             this.tbfYouth.Tag = "Youth";
             this.tbfYouth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -776,10 +815,10 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(369, 57);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Location = new System.Drawing.Point(554, 88);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(41, 20);
+            this.textBox2.Size = new System.Drawing.Size(60, 26);
             this.textBox2.TabIndex = 34;
             this.textBox2.Tag = "SpecialDiet";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -789,10 +828,10 @@
             // label17
             // 
             this.label17.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(55, 36);
+            this.label17.Location = new System.Drawing.Point(82, 55);
             this.label17.Margin = new System.Windows.Forms.Padding(0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(48, 17);
+            this.label17.Size = new System.Drawing.Size(72, 26);
             this.label17.TabIndex = 21;
             this.label17.Text = "Youth";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -800,10 +839,10 @@
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(285, 23);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(428, 35);
+            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(48, 31);
+            this.label18.Size = new System.Drawing.Size(72, 48);
             this.label18.TabIndex = 31;
             this.label18.Text = "Total Family";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -813,11 +852,11 @@
             this.tbTotalFamily.BackColor = System.Drawing.Color.LightYellow;
             this.tbTotalFamily.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTotalFamily.ForeColor = System.Drawing.Color.Blue;
-            this.tbTotalFamily.Location = new System.Drawing.Point(288, 57);
-            this.tbTotalFamily.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTotalFamily.Location = new System.Drawing.Point(432, 88);
+            this.tbTotalFamily.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbTotalFamily.Name = "tbTotalFamily";
             this.tbTotalFamily.ReadOnly = true;
-            this.tbTotalFamily.Size = new System.Drawing.Size(41, 22);
+            this.tbTotalFamily.Size = new System.Drawing.Size(60, 29);
             this.tbTotalFamily.TabIndex = 32;
             this.tbTotalFamily.TabStop = false;
             this.tbTotalFamily.Tag = "TotalFamily";
@@ -825,10 +864,10 @@
             // 
             // tbfTeens
             // 
-            this.tbfTeens.Location = new System.Drawing.Point(106, 56);
-            this.tbfTeens.Margin = new System.Windows.Forms.Padding(4);
+            this.tbfTeens.Location = new System.Drawing.Point(159, 86);
+            this.tbfTeens.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbfTeens.Name = "tbfTeens";
-            this.tbfTeens.Size = new System.Drawing.Size(41, 20);
+            this.tbfTeens.Size = new System.Drawing.Size(60, 26);
             this.tbfTeens.TabIndex = 24;
             this.tbfTeens.Tag = "Teens";
             this.tbfTeens.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -838,10 +877,10 @@
             // label19
             // 
             this.label19.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(236, 37);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Location = new System.Drawing.Point(354, 57);
+            this.label19.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(56, 17);
+            this.label19.Size = new System.Drawing.Size(84, 26);
             this.label19.TabIndex = 29;
             this.label19.Text = "Seniors";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -849,20 +888,20 @@
             // label22
             // 
             this.label22.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(103, 36);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Location = new System.Drawing.Point(154, 55);
+            this.label22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(48, 17);
+            this.label22.Size = new System.Drawing.Size(72, 26);
             this.label22.TabIndex = 23;
             this.label22.Text = "Teens";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbfSeniors
             // 
-            this.tbfSeniors.Location = new System.Drawing.Point(239, 57);
-            this.tbfSeniors.Margin = new System.Windows.Forms.Padding(4);
+            this.tbfSeniors.Location = new System.Drawing.Point(358, 88);
+            this.tbfSeniors.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbfSeniors.Name = "tbfSeniors";
-            this.tbfSeniors.Size = new System.Drawing.Size(41, 20);
+            this.tbfSeniors.Size = new System.Drawing.Size(60, 26);
             this.tbfSeniors.TabIndex = 30;
             this.tbfSeniors.Tag = "Seniors";
             this.tbfSeniors.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -871,10 +910,10 @@
             // 
             // tbfAdults
             // 
-            this.tbfAdults.Location = new System.Drawing.Point(196, 56);
-            this.tbfAdults.Margin = new System.Windows.Forms.Padding(4);
+            this.tbfAdults.Location = new System.Drawing.Point(294, 86);
+            this.tbfAdults.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tbfAdults.Name = "tbfAdults";
-            this.tbfAdults.Size = new System.Drawing.Size(41, 20);
+            this.tbfAdults.Size = new System.Drawing.Size(60, 26);
             this.tbfAdults.TabIndex = 28;
             this.tbfAdults.Tag = "Adults";
             this.tbfAdults.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -884,29 +923,30 @@
             // label23
             // 
             this.label23.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(193, 38);
-            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Location = new System.Drawing.Point(290, 58);
+            this.label23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(43, 17);
+            this.label23.Size = new System.Drawing.Size(64, 26);
             this.label23.TabIndex = 27;
             this.label23.Text = "Adults";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblVoucherType
             // 
-            this.lblVoucherType.Location = new System.Drawing.Point(2, 64);
+            this.lblVoucherType.Location = new System.Drawing.Point(3, 98);
+            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVoucherType.Name = "lblVoucherType";
-            this.lblVoucherType.Size = new System.Drawing.Size(88, 13);
+            this.lblVoucherType.Size = new System.Drawing.Size(132, 20);
             this.lblVoucherType.TabIndex = 10;
             this.lblVoucherType.Text = "&Voucher Type:";
             this.lblVoucherType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblTrxDate
             // 
-            this.lblTrxDate.Location = new System.Drawing.Point(2, 35);
-            this.lblTrxDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTrxDate.Location = new System.Drawing.Point(3, 54);
+            this.lblTrxDate.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblTrxDate.Name = "lblTrxDate";
-            this.lblTrxDate.Size = new System.Drawing.Size(88, 13);
+            this.lblTrxDate.Size = new System.Drawing.Size(132, 20);
             this.lblTrxDate.TabIndex = 16;
             this.lblTrxDate.Text = "Voucher &Date:";
             this.lblTrxDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -914,9 +954,10 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.label10.Location = new System.Drawing.Point(2, 6);
+            this.label10.Location = new System.Drawing.Point(3, 9);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 17);
+            this.label10.Size = new System.Drawing.Size(132, 26);
             this.label10.TabIndex = 19;
             this.label10.Text = "Trx ID:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -925,10 +966,11 @@
             // 
             this.tbVoucherId.BackColor = System.Drawing.Color.Gainsboro;
             this.tbVoucherId.ForeColor = System.Drawing.Color.MediumBlue;
-            this.tbVoucherId.Location = new System.Drawing.Point(92, 6);
+            this.tbVoucherId.Location = new System.Drawing.Point(138, 9);
+            this.tbVoucherId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbVoucherId.Name = "tbVoucherId";
             this.tbVoucherId.ReadOnly = true;
-            this.tbVoucherId.Size = new System.Drawing.Size(68, 20);
+            this.tbVoucherId.Size = new System.Drawing.Size(100, 26);
             this.tbVoucherId.TabIndex = 20;
             this.tbVoucherId.Tag = "TrxId";
             this.tbVoucherId.Text = "78945623";
@@ -936,18 +978,20 @@
             // 
             // lblNotes
             // 
-            this.lblNotes.Location = new System.Drawing.Point(2, 122);
+            this.lblNotes.Location = new System.Drawing.Point(3, 188);
+            this.lblNotes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(88, 13);
+            this.lblNotes.Size = new System.Drawing.Size(132, 20);
             this.lblNotes.TabIndex = 14;
             this.lblNotes.Text = "&Notes:";
             this.lblNotes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblAmt
             // 
-            this.lblAmt.Location = new System.Drawing.Point(443, 18);
+            this.lblAmt.Location = new System.Drawing.Point(664, 28);
+            this.lblAmt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAmt.Name = "lblAmt";
-            this.lblAmt.Size = new System.Drawing.Size(108, 17);
+            this.lblAmt.Size = new System.Drawing.Size(162, 26);
             this.lblAmt.TabIndex = 12;
             this.lblAmt.Text = "&Amount - ";
             this.lblAmt.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -956,10 +1000,11 @@
             // 
             this.tbNotes.BackColor = System.Drawing.Color.White;
             this.tbNotes.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNotes.Location = new System.Drawing.Point(92, 102);
+            this.tbNotes.Location = new System.Drawing.Point(138, 157);
+            this.tbNotes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbNotes.Multiline = true;
             this.tbNotes.Name = "tbNotes";
-            this.tbNotes.Size = new System.Drawing.Size(319, 56);
+            this.tbNotes.Size = new System.Drawing.Size(476, 84);
             this.tbNotes.TabIndex = 15;
             this.tbNotes.Tag = "Notes";
             this.tbNotes.Enter += new System.EventHandler(this.tbBoxes_Enter);
@@ -968,9 +1013,10 @@
             // tbQty
             // 
             this.tbQty.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbQty.Location = new System.Drawing.Point(440, 37);
+            this.tbQty.Location = new System.Drawing.Point(660, 57);
+            this.tbQty.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tbQty.Name = "tbQty";
-            this.tbQty.Size = new System.Drawing.Size(111, 40);
+            this.tbQty.Size = new System.Drawing.Size(164, 56);
             this.tbQty.TabIndex = 13;
             this.tbQty.Tag = "Amount";
             this.tbQty.Text = "987654320";
@@ -980,9 +1026,10 @@
             // btnPost
             // 
             this.btnPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.btnPost.Location = new System.Drawing.Point(465, 105);
+            this.btnPost.Location = new System.Drawing.Point(698, 133);
+            this.btnPost.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(68, 50);
+            this.btnPost.Size = new System.Drawing.Size(102, 77);
             this.btnPost.TabIndex = 18;
             this.btnPost.Text = "&POST";
             this.btnPost.UseVisualStyleBackColor = true;
@@ -991,17 +1038,19 @@
             // pnlBtns
             // 
             this.pnlBtns.Controls.Add(this.btnTemp);
-            this.pnlBtns.Location = new System.Drawing.Point(4, 472);
+            this.pnlBtns.Location = new System.Drawing.Point(6, 726);
+            this.pnlBtns.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlBtns.Name = "pnlBtns";
-            this.pnlBtns.Size = new System.Drawing.Size(376, 80);
+            this.pnlBtns.Size = new System.Drawing.Size(564, 123);
             this.pnlBtns.TabIndex = 0;
             // 
             // dtpTrxDate
             // 
             this.dtpTrxDate.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTrxDate.Location = new System.Drawing.Point(514, 3);
+            this.dtpTrxDate.Location = new System.Drawing.Point(771, 5);
+            this.dtpTrxDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpTrxDate.Name = "dtpTrxDate";
-            this.dtpTrxDate.Size = new System.Drawing.Size(315, 24);
+            this.dtpTrxDate.Size = new System.Drawing.Size(470, 32);
             this.dtpTrxDate.TabIndex = 17;
             this.dtpTrxDate.Value = new System.DateTime(2013, 12, 4, 0, 0, 0, 0);
             this.dtpTrxDate.ValueChanged += new System.EventHandler(this.dtpTrxDate_ValueChanged);
@@ -1013,7 +1062,8 @@
             this.mnuView});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(984, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1476, 38);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1023,7 +1073,7 @@
             this.mnuHHName.Font = new System.Drawing.Font("Tahoma", 10F);
             this.mnuHHName.ForeColor = System.Drawing.Color.Blue;
             this.mnuHHName.Name = "mnuHHName";
-            this.mnuHHName.Size = new System.Drawing.Size(200, 24);
+            this.mnuHHName.Size = new System.Drawing.Size(298, 32);
             this.mnuHHName.Text = "James Somebody";
             // 
             // mnuView
@@ -1033,13 +1083,13 @@
             this.mnuShowRight,
             this.mnuShowBoth});
             this.mnuView.Name = "mnuView";
-            this.mnuView.Size = new System.Drawing.Size(44, 24);
+            this.mnuView.Size = new System.Drawing.Size(61, 32);
             this.mnuView.Text = "&View";
             // 
             // mnuShowLeft
             // 
             this.mnuShowLeft.Name = "mnuShowLeft";
-            this.mnuShowLeft.Size = new System.Drawing.Size(139, 22);
+            this.mnuShowLeft.Size = new System.Drawing.Size(180, 30);
             this.mnuShowLeft.Tag = "1";
             this.mnuShowLeft.Text = "Voucher List";
             this.mnuShowLeft.Click += new System.EventHandler(this.mnuShow_Click);
@@ -1047,7 +1097,7 @@
             // mnuShowRight
             // 
             this.mnuShowRight.Name = "mnuShowRight";
-            this.mnuShowRight.Size = new System.Drawing.Size(139, 22);
+            this.mnuShowRight.Size = new System.Drawing.Size(180, 30);
             this.mnuShowRight.Tag = "2";
             this.mnuShowRight.Text = "Buttons";
             this.mnuShowRight.Click += new System.EventHandler(this.mnuShow_Click);
@@ -1055,20 +1105,34 @@
             // mnuShowBoth
             // 
             this.mnuShowBoth.Name = "mnuShowBoth";
-            this.mnuShowBoth.Size = new System.Drawing.Size(139, 22);
+            this.mnuShowBoth.Size = new System.Drawing.Size(180, 30);
             this.mnuShowBoth.Tag = "0";
             this.mnuShowBoth.Text = "Both";
             this.mnuShowBoth.Click += new System.EventHandler(this.mnuShow_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.btnDelete.Location = new System.Drawing.Point(698, 309);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(102, 74);
+            this.btnDelete.TabIndex = 192;
+            this.btnDelete.Text = "&Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // VoucherShortForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Maroon;
-            this.ClientSize = new System.Drawing.Size(984, 654);
+            this.ClientSize = new System.Drawing.Size(1476, 1006);
             this.Controls.Add(this.dtpTrxDate);
             this.Controls.Add(this.spltrCtrls);
             this.Controls.Add(this.menuStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "VoucherShortForm";
             this.Text = "Voucher Short Form";
             this.spltrCtrls.Panel1.ResumeLayout(false);
@@ -1181,5 +1245,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEditVoucherLog;
         private System.Windows.Forms.TextBox tbTrxDate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

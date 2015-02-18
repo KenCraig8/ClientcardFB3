@@ -69,7 +69,7 @@ namespace ClientcardFB3
                     case 0:
                         {
                         newUserName = CCFBGlobal.NullToBlank (dataGridViewUsers.Rows[rowIndex].Cells[0].Value);
-                        if (newUserName == "")
+                        if (String.IsNullOrEmpty(newUserName) == true)
                         {
                             if (MessageBox.Show ("Do you want me to delete this row?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
                                 dataGridViewUsers.Rows.RemoveAt(rowIndex);
@@ -202,13 +202,13 @@ namespace ClientcardFB3
         private void TestPassword()
         {
             if ((tbPassword1.Text.Trim() == tbPassword2.Text.Trim())
-                        && tbPassword1.Text.Trim() != "")
+                        && tbPassword1.Text.Trim().Length >0)
             {
                 if (inInsertMode == true)
                 {
-                    if (newUserName != "")
+                    if (newUserName.Length >0)
                     {
-                        if (newUserRole == "")
+                        if (String.IsNullOrEmpty(newUserRole) == true)
                             newUserRole = CCFBGlobal.nameUserRole_Intake;
                         newPassword = tbPassword1.Text.Trim();
                         InsertNewUser();

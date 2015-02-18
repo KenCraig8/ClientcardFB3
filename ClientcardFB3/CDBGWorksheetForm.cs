@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -10,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public partial class KCReportForm : Form
+    public partial class CDBGWorksheetForm : Form
     {
         SqlDataAdapter dadAdpt;
         DataSet dset;
@@ -20,20 +21,22 @@ namespace ClientcardFB3
         string savePath = CCFBPrefs.ReportsSavePath;
         DataTable dtDemographics;
         DataTable dtByZip;
+        DataTable dtPerformanceMeasures;
         DateTime startDate;
         DateTime endDate;
         int rowCount = 0;
 
-        RptKCCDBG clsCreateKCReport;
+        RptCDBGWorksheet clsCreateKCReport;
 
         string sqlCommandText = "Select Distinct DateName(yy, TrxDate) as 'Year' "
     + "From TrxLog where TrxDate is not null Order By 'Year' DESC";
 
-        public KCReportForm()
+        public CDBGWorksheetForm()
         {
             InitializeComponent();
             dtDemographics = new DataTable();
             dtByZip = new DataTable();
+            dtPerformanceMeasures = new DataTable();
             dadAdpt = new SqlDataAdapter();
             dset = new DataSet();
             conn = new SqlConnection(CCFBGlobal.connectionString);
@@ -130,12 +133,37 @@ namespace ClientcardFB3
         {
             try
             {
-                dtDemographics.Clear();
-                SqlCommand cmd = new SqlCommand("CalendarQuarterStats", conn);
+                btnCreateReport.Enabled = false;
+                label4.Text = "LOADING MAIN STATISTICS";
+                label4.Visible = true;
+                this.Cursor = Cursors.WaitCursor;
+                Application.DoEvents();
+
+                dtPerformanceMeasures.Clear();
+                SqlCommand cmd = new SqlCommand("PerformanceMeasuresByCalendarQuarter", conn);
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 1200;
 
-                SqlParameter param = cmd.Parameters.Add("@StartDate", SqlDbType.VarChar);
+                SqlParameter param = cmd.Parameters.Add("@firstdate", SqlDbType.VarChar);
+                param.Value = CCFBGlobal.formatDate(startDate);
+
+                openConnection();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                {
+                    da.Fill(dtPerformanceMeasures);
+                }
+
+                closeConnection();
+
+                dtDemographics.Clear();
+                cmd = new SqlCommand("CalendarQuarterStats", conn);
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandTimeout = 1200;
+
+                param = cmd.Parameters.Add("@StartDate", SqlDbType.VarChar);
                 param.Value = CCFBGlobal.formatDate(startDate);
                 SqlParameter param2 = cmd.Parameters.Add("@EndDate", SqlDbType.VarChar);
                 param2.Value = CCFBGlobal.formatDate(endDate);
@@ -146,7 +174,7 @@ namespace ClientcardFB3
 
                 openConnection();
 
-                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                da = new SqlDataAdapter(cmd);
                 {
                     da.Fill(dtDemographics);
                 }
@@ -165,25 +193,38 @@ namespace ClientcardFB3
                 param3.Value = CCFBPrefs.County;
                 param4 = cmd.Parameters.Add("@State", SqlDbType.VarChar);
                 param4.Value = CCFBPrefs.DefaultState;
-
+                
+                label4.Text = "LOADING ZIPCODE STATISTICS";
+                Application.DoEvents(); 
+                
                 openConnection();
-                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                {
-                    da.Fill(dtByZip);
-                }
-                //TrxLogTotalFamilyByZipByQuarter
+                da = new SqlDataAdapter(cmd);
+                da.Fill(dtByZip);
 
-                clsCreateKCReport = new RptKCCDBG(dtDemographics, dtByZip);
-                this.Cursor = Cursors.WaitCursor;
-                clsCreateKCReport.createExport(System.IO.Path.Combine(CCFBGlobal.pathReports,@"2011 CDBG Demographics Worksheet" + "_" 
-                    + CCFBPrefs.FoodBankName + "_"
-                    + DateTime.Today.Year + "_" + DateTime.Today.Month + ".xls"),
-                        CCFBGlobal.fb3TemplatesPath + "2011 CDBG Demographics Worksheet.xls", Convert.ToInt32(cboReportYear.SelectedItem));
+                label4.Text = "CREATING REPORT";
+                Application.DoEvents(); 
+
+                //TrxLogTotalFamilyByZipByQuarter
+                da.Dispose();
+                cmd.Dispose();
+
+                MonthlyReports clsMonthlyReports = new MonthlyReports(CCFBGlobal.connectionString);
+                clsMonthlyReports.openWhere(" Where ReportName='CDBG Demographics Worksheet'");
+
+                clsCreateKCReport = new RptCDBGWorksheet(dtDemographics, dtByZip, dtPerformanceMeasures);
+                string fullname = System.IO.Path.Combine(CCFBGlobal.pathReports, startDate.Year.ToString());
+                CCFBGlobal.verifyPath(fullname);
+                fullname = System.IO.Path.Combine(fullname, clsMonthlyReports.ReportName + "-"
+                                                            + CCFBPrefs.FoodBankName + "-" + cboQuarter.Text + ".xls");
+                clsCreateKCReport.createExport(fullname, CCFBGlobal.fb3TemplatesPath + clsMonthlyReports.ReportName + clsMonthlyReports.DocType
+                                , Convert.ToInt32(cboReportYear.SelectedItem));
                 this.Cursor = Cursors.Default;
+                label4.Text = "REPORT CREATED";
+                btnCreateReport.Enabled = true;
             }
             catch (SqlException ex)
             {
-                CCFBGlobal.appendErrorToErrorReport("KCReportForm", ex.GetBaseException().ToString());
+                CCFBGlobal.appendErrorToErrorReport("CSBGWorksheetForm", ex.GetBaseException().ToString());
                 closeConnection();
             }
         }

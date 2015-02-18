@@ -83,7 +83,7 @@ namespace ClientcardFB3
                     Table table = oWordDoc.Tables[1];
                     //table.Cell(1, 1).Range.Text = clsHH.Name;
                     string fullAddress = clsHH.Address;
-                    if (clsHH.AptNbr.Trim() != "")
+                    if (clsHH.AptNbr.Trim().Length >0)
                     {
                         fullAddress += "  Unit " + clsHH.AptNbr.Trim();
                     }
@@ -91,7 +91,7 @@ namespace ClientcardFB3
                     table.Cell(5, 1).Range.Text = clsHH.City + ", " + clsHH.State;
                     table.Cell(5, 2).Range.Text = clsHH.Zipcode;
                     int row = 2;
-                    Table table2 = oWordDoc.Tables[2];
+                    Table owdtblFamilyList = oWordDoc.Tables[2];
                     for (int i = 0; i < clsHhM.RowCount; i++)
                     {
                         clsHhM.SetRecord(i);
@@ -111,19 +111,23 @@ namespace ClientcardFB3
                         {
                             if (clsHhM.Inactive == false)
                             {
-                                table2.Cell(row, 1).Range.Text = clsHhM.LastName + ", " + clsHhM.FirstName;
+                                if (row > owdtblFamilyList.Rows.Count)
+                                {
+                                    owdtblFamilyList.Rows.Add();
+                                }
+                                owdtblFamilyList.Cell(row, 1).Range.Text = clsHhM.LastName + ", " + clsHhM.FirstName;
                                 if (clsHhM.UseAge == true)
-                                    table2.Cell(row, 2).Range.Text = clsHhM.Age.ToString();
+                                    owdtblFamilyList.Cell(row, 2).Range.Text = clsHhM.Age.ToString();
                                 else
-                                    table2.Cell(row, 2).Range.Text = CCFBGlobal.ValidDateString(clsHhM.Birthdate);
+                                    owdtblFamilyList.Cell(row, 2).Range.Text = CCFBGlobal.ValidDateString(clsHhM.Birthdate);
 
-                                table2.Cell(row, 3).Range.Text = clsHhM.Sex;
-                                if (table2.Columns.Count > 3)
+                                owdtblFamilyList.Cell(row, 3).Range.Text = clsHhM.Sex;
+                                if (owdtblFamilyList.Columns.Count > 3)
                                 {
                                     if (clsHhM.IsDisabled == true)
-                                    { table2.Cell(row, 4).Range.Text = "X"; }
+                                    { owdtblFamilyList.Cell(row, 4).Range.Text = "X"; }
                                     if (clsHhM.SpecialDiet == true)
-                                    { table2.Cell(row, 5).Range.Text = "X"; }
+                                    { owdtblFamilyList.Cell(row, 5).Range.Text = "X"; }
                                 }
                                 row++;
                             }

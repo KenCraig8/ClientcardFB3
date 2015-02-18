@@ -15,6 +15,22 @@
         {
             if (disposing && (components != null))
             {
+                if (clsHH != null)
+                {
+                    clsHH.Dispose();
+                }
+                if (clsHHM != null)
+                {
+                    clsHHM.Dispose();
+                }
+                if (clsZipcodes != null)
+                {
+                    clsZipcodes.Dispose();
+                }
+                if (csdgdataaccess != null)
+                {
+                    csdgdataaccess.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

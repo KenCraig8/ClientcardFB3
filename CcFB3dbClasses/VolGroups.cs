@@ -7,12 +7,13 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class VolGroups
+    public class VolGroups : IDisposable
     {
         List<VolGroup> VolGrps = new List<VolGroup>();
         SqlConnection conn;
         //bool isValid = false;
         int volgrpindex = 0;
+        private bool _disposed;
         
         public VolGroups(string connStringIn)
         {
@@ -35,6 +36,30 @@ namespace ClientcardFB3
             //    VolGroup vgrp = new VolGroup(drow.Field<int>("Id"), drow.Field<string>("Type"));
             //    VolGrps.Add(vgrp);
             //}
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors

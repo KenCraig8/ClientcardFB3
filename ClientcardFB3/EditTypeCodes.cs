@@ -711,7 +711,7 @@ namespace ClientcardFB3
                                                 .Replace("xxx", frmChangeTypeCode.SelectedID.ToString())
                                                 + gridTypeCodes.CurrentRow.Cells[0].Value.ToString());
                                         }
-
+                                        frmChangeTypeCode.Dispose();
                                         return;
                                     }
                                 case DialogResult.Cancel: //Do nothing

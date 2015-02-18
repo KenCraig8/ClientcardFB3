@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ClientcardFB3
 {
-    class PrintPanel
+    class PrintPanel : IDisposable
     {
         readonly PrintDocument printdoc1 = new PrintDocument();
         readonly PrintPreviewDialog previewdlg = new PrintPreviewDialog();
@@ -20,6 +20,7 @@ namespace ClientcardFB3
         Image image;
         string saveAs = "";
         private readonly Panel panel1_;
+        private bool _disposed;
 
         public PrintPanel(Panel pnl1, string saveAsIn)
         {
@@ -28,6 +29,37 @@ namespace ClientcardFB3
 
             //printdoc1.PrintPage += (printdoc1_PrintPage);
             //MemoryImage1 = new Bitmap(pnl1.Width, pnl1.Height);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (printdoc1 != null)
+                        printdoc1.Dispose();
+                    if (previewdlg != null)
+                        previewdlg.Dispose();
+                    if (MemoryImage1 != null)
+                        MemoryImage1.Dispose();
+                    if (image != null)
+                        image.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                MemoryImage1 = null;
+                image = null;
+                _disposed = true;
+            }
         }
 
         private void GetPrintArea(Control pnl)

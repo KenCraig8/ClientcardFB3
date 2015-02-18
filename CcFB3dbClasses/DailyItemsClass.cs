@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ClientcardFB3
 {
-    public class DailyItemsClass
+    public class DailyItemsClass : IDisposable
     {
         String ServiceDate = "";
         bool isCommodityDay = false;
@@ -15,6 +15,7 @@ namespace ClientcardFB3
         List<ServiceItem> svcItemsBabyService;
 
         ServiceItems clsServiceItems;
+        private bool _disposed;
 
         //Client Data Structure
         struct ClientData
@@ -48,6 +49,29 @@ namespace ClientcardFB3
             svcItemsBabyService = new List<ServiceItem>();
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsServiceItems != null)
+                        clsServiceItems.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                clsServiceItems = null;
+                _disposed = true;
+            }
+        }
 
         #region Get/Set Accessors
 
@@ -132,7 +156,7 @@ namespace ClientcardFB3
                 {
                     switch (Convert.ToInt32(drow["ItemRule"]))
                     {
-                        case CCFBGlobal.itemRule_SpecialService:
+                        case CCFBGlobal.itemRuleSpecialService:
                             {
                                 if (IsOnSpecialServiceList(drow["ItemKey"].ToString()))
                                 {   //If not a non-food item
@@ -191,7 +215,7 @@ namespace ClientcardFB3
         {   //Gets the special items from the currently selected day
             string[] splitSpclItmString;
 
-            if (SpecialSvcItemList != "" && SpecialSvcItemList != null)
+            if (SpecialSvcItemList.Length >0 && SpecialSvcItemList != null)
             {       
                 splitSpclItmString = SpecialSvcItemList.Split('|');
                 for (int j = 0; j < splitSpclItmString.Length; j++)
@@ -262,6 +286,7 @@ namespace ClientcardFB3
             trxLogWork.openUsingDateRange(clsClient.clsHH.ID, StartPeriod, EndPeriod);
             ClientStuff.NbrServicesThisWeek = trxLogWork.RowCount;
             ClearSelected();
+            trxLogWork.Dispose();
         }
         public void fillListViewItems(ListView lvFoodItems, ListView lvNonFood, ListView lvBabySvcs, bool bShowAllFoodSvcItems)
         {
@@ -375,9 +400,9 @@ namespace ClientcardFB3
             {
                 switch (Int32.Parse(svc.Rule.ToString()))
                 {
-                    case CCFBGlobal.itemRule_Always:           //Case Always
+                    case CCFBGlobal.itemRuleAlways:           //Case Always
                         { return true; }
-                    case CCFBGlobal.itemRule_OncePerMonth:     //Case Once Per Month
+                    case CCFBGlobal.itemRuleOncePerMonth:     //Case Once Per Month
                         {
                             int nbrSvcs =0;
                             if (svc.FullService == true)
@@ -388,33 +413,33 @@ namespace ClientcardFB3
                                 nbrSvcs = ClientStuff.NbrServicesThisMonth;
                             return (nbrSvcs == 0);
                         }
-                    case CCFBGlobal.itemRule_SecondService:    //Case Second Service
+                    case CCFBGlobal.itemRuleSecondService:    //Case Second Service
                         { return (ClientStuff.NbrServicesThisMonth > 0); }
-                    case CCFBGlobal.itemRule_ManualSelection:  //Manual Selection
+                    case CCFBGlobal.itemRuleManualSelection:  //Manual Selection
                         { return true; }
-                    case CCFBGlobal.itemRule_SpecialService:   //Special Service
+                    case CCFBGlobal.itemRuleSpecialService:   //Special Service
                         { return true; }
-                    case CCFBGlobal.itemRule_HomelessTransient:
+                    case CCFBGlobal.itemRuleHomelessTransient:
                         {
                             return (ClientStuff.Homeless || ClientStuff.Transient);
                         }
-                    case CCFBGlobal.itemRule_MaskArray:
+                    case CCFBGlobal.itemRuleMaskArray:
                         {
                             return svc.MaskArray(ClientStuff.NbrServicesThisMonth);
                         }
-                    case CCFBGlobal.itemRule_OncePerWeek:
+                    case CCFBGlobal.itemRuleOncePerWeek:
                         {
                             return (ClientStuff.NbrServicesThisWeek == 0);
                         }
-                    case CCFBGlobal.itemRule_2Months:     //Case Every 2 Months
+                    case CCFBGlobal.itemRule2Months:     //Case Every 2 Months
                         {
                             return TestNbrMonthSinceLastService(-2);
                         }
-                    case CCFBGlobal.itemRule_3Months:     //Case Every 3 Months
+                    case CCFBGlobal.itemRule3Months:     //Case Every 3 Months
                         {
                             return TestNbrMonthSinceLastService(-3);
                         }
-                    case CCFBGlobal.itemRule_4Months:     //Case Every 4 Months
+                    case CCFBGlobal.itemRule4Months:     //Case Every 4 Months
                         {
                             return TestNbrMonthSinceLastService(-4);
                         }
@@ -435,7 +460,7 @@ namespace ClientcardFB3
             {
                 switch (Int32.Parse(svc.Rule.ToString()))
                 {
-                    case CCFBGlobal.itemRule_Always:           //Case Always
+                    case CCFBGlobal.itemRuleAlways:           //Case Always
                         {
                             if (svc.ItemType == CCFBGlobal.svcCat_Commodity)
                             {
@@ -443,7 +468,7 @@ namespace ClientcardFB3
                             }
                             return true; 
                         }
-                    case CCFBGlobal.itemRule_OncePerMonth:     //Case Once Per Month
+                    case CCFBGlobal.itemRuleOncePerMonth:     //Case Once Per Month
                         {
                             int nbrSvcs = 0;
                             if (svc.FullService == true)
@@ -454,33 +479,33 @@ namespace ClientcardFB3
                                 nbrSvcs = ClientStuff.NbrServicesThisMonth;
                             return (nbrSvcs == 0);
                         }
-                    case CCFBGlobal.itemRule_SecondService:    //Case Second Service
+                    case CCFBGlobal.itemRuleSecondService:    //Case Second Service
                         { return (ClientStuff.NbrServicesThisMonth > 0); }
-                    case CCFBGlobal.itemRule_ManualSelection:  //Manual Selection
+                    case CCFBGlobal.itemRuleManualSelection:  //Manual Selection
                         { return svc.IsSelected; }
-                    case CCFBGlobal.itemRule_SpecialService:   //Special Service
+                    case CCFBGlobal.itemRuleSpecialService:   //Special Service
                         { return true; }
-                    case CCFBGlobal.itemRule_OncePerWeek:
+                    case CCFBGlobal.itemRuleOncePerWeek:
                         {
                             return (ClientStuff.NbrServicesThisWeek == 0);
                         }
-                    case CCFBGlobal.itemRule_HomelessTransient:
+                    case CCFBGlobal.itemRuleHomelessTransient:
                         {
                             return (ClientStuff.Homeless || ClientStuff.Transient);
                         }
-                    case CCFBGlobal.itemRule_MaskArray:
+                    case CCFBGlobal.itemRuleMaskArray:
                         {
                             return svc.MaskArray(ClientStuff.NbrServicesThisMonth);
                         }
-                    case CCFBGlobal.itemRule_2Months:     //Case Every 2 Months
+                    case CCFBGlobal.itemRule2Months:     //Case Every 2 Months
                         {
                             return TestNbrMonthSinceLastService(-2);
                         }
-                    case CCFBGlobal.itemRule_3Months:     //Case Every 3 Months
+                    case CCFBGlobal.itemRule3Months:     //Case Every 3 Months
                         {
                             return TestNbrMonthSinceLastService(-3);
                         }
-                    case CCFBGlobal.itemRule_4Months:     //Case Every 4 Months
+                    case CCFBGlobal.itemRule4Months:     //Case Every 4 Months
                         {
                             return TestNbrMonthSinceLastService(-4);
                         }

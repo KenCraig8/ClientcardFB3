@@ -15,6 +15,14 @@
         {
             if (disposing && (components != null))
             {
+                if (clsCashDonations != null)
+                {
+                    clsCashDonations.Dispose();
+                }
+                if (clsDonors != null)
+                {
+                    clsDonors.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

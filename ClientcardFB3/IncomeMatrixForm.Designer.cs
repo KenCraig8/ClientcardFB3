@@ -15,6 +15,14 @@
         {
             if (disposing && (components != null))
             {
+                if (clsIncomeGroups != null)
+                {
+                    clsIncomeGroups.Dispose();
+                }
+                if (clsIncomeMatrix != null)
+                {
+                    clsIncomeMatrix.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

@@ -15,6 +15,10 @@
         {
             if (disposing && (components != null))
             {
+                if (clsDaysOpen != null)
+                {
+                    clsDaysOpen.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);

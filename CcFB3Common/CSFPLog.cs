@@ -9,17 +9,19 @@ using Microsoft.SqlServer.Server;
 
 namespace ClientcardFB3
 {
-    public class CSFPLog
+    public class CSFPLog : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
         DataSet dset;
         SqlCommand command;
+        SqlCommandBuilder commBuilder;
         System.Data.SqlClient.SqlConnection conn;
         static string tbName = "CSFPLog";
         int iRowCount = 0;
         DataRow drow = null;
         bool isValid = false;
+        private bool _disposed;
 
         public CSFPLog(string connStringIn)
         {
@@ -28,6 +30,41 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -59,7 +96,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["TrxDate"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["TrxDate"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["TrxDate"];
@@ -163,6 +200,7 @@ namespace ClientcardFB3
             SqlCommand commDelete = new SqlCommand(" DELETE FROM CSFPLog WHERE Date=" + TrxDate.ToString()
                 + " And MemID=" + HHMemID.ToString(), conn);
             commDelete.ExecuteNonQuery();
+            commDelete.Dispose();
             closeConnection();
         }
 
@@ -172,7 +210,7 @@ namespace ClientcardFB3
             {
                 if (dadAdpt.InsertCommand == null || dadAdpt.UpdateCommand == null)
                 {
-                    SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                    commBuilder = new SqlCommandBuilder(dadAdpt);
                 }
 
                 openConnection();
@@ -210,6 +248,7 @@ namespace ClientcardFB3
                 CCFBGlobal.appendErrorToErrorReport(sqlcmdInsert.CommandText, ex.GetBaseException().ToString());
                 closeConnection();
             }
+            sqlcmdInsert.Dispose();
         }
 
 
@@ -224,7 +263,7 @@ namespace ClientcardFB3
                     if (dadAdpt.UpdateCommand == null)
                     {
                         //Sets the Commands in the DataAdapter
-                        SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                        commBuilder = new SqlCommandBuilder(dadAdpt);
                     }
 
                     drow["ModifiedBy"] = CCFBGlobal.dbUserName;

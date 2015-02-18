@@ -9,21 +9,22 @@ using System.Data;
 
 namespace ClientcardFB3
 {
-    public class DistinctLogDays
+    public class DistinctLogDays : IDisposable
     {
         static string tbName = "TrxLog";
         int apptStatus;
-        DataSet dSet;
+        DataSet dset;
         DataRow[] dRow;
         int rowCount;
         int CurRowNumber;
         System.Data.SqlClient.SqlConnection conn;
         string connString;
+        private bool _disposed;
         //bool isValid;
 
         public DistinctLogDays(string connectString)
         {
-            dSet = new DataSet();
+            dset = new DataSet();
             apptStatus = 0;
             rowCount = 0;
             CurRowNumber = 0;
@@ -32,6 +33,32 @@ namespace ClientcardFB3
           //  isValid = false;
         }
 
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                _disposed = true;
+            }
+        }
         #region GET/SET ACCESSORS
 
         public int ApptStatus
@@ -52,20 +79,20 @@ namespace ClientcardFB3
 
         public DataSet DSet
         {
-            get { return dSet; }
-            set { dSet = value; }
+            get { return dset; }
+            set { dset = value; }
         }
 
         public int TrxId
         {
-            get { return dSet.Tables[tbName].Rows[CurRowNumber].Field<int> ("TrxId"); }
-            set { dSet.Tables[tbName].Rows[CurRowNumber]["TrxId"] = value; }
+            get { return dset.Tables[tbName].Rows[CurRowNumber].Field<int> ("TrxId"); }
+            set { dset.Tables[tbName].Rows[CurRowNumber]["TrxId"] = value; }
         }
 
         public DateTime TrxDate
         {
-            get { return dSet.Tables[tbName].Rows[CurRowNumber].Field<DateTime>("TrxDate"); }
-            set { dSet.Tables[tbName].Rows[CurRowNumber]["TrxDate"] = value; }
+            get { return dset.Tables[tbName].Rows[CurRowNumber].Field<DateTime>("TrxDate"); }
+            set { dset.Tables[tbName].Rows[CurRowNumber]["TrxDate"] = value; }
         }
 
         #endregion
@@ -75,11 +102,11 @@ namespace ClientcardFB3
             CurRowNumber = -1;
             if (rowCount > 0)
             {
-                dRow = dSet.Tables[tbName].Select(" TrxDate = '" + dateTest.ToShortDateString() + "'");
+                dRow = dset.Tables[tbName].Select(" TrxDate = '" + dateTest.ToShortDateString() + "'");
                 int idx = 0;
                 for (idx = 0; idx < rowCount; idx++)
                 {
-                    if (dSet.Tables[tbName].Rows[idx].Field<DateTime>("TrxDate") == dateTest)
+                    if (dset.Tables[tbName].Rows[idx].Field<DateTime>("TrxDate") == dateTest)
                     {
                         CurRowNumber = idx;
                         break;
@@ -103,23 +130,25 @@ namespace ClientcardFB3
             else
                 StatusList = "2,3";
 
-                try
-                {
+            try
+            {
 
-                    command = new SqlCommand("SELECT DISTINCT TrxDate, Count(*)  FROM TrxLog WHERE TrxStatus IN ("
-                        + StatusList + ") GROUP BY TrxDate ORDER BY TrxDate");
-                    dataAdpt = new SqlDataAdapter(command);
-                    dataAdpt.SelectCommand.Connection = conn;
-                    dSet.Clear();
-                    rowCount = dataAdpt.Fill(dSet,tbName);
-                    CurRowNumber = 0;
-                    return rowCount;
-                }
-                catch (SqlException ex)
-                {
-                    CCFBGlobal.appendErrorToErrorReport("",ex.GetBaseException().ToString());
-                    return rowCount;
-                }
+                command = new SqlCommand("SELECT DISTINCT TrxDate, Count(*)  FROM TrxLog WHERE TrxStatus IN ("
+                    + StatusList + ") GROUP BY TrxDate ORDER BY TrxDate");
+                dataAdpt = new SqlDataAdapter(command);
+                dataAdpt.SelectCommand.Connection = conn;
+                dset.Clear();
+                rowCount = dataAdpt.Fill(dset, tbName);
+                CurRowNumber = 0;
+                return rowCount;
+            }
+            catch (SqlException ex)
+            {
+                CCFBGlobal.appendErrorToErrorReport("", ex.GetBaseException().ToString());
+                return rowCount;
+            }
+            command.Dispose();
+            dataAdpt.Dispose();
         }
 
         public String  FirstDate()

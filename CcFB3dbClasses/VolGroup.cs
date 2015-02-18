@@ -50,7 +50,7 @@ namespace ClientcardFB3
                 string vList = "";
                 foreach (int item in volidList)
                 {
-                    if (vList != "")
+                    if (vList.Length >0)
                         vList += ",";
                     vList += item.ToString();
                 }

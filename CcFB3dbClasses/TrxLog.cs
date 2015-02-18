@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace ClientcardFB3
 {
-    public class TrxLog
+    public class TrxLog : IDisposable
     {
         #region Household Service Transactions Data Members
         static string tbName = "TrxLog";
@@ -40,6 +40,7 @@ namespace ClientcardFB3
 
         //Signature variables
         bool bhavesig = false;
+        private bool _disposed;
         #endregion
 
 //---------------------------------------Constructor-----------------------------------------------------
@@ -64,6 +65,48 @@ namespace ClientcardFB3
             svctypeNoShow = noshow;
             isValid = false;
             sqlCmdCount.Connection = conn;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (dsetTrx != null)
+                        dsetTrx.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                    if (sqlCmdCount != null)
+                        sqlCmdCount.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                dsetTrx = null;
+                command = null;
+                dadAdpt = null;
+                sqlCmdCount = null;
+                commBuilder = null;
+                _disposed = true;
+            }
         }
 
 //----------------------------------------Get/Set Acsessors-----------------------------------------------------
@@ -359,7 +402,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["Modified"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["Modified"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["Modified"];
@@ -605,7 +648,7 @@ namespace ClientcardFB3
                 if (fldIndex >= 0)
                 {
                     if (dset.Tables[tbName].Columns[fldIndex].DataType.Name == "DateTime")
-                        if (drow[FieldName].ToString() != "")
+                        if (drow[FieldName].ToString().Length >0)
                         { return CCFBGlobal.ValidDateString(drow[FieldName]); }
                         else
                         { return ""; }
@@ -791,7 +834,7 @@ namespace ClientcardFB3
             {
                 openConnection();
                 string sql = "SELECT * FROM " + tbName;
-                if (sWhereClause != "")
+                if (sWhereClause.Length >0)
                     sql += " WHERE " + sWhereClause;
                 command = new SqlCommand(sql, conn);
                 dadAdpt = new SqlDataAdapter(command);
@@ -874,7 +917,7 @@ namespace ClientcardFB3
             if (svctypeFastTrack == true)    { AppendStatus(ref statuslist, "1"); }
             if (svctypeAppointments == true) { AppendStatus(ref statuslist, "2"); }
             if (svctypeNoShow == true)       { AppendStatus(ref statuslist, "3"); }
-            if (statuslist != "")            { sql += " AND TrxStatus IN (" + statuslist + ")"; }
+            if (statuslist.Length >0)            { sql += " AND TrxStatus IN (" + statuslist + ")"; }
             sql += " ORDER BY TrxId"; 
             try
             {
@@ -959,6 +1002,7 @@ namespace ClientcardFB3
             openConnection();
             SqlCommand commDelete = new SqlCommand(" DELETE FROM TrxLog WHERE HouseholdId=" + HHID.ToString(), conn);
             commDelete.ExecuteNonQuery();
+            commDelete.Dispose();
             closeConnection();
         }
 
@@ -1006,11 +1050,11 @@ namespace ClientcardFB3
 
         public void saveFastTrack(string trxid, string lbsStd, string lbsOther, string lbsTEFAP, string lbsSuppl, string lbsBaby)
         {
-            if (lbsStd == "") { lbsStd = "0"; }
-            if (lbsOther == "") { lbsOther = "0"; }
-            if (lbsTEFAP == "") { lbsTEFAP = "0"; }
-            if (lbsSuppl == "") { lbsSuppl = "0"; }
-            if (lbsBaby == "") { lbsBaby = "0"; }
+            if (String.IsNullOrEmpty(lbsStd)  == true) { lbsStd = "0"; }
+            if (String.IsNullOrEmpty(lbsOther)  == true) { lbsOther = "0"; }
+            if (String.IsNullOrEmpty(lbsTEFAP)  == true) { lbsTEFAP = "0"; }
+            if (String.IsNullOrEmpty(lbsSuppl)  == true) { lbsSuppl = "0"; }
+            if (String.IsNullOrEmpty(lbsBaby) == true) { lbsBaby = "0"; }
             try
             {
                 SqlCommand sqlcmd = new SqlCommand("UPDATE TrxLog SET TrxStatus = 0, LbsStd = " + lbsStd + ", lbsOther = " + lbsOther
@@ -1082,7 +1126,7 @@ namespace ClientcardFB3
 
         private void AppendStatus(ref string statusList, string newStatus)
         {
-            if (statusList != "")
+            if (statusList.Length >0)
                 statusList += ",";
             statusList += newStatus;
         }
@@ -1451,7 +1495,7 @@ namespace ClientcardFB3
         {
             get 
             {
-                if (drow["Modified"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["Modified"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["Modified"];
@@ -1719,7 +1763,7 @@ namespace ClientcardFB3
         #endregion
     }
 
-    public class TrxLogSig
+    public class TrxLogSig : IDisposable
     {
         bool haveSig = false;
         int sigTrxId;
@@ -1738,6 +1782,8 @@ namespace ClientcardFB3
         SqlCommand sqlLoadCmd;
  
         SqlConnection sqlConn;
+        private bool _disposed;
+
         public TrxLogSig(string connString)
         {
             sigconnString = connString;
@@ -1757,6 +1803,39 @@ namespace ClientcardFB3
             sqlLoadCmd.Parameters.Add("@TrxId", SqlDbType.Int);
 
             
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (sigImage != null)
+                        sigImage.Dispose();
+                    if (sqlInsertCmd != null)
+                        sqlInsertCmd.Dispose();
+                    if (sqlLoadCmd != null)
+                        sqlLoadCmd.Dispose();
+                    if (sqlConn != null)
+                        sqlConn.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                sqlConn = null;
+                sigImage = null;
+                sqlInsertCmd = null;
+                sqlLoadCmd = null;
+                _disposed = true;
+            }
         }
 
         public bool HaveSignature

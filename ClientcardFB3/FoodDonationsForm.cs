@@ -191,7 +191,7 @@ namespace ClientcardFB3
             if (update == false)
             {
                 //If a Donor has been selected
-                if (tbDonorID.Text.Trim() != "" && tbName.Text.Trim() != "" && tbLbs.Text.Trim() != "")
+                if (tbDonorID.Text.Trim().Length >0 && tbName.Text.Trim().Length >0 && tbLbs.Text.Trim().Length >0)
                 {
                     //Create a new row from the DataSet
                     clsFoodDonations.openWhere(" WHERE DonorID = " + tbDonorID.Text + " AND TrxDate = '" + dtDonationDate.Value.ToShortDateString() + "'"); 
@@ -203,7 +203,7 @@ namespace ClientcardFB3
                     //Go through the textboxes and insert data into the new row
                     foreach (TextBox tb in tbList)
                     {
-                        if (tb.Tag != null && tb.Tag.ToString() != "")
+                        if (tb.Tag != null && tb.Tag.ToString().Length >0)
                             drow[tb.Tag.ToString()] = tb.Text;
                     }
 
@@ -245,16 +245,13 @@ namespace ClientcardFB3
             else   //In Update MODE
             {
                 //If a Donor has been selected
-                if (tbDonorID.Text.Trim() != "" && tbName.Text.Trim() != "" && tbLbs.Text.Trim() != "")
+                if (tbDonorID.Text.Trim().Length >0 && tbName.Text.Trim().Length >0 && tbLbs.Text.Trim().Length >0)
                 {
-                    if (clsFoodDonations.TrxID != trxID)
-                    {
-                        clsFoodDonations.open(trxID);
-                    }
+                    clsFoodDonations.open(trxID);
                     //Go through each textbox and set data int the dataset
                     foreach (TextBox tb in tbList)
                     {
-                        if (tb.Tag != null && tb.Tag.ToString() != "")
+                        if (tb.Tag != null && tb.Tag.ToString().Length >0)
                         {
                             clsFoodDonations.SetDataValue(tb.Tag.ToString(), tb.Text);
                         }
@@ -466,7 +463,7 @@ namespace ClientcardFB3
             foreach (TextBox tb in tbList)
             {
                 tb.Text = "";
-                if(tb.Tag != null && tb.Tag.ToString() != "")
+                if(tb.Tag != null && tb.Tag.ToString().Length >0)
                 {
                     //Gets the Data from the dataset
                     tb.Text = clsFoodDonations.GetDataValue(tb.Tag.ToString()).ToString();
@@ -831,7 +828,7 @@ namespace ClientcardFB3
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                if (tbDonorID.Text != "")
+                if (tbDonorID.Text.Length >0)
                 {
                     try
                     {

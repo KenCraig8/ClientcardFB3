@@ -29,7 +29,7 @@ namespace ClientcardFB3
         {
             InitializeComponent();
             serverBackupPath = CCFBGlobal.getRegServerBackupPath();
-            if (serverBackupPath == "")
+            if (String.IsNullOrEmpty(serverBackupPath) == true)
             {
                 if (CCFBGlobal.serverName == CCFBGlobal.pcName)
                 {
@@ -159,7 +159,7 @@ namespace ClientcardFB3
                 //Set default extension of the savefile dialog
                 saveFileDialog1.DefaultExt = "bak";
                 //If no value exists in registry for default save location
-                if (oriPath == "")
+                if (String.IsNullOrEmpty(oriPath) == true)
                 {
                     FileInfo fi = new FileInfo(Application.ExecutablePath);
 

@@ -169,7 +169,7 @@ namespace ClientcardFB3
                 {
                     case "TextBox":
                         {
-                            if (cntrl.Tag != null && cntrl.Tag.ToString() != "")
+                            if (cntrl.Tag != null && cntrl.Tag.ToString().Length >0)
                             {
                                 tbList.Add((TextBox)cntrl);
                                 cntrl.Enter += new System.EventHandler(this.tbList_Enter);
@@ -180,7 +180,7 @@ namespace ClientcardFB3
                     case "CheckBox":
                         {
                             CheckBox chk = (CheckBox)cntrl;
-                            if (chk.Tag != null && chk.Tag.ToString() != "")
+                            if (chk.Tag != null && chk.Tag.ToString().Length >0)
                             {
                                 chk.CheckedChanged += new System.EventHandler(this.chkList_CheckedChanged);
                                 //chk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.chkList_KeyDown);
@@ -192,7 +192,7 @@ namespace ClientcardFB3
                         {
                             if (cntrl.Tag != null)
                             {
-                                if (cntrl.Tag.ToString().Trim() != "")
+                                if (cntrl.Tag.ToString().Trim().Length >0)
                                 {
                                     cboList.Add((ComboBox)cntrl);
                                 }
@@ -326,10 +326,14 @@ namespace ClientcardFB3
             SelectedId = 0; // Set to invalid DB record ID.
             SelectedName = "";
             this.DialogResult = DialogResult.No;
-			if (FormSelectMode)
-				this.Visible = false;
-			else
-				Close ();
+            if (FormSelectMode)
+                this.Visible = false;
+            else
+            {
+                this.Hide();
+                this.Dispose();
+            }
+
 		}		// end of btnClose_Click
 
         private void insert()
@@ -342,7 +346,7 @@ namespace ClientcardFB3
                     try { drow[tb.Tag.ToString()] = Convert.ToDateTime(tb.Text); }
                     catch { drow[tb.Tag.ToString()] = "01/01/1900"; }
                 }
-                else if (tb.Tag.ToString() != "")
+                else if (tb.Tag.ToString().Length >0)
                     drow[tb.Tag.ToString()] = tb.Text;
             }
             foreach (CheckBox chk in chkList)
@@ -703,42 +707,43 @@ namespace ClientcardFB3
             if ("UserFlag0" == clsUserFields.FldName)
             {
                 chkUserFlag0.Text = clsUserFields.EditLabel;
-                chkUserFlag0.Visible = (chkUserFlag0.Text != "");
+                chkUserFlag0.Visible = (chkUserFlag0.Text.Length >0);
             }
             clsUserFields.setDataRow("UserFlag1");
             if ("UserFlag1" == clsUserFields.FldName)
             {
                 chkUserFlag1.Text = clsUserFields.EditLabel;
-                chkUserFlag1.Visible = (chkUserFlag1.Text != "");
+                chkUserFlag1.Visible = (chkUserFlag1.Text.Length >0);
             }
             clsUserFields.setDataRow("Date1");
             if ("Date1" == clsUserFields.FldName)
             {
                 lblDate1.Text = clsUserFields.EditLabel;
-                tbDate1.Visible = (lblDate1.Text != "");
-                lblDate1.Visible = (lblDate1.Text != "");
+                tbDate1.Visible = (lblDate1.Text.Length >0);
+                lblDate1.Visible = (lblDate1.Text.Length >0);
             }
             clsUserFields.setDataRow("Date2");
             if ("Date2" == clsUserFields.FldName)
             {
                 lblDate2.Text = clsUserFields.EditLabel;
-                tbDate2.Visible = (lblDate2.Text != "");
-                lblDate2.Visible = (lblDate2.Text != "");
+                tbDate2.Visible = (lblDate2.Text.Length >0);
+                lblDate2.Visible = (lblDate2.Text.Length >0);
             }
             clsUserFields.setDataRow("Info1");
             if ("Info1" == clsUserFields.FldName)
             {
                 lblInfo1.Text = clsUserFields.EditLabel;
-                tbInfo1.Visible = (lblInfo1.Text != "");
-                lblInfo1.Visible = (lblInfo1.Text != "");
+                tbInfo1.Visible = (lblInfo1.Text.Length >0);
+                lblInfo1.Visible = (lblInfo1.Text.Length >0);
             }
             clsUserFields.setDataRow("Info2");
             if ("Info2" == clsUserFields.FldName)
             {
                 lblInfo2.Text = clsUserFields.EditLabel;
-                tbInfo2.Visible = (lblInfo2.Text != "");
-                lblInfo2.Visible = (lblInfo2.Text != "");
+                tbInfo2.Visible = (lblInfo2.Text.Length >0);
+                lblInfo2.Visible = (lblInfo2.Text.Length >0);
             }
+            clsUserFields.Dispose();
         }
 
         private void EditDonorForm_SizeChanged(object sender, EventArgs e)
@@ -791,7 +796,7 @@ namespace ClientcardFB3
         {
             if (gridEditDonor.Rows.Count > 0)
             {
-                if (tbFindName.Text.Trim() == "")
+                if (String.IsNullOrEmpty(tbFindName.Text.Trim()) == true)
                 {
                     if (gridEditDonor.CurrentCell.RowIndex != 0 || gridEditDonor.CurrentCell.ColumnIndex != 0)
                     {
@@ -911,7 +916,7 @@ namespace ClientcardFB3
                 SetWhereClause();
                 RefreshGrid();
             }
-            if (sFilterColumn != "")
+            if (sFilterColumn.Length >0)
             {
                 cboFilter.Visible = true; 
                 getDistints(sFilterColumn); 
@@ -958,11 +963,12 @@ namespace ClientcardFB3
                 cboFilter.Items.Add(sVal + new String((char)32,(30-sVal.Length)) + "[ " + clsDonor.DSet.Tables[0].Rows[i][1].ToString() + " ]");
             }
             bLoadingCombo = false;
+            clsDonor.Dispose();
         }
 
         private void cboFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (bLoadingCombo == false && sFilterColumn != "")
+            if (bLoadingCombo == false && sFilterColumn.Length >0)
             {
                 if (cboFilter.SelectedIndex != 0)
                 {
@@ -984,12 +990,12 @@ namespace ClientcardFB3
             if (chkIncludeInactive.CheckState == CheckState.Unchecked)
             {
                 sWhereClause = " WHERE Inactive = 0";
-                if (sFilterColumn != "" && sFilterValue != "")
+                if (sFilterColumn.Length >0 && sFilterValue.Length >0)
                     sWhereClause += " AND " + sFilterValue;
             }
             else
             {
-                if (sFilterColumn != "" && sFilterValue != "")
+                if (sFilterColumn.Length >0 && sFilterValue.Length >0)
                     sWhereClause = " WHERE " + sFilterValue;
                 else
                     sWhereClause = "";
@@ -1110,6 +1116,7 @@ namespace ClientcardFB3
                     Convert.ToInt32(gridEditDonor.SelectedRows[0].Cells["gridEditDonor_ID"].Value),
                    Convert.ToInt32(cboDonationType.SelectedValue), false);
                 frmFoodRecipts.ShowDialog();
+                frmFoodRecipts.Dispose();
             }
             else
             {

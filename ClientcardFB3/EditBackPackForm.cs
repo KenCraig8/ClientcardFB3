@@ -314,7 +314,7 @@ namespace ClientcardFB3
                 dgvBackpack["clmAptNum", i].Value = dtbl.Rows[i]["AptNbr"];
                 dgvBackpack["clmExpiration", i].Value = convertToShortDate(
                     CCFBGlobal.NullToBlank(dtbl.Rows[i]["BackpackExpiration"]));
-                if (dgvBackpack["clmExpiration", i].Value.ToString() != "" &&
+                if (dgvBackpack["clmExpiration", i].Value.ToString().Length >0 &&
                     (DateTime)dtbl.Rows[i]["BackpackExpiration"] < toCheck)
                 {
                     dgvBackpack["clmExpiration", i].Style.BackColor = Color.Yellow;
@@ -375,7 +375,7 @@ namespace ClientcardFB3
                 dgvBackpack["clmAptNum", i].Value = dtbl.Rows[i]["AptNbr"];
                 dgvBackpack["clmExpiration", i].Value = convertToShortDate(
                     CCFBGlobal.NullToBlank(drows[i]["BackpackExpiration"]));
-                if (dgvBackpack["clmExpiration", i].Value.ToString() != "" &&
+                if (dgvBackpack["clmExpiration", i].Value.ToString().Length >0 &&
                     (DateTime)drows[i]["BackpackExpiration"] < toCheck)
                 {
                     dgvBackpack["clmExpiration", i].Style.BackColor = Color.Yellow;
@@ -401,7 +401,7 @@ namespace ClientcardFB3
 
         private string convertToShortDate(string date)
         {
-            if (date != "")
+            if (date.Length >0)
             {
                 return DateTime.Parse(date).ToShortDateString();
             }
@@ -434,7 +434,7 @@ namespace ClientcardFB3
 
         private void tbFindName_TextChanged(object sender, EventArgs e)
         {
-            if (tbFindName.Text.Trim() == "")
+            if (String.IsNullOrEmpty(tbFindName.Text.Trim()) == true)
             { dgvBackpack.CurrentCell = dgvBackpack[0, 0]; }
             else
             {
@@ -450,7 +450,7 @@ namespace ClientcardFB3
             if (dgvBackpack.SelectedRows.Count > 0)
             {
                 changeGroupBoxVisibility(1);
-                if (dgvBackpack.SelectedRows[0].Cells["clmExpiration"].Value.ToString() != "")
+                if (dgvBackpack.SelectedRows[0].Cells["clmExpiration"].Value.ToString().Length >0)
                 {
                     try
                     {
@@ -500,7 +500,7 @@ namespace ClientcardFB3
 
                         string date = CCFBGlobal.NullToBlank(dgvBackpack.SelectedRows[0].Cells["clmExpiration"].Value);
 
-                        if (date != "")
+                        if (date.Length >0)
                             dtpExpDate.Value = DateTime.Parse(date);
 
                         chkBackpack.Checked = (bool)dgvBackpack.SelectedRows[0].Cells["clmBackpack"].Value;
@@ -611,14 +611,14 @@ namespace ClientcardFB3
             string updateIDs = "";
             for (int i = 0; i < dgvBackpack.SelectedRows.Count; i++)
             {
-                if (dgvBackpack.SelectedRows[i].Cells["clmDateServed"].Value.ToString() != "")
+                if (dgvBackpack.SelectedRows[i].Cells["clmDateServed"].Value.ToString().Length >0)
                 {
                     if (MessageBox.Show("Backpack Client " + dgvBackpack.SelectedRows[i].Cells["clmName"].Value.ToString()
                          + " Already Has A Service For This Period. Would You Like To Update The Service?",
                          "Service Already Exists For This Period", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                         == System.Windows.Forms.DialogResult.Yes)
                     {
-                        if (updateIDs != "")
+                        if (updateIDs.Length >0)
                             updateIDs += ", ";
 
                         updateIDs += dgvBackpack.SelectedRows[i].Cells["clmLogID"].Value.ToString();
@@ -626,7 +626,7 @@ namespace ClientcardFB3
                 }
                 else
                 {
-                    if (insertIDs != "")
+                    if (insertIDs.Length >0)
                         insertIDs += ", ";
 
                     insertIDs += dgvBackpack.SelectedRows[i].Cells["clmHHMemID"].Value.ToString();
@@ -635,10 +635,10 @@ namespace ClientcardFB3
             }
 
             openConnection();
-            if (insertIDs != "")
+            if (insertIDs.Length >0)
                 clsBackpackLog.insertNewService(insertIDs, dtpSvcDate.Value, tbLbsBackpack.Text);
 
-            if (updateIDs != "")
+            if (updateIDs.Length >0)
                 updateExistingService(updateIDs);
 
             closeConnection();
@@ -652,7 +652,7 @@ namespace ClientcardFB3
 
         private void tbLbsBackpack_Leave(object sender, EventArgs e)
         {
-            if (tbLbsBackpack.Text.Trim() == "")
+            if (String.IsNullOrEmpty(tbLbsBackpack.Text.Trim()) == true)
                 tbLbsBackpack.Text = "0";
 
             //dfltBackpackLbs = Convert.ToInt32(tbLbsBackpack.Text.Trim());
@@ -735,16 +735,16 @@ namespace ClientcardFB3
 
             for (int i = 0; i < dgvBackpack.SelectedRows.Count; i++)
             {
-                if (dgvBackpack.SelectedRows[i].Cells["clmDateServed"].Value.ToString() != "")
+                if (dgvBackpack.SelectedRows[i].Cells["clmDateServed"].Value.ToString().Length >0)
                 {
-                    if (deleteIDs != "")
+                    if (deleteIDs.Length >0)
                         deleteIDs += ", ";
 
                     deleteIDs += dgvBackpack.SelectedRows[i].Cells["clmLogID"].Value.ToString();
                 }
             }
 
-            if (deleteIDs != "")
+            if (deleteIDs.Length >0)
             {
                 openConnection();
                 deleteBackpackServices(deleteIDs);
@@ -867,7 +867,7 @@ namespace ClientcardFB3
                 {
                     if (cboSort[i].SelectedIndex > 0)
                     {
-                        if (whereClause == "")
+                        if (String.IsNullOrEmpty(whereClause) == true)
                         {
                             whereClause = "WHERE ID NOT IN(" + cboSort[i].SelectedValue.ToString();
                         }
@@ -877,7 +877,7 @@ namespace ClientcardFB3
                         }
                     }
                 }
-                if (whereClause != "")
+                if (whereClause.Length >0)
                     whereClause += ")";
             }
             loading = true;
@@ -904,7 +904,7 @@ namespace ClientcardFB3
             {
                 if (cbo.SelectedIndex > 0)
                 {
-                    if (sql == "")
+                    if (String.IsNullOrEmpty(sql) == true)
                     {
                         sql = " ORDER BY ";
                     }

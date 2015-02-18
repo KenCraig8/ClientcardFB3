@@ -9,17 +9,19 @@ using Microsoft.SqlServer.Server;
 
 namespace ClientcardFB3
 {
-    public class BackpackLog
+    public class BackpackLog : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
         DataSet dset;
         SqlCommand command;
+        SqlCommandBuilder commBuilder;
         System.Data.SqlClient.SqlConnection conn;
         static string tbName = "BackpackLog";
         int iRowCount = 0;
         DataRow drow = null;
         bool isValid = false;
+        private bool _disposed;
 
         public BackpackLog(string connStringIn)
         {
@@ -28,6 +30,41 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -65,7 +102,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["BackpackDate"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["BackpackDate"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["BackpackDate"];
@@ -174,6 +211,7 @@ namespace ClientcardFB3
             SqlCommand commDelete = new SqlCommand(" DELETE FROM BackpackLog WHERE Date=" + BackpackSvcDate.ToString()
                 + " And MemID=" + HHMemID.ToString(), conn);
             commDelete.ExecuteNonQuery();
+            commDelete.Dispose(); 
             closeConnection();
         }
 
@@ -183,7 +221,7 @@ namespace ClientcardFB3
             {
                 if (dadAdpt.InsertCommand == null || dadAdpt.UpdateCommand == null)
                 {
-                    SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                    commBuilder = new SqlCommandBuilder(dadAdpt);
                 }
 
                 openConnection();
@@ -214,13 +252,13 @@ namespace ClientcardFB3
             {
                 openConnection();
                 sqlcmdInsert.ExecuteNonQuery();
-                closeConnection();
             }
             catch (SqlException ex)
             {
                 CCFBGlobal.appendErrorToErrorReport(sqlcmdInsert.CommandText, ex.GetBaseException().ToString());
-                closeConnection();
             }
+            sqlcmdInsert.Dispose(); 
+            closeConnection();
         }
 
 
@@ -235,7 +273,7 @@ namespace ClientcardFB3
                     if (dadAdpt.UpdateCommand == null)
                     {
                         //Sets the Commands in the DataAdapter
-                        SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                        commBuilder = new SqlCommandBuilder(dadAdpt);
                     }
 
                     drow["ModifiedBy"] = CCFBGlobal.dbUserName;

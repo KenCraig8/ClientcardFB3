@@ -11,7 +11,7 @@ using Microsoft.Win32;
 
 namespace ClientcardFB3
 {
-    public partial class MainForm : Form, IMainForm
+    public partial class MainForm : Form
     {
         public static DailyItemsClass clsDailyItems;
         #region Variables
@@ -38,8 +38,22 @@ namespace ClientcardFB3
         ClientSearch frmClientSearch;
         HDBuildings clsHdBuildings = new HDBuildings(CCFBGlobal.connectionString);
         FindClientForm frmFindClient;   //A pointer to the FindClientForm
-        ILoginForm frmLogIn;
+
+        AccessReportsForm frmReports;
+        FreshAllianceForm frmFA;
+        EditBackpackForm frmEditBackpack;
+        EditCSFPForm frmEditCSFP;
+        FoodDonationsForm frmFoodDonation;
+        EditDonorForm frmEditDonor;
+        ExportSQLToExcel frmExportSQL;
+        FoodReceiptsGroceryRescueForm frmGroceryRescueForm;
+        MonthEndReportsForm frmMonthlyReports;
+        EditVolunteerForm frmEditVols;
+        VolunteerHoursForm frmVolHrs;
+        EditVouchersItemForm frmEditVoucherItems;
+        LoginForm frmLogIn;
         TrxLogForm frmTrxLog;
+
         //CreateUnitedWayExport clsCreateUWExport;
         BarCodeEntryForm frmBarCodeEntry; //= new BarCodeEntryForm();
         private static Graphics gfxScreenshot;
@@ -78,14 +92,10 @@ namespace ClientcardFB3
         Client.statsTrx clientTrxStats = new Client.statsTrx();
 
 
-        public MainForm(ILoginForm FrmLogInIn)
+        public MainForm(LoginForm FrmLogInIn)
         {
-            frmLogIn = FrmLogInIn;
-        }
-        
-        // Initialises the variables in the form
-        public void InitialiseForm(){
             InitializeComponent();
+            frmLogIn = FrmLogInIn;
             conn = new SqlConnection(CCFBGlobal.connectionString);
 
             for (int i = 0; i < chkLstBxUserFields.Items.Count; i++)
@@ -157,7 +167,7 @@ namespace ClientcardFB3
 
         private void addHousehold(int memID)
         {
-            AddNewHousehold2 frmAddNewClient = new AddNewHousehold2(clsClient);
+            AddNewHousehold2 frmAddNewClient = new AddNewHousehold2();
             if (memID > 0)
             {
                 frmAddNewClient.setHHMember(new HHMemberItem(clsClient.clsHHmem.DRowHhm,clsClient.clsHHmem.DSet.Tables[0].Columns
@@ -165,9 +175,11 @@ namespace ClientcardFB3
             }
             //frmAddNewClient.TopMost = false;
             frmAddNewClient.ShowDialog(this);
-            if (frmAddNewClient.HHID > 0)
+            int newHHId = frmAddNewClient.HHID;
+            frmAddNewClient.Dispose();
+            if (newHHId > 0)
             {
-                clsClient.open(frmAddNewClient.HHID, true, true);
+                clsClient.open(newHHId, true, true);
                 if (clsClient.clsHH.UseFamilyList == true)
                 {
                     clsClient.UpdateDataBasedOn(DateTime.Parse(CCFBGlobal.DefaultServiceDate));
@@ -538,7 +550,7 @@ namespace ClientcardFB3
                 }
                 else
                 {
-                    if (clsClient.clsHH.GetDataValue(chkHH.Tag.ToString()).ToString().Trim() != "")
+                    if (clsClient.clsHH.GetDataValue(chkHH.Tag.ToString()).ToString().Trim().Length >0)
                     {
                         chkHH.Checked = bool.Parse(clsClient.clsHH.GetDataValue(chkHH.Tag.ToString()).ToString());
                     }
@@ -559,7 +571,7 @@ namespace ClientcardFB3
         {
             if (loadingInfo == false)
             {
-                if (chkLstBxUserFields.Items[e.Index].ToString() == "")
+                if (String.IsNullOrEmpty(chkLstBxUserFields.Items[e.Index].ToString()) == true)
                     e.NewValue = CheckState.Indeterminate;
                 else
                 {
@@ -763,7 +775,7 @@ namespace ClientcardFB3
                 else
                 {
                     clsClient.clsHHmem.openHHID(clsClient.clsHH.ID);
-                    loadHHMems(true);
+                    loadHHMems(true,true);
                     clsClient.calcSpecialDietAndDissabled();
                     ShowFamData();
                 }
@@ -816,6 +828,7 @@ namespace ClientcardFB3
                 {
                     MessageBox.Show("No Signature Found");
                 }
+                tls.Dispose();
             }
         }
 
@@ -937,6 +950,7 @@ namespace ClientcardFB3
             HHMemGridForm2 frmHHmem = new HHMemGridForm2(clsClient,
                Convert.ToInt32(dgvHHMembers.CurrentRow.Cells["clmHMID"].Value));
             frmHHmem.ShowDialog();
+            frmHHmem.Dispose();
         }
 
         private void dgvHHMembers_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -980,6 +994,7 @@ namespace ClientcardFB3
         private void editHHMem()
         {
             int hhMemID = 0;
+            int hhID = clsClient.clsHH.ID;
             if (dgvHHMembers.CurrentRow != null)
             {
                 hhMemID = Convert.ToInt32(dgvHHMembers.CurrentRow.Cells["clmHMId"].Value);
@@ -987,8 +1002,10 @@ namespace ClientcardFB3
             }
             HHMemGridForm2 frmHHMem = new HHMemGridForm2(clsClient, hhMemID);
             frmHHMem.ShowDialog();
+            frmHHMem.Dispose();
+            clsClient.clsHH.open(hhID);
             lblName.Text = clsClient.clsHH.Name;
-            loadHHMems(true);
+            loadHHMems(true,true);
         }
 
         private void editServiceTrxToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1018,8 +1035,11 @@ namespace ClientcardFB3
 
         private void mnuTools_GroceryRescueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FoodReceiptsGroceryRescueForm frmTemp = new FoodReceiptsGroceryRescueForm(-1, 6, true);
-            frmTemp.Show();
+            if (frmGroceryRescueForm == null)
+            {
+                frmGroceryRescueForm = new FoodReceiptsGroceryRescueForm(-1, 6, true);
+            }
+            frmGroceryRescueForm.Show();
         }
 
         /// <summary>
@@ -1032,25 +1052,9 @@ namespace ClientcardFB3
             rtAlert = "";
             if (clsClient.clsHH.RowCount > 0)
             {
-                if (CCFBPrefs.AlertMonthSvc > 0)
-                {
-                    if (clientTrxStats.NbrTrxThisMonth >= CCFBPrefs.AlertMonthSvc)
-                    {
-                        tbAlert.SelectionColor = Color.Red;
-                        tbAlert.SelectedText = CCFBPrefs.AlertMonthSvcText + Environment.NewLine;
-                    }
-                }
-                if (CCFBPrefs.AlertWeekSvc > 0)
-                {
-                    if (clientTrxStats.NbrTrxThisWeek >= CCFBPrefs.AlertWeekSvc)
-                    {
-                        tbAlert.SelectionColor = Color.Red;
-                        tbAlert.SelectedText = CCFBPrefs.AlertWeekSvcText + Environment.NewLine;
-                    }
-                }
                 if (CCFBPrefs.WarnSvcEachPerson == true)
                 {
-                    if (svcWarningText != "")
+                    if (svcWarningText.Length > 0)
                     {
                         string[] lines = svcWarningText.Split('~');
                         foreach (string item in lines)
@@ -1060,24 +1064,87 @@ namespace ClientcardFB3
                         }
                     }
                 }
-                if (CCFBPrefs.AlertMinimumDays > 0 && tbxDaysSinceLstSrvc.Text != "")
+                bool isLocal = clsClient.isLocal();
+                if (CCFBPrefs.UseLocalOutOfAreaAlerts==false && CCFBPrefs.AlertOAMsgON==false)
                 {
-                    if (Convert.ToInt32(tbxDaysSinceLstSrvc.Text) < CCFBPrefs.AlertMinimumDays)
+                    isLocal = true;
+                }
+                if (isLocal == true)
+                {
+                    if (CCFBPrefs.AlertMonthSvc > 0)
                     {
-                        tbAlert.SelectionColor = Color.Red;
-                        tbAlert.SelectedText = CCFBPrefs.AlertMinDaysText + Environment.NewLine;
+                        if (clientTrxStats.NbrTrxThisMonth >= CCFBPrefs.AlertMonthSvc)
+                        {
+                            tbAlert.SelectionColor = Color.Red;
+                            tbAlert.SelectedText = CCFBPrefs.AlertMonthSvcText + Environment.NewLine;
+                        }
+                    }
+                    if (CCFBPrefs.AlertWeekSvc > 0)
+                    {
+                        if (clientTrxStats.NbrTrxThisWeek >= CCFBPrefs.AlertWeekSvc)
+                        {
+                            tbAlert.SelectionColor = Color.Red;
+                            tbAlert.SelectedText = CCFBPrefs.AlertWeekSvcText + Environment.NewLine;
+                        }
+                    }
+                    if (CCFBPrefs.AlertMinimumDays > 0 && tbxDaysSinceLstSrvc.Text.Length > 0)
+                    {
+                        if (Convert.ToInt32(tbxDaysSinceLstSrvc.Text) < CCFBPrefs.AlertMinimumDays)
+                        {
+                            tbAlert.SelectionColor = Color.Red;
+                            tbAlert.SelectedText = CCFBPrefs.AlertMinDaysText + Environment.NewLine;
+                        }
+                    }
+                    if (CCFBPrefs.AlertMinimumMonths > 0 && tbxMonthsSinceLstSrvc.Text.Length > 0)
+                    {
+                        if (Convert.ToInt32(tbxMonthsSinceLstSrvc.Text) < CCFBPrefs.AlertMinimumMonths)
+                        {
+                            tbAlert.SelectionColor = Color.Red;
+                            tbAlert.SelectedText = CCFBPrefs.AlertMinMonthsText + Environment.NewLine;
+                        }
                     }
                 }
-                if (CCFBPrefs.AlertMinimumMonths > 0 && tbxMonthsSinceLstSrvc.Text != "")
+                else
                 {
-                    if (Convert.ToInt32(tbxMonthsSinceLstSrvc.Text) < CCFBPrefs.AlertMinimumMonths)
+                    if (CCFBPrefs.AlertOAMsgON == true)
                     {
-                        tbAlert.SelectionColor = Color.Red;
-                        tbAlert.SelectedText = CCFBPrefs.AlertMinMonthsText + Environment.NewLine;
+                            tbAlert.SelectionColor = Color.DarkRed;
+                            tbAlert.SelectedText = CCFBPrefs.AlertOAMessageText + Environment.NewLine;
+                    }
+                    if (CCFBPrefs.AlertOAMonthSvc > 0)
+                    {
+                        if (clientTrxStats.NbrTrxThisMonth >= CCFBPrefs.AlertOAMonthSvc)
+                        {
+                            tbAlert.SelectionColor = Color.Red;
+                            tbAlert.SelectedText = CCFBPrefs.AlertOAMonthSvcText + Environment.NewLine;
+                        }
+                    }
+                    if (CCFBPrefs.AlertOAWeekSvc > 0)
+                    {
+                        if (clientTrxStats.NbrTrxThisWeek >= CCFBPrefs.AlertOAWeekSvc)
+                        {
+                            tbAlert.SelectionColor = Color.Red;
+                            tbAlert.SelectedText = CCFBPrefs.AlertOAWeekSvcText + Environment.NewLine;
+                        }
+                    }
+                    if (CCFBPrefs.AlertOAMinimumDays > 0 && tbxDaysSinceLstSrvc.Text.Length > 0)
+                    {
+                        if (Convert.ToInt32(tbxDaysSinceLstSrvc.Text) < CCFBPrefs.AlertOAMinimumDays)
+                        {
+                            tbAlert.SelectionColor = Color.Red;
+                            tbAlert.SelectedText = CCFBPrefs.AlertOAMinDaysText + Environment.NewLine;
+                        }
+                    }
+                    if (CCFBPrefs.AlertOAMinimumMonths > 0 && tbxMonthsSinceLstSrvc.Text.Length > 0)
+                    {
+                        if (Convert.ToInt32(tbxMonthsSinceLstSrvc.Text) < CCFBPrefs.AlertOAMinimumMonths)
+                        {
+                            tbAlert.SelectionColor = Color.Red;
+                            tbAlert.SelectedText = CCFBPrefs.AlertOAMinMonthsText + Environment.NewLine;
+                        }
                     }
                 }
-
-                if (clientBDays != "")
+                if (clientBDays.Length >0)
                 {
                     tbAlert.SelectionColor = Color.Black;
                     tbAlert.SelectedText = clientBDays;
@@ -1112,7 +1179,7 @@ namespace ClientcardFB3
 
                     tbAlert.SelectedText += Environment.NewLine;
                 }
-                if (clsClient.clsHH.ServiceMethod == (int)CCFBGlobal.ServiceMethodCodes.OneTimeService)
+                if (clsClient.clsHH.ServiceMethod == (int)CCFBGlobal.ServiceMethodsCode.OneTimeService)
                 {
                     tbAlert.SelectionColor = Color.OrangeRed;
                     tbAlert.SelectedText = "One Time Service Only" + Environment.NewLine;
@@ -1157,12 +1224,12 @@ namespace ClientcardFB3
                         }
                     }
                 }
-                if (sCSFPList != "")
+                if (sCSFPList.Length >0)
                 {
                     tbAlert.SelectionColor = Color.Green;
                     tbAlert.SelectedText = sCSFPList;
                 }
-                if (sBackPackList != "")
+                if (sBackPackList.Length >0)
                 {
                     tbAlert.SelectionColor = Color.Green;
                     tbAlert.SelectedText = sBackPackList;
@@ -1196,7 +1263,6 @@ namespace ClientcardFB3
                 showUserInfo();
                 lblName.Text = clsClient.clsHH.Name;
                 tpgFamilyDetail.Text = "[" + clsClient.clsHH.TotalFamily.ToString() + "] Family Members";
-                btnBeginEdit.Enabled = true;
                 tsbCreateAppt.Enabled = true;
                 tsbHHMem.Enabled = true;   
                 btnNext.Enabled = true;
@@ -1249,7 +1315,7 @@ namespace ClientcardFB3
                 tbID.Text = clsClient.clsHH.GetDataValue(tbID.Tag.ToString()).ToString().Trim();
                 foreach (TextBox tb in tbList)
                 {
-                    if (tb.Tag != null && tb.Tag.ToString().Trim() != "")
+                    if (tb.Tag != null && tb.Tag.ToString().Trim().Length >0)
                     {
                         tb.Text = clsClient.clsHH.GetDataValue(tb.Tag.ToString()).ToString().Trim();
                     }
@@ -1257,7 +1323,7 @@ namespace ClientcardFB3
                 tbPhone.Text = clsClient.clsHH.GetDataValue(tbPhone.Tag.ToString()).ToString().Trim();
                 foreach (TextBox tb in tbmList)
                 {
-                    if (tb.Tag != null && tb.Tag.ToString().Trim() != "")
+                    if (tb.Tag != null && tb.Tag.ToString().Trim().Length >0)
                     {
                         tb.Text = clsClient.clsHH.GetDataValue(tb.Tag.ToString()).ToString().Trim();
                     }
@@ -1287,7 +1353,7 @@ namespace ClientcardFB3
                 //Sets the checkboxes in form
                 foreach (CheckBox cb in chkList)
                 {
-                    if (cb.Tag != null && cb.Tag.ToString().Trim() != "")
+                    if (cb.Tag != null && cb.Tag.ToString().Trim().Length >0)
                     {
                         if (clsClient.clsHH.GetDataValue(cb.Tag.ToString()).ToString() == "True")
                         {
@@ -1311,24 +1377,41 @@ namespace ClientcardFB3
                     tbxDaysSinceLstSrvc.Text = diff.Days.ToString();
                     tbxMonthsSinceLstSrvc.Text = System.Math.Abs(CCFBGlobal.MonthDiff(DateTime.Today, dateTest)).ToString();
                 }
-                if (clsClient.clsHH.AnnualIncome > 0)
+                try
                 {
-                    int monthlyincome = Convert.ToInt32(clsClient.clsHH.AnnualIncome) / 12;
-                    tbIncomeMonthly.Text = monthlyincome.ToString();
+
+                    if (clsClient.clsHH.AnnualIncome > 0)
+                    {
+                        int monthlyincome = Convert.ToInt32(clsClient.clsHH.AnnualIncome) / 12;
+                        tbIncomeMonthly.Text = monthlyincome.ToString();
+                    }
+                    else
+                        tbIncomeMonthly.Text = "";
                 }
-                else
-                    tbIncomeMonthly.Text = "";
+                catch (Exception ex)
+                {
+
+                    CCFBGlobal.appendErrorToErrorReport("FillForm - AnnualIncome", ex.GetBaseException().ToString());
+                }
 
                 SetIncomeGroups();
-
-                loadHHMems(true);
+                Application.DoEvents();
+                loadHHMems(true,false);
+                Application.DoEvents();
                 getClientLogForPeriod();
                 getVoucherLogForPeriod();
                 if (clsClient.clsHH.UseFamilyList == true)
                     tabFamily.SelectTab(0);
                 else
                     tabFamily.SelectTab(1);
-                btnBeginEdit.Enabled = true;
+                if (CCFBGlobal.UserIsIntake() == true)
+                {
+                    btnBeginEdit.Enabled = CCFBPrefs.AllowIntakeEditing;
+                }
+                else
+                {
+                    btnBeginEdit.Enabled = true;
+                }
                 loadingInfo = false;
                 if (CCFBPrefs.CommSigValidFor > 0)
                 {
@@ -1372,7 +1455,7 @@ namespace ClientcardFB3
         {
             for (int i = 0; i < chkLstBxUserFields.Items.Count; i++)
             {
-                if (chkLstBxUserFields.Items[i].ToString() != "")
+                if (chkLstBxUserFields.Items[i].ToString().Length >0)
                 {
                     if (clsClient.clsHH.DSet.Tables[0].Rows[0].Field<bool>(userFlagNames[i]) == true)
                         chkLstBxUserFields.SetItemCheckState(i, CheckState.Checked);
@@ -1423,7 +1506,7 @@ namespace ClientcardFB3
         /// <param name="tb">Refrence to the Textbox thats Text needs to be formated</param>
         private void formatDate(ref TextBox tb)
         {
-            if (tb.Text != "")
+            if (tb.Text.Length >0)
             {
                 DateTime d = DateTime.Parse(tb.Text);
                 if (d > DateTime.Parse(CCFBGlobal.OURNULLDATE))
@@ -1573,171 +1656,181 @@ namespace ClientcardFB3
         /// <summary>
         /// Loads the Household Members Listview with the Household Members
         /// </summary>
-        private void loadHHMems(bool clearRows)
+        private void loadHHMems(bool clearRows, bool callFillAlerts)
         {
             DateTime d;
-            DateTime dateFirst = CCFBGlobal.FirstDayOfMonth(DateTime.Now);
-            DateTime dateLast = CCFBGlobal.LastDayOfMonth(DateTime.Now);
+            DateTime dateFirst = CCFBGlobal.firstDayOfMonth(DateTime.Now);
+            DateTime dateLast = CCFBGlobal.lastDayOfMonth(DateTime.Now);
             Color CellForeColor;
             DataGridViewRow dvr;
             bool oriloadingInfo = loadingInfo;
-            loadingInfo = true;
-            if (clearRows == true)
+            try
             {
-                dgvHHMembers.Rows.Clear();
-            }
-
-            int rowCount = 0;
-            int NbrCSFP = 0;
-            sCSFPList = "";
-            clientBDays = "";
-            int NbrBackPack = 0;
-            sBackPackList = "";
-            for (int i = 0; i < clsClient.clsHHmem.RowCount; i++)
-            {
-                dgvHHMembers.Rows.Add();
-                if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["Inactive"])
-                { CellForeColor = Color.Maroon; }
-                else
-                { CellForeColor = Color.Black; }
-                dvr = dgvHHMembers.Rows[rowCount];
-                FillGridMembersCell(dvr, "clmInactive", "Inactive", true, CellForeColor, i);
-                //                    FillGridMembersCell(dvr, "clmHeadHH", "HeadHH", true, CellForeColor, i);
-                FillGridMembersCell(dvr, "clmLastName", "LastName", false, CellForeColor, i);
-                FillGridMembersCell(dvr, "clmFirstName", "FirstName", false, CellForeColor, i);
-                if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["HeadHH"] == true)
-                    dvr.Cells["clmFirstName"].Value += " (HH)";
-                FillGridMembersCell(dvr, "clmHMID", "ID", false, CellForeColor, i);
-                if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["NotCounted"] == true)
+                loadingInfo = true;
+                if (clearRows == true)
                 {
+                    dgvHHMembers.Rows.Clear();
                 }
-                else
-                {
 
-
-                FillGridMembersCell(dvr, "clmAge", "Age", false, CellForeColor, i);
-                FillGridMembersCell(dvr, "clmSex", "Sex", false, CellForeColor, i);
-                FillGridMembersCell(dvr, "clmDiet", "SpecialDiet", true, CellForeColor, i);
-                FillGridMembersCell(dvr, "Disabled", "IsDisabled", true, CellForeColor, i);
-                if ((Boolean)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFP"] == true)
+                int rowCount = 0;
+                int NbrCSFP = 0;
+                sCSFPList = "";
+                clientBDays = "";
+                int NbrBackPack = 0;
+                sBackPackList = "";
+                for (int i = 0; i < clsClient.clsHHmem.RowCount; i++)
                 {
-                    string tmp = clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"].ToString();
-                    if (tmp != "")
+                    dgvHHMembers.Rows.Add();
+                    if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["Inactive"])
+                    { CellForeColor = Color.Maroon; }
+                    else
+                    { CellForeColor = Color.Black; }
+                    dvr = dgvHHMembers.Rows[rowCount];
+                    FillGridMembersCell(dvr, "clmInactive", "Inactive", true, CellForeColor, i);
+                    //                    FillGridMembersCell(dvr, "clmHeadHH", "HeadHH", true, CellForeColor, i);
+                    FillGridMembersCell(dvr, "clmLastName", "LastName", false, CellForeColor, i);
+                    FillGridMembersCell(dvr, "clmFirstName", "FirstName", false, CellForeColor, i);
+                    if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["HeadHH"] == true)
+                        dvr.Cells["clmFirstName"].Value += " (HH)";
+                    FillGridMembersCell(dvr, "clmHMID", "ID", false, CellForeColor, i);
+                    if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["NotCounted"] == true)
                     {
-                        d = (DateTime)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"];
-                        if (d > CCFBGlobal.FBNullDateValue)
+                    }
+                    else
+                    {
+
+
+                        FillGridMembersCell(dvr, "clmAge", "Age", false, CellForeColor, i);
+                        FillGridMembersCell(dvr, "clmSex", "Sex", false, CellForeColor, i);
+                        FillGridMembersCell(dvr, "clmDiet", "SpecialDiet", true, CellForeColor, i);
+                        FillGridMembersCell(dvr, "Disabled", "IsDisabled", true, CellForeColor, i);
+                        if ((Boolean)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFP"] == true)
                         {
-                            dvr.Cells["clmCSFP"].Value = d.ToShortDateString();
+                            string tmp = clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"].ToString();
+                            if (tmp != "")
+                            {
+                                d = (DateTime)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"];
+                                if (d > CCFBGlobal.FBNullDateValue)
+                                {
+                                    dvr.Cells["clmCSFP"].Value = d.ToShortDateString();
+                                }
+                            }
+                            else
+                            {
+                                dvr.Cells["clmCSFP"].Value = tmp;
+                            }
+                            dvr.Cells["clmCSFP"].Tag = "CSFPExpiration";
+                        }
+
+                        if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["Birthdate"].ToString().Trim() != "")
+                        {
+                            d = (DateTime)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["Birthdate"];
+                            dvr.Cells["clmBirthdate"].Value = d.ToShortDateString();
+                            dvr.Cells["clmBirthdate"].Tag = "BirthDate";
+                            DateTime newBirthday;
+                            int thisYear = DateTime.Today.Year;
+
+                            if (d.Month == 2 && d.Day == 29 && DateTime.IsLeapYear(thisYear) == false)
+                                newBirthday = new DateTime(thisYear, d.Month, 28);
+                            else
+                                newBirthday = new DateTime(thisYear, d.Month, d.Day);
+
+                            //if (newBirthday >= DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek) &&
+                            //   newBirthday <= DateTime.Today.AddDays(7 - (int)DateTime.Today.DayOfWeek))
+                            if (newBirthday >= DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek) &&
+                                newBirthday <= DateTime.Today.AddDays(7 - (int)DateTime.Today.DayOfWeek))
+                            {
+                                if (newBirthday > DateTime.Today)
+                                    clientBDays += "Birthday: " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString()
+                                        + " This " + newBirthday.DayOfWeek.ToString() + Environment.NewLine;
+                                else if (newBirthday < DateTime.Today)
+                                    clientBDays += "Birthday: " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString()
+                                                + " Last " + newBirthday.DayOfWeek.ToString() + Environment.NewLine;
+                                else
+                                    clientBDays += "Birthday: " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString()
+                                                + " Today" + Environment.NewLine;
+                            }
+                            else if ((newBirthday >= dateFirst) &&
+                                (newBirthday <= dateLast))
+                            {
+                                clientBDays += "Birthday: " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString()
+                                            + " " + newBirthday.DayOfWeek.ToString()
+                                            + " the " + newBirthday.Day.ToString() + Environment.NewLine;
+                            }
                         }
                     }
-                    else
+
+                    //Uses the Age to Add the proper AgeGroup to the listview
+                    int agegroup = Int32.Parse(clsClient.clsHHmem.DSet.Tables[0].Rows[i]["AgeGroup"].ToString());
+                    if (agegroup >= 0 && agegroup <= 5)
+                        dvr.Cells["clmGroup"].Value = AgeGroupName(agegroup);
+                    if (CCFBPrefs.EnableCSFP == true)
                     {
-                        dvr.Cells["clmCSFP"].Value = tmp;
+                        if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFP"] == true)
+                        {
+                            NbrCSFP++;
+                            sCSFPList += "CSFP for " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString();
+                            if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"] != null
+                                && clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"].ToString() != "")
+                            {
+                                if (Convert.ToDateTime(clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"]) < Convert.ToDateTime(CCFBGlobal.DefaultServiceDate))
+                                {
+                                    sCSFPList += " expired: " + Convert.ToDateTime(
+                                    clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"]).ToShortDateString();
+                                }
+                            }
+                            d = clsClient.clsHHmem.LastCSFPLogEntry(Convert.ToDateTime(CCFBGlobal.DefaultServiceDate));
+                            if (d >= new DateTime(Convert.ToInt32(CCFBGlobal.DefaultServiceDate.Substring(6)), Convert.ToInt32(CCFBGlobal.DefaultServiceDate.Substring(0, 2)), 1))
+                            {
+                                sCSFPList += " Served " + d.ToShortDateString();
+                            }
+                            if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPComments"].ToString() != "")
+                            {
+                                sCSFPList += "\r\n";
+                                sCSFPList += clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPComments"].ToString();
+                            }
+                            sCSFPList += "\r\n";
+                        }
                     }
-                    dvr.Cells["clmCSFP"].Tag = "CSFPExpiration";
-                }
-
-
-                if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["Birthdate"].ToString().Trim() != "")
-                {
-                    d = (DateTime)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["Birthdate"];
-                    dvr.Cells["clmBirthdate"].Value = d.ToShortDateString();
-                    dvr.Cells["clmBirthdate"].Tag = "BirthDate";
-                    DateTime newBirthday;
-                    int thisYear = DateTime.Today.Year;
-
-                    if (d.Month == 2 && d.Day == 29 && DateTime.IsLeapYear(thisYear) == false)
-                        newBirthday = new DateTime(thisYear, d.Month, 28);
-                    else
-                        newBirthday = new DateTime(thisYear, d.Month, d.Day);
-
-                    //if (newBirthday >= DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek) &&
-                    //   newBirthday <= DateTime.Today.AddDays(7 - (int)DateTime.Today.DayOfWeek))
-                    if (newBirthday >= DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek) &&
-                        newBirthday <= DateTime.Today.AddDays(7 - (int)DateTime.Today.DayOfWeek))
+                    if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BackPack"] && CCFBPrefs.EnableBackPack == true)
                     {
-                        if (newBirthday > DateTime.Today)
-                            clientBDays += "Birthday: " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString()
-                                + " This " + newBirthday.DayOfWeek.ToString() + Environment.NewLine;
-                        else if (newBirthday < DateTime.Today)
-                            clientBDays += "Birthday: " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString()
-                                        + " Last " + newBirthday.DayOfWeek.ToString() + Environment.NewLine;
-                        else
-                            clientBDays += "Birthday: " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString()
-                                        + " Today" + Environment.NewLine;
-                    }
-                    else if ((newBirthday >= dateFirst) &&
-                        (newBirthday <= dateLast))
-                    {
-                        clientBDays += "Birthday: " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString()
-                                    + " " + newBirthday.DayOfWeek.ToString()
-                                    + " the " + newBirthday.Day.ToString() + Environment.NewLine;
-                    }
-                }
-                }
-
-                //Uses the Age to Add the proper AgeGroup to the listview
-                int agegroup = Int32.Parse(clsClient.clsHHmem.DSet.Tables[0].Rows[i]["AgeGroup"].ToString());
-                if (agegroup >= 0 && agegroup <= 5)
-                    dvr.Cells["clmGroup"].Value = AgeGroupName(agegroup);
-                if (CCFBPrefs.EnableCSFP == true)
-                {
-                    if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFP"] == true)
-                    {
-                        NbrCSFP++;
-                        sCSFPList += "CSFP for " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString();
+                        NbrBackPack++;
+                        sBackPackList += "BackPack for " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString();
+                        /*
                         if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"] != null
                             && clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"].ToString() != "")
                         {
-                            if (Convert.ToDateTime(clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"]) < Convert.ToDateTime(CCFBGlobal.DefaultServiceDate))
-                            {
-                                sCSFPList += " expired: " + Convert.ToDateTime(
-                                clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"]).ToShortDateString();
-                            }
+                            sCSFPList += " expires: " + Convert.ToDateTime(
+                            clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"]).ToShortDateString();
                         }
-                        d = clsClient.clsHHmem.LastCSFPLogEntry(Convert.ToDateTime(CCFBGlobal.DefaultServiceDate));
-                        if (d >= new DateTime(Convert.ToInt32(CCFBGlobal.DefaultServiceDate.Substring(6)), Convert.ToInt32(CCFBGlobal.DefaultServiceDate.Substring(0, 2)), 1))
+                         */
+                        if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BPSchool"].ToString() != "")
                         {
-                            sCSFPList += " Served " + d.ToShortDateString();
+                            sBackPackList += " for " + CCFBGlobal.LongNameFromId(CCFBGlobal.parmTbl_BackPackSchool, Convert.ToInt32(clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BPSchool"]));
                         }
-                        if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPComments"].ToString() != "")
+                        if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BPNotes"].ToString() != "")
                         {
-                            sCSFPList += "\r\n";
-                            sCSFPList += clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPComments"].ToString();
+                            sBackPackList += "\r\n";
+                            sBackPackList += clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BPNotes"].ToString();
                         }
-                        sCSFPList += "\r\n";
-                    }
-                }
-                if ((bool)clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BackPack"] && CCFBPrefs.EnableBackPack == true)
-                {
-                    NbrBackPack++;
-                    sBackPackList += "BackPack for " + clsClient.clsHHmem.DSet.Tables[0].Rows[i]["FirstName"].ToString();
-                    /*
-                    if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"] != null
-                        && clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"].ToString() != "")
-                    {
-                        sCSFPList += " expires: " + Convert.ToDateTime(
-                        clsClient.clsHHmem.DSet.Tables[0].Rows[i]["CSFPExpiration"]).ToShortDateString();
-                    }
-                     */
-                    if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BPSchool"].ToString() != "")
-                    {
-                        sBackPackList += " for " + CCFBGlobal.LongNameFromId(CCFBGlobal.parmTbl_BackPackSchool,Convert.ToInt32(clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BPSchool"]));
-                    }
-                    if (clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BPNotes"].ToString() != "")
-                    {
                         sBackPackList += "\r\n";
-                        sBackPackList += clsClient.clsHHmem.DSet.Tables[0].Rows[i]["BPNotes"].ToString();
                     }
-                    sBackPackList += "\r\n";
+                    rowCount++;
                 }
-                rowCount++;
+                if (callFillAlerts == true)
+                { 
+                    fillAutoAlert(); 
+                }
+                if (clsClient.clsHH.UseFamilyList)
+                {
+                    clsClient.clsHH.NbrCSFP = NbrCSFP;
+                    tbmCSFP.Text = NbrCSFP.ToString();
+                }
             }
-            fillAutoAlert();
-            if (clsClient.clsHH.UseFamilyList)
+            catch (Exception ex)
             {
-                clsClient.clsHH.NbrCSFP = NbrCSFP;
-                tbmCSFP.Text = NbrCSFP.ToString();
+
+                CCFBGlobal.appendErrorToErrorReport("loadHHMems", ex.GetBaseException().ToString());
             }
             loadingInfo = oriloadingInfo;
         }
@@ -1831,7 +1924,7 @@ namespace ClientcardFB3
                         switch (i)
                         {
                             case 3:
-                                if (reader.GetString(i) != "")
+                                if (reader.GetString(i).Length >0)
                                 { bHaveNonFood = true; }
                                 break;
                             case 5:
@@ -1853,7 +1946,7 @@ namespace ClientcardFB3
                             case 9:
                                 if (reader.GetValue(i) != DBNull.Value)
                                 {
-                                    if (reader.GetString(i) != "")
+                                    if (reader.GetString(i).Length >0)
                                     { bHaveNotes = true; }
                                 }
                                 break;
@@ -2027,7 +2120,7 @@ namespace ClientcardFB3
                 if (userFlagNames[i] == clsUserFields.FldName)
                 {
                     chkLstBxUserFields.Items[i] = clsUserFields.EditLabel;
-                    if (chkLstBxUserFields.Items[i].ToString() == "")
+                    if (String.IsNullOrEmpty(chkLstBxUserFields.Items[i].ToString()) == true)
                         chkLstBxUserFields.SetItemCheckState(i, CheckState.Indeterminate);
                     else
                     {
@@ -2041,18 +2134,18 @@ namespace ClientcardFB3
             if (tbUserNum0.Tag.ToString() == clsUserFields.FldName)
             {
                 lblUserNum0.Text = clsUserFields.EditLabel;
-                tbUserNum0.Visible = (lblUserNum0.Text != "");
-                lblUserNum0.Visible = (lblUserNum0.Text != "");
-                if (lblUserNum0.Text != "")
+                tbUserNum0.Visible = (lblUserNum0.Text.Length >0);
+                lblUserNum0.Visible = (lblUserNum0.Text.Length >0);
+                if (lblUserNum0.Text.Length >0)
                     fieldsUsed = true;
             }
             clsUserFields.setDataRow(tbUserNum1.Tag.ToString());
             if (tbUserNum1.Tag.ToString() == clsUserFields.FldName)
             {
                 lblUserNum1.Text = clsUserFields.EditLabel;
-                tbUserNum1.Visible = (lblUserNum1.Text != "");
-                lblUserNum1.Visible = (lblUserNum1.Text != "");
-                if (lblUserNum1.Text != "")
+                tbUserNum1.Visible = (lblUserNum1.Text.Length >0);
+                lblUserNum1.Visible = (lblUserNum1.Text.Length >0);
+                if (lblUserNum1.Text.Length >0)
                     fieldsUsed = true;
             }
             if (fieldsUsed == false)
@@ -2140,6 +2233,7 @@ namespace ClientcardFB3
         {
             MonthlyReportPreferencesForm frmEmailRecipts = new MonthlyReportPreferencesForm();
             frmEmailRecipts.ShowDialog();
+            frmEmailRecipts.Dispose();
         }
 
         private void mnuAdmin_IncomeMatrix_Click(object sender, EventArgs e)
@@ -2153,7 +2247,7 @@ namespace ClientcardFB3
             EditPreferencesForm frmEditDefaults = new EditPreferencesForm();
             frmEditDefaults.ShowDialog();
             SetEnvironmentFromPrefs();
-            if (CCFBPrefs.EnableAppointments == true && CCFBGlobal.DefalutApptDate == "")
+            if (CCFBPrefs.EnableAppointments == true && String.IsNullOrEmpty(CCFBGlobal.DefalutApptDate) == true)
             {
                 SetCurrentApptDate();
             }
@@ -2163,6 +2257,7 @@ namespace ClientcardFB3
         {
             ServiceItemsForm frmServiceItems = new ServiceItemsForm();
             frmServiceItems.ShowDialog();
+            frmServiceItems.Dispose();
             if (CCFBGlobal.ServiceItemsChanged == true)
                 clsDailyItems.Refresh(false);
         }
@@ -2171,10 +2266,12 @@ namespace ClientcardFB3
         {
             EditUserFields frmEditUserFields = new EditUserFields();
             frmEditUserFields.ShowDialog();
-            
-            if(frmEditUserFields.FieldsLableChanged == true)
+            bool fieldLabelsChanged = frmEditUserFields.FieldsLabelChanged;
+            bool userFieldsReset = frmEditUserFields.UserFieldsReset;
+            frmEditUserFields.Dispose();
+            if (fieldLabelsChanged == true)
                 loadUserFieldLabels();
-            if (frmEditUserFields.UserFieldsReset == true)
+            if (userFieldsReset == true)
             {
                 clsClient.open(clsClient.clsHH.ID, false, false);
                 fillForm();
@@ -2187,6 +2284,7 @@ namespace ClientcardFB3
         {
             YearlyForm frmYearlyCalendar = new YearlyForm();
             frmYearlyCalendar.ShowDialog();
+            frmYearlyCalendar.Dispose();
         }
 
         private void mnuClient_BeginEditClient_Click(object sender, EventArgs e)
@@ -2203,28 +2301,26 @@ namespace ClientcardFB3
         {
             btnBeginEdit.Focus(); //Make sure focus not on a grid and that it is not in edit mode
             Application.DoEvents();
-            clsClient.clsHHSvcTrans.openForHH(clsClient.clsHH.ID);
-            DeleteHousehold frmDeleteHH = new DeleteHousehold(clsClient);
+            //clsClient.clsHHSvcTrans.openForHH(clsClient.clsHH.ID);
+            DeleteHousehold frmDeleteHH = new DeleteHousehold(clsClient.clsHH.ID);
             frmDeleteHH.ShowDialog(this);
-
-            if (frmDeleteHH.ClientDeleted() == true)
+            bool clientDeleted = frmDeleteHH.ClientDeleted();
+            int newHHId = frmDeleteHH.ClientIdMovedTo();
+            bool markedInactive = frmDeleteHH.ClientMarkedInactive();
+            frmDeleteHH.Dispose();
+            if (clientDeleted == true)
             {
                 frmFindClient.loadList();
                 clearForm();
-                int newHHId = frmDeleteHH.ClientIdMovedTo();
-                frmDeleteHH.Close();
                 if (newHHId > 0)
                     setHousehold(newHHId,0);
                 else
                     frmFindClient.Show();
             }
-            else if (frmDeleteHH.ClientMarkedInactive() == true)
+            else if (markedInactive == true)
             {
                 clsClient.RefreshHousehold();
-                frmDeleteHH.Close();
             }
-            else
-                frmDeleteHH.Close();
         }
 
         private void mnuClient_PrintForm_Click(object sender, EventArgs e)
@@ -2241,6 +2337,7 @@ namespace ClientcardFB3
         {
             EditSchoolSupplyPickupTicket frmSchSupply = new EditSchoolSupplyPickupTicket(clsClient);
             frmSchSupply.ShowDialog();
+            frmSchSupply.Dispose();
         }
 
         private void mnuFile_FindClient_Click(object sender, EventArgs e)
@@ -2279,6 +2376,7 @@ namespace ClientcardFB3
         {
             AboutBoxCSDG frmAbout = new AboutBoxCSDG();
             frmAbout.ShowDialog(this);
+            frmAbout.Dispose();
         }
 
         private void mnuHHMember_Edit_Click(object sender, EventArgs e)
@@ -2288,13 +2386,19 @@ namespace ClientcardFB3
 
         private void mnuReports_AccessRpts_Click(object sender, EventArgs e)
         {
-            AccessReportsForm frmReports = new AccessReportsForm();
+            //if (frmReports == null)
+            //{
+                frmReports = new AccessReportsForm();
+            //}
             frmReports.Show();
         }
 
         private void mnuReports_MonthlyForm_Click(object sender, EventArgs e)
         {
-            MonthEndReportsForm frmMonthlyReports = new MonthEndReportsForm(this);
+            if (frmMonthlyReports == null)
+            {
+                frmMonthlyReports = new MonthEndReportsForm(this);
+            }
             frmMonthlyReports.Show();
         }
 
@@ -2305,19 +2409,28 @@ namespace ClientcardFB3
 
         private void mnuTools_DonorsForm_Click(object sender, EventArgs e)
         {
-            EditDonorForm frmEditDonor = new EditDonorForm(CCFBGlobal.connectionString);
+            if (frmEditDonor == null)
+            {
+                frmEditDonor = new EditDonorForm(CCFBGlobal.connectionString);
+            }
             frmEditDonor.Show();
         }
 
         private void mnuTools_VolHoursForm_Click(object sender, EventArgs e)
         {
-            VolunteerHoursForm frmVolHrs = new VolunteerHoursForm();
+            if (frmVolHrs == null)
+            {
+                frmVolHrs = new VolunteerHoursForm();
+            }
             frmVolHrs.Show();
         }
 
         private void mnuTools_VolunteersForm_Click(object sender, EventArgs e)
         {
-            EditVolunteerForm frmEditVols = new EditVolunteerForm(CCFBGlobal.connectionString);
+            if (frmEditVols == null)
+            {
+                frmEditVols = new EditVolunteerForm(CCFBGlobal.connectionString);
+            }
             frmEditVols.Show();
         }
 
@@ -2438,8 +2551,9 @@ namespace ClientcardFB3
                     lvIncomeGroups.Items.Add(lvItm);
                 }
             }
-            reader.Close();
-            conn.Close();
+            reader.Dispose();
+            cmdObj.Dispose();
+            conn.Dispose();
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -2476,7 +2590,7 @@ namespace ClientcardFB3
         private void SetCurrentApptDate()
         {
             CCFBGlobal.DefalutApptDate = clsDaysOpen.FindServiceDateNext(DateTime.Today.ToShortDateString());
-            if (CCFBGlobal.DefalutApptDate == "" && CCFBPrefs.EnableAppointments == true)
+            if (String.IsNullOrEmpty(CCFBGlobal.DefalutApptDate) == true && CCFBPrefs.EnableAppointments == true)
             {
                 MessageBox.Show("No Default Appointment Date Found.  Please Select Default Appointment Date");
             }
@@ -2486,7 +2600,7 @@ namespace ClientcardFB3
         private void SetCurrentServiceDate()
         {
             CCFBGlobal.DefaultServiceDate = clsDaysOpen.FindServiceDatePrev(DateTime.Today.ToShortDateString());
-            if (CCFBGlobal.DefaultServiceDate == "")
+            if (String.IsNullOrEmpty(CCFBGlobal.DefaultServiceDate) == true)
             {
                 CCFBGlobal.DefaultServiceDate = tsbDfltSvcDate.Text = DateTime.Today.ToShortDateString();
             }
@@ -2528,7 +2642,7 @@ namespace ClientcardFB3
 
             foreach (CheckBox cb in chkList)
             {
-                if (cb.Tag != null && cb.Tag.ToString().Trim() != "")
+                if (cb.Tag != null && cb.Tag.ToString().Trim().Length >0)
                 {
                     cb.Enabled = inEditMode;
                     cb.BackColor = baseBackColor;
@@ -2593,6 +2707,7 @@ namespace ClientcardFB3
                 if (CCFBPrefs.EnablePointsTracking == false)
                     tabCntrlMain.TabPages.RemoveByKey("tpgPointSys");  //Remove Points Tab
             }
+            mnuClient_SchSupply.Visible = CCFBPrefs.EnableSchSupply;
             if (CCFBPrefs.EnableHomeDeliv == false)
             {
                 tabCntrlMain.TabPages.RemoveByKey("tpgHD");  //Remove Home Delivery Tab
@@ -2654,6 +2769,7 @@ namespace ClientcardFB3
             {
                 frmBarCodeEntry = new BarCodeEntryForm();
             }
+            mnuClient_ChristmasAssistanceProgram.Visible = mnuReports_ChristmasAssitanceList.Visible = CCFBPrefs.EnableChristmasProgram;
         }
 
         private void setFamilyStatsMode()
@@ -2722,11 +2838,19 @@ namespace ClientcardFB3
 
         private void SetIncomeGroups()
         {
-            int i = 0;
-            foreach (IncomeGroupMatrix item in incomeGroups)
+            try
             {
-                lvIncomeGroups.Items[i].SubItems[2].Text = item.GetIncomeCategory(clsClient.clsHH.AnnualIncome, clsClient.clsHH.TotalFamily);
-                i++;
+                int i = 0;
+                foreach (IncomeGroupMatrix item in incomeGroups)
+                {
+                    lvIncomeGroups.Items[i].SubItems[2].Text = item.GetIncomeCategory(clsClient.clsHH.AnnualIncome, clsClient.clsHH.TotalFamily);
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                CCFBGlobal.appendErrorToErrorReport("SetIncomeGroups", ex.GetBaseException().ToString());
             }
         }
 
@@ -2757,7 +2881,10 @@ namespace ClientcardFB3
 
         private void ShowDonationsForm()
         {
-            FoodDonationsForm frmFoodDonation = new FoodDonationsForm();
+            if (frmFoodDonation == null)
+            {
+                frmFoodDonation = new FoodDonationsForm();
+            }
             frmFoodDonation.Show();
         }
 
@@ -2914,14 +3041,14 @@ namespace ClientcardFB3
             if (inEditMode == true)
             {
                 TextBox tbHH = (TextBox)sender; //Get the correct textbox
-                if (tbHH.Tag.ToString() != "")
+                if (tbHH.Tag.ToString().Length >0)
                 {
                     //If current value does not = value of textbox
                     if (tbHH.Text.ToString() != clsClient.clsHH.GetDataString(tbHH.Tag.ToString()))
                     {
                         if (tbHH.Tag.ToString() == "AnnualIncome")
                         {
-                            if (tbHH.Text.Trim() == "")
+                            if (String.IsNullOrEmpty(tbHH.Text.Trim()) == true)
                                 tbHH.Text = "0";
 
                             clsClient.clsHH.SetDataValue(tbHH.Tag.ToString(), tbHH.Text.Trim());
@@ -2961,7 +3088,7 @@ namespace ClientcardFB3
 
             string templatePath =  CCFBGlobal.fb3TemplatesPath + "Clientcard" + pt.ShortName + ".doc";
             string fbName = CCFBPrefs.FoodBankName;
-
+            
             //int index = 0;
             //string[] fldNames = new string[4];
             //string[] fldVals = new string[4];
@@ -3009,8 +3136,11 @@ namespace ClientcardFB3
                 Application.DoEvents();
             }
             else
+            {
                 MessageBox.Show("ERROR: " + templatePath + " Not Found", "Temlate Not Found",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            clsCreateClientCard.Dispose();
         }
 
         private void printFamilyCard2()
@@ -3021,6 +3151,7 @@ namespace ClientcardFB3
             SignFamilyCard frmSignFamilyCard = new SignFamilyCard(clsClient);
             frmSignFamilyCard.createReport(CCFBPrefs.FoodBankName, templatePath);
             frmSignFamilyCard.ShowDialog();
+            frmSignFamilyCard.Dispose();
         }
 
         /// <summary>
@@ -3038,7 +3169,7 @@ namespace ClientcardFB3
                         {
                             if (cntrl.Tag != null 
                                 && cntrl.Tag.ToString().Trim() != "TotalFamily" 
-                                && cntrl.Tag.ToString() != "")
+                                && cntrl.Tag.ToString().Length >0)
                             {
                                 if (cntrl.Name.Substring(0, 3) == "tbm")
                                 {
@@ -3074,7 +3205,7 @@ namespace ClientcardFB3
                         {
                             if (cntrl.Tag != null)
                             {
-                                if (cntrl.Tag.ToString().Trim() != "")
+                                if (cntrl.Tag.ToString().Trim().Length >0)
                                 {
                                     cboList.Add((ComboBox)cntrl);
                                 }
@@ -3111,6 +3242,7 @@ namespace ClientcardFB3
                 CCFBGlobal.DefalutApptDate = frmDfltDatePicker.DateSelected;
                 tsbDfltApptDate.Text = CCFBGlobal.DefalutApptDate;
             }
+            frmDfltDatePicker.Dispose();
         }
 
         private void tsbDfltSvcDate_Click(object sender, EventArgs e)
@@ -3129,6 +3261,7 @@ namespace ClientcardFB3
                 }
             }
             catch { }
+            frmDfltDatePicker.Dispose();
         }
 
         /// <summary>
@@ -3176,6 +3309,7 @@ namespace ClientcardFB3
 
             //VoucherForm frmVouchers = new VoucherForm(clsClient,DateTime.Today);
             frmVouchers.ShowDialog();
+            frmVouchers.Dispose();
             getVoucherLogForPeriod();
         }
 
@@ -3183,6 +3317,7 @@ namespace ClientcardFB3
         {
             EditTypeCodes frmTypeCodes = new EditTypeCodes(CCFBGlobal.connectionString);
             frmTypeCodes.ShowDialog();
+            frmTypeCodes.Dispose();
             loadParmData();
         }
 
@@ -3190,6 +3325,7 @@ namespace ClientcardFB3
         {
             UsersForm frmUsers = new UsersForm();
             frmUsers.ShowDialog();
+            frmUsers.Dispose();
         }
 
         private void tsbSearchClient_Click(object sender, EventArgs e)
@@ -3278,12 +3414,14 @@ namespace ClientcardFB3
         {
             CashDonationsForm frmCashDonations = new CashDonationsForm();
             frmCashDonations.ShowDialog();
+            frmCashDonations.Dispose();
         }
 
         private void mnuAdmin_BackupDatabase_Click(object sender, EventArgs e)
         {
             BackupDBForm tmpFrm = new BackupDBForm();
             tmpFrm.ShowDialog();
+            tmpFrm.Dispose();
         }
         private void chkNeedIncomeVerification_CheckedChanged(object sender, EventArgs e)
         {
@@ -3315,7 +3453,7 @@ namespace ClientcardFB3
             if (inEditMode == true)
             {
                 TextBox tbHH = (TextBox)sender; //Get the correct textbox
-                if (tbHH.Tag.ToString() != "")
+                if (tbHH.Tag.ToString().Length >0)
                 {
                     //If current value does not = value of textbox
                     if (tbHH.Text.ToString() != clsClient.clsHH.GetDataValue(tbHH.Tag.ToString()).ToString())
@@ -3369,6 +3507,7 @@ namespace ClientcardFB3
         {
             CCFBStatisticsForm frmStats = new CCFBStatisticsForm(CCFBGlobal.connectionString);
             frmStats.ShowDialog();
+            frmStats.Dispose();
         }
 
         private void mnuAdmin_SaveAsNewClientDefaults_Click(object sender, EventArgs e)
@@ -3380,6 +3519,7 @@ namespace ClientcardFB3
         {
             FBJobsPlanForm frmTemp = new FBJobsPlanForm();
             frmTemp.ShowDialog();
+            frmTemp.Dispose();
         }
 
         private void cmsHHMembers_Opening(object sender, System.ComponentModel.CancelEventArgs e)
@@ -3411,7 +3551,7 @@ namespace ClientcardFB3
             lblHDRoute.Visible = cboHDRoute.Visible = lblHDPrograms.Visible = lblHDBuildings.Visible 
                 = cboHDBuilding.Visible = cboHDPrograms.Visible = lblHDRoute.Visible 
                 = lblHDItem.Visible = cboHDItem.Visible = tbDriverNotes.Visible =
-                ((parmType)cboServiceMethod.SelectedItem).ID == (int)CCFBGlobal.ServiceMethodCodes.HomeDeliveryActive;
+                ((parmType)cboServiceMethod.SelectedItem).ID == (int)CCFBGlobal.ServiceMethodsCode.HomeDeliveryActive;
             
         }
 
@@ -3423,7 +3563,7 @@ namespace ClientcardFB3
         {
             bool allowFoodService = true;
             int nbrSvcs = 0;
-            if (tbxNbrTrxThisWeek.Text != "")
+            if (tbxNbrTrxThisWeek.Text.Length >0)
             { nbrSvcs = Convert.ToInt32(tbxNbrTrxThisWeek.Text); }
             if (CCFBPrefs.AlertWeekSvc > 0
              && nbrSvcs >= CCFBPrefs.AlertWeekSvc)
@@ -3433,7 +3573,7 @@ namespace ClientcardFB3
             else
             {
                 nbrSvcs = 0;
-                if (tbxNbrTrxThisMonth.Text != "")
+                if (tbxNbrTrxThisMonth.Text.Length >0)
                 { nbrSvcs = Convert.ToInt32(tbxNbrTrxThisMonth.Text); }
                 if (CCFBPrefs.AlertMonthSvc > 0
                  && nbrSvcs >= CCFBPrefs.AlertMonthSvc)
@@ -3444,7 +3584,7 @@ namespace ClientcardFB3
             if (CCFBPrefs.WarnSvcEachPerson == true)
             {
                 svcWarningText = clsClient.svcWarning(CCFBGlobal.DefaultServiceDate);
-                if (svcWarningText != "")
+                if (svcWarningText.Length >0)
                 { fillAutoAlert(); }
                 tsbNewService.Enabled = (clsClient.clsHH.Inactive == false);
             }
@@ -3488,7 +3628,9 @@ namespace ClientcardFB3
         {
             MarkHouseholdInactive frmMarkInactive = new MarkHouseholdInactive();
             frmMarkInactive.ShowDialog(this);
-            if (frmMarkInactive.NeedToRefresh == true)
+            bool needToRefresh = frmMarkInactive.NeedToRefresh;
+            frmMarkInactive.Dispose();
+            if (needToRefresh == true)
             {
                 frmFindClient.loadList();
                 frmFindClient.SetIdAndClose();
@@ -3528,12 +3670,14 @@ namespace ClientcardFB3
         {
             UWKCExportForm frmUWKCExport = new UWKCExportForm();
             frmUWKCExport.ShowDialog();
+            frmUWKCExport.Dispose();
         }
 
-        private void tsmiKingCountyReport_Click(object sender, EventArgs e)
+        private void tsmiCDBGWorksheet_Click(object sender, EventArgs e)
         {
-            KCReportForm frmKCReport = new KCReportForm();
-            frmKCReport.ShowDialog();
+            CDBGWorksheetForm frmCDBGReport = new CDBGWorksheetForm();
+            frmCDBGReport.ShowDialog();
+            frmCDBGReport.Dispose();
         }
 
         private void lvVoucherLog_SelectedIndexChanged(object sender, EventArgs e)
@@ -3563,7 +3707,7 @@ namespace ClientcardFB3
             if (inEditMode == true)
             {
                 MaskedTextBox tbHH = (MaskedTextBox)sender; //Get the correct textbox
-                if (tbHH.Tag.ToString() != "")
+                if (tbHH.Tag.ToString().Length >0)
                 {       //If current value does not = value of textbox
                     if (tbHH.Text.ToString() != clsClient.clsHH.GetDataString(tbHH.Tag.ToString()))
                     {
@@ -3575,16 +3719,20 @@ namespace ClientcardFB3
 
         private void mnuTools_MaintainVoucherItems_Click(object sender, EventArgs e)
         {
-            EditVouchersItemForm frmEditVoucherItems = new EditVouchersItemForm();
+            if (frmEditVoucherItems == null)
+            {
+                frmEditVoucherItems = new EditVouchersItemForm();
+            }
             frmEditVoucherItems.Show();
         }
 
         private void mnuHD_Planner_Click(object sender, EventArgs e)
         {
-            HDPlannerView frmHDPlanner = new HDPlannerView(this);
-            // Use Show instead of ShowDialog here. This way we can edit the main form while the dialog is open
-            frmHDPlanner.Show();
-            // Don't populate the combo box here. It is already updated automaticly as the user makes changes in the planner
+            HDPlannerForm frmHDPlanner = new HDPlannerForm(this);
+            frmHDPlanner.ShowDialog();
+            frmHDPlanner.Dispose();
+            CCFBGlobal.dtPopulateCombo(cboHDRoute, "SELECT * FROM HDRoutes ORDER BY ID", "RouteTitle", "ID", "No Routes Available", conn);
+
         }
 
         public void refreshHDRoute()
@@ -3619,12 +3767,13 @@ namespace ClientcardFB3
                     showUserInfo();
                 }
             }
+            frmEditAlert.Dispose();
         }
         
         private void mergeRTF(RichTextBox rtb, string rtf1, string rtf2)
         {
             rtb.Rtf = rtf1;
-            if (rtf2 != "")
+            if (rtf2.Length >0)
             {
                 Clipboard.SetText(rtf2, TextDataFormat.Rtf);
                 rtb.SelectionStart = rtb.Text.Length;
@@ -3636,7 +3785,7 @@ namespace ClientcardFB3
 
         private void tsmiToggleUserInfo_Click(object sender, EventArgs e)
         {
-            groupBox1.Visible = !groupBox1.Visible;
+            panel2.Visible = !panel2.Visible;
         }
 
         //private void printClientReceipt()
@@ -3691,9 +3840,9 @@ namespace ClientcardFB3
                 default:
                     break;
             }
-            WebPageForm frmTemp = new WebPageForm(sTitle,
-                sURL);
+            WebPageForm frmTemp = new WebPageForm(sTitle, sURL);
             frmTemp.ShowDialog();
+            frmTemp.Dispose();
         }
 
         private void mnuClient_NewService_Click(object sender, EventArgs e)
@@ -3704,10 +3853,12 @@ namespace ClientcardFB3
         private void printAllClientCards()
         {
             SelectDateRange frmDateRange = new SelectDateRange();
-            if (frmDateRange.ShowDialog() == DialogResult.OK)
+            DialogResult result = frmDateRange.ShowDialog();
+            DateTime dtFirst = frmDateRange.FirstDate();
+            DateTime dtLast = frmDateRange.LastDate();
+            frmDateRange.Dispose();
+            if (result == DialogResult.OK)
             {
-                DateTime dtFirst = frmDateRange.FirstDate();
-                DateTime dtLast = frmDateRange.LastDate();
                 SqlConnection sqlConn = new SqlConnection(CCFBGlobal.connectionString);
                 SqlCommand sqlCmd = new SqlCommand(
                     "SELECT ID, Name FROM Household WHERE LatestService Between '"
@@ -3745,7 +3896,10 @@ namespace ClientcardFB3
                         splCntrCardMembers.Show();
                     }
                 }
-                sqlConn.Close();
+                sqlConn.Dispose();
+                sqlCmd.Dispose();
+                sqlAdapter.Dispose();
+                dtblHH.Dispose();
             }
         }
 
@@ -3849,13 +4003,19 @@ namespace ClientcardFB3
 
         private void showCSFPForm()
         {
-            EditCSFPForm frmEditCSFP = new EditCSFPForm();
+            if (frmEditCSFP == null)
+            {
+                frmEditCSFP = new EditCSFPForm();
+            }
             frmEditCSFP.Show();
         }
 
         private void mnuTools_Backpack_Click(object sender, EventArgs e)
         {
-            EditBackpackForm frmEditBackpack = new EditBackpackForm();
+            if (frmEditBackpack == null)
+            {
+                frmEditBackpack = new EditBackpackForm();
+            }
             frmEditBackpack.Show();
         }
 
@@ -3905,14 +4065,20 @@ namespace ClientcardFB3
                 Application.DoEvents();
             }
             else
+            {
                 MessageBox.Show("ERROR: " + templatePath + " Not Found", "Template Not Found",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            clsCreateClientCard.Dispose();
         }
 
         private void freshAllianceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FreshAllianceForm fa = new FreshAllianceForm(-1, 6, true);
-            fa.Show();
+            if (frmFA == null)
+            {
+                frmFA = new FreshAllianceForm(-1, 6, true);
+            }
+            frmFA.Show();
         }
 
         private void mnuClient_PrintClientCard_Click(object sender, EventArgs e)
@@ -3929,8 +4095,21 @@ namespace ClientcardFB3
 
         private void mnuReports_CustomQuery_Click(object sender, EventArgs e)
         {
-            TestExportToCSV frmTest = new TestExportToCSV();
-            frmTest.ShowDialog();
+            frmExportSQL = new ExportSQLToExcel();
+            frmExportSQL.Show();
+        }
+
+        private void mnuClient_ChristmasAssistanceProgram_Click(object sender, EventArgs e)
+        {
+            EditChristmasGifts frmChristmas = new EditChristmasGifts();
+            frmChristmas.initClient(clsClient);
+            frmChristmas.ShowDialog();
+        }
+
+        private void mnuReports_ChristmasAssitanceList_Click(object sender, EventArgs e)
+        {
+            CreateCAList clsCAList = new CreateCAList("CAFlag = 1 AND InActive = 0", "CAAdoptedBy DESC, Name");
+            clsCAList.createExport(CCFBGlobal.pathReports + "Christmas Assistance List.xlsx", CCFBGlobal.pathTemplates + "Christmas Assistance Program.xlsx");
         }
     }
 }

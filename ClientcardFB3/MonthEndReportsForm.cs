@@ -218,7 +218,7 @@ namespace ClientcardFB3
         {
             for (int i = 1; i < lvReports.Items.Count; i++)
             {
-                if (lvReports.Items[i].Tag != null && lvReports.Items[i].Tag.ToString() != "")
+                if (lvReports.Items[i].Tag != null && lvReports.Items[i].Tag.ToString().Length >0)
                 {
                     //Get Report Path
                     file = makeReportPath() + makeReportPrefix();
@@ -296,10 +296,10 @@ namespace ClientcardFB3
         //    decimal perVolhrs = 0;
         //    decimal cumVolhrs = 0;
 
-        //    if (tbCumVolHrs.Text != null && tbCumVolHrs.Text.Trim() != "")
+        //    if (tbCumVolHrs.Text != null && tbCumVolHrs.Text.Trim().Length >0)
         //        cumVolhrs = Convert.ToDecimal(tbCumVolHrs.Text);
 
-        //    if (tbPerVolHrs.Text != null && tbPerVolHrs.Text.Trim() != "")
+        //    if (tbPerVolHrs.Text != null && tbPerVolHrs.Text.Trim().Length >0)
         //        perVolhrs = Convert.ToDecimal(tbPerVolHrs.Text);
 
 
@@ -1100,7 +1100,7 @@ namespace ClientcardFB3
 
                 oMailItem.To = emailInfo.to;
                 oMailItem.Subject = emailInfo.subject;
-                if (emailInfo.body == "" || emailInfo.body == null)
+                if (String.IsNullOrEmpty(emailInfo.body) == true || emailInfo.body == null)
                 {
                     emailInfo.body = " ";
                 }
@@ -1670,12 +1670,12 @@ namespace ClientcardFB3
                 {
                     foreach (TextBox tb in tbLbsRcvdPerList.OfType<TextBox>())
                     {
-                        if (tb.Tag.ToString() != "")
+                        if (tb.Tag.ToString().Length >0)
                         {
                             tagVal = tb.Tag.ToString();
                             if (dtblFoodRecieptsByFunding.Columns.IndexOf(tagVal) >= 0)
                             {
-                                if (dtblFoodRecieptsByFunding.Rows[0][tagVal].ToString() == "")
+                                if (String.IsNullOrEmpty(dtblFoodRecieptsByFunding.Rows[0][tagVal].ToString())  == true)
                                 {
                                     tb.Text = "0";
                                 }
@@ -1720,12 +1720,12 @@ namespace ClientcardFB3
                 {
                     foreach (TextBox tb in tbLbsRcvdCumList.OfType<TextBox>())
                     {
-                        if (tb.Tag.ToString() != "")
+                        if (tb.Tag.ToString().Length >0)
                         {
                             tagVal = tb.Tag.ToString();
                             if (dtblFoodRecieptsByFunding.Columns.IndexOf(tagVal) >= 0)
                             {
-                                if (dtblFoodRecieptsByFunding.Rows[rowCum][tagVal].ToString() == "")
+                                if (String.IsNullOrEmpty(dtblFoodRecieptsByFunding.Rows[rowCum][tagVal].ToString()) == true)
                                 {
                                     tb.Text = "0";
                                 }
@@ -1954,7 +1954,7 @@ namespace ClientcardFB3
             int iValue = 0;
             foreach (TextBox tb in tblist)
             {
-                if (tb.Tag.ToString() != "")
+                if (tb.Tag.ToString().Length >0)
                 {
                     iValue = Convert.ToInt32(clsCurrent.GetDataValue(tb.Tag.ToString())) - Convert.ToInt32(clsPrev.GetDataValue(tb.Tag.ToString()));
                     tb.Text = iValue.ToString();
@@ -2000,7 +2000,7 @@ namespace ClientcardFB3
                     clsTrxLogStats.findFiscalPeriod(sFiscalPeriod);
                     foreach (TextBox tb in tbMonthList.OfType<TextBox>())
                     {
-                        if (tb.Tag.ToString() != "")
+                        if (tb.Tag.ToString().Length >0)
                         {
                             tb.Text = Convert.ToDecimal(clsTrxLogStats.GetDataValue(tb.Tag.ToString())).ToString("N00");
                         }
@@ -2010,7 +2010,7 @@ namespace ClientcardFB3
                 {
                     foreach (TextBox tb in tbLbsSvdMonthList.OfType<TextBox>())
                     {
-                        if (tb.Tag.ToString() != "")
+                        if (tb.Tag.ToString().Length >0)
                         {
                             tb.Text = Convert.ToDecimal(clsTrxLogStats.GetDataValue(tb.Tag.ToString())).ToString("N00");
                         }
@@ -2021,14 +2021,14 @@ namespace ClientcardFB3
                     clsTrxLogStats.setYTDRow();
                     foreach (TextBox tb in tbHHYTDList.OfType<TextBox>())
                     {
-                        if (tb.Tag.ToString() != "")
+                        if (tb.Tag.ToString().Length >0)
                         {
                             tb.Text = Convert.ToDecimal(clsTrxLogStats.GetDataValue(tb.Tag.ToString())).ToString("N00");
                         }
                     }
                     foreach (TextBox tb in tbLbsSvdYTDList.OfType<TextBox>())
                     {
-                        if (tb.Tag.ToString() != "")
+                        if (tb.Tag.ToString().Length >0)
                         {
                             tb.Text = Convert.ToDecimal(clsTrxLogStats.GetDataValue(tb.Tag.ToString())).ToString("N00");
                         }
@@ -2258,7 +2258,7 @@ namespace ClientcardFB3
         {
             string tmp = "--";
             decimal vDec = 0;
-            if (vdata.ToString() != "")
+            if (vdata.ToString().Length >0)
             {
                 vDec = Convert.ToDecimal(vdata);
                 switch (vtype)
@@ -2897,7 +2897,7 @@ namespace ClientcardFB3
                     default:
                         break;
                 }
-                if (sname != "")
+                if (sname.Length >0)
                 {
                     CCFBGlobal.ExportToExcell(lstview, sname + "_" + datePeriodFirst.Year.ToString()
                         + "_" + CCFBGlobal.formatNumberWithLeadingZero(datePeriodFirst.Month));

@@ -6,13 +6,14 @@ using Microsoft.Office.Interop.Word;
 
 namespace ClientcardFB3
 {
-    class RptVoucherOrder01
+    class RptVoucherOrder01 : IDisposable
     {
         Household clsHH;
         VoucherLog clsVLItm;
         bool error = false;
         string rptDate;
         string savePath;
+        bool _disposed = false;
 
         public bool Error
         {
@@ -26,6 +27,33 @@ namespace ClientcardFB3
             clsHH = hhIN;
             clsVLItm = vlitmIN;
             rptDate = clsVLItm.TrxDate.ToShortDateString();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (clsHH != null)
+                        clsHH.Dispose();
+                    if (clsVLItm != null)
+                        clsVLItm.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                clsHH = null;
+                clsVLItm = null;
+                _disposed = true;
+            }
         }
 
         public void createReport(string templatePath, string servicecode)

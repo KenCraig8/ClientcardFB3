@@ -5,16 +5,18 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class IncomeGroups
+    public class IncomeGroups : IDisposable
     {
         SqlDataAdapter dadAdpt;
         DataSet dset;
         DataRow dRow;
         SqlCommand command;
+        SqlCommandBuilder commBuilder;
         System.Data.SqlClient.SqlConnection conn;
         static string tbName = "IncomeGroups";
         int rowIndexCurrent = -1;
         int iRowCount;
+        private bool _disposed;
 
         public IncomeGroups()
         {
@@ -22,6 +24,42 @@ namespace ClientcardFB3
             conn.ConnectionString = CCFBGlobal.connectionString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                commBuilder = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -60,7 +98,7 @@ namespace ClientcardFB3
         {
         get 
         {
-            if (dRow["AsOfDate"].ToString() == "")
+            if (String.IsNullOrEmpty(dRow["AsOfDate"].ToString()) == true)
                 return CCFBGlobal.FBNullDateValue;
             else
                 return (DateTime)dRow["AsOfDate"];
@@ -86,7 +124,7 @@ namespace ClientcardFB3
         {
         get 
         {
-            if (dRow["Modified"].ToString() == "")
+            if (String.IsNullOrEmpty(dRow["Modified"].ToString())  == true)
                 return CCFBGlobal.FBNullDateValue;
             else
                 return (DateTime)dRow["Modified"];
@@ -228,6 +266,7 @@ namespace ClientcardFB3
             SqlCommand commDelete = new SqlCommand("DELETE FROM " + tbName + " WHERE ID=" + key.ToString(), conn);
             openConnection();
             commDelete.BeginExecuteNonQuery();
+            commDelete.Dispose();
             closeConnection();
         }
 
@@ -241,7 +280,7 @@ namespace ClientcardFB3
                     openConnection();
                     if (dadAdpt.UpdateCommand == null)
                     {
-                        SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                        commBuilder = new SqlCommandBuilder(dadAdpt);
                     }
 
                     dadAdpt.Update(dset, "IncomeGroups");

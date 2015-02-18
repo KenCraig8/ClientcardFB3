@@ -9,15 +9,17 @@ using Microsoft.SqlServer.Server;
 
 namespace ClientcardFB3
 {
-    #region HHMembers Class
-    public class HHMembers
+    
+    public class HHMembers : IDisposable
     {
         string connString;
         SqlCommandBuilder commBuilder = new SqlCommandBuilder();
         SqlDataAdapter datAdptHhM = new SqlDataAdapter();
         SqlDataAdapter datAdptDemo = new SqlDataAdapter();
         DataSet dset;
-        //SqlCommand command;
+        SqlCommandBuilder commBuild;
+        SqlCommandBuilder commBuild1;
+        SqlCommandBuilder commBldrDemog;
         SqlConnection conn;
         static string tblHhMName = "HouseholdMembers";
         static string tblDemoName = "Demographics";
@@ -26,6 +28,7 @@ namespace ClientcardFB3
         int iRowCountDemo = 0;
         DataRow drowHhm = null;
         DataRow drowDemoGraphics = null;
+        private bool _disposed;
         
         //HouseholdMembers
         const string fldID = "ID";
@@ -79,6 +82,15 @@ namespace ClientcardFB3
         const string fldSchSupplyDelivered = "SchSupplyDelivered";
         const string fldSchSupplySchool = "SchSupplySchool";
         const string fldCSFPStatus = "CSFPStatus";
+        const string fldCAGiftFlag = "CAGiftFlag";
+        const string fldCASize = "CASize";
+        const string fldCAGiftIdeas = "CAGiftIdeas";
+        const string fldCAHobbies = "CAHobbies";
+        const string fldCAAdoptedDate = "CAAdoptedDate";
+        const string fldCAAdoptedBy = "CAAdoptedBy";
+        const string fldCAAdoptedName = "CAAdoptedName";
+        const string fldCAGiftReceived = "CAGiftReceived";
+        const string fldCAGiftReceivedDate = "CAGiftReceivedDate";
 
         //Demographics
         const string fldMilitaryService = "MilitaryService";
@@ -125,6 +137,51 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dset = new DataSet();
             isValid = false;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (commBuilder != null)
+                        commBuilder.Dispose();
+                    if (commBuild != null)
+                        commBuild.Dispose();
+                    if (commBuild1 != null)
+                        commBuild1.Dispose();
+                    if (commBldrDemog != null)
+                        commBldrDemog.Dispose();
+                    if (datAdptHhM != null)
+                        datAdptHhM.Dispose();
+                    if (datAdptDemo != null)
+                        datAdptDemo.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                commBuilder = null;
+                commBuild = null;
+                commBuild1 = null;
+                commBldrDemog = null;
+                datAdptHhM = null;
+                datAdptDemo = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors [All]
@@ -301,7 +358,7 @@ namespace ClientcardFB3
         {
             get 
             {
-                if (drowHhm[fldModified].ToString() == "")
+                if (String.IsNullOrEmpty(drowHhm[fldModified].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drowHhm[fldModified]; 
@@ -379,7 +436,7 @@ namespace ClientcardFB3
         {
             get 
             {
-                if (drowHhm[fldCSFPExpiration].ToString() == "")
+                if (String.IsNullOrEmpty(drowHhm[fldCSFPExpiration].ToString()) == true)
                 {
                     return CCFBGlobal.FBNullDateValue;
                 }
@@ -429,7 +486,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drowHhm[fldBPExpiration].ToString() == "")
+                if (String.IsNullOrEmpty(drowHhm[fldBPExpiration].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drowHhm[fldBPExpiration];
@@ -474,6 +531,7 @@ namespace ClientcardFB3
             get { return drowHhm[fldEmailAddress].ToString(); }
             set { drowHhm[fldEmailAddress] = value; }
         }
+        #region School Supply Program
         public int Grade
         {
             get { return Convert.ToInt32(drowHhm[fldGrade]); }
@@ -488,7 +546,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drowHhm[fldSchSupplyDelivered].ToString() == "")
+                if (String.IsNullOrEmpty(drowHhm[fldSchSupplyDelivered].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drowHhm[fldSchSupplyDelivered];
@@ -500,10 +558,69 @@ namespace ClientcardFB3
             get { return Convert.ToInt32(drowHhm[fldSchSupplySchool]); }
             set { drowHhm[fldSchSupplySchool] = value; }
         }
+        #endregion
         public int CSFPStatus
         {
             get { return Convert.ToInt32(drowHhm[fldCSFPStatus]); }
             set { drowHhm[fldCSFPStatus] = value; }
+        }
+        #region Chistmas Assistance Program
+        public bool CAGiftFlag
+        {
+            get { return (bool)drowHhm[fldCAGiftFlag]; }
+            set { drowHhm[fldCAGiftFlag] = value; }
+        }
+        public string CASize
+        {
+            get { return drowHhm[fldCASize].ToString(); }
+            set { drowHhm[fldCASize] = value; }
+        }
+        public string CAGiftIdeas
+        {
+            get { return drowHhm[fldCAGiftIdeas].ToString(); }
+            set { drowHhm[fldCAGiftIdeas] = value; }
+        }
+        public string CAHobbies
+        {
+            get { return drowHhm[fldCAHobbies].ToString(); }
+            set { drowHhm[fldCAHobbies] = value; }
+        }
+        public DateTime CAAdoptedDate
+        {
+            get
+            {
+                if (drowHhm[fldCAAdoptedDate].ToString() == "")
+                    return CCFBGlobal.FBNullDateValue;
+                else
+                    return (DateTime)drowHhm[fldCAAdoptedDate];
+            }
+            set { drowHhm[fldCAAdoptedDate] = value; }
+        }
+        public int CAAdoptedBy
+        {
+            get { return Convert.ToInt32(drowHhm[fldCAAdoptedBy]); }
+            set { drowHhm[fldCAAdoptedBy] = value; }
+        }
+        public string CAAdoptedName
+        {
+            get { return drowHhm[fldCAAdoptedName].ToString(); }
+            set { drowHhm[fldCAAdoptedName] = value; }
+        }
+        public bool CAGiftReceived
+        {
+            get { return (bool)drowHhm[fldCAGiftReceived]; }
+            set { drowHhm[fldCAGiftReceived] = value; }
+        }
+        public DateTime CAGiftReceivedDate
+        {
+            get
+            {
+                if (drowHhm[fldCAGiftReceivedDate].ToString() == "")
+                    return CCFBGlobal.FBNullDateValue;
+                else
+                    return (DateTime)drowHhm[fldCAGiftReceivedDate];
+            }
+            set { drowHhm[fldCAGiftReceivedDate] = value; }
         }
 
         public bool HasCSFP
@@ -778,7 +895,7 @@ namespace ClientcardFB3
                 if (fldIndex >= 0)
                 {
                     if (dset.Tables[tblHhMName].Columns[fldIndex].DataType.Name == "DateTime")
-                        if (drowHhm[FieldName].ToString() != "")
+                        if (drowHhm[FieldName].ToString().Length >0)
                         { return CCFBGlobal.ValidDateString(drowHhm[FieldName]); }
                         else
                         { return ""; }
@@ -791,7 +908,7 @@ namespace ClientcardFB3
                     if (fldIndex >= 0)
                     {
                         if (dset.Tables[tblDemoName].Columns[fldIndex].DataType.Name == "DateTime")
-                            if (drowDemoGraphics[FieldName].ToString() != "")
+                            if (drowDemoGraphics[FieldName].ToString().Length >0)
                             { return CCFBGlobal.ValidDateString(drowDemoGraphics[FieldName]); }
                             else
                             { return ""; }
@@ -887,6 +1004,7 @@ namespace ClientcardFB3
             SqlCommand sqlCmd = new SqlCommand("UPDATE HouseholdMembers SET HouseholdId = " + newHHId.ToString() + " WHERE ID = " + idHHM.ToString(), conn);
             openConnection();
             sqlCmd.ExecuteNonQuery();
+            sqlCmd.Dispose();
             closeConnection();
         }
 
@@ -935,7 +1053,7 @@ namespace ClientcardFB3
             {
                 sqlText += "   AND Inactive = 0";
             }
-            if (dateBirth != "")
+            if (dateBirth.Length >0)
                 sqlText += " AND BirthDate = '" + dateBirth + "'";
             int result = Convert.ToInt32(CCFBGlobal.getSQLValue(sqlText));
             return (result > 0);
@@ -953,14 +1071,14 @@ namespace ClientcardFB3
             {
                 dset.Clear();
                 datAdptHhM.SelectCommand = new SqlCommand(sqlHhM, conn);
-                if (sqlDemographics != "")
+                if (sqlDemographics.Length >0)
                     datAdptDemo.SelectCommand = new SqlCommand(sqlDemographics, conn);
 
                 drowHhm = null;
                 drowDemoGraphics = null;
                 openConnection();
                 iRowCountHhM = datAdptHhM.Fill(dset, tblHhMName);
-                if (sqlDemographics != "")
+                if (sqlDemographics.Length >0)
                     iRowCountDemo = datAdptDemo.Fill(dset, tblDemoName);
                 else
                     iRowCountDemo = 0;
@@ -993,7 +1111,7 @@ namespace ClientcardFB3
                 sqlDemo = "SELECT * FROM " + tblDemoName + " WHERE Id IN (SELECT ID FROM " + tblHhMName + " " + WhereClause + ")" + " ORDER BY ID";
                 OrderByClause = "ID";
             }
-            if (OrderByClause == "")
+            if (String.IsNullOrEmpty(OrderByClause) == true)
                 OrderByClause = "ID";
             return openTables("SELECT * FROM " + tblHhMName + " " + WhereClause + " ORDER BY " + OrderByClause, sqlDemo);
         }
@@ -1012,6 +1130,7 @@ namespace ClientcardFB3
             commDelete.ExecuteNonQuery();
             commDelete.CommandText = "DELETE FROM " + tblHhMName + " WHERE ID=" + ID.ToString();
             commDelete.ExecuteNonQuery();
+            commDelete.Dispose();
             closeConnection();
         }
 
@@ -1022,6 +1141,7 @@ namespace ClientcardFB3
             sqlcmdDelete.ExecuteNonQuery();
             sqlcmdDelete.CommandText = "DELETE FROM " + tblHhMName + " WHERE HouseholdID=" + HHID.ToString();
             sqlcmdDelete.ExecuteNonQuery();
+            sqlcmdDelete.Dispose();
             closeConnection();
         }
 
@@ -1031,12 +1151,12 @@ namespace ClientcardFB3
             {
                 if (datAdptHhM.InsertCommand == null)
                 {
-                    SqlCommandBuilder commBuild = new SqlCommandBuilder(datAdptHhM);
+                    commBuild = new SqlCommandBuilder(datAdptHhM);
                     datAdptHhM.MissingSchemaAction = MissingSchemaAction.AddWithKey;
                 }
                 if (datAdptDemo.InsertCommand == null)
                 {
-                    SqlCommandBuilder commBldrDemog = new SqlCommandBuilder(datAdptDemo);
+                    commBldrDemog = new SqlCommandBuilder(datAdptDemo);
                     datAdptDemo.MissingSchemaAction = MissingSchemaAction.AddWithKey;
                 }
 
@@ -1065,7 +1185,7 @@ namespace ClientcardFB3
 
                 if (datAdptDemo.InsertCommand == null)
                 {
-                    SqlCommandBuilder commBuild1 = new SqlCommandBuilder(datAdptDemo);
+                    commBuild1 = new SqlCommandBuilder(datAdptDemo);
                     datAdptDemo.MissingSchemaAction = MissingSchemaAction.AddWithKey;
                 }
                 openConnection();
@@ -1226,6 +1346,15 @@ namespace ClientcardFB3
                 cmdInsert.Parameters.AddWithValue("@" + fldSchSupplyDelivered, newHHMItem.SchSupplyDelivered);
                 cmdInsert.Parameters.AddWithValue("@" + fldSchSupplySchool, newHHMItem.SchSupplySchool);
                 cmdInsert.Parameters.AddWithValue("@" + fldCSFPStatus, newHHMItem.CSFPStatus);
+                cmdInsert.Parameters.AddWithValue("@" + fldCAGiftFlag, newHHMItem.CAGiftFlag);
+                cmdInsert.Parameters.AddWithValue("@" + fldCASize, newHHMItem.CASize);
+                cmdInsert.Parameters.AddWithValue("@" + fldCAGiftIdeas, newHHMItem.CAGiftIdeas);
+                cmdInsert.Parameters.AddWithValue("@" + fldCAHobbies, newHHMItem.CAHobbies);
+                cmdInsert.Parameters.AddWithValue("@" + fldCAAdoptedDate, newHHMItem.CAAdoptedDate);
+                cmdInsert.Parameters.AddWithValue("@" + fldCAAdoptedBy, newHHMItem.CAAdoptedBy);
+                cmdInsert.Parameters.AddWithValue("@" + fldCAAdoptedName, newHHMItem.CAAdoptedName);
+                cmdInsert.Parameters.AddWithValue("@" + fldCAGiftReceived, newHHMItem.CAGiftReceived);
+                cmdInsert.Parameters.AddWithValue("@" + fldCAGiftReceivedDate, newHHMItem.CAGiftReceivedDate);
 
                 cmdInsert.Parameters.AddWithValue("@" + fldHispanicLatino, newHHMItem.HispanicLatino);
                 cmdInsert.Parameters.AddWithValue("@" + fldRefugeeImmigrant, newHHMItem.RefugeeImmigrant);
@@ -1269,6 +1398,7 @@ namespace ClientcardFB3
                 newID = Convert.ToInt32(cmdInsert.Parameters["@ID"].Value);
                 if (conn.State != ConnectionState.Closed)
                 { conn.Close(); }
+                cmdInsert.Dispose();
                 return newID;
             }
             catch (SqlException ex)
@@ -1342,6 +1472,15 @@ namespace ClientcardFB3
             newRow[fldSchSupply] = false;
             newRow[fldSchSupplyDelivered] = CCFBGlobal.FBNullDateValue;
             newRow[fldSchSupplySchool] = 0;
+            newRow[fldCAGiftFlag] = false;
+            newRow[fldCASize] = "";
+            newRow[fldCAGiftIdeas] = "";
+            newRow[fldCAHobbies] = "";
+            newRow[fldCAAdoptedDate] = CCFBGlobal.FBNullDateValue;
+            newRow[fldCAAdoptedBy] = 0;
+            newRow[fldCAAdoptedName] = "";
+            newRow[fldCAGiftReceived] = false;
+            newRow[fldCAGiftReceivedDate] = CCFBGlobal.FBNullDateValue;
             return newRow;
         }
 
@@ -1537,7 +1676,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drowHhMItem["Modified"].ToString() == "")
+                if (String.IsNullOrEmpty(drowHhMItem["Modified"].ToString()) == true)
                 {
                     return CCFBGlobal.FBNullDateValue;
                 }
@@ -1647,7 +1786,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drowHhMItem["BPExpiration"].ToString() == "")
+                if (String.IsNullOrEmpty(drowHhMItem["BPExpiration"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drowHhMItem["BPExpiration"];
@@ -1689,6 +1828,7 @@ namespace ClientcardFB3
             get { return drowHhMItem["EmailAddress"].ToString(); }
             set { drowHhMItem["EmailAddress"] = value; }
         }
+        #region School Supply Program Fields
         public int Grade
         {
             get { return Convert.ToInt32(drowHhMItem["Grade"]); }
@@ -1703,7 +1843,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drowHhMItem["SchSupplyDelivered"].ToString() == "")
+                if (String.IsNullOrEmpty(drowHhMItem["SchSupplyDelivered"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drowHhMItem["SchSupplyDelivered"];
@@ -1715,11 +1855,71 @@ namespace ClientcardFB3
             get { return Convert.ToInt32(drowHhMItem["SchSupplySchool"]); }
             set { drowHhMItem["SchSupplySchool"] = value; }
         }
+        #endregion
         public int CSFPStatus
         {
             get { return Convert.ToInt32(drowHhMItem["CSFPStatus"]); }
             set { drowHhMItem["CSFPStatus"] = value; }
         }
+        #region Christmas Assistance Program Fields
+        public bool CAGiftFlag
+        {
+            get { return (bool)drowHhMItem["CAGiftFlag"]; }
+            set { drowHhMItem["CAGiftFlag"] = value; }
+        }
+        public string CASize
+        {
+            get { return drowHhMItem["CASize"].ToString(); }
+            set { drowHhMItem["CASize"] = value; }
+        }
+        public string CAGiftIdeas
+        {
+            get { return drowHhMItem["CAGiftIdeas"].ToString(); }
+            set { drowHhMItem["CAGiftIdeas"] = value; }
+        }
+        public string CAHobbies
+        {
+            get { return drowHhMItem["CAHobbies"].ToString(); }
+            set { drowHhMItem["CAHobbies"] = value; }
+        }
+        public DateTime CAAdoptedDate
+        {
+            get
+            {
+                if (drowHhMItem["CAAdoptedDate"].ToString() == "")
+                    return CCFBGlobal.FBNullDateValue;
+                else
+                    return (DateTime)drowHhMItem["CAAdoptedDate"];
+            }
+            set { drowHhMItem["CAAdoptedDate"] = value; }
+        }
+        public int CAAdoptedBy
+        {
+            get { return Convert.ToInt32(drowHhMItem["CAAdoptedBy"]); }
+            set { drowHhMItem["CAAdoptedBy"] = value; }
+        }
+        public string CAAdoptedName
+        {
+            get { return drowHhMItem["CAAdoptedName"].ToString(); }
+            set { drowHhMItem["CAAdoptedName"] = value; }
+        }
+        public bool CAGiftReceived
+        {
+            get { return (bool)drowHhMItem["CAGiftReceived"]; }
+            set { drowHhMItem["CAGiftReceived"] = value; }
+        }
+        public DateTime CAGiftReceivedDate
+        {
+            get
+            {
+                if (drowHhMItem["CAGiftReceivedDate"].ToString() == "")
+                    return CCFBGlobal.FBNullDateValue;
+                else
+                    return (DateTime)drowHhMItem["CAGiftReceivedDate"];
+            }
+            set { drowHhMItem["CAGiftReceivedDate"] = value; }
+        }
+        #endregion
         #endregion Get/Set Accessors
 
         #region Get/Set Accessors [Demographics]
@@ -1990,7 +2190,7 @@ namespace ClientcardFB3
                 if (fldIndex >= 0)
                 {
                     if (dcolHhM[fldIndex].DataType.Name == "DateTime")
-                        if (drowHhMItem[FieldName].ToString() != "")
+                        if (drowHhMItem[FieldName].ToString().Length >0)
                         { return CCFBGlobal.ValidDateString(drowHhMItem[FieldName]); }
                         else
                         { return ""; }
@@ -2003,7 +2203,7 @@ namespace ClientcardFB3
                     if (fldIndex >= 0)
                     {
                         if (dcolDemographics[fldIndex].DataType.Name == "DateTime")
-                            if (drowItemDemographics[FieldName].ToString() != "")
+                            if (drowItemDemographics[FieldName].ToString().Length >0)
                             { return CCFBGlobal.ValidDateString(drowItemDemographics[FieldName]); }
                             else
                             { return ""; }

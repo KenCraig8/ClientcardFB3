@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace ClientcardFB3
 {
-    public class Userlist
+    public class Userlist : IDisposable
     {
         string connString;
         SqlDataAdapter dadAdpt;
@@ -15,6 +15,7 @@ namespace ClientcardFB3
         bool isValid = false;
         int iRowCount = 0;
         DataRow drow;
+        private bool _disposed;
 
         public Userlist(string connStringIn)
         {
@@ -23,6 +24,39 @@ namespace ClientcardFB3
             conn.ConnectionString = connString;
             dset = new DataSet();
             dadAdpt = new SqlDataAdapter();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                    if (dset != null)
+                        dset.Dispose();
+                    if (command != null)
+                        command.Dispose();
+                    if (dadAdpt != null)
+                        dadAdpt.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                dset = null;
+                command = null;
+                dadAdpt = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -100,7 +134,7 @@ namespace ClientcardFB3
         {
             get
             {
-                if (drow["LastLogon"].ToString() == "")
+                if (String.IsNullOrEmpty(drow["LastLogon"].ToString()) == true)
                     return CCFBGlobal.FBNullDateValue;
                 else
                     return (DateTime)drow["LastLogon"];
@@ -206,6 +240,7 @@ namespace ClientcardFB3
             dadAdpt.Fill(dset, tbName);
             dset.Tables[tbName].Rows[0].Delete();
             dadAdpt.Update(dset, tbName);
+            commDelete.Dispose();
         }
 
         public bool insert()

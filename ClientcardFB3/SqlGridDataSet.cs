@@ -232,7 +232,7 @@ namespace ClientcardFB3
 				case "textbox":		
                     if (a_control.Name.Contains("Date"))
                     {
-                        if (a_control.Text == "")
+                        if (String.IsNullOrEmpty(a_control.Text) == true)
                             return CCFBGlobal.OURNULLDATE;
                         else
                         {
@@ -279,7 +279,7 @@ namespace ClientcardFB3
 					break;
 				case "combobox":
                     ComboBox cb = (ComboBox)a_control;
-                    if (a_value == "")
+                    if (String.IsNullOrEmpty(a_value) == true)
                     {
 						if (cb.Items.Count > 0)
 							cb.SelectedIndex = 0;
@@ -296,7 +296,7 @@ namespace ClientcardFB3
                     }
 		            break;
 				case "textbox":
-	                if (a_control.Tag.ToString().Contains("Date") && a_value != "")
+	                if (a_control.Tag.ToString().Contains("Date") && a_value.Length >0)
                     { 
                         DateTime testDate = Convert.ToDateTime(a_value);
                         if (testDate <= CCFBGlobal.FBNullDateValue)

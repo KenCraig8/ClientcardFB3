@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace ClientcardFB3
 {
-    public class Zipcodes
+    public class Zipcodes : IDisposable
     {
         string connString;
         SqlConnection conn;
@@ -19,6 +19,7 @@ namespace ClientcardFB3
         private string county = "";
         private bool notefap = false;
         private int defaultcategory = 0;
+        private bool _disposed;
 
         private object[] nodata = new object[8] { "", "", "", "", "", "", false, 0 };
 
@@ -27,6 +28,30 @@ namespace ClientcardFB3
             conn = new SqlConnection();
             connString = connStringIn;
             conn.ConnectionString = connString;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // If you need thread safety, use a lock around these 
+            // operations, as well as in your methods that use the resource.
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (conn != null)
+                        conn.Dispose();
+                }
+
+                // Indicate that the instance has been disposed.
+                conn = null;
+                _disposed = true;
+            }
         }
 
         #region Get/Set Accessors
@@ -87,7 +112,7 @@ namespace ClientcardFB3
                         msg += i.ToString() + ": " + data[1].ToString() + System.Environment.NewLine;
                     }
                     string retVal = Microsoft.VisualBasic.Interaction.InputBox(msg, "Enter Number For Desired City", "");
-                    if (retVal == "")
+                    if (String.IsNullOrEmpty(retVal) == true)
                     {
                         setDataVariables((object[])lstCities[0]);
                     }
@@ -124,7 +149,7 @@ namespace ClientcardFB3
             System.Collections.ArrayList lstCities = new System.Collections.ArrayList();
             sqlOpenConnection();
             string sqry = "SELECT * FROM ZipCodes WHERE City = '" + city + "'";
-            if (tstState != "")
+            if (tstState.Length >0)
             {
                 sqry += " AND State = '" + tstState + "'";
             }
@@ -156,7 +181,7 @@ namespace ClientcardFB3
                         msg += i.ToString() + ": " + data[0].ToString() + System.Environment.NewLine;
                     }
                     string retVal = Microsoft.VisualBasic.Interaction.InputBox(msg, "Enter Number For Desired Zip Code", "");
-                    if (retVal == "")
+                    if (String.IsNullOrEmpty(retVal) == true)
                     {
                         setDataVariables((object[])lstCities[0]);
                     }
@@ -176,6 +201,7 @@ namespace ClientcardFB3
 
                         }
                     }
+                    reader.Dispose();
                 }
             
                 sqlCloseConnection();
@@ -186,6 +212,7 @@ namespace ClientcardFB3
                 CCFBGlobal.appendErrorToErrorReport(sqlCmd.CommandText, ex.GetBaseException().ToString());
             }
             setDataVariables(nodata);
+            sqlCmd.Dispose();
             sqlCloseConnection();
             return false;
         }

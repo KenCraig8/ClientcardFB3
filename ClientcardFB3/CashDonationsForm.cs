@@ -151,7 +151,7 @@ namespace ClientcardFB3
             if (update == false)
             {
                 //If a Donor has been selected
-                if (tbDonorID.Text.Trim() != "" && tbName.Text.Trim() != "" && tbDollars.Text.Trim() != "")
+                if (tbDonorID.Text.Trim().Length >0 && tbName.Text.Trim().Length >0 && tbDollars.Text.Trim().Length >0)
                 {
                     //Create a new row from the DataSet
                     DataRow drow = clsCashDonations.DSet.Tables[0].NewRow();
@@ -159,7 +159,7 @@ namespace ClientcardFB3
                     //Go through the textboxes and insert data into the new row
                     foreach (TextBox tb in tbList)
                     {
-                        if (tb.Tag != null && tb.Tag.ToString() != "")
+                        if (tb.Tag != null && tb.Tag.ToString().Length >0)
                             drow[tb.Tag.ToString()] = tb.Text;
                     }
 
@@ -187,12 +187,12 @@ namespace ClientcardFB3
             else   //In Update MODE
             {
                 //If a Donor has been selected
-                if (tbDonorID.Text.Trim() != "" && tbName.Text.Trim() != "" && tbDollars.Text.Trim() != "")
+                if (tbDonorID.Text.Trim().Length >0 && tbName.Text.Trim().Length >0 && tbDollars.Text.Trim().Length >0)
                 {
                     //Go through each textbox and set data int the dataset
                     foreach (TextBox tb in tbList)
                     {
-                        if (tb.Tag != null && tb.Tag.ToString() != "")
+                        if (tb.Tag != null && tb.Tag.ToString().Length >0)
                         {
                             clsCashDonations.SetDataValue(tb.Tag.ToString(), tb.Text);
                         }
@@ -305,7 +305,7 @@ namespace ClientcardFB3
             foreach (TextBox tb in tbList)
             {
                 tb.Text = "";
-                if(tb.Tag != null && tb.Tag.ToString() != "")
+                if(tb.Tag != null && tb.Tag.ToString().Length >0)
                 {
                     //Gets the Data from the dataset
                     tb.Text = clsCashDonations.GetDataValue(tb.Tag.ToString()).ToString();
@@ -352,7 +352,7 @@ namespace ClientcardFB3
             {
                 clsCashDonations.setDataRow(i);
 
-                if (currentDate != "" && currentDate != clsCashDonations.TrxDate.ToShortDateString())
+                if (currentDate.Length >0 && currentDate != clsCashDonations.TrxDate.ToShortDateString())
                 {
                     lvItm = new ListViewItem();
                     lvItm.BackColor = Color.PaleGoldenrod;
@@ -617,7 +617,7 @@ namespace ClientcardFB3
 
         private void tbDonorID_Leave(object sender, EventArgs e)
         {
-            if (tbDonorID.Text.Trim() != "" && checkForDonor() == false)
+            if (tbDonorID.Text.Trim().Length >0 && checkForDonor() == false)
                 tbDonorID.Text = "";            
         }
 

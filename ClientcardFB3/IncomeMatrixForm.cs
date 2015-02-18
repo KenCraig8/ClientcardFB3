@@ -264,6 +264,7 @@ namespace ClientcardFB3
             clsIncomeGroups.openAll();
             fillCombos();
             setGroupIndexByName(frmMatrixGroup.GroupName);
+            frmMatrixGroup.Dispose();
             openForIncomeGroupAndFillGrid();
         }
 

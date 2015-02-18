@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace ClientcardFB3
 {
-	public partial class EditVolunteerForm : SqlGridDataSet, IEditVolunteerForm
+	public partial class EditVolunteerForm : SqlGridDataSet
 	{
 		#region ----------Constants----------
 
@@ -254,9 +254,14 @@ namespace ClientcardFB3
             SelectedId = 0;									// Set to invalid DB record ID.
             this.DialogResult = System.Windows.Forms.DialogResult.No;
             if (FormSelectMode)
+            {
                 this.Visible = false;
+            }
             else
-                Close();
+            {
+                this.Hide();
+                this.Dispose();
+            }
         }		// end of btnClose_Click
 
 
@@ -372,7 +377,7 @@ namespace ClientcardFB3
 
         private void cboFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (bLoadingCombo == false && sFilterColumn != "")
+            if (bLoadingCombo == false && sFilterColumn.Length >0)
             {
                 if (cboFilter.SelectedIndex != 0)
                 {
@@ -442,7 +447,7 @@ namespace ClientcardFB3
                 clsVols.openWhere(sWhereClause + sOrderBy);
                 loadList();
             }
-            if (sFilterColumn != "")
+            if (sFilterColumn.Length >0)
             {
                 cboFilter.Visible = true;
                 getDistints(sFilterColumn);
@@ -524,7 +529,7 @@ namespace ClientcardFB3
             cmsVolGrid.Close();
             if (e.ClickedItem.Text == "Export To Excel")
             {
-                if (sender.GetType().ToString() == "")
+                if (String.IsNullOrEmpty(sender.GetType().ToString()) == true)
                 {
                     CCFBGlobal.ExportToExcel(gridEditVol, "Volunteers_" +
                         DateTime.Today.Year.ToString() + "_" +
@@ -600,7 +605,7 @@ namespace ClientcardFB3
                         if (bInAddNewHoursMode == true)
                         {
                             if (dgvVolHours[e.ColumnIndex, e.RowIndex].Value == null
-                                || dgvVolHours[e.ColumnIndex, e.RowIndex].Value.ToString().Trim() == "")
+                                || String.IsNullOrEmpty(dgvVolHours[e.ColumnIndex, e.RowIndex].Value.ToString().Trim()) == true)
                             {
                                 break;
                             }
@@ -846,12 +851,12 @@ namespace ClientcardFB3
             {
                 foreach (TextBox tb in tbList.OfType<TextBox>())
                 {
-                    if (tb.Tag.ToString() != "")
+                    if (tb.Tag.ToString().Length >0)
                         tb.Text = clsVols.GetDataValue(tb.Tag.ToString()).ToString();
                 }
                 foreach (CheckBox cb in chkList)
                 {
-                    if (cb.Tag != null && cb.Tag.ToString() != "")
+                    if (cb.Tag != null && cb.Tag.ToString().Length >0)
                         cb.Checked = (bool)clsVols.GetDataValue(cb.Tag.ToString());
                 }
                 Event_SelectionChangedSpecial(currentRow);
@@ -1001,7 +1006,7 @@ namespace ClientcardFB3
                     try { drow[tb.Tag.ToString()] = Convert.ToDateTime(tb.Text); }
                     catch { drow[tb.Tag.ToString()] = "01/01/1900"; }
                 }
-                else if (tb.Tag.ToString() != "")
+                else if (tb.Tag.ToString().Length >0)
                     drow[tb.Tag.ToString()] = tb.Text;
             }
             foreach (CheckBox chk in chkList)
@@ -1096,28 +1101,29 @@ namespace ClientcardFB3
             if ("UserFlag0" == clsUserFields.FldName)
             {
                 chkUserFlag0.Text = clsUserFields.EditLabel.Trim();
-                chkUserFlag0.Visible = (chkUserFlag0.Text != "");
+                chkUserFlag0.Visible = (chkUserFlag0.Text.Length >0);
             }
             clsUserFields.setDataRow("UserFlag1");
             if ("UserFlag1" == clsUserFields.FldName)
             {
                 chkUserFlag1.Text = clsUserFields.EditLabel.Trim();
-                chkUserFlag1.Visible = (chkUserFlag1.Text != "");
+                chkUserFlag1.Visible = (chkUserFlag1.Text.Length >0);
             }
             clsUserFields.setDataRow("Date1");
             if ("Date1" == clsUserFields.FldName)
             {
                 lblDate1.Text = clsUserFields.EditLabel.Trim();
-                tbDate1.Visible = (lblDate1.Text != "");
-                lblDate1.Visible = (lblDate1.Text != "");
+                tbDate1.Visible = (lblDate1.Text.Length >0);
+                lblDate1.Visible = (lblDate1.Text.Length >0);
             }
             clsUserFields.setDataRow("Date2");
             if ("Date2" == clsUserFields.FldName)
             {
                 lblDate2.Text = clsUserFields.EditLabel.Trim();
-                tbDate2.Visible = (lblDate2.Text != "");
-                lblDate2.Visible = (lblDate2.Text != "");
+                tbDate2.Visible = (lblDate2.Text.Length >0);
+                lblDate2.Visible = (lblDate2.Text.Length >0);
             }
+            clsUserFields.Dispose();
         }
 
         private void loadVolunteerHours()
@@ -1299,12 +1305,12 @@ namespace ClientcardFB3
             if (chkIncludeInactive.CheckState == CheckState.Unchecked)
             {
                 sWhereClause = "WHERE Inactive = 0";
-                if (sFilterColumn != "" && sFilterValue != "")
+                if (sFilterColumn.Length >0 && sFilterValue.Length >0)
                     sWhereClause += " AND " + sFilterValue;
             }
             else
             {
-                if (sFilterColumn != "" && sFilterValue != "")
+                if (sFilterColumn.Length >0 && sFilterValue.Length >0)
                     sWhereClause = " WHERE " + sFilterValue;
                 else
                     sWhereClause = "";
@@ -1321,7 +1327,7 @@ namespace ClientcardFB3
 
         private void tbFindName_TextChanged(object sender, EventArgs e)
         {
-            if (tbFindName.Text.Trim() == "" && gridEditVol.Rows.Count > 0)
+            if (String.IsNullOrEmpty(tbFindName.Text.Trim()) == true && gridEditVol.Rows.Count > 0)
             { gridEditVol.CurrentCell = gridEditVol[0, 0]; }
             else
             {
@@ -1387,7 +1393,7 @@ namespace ClientcardFB3
                 {
                     case "TextBox":
                         {
-                            if (cntrl.Tag != null && cntrl.Tag.ToString() != "")
+                            if (cntrl.Tag != null && cntrl.Tag.ToString().Length >0)
                             {
                                 tbList.Add((TextBox)cntrl);
                                 cntrl.Enter += new System.EventHandler(this.tbList_Enter);
@@ -1398,7 +1404,7 @@ namespace ClientcardFB3
                     case "CheckBox":
                         {
                             CheckBox chk = (CheckBox)cntrl;
-                            if (chk.Tag != null && chk.Tag.ToString() != "")
+                            if (chk.Tag != null && chk.Tag.ToString().Length >0)
                             {
                                 chk.CheckedChanged += new System.EventHandler(this.chkList_CheckedChanged);
                                 //chk.KeyDown += new System.Windows.Forms.KeyEventHandler(this.chkList_KeyDown);
@@ -1410,7 +1416,7 @@ namespace ClientcardFB3
                         {
                             if (cntrl.Tag != null)
                             {
-                                if (cntrl.Tag.ToString().Trim() != "")
+                                if (cntrl.Tag.ToString().Trim().Length >0)
                                 {
                                     cboList.Add((ComboBox)cntrl);
                                 }

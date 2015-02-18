@@ -29,6 +29,7 @@ namespace ClientcardFB3
         SqlDataAdapter dadAdpt;
         SqlCommand commandByDay;
         SqlCommand commandByWeek;
+        SqlCommandBuilder commBuilder;
         Panel pnlViewable = null;
 
         int donorID;
@@ -323,6 +324,7 @@ namespace ClientcardFB3
             
             if (donorID > -1)
                 cboStore.Enabled = false;
+            clsDonors.Dispose();
         }
 
         /// <summary>
@@ -610,7 +612,7 @@ namespace ClientcardFB3
                 colTotal = 0;
                 for (int j = 0; j < rowCnt-1; j++)
                 {
-                    if (dgvMonthTotals[i, j].Value != null && dgvMonthTotals[i,j].Value.ToString() != "")
+                    if (dgvMonthTotals[i, j].Value != null && dgvMonthTotals[i,j].Value.ToString().Length >0)
                     {
                         colTotal += Convert.ToInt32(
                              dgvMonthTotals[i,j].Value.ToString().Replace(",", ""));
@@ -783,7 +785,7 @@ namespace ClientcardFB3
                 {
                     if (dadAdpt.UpdateCommand == null || dadAdpt.InsertCommand == null || dadAdpt.DeleteCommand == null)
                     {
-                        SqlCommandBuilder commBuilder = new SqlCommandBuilder(dadAdpt);
+                        commBuilder = new SqlCommandBuilder(dadAdpt);
                     }
 
                     dadAdpt.Update(dset);
@@ -802,7 +804,7 @@ namespace ClientcardFB3
         /// <param name="e"></param>
         private void dgvMonthReceipts_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (e.FormattedValue != null && e.FormattedValue.ToString().Trim() != "" 
+            if (e.FormattedValue != null && e.FormattedValue.ToString().Trim().Length >0 
                 && e.ColumnIndex > 1 && e.ColumnIndex < 8)
             {
                 try
@@ -830,7 +832,7 @@ namespace ClientcardFB3
                     }
                 }
             }
-            //else if ((e.FormattedValue == null || e.FormattedValue.ToString().Trim() == "") &&
+            //else if ((e.FormattedValue == null || e.FormattedValue.ToString().Trim())  == true) &&
             //            dgvMonthReceipts.Columns[e.ColumnIndex].ReadOnly == false && e.RowIndex < dgvMonthReceipts.RowCount-1)
             //{
             //    dgvMonthReceipts[e.ColumnIndex, e.RowIndex].Style.BackColor = Color.White;

@@ -15,6 +15,18 @@
         {
             if (disposing && (components != null))
             {
+                if (clsVolGroups != null)
+                {
+                    clsVolGroups.Dispose();
+                }
+                if (clsVolHrs != null)
+                {
+                    clsVolHrs.Dispose();
+                }
+                if (clsVols != null)
+                {
+                    clsVols.Dispose();
+                }
                 components.Dispose();
             }
             base.Dispose(disposing);
