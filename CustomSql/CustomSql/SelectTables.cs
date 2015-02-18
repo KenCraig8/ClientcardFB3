@@ -75,5 +75,11 @@ namespace CustomSQL
             sqlWhereForm = new CustSqlWhere(dataHelper, connectionString, selectedColumns, databaseName, selectedTableName);
             sqlWhereForm.Show();
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ExportSQLToExcel exportForm = new ExportSQLToExcel();
+            exportForm.Show();
+        }
     }
 }

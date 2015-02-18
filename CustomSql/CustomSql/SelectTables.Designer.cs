@@ -32,6 +32,7 @@
             this.lstSelectTable = new System.Windows.Forms.ListBox();
             this.btnSelectWhere = new System.Windows.Forms.Button();
             this.lstSelectColumns = new System.Windows.Forms.ListBox();
+            this.btnExport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstSelectTable
@@ -64,15 +65,26 @@
             this.lstSelectColumns.Size = new System.Drawing.Size(378, 196);
             this.lstSelectColumns.TabIndex = 3;
             // 
-            // SelectForm
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(270, 374);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(121, 31);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "Export to Excel";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // SelectTables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 437);
+            this.ClientSize = new System.Drawing.Size(429, 437);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lstSelectColumns);
             this.Controls.Add(this.btnSelectWhere);
             this.Controls.Add(this.lstSelectTable);
-            this.Name = "SelectForm";
+            this.Name = "SelectTables";
             this.Text = "Select Tables";
             this.Load += new System.EventHandler(this.SelectForm_Load);
             this.ResumeLayout(false);
@@ -85,6 +97,7 @@
         private System.Windows.Forms.ListBox lstSelectTable;
         private System.Windows.Forms.Button btnSelectWhere;
         private System.Windows.Forms.ListBox lstSelectColumns;
+        private System.Windows.Forms.Button btnExport;
 
     }
 }

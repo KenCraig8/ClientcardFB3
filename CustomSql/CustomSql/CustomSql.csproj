@@ -65,6 +65,12 @@
       <DependentUpon>CustSqlWhere.cs</DependentUpon>
     </Compile>
     <Compile Include="DataHelper.cs" />
+    <Compile Include="ExportSQLToExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportSQLToExcel.designer.cs">
+      <DependentUpon>ExportSQLToExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Testing\SelectTablesTest.cs" />
     <Compile Include="Testing\CustSqlWhereTest.cs" />
     <Compile Include="Testing\DataHelperTest.cs" />
@@ -78,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CustSqlWhere.resx">
       <DependentUpon>CustSqlWhere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportSQLToExcel.resx">
+      <DependentUpon>ExportSQLToExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectTables.resx">
       <DependentUpon>SelectTables.cs</DependentUpon>

@@ -111,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1310, 549);
+            this.ClientSize = new System.Drawing.Size(1310, 512);
             this.Controls.Add(this.lstOrder);
             this.Controls.Add(this.flpStringSelect);
             this.Controls.Add(this.btnSave);
