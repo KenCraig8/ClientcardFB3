@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 using NUnit.Extensions.Forms;
-using CustomSQL;
+using ClientcardFB3;
 
 namespace Tests
 {

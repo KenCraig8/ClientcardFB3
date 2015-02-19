@@ -57,8 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CCFBGlobal.cs" />
-    <Compile Include="CCFBPrefs.cs" />
+    <Compile Include="..\..\CcFB3Common\CCFBGlobal.cs">
+      <Link>CCFBGlobal.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CcFB3Common\CCFBPrefs.cs">
+      <Link>CCFBPrefs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CcFB3dbClasses\parmTypeCodes.cs">
+      <Link>parmTypeCodes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CcFB3dbClasses\Userlist.cs">
+      <Link>Userlist.cs</Link>
+    </Compile>
     <Compile Include="CustSqlWhere.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,7 +76,12 @@
       <DependentUpon>CustSqlWhere.cs</DependentUpon>
     </Compile>
     <Compile Include="DataHelper.cs" />
-    <Compile Include="parmTypeCodes.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Testing\SelectTablesTest.cs" />
     <Compile Include="Testing\CustSqlWhereTest.cs" />
     <Compile Include="Testing\DataHelperTest.cs" />
@@ -80,6 +95,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CustSqlWhere.resx">
       <DependentUpon>CustSqlWhere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectTables.resx">
       <DependentUpon>SelectTables.cs</DependentUpon>

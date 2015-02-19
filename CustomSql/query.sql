@@ -1,0 +1,1 @@
+SELECT ID FROM [ClientcardFB3].[dbo].[HouseholdMembers] WHERE (ID >= 0 AND ID <= 100) AND (Inactive IN ('False'))

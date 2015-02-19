@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CustomSQL
+namespace ClientcardFB3
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace CustomSQL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SelectTables());
+            Application.Run(new LoginForm());
         }
     }
 }

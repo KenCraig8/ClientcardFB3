@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CustomSQL.Properties {
+namespace ClientcardFB3.Properties {
     using System;
     
     

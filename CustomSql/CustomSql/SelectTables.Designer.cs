@@ -1,4 +1,4 @@
-﻿namespace CustomSQL
+﻿namespace ClientcardFB3
 {
     partial class SelectTables
     {
