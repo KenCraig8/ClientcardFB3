@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 
-namespace CustomSQL
+namespace ClientcardFB3
 {
     public partial class CustSqlWhere : Form
     {

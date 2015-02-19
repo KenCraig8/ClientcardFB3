@@ -5,7 +5,7 @@ using NUnit.Extensions.Forms;
 //using CustomSQL;
 using System.Data;
 
-namespace CustomSQL
+namespace ClientcardFB3
 {
     [TestFixture]
     public class SelectTablesTest

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using ClientcardFB3;
 
-namespace CustomSQL
+namespace ClientcardFB3
 {
     /// <summary>
     /// Includes functions to interact with the database. Used by multiple other classes

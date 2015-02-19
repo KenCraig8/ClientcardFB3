@@ -1,4 +1,4 @@
-﻿namespace CustomSQL
+﻿namespace ClientcardFB3
 {
     partial class CustSqlWhere
     {
@@ -85,7 +85,8 @@
             // 
             // sfdSaveQuery
             // 
-            this.sfdSaveQuery.DefaultExt = "txt";
+            this.sfdSaveQuery.DefaultExt = "sql";
+            this.sfdSaveQuery.InitialDirectory = "C:\\ClientcardFB3\\CustomQuery\\Queries";
             // 
             // flpStringSelect
             // 
@@ -111,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1310, 512);
+            this.ClientSize = new System.Drawing.Size(1310, 549);
             this.Controls.Add(this.lstOrder);
             this.Controls.Add(this.flpStringSelect);
             this.Controls.Add(this.btnSave);

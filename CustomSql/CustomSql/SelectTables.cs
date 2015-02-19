@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CustomSQL
+namespace ClientcardFB3
 {
     public partial class SelectTables : Form
     {

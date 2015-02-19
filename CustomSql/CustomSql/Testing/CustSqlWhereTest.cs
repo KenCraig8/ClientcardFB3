@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using NUnit.Extensions.Forms;
 using Moq;
-using CustomSQL;
+using ClientcardFB3;
 using System.Data;
 using System.Collections;
 using System.Windows.Forms;

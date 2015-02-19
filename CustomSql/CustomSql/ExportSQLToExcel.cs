@@ -12,7 +12,7 @@ using System.IO;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Win32;
 
-namespace CustomSQL
+namespace ClientcardFB3
 {
     public partial class ExportSQLToExcel : Form
     {
