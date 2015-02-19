@@ -85,7 +85,8 @@
             // 
             // sfdSaveQuery
             // 
-            this.sfdSaveQuery.DefaultExt = "txt";
+            this.sfdSaveQuery.DefaultExt = "sql";
+            this.sfdSaveQuery.InitialDirectory = "C:\\ClientcardFB3\\CustomQuery\\Queries";
             // 
             // flpStringSelect
             // 
