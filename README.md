@@ -8,6 +8,16 @@ View our planning page here: https://trello.com/clientcardfb3
 Getting started with the project
 Contact me if you would like to contribute
 
+A note on Visual Studio:
+Make sure that you check "Microsoft Office Developer Tools" in the "Optional features to install:" when installing VS.
+If you already have installed Visual Studio, you can check this by:
+	1.  Go to Control Panel -> uninstall program.
+	2.  Right Click visual Studio -> Change.
+	3.  Click modify in the window that comes up.
+	4.  You should then see the "Optional features to install:" section.
+	5.  Make sure "Microsoft Office Developer Tools" is checked.  If it is, you are good.
+	6.  If it isn't checked, check it and click Update.
+
 Download these files:
 ClientCard install: http://1drv.ms/1p9tSYe FB3Installion-2014-04-27.zip
 
