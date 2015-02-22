@@ -62,7 +62,7 @@ LogIn to SQL Management Studio using Windows Authentication or the SA user
 
 Run Client Card with login Admin, password: master
 
-Next install vbpowerpacks here: http://www.microsoft.com/en-us/download/details.aspx?id=25169
+Next install vbpowerpacks here: http://go.microsoft.com/fwlink/?LinkID=145727&clcid=0x804
 
 Getting started mini guide:
 
