@@ -14,8 +14,10 @@ namespace ClientcardFB3
     public partial class SelectTables : Form
     {
         const string databaseName = "ClientcardFB3";
-        string connectionString = @"Server=MYCOMPUTER\SQLEXPRESS;initial catalog=" + databaseName + "; UID=CCFB_User; PWD='19800612'; Trusted_Connection = False; Connect Timeout=10;";
+        string connectionString = CCFBGlobal.connectionString; //@"Server=MYCOMPUTER\SQLEXPRESS;initial catalog=" + databaseName + "; UID=CCFB_User; PWD='19800612'; Trusted_Connection = False; Connect Timeout=10;";
         DataHelper dataHelper;
+        LoginForm frmLogIn;
+        string selectedTableName;
         // Access this for testing
         public CustSqlWhere sqlWhereForm;
 
@@ -23,14 +25,14 @@ namespace ClientcardFB3
         /// For testing. Dependency injection.
         /// </summary>
         /// <param name="dataHelper"></param>
-        public SelectTables(DataHelper dataHelper)
+        public SelectTables(LoginForm callingLoginFrom)
         {
-            this.dataHelper = dataHelper;
+            frmLogIn = callingLoginFrom;
+            dataHelper = new DataHelper();
             InitializeComponent();
         }
 
-        string selectedTableName;
-        public SelectTables() : this(new DataHelper()){}
+        
 
         /// <summary>
         /// Display the user choices for the table in a list box
@@ -80,6 +82,11 @@ namespace ClientcardFB3
         {
             ExportSQLToExcel exportForm = new ExportSQLToExcel();
             exportForm.Show();
+        }
+
+        private void SelectTables_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmLogIn.Close();
         }
     }
 }

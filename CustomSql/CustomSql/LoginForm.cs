@@ -243,7 +243,7 @@ namespace ClientcardFB3
                                 formMain = new MainForm(this);
                             #endif
                             #if CUSTSQL
-                                formMain = new SelectTables();
+                                formMain = new SelectTables(this);
                             #endif
                                 formMain.ShowDialog();
                                 resetForm();

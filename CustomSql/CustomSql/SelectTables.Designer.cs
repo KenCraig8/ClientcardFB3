@@ -38,18 +38,20 @@
             // lstSelectTable
             // 
             this.lstSelectTable.FormattingEnabled = true;
-            this.lstSelectTable.ItemHeight = 16;
-            this.lstSelectTable.Location = new System.Drawing.Point(12, 12);
+            this.lstSelectTable.ItemHeight = 20;
+            this.lstSelectTable.Location = new System.Drawing.Point(14, 15);
+            this.lstSelectTable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstSelectTable.Name = "lstSelectTable";
-            this.lstSelectTable.Size = new System.Drawing.Size(379, 100);
+            this.lstSelectTable.Size = new System.Drawing.Size(426, 124);
             this.lstSelectTable.TabIndex = 1;
             this.lstSelectTable.SelectedValueChanged += new System.EventHandler(this.lstSelectTable_SelectedValueChanged);
             // 
             // btnSelectWhere
             // 
-            this.btnSelectWhere.Location = new System.Drawing.Point(106, 374);
+            this.btnSelectWhere.Location = new System.Drawing.Point(119, 468);
+            this.btnSelectWhere.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSelectWhere.Name = "btnSelectWhere";
-            this.btnSelectWhere.Size = new System.Drawing.Size(135, 32);
+            this.btnSelectWhere.Size = new System.Drawing.Size(152, 40);
             this.btnSelectWhere.TabIndex = 2;
             this.btnSelectWhere.Text = "select conditions";
             this.btnSelectWhere.UseVisualStyleBackColor = true;
@@ -58,18 +60,20 @@
             // lstSelectColumns
             // 
             this.lstSelectColumns.FormattingEnabled = true;
-            this.lstSelectColumns.ItemHeight = 16;
-            this.lstSelectColumns.Location = new System.Drawing.Point(13, 119);
+            this.lstSelectColumns.ItemHeight = 20;
+            this.lstSelectColumns.Location = new System.Drawing.Point(15, 149);
+            this.lstSelectColumns.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lstSelectColumns.Name = "lstSelectColumns";
             this.lstSelectColumns.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstSelectColumns.Size = new System.Drawing.Size(378, 196);
+            this.lstSelectColumns.Size = new System.Drawing.Size(425, 244);
             this.lstSelectColumns.TabIndex = 3;
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(270, 374);
+            this.btnExport.Location = new System.Drawing.Point(304, 468);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(121, 31);
+            this.btnExport.Size = new System.Drawing.Size(136, 39);
             this.btnExport.TabIndex = 4;
             this.btnExport.Text = "Export to Excel";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -77,15 +81,17 @@
             // 
             // SelectTables
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 437);
+            this.ClientSize = new System.Drawing.Size(483, 546);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lstSelectColumns);
             this.Controls.Add(this.btnSelectWhere);
             this.Controls.Add(this.lstSelectTable);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SelectTables";
             this.Text = "Select Tables";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SelectTables_FormClosed);
             this.Load += new System.EventHandler(this.SelectForm_Load);
             this.ResumeLayout(false);
 

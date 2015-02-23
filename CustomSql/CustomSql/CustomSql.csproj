@@ -92,9 +92,6 @@
     <Compile Include="LoginForm.designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Testing\SelectTablesTest.cs" />
-    <Compile Include="Testing\CustSqlWhereTest.cs" />
-    <Compile Include="Testing\DataHelperTest.cs" />
     <Compile Include="SelectTables.cs">
       <SubType>Form</SubType>
     </Compile>
