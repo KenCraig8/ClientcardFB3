@@ -43,7 +43,9 @@ namespace ClientcardFB3
             dsnDriverName = CCFBGlobal.getRegDSNDriverName();
             dsnServer = CCFBGlobal.getRegDSNServer();
             needtoUpdate = true;
-            CCFBGlobal.initPaths();
+            #if !CUSTSQL
+                CCFBGlobal.initPaths();
+            #endif
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
